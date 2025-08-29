@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gears - Gerador de Landing Pages para Projetos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cogs"></i>
+                    <span>Gears</span>
+                </div>
+                <div class="header-actions">
+                    <!-- Espaço para ações futuras -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Página Inicial -->
+    <div class="initial-page" id="initialPage">
+        <div class="container">
+            <div class="hero">
+                <h1>Crie sua Landing Page de Projeto</h1>
+                <p>Com o Gears, você pode gerar rapidamente uma landing page profissional para apresentar seu projeto baseado no modelo Lean Startup.</p>
+            </div>
+
+            <div class="project-config">
+                <div class="config-section">
+                    <h3>Escolha uma categoria de projeto</h3>
+                    <div class="category-options">
+                        <div class="option-card" data-category="startup">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Startup</h4>
+                            <p>Para novos empreendimentos</p>
+                        </div>
+                        <div class="option-card" data-category="produto">
+                            <i class="fas fa-box"></i>
+                            <h4>Produto Digital</h4>
+                            <p>Para aplicativos e softwares</p>
+                        </div>
+                        <div class="option-card" data-category="servico">
+                            <i class="fas fa-concierge-bell"></i>
+                            <h4>Serviço</h4>
+                            <p>Para ofertas de serviços</p>
+                        </div>
+                        <div class="option-card" data-category="social">
+                            <i class="fas fa-hands-helping"></i>
+                            <h4>Projeto Social</h4>
+                            <p>Para iniciativas com impacto social</p>
+                        </div>
+                        <div class="option-card" data-category="ecommerce">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h4>E-commerce</h4>
+                            <p>Para lojas virtuais</p>
+                        </div>
+                        <div class="option-card" data-category="educacao">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Educação</h4>
+                            <p>Para plataformas de ensino</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Selecione um Template</h3>
+                    <div class="template-info" id="templateInfo">
+                        <p>Selecione uma categoria acima para ver os projetos disponíveis</p>
+                    </div>
+                    <div class="template-options" id="templateOptions">
+                        <!-- Os projetos serão carregados dinamicamente aqui -->
+                    </div>
+                </div>
+
+                <button class="load-btn" id="loadBtn" disabled>Carregar Projeto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Landing Page -->
+    <div class="landing-page" id="landingPage">
+        <div class="container">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+
+            <div class="project-header">
+                <div class="category" id="projectCategory">Categoria</div>
+                <h1 id="projectTitle">Nome do Projeto</h1>
+                <p id="projectDescription">Descrição do projeto baseada na categoria e template selecionados.</p>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="objectives">
+                        <i class="fas fa-bullseye"></i> Objetivos
+                    </button>
+                    <button class="tab-btn" data-tab="planning">
+                        <i class="fas fa-clipboard-list"></i> Planejamento Inicial
+                    </button>
+                    <button class="tab-btn" data-tab="resources">
+                        <i class="fas fa-tools"></i> Recursos
+                    </button>
+                    <button class="tab-btn" data-tab="strategy">
+                        <i class="fas fa-chess"></i> Estratégia de Execução
+                    </button>
+                    <button class="tab-btn" data-tab="metrics">
+                        <i class="fas fa-chart-line"></i> Mensuração
+                    </button>
+                    <button class="tab-btn" data-tab="diagram">
+                        <i class="fas fa-project-diagram"></i> Diagrama Geral
+                    </button>
+                </div>
+
+                <!-- Aba de Objetivos -->
+                <div class="tab-content active" id="objectives">
+                    <h2 class="section-title">
+                        <i class="fas fa-bullseye"></i> Objetivos
+                    </h2>
+
+                    <div class="content-card">
+                        <h4>Propósito do Projeto</h4>
+                        <p id="purposeText">O propósito deste projeto é resolver um problema específico do mercado através de uma solução inovadora e eficiente.</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Visão</h4>
+                        <p id="visionText">Tornar-se referência no segmento, transformando a forma como as pessoas interagem com [categoria do produto/serviço].</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Missão</h4>
+                        <p id="missionText">Oferecer soluções inovadoras que agreguem valor aos clientes, através de um processo contínuo de aprendizado e melhoria.</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Meta Principal</h4>
+                        <ul>
+                            <li id="mainGoal1">Alcançar 1000 usuários ativos nos primeiros 3 meses</li>
+                            <li id="mainGoal2">Validar o modelo de negócio até o final do semestre</li>
+                            <li id="mainGoal3">Conseguir o primeiro investimento em até 6 meses</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Aba de Planejamento Inicial -->
+                <div class="tab-content" id="planning">
+                    <h2 class="section-title">
+                        <i class="fas fa-clipboard-list"></i> Planejamento Inicial
+                    </h2>
+
+                    <div class="content-card">
+                        <h4>Proposta de Valor</h4>
+                        <p id="valueProposition">Oferecemos uma solução que resolve [problema específico] de forma mais eficiente que as alternativas existentes, com benefícios exclusivos como [diferenciais].</p>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Hipóteses Lean Startup</h4>
+                        <ul>
+                            <li id="hypothesis1">Hipótese de Problema: [Descrição do problema que acreditamos existir]</li>
+                            <li id="hypothesis2">Hipótese de Solução: [Descrição da solução proposta]</li>
+                            <li id="hypothesis3">Hipótese de Crescimento: [Descrição de como esperamos crescer]</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Descrição do MVP</h4>
+                        <p id="mvpDescription">O Produto Mínimo Viável (MVP) consistirá em [descrição das funcionalidades essenciais], com o objetivo de validar as hipóteses principais com o mínimo de recursos e tempo possível.</p>
+                        <p id="mvpFeatures">Funcionalidades incluídas no MVP:</p>
+                        <ul>
+                            <li id="mvpFeature1">[Funcionalidade essencial 1]</li>
+                            <li id="mvpFeature2">[Funcionalidade essencial 2]</li>
+                            <li id="mvpFeature3">[Funcionalidade essencial 3]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Aba de Recursos -->
+                <div class="tab-content" id="resources">
+                    <h2 class="section-title">
+                        <i class="fas fa-tools"></i> Recursos
+                    </h2>
+
+                    <div class="content-card">
+                        <h4>Equipe</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <i class="fas fa-user-tie"></i>
+                                <h4>CEO / Fundador</h4>
+                                <p>Responsável pela visão estratégica e liderança do projeto.</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-code"></i>
+                                <h4>CTO / Desenvolvedor</h4>
+                                <p>Responsável pela parte técnica e desenvolvimento do produto.</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <h4>Designer UX/UI</h4>
+                                <p>Responsável pela experiência do usuário e interface visual.</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bullhorn"></i>
+                                <h4>Especialista em Marketing</h4>
+                                <p>Responsável pelas estratégias de aquisição e comunicação.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Orçamento Estimado</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <h4>Desenvolvimento</h4>
+                                <p>R$ 15.000 - 25.000</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-ad"></i>
+                                <h4>Marketing</h4>
+                                <p>R$ 5.000 - 10.000</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-server"></i>
+                                <h4>Infraestrutura</h4>
+                                <p>R$ 1.000 - 3.000/mês</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-coins"></i>
+                                <h4>Reserva</h4>
+                                <p>R$ 5.000 - 10.000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Ferramentas e Tecnologia</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <h4>Frontend</h4>
+                                <p>React, Vue.js ou Angular</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-database"></i>
+                                <h4>Backend</h4>
+                                <p>Node.js, Python ou Java</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <h4>Analytics</h4>
+                                <p>Google Analytics, Mixpanel</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tasks"></i>
+                                <h4>Gerenciamento</h4>
+                                <p>Trello, Asana, Jira</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aba de Estratégia de Execução -->
+                <div class="tab-content" id="strategy">
+                    <h2 class="section-title">
+                        <i class="fas fa-chess"></i> Estratégia de Execução
+                    </h2>
+
+                    <div class="content-card">
+                        <h4>Etapas / Roadmap</h4>
+                        <div class="roadmap">
+                            <div class="roadmap-item">
+                                <div class="roadmap-marker">
+                                    <div class="dot"></div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="roadmap-content">
+                                    <h4>Fase 1: Validação (1-2 meses)</h4>
+                                    <p>Desenvolvimento do MVP, entrevistas com clientes e testes de usabilidade.</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                                <div class="roadmap-marker">
+                                    <div class="dot"></div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="roadmap-content">
+                                    <h4>Fase 2: Lançamento (2-3 meses)</h4>
+                                    <p>Lançamento oficial, campanha de marketing inicial e captação dos primeiros usuários.</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                                <div class="roadmap-marker">
+                                    <div class="dot"></div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="roadmap-content">
+                                    <h4>Fase 3: Crescimento (3-6 meses)</h4>
+                                    <p>Otimização do produto com base no feedback, expansão de funcionalidades e escala de marketing.</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                                <div class="roadmap-marker">
+                                    <div class="dot"></div>
+                                </div>
+                                <div class="roadmap-content">
+                                    <h4>Fase 4: Expansão (6+ meses)</h4>
+                                    <p>Busca de investimento, expansão para novos mercados e desenvolvimento de novas linhas de produto.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Marketing</h4>
+                        <ul>
+                            <li id="marketing1">Marketing de conteúdo: criação de blogs, vídeos e materiais educativos</li>
+                            <li id="marketing2">Redes sociais: presença ativa nas plataformas relevantes para o público-alvo</li>
+                            <li id="marketing3">SEO: otimização para mecanismos de busca para captar tráfego orgânico</li>
+                            <li id="marketing4">Email marketing: nutrição de leads e engajamento com usuários</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Canais de Aquisição</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <i class="fab fa-google"></i>
+                                <h4>Google Ads</h4>
+                                <p>Anúncios pagos com base em palavras-chave relevantes.</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fab fa-facebook"></i>
+                                <h4>Redes Sociais</h4>
+                                <p>Facebook, Instagram, LinkedIn e outras plataformas relevantes.</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-users"></i>
+                                <h4>Indicações</h4>
+                                <p>Programa de indicação para incentivar usuários a convidar outros.</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-handshake"></i>
+                                <h4>Parcerias</h4>
+                                <p>Colaborações com empresas complementares.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Parcerias Estratégicas</h4>
+                        <ul>
+                            <li id="partnership1">[Tipo de parceiro 1]: empresas que oferecem produtos/serviços complementares</li>
+                            <li id="partnership2">[Tipo de parceiro 2]: influenciadores ou líderes de opinião no segmento</li>
+                            <li id="partnership3">[Tipo de parceiro 3]: associações ou entidades do setor</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Aba de Mensuração -->
+                <div class="tab-content" id="metrics">
+                    <h2 class="section-title">
+                        <i class="fas fa-chart-line"></i> Mensuração
+                    </h2>
+
+                    <div class="content-card">
+                        <h4>Métricas Principais (KPIs)</h4>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">CAC</div>
+                                <div class="metric-label">Custo de Aquisição de Cliente</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">LTV</div>
+                                <div class="metric-label">Valor do Tempo de Vida do Cliente</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">MRR</div>
+                                <div class="metric-label">Receita Mensal Recorrente</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">Churn</div>
+                                <div class="metric-label">Taxa de Cancelamento</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Indicadores Lean</h4>
+                        <ul>
+                            <li id="leanMetric1">Taxa de conversão de visitantes para usuários registrados</li>
+                            <li id="leanMetric2">Percentual de usuários ativos diários/semanais</li>
+                            <li id="leanMetric3">Taxa de retenção de usuários após 30 dias</li>
+                            <li id="leanMetric4">NPS (Net Promoter Score) de satisfação do cliente</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-card">
+                        <h4>Feedback Loop</h4>
+                        <p id="feedbackLoop">Implementaremos um ciclo contínuo de coleta, análise e ação baseada no feedback dos usuários:</p>
+                        <ul>
+                            <li id="feedback1">Coleta: pesquisas de satisfação, análises de uso, entrevistas com clientes</li>
+                            <li id="feedback2">Análise: identificação de padrões, pontos de dor e oportunidades de melhoria</li>
+                            <li id="feedback3">Ação: implementação de melhorias e novas funcionalidades com base nos insights</li>
+                            <li id="feedback4">Validação: medição do impacto das mudanças nos indicadores-chave</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Aba de Diagrama Geral -->
+                <div class="tab-content" id="diagram">
+                    <h2 class="section-title">
+                        <i class="fas fa-project-diagram"></i> Diagrama Geral
+                    </h2>
+
+                    <div class="content-card">
+                        <h4>Visualização do Projeto</h4>
+                        <p>Aqui você pode inserir ou fazer upload de diagramas que representem visualmente seu projeto, como:</p>
+                        <ul>
+                            <li>Fluxo de valor</li>
+                            <li>Mapa de empatia do cliente</li>
+                            <li>Canvas do modelo de negócios</li>
+                            <li>Diagrama de arquitetura do sistema</li>
+                            <li>Mapa de jornada do cliente</li>
+                        </ul>
+                    </div>
+
+                    <div class="diagram-area">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Nenhum diagrama carregado ainda</p>
+                        <button class="upload-btn">Fazer Upload de Diagrama</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="dados.js"></script>
+    <script src="script.js"></script>
+    <script src="darkMode.js"></script>
+    <script src="exportPDF.js"></script>
+</body>
+</html>

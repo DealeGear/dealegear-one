@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IdeiaHub</title>
+  <link rel="icon" href="data:," />
+  <!-- Feather Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <!-- html2pdf.js -->
+  <!-- Se desejar usar CDN, descomente a linha abaixo -->
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script> <!--Para sanitização de HTML-->
+</head>
+<body data-theme="dark">
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+  <div class="brand">
+    <div class="logo" aria-hidden="true"></div>
+    <div class="title">
+      <strong>IdeiaHub</strong>
+      <span>Estruture e evolua ideias</span>
+    </div>
+  </div>
+
+  <nav class="nav"> <button class="nav-btn" id="newProjectBtn">
+      <i data-feather="plus" class="icon"></i>
+      Novo Projeto
+    </button>
+    <button class="nav-btn" id="myProjectsBtn">
+      <i data-feather="folder" class="icon"></i>
+      Meus Projetos
+    </button>
+    
+      <button class="nav-btn" id="deleteProjectBtn">
+      <i data-feather="trash-2" class="icon"></i>
+      Deletar Projeto
+    </button>
+    <button class="nav-btn" id="exportBtnSidebar">
+      <i data-feather="download" class="icon"></i>
+          Exportar PDF
+    </button>
+    <nav class="nav">
+  <button class="nav-btn" id="exportJsonBtn">
+    <i data-feather="download" class="icon"></i>
+    Exportar JSON
+  </button>
+  </nav>
+   <button class="nav-btn" id="premiumTemplatesBtn">
+    <i data-feather="star" class="icon"></i>
+    Templates Premium
+  </button>
+  <button class="nav-btn" id="loginBtn">
+    <i data-feather="user" class="icon"></i>
+    Login na Plataforma
+  </button>
+   
+  </nav> <div class="sidebar-footer">
+    <small style="color:var(--muted)">Local • IndexedDB</small>
+    <small style="color:var(--muted)">v0.1 Beta</small>
+  </div>
+</aside>
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="project-title">
+        <input class="project-name" id="projectName" value="Projeto sem título" />
+        <span class="status-chip" id="statusChip">editando</span>
+      </div>
+     <div class="topbar-actions">
+  <button class="btn" id="saveBtn"><i data-feather="save" class="icon"></i>Salvar</button>
+  <button class="btn" id="resetTemplateBtn"><i data-feather="rotate-ccw" class="icon"></i>Reeditar</button>
+  <button class="btn primary" id="exportPdfBtn"><i data-feather="file-text" class="icon"></i>Exportar PDF</button>
+  <button class="btn premium" id="testHypothesisBtn"><i data-feather="check-circle" class="icon"></i>Testar Hipótese</button>
+  <button class="btn" id="langToggle" title="Alternar idioma">PT / EN</button>
+  <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+    <i data-feather="moon" class="icon"></i>
+  </button>
+</div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+      <div class="toolbar">
+        <div class="selectors">
+         <select id="frameworkSelect" class="select" title="Frameworks">
+            <option value="">Selecione um Framework</option>
+            <optgroup label="DealGear">
+                <option>Ideon Flow</option>
+                <option>Stairs System</option>
+                <option>Microsteps</option>
+            <optgroup label="Estratégia & Modelo">
+                <option>Lean Canvas Expandido</option>
+                <option>Proposta de Valor (VPC)</option>
+                <option>SWOT Simplificado</option>
+                <option>Go-To-Market (GTM) Lite</option>
+                <option>Product Management Canvas</option>
+                <option>Estratégia de Precificação</option>
+            </optgroup> <optgroup label="Planejamento & Execução">
+                <option>Mini Roadmap de Projeto</option>
+                <option>Roadmap Trimestral</option>
+                <option>Pitch Rápido</option>
+                <option>Brief de Funcionalidade</option>
+            </optgroup> <optgroup label="Produto & Requisitos">
+                <option>Plano de Entrevista com Clientes</option>
+                <option>Mapa da Jornada do Cliente (Lite)</option>
+                <option>Canvas do IdeiaHub (custom)</option> </optgroup>
+            </select>
+
+          <label class="sr-only" for="templateSelect">Template</label>
+<select id="templateSelect" class="select" title="Templates">
+  <option value="">Selecione um Template</option>
+
+  <optgroup label="Comunidade & Local">
+    <option>Clube de Horta Urbana</option>
+    <option>Feira Online do Bairro</option>
+    <option>Central de Ofertas Comunitárias</option>
+  </optgroup>
+
+  <optgroup label="Educação">
+    <option>Correção Colaborativa de Redações</option>
+    <option>Projeto Educacional Gamificado</option>
+  </optgroup>
+
+  <optgroup label="Plataformas & Serviços">
+    <option>Plataforma de Troca de Habilidades</option>
+    <option>Loja Virtual de Produtos Artesanais Locais</option>
+    <option>Painel de Indicadores para Pequenos Negócios</option>
+  </optgroup>
+
+  <optgroup label="Públicos Específicos">
+    <option>Rede de Apoio a Mães Empreendedoras</option>
+    <option>App de Roteiros de Caminhadas Locais</option>
+  </optgroup>
+</select>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn" id="addBlockBtn"><i data-feather="square" class="icon"></i>Novo Bloco</button>
+          <button class="btn" id="removeBlockBtn"><i data-feather="trash-2" class="icon"></i>Remover Blocos</button>
+        </div>
+        </div>
+
+      <section class="canvas" id="canvas">
+        <div class="empty" id="emptyState">Selecione um framework ou template para começar.</div>
+        <div class="blocks" id="blocks" hidden></div>
+      </section>
+    </main>
+  </div>    
+
+  <!-- Toasts -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Modals -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="genericModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Modal</div>
+        <button class="btn" id="modalClose"><i data-feather="x" class="icon"></i>Fechar</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
+
+  <!-- App -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

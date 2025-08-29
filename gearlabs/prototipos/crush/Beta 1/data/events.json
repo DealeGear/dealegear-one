@@ -1,0 +1,167 @@
+[
+  {
+    "id": "e_01",
+    "title": "Comic Con Experience",
+    "city": "São Paulo/SP",
+    "dateISO": "2023-12-08T10:00:00.000Z",
+    "tags": ["evento", "cosplay", "hqs"],
+    "description": "O maior evento de cultura pop da América Latina. Encontros, autógrafos e muito mais!",
+    "limit": 50000,
+    "organizerId": "u_101",
+    "participants": []
+  },
+  {
+    "id": "e_02",
+    "title": "Board Game Night",
+    "city": "Curitiba/PR",
+    "dateISO": "2023-12-12T19:30:00.000Z",
+    "tags": ["boardgames", "encontro"],
+    "description": "Noite de jogos de tabuleiro em um bar temático. Traga seu jogo favorito!",
+    "limit": 30,
+    "organizerId": "u_102",
+    "participants": []
+  },
+  {
+    "id": "e_03",
+    "title": "RPG Convention",
+    "city": "Rio de Janeiro/RJ",
+    "dateISO": "2023-12-15T09:00:00.000Z",
+    "tags": ["rpg", "evento"],
+    "description": "Encontro de mestres e jogadores de RPG com mesas, oficinas e lojas especializadas.",
+    "limit": 500,
+    "organizerId": "u_108",
+    "participants": []
+  },
+  {
+    "id": "e_04",
+    "title": "Anime Festival",
+    "city": "Belo Horizonte/MG",
+    "dateISO": "2023-12-17T10:00:00.000Z",
+    "tags": ["animes", "cosplay"],
+    "description": "Festival dedicado à cultura japonesa com exibição de animes, karaokê e concurso de cosplay.",
+    "limit": 2000,
+    "organizerId": "u_105",
+    "participants": []
+  },
+  {
+    "id": "e_05",
+    "title": "Sci-Fi Movie Marathon",
+    "city": "Porto Alegre/RS",
+    "dateISO": "2023-12-20T18:00:00.000Z",
+    "tags": ["movies", "sci-fi", "maratona"],
+    "description": "Maratona de clássicos da ficção científica com pausas para discussão.",
+    "limit": 50,
+    "organizerId": "u_104",
+    "participants": []
+  },
+  {
+    "id": "e_06",
+    "title": "Indie Game Showcase",
+    "city": "Brasília/DF",
+    "dateISO": "2023-12-22T14:00:00.000Z",
+    "tags": ["games", "indie"],
+    "description": "Mostra de jogos independentes com seus desenvolvedores para conversar e jogar.",
+    "limit": 200,
+    "organizerId": "u_106",
+    "participants": []
+  },
+  {
+    "id": "e_07",
+    "title": "Fantasy Book Fair",
+    "city": "Salvador/BA",
+    "dateISO": "2023-12-24T10:00:00.000Z",
+    "tags": ["livros", "fantasia"],
+    "description": "Feira de livros de fantasia com sessões de autógrafos e painéis com autores.",
+    "limit": 1000,
+    "organizerId": "u_107",
+    "participants": []
+  },
+  {
+    "id": "e_08",
+    "title": "Retro Gaming Day",
+    "city": "Fortaleza/CE",
+    "dateISO": "2023-12-26T12:00:00.000Z",
+    "tags": ["retro-games", "torneio"],
+    "description": "Dia dedicado aos jogos clássicos com torneios e free play.",
+    "limit": 150,
+    "organizerId": "u_104",
+    "participants": []
+  },
+  {
+    "id": "e_09",
+    "title": "Comic Book Launch",
+    "city": "Recife/PE",
+    "dateISO": "2023-12-28T19:00:00.000Z",
+    "tags": ["hqs", "lançamento"],
+    "description": "Lançamento de uma nova graphic novel com sessão de autógrafos do autor.",
+    "limit": 100,
+    "organizerId": "u_109",
+    "participants": []
+  },
+  {
+    "id": "e_10",
+    "title": "Tech & Games Conference",
+    "city": "Florianópolis/SC",
+    "dateISO": "2023-12-30T09:00:00.000Z",
+    "tags": ["tech", "games", "conferência"],
+    "description": "Conferência sobre as últimas tendências em tecnologia e desenvolvimento de jogos.",
+    "limit": 500,
+    "organizerId": "u_110",
+    "participants": []
+  },
+  {
+    "id": "e_11",
+    "title": "Cosplay Workshop",
+    "city": "Goiânia/GO",
+    "dateISO": "2024-01-05T14:00:00.000Z",
+    "tags": ["cosplay", "oficina"],
+    "description": "Oficina prática de técnicas de cosplay com materiais acessíveis.",
+    "limit": 30,
+    "organizerId": "u_111",
+    "participants": []
+  },
+  {
+    "id": "e_12",
+    "title": "Board Game Design Day",
+    "city": "Manaus/AM",
+    "dateISO": "2024-01-07T10:00:00.000Z",
+    "tags": ["boardgames", "design"],
+    "description": "Workshop de criação de protótipos de jogos de tabuleiro.",
+    "limit": 25,
+    "organizerId": "u_112",
+    "participants": []
+  },
+  {
+    "id": "e_13",
+    "title": "Sci-Fi Book Club",
+    "city": "Belém/PA",
+    "dateISO": "2024-01-10T18:30:00.000Z",
+    "tags": ["livros", "sci-fi", "clube"],
+    "description": "Encontro mensal do clube de leitura de ficção científica.",
+    "limit": 20,
+    "organizerId": "u_113",
+    "participants": []
+  },
+  {
+    "id": "e_14",
+    "title": "RPG Campaign Kickoff",
+    "city": "Vitória/ES",
+    "dateISO": "2024-01-12T19:00:00.000Z",
+    "tags": ["rpg", "campanha"],
+    "description": "Sessão inaugural de uma nova campanha de RPG de fantasia.",
+    "limit": 6,
+    "organizerId": "u_114",
+    "participants": []
+  },
+  {
+    "id": "e_15",
+    "title": "Anime Screening",
+    "city": "Natal/RN",
+    "dateISO": "2024-01-15T20:00:00.000Z",
+    "tags": ["animes", "exibição"],
+    "description": "Exibição de um filme de anime clássico seguido de debate.",
+    "limit": 40,
+    "organizerId": "u_115",
+    "participants": []
+  }
+]

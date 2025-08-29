@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IdeiaHub — Canvas de Projetos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- jsPDF CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body class="theme-dark">
+  <header class="topbar">
+    <div class="brand">IdeiaHub</div>
+    <div class="top-actions">
+      <label class="switch" title="Tema claro/escuro">
+        <input id="themeToggle" type="checkbox" />
+        <span class="slider"></span>
+      </label>
+      <span class="badge premium" id="premiumBadge" title="Plano atual">Free</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="dashboard card">
+      <h2>Dashboard</h2>
+      <div class="grid-3">
+        <div class="field">
+          <label for="categorySelect">Categoria</label>
+          <select id="categorySelect">
+            <option value="">Selecione</option>
+            <option>Tecnologia</option>
+            <option>Educação</option>
+            <option>Saúde</option>
+            <option>Negócios</option>
+            <option>Sustentabilidade</option>
+            <option>Arte & Cultura</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="templateSelect">Template</label>
+          <select id="templateSelect">
+            <option value="">Selecione</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="projectSelect">Projetos</label>
+          <div class="row">
+            <select id="projectSelect">
+              <option value="">Novo projeto…</option>
+            </select>
+            <button id="btnNewProject" class="btn">Novo</button>
+          </div>
+        </div>
+      </div>
+      <p class="muted">Selecione uma categoria e um template para começar, ou escolha um projeto para reeditar.</p>
+    </section>
+
+    <section class="editor card">
+      <div class="editor-header">
+        <h2>Editor de Projeto</h2>
+        <div class="row">
+          <button id="btnSave" class="btn primary">Salvar projeto</button>
+          <button id="btnExportPDF" class="btn">Exportar PDF</button>
+          <button id="btnHypothesis" class="btn premium-locked" title="Recurso Premium">Testar Hipótese ⭐</button>
+          <button id="btnDelete" class="btn danger">Excluir</button>
+        </div>
+      </div>
+
+      <form id="projectForm" class="form">
+        <div class="field">
+          <label for="projName">Nome do Projeto</label>
+          <input id="projName" type="text" maxlength="120" placeholder="Ex.: Plataforma de cursos abertos" required />
+        </div>
+        <div class="field">
+          <label for="projCategory">Categoria</label>
+          <input id="projCategory" type="text" placeholder="Ex.: Tecnologia" />
+        </div>
+
+        <div id="dynamicFields" class="dynamic-grid">
+          <!-- Campos do template serão inseridos aqui -->
+        </div>
+      </form>
+
+      <div id="saveStatus" class="save-status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>IdeiaHub — Ferramenta leve para transformar ideias em projetos estruturados.</small>
+  </footer>
+
+  <!-- Modal de checklist (Premium) -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Checklist de Validação</h3>
+        <button id="modalClose" class="icon-btn" aria-label="Fechar">✖</button>
+      </div>
+      <div id="modalBody" class="modal-body">
+        <!-- Checklist será carregado via JS -->
+      </div>
+      <div class="modal-footer">
+        <button id="modalSaveNotes" class="btn primary">Salvar notas</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="db.js"></script>
+  <script src="templates.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+[
+  {
+    "id": "q_01",
+    "title": "Debate de Multiversos",
+    "description": "Teorias malucas bem-vindas. Traga referências!",
+    "mode": "online",
+    "slots": 6,
+    "tags": ["sci-fi", "debate"],
+    "participants": [],
+    "date": "2023-12-15T20:00:00.000Z"
+  },
+  {
+    "id": "q_02",
+    "title": "RPG One-Shot: Horror Cósmico",
+    "description": "Uma aventura de terror cósmico de uma noite. Mestre já incluso!",
+    "mode": "online",
+    "slots": 4,
+    "tags": ["rpg", "horror"],
+    "participants": [],
+    "date": "2023-12-16T21:00:00.000Z"
+  },
+  {
+    "id": "q_03",
+    "title": "Escape Room Virtual",
+    "description": "Resolvam um escape room temático de ficção científica juntos.",
+    "mode": "online",
+    "slots": 8,
+    "tags": ["puzzle", "sci-fi"],
+    "participants": [],
+    "date": "2023-12-17T19:00:00.000Z"
+  },
+  {
+    "id": "q_04",
+    "title": "Co-op Roguelike Night",
+    "description": "Maratona de jogos roguelike cooperativos. Venha com seu build favorito!",
+    "mode": "online",
+    "slots": 6,
+    "tags": ["games", "co-op"],
+    "participants": [],
+    "date": "2023-12-18T22:00:00.000Z"
+  },
+  {
+    "id": "q_05",
+    "title": "Analyze This: Filme de Ficção",
+    "description": "Assistam e discutam um clássico da ficção científica juntos.",
+    "mode": "online",
+    "slots": 10,
+    "tags": ["movies", "sci-fi"],
+    "participants": [],
+    "date": "2023-12-19T20:30:00.000Z"
+  },
+  {
+    "id": "q_06",
+    "title": "Board Game Café Meetup",
+    "description": "Encontro presencial em um café temático para jogar board games.",
+    "mode": "presencial",
+    "slots": 12,
+    "tags": ["boardgames", "presencial"],
+    "participants": [],
+    "date": "2023-12-20T19:00:00.000Z",
+    "location": "São Paulo/SP"
+  },
+  {
+    "id": "q_07",
+    "title": "Fanfic Writing Workshop",
+    "description": "Oficina de escrita de fanfics para compartilhar ideias e técnicas.",
+    "mode": "online",
+    "slots": 8,
+    "tags": ["escrita", "criatividade"],
+    "participants": [],
+    "date": "2023-12-21T18:00:00.000Z"
+  },
+  {
+    "id": "q_08",
+    "title": "Dungeon Design Masterclass",
+    "description": "Aprenda a criar dungeons memoráveis para suas campanhas de RPG.",
+    "mode": "online",
+    "slots": 15,
+    "tags": ["rpg", "design"],
+    "participants": [],
+    "date": "2023-12-22T21:00:00.000Z"
+  },
+  {
+    "id": "q_09",
+    "title": "Cosplay Planning Session",
+    "description": "Grupo para planejar e compartilhar técnicas de cosplay para eventos futuros.",
+    "mode": "online",
+    "slots": 10,
+    "tags": ["cosplay", "criatividade"],
+    "participants": [],
+    "date": "2023-12-23T16:00:00.000Z"
+  },
+  {
+    "id": "q_10",
+    "title": "Retro Games Tournament",
+    "description": "Torneio de jogos clássicos. Mostre suas habilidades!",
+    "mode": "presencial",
+    "slots": 16,
+    "tags": ["retro-games", "competição"],
+    "participants": [],
+    "date": "2023-12-24T14:00:00.000Z",
+    "location": "Rio de Janeiro/RJ"
+  },
+  {
+    "id": "q_11",
+    "title": "Comic Book Club",
+    "description": "Clube de leitura mensal para discutir as últimas HQs.",
+    "mode": "online",
+    "slots": 12,
+    "tags": ["hqs", "leitura"],
+    "participants": [],
+    "date": "2023-12-25T19:00:00.000Z"
+  },
+  {
+    "id": "q_12",
+    "title": "Fantasy Worldbuilding",
+    "description": "Colabore na criação de um mundo de fantasia coletivo.",
+    "mode": "online",
+    "slots": 20,
+    "tags": ["fantasy", "criatividade"],
+    "participants": [],
+    "date": "2023-12-26T20:00:00.000Z"
+  },
+  {
+    "id": "q_13",
+    "title": "Sci-Fi Book Discussion",
+    "description": "Discutam um livro de ficção científica clássico ou contemporâneo.",
+    "mode": "online",
+    "slots": 10,
+    "tags": ["livros", "sci-fi"],
+    "participants": [],
+    "date": "2023-12-27T21:00:00.000Z"
+  },
+  {
+    "id": "q_14",
+    "title": "Anime Watch Party",
+    "description": "Assistam juntos a um anime escolhido pelo grupo e discutam depois.",
+    "mode": "online",
+    "slots": 15,
+    "tags": ["animes", "maratona"],
+    "participants": [],
+    "date": "2023-12-28T22:00:00.000Z"
+  },
+  {
+    "id": "q_15",
+    "title": "Game Jam Planning",
+    "description": "Forme equipes e planejem projetos para a próxima game jam.",
+    "mode": "online",
+    "slots": 25,
+    "tags": ["games", "desenvolvimento"],
+    "participants": [],
+    "date": "2023-12-29T19:00:00.000Z"
+  },
+  {
+    "id": "q_16",
+    "title": "Trivia Geek Night",
+    "description": "Noite de trivia com perguntas sobre cultura pop, games, filmes e séries.",
+    "mode": "online",
+    "slots": 20,
+    "tags": ["quiz", "cultura-pop"],
+    "participants": [],
+    "date": "2023-12-30T21:00:00.000Z"
+  },
+  {
+    "id": "q_17",
+    "title": "LARP Introduction",
+    "description": "Introdução ao Live Action Role Playing para iniciantes.",
+    "mode": "presencial",
+    "slots": 20,
+    "tags": ["rpg", "presencial"],
+    "participants": [],
+    "date": "2023-12-31T15:00:00.000Z",
+    "location": "Belo Horizonte/MG"
+  },
+  {
+    "id": "q_18",
+    "title": "Board Game Design",
+    "description": "Workshop de criação de board games, desde conceito até protótipo.",
+    "mode": "online",
+    "slots": 12,
+    "tags": ["boardgames", "design"],
+    "participants": [],
+    "date": "2024-01-01T18:00:00.000Z"
+  },
+  {
+    "id": "q_19",
+    "title": "Fantasy Art Exchange",
+    "description": "Troca de arte temática com outros artistas da comunidade.",
+    "mode": "online",
+    "slots": 15,
+    "tags": ["arte", "fantasia"],
+    "participants": [],
+    "date": "2024-01-02T20:00:00.000Z"
+  },
+  {
+    "id": "q_20",
+    "title": "Tech Talk: IA em Games",
+    "description": "Discussão sobre o uso de inteligência artificial no desenvolvimento de jogos.",
+    "mode": "online",
+    "slots": 30,
+    "tags": ["tech", "games"],
+    "participants": [],
+    "date": "2024-01-03T21:00:00.000Z"
+  }
+]

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3GTO - Jogo de Realidade Virtual e Mista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../../../favicon/dealegear-fav.png">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-text">3GTO </span> <span class="byline">by DealeGear</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#sobre" class="nav-link">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#ambientes" class="nav-link">Ambientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#objetivo" class="nav-link">Objetivo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#recursos" class="nav-link">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../index.html" class="nav-link">GearLabs</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="sobre" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">3GTO</span>
+                <br>
+                <span class="subtitle">Mundos Reais, Experiências Virtuais</span>
+            </h1>
+            <p class="hero-description">
+                Mergulhe em uma experiência única que combina o melhor do mundo real com a imersão da realidade virtual. 
+                Controle veículos em três ambientes distintos usando óculos VR e controles remotos.
+            </p>
+            <div class="hero-buttons">
+                <a href="#ambientes" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Explorar
+                </a>
+                <!--<a href="#contato" class="btn btn-secondary">
+                    <i class="fas fa-handshake"></i> Parcerias
+                </a>-->
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="vr-headset">
+                <i class="fas fa-vr-cardboard"></i>
+            </div>
+            <div class="floating-elements">
+                <div class="float-element" style="animation-delay: 0s;">
+                    <i class="fas fa-water"></i>
+                </div>
+                <div class="float-element" style="animation-delay: 1s;">
+                    <i class="fas fa-city"></i>
+                </div>
+                <div class="float-element" style="animation-delay: 2s;">
+                    <i class="fas fa-tree"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Ambientes -->
+    <section id="ambientes" class="environments">
+        <div class="container">
+            <h2 class="section-title">Três Ambientes, Uma Experiência</h2>
+            <p class="section-subtitle">
+                Explore mundos diferentes com veículos especializados, tudo controlado através de realidade virtual
+            </p>
+            
+            <div class="environments-grid">
+                <!-- Ambiente Subaquático -->
+                <div class="environment-card" data-environment="subaquatic">
+                    <div class="card-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Ambiente Subaquático</h3>
+                    <p>Mergulhe nas profundezas do oceano com um veículo submersível de última geração. 
+                    Explore estruturas subaquáticas e uma cidade há mundo esquecida</p>
+                    <div class="vehicle-info">
+                        <i class="fas fa-ship"></i>
+                        <span>Veículo Submerso</span>
+                    </div>
+                </div>
+
+                <!-- Ambiente Urbano -->
+                <div class="environment-card" data-environment="urban">
+                    <div class="card-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>Ambiente Urbano</h3>
+                    <p>Navegue pelas ruas de uma metrópole futurista. Complete missões, 
+                    explore edifícios e descubra segredos urbanos.</p>
+                    <div class="vehicle-info">
+                        <i class="fas fa-car"></i>
+                        <span>Veículo Urbano</span>
+                    </div>
+                </div>
+
+                <!-- Ambiente Florestal -->
+                <div class="environment-card" data-environment="forest">
+                    <div class="card-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Ambiente Florestal</h3>
+                    <p>Aventure-se por uma floresta densa e misteriosa. Encontre trilhas escondidas, 
+                    cavernas e locais escondidos</p>
+                    <div class="vehicle-info">
+                        <i class="fas fa-truck-monster"></i>
+                        <span>Veículo Terrestre</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destaque VR -->
+            <div class="vr-highlight">
+                <div class="vr-content">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <h3>Tecnologia de Imersão Total</h3>
+                    <p>
+                        Utilize óculos de realidade virtual e controles remotos para ter controle total 
+                        sobre os veículos. Sinta cada movimento, cada curva e cada descoberta como se 
+                        estivesse realmente lá.
+                    </p>
+                    <div class="tech-features">
+                        <div class="tech-feature">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Controles Precisos</span>
+                        </div>
+                        <div class="tech-feature">
+                            <i class="fas fa-eye"></i>
+                            <span>Visão 360°</span>
+                        </div>
+                        <div class="tech-feature">
+                            <i class="fas fa-bolt"></i>
+                            <span>Baixo delay</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Objetivo -->
+    <section id="objetivo" class="objective">
+        <div class="container">
+            <div class="objective-content">
+                <h2 class="section-title">Nosso Objetivo</h2>
+                <p class="objective-description">
+                    O 3GTO foi idealizado não como um jogo exponencial, mas como uma <strong>alternativa de entretenimento inovadora</strong> 
+                    para shoppings, centros comerciais e outros negócios que desejam oferecer experiências diferenciadas aos seus clientes.
+                </p>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Atração de Público</h4>
+                        <p>Ofereça uma experiência única que atrai e retém clientes</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-star"></i>
+                        <h4>Diferenciação</h4>
+                        <p>Destaque-se da concorrência com tecnologia de ponta</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Parcerias Estratégicas</h4>
+                        <p>Construa conexões valiosas que ampliam oportunidades e fortalecem seu negócio</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-handshake"></i>
+                        <h4>Modelo Flexível</h4>
+                        <p>Projeto adaptável para diferentes tipos de negócios</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Links -->
+    <section id="recursos" class="links-section">
+        <div class="container">
+            <h2 class="section-title">Recursos do Projeto</h2>
+            <div class="links-grid">
+                <a href="https://github.com/DealeGear" target="_blank" class="link-card">
+                    <div class="link-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Acesse os documentos e demais detalhes do projeto</p>
+                    <span class="link-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+                
+                <a href="https://dealegear.com.br" target="_blank" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>DealeGear</h3>
+                    <p>Visite nosso portal para se manter por dentro das novidades</p>
+                    <span class="link-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato/CTA -->
+    <!--<section id="contato" class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Pronto para Revolucionar o Entretenimento?</h2>
+                <p class="cta-description">
+                    Entre em contato conosco e descubra como o 3GTO pode transformar seu negócio 
+                    em um destino de entretenimento de última geração.
+                </p>
+                <div class="cta-buttons">
+                    <a href="mailto:contato@3gto.com" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Fale Conosco
+                    </a>
+                    <a href="https://wa.me/5511999999999" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!--<div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">3GTO</span>
+                    <p>Realidade virtual que conecta aventura e tecnologia</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-link-group">
+                        <h4>Links Rápidos</h4>
+                        <a href="#sobre">Sobre</a>
+                        <a href="#ambientes">Ambientes</a>
+                        <a href="#objetivo">Objetivo</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>Recursos</h4>
+                        <a href="https://github.com/3gto" target="_blank">GitHub</a>
+                        <a href="https://dealegear.com" target="_blank">DealeGear</a>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>-->
+            <div class="footer-bottom">
+                <p>&copy; 2025 DealeGear. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

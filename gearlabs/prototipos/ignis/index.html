@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignis - Simulação de Contratos Inteligentes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../../../favicon/dealegear-fav.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <i class="fas fa-fire"></i>
+                    <h1>Ignis</h1>
+                    <span class="subtitle">Simulação de Contratos Inteligentes</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="container">
+            <div class="layout-grid">
+                <!-- Contratante Panel -->
+                <section class="panel contractor-panel">
+                    <div class="panel-header">
+                        <i class="fas fa-user-tie"></i>
+                        <h2>Contratante</h2>
+                    </div>
+                    
+                    <div class="balance-card">
+                        <div class="balance-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="balance-info">
+                            <p class="balance-label">Saldo Disponível</p>
+                            <p class="balance-amount" id="contractorBalance">1000.00 USDC</p>
+                        </div>
+                    </div>
+
+                    <div class="action-card">
+                        <h3>Criar Novo Contrato</h3>
+                        <form id="contractForm">
+                            <div class="form-group">
+                                <label for="serviceName">Nome do Serviço</label>
+                                <input type="text" id="serviceName" required 
+                                    placeholder="Ex: Desenvolvimento de Website">
+                            </div>
+                            <div class="form-group">
+                                <label for="contractValue">Valor (USDC)</label>
+                                <input type="number" id="contractValue" required min="1" step="0.01"
+                                    placeholder="100.00">
+                            </div>
+                            <div class="form-group">
+                                <label for="contractDeadline">Prazo (segundos)</label>
+                                <input type="number" id="contractDeadline" required min="5" max="60" value="15"
+                                    placeholder="15">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-file-contract"></i>
+                                Criar Contrato
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="pending-actions">
+                        <h3>Ações Pendentes</h3>
+                        <div id="contractorActions" class="actions-list">
+                            <p class="empty-message">Nenhuma ação pendente</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Central Contracts Area -->
+                <section class="central-area">
+                    <div class="contracts-header">
+                        <h2>Contratos em Andamento</h2>
+                        <span class="contract-count" id="contractCount">0 contratos</span>
+                    </div>
+                    
+                    <div id="contractsList" class="contracts-grid">
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <p>Nenhum contrato criado ainda</p>
+                            <p class="empty-subtitle">Crie seu primeiro contrato para começar</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Prestador Panel -->
+                <section class="panel provider-panel">
+                    <div class="panel-header">
+                        <i class="fas fa-user-cog"></i>
+                        <h2>Prestador</h2>
+                    </div>
+                    
+                    <div class="balance-card">
+                        <div class="balance-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="balance-info">
+                            <p class="balance-label">Saldo Disponível</p>
+                            <p class="balance-amount" id="providerBalance">500.00 USDC</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-card">
+                        <h3>Estatísticas</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <p class="stat-value" id="completedCount">0</p>
+                                    <p class="stat-label">Concluídos</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <p class="stat-value" id="activeCount">0</p>
+                                    <p class="stat-label">Ativos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pending-actions">
+                        <h3>Serviços para Executar</h3>
+                        <div id="providerActions" class="actions-list">
+                            <p class="empty-message">Nenhum serviço pendente</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Event Log -->
+    <section class="event-log-section">
+        <div class="container">
+            <div class="log-container">
+                <h3>
+                    <i class="fas fa-history"></i>
+                    Log de Eventos
+                </h3>
+                <div id="eventLog" class="log-content">
+                    <p class="empty-log">Nenhum evento ainda...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- Proof Modal -->
+    <div id="proofModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Enviar Prova do Serviço</h3>
+                <button class="modal-close" onclick="closeProofModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Insira a prova criptografada fictícia do serviço realizado:</p>
+                <textarea id="proofText" rows="4" 
+                    placeholder="Ex: hash:0x123abc... ou descrição do serviço"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeProofModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="submitProof()">
+                    <i class="fas fa-upload"></i>
+                    Enviar Prova
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Revisar Prova do Serviço</h3>
+                <button class="modal-close" onclick="closeReviewModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="proof-display">
+                    <p class="proof-label">Prova enviada:</p>
+                    <p id="reviewProof" class="proof-text"></p>
+                </div>
+                <p>Deseja aprovar ou recusar esta prova?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="rejectProof()">
+                    <i class="fas fa-times"></i>
+                    Recusar
+                </button>
+                <button class="btn btn-success" onclick="approveProof()">
+                    <i class="fas fa-check"></i>
+                    Aprovar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dispute Modal -->
+    <div id="disputeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sistema de Disputa</h3>
+                <button class="modal-close" onclick="closeDisputeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="judge-info">
+                    <i class="fas fa-gavel"></i>
+                    <p id="judgeMessage">Analisando a prova...</p>
+                </div>
+                <div class="dispute-details">
+                    <p><strong>Contrato:</strong> <span id="disputeContractId"></span></p>
+                    <p><strong>Disputa:</strong> <span id="disputeNumber"></span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="secondReviewBtn" class="btn btn-warning" onclick="requestSecondReview()" style="display: none;">
+                    <i class="fas fa-redo"></i>
+                    Solicitar 2ª Revisão
+                </button>
+                <button class="btn btn-secondary" onclick="closeDisputeModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

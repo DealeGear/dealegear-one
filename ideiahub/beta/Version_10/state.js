@@ -1,0 +1,37 @@
+export const state = {
+  currentProjectId: null,
+  currentFramework: "",
+  currentTemplate: "",
+  blocks: [], // { id, title, hint, content, span }
+  dirty: false,
+  theme: localStorage.getItem("ideiahub.theme") || "dark",
+};
+
+export const els = {
+  projectName: document.getElementById('projectName'),
+  statusChip: document.getElementById('statusChip'),
+  frameworkSelect: document.getElementById('frameworkSelect'),
+  templateSelect: document.getElementById('templateSelect'),
+  blocks: document.getElementById('blocks'),
+  empty: document.getElementById('emptyState'),
+  toast: document.getElementById('toast'),
+  modalBackdrop: document.getElementById('modalBackdrop'),
+  modalTitle: document.getElementById('modalTitle'),
+  modalBody: document.getElementById('modalBody'),
+  modalActions: document.getElementById('modalActions'),
+  modalClose: document.getElementById('modalClose'),
+  themeToggle: document.getElementById('themeToggle'),
+  saveBtn: document.getElementById('saveBtn'),
+  exportPdfBtn: document.getElementById('exportPdfBtn'),
+  exportBtn: document.getElementById('exportBtn'),
+  exportBtnSidebar: document.getElementById('exportBtnSidebar'),
+  resetTemplateBtn: document.getElementById('resetTemplateBtn'),
+  addBlockBtn: document.getElementById('addBlockBtn'),
+  newProjectBtn: document.getElementById('newProjectBtn'),
+  myProjectsBtn: document.getElementById('myProjectsBtn'),
+  premiumBtnSidebar: document.getElementById('premiumBtnSidebar'),
+  deleteProjectBtn: document.getElementById('deleteProjectBtn'),
+  testHypothesisBtn: document.getElementById('testHypothesisBtn'),
+  importJsonBtn: document.getElementById('importJsonBtn'),
+  importFileInput: document.getElementById('importFileInput'),
+};

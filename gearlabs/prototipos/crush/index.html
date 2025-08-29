@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush - App de Relacionamentos Geek</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">❤️</div>
+                <span>Crush</span>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" id="profile-nav" data-page="profile">
+                    <span>👤</span> Perfil
+                </button>
+                <button class="nav-btn active" id="discover-nav" data-page="discover">
+                    <span>🔍</span> Descobrir
+                </button>
+                <button class="nav-btn" id="matches-nav" data-page="matches">
+                    <span>💬</span> Matches
+                </button>
+                <button class="nav-btn" id="quests-nav" data-page="quests">
+                    <span>🎮</span> Missões
+                </button>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">🌙</button>
+        </header>
+
+        <main>
+            <!-- Página de Onboarding/Perfil -->
+            <section class="page active" id="profile-page">
+                <div class="card">
+                    <h1>Crie seu perfil</h1>
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" class="form-control" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Idade</label>
+                            <input type="number" id="age" class="form-control" placeholder="Sua idade" min="18" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Interesses</label>
+                            <div class="interests-group">
+                                <div class="interest-item" data-interest="games">
+                                    <input type="checkbox" id="games" name="interests" value="games">
+                                    <label for="games">🎮 Games</label>
+                                </div>
+                                <div class="interest-item" data-interest="sci-fi">
+                                    <input type="checkbox" id="sci-fi" name="interests" value="sci-fi">
+                                    <label for="sci-fi">🚀 Sci-Fi</label>
+                                </div>
+                                <div class="interest-item" data-interest="animes">
+                                    <input type="checkbox" id="animes" name="interests" value="animes">
+                                    <label for="animes">🌸 Animes</label>
+                                </div>
+                                <div class="interest-item" data-interest="hqs">
+                                    <input type="checkbox" id="hqs" name="interests" value="hqs">
+                                    <label for="hqs">📚 HQs</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar">Avatar</label>
+                            <input type="file" id="avatar" class="form-control" accept="image/*">
+                        </div>
+                        <button type="submit" class="btn">Salvar Perfil</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Página de Descoberta -->
+            <section class="page" id="discover-page">
+                <div class="card discover-card">
+                    <div class="discover-image-container">
+                        <img id="discover-image" class="discover-image" src="https://picsum.photos/seed/user1/400/400.jpg" alt="Avatar">
+                        <div class="online-indicator"></div>
+                    </div>
+                    <div class="discover-info">
+                        <h2 id="discover-name">Carregando...</h2>
+                        <p id="discover-age">Idade: --</p>
+                        <div id="discover-interests" class="interests-tags"></div>
+                    </div>
+                    <div class="discover-actions">
+                        <button class="action-btn pass-btn" id="pass-btn" title="Passar">
+                            <span class="btn-icon">✖</span>
+                        </button>
+                        <button class="action-btn superlike-btn" id="superlike-btn" title="Super Like">
+                            <span class="btn-icon">⭐</span>
+                        </button>
+                        <button class="action-btn like-btn" id="like-btn" title="Curtir">
+                            <span class="btn-icon">❤️</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Página de Matches -->
+            <section class="page" id="matches-page">
+                <h1>Seus Matches</h1>
+                <div id="matches-container">
+                    <div class="matches-list" id="matches-list"></div>
+                </div>
+            </section>
+
+            <!-- Página de Chat -->
+            <section class="page" id="chat-page">
+                <button class="back-btn" id="back-to-matches">
+                    <span class="back-icon">←</span> Voltar
+                </button>
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="chat-avatar-container">
+                            <img id="chat-avatar" class="match-avatar" src="" alt="Avatar">
+                            <div class="chat-online-indicator"></div>
+                        </div>
+                        <div>
+                            <h2 id="chat-name"></h2>
+                            <p id="chat-status">Online agora</p>
+                        </div>
+                    </div>
+                    <div class="chat-messages" id="chat-messages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chat-input" class="chat-input" placeholder="Digite uma mensagem...">
+                        <button class="send-btn" id="send-btn">
+                            <span class="send-icon">➤</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Página de Missões -->
+            <section class="page" id="quests-page">
+                <h1>Side Quests</h1>
+                <div class="quests-list" id="quests-list"></div>
+            </section>
+
+            <!-- Página de Conquistas -->
+            <section class="page" id="achievements-page">
+                <h1>Conquistas</h1>
+                <div class="achievements-grid" id="achievements-grid"></div>
+            </section>
+        </main>
+
+        <!-- Notificação -->
+        <div class="notification" id="notification">
+            <span class="notification-text"></span>
+            <button class="notification-close">&times;</button>
+        </div>
+
+        <!-- Modal de Match -->
+        <div class="modal" id="match-modal">
+            <div class="modal-content">
+                <div class="match-animation">
+                    <div class="match-hearts">❤️</div>
+                    <div class="match-images">
+                        <img id="match-user1" src="" alt="User 1">
+                        <img id="match-user2" src="" alt="User 2">
+                    </div>
+                    <h2>É um Match!</h2>
+                    <p>Você e <span id="match-name"></span> curtiram um ao outro!</p>
+                    <button class="btn" id="start-chat-btn">Iniciar Conversa</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="js/data.js"></script>
+        <script src="js/darkmode.js"></script>
+        <script src="js/main.js"></script>
+    </div>
+</body>
+</html>

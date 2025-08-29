@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IdeiaHub • Testar Hipótese</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      const t = localStorage.getItem('ideiahub.theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <div class="app app--single">
+    <header class="topbar">
+      <div class="project-title">
+        <strong style="font-weight:800">Testar Hipótese</strong>
+        <span class="status-chip" id="statusChipVal">canvas de validação</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn" id="btnBack"><i data-feather="arrow-left" class="icon"></i>Voltar ao Projeto</button>
+        <button class="theme-toggle" id="themeToggleVal" title="Alternar tema">
+          <i data-feather="moon" class="icon"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="canvas">
+        <div class="blocks" id="valBlocks"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://unpkg.com/feather-icons" defer></script>
+  <script src="db.js" defer></script>
+  <script src="validar.js" defer></script>
+</body>
+</html>

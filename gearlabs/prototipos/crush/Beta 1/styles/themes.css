@@ -1,0 +1,124 @@
+/* Light theme (default) - styles are already defined in main.css */
+
+/* Dark theme specific styles */
+[data-theme="dark"] .card {
+    background-color: var(--bg-surface);
+}
+
+[data-theme="dark"] .interest-item {
+    background-color: var(--bg-elevated);
+}
+
+[data-theme="dark"] .interest-item:hover {
+    background-color: rgba(187, 134, 252, 0.1);
+}
+
+[data-theme="dark"] .interest-item.selected {
+    background-color: rgba(187, 134, 252, 0.2);
+    border: 1px solid var(--border-focused);
+}
+
+[data-theme="dark"] .quiz-option {
+    background-color: var(--bg-elevated);
+}
+
+[data-theme="dark"] .quiz-option:hover {
+    background-color: rgba(187, 134, 252, 0.1);
+}
+
+[data-theme="dark"] .quiz-option.selected {
+    background-color: rgba(187, 134, 252, 0.2);
+    border: 1px solid var(--border-focused);
+}
+
+[data-theme="dark"] .icebreaker {
+    background-color: var(--bg-elevated);
+}
+
+[data-theme="dark"] .minigame-container {
+    background-color: var(--bg-elevated);
+}
+
+[data-theme="dark"] .chat-message-content {
+    background-color: var(--bg-elevated);
+}
+
+[data-theme="dark"] .chat-message.sent .chat-message-content {
+    background-color: var(--primary-dark);
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0000ff;
+        --primary-dark: #0000cc;
+        --secondary-color: #00cc00;
+        --border-focused: #ffff00;
+        --border-color: #ffffff;
+    }
+    
+    [data-theme="dark"] {
+        --border-focused: #ffff00;
+        --border-color: #ffffff;
+    }
+    
+    .card {
+        border: 2px solid var(--border-color);
+    }
+    
+    .btn {
+        border: 2px solid transparent;
+    }
+    
+    .btn-primary {
+        border-color: var(--primary-color);
+    }
+    
+    .btn-secondary {
+        border-color: var(--secondary-color);
+    }
+    
+    .btn-outline {
+        border-color: var(--primary-color);
+    }
+    
+    .form-input,
+    .form-textarea,
+    .form-select {
+        border: 2px solid var(--border-color);
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+        border-color: var(--border-focused);
+        border-width: 3px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .app-header,
+    .bottom-nav,
+    .btn,
+    .toast-container,
+    .modal-container {
+        display: none !important;
+    }
+    
+    .app-main {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+}

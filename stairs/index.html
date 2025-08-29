@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stairs — Sistema de Orientação Vocacional</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Cabeçalho -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">Stairs</div>
+        <nav class="nav">
+          <div class="nav-links">
+            <a href="https://github.com/SEU_GITHUB_AQUI" class="nav-link" target="_blank" rel="noopener noreferrer" data-i18n="cta_github">GitHub do Projeto</a>
+            <a href="https://portal.dealegear.com" class="nav-link" target="_blank" rel="noopener noreferrer" data-i18n="cta_portal">Portal DealeGear</a>
+            <button class="lang-toggle" id="langToggle" aria-label="Alternar idioma">EN</button>
+          </div>
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu" aria-expanded="false">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+      <div class="wizard-container">
+        <!-- Coluna Esquerda: Indicador de Progresso -->
+        <aside class="stepper-sidebar">
+          <div class="stepper">
+            <div class="step active" data-step="1">
+              <div class="step-indicator">
+                <span class="step-number">1</span>
+              </div>
+              <div class="step-label" data-i18n="step_category">Categoria</div>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step-indicator">
+                <span class="step-number">2</span>
+              </div>
+              <div class="step-label" data-i18n="step_theme">Tema</div>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step-indicator">
+                <span class="step-number">3</span>
+              </div>
+              <div class="step-label" data-i18n="step_objectives">Objetivos</div>
+            </div>
+            <div class="step" data-step="4">
+              <div class="step-indicator">
+                <span class="step-number">4</span>
+              </div>
+              <div class="step-label" data-i18n="step_time">Tempo disponível</div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Coluna Direita: Conteúdo da Etapa -->
+        <section class="step-content">
+          <div class="step-header">
+            <h1 id="stepTitle" data-i18n="step1_title">Selecione uma categoria</h1>
+            <div class="loading-indicator" id="loadingIndicator" aria-hidden="true"></div>
+          </div>
+
+          <div id="stepBody" class="step-body">
+            <!-- Conteúdo dinâmico será inserido aqui via JavaScript -->
+          </div>
+
+          <div class="error-message" id="errorMessage" role="alert" aria-live="polite"></div>
+
+          <!-- Navegação Inferior -->
+          <div class="step-navigation">
+            <button id="backBtn" class="btn btn-secondary" data-i18n="back">Voltar</button>
+            <button id="nextBtn" class="btn btn-primary" data-i18n="next" disabled>Próximo</button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>© Stairs, MIT License</p>
+        <div class="footer-links">
+          <a href="#" data-i18n="privacy_policy">Política de Privacidade</a>
+          <a href="#" data-i18n="contact">Contato</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="data.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
