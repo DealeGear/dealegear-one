@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria Baristas</title>
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="pedidos.css">
+</head>
+<body>
+    <!-- Menu Fixo -->
+    <header class="header">
+        <div class="container">
+            <!-- Botões de Navegação -->
+            <div class="nav-buttons">
+                <a href="index.html" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Voltar para Home
+                </a>
+                <a href="../../index.html" class="btn-gearlabs">
+                    <i class="fas fa-cogs"></i> GearLabs
+                </a>
+            </div>
+            
+            <!-- Menu de Navegação -->
+            <nav class="nav-menu">
+                <ul>
+                    <!--<li><a href="index.html">Home</a></li>-->
+                    <!--<li><a href="sobre.html">Sobre</a></li>-->
+                    <li><a href="#_cardapio">Cardápio</a></li>
+                    <li><a href="#_pedidos" class="active">Pedidos</a></li>
+                    <!--<li><a href="contato.html">Contato</a></li>-->
+                </ul>
+            </nav>
+            
+            <!-- Menu Hamburguer para Dispositivos Móveis -->
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Título da Página -->
+            <div class="page-header">
+                <h1>Pedidos e Encomendas</h1>
+            </div>
+            
+            
+            
+            <!-- Combos e Preparos Especiais -->
+            <section  class="specials-section">
+                <h2 id="_cardapio">Combos e Preparos Especiais</h2>
+                <div class="specials-grid">
+                    <!-- Combo 1 -->
+                    <div class="special-card">
+                        <div class="special-image">
+                            <img src="img/combo-cafe-manha.jpg" alt="Combo Café da Manhã">
+                        </div>
+                        <div class="special-info">
+                            <h3>Combo Café da Manhã</h3>
+                            <p>Café + Pão de Queijo + Suco Natural</p>
+                            <div class="special-price">R$ 25,90</div>
+                            <button class="btn-add-to-cart">Adicionar ao Pedido</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Combo 2 -->
+                    <div class="special-card">
+                        <div class="special-image">
+                            <img src="img/kit-cafe-gourmet.jpg" alt="Kit Café Gourmet">
+                        </div>
+                        <div class="special-info">
+                            <h3>Kit Café Gourmet</h3>
+                            <p>3 Cafés + Doces Selecionados</p>
+                            <div class="special-price">R$ 49,90</div>
+                            <button class="btn-add-to-cart">Adicionar ao Pedido</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Combo 3 -->
+                    <div class="special-card">
+                        <div class="special-image">
+                            <img src="img/kit-eventos.jpg" alt="Kit para Eventos">
+                        </div>
+                        <div class="special-info">
+                            <h3>Kit para Eventos</h3>
+                            <p>10 Cafés + Kit Completo de Serviço</p>
+                            <div class="special-price">R$ 120,00</div>
+                            <button class="btn-add-to-cart">Adicionar ao Pedido</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Combo 4 -->
+                    <div class="special-card">
+                        <div class="special-image">
+                            <img src="img/assinatura-cafe.jpg" alt="Assinatura de Café">
+                        </div>
+                        <div class="special-info">
+                            <h3>Assinatura de Café</h3>
+                            <p>Receba cafés especiais todos os mêses</p>
+                            <div class="special-price">A partir de R$ 59,90/mês</div>
+                            <button class="btn-add-to-cart">Saiba Mais</button>
+                        </div>
+                    </div>
+                      <!-- Combo 5 -->
+                    <div class="special-card">
+                        <div class="special-image">
+                            <img src="img/coffee-break-corporativo.jpg" alt="Coffee Break Corporativo">
+                        </div>
+                        <div class="special-info">
+                            <h3>Coffee Break Corporativo</h3>
+                            <p>Café e acompanhamentos para seu evento</p>
+                            <div class="special-price">A partir de R$ 259,90</div>
+                            <button class="btn-add-to-cart">Saiba Mais</button>
+                        </div>
+                    </div>
+                       <!-- Combo 6 -->
+                    <div class="special-card">
+                        <div class="special-image">
+                            <img src="img/cafe-tarde-especial.jpg" alt="Café da Tarde Especial">
+                        </div>
+                        <div class="special-info">
+                            <h3>Café da Tarde Especial</h3>
+                            <p>Um momento de café com doces selecionados</p>
+                            <div class="special-price">A partir de R$ 45,50</div>
+                            <button class="btn-add-to-cart">Saiba Mais</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Formulário de Pedidos -->
+            <section class="order-form-section">
+                <h2 id="_pedidos">Faça seu Pedido</h2>
+                <div class="form-container">
+                    
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="coffee">Escolha seu Café</label>
+                            <select id="coffee" name="coffee" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="expresso">Expresso Tradicional</option>
+                                <option value="cappuccino">Cappuccino Especial</option>
+                                <option value="latte">Latte Artesanal</option>
+                                <option value="mocha">Mocha</option>
+                                <option value="cold-brew">Cold Brew</option>
+                                <option value="cafe-com-leite">Café com Leite</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quantity">Quantidade</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Tipo de Pedido</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="delivery" name="orderType" value="delivery">
+                                    <label for="delivery">Entrega</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="local" name="orderType" value="local" checked>
+                                    <label for="local">Consumo no Local</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="observations">Observações</label>
+                            <textarea id="observations" name="observations" rows="3" placeholder="Informações adicionais..."></textarea>
+                        </div>
+                        
+                        <!-- Botões de Ação -->
+                        <div class="action-buttons">
+                            <button type="button" class="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> Fazer Pedido via WhatsApp
+                            </button>
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido Online
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                 <div class="footer-info">
+                    <h3>Cafeteria Baristas</h3>
+                    <p>Uma cafeteria aconchegante com cafés especiais e muitas novidades</p>
+                    <p>Uma parada obrigatória para os amantes de café.</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua dos Cafés, 123</p>
+                    <p><i class="fas fa-phone"></i> (11) 999-999</p>
+                    <p><i class="fas fa-envelope"></i> contato@contato.com.br</p>
+                </div>
+                
+                <div class="footer-hours">
+                    <h4>Horário de Funcionamento</h4>
+                    <p>Segunda a Sexta: 6h - 20h</p>
+                    <p>Sábado: 7h - 14h</p>
+                    
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 DealeGear. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="pedidos.js"></script>
+</body>
+</html>

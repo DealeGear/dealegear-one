@@ -4,182 +4,238 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BaristaPro - Sistema de Gestão para Cafeterias</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="../../../favicon/dealegear-fav.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Tela Inicial -->
-    <div id="homeScreen" class="screen active">
-        <header>
-    <a href="../../index.html" class="btn-link">GearLabs</a>
-</header>
-        
-        <div class="hero-section">
-            <div class="logo-container">
-                <div class="logo-circle">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-coffee"></i>
+                <span>BaristaPro</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#features">Funcionalidades</a></li>
+                    <li><a href="#how-it-works">Como Funciona</a></li>
+                    <li><a href="#demo">Demonstração</a></li>
+                    <li><a href="../../index.html">GearLabs</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Gestão Inteligente para Sua Cafeteria</h1>
+                <p>O BaristaPro revoluciona o atendimento e gestão de cafeterias com tecnologia intuitiva e eficiente.</p>
+                <a href="#demo" class="btn btn-primary">Demonstração</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Café e Tecnologia">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sobre o BaristaPro</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>O BaristaPro é um sistema completo de gestão desenvolvido especialmente para cafeterias. Combinamos a paixão pelo café com a eficiência da tecnologia para oferecer uma solução que otimiza operações, melhora o atendimento e aumenta a lucratividade do seu negócio.</p>
+                    <p>Nossa plataforma foi projetada para ser intuitiva, permitindo que sua equipe se adapte rapidamente e comece a colher os benefícios imediatamente. Desde o controle de estoque até o acompanhamento de pedidos em tempo real, o BaristaPro transforma a maneira como você gerencia sua cafeteria.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Cafeteria Moderna">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Funcionalidades Principais</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Gerenciamento de Pedidos</h3>
+                    <p>Cadastre, acompanhe e gerencie todos os pedidos em tempo real com interface intuitiva.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Controle de Estoque</h3>
+                    <p>Monitore os níveis de estoque de ingredientes e receba alertas automáticos de reposição.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Relatórios Analíticos</h3>
+                    <p>Acesse relatórios detalhados de vendas, produtos mais vendidos e desempenho do negócio.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Gestão de Clientes</h3>
+                    <p>Cadastre clientes, histórico de pedidos e programas de fidelidade para aumentar a retenção.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cash-register"></i>
+                    </div>
+                    <h3>Fechamento de Caixa</h3>
+                    <p>Simplifique o fechamento diário com resumo automático de vendas e relatórios consolidados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Acesso Multiplataforma</h3>
+                    <p>Utilize o sistema em computadores, tablets ou smartphones com total sincronização.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como Funciona</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Cadastro Simples</h3>
+                        <p>Cadastre sua cafeteria, produtos e equipe em poucos minutos com nossa interface intuitiva.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Operação Diária</h3>
+                        <p>Utilize o sistema para registrar pedidos, controlar estoque e acompanhar o atendimento em tempo real.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Análise e Otimização</h3>
+                        <p>Acesse relatórios detalhados para identificar oportunidades de melhoria e aumentar a lucratividade.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="how-it-works-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Funcionamento do App">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Quem Confia no BaristaPro</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"O BaristaPro transformou completamente nossa operação. Reduzimos o tempo de atendimento em 40% e aumentamos nossa lucratividade."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Carlos Mendes</h4>
+                            <p>Dono da Café Aroma</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"A interface é tão intuitiva que minha equipe aprendeu a usar em menos de um dia. Recomendo para todas as cafeterias!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Ana Paula Costa</h4>
+                            <p>Gerente do Coffee House</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Os relatórios analíticos nos ajudaram a identificar nossos produtos mais rentáveis e otimizar nosso cardápio."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Ricardo Silva</h4>
+                            <p>Proprietário do Espresso Express</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clients-logos">
+                <h3>Nossos Parceiros</h3>
+                <div class="logos-container">
+                    <div class="logo-item">Café Aroma</div>
+                    <div class="logo-item">Coffee House</div>
+                    <div class="logo-item">Espresso Express</div>
+                    <div class="logo-item">Brew & Bean</div>
+                    <div class="logo-item">Grão Especial</div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- CTA Section -->
+    <section id="demo" class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para Revolucionar Sua Cafeteria?</h2>
+                <p>Experimente o BaristaPro agora! Teste as principais funcionalidades sem custo e com total privacidade</p>
+                <a href="app.html" class="btn btn-primary">Demonstração</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
                     <i class="fas fa-coffee"></i>
                     <span>BaristaPro</span>
                 </div>
+                <p>&copy; 2025  DealeGear. Todos os direitos reservados.</p>
             </div>
         </div>
-        
-        <div class="menu-section">
-            <div class="menu-grid">
-                <button class="menu-btn" data-screen="newOrder">
-                    <i class="fas fa-plus-circle"></i>
-                    <span>Novo Pedido</span>
-                </button>
-                <button class="menu-btn" data-screen="ordersInProgress">
-                    <i class="fas fa-list-alt"></i>
-                    <span>Pedidos em Andamento</span>
-                </button>
-                <button class="menu-btn" data-screen="orderHistory">
-                    <i class="fas fa-history"></i>
-                    <span>Histórico de Pedidos</span>
-                </button>
-                <button class="menu-btn" data-screen="inventory">
-                    <i class="fas fa-boxes"></i>
-                    <span>Controle de Estoque</span>
-                </button>
-                <button class="menu-btn" data-screen="closeCashier">
-                    <i class="fas fa-cash-register"></i>
-                    <span>Fechar Caixa</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tela de Novo Pedido -->
-    <div id="newOrder" class="screen">
-        <header>
-            <button class="back-btn" data-screen="homeScreen">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </button>
-            <h1>Novo Pedido</h1>
-        </header>
-        
-        <div class="order-container">
-            <div class="categories">
-                <h2>Categorias</h2>
-                <div class="category-tabs">
-                    <button class="category-tab active" data-category="coffees">Cafés</button>
-                    <button class="category-tab" data-category="coldDrinks">Bebidas Frias</button>
-                    <button class="category-tab" data-category="sweets">Doces</button>
-                    <button class="category-tab" data-category="snacks">Lanches</button>
-                </div>
-                
-                <div class="products-container">
-                    <div class="category-products active" id="coffees">
-                        <!-- Produtos serão inseridos via JavaScript -->
-                    </div>
-                    <div class="category-products" id="coldDrinks">
-                        <!-- Produtos serão inseridos via JavaScript -->
-                    </div>
-                    <div class="category-products" id="sweets">
-                        <!-- Produtos serão inseridos via JavaScript -->
-                    </div>
-                    <div class="category-products" id="snacks">
-                        <!-- Produtos serão inseridos via JavaScript -->
-                    </div>
-                </div>
-            </div>
-            
-            <div class="cart">
-                <h2>Carrinho</h2>
-                <div class="cart-items">
-                    <!-- Itens do carrinho serão inseridos via JavaScript -->
-                </div>
-                <div class="cart-summary">
-                    <div class="total">
-                        <span>Total:</span>
-                        <span class="total-value">R$ 0,00</span>
-                    </div>
-                    <button class="finish-order-btn">Finalizar Pedido</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tela de Pedidos em Andamento -->
-    <div id="ordersInProgress" class="screen">
-        <header>
-            <button class="back-btn" data-screen="homeScreen">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </button>
-            <h1>Pedidos em Andamento</h1>
-        </header>
-        
-        <div class="orders-container">
-            <div class="orders-list">
-                <!-- Pedidos serão inseridos via JavaScript -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Tela de Histórico de Pedidos -->
-    <div id="orderHistory" class="screen">
-        <header>
-            <button class="back-btn" data-screen="homeScreen">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </button>
-            <h1>Histórico de Pedidos</h1>
-        </header>
-        
-        <div class="orders-container">
-            <div class="orders-list">
-                <!-- Pedidos serão inseridos via JavaScript -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Tela de Controle de Estoque -->
-    <div id="inventory" class="screen">
-        <header>
-            <button class="back-btn" data-screen="homeScreen">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </button>
-            <h1>Controle de Estoque</h1>
-        </header>
-        
-        <div class="inventory-container">
-            <div class="inventory-list">
-                <!-- Itens de estoque serão inseridos via JavaScript -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Tela de Fechar Caixa -->
-    <div id="closeCashier" class="screen">
-        <header>
-            <button class="back-btn" data-screen="homeScreen">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </button>
-            <h1>Fechar Caixa</h1>
-        </header>
-        
-        <div class="cashier-container">
-            <div class="cashier-summary">
-                <div class="summary-card">
-                    <h3>Total de Vendas</h3>
-                    <p class="total-sales">R$ 0,00</p>
-                </div>
-                <div class="summary-card">
-                    <h3>Número de Pedidos</h3>
-                    <p class="total-orders">0</p>
-                </div>
-            </div>
-            
-            <div class="top-products">
-                <h3>Produtos Mais Vendidos</h3>
-                <div class="top-products-list">
-                    <!-- Produtos mais vendidos serão inseridos via JavaScript -->
-                </div>
-            </div>
-            
-            <button class="close-cashier-btn">Fechar Caixa</button>
-        </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
