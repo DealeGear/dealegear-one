@@ -1,1043 +1,961 @@
-// script.js (adicionar funções para a nova seção)
+// ============================================
+// SEÇÃO 1: DADOS
+// ============================================
 
-// Função para mostrar detalhes do programa
-function showProgramDetails(programNumber) {
-    const programDetails = document.getElementById('programDetails');
-    const programTitle = document.getElementById('programTitle');
-    const programCode = document.getElementById('programCode');
-    
-    let code = '';
-    let title = '';
-    
-    switch(programNumber) {
-        case 1:
-            title = 'Programa 1 - Exploração Básica';
-            code = `// Programa 1: Exploração básica para coleta de dados ambientais
-const DroneController = require('./drone-controller');
+// Dados da Nave Mãe
+const mothership = {
+    energy: 100,
+    depth: 150,
+    status: 'operacional',
+    energyHistory: [100, 95, 90, 85, 80, 75, 70, 65, 60, 55]
+};
 
-class BasicExplorationProgram {
-    constructor(droneId) {
-        this.droneId = droneId;
-        this.controller = new DroneController(droneId);
-        this.missionData = {
-            startTime: null,
-            endTime: null,
-            missionType: 'EXPLORACAO_BASICA',
-            startCoordinates: null,
-            endCoordinates: null
-        };
+// Dados dos Drones
+const drones = [
+    {
+        id: 1,
+        name: 'Drone 1 - Captura de Imagens',
+        energy: 100,
+        status: 'Em Base',
+        position: { x: 0, y: 0 },
+        currentTask: null,
+        type: 'capture'
+    },
+    {
+        id: 2,
+        name: 'Drone 2 - Coleta de Amostras',
+        energy: 100,
+        status: 'Em Base',
+        position: { x: 0, y: 0 },
+        currentTask: null,
+        type: 'collect'
+    },
+    {
+        id: 3,
+        name: 'Drone 3 - Medição de Parâmetros',
+        energy: 100,
+        status: 'Em Base',
+        position: { x: 0, y: 0 },
+        currentTask: null,
+        type: 'measure'
     }
-    
-    async startMission(coordinates) {
-        // Envia informações para a nave mãe
-        await this.sendMissionInfo(coordinates);
-        
-        // Inicia a missão
-        this.missionData.startTime = new Date();
-        this.missionData.startCoordinates = coordinates;
-        
-        // Ativa sensores
-        await this.activateSensors();
-        
-        // Inicia navegação
-        await this.controller.navigateTo(coordinates);
-        
-        console.log(\`Missão básica iniciada para drone \${this.droneId}\`);
-    }
-    
-    async sendMissionInfo(coordinates) {
-        const missionInfo = {
-            droneId: this.droneId,
-            timestamp: new Date().toISOString(),
-            missionType: this.missionData.missionType,
-            coordinates: coordinates
-        };
-        
-        // Envia para a nave mãe
-        await this.controller.sendToMotherShip('MISSION_START', missionInfo);
-    }
-    
-    async activateSensors() {
-        // Ativa sensores ambientais
-        await this.controller.activateSensor('temperature');
-        await this.controller.activateSensor('pressure');
-        await this.controller.activateSensor('salinity');
-        
-        // Ativa câmera
-        await this.controller.activateCamera('front');
-        
-        // Ativa motores
-        await this.controller.activateMotors();
-    }
-    
-    async endMission() {
-        this.missionData.endTime = new Date();
-        this.missionData.endCoordinates = await this.controller.getCurrentPosition();
-        
-        // Envia informações de retorno para a nave mãe
-        await this.sendMissionEndInfo();
-        
-        // Desativa sistemas
-        await this.deactivateSystems();
-        
-        console.log(\`Missão básica concluída para drone \${this.droneId}\`);
-    }
-    
-    async sendMissionEndInfo() {
-        const endInfo = {
-            droneId: this.droneId,
-            startTime: this.missionData.startTime,
-            endTime: this.missionData.endTime,
-            missionType: this.missionData.missionType,
-            startCoordinates: this.missionData.startCoordinates,
-            endCoordinates: this.missionData.endCoordinates
-        };
-        
-        await this.controller.sendToMotherShip('MISSION_END', endInfo);
-    }
-    
-    async deactivateSystems() {
-        await this.controller.deactivateAllSensors();
-        await this.controller.deactivateCamera();
-        await this.controller.deactivateMotors();
-    }
-}
+];
 
-module.exports = BasicExplorationProgram;`;
-            break;
+// Dados das Missões
+const missions = [
+    {
+        id: 1,
+        date: new Date(2023, 5, 15),
+        drone: 'Drone 1',
+        task: 'Captura de Imagens',
+        status: 'Concluída',
+        duration: '45 min',
+        depth: '220m',
+        energySpent: '25%',
+        temperature: '12°C',
+        salinity: '35‰',
+        visibility: '8m'
+    },
+    {
+        id: 2,
+        date: new Date(2023, 5, 14),
+        drone: 'Drone 2',
+        task: 'Coleta de Amostras',
+        status: 'Concluída',
+        duration: '60 min',
+        depth: '180m',
+        energySpent: '30%',
+        temperature: '14°C',
+        salinity: '34‰',
+        visibility: '6m'
+    },
+    {
+        id: 3,
+        date: new Date(2023, 5, 13),
+        drone: 'Drone 3',
+        task: 'Medição de Parâmetros',
+        status: 'Concluída',
+        duration: '30 min',
+        depth: '150m',
+        energySpent: '15%',
+        temperature: '16°C',
+        salinity: '35‰',
+        visibility: '10m'
+    }
+];
+
+// Códigos dos Programas
+const programCodes = {
+    exploration: `// Programa de Exploração Básica
+function exploracaoBasica(drone) {
+    // Define parâmetros de exploração
+    const profundidadeMaxima = 300;
+    const raioExploracao = 100;
+    
+    // Inicia exploração
+    drone.moverPara(profundidadeMaxima);
+    
+    // Realiza varredura circular
+    for (let angulo = 0; angulo < 360; angulo += 15) {
+        const x = raioExploracao * Math.cos(angulo * Math.PI / 180);
+        const y = raioExploracao * Math.sin(angulo * Math.PI / 180);
+        drone.moverPara(x, y);
+        drone.coletarDadosAmbientais();
+    }
+    
+    // Retorna à base
+    drone.retornarABase();
+}`,
+    capture: `// Programa de Captura de Imagens
+function capturaImagens(drone) {
+    // Configura câmera
+    const camera = drone.camera;
+    camera.setResolucao('4K');
+    camera.setModo('RAW');
+    
+    // Define pontos de interesse
+    const pontosInteresse = [
+        { x: 50, y: 30, z: 200 },
+        { x: -30, y: 40, z: 180 },
+        { x: 20, y: -60, z: 220 }
+    ];
+    
+    // Move para cada ponto e captura imagens
+    for (const ponto of pontosInteresse) {
+        drone.moverPara(ponto.x, ponto.y, ponto.z);
+        camera.estabilizar();
+        camera.capturarImagem(5); // Captura 5 imagens por ponto
+    }
+    
+    // Retorna à base
+    drone.retornarABase();
+}`,
+    collect: `// Programa de Coleta de Amostras
+function coletaAmostras(drone) {
+    // Configura braço robótico
+    const braco = drone.bracoRobotico;
+    braco.calibrar();
+    
+    // Define locais de coleta
+    const locaisColeta = [
+        { x: 40, y: 50, z: 190, tipo: 'rocha' },
+        { x: -60, y: 30, z: 210, tipo: 'sedimento' },
+        { x: 30, y: -40, z: 170, tipo: 'agua' }
+    ];
+    
+    // Coleta amostras em cada local
+    for (const local of locaisColeta) {
+        drone.moverPara(local.x, local.y, local.z);
+        
+        if (local.tipo === 'rocha') {
+            braco.coletarRocha();
+        } else if (local.tipo === 'sedimento') {
+            braco.coletarSedimento();
+        } else if (local.tipo === 'agua') {
+            braco.coletarAgua();
+        }
+        
+        // Armazena amostra
+        drone.armazenarAmostra(local.tipo);
+    }
+    
+    // Retorna à base
+    drone.retornarABase();
+}`,
+    mapping: `// Programa de Mapeamento Topográfico
+function mapeamentoTopografico(drone) {
+    // Configura sonar
+    const sonar = drone.sonar;
+    sonar.setFrequencia('100kHz');
+    sonar.setAlcance('200m');
+    
+    // Define área de mapeamento
+    const area = {
+        xMin: -100,
+        xMax: 100,
+        yMin: -100,
+        yMax: 100,
+        resolucao: 10
+    };
+    
+    // Inicia mapeamento
+    const mapa = [];
+    
+    for (let x = area.xMin; x <= area.xMax; x += area.resolucao) {
+        for (let y = area.yMin; y <= area.yMax; y += area.resolucao) {
+            drone.moverPara(x, y);
+            const profundidade = sonar.medirProfundidade();
+            mapa.push({ x, y, profundidade });
+        }
+    }
+    
+    // Processa dados do mapa
+    const mapaProcessado = processarDadosMapa(mapa);
+    
+    // Retorna à base
+    drone.retornarABase();
+    
+    return mapaProcessado;
+}`,
+    emergency: `// Sistema Mestre de Emergência
+function sistemaEmergencia(drone) {
+    // Verifica status de emergência
+    if (drone.bateria < 15 || drone.comunicacao.perdida()) {
+        // Ativa modo de emergência
+        drone.modoEmergencia = true;
+        
+        // Desliga sistemas não essenciais
+        drone.camera.desligar();
+        drone.bracoRobotico.recolher();
+        drone.iluminacao.reduzir(20);
+        
+        // Tenta restabelecer comunicação
+        if (drone.comunicacao.perdida()) {
+            drone.comunicacao.tentarReconectar();
+        }
+        
+        // Calcula rota mais eficiente de retorno
+        const rota = drone.calcularRotaRetorno();
+        
+        // Executa retorno
+        for (const ponto of rota) {
+            drone.moverPara(ponto.x, ponto.y, ponto.z);
             
-        case 2:
-            title = 'Programa 2 - Captura de Imagens';
-            code = `// Programa 2: Especializado em captura de imagens e vídeo
-const DroneController = require('./drone-controller');
-const ImageProcessor = require('./image-processor');
-
-class ImageCaptureProgram {
-    constructor(droneId) {
-        this.droneId = droneId;
-        this.controller = new DroneController(droneId);
-        this.imageProcessor = new ImageProcessor();
-        this.missionData = {
-            startTime: null,
-            endTime: null,
-            missionType: 'CAPTURA_IMAGENS',
-            startCoordinates: null,
-            endCoordinates: null,
-            imagesCaptured: 0,
-            videoDuration: 0
-        };
-    }
-    
-    async startMission(coordinates, captureMode = 'PHOTO') {
-        await this.sendMissionInfo(coordinates, captureMode);
-        
-        this.missionData.startTime = new Date();
-        this.missionData.startCoordinates = coordinates;
-        
-        // Configura câmeras
-        await this.setupCameras(captureMode);
-        
-        // Inicia navegação
-        await this.controller.navigateTo(coordinates);
-        
-        // Inicia captura
-        await this.startCapture(captureMode);
-        
-        console.log(\`Missão de captura iniciada para drone \${this.droneId}\`);
-    }
-    
-    async sendMissionInfo(coordinates, captureMode) {
-        const missionInfo = {
-            droneId: this.droneId,
-            timestamp: new Date().toISOString(),
-            missionType: this.missionData.missionType,
-            captureMode: captureMode,
-            coordinates: coordinates
-        };
-        
-        await this.controller.sendToMotherShip('MISSION_START', missionInfo);
-    }
-    
-    async setupCameras(mode) {
-        // Ativa câmera principal
-        await this.controller.activateCamera('main', {
-            resolution: '4K',
-            frameRate: 30,
-            stabilization: true
-        });
-        
-        // Ativa câmera térmica se necessário
-        if (mode === 'THERMAL') {
-            await this.controller.activateCamera('thermal');
-        }
-        
-        // Ativa sensores de profundidade
-        await this.controller.activateSensor('depth');
-    }
-    
-    async startCapture(mode) {
-        if (mode === 'PHOTO') {
-            await this.capturePhotos();
-        } else if (mode === 'VIDEO') {
-            await this.captureVideo();
-        } else if (mode === 'PANORAMA') {
-            await this.capturePanorama();
-        }
-    }
-    
-    async capturePhotos() {
-        const interval = setInterval(async () => {
-            const image = await this.controller.captureImage();
-            const processed = await this.imageProcessor.enhanceImage(image);
-            await this.controller.saveImage(processed);
-            
-            this.missionData.imagesCaptured++;
-            await this.controller.sendToMotherShip('IMAGE_CAPTURED', {
-                droneId: this.droneId,
-                timestamp: new Date().toISOString(),
-                imageId: processed.id
-            });
-        }, 5000);
-        
-        this.captureInterval = interval;
-    }
-    
-    async captureVideo() {
-        await this.controller.startRecording();
-        this.videoStartTime = Date.now();
-    }
-    
-    async endMission() {
-        this.missionData.endTime = new Date();
-        this.missionData.endCoordinates = await this.controller.getCurrentPosition();
-        
-        // Para captura
-        if (this.captureInterval) {
-            clearInterval(this.captureInterval);
-        }
-        
-        if (this.videoStartTime) {
-            await this.controller.stopRecording();
-            this.missionData.videoDuration = (Date.now() - this.videoStartTime) / 1000;
-        }
-        
-        await this.sendMissionEndInfo();
-        await this.deactivateSystems();
-        
-        console.log(\`Missão de captura concluída para drone \${this.droneId}\`);
-    }
-    
-    async sendMissionEndInfo() {
-        const endInfo = {
-            droneId: this.droneId,
-            startTime: this.missionData.startTime,
-            endTime: this.missionData.endTime,
-            missionType: this.missionData.missionType,
-            startCoordinates: this.missionData.startCoordinates,
-            endCoordinates: this.missionData.endCoordinates,
-            imagesCaptured: this.missionData.imagesCaptured,
-            videoDuration: this.missionData.videoDuration
-        };
-        
-        await this.controller.sendToMotherShip('MISSION_END', endInfo);
-    }
-    
-    async deactivateSystems() {
-        await this.controller.deactivateAllCameras();
-        await this.controller.deactivateAllSensors();
-    }
-}
-
-module.exports = ImageCaptureProgram;`;
-            break;
-            
-        case 3:
-            title = 'Programa 3 - Coleta de Amostras';
-            code = `// Programa 3: Coleta de amostras biológicas e químicas
-const DroneController = require('./drone-controller');
-const SampleCollector = require('./sample-collector');
-
-class SampleCollectionProgram {
-    constructor(droneId) {
-        this.droneId = droneId;
-        this.controller = new DroneController(droneId);
-        this.collector = new SampleCollector();
-        this.missionData = {
-            startTime: null,
-            endTime: null,
-            missionType: 'COLETA_AMOSTRAS',
-            startCoordinates: null,
-            endCoordinates: null,
-            samplesCollected: [],
-            sampleTypes: []
-        };
-    }
-    
-    async startMission(coordinates, samplePlan) {
-        await this.sendMissionInfo(coordinates, samplePlan);
-        
-        this.missionData.startTime = new Date();
-        this.missionData.startCoordinates = coordinates;
-        
-        // Ativa sistemas de coleta
-        await this.activateCollectionSystems();
-        
-        // Inicia navegação
-        await this.controller.navigateTo(coordinates);
-        
-        // Inicia coleta
-        await this.startCollection(samplePlan);
-        
-        console.log(\`Missão de coleta iniciada para drone \${this.droneId}\`);
-    }
-    
-    async sendMissionInfo(coordinates, samplePlan) {
-        const missionInfo = {
-            droneId: this.droneId,
-            timestamp: new Date().toISOString(),
-            missionType: this.missionData.missionType,
-            samplePlan: samplePlan,
-            coordinates: coordinates
-        };
-        
-        await this.controller.sendToMotherShip('MISSION_START', missionInfo);
-    }
-    
-    async activateCollectionSystems() {
-        // Ativa braço robótico
-        await this.controller.activateRoboticArm();
-        
-        // Ativa sensores de análise
-        await this.controller.activateSensor('ph');
-        await this.controller.activateSensor('oxygen');
-        await this.controller.activateSensor('turbidity');
-        
-        // Ativa câmera macro
-        await this.controller.activateCamera('macro');
-    }
-    
-    async startCollection(samplePlan) {
-        for (const sample of samplePlan) {
-            await this.collectSample(sample);
-        }
-    }
-    
-    async collectSample(sampleInfo) {
-        // Navega para o ponto de coleta
-        await this.controller.navigateTo(sampleInfo.coordinates);
-        
-        // Realiza coleta
-        const sample = await this.collector.collect({
-            type: sampleInfo.type,
-            depth: sampleInfo.depth,
-            volume: sampleInfo.volume,
-            container: sampleInfo.container
-        });
-        
-        // Analisa amostra
-        const analysis = await this.analyzeSample(sample);
-        
-        // Armazena informações
-        this.missionData.samplesCollected.push({
-            id: sample.id,
-            type: sample.type,
-            coordinates: sampleInfo.coordinates,
-            timestamp: new Date().toISOString(),
-            analysis: analysis
-        });
-        
-        if (!this.missionData.sampleTypes.includes(sample.type)) {
-            this.missionData.sampleTypes.push(sample.type);
-        }
-        
-        // Envia informações para a nave mãe
-        await this.controller.sendToMotherShip('SAMPLE_COLLECTED', {
-            droneId: this.droneId,
-            sampleId: sample.id,
-            sampleType: sample.type,
-            coordinates: sampleInfo.coordinates,
-            analysis: analysis
-        });
-    }
-    
-    async analyzeSample(sample) {
-        const analysis = {};
-        
-        // Análise química
-        if (sample.type === 'WATER') {
-            analysis.ph = await this.controller.getSensorData('ph');
-            analysis.oxygen = await this.controller.getSensorData('oxygen');
-            analysis.turbidity = await this.controller.getSensorData('turbidity');
-        }
-        
-        // Análise biológica
-        if (sample.type === 'BIOLOGICAL') {
-            const image = await this.controller.captureImage();
-            analysis.organismCount = await this.collector.countOrganisms(image);
-            analysis.diversityIndex = await this.collector.calculateDiversity(image);
-        }
-        
-        return analysis;
-    }
-    
-    async endMission() {
-        this.missionData.endTime = new Date();
-        this.missionData.endCoordinates = await this.controller.getCurrentPosition();
-        
-        await this.sendMissionEndInfo();
-        await this.deactivateSystems();
-        
-        console.log(\`Missão de coleta concluída para drone \${this.droneId}\`);
-    }
-    
-    async sendMissionEndInfo() {
-        const endInfo = {
-            droneId: this.droneId,
-            startTime: this.missionData.startTime,
-            endTime: this.missionData.endTime,
-            missionType: this.missionData.missionType,
-            startCoordinates: this.missionData.startCoordinates,
-            endCoordinates: this.missionData.endCoordinates,
-            samplesCollected: this.missionData.samplesCollected.length,
-            sampleTypes: this.missionData.sampleTypes
-        };
-        
-        await this.controller.sendToMotherShip('MISSION_END', endInfo);
-    }
-    
-    async deactivateSystems() {
-        await this.controller.deactivateRoboticArm();
-        await this.controller.deactivateAllSensors();
-        await this.controller.deactivateAllCameras();
-    }
-}
-
-module.exports = SampleCollectionProgram;`;
-            break;
-            
-        case 4:
-            title = 'Programa 4 - Mapeamento Topográfico';
-            code = `// Programa 4: Mapeamento topográfico do leito marinho
-const DroneController = require('./drone-controller');
-const TopographicMapper = require('./topographic-mapper');
-
-class TopographicMappingProgram {
-    constructor(droneId) {
-        this.droneId = droneId;
-        this.controller = new DroneController(droneId);
-        this.mapper = new TopographicMapper();
-        this.missionData = {
-            startTime: null,
-            endTime: null,
-            missionType: 'MAPEAMENTO_TOPOGRAFICO',
-            startCoordinates: null,
-            endCoordinates: null,
-            mappedArea: 0,
-            resolution: null,
-            mapData: []
-        };
-    }
-    
-    async startMission(coordinates, mappingConfig) {
-        await this.sendMissionInfo(coordinates, mappingConfig);
-        
-        this.missionData.startTime = new Date();
-        this.missionData.startCoordinates = coordinates;
-        this.missionData.resolution = mappingConfig.resolution;
-        
-        // Ativa sistemas de mapeamento
-        await this.activateMappingSystems(mappingConfig);
-        
-        // Inicia mapeamento
-        await this.startMapping(coordinates, mappingConfig);
-        
-        console.log(\`Missão de mapeamento iniciada para drone \${this.droneId}\`);
-    }
-    
-    async sendMissionInfo(coordinates, config) {
-        const missionInfo = {
-            droneId: this.droneId,
-            timestamp: new Date().toISOString(),
-            missionType: this.missionData.missionType,
-            mappingConfig: config,
-            coordinates: coordinates
-        };
-        
-        await this.controller.sendToMotherShip('MISSION_START', missionInfo);
-    }
-    
-    async activateMappingSystems(config) {
-        // Ativa sonar de mapeamento
-        await this.controller.activateSonar({
-            frequency: config.frequency || '200kHz',
-            range: config.range || 100,
-            resolution: config.resolution
-        });
-        
-        // Ativa sensores de posicionamento
-        await this.controller.activateSensor('depth');
-        await this.controller.activateSensor('altitude');
-        await this.controller.activateSensor('position');
-        
-        // Configura padrão de voo
-        await this.controller.setFlightPattern('GRID', {
-            spacing: config.gridSpacing || 5,
-            overlap: config.overlap || 20
-        });
-    }
-    
-    async startMapping(coordinates, config) {
-        const area = config.area;
-        const gridSize = this.mapper.calculateGrid(area, config.resolution);
-        
-        for (let row = 0; row < gridSize.rows; row++) {
-            for (let col = 0; col < gridSize.cols; col++) {
-                const point = this.mapper.getGridPoint(coordinates, row, col, config.resolution);
-                await this.mapPoint(point);
+            // Verifica bateria durante o retorno
+            if (drone.bateria < 5) {
+                // Pouso de emergência
+                drone.pousoEmergencia();
+                break;
             }
         }
+        
+        // Se chegou à base com sucesso
+        if (drone.posicao.x === 0 && drone.posicao.y === 0) {
+            drone.modoEmergencia = false;
+            drone.conectarRecarregar();
+        }
     }
-    
-    async mapPoint(point) {
-        // Navega para o ponto
-        await this.controller.navigateTo(point);
-        
-        // Estabiliza o drone
-        await this.controller.stabilize();
-        
-        // Realiza varredura sonar
-        const scanData = await this.controller.performSonarScan();
-        
-        // Processa dados
-        const processedData = await this.mapper.processScanData(scanData);
-        
-        // Armazena dados do mapa
-        this.missionData.mapData.push({
-            coordinates: point,
-            timestamp: new Date().toISOString(),
-            depth: processedData.depth,
-            terrain: processedData.terrainType,
-            features: processedData.features
-        });
-        
-        // Atualiza área mapeada
-        this.missionData.mappedArea += Math.pow(this.missionData.resolution, 2);
-        
-        // Envia dados para a nave mãe
-        await this.controller.sendToMotherShip('MAP_DATA', {
-            droneId: this.droneId,
-            coordinates: point,
-            data: processedData
-        });
-    }
-    
-    async generateMap() {
-        const map = await this.mapper.generateTopographicMap(
-            this.missionData.mapData,
-            this.missionData.resolution
-        );
-        
-        // Envia mapa completo para a nave mãe
-        await this.controller.sendToMotherShip('TOPOGRAPHIC_MAP', {
-            droneId: this.droneId,
-            map: map,
-            metadata: {
-                area: this.missionData.mappedArea,
-                resolution: this.missionData.resolution,
-                points: this.missionData.mapData.length
-            }
-        });
-        
-        return map;
-    }
-    
-    async endMission() {
-        this.missionData.endTime = new Date();
-        this.missionData.endCoordinates = await this.controller.getCurrentPosition();
-        
-        // Gera mapa final
-        await this.generateMap();
-        
-        await this.sendMissionEndInfo();
-        await this.deactivateSystems();
-        
-        console.log(\`Missão de mapeamento concluída para drone \${this.droneId}\`);
-    }
-    
-    async sendMissionEndInfo() {
-        const endInfo = {
-            droneId: this.droneId,
-            startTime: this.missionData.startTime,
-            endTime: this.missionData.endTime,
-            missionType: this.missionData.missionType,
-            startCoordinates: this.missionData.startCoordinates,
-            endCoordinates: this.missionData.endCoordinates,
-            mappedArea: this.missionData.mappedArea,
-            resolution: this.missionData.resolution,
-            dataPoints: this.missionData.mapData.length
-        };
-        
-        await this.controller.sendToMotherShip('MISSION_END', endInfo);
-    }
-    
-    async deactivateSystems() {
-        await this.controller.deactivateSonar();
-        await this.controller.deactivateAllSensors();
-        await this.controller.resetFlightPattern();
-    }
-}
+}`
+};
 
-module.exports = TopographicMappingProgram;`;
-            break;
+// Função para simular dados
+function simularDados() {
+    // Simula consumo de energia da nave mãe
+    if (mothership.energy > 0) {
+        mothership.energy -= 0.05;
+        if (mothership.energy < 0) mothership.energy = 0;
+        
+        // Atualiza histórico de energia
+        mothership.energyHistory.push(mothership.energy);
+        if (mothership.energyHistory.length > 10) {
+            mothership.energyHistory.shift();
+        }
+    }
+    
+    // Simula consumo de energia dos drones
+    drones.forEach(drone => {
+        // Drones consomem energia mais rápido quando estão em missão
+        const consumo = drone.currentTask ? 0.2 : 0.05;
+        
+        if (drone.energy > 0) {
+            drone.energy -= consumo;
+            if (drone.energy < 0) drone.energy = 0;
             
-        case 5:
-            title = 'ModerProgram - Programa Mestre';
-            code = `// ModerProgram: Programa mestre de controle e gerenciamento de emergências
-const EventEmitter = require('events');
-const DroneController = require('./drone-controller');
-const EmergencyHandler = require('./emergency-handler');
-
-class ModerProgram extends EventEmitter {
-    constructor(motherShipId) {
-        super();
-        this.motherShipId = motherShipId;
-        this.activeDrones = new Map();
-        this.missionQueue = [];
-        this.emergencyMode = false;
-        this.emergencyHandler = new EmergencyHandler(this);
-        
-        // Inicia monitoramento
-        this.startMonitoring();
-    }
-    
-    // Gerenciamento de Drones
-    async registerDrone(droneId, droneType) {
-        const controller = new DroneController(droneId);
-        this.activeDrones.set(droneId, {
-            controller: controller,
-            type: droneType,
-            status: 'STANDBY',
-            lastUpdate: new Date(),
-            mission: null
-        });
-        
-        console.log(\`Drone \${droneId} registrado no sistema\`);
-        
-        // Envia configuração inicial para o drone
-        await this.sendDroneConfiguration(droneId);
-    }
-    
-    async sendDroneConfiguration(droneId) {
-        const drone = this.activeDrones.get(droneId);
-        if (!drone) return;
-        
-        const config = {
-            motherShipId: this.motherShipId,
-            emergencyProtocols: true,
-            autoReturn: true,
-            maxDepth: 500,
-            maxDistance: 1000,
-            communicationInterval: 5000
-        };
-        
-        await drone.controller.sendConfiguration(config);
-    }
-    
-    // Envio de Drones em Missão
-    async sendDroneOnMission(droneId, missionData) {
-        const drone = this.activeDrones.get(droneId);
-        if (!drone || drone.status !== 'STANDBY') {
-            throw new Error(\`Drone \${droneId} não disponível para missão\`);
+            // Se a bateria chegar a 10%, retorna automaticamente
+            if (drone.energy <= 10 && drone.status !== 'Retornando' && drone.status !== 'Em Base') {
+                addLogEntry(`Bateria crítica do ${drone.name} (${drone.energy.toFixed(1)}%). Retornando automaticamente.`);
+                retornarDrone(drone.id);
+            }
         }
         
-        // Prepara informações da missão
-        const missionInfo = {
-            id: this.generateMissionId(),
-            droneId: droneId,
-            startTime: new Date(),
-            type: missionData.type,
-            parameters: missionData.parameters,
-            emergencyContact: this.motherShipId
-        };
-        
-        // Envia drone para a missão
-        await this.deployDrone(droneId, missionInfo);
-        
-        // Atualiza status
-        drone.status = 'ON_MISSION';
-        drone.mission = missionInfo;
-        drone.lastUpdate = new Date();
-        
-        console.log(\`Drone \${droneId} enviado em missão \${missionInfo.id}\`);
-        
-        // Inicia monitoramento da missão
-        this.monitorMission(droneId, missionInfo);
-    }
+        // Atualiza posição dos drones no sonar
+        if (drone.status === 'Em Missão') {
+            // Animação de movimento circular
+            const time = Date.now() / 1000;
+            const radius = 120;
+            const speed = 0.5;
+            
+            drone.position.x = radius * Math.cos(time * speed + drone.id);
+            drone.position.y = radius * Math.sin(time * speed + drone.id);
+        } else {
+            // Retorna à posição central (base)
+            drone.position.x = 0;
+            drone.position.y = 0;
+        }
+    });
     
-    async deployDrone(droneId, missionInfo) {
-        const drone = this.activeDrones.get(droneId);
-        
-        // Envia informações de partida para a nave mãe
-        await this.sendMotherShipUpdate('DRONE_DEPLOYED', {
-            droneId: droneId,
-            missionId: missionInfo.id,
-            timestamp: missionInfo.startTime,
-            missionType: missionInfo.type,
-            startCoordinates: missionInfo.parameters.coordinates
-        });
-        
-        // Envia drone para localização inicial
-        await drone.controller.navigateTo(missionInfo.parameters.coordinates);
-        
-        // Ativa sensores básicos
-        await drone.controller.activateSensor('position');
-        await drone.controller.activateSensor('battery');
-        await drone.controller.activateSensor('depth');
-        
-        // Ativa câmera
-        await drone.controller.activateCamera('navigation');
-        
-        // Ativa motores
-        await drone.controller.activateMotors();
-    }
+    // Atualiza a UI
+    atualizarUI();
+}
+
+// ============================================
+// SEÇÃO 2: FUNCIONALIDADES
+// ============================================
+
+// Inicialização do aplicativo
+document.addEventListener('DOMContentLoaded', function() {
+    // Configura eventos do menu
+    setupMenuEvents();
     
-    // Monitoramento de Missões
-    monitorMission(droneId, missionInfo) {
-        const interval = setInterval(async () => {
-            const drone = this.activeDrones.get(droneId);
-            if (!drone || drone.status !== 'ON_MISSION') {
-                clearInterval(interval);
-                return;
-            }
+    // Configura eventos dos controles da nave mãe
+    setupMothershipControls();
+    
+    // Configura eventos dos drones
+    setupDroneControls();
+    
+    // Configura eventos dos programas
+    setupProgramControls();
+    
+    // Configura eventos dos relatórios
+    setupReportControls();
+    
+    // Configura eventos dos modais
+    setupModalEvents();
+    
+    // Inicializa a UI
+    atualizarUI();
+    
+    // Inicia simulação de dados
+    setInterval(simularDados, 1000);
+    
+    // Adiciona entrada de log inicial
+    addLogEntry('Sistema inicializado com sucesso');
+});
+
+// Configura eventos do menu
+function setupMenuEvents() {
+    const menuItems = document.querySelectorAll('.menu-item');
+    
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove classe active de todos os itens
+            menuItems.forEach(i => i.classList.remove('active'));
             
-            // Verifica status do drone
-            const status = await this.checkDroneStatus(droneId);
+            // Adiciona classe active ao item clicado
+            this.classList.add('active');
             
-            // Verifica condições de emergência
-            if (await this.checkEmergencyConditions(droneId, status)) {
-                await this.handleEmergency(droneId, status);
-                return;
-            }
+            // Obtém a seção correspondente
+            const sectionId = this.getAttribute('data-section');
             
-            // Atualiza informações
-            drone.lastUpdate = new Date();
-            
-            // Envia atualização para a nave mãe
-            await this.sendMotherShipUpdate('MISSION_UPDATE', {
-                droneId: droneId,
-                missionId: missionInfo.id,
-                status: status,
-                timestamp: new Date()
+            // Esconde todas as seções
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
             });
             
-        }, 5000);
-        
-        // Armazena intervalo para limpeza posterior
-        missionInfo.monitorInterval = interval;
-    }
-    
-    async checkDroneStatus(droneId) {
-        const drone = this.activeDrones.get(droneId);
-        if (!drone) return null;
-        
-        const status = {
-            position: await drone.controller.getCurrentPosition(),
-            battery: await drone.controller.getBatteryLevel(),
-            depth: await drone.controller.getDepth(),
-            sensors: await drone.controller.getAllSensorData(),
-            systems: await drone.controller.getSystemStatus()
-        };
-        
-        return status;
-    }
-    
-    // Gerenciamento de Emergências
-    async checkEmergencyConditions(droneId, status) {
-        // Verifica bateria crítica
-        if (status.battery < 20) {
-            return { type: 'LOW_BATTERY', severity: 'HIGH' };
-        }
-        
-        // Verifica profundidade máxima
-        if (status.depth > 450) {
-            return { type: 'DEPTH_EXCEEDED', severity: 'HIGH' };
-        }
-        
-        // Verifica falha de comunicação
-        const drone = this.activeDrones.get(droneId);
-        const timeSinceUpdate = Date.now() - drone.lastUpdate.getTime();
-        if (timeSinceUpdate > 30000) {
-            return { type: 'COMMUNICATION_LOSS', severity: 'CRITICAL' };
-        }
-        
-        // Verifica falha de sistemas
-        if (status.systems.some(system => system.status === 'ERROR')) {
-            return { type: 'SYSTEM_FAILURE', severity: 'HIGH' };
-        }
-        
-        return null;
-    }
-    
-    async handleEmergency(droneId, emergency) {
-        console.log(\`EMERGÊNCIA detectada no drone \${droneId}: \${emergency.type}\`);
-        
-        this.emergencyMode = true;
-        
-        const drone = this.activeDrones.get(droneId);
-        if (!drone) return;
-        
-        // Para monitoramento normal
-        if (drone.mission && drone.mission.monitorInterval) {
-            clearInterval(drone.mission.monitorInterval);
-        }
-        
-        // Envia alerta de emergência para a nave mãe
-        await this.sendMotherShipUpdate('EMERGENCY', {
-            droneId: droneId,
-            type: emergency.type,
-            severity: emergency.severity,
-            timestamp: new Date()
+            // Mostra a seção correspondente
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Se a seção for de relatórios, atualiza a tabela
+            if (sectionId === 'reports') {
+                atualizarTabelaRelatorios();
+            }
+            
+            // Se a seção for da nave mãe, atualiza o gráfico
+            if (sectionId === 'mothership') {
+                atualizarGraficoEnergia();
+            }
         });
-        
-        // Executa protocolo de emergência
-        await this.emergencyHandler.handle(droneId, emergency);
-        
-        // Atualiza status
-        drone.status = 'EMERGENCY';
-        
-        // Inicia monitoramento de emergência
-        this.monitorEmergency(droneId);
-    }
+    });
+}
+
+// Configura eventos dos controles da nave mãe
+function setupMothershipControls() {
+    // Slider de profundidade
+    const depthSlider = document.getElementById('depth-slider');
+    const depthValue = document.getElementById('depth-value');
     
-    monitorEmergency(droneId) {
-        const interval = setInterval(async () => {
-            const drone = this.activeDrones.get(droneId);
-            if (!drone) {
-                clearInterval(interval);
-                return;
+    depthSlider.addEventListener('input', function() {
+        const depth = this.value;
+        depthValue.textContent = `${depth}m`;
+        mothership.depth = parseInt(depth);
+        addLogEntry(`Profundidade ajustada para ${depth}m`);
+    });
+    
+    // Botão da boia solar
+    const solarBuoyBtn = document.getElementById('solar-buoy-btn');
+    
+    solarBuoyBtn.addEventListener('click', function() {
+        // Recarrega energia da nave mãe
+        mothership.energy = Math.min(100, mothership.energy + 30);
+        addLogEntry('Boia solar acionada. Energia da nave mãe recarregada em 30%.');
+        atualizarUI();
+    });
+    
+    // Botão do modo autônomo
+    const autonomousModeBtn = document.getElementById('autonomous-mode-btn');
+    
+    autonomousModeBtn.addEventListener('click', function() {
+        // Retorna todos os drones à base
+        drones.forEach(drone => {
+            if (drone.status !== 'Em Base') {
+                retornarDrone(drone.id);
             }
+        });
+        addLogEntry('Modo autônomo ativado. Todos os drones retornando à base.');
+    });
+}
+
+// Configura eventos dos drones
+function setupDroneControls() {
+    // Botões de missão
+    const missionButtons = document.querySelectorAll('.mission-btn');
+    
+    missionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const droneId = parseInt(this.getAttribute('data-drone'));
+            const task = this.getAttribute('data-task');
             
-            const status = await this.checkDroneStatus(droneId);
+            enviarDroneParaMissao(droneId, task);
+        });
+    });
+    
+    // Botões de retorno
+    const returnButtons = document.querySelectorAll('.return-btn');
+    
+    returnButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const droneId = parseInt(this.getAttribute('data-drone'));
             
-            // Verifica se emergência foi resolvida
-            if (await this.emergencyHandler.isResolved(droneId)) {
-                await this.resolveEmergency(droneId);
-                clearInterval(interval);
+            retornarDrone(droneId);
+        });
+    });
+}
+
+// Configura eventos dos programas
+function setupProgramControls() {
+    const programCards = document.querySelectorAll('.program-card');
+    
+    programCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const programId = this.getAttribute('data-program');
+            
+            // Abre modal com o código do programa
+            abrirModalCodigo(programId);
+        });
+    });
+}
+
+// Configura eventos dos relatórios
+function setupReportControls() {
+    // A ser implementado quando a tabela for atualizada
+}
+
+// Configura eventos dos modais
+function setupModalEvents() {
+    // Fechar modal ao clicar no botão de fechar
+    document.querySelectorAll('.close-modal').forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            modal.classList.remove('active');
+        });
+    });
+    
+    // Fechar modal ao clicar fora do conteúdo
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
             }
-            
-            // Envia atualizações de emergência
-            await this.sendMotherShipUpdate('EMERGENCY_UPDATE', {
-                droneId: droneId,
-                status: status,
-                timestamp: new Date()
+        });
+    });
+    
+    // Botão para copiar código
+    const copyCodeBtn = document.getElementById('copy-code-btn');
+    
+    copyCodeBtn.addEventListener('click', function() {
+        const codeContent = document.getElementById('code-content').textContent;
+        
+        // Copia para a área de transferência
+        navigator.clipboard.writeText(codeContent)
+            .then(() => {
+                // Feedback visual
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Erro ao copiar código: ', err);
             });
-            
-        }, 2000);
-        
-        drone.emergencyInterval = interval;
+    });
+}
+
+// Envia drone para missão
+function enviarDroneParaMissao(droneId, taskType) {
+    const drone = drones.find(d => d.id === droneId);
+    
+    if (!drone) return;
+    
+    // Verifica se o drone está disponível
+    if (drone.status !== 'Em Base') {
+        addLogEntry(`${drone.name} não está disponível para missão. Status atual: ${drone.status}`);
+        return;
     }
     
-    async resolveEmergency(droneId) {
-        const drone = this.activeDrones.get(droneId);
-        if (!drone) return;
-        
-        console.log(\`Emergência resolvida para drone \${droneId}\`);
-        
-        // Limpa intervalo de emergência
-        if (drone.emergencyInterval) {
-            clearInterval(drone.emergencyInterval);
+    // Verifica se há energia suficiente
+    if (drone.energy < 20) {
+        addLogEntry(`${drone.name} não tem energia suficiente para missão. Bateria: ${drone.energy.toFixed(1)}%`);
+        return;
+    }
+    
+    // Define a tarefa
+    let taskName = '';
+    switch (taskType) {
+        case 'capture':
+            taskName = 'Captura de Imagens';
+            break;
+        case 'collect':
+            taskName = 'Coleta de Amostras';
+            break;
+        case 'measure':
+            taskName = 'Medição de Parâmetros';
+            break;
+    }
+    
+    // Atualiza status do drone
+    drone.status = 'Em Missão';
+    drone.currentTask = taskType;
+    
+    // Adiciona entrada no log
+    addLogEntry(`${drone.name} enviado para missão: ${taskName}`);
+    
+    // Simula a duração da missão
+    const missionDuration = 10000 + Math.random() * 20000; // 10-30 segundos
+    
+    setTimeout(() => {
+        // Verifica se o drone ainda está em missão (não foi cancelado)
+        if (drone.status === 'Em Missão') {
+            // Completa a missão
+            completarMissao(droneId, taskName);
         }
-        
-        // Retorna drone para a nave mãe
-        await this.returnDroneToBase(droneId);
-        
-        // Envia notificação de resolução
-        await this.sendMotherShipUpdate('EMERGENCY_RESOLVED', {
-            droneId: droneId,
-            timestamp: new Date()
-        });
-        
-        this.emergencyMode = false;
+    }, missionDuration);
+    
+    // Atualiza a UI
+    atualizarUI();
+}
+
+// Retorna drone à base
+function retornarDrone(droneId) {
+    const drone = drones.find(d => d.id === droneId);
+    
+    if (!drone) return;
+    
+    // Se já está retornando ou na base, não faz nada
+    if (drone.status === 'Retornando' || drone.status === 'Em Base') {
+        return;
     }
     
-    // Retorno de Drones
-    async returnDroneToBase(droneId) {
-        const drone = this.activeDrones.get(droneId);
-        if (!drone) return;
+    // Atualiza status
+    drone.status = 'Retornando';
+    drone.currentTask = null;
+    
+    // Adiciona entrada no log
+    addLogEntry(`${drone.name} retornando à base`);
+    
+    // Simula o tempo de retorno
+    const returnTime = 5000; // 5 segundos
+    
+    setTimeout(() => {
+        // Drone chegou à base
+        drone.status = 'Em Base';
+        drone.position.x = 0;
+        drone.position.y = 0;
         
-        console.log(\`Retornando drone \${droneId} para a base\`);
+        // Recarrega um pouco da energia
+        drone.energy = Math.min(100, drone.energy + 10);
         
-        // Envia comando de retorno
-        await drone.controller.returnToBase();
+        // Adiciona entrada no log
+        addLogEntry(`${drone.name} retornou à base com sucesso. Bateria: ${drone.energy.toFixed(1)}%`);
         
-        // Atualiza status
-        drone.status = 'RETURNING';
-        
-        // Monitora retorno
-        this.monitorReturn(droneId);
+        // Atualiza a UI
+        atualizarUI();
+    }, returnTime);
+    
+    // Atualiza a UI imediatamente
+    atualizarUI();
+}
+
+// Completa missão do drone
+function completarMissao(droneId, taskName) {
+    const drone = drones.find(d => d.id === droneId);
+    
+    if (!drone) return;
+    
+    // Gera dados ambientais fictícios
+    const temperature = (10 + Math.random() * 10).toFixed(1);
+    const salinity = (30 + Math.random() * 10).toFixed(1);
+    const visibility = (5 + Math.random() * 10).toFixed(1);
+    
+    // Calcula energia gasta
+    const energySpent = 20 + Math.random() * 20;
+    drone.energy = Math.max(0, drone.energy - energySpent);
+    
+    // Cria registro da missão
+    const mission = {
+        id: missions.length + 1,
+        date: new Date(),
+        drone: drone.name,
+        task: taskName,
+        status: 'Concluída',
+        duration: `${Math.floor(20 + Math.random() * 40)} min`,
+        depth: `${Math.floor(100 + Math.random() * 300)}m`,
+        energySpent: `${energySpent.toFixed(1)}%`,
+        temperature: `${temperature}°C`,
+        salinity: `${salinity}‰`,
+        visibility: `${visibility}m`
+    };
+    
+    // Adiciona ao histórico de missões
+    missions.unshift(mission);
+    
+    // Mantém apenas as últimas 10 missões
+    if (missions.length > 10) {
+        missions.pop();
     }
     
-    monitorReturn(droneId) {
-        const interval = setInterval(async () => {
-            const drone = this.activeDrones.get(droneId);
-            if (!drone) {
-                clearInterval(interval);
-                return;
-            }
-            
-            const position = await drone.controller.getCurrentPosition();
-            const distance = this.calculateDistance(position, this.getBasePosition());
-            
-            if (distance < 10) {
-                // Drone chegou à base
-                await this.landDrone(droneId);
-                clearInterval(interval);
-            }
-            
+    // Evento aleatório de falha de comunicação (10% de chance)
+    if (Math.random() < 0.1) {
+        // Simula falha de comunicação
+        addLogEntry(`ALERTA: Falha de comunicação com ${drone.name} durante a missão!`);
+        
+        // Tenta reconectar após um tempo
+        setTimeout(() => {
+            addLogEntry(`Comunicação com ${drone.name} restabelecida.`);
         }, 3000);
-        
-        drone.returnInterval = interval;
+    } else {
+        // Missão concluída com sucesso
+        addLogEntry(`${drone.name} concluiu missão: ${taskName}`);
     }
     
-    async landDrone(droneId) {
-        const drone = this.activeDrones.get(droneId);
-        if (!drone) return;
+    // Retorna o drone à base
+    retornarDrone(droneId);
+}
+
+// Atualiza a UI
+function atualizarUI() {
+    // Atualiza energia da nave mãe
+    const mothershipEnergyBar = document.getElementById('mothership-energy');
+    const mothershipEnergyValue = document.getElementById('mothership-energy-value');
+    
+    if (mothershipEnergyBar && mothershipEnergyValue) {
+        mothershipEnergyBar.style.width = `${mothership.energy}%`;
+        mothershipEnergyValue.textContent = `${mothership.energy.toFixed(1)}%`;
         
-        console.log(\`Pousando drone \${droneId}\`);
-        
-        // Pousa drone
-        await drone.controller.land();
-        
-        // Desativa sistemas
-        await drone.controller.deactivateAllSystems();
-        
-        // Atualiza status
-        drone.status = 'STANDBY';
-        drone.mission = null;
-        drone.lastUpdate = new Date();
-        
-        // Limpa intervalos
-        if (drone.returnInterval) {
-            clearInterval(drone.returnInterval);
+        // Muda a cor da barra conforme o nível de energia
+        if (mothership.energy > 50) {
+            mothershipEnergyBar.style.background = 'linear-gradient(90deg, var(--primary-1), var(--secondary-1))';
+        } else if (mothership.energy > 20) {
+            mothershipEnergyBar.style.background = 'linear-gradient(90deg, var(--status-warning), var(--secondary-1))';
+        } else {
+            mothershipEnergyBar.style.background = 'linear-gradient(90deg, var(--status-error), var(--status-warning))';
         }
+    }
+    
+    // Atualiza drones ativos
+    const activeDronesElement = document.getElementById('active-drones');
+    if (activeDronesElement) {
+        const activeDrones = drones.filter(d => d.status !== 'Em Base').length;
+        activeDronesElement.textContent = `${activeDrones}/3`;
+    }
+    
+    // Atualiza profundidade média
+    const averageDepthElement = document.getElementById('average-depth');
+    if (averageDepthElement) {
+        // Calcula profundidade média considerando a nave mãe e drones em missão
+        let totalDepth = mothership.depth;
+        let count = 1;
         
-        // Envia confirmação para a nave mãe
-        await this.sendMotherShipUpdate('DRONE_LANDED', {
-            droneId: droneId,
-            timestamp: new Date()
+        drones.forEach(drone => {
+            if (drone.status === 'Em Missão') {
+                totalDepth += mothership.depth + (Math.random() * 100 - 50);
+                count++;
+            }
         });
-    }
-    
-    // Comunicação com a Nave Mãe
-    async sendMotherShipUpdate(type, data) {
-        const message = {
-            type: type,
-            source: 'MODER_PROGRAM',
-            timestamp: new Date().toISOString(),
-            data: data
-        };
         
-        // Simula envio para a nave mãe
-        console.log('Enviando para nave mãe:', message);
+        const averageDepth = Math.floor(totalDepth / count);
+        averageDepthElement.textContent = `${averageDepth}m`;
+    }
+    
+    // Atualiza cards dos drones
+    drones.forEach(drone => {
+        // Energia
+        const energyBar = document.getElementById(`drone${drone.id}-energy`);
+        const energyValue = document.getElementById(`drone${drone.id}-energy-value`);
         
-        // Em um sistema real, aqui seria uma comunicação real
-        // await this.motherShipCommunicator.send(message);
-    }
-    
-    // Utilitários
-    generateMissionId() {
-        return \`MISSION_\${Date.now()}_\${Math.random().toString(36).substr(2, 9)}\`;
-    }
-    
-    calculateDistance(pos1, pos2) {
-        // Implementação simplificada
-        return Math.sqrt(
-            Math.pow(pos1.lat - pos2.lat, 2) + 
-            Math.pow(pos1.lng - pos2.lng, 2)
-        );
-    }
-    
-    getBasePosition() {
-        return { lat: -23.5, lng: -46.6 }; // Posição da nave mãe
-    }
-    
-    startMonitoring() {
-        // Monitoramento contínuo do sistema
-        setInterval(() => {
-            this.performSystemCheck();
-        }, 10000);
-    }
-    
-    async performSystemCheck() {
-        // Verifica status de todos os drones
-        for (const [droneId, drone] of this.activeDrones) {
-            try {
-                const status = await this.checkDroneStatus(droneId);
-                
-                // Verifica se precisa de atenção
-                if (status.battery < 30 || status.depth > 400) {
-                    console.log(\`Atenção necessária para drone \${droneId}\`);
-                }
-                
-            } catch (error) {
-                console.error(\`Erro ao verificar drone \${droneId}:\`, error);
+        if (energyBar && energyValue) {
+            energyBar.style.width = `${drone.energy}%`;
+            energyValue.textContent = `${drone.energy.toFixed(1)}%`;
+            
+            // Muda a cor da barra conforme o nível de energia
+            if (drone.energy > 50) {
+                energyBar.style.background = 'linear-gradient(90deg, var(--primary-1), var(--secondary-1))';
+            } else if (drone.energy > 20) {
+                energyBar.style.background = 'linear-gradient(90deg, var(--status-warning), var(--secondary-1))';
+            } else {
+                energyBar.style.background = 'linear-gradient(90deg, var(--status-error), var(--status-warning))';
             }
         }
+        
+        // Status
+        const statusElement = document.getElementById(`drone${drone.id}-status`);
+        if (statusElement) {
+            statusElement.textContent = drone.status;
+            
+            // Muda a cor do status
+            if (drone.status === 'Em Base') {
+                statusElement.style.color = 'var(--status-ok)';
+            } else if (drone.status === 'Em Missão') {
+                statusElement.style.color = 'var(--secondary-1)';
+            } else if (drone.status === 'Retornando') {
+                statusElement.style.color = 'var(--status-warning)';
+            }
+        }
+        
+        // Indicador de status no card
+        const statusIndicator = document.querySelector(`#drone${drone.id}-card .status-indicator`);
+        if (statusIndicator) {
+            // Remove todas as classes de status
+            statusIndicator.classList.remove('ok', 'warning', 'error');
+            
+            // Adiciona a classe apropriada
+            if (drone.status === 'Em Base') {
+                statusIndicator.classList.add('ok');
+            } else if (drone.status === 'Em Missão') {
+                statusIndicator.classList.add('ok');
+            } else if (drone.status === 'Retornando') {
+                statusIndicator.classList.add('warning');
+            }
+        }
+        
+        // Posição no sonar
+        const droneSonar = document.getElementById(`drone${drone.id}-sonar`);
+        if (droneSonar) {
+            // Converte posição para coordenadas no sonar
+            const centerX = 200; // Centro do sonar
+            const centerY = 200;
+            
+            // Calcula posição no sonar (limitada ao raio do sonar)
+            const maxRadius = 180;
+            const distance = Math.min(maxRadius, Math.sqrt(drone.position.x * drone.position.x + drone.position.y * drone.position.y));
+            
+            // Calcula ângulo
+            let angle = Math.atan2(drone.position.y, drone.position.x);
+            
+            // Converte para coordenadas do sonar
+            const sonarX = centerX + distance * Math.cos(angle);
+            const sonarY = centerY + distance * Math.sin(angle);
+            
+            // Posiciona o drone no sonar
+            droneSonar.style.left = `${sonarX}px`;
+            droneSonar.style.top = `${sonarY}px`;
+            droneSonar.style.transform = 'translate(-50%, -50%)';
+        }
+    });
+    
+    // Atualiza gráfico de energia se estiver na seção da nave mãe
+    if (document.getElementById('mothership').classList.contains('active')) {
+        atualizarGraficoEnergia();
     }
 }
 
-module.exports = ModerProgram;`;
+// Atualiza o gráfico de energia
+function atualizarGraficoEnergia() {
+    const canvas = document.getElementById('energy-chart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+    
+    // Limpa o canvas
+    ctx.clearRect(0, 0, width, height);
+    
+    // Configurações do gráfico
+    const padding = 30;
+    const graphWidth = width - padding * 2;
+    const graphHeight = height - padding * 2;
+    
+    // Desenha fundo
+    ctx.fillStyle = 'rgba(0, 26, 51, 0.3)';
+    ctx.fillRect(padding, padding, graphWidth, graphHeight);
+    
+    // Desenha grade
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.lineWidth = 1;
+    
+    // Linhas horizontais
+    for (let i = 0; i <= 4; i++) {
+        const y = padding + (i * graphHeight / 4);
+        ctx.beginPath();
+        ctx.moveTo(padding, y);
+        ctx.lineTo(width - padding, y);
+        ctx.stroke();
+        
+        // Labels
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'right';
+        ctx.fillText(`${100 - i * 25}%`, padding - 5, y + 4);
+    }
+    
+    // Desenha dados
+    const data = mothership.energyHistory;
+    const barWidth = graphWidth / data.length;
+    
+    data.forEach((value, index) => {
+        const barHeight = (value / 100) * graphHeight;
+        const x = padding + index * barWidth;
+        const y = padding + graphHeight - barHeight;
+        
+        // Define a cor da barra conforme o valor
+        if (value > 50) {
+            ctx.fillStyle = 'rgba(0, 153, 204, 0.7)';
+        } else if (value > 20) {
+            ctx.fillStyle = 'rgba(243, 156, 18, 0.7)';
+        } else {
+            ctx.fillStyle = 'rgba(231, 76, 60, 0.7)';
+        }
+        
+        ctx.fillRect(x + barWidth * 0.1, y, barWidth * 0.8, barHeight);
+    });
+    
+    // Desenha título
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.font = 'bold 14px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Histórico de Consumo de Energia', width / 2, 20);
+}
+
+// Atualiza a tabela de relatórios
+function atualizarTabelaRelatorios() {
+    const tbody = document.getElementById('reports-tbody');
+    if (!tbody) return;
+    
+    // Limpa a tabela
+    tbody.innerHTML = '';
+    
+    // Adiciona as missões
+    missions.forEach(mission => {
+        const row = document.createElement('tr');
+        
+        // Formata a data
+        const dateFormatted = `${mission.date.getDate()}/${mission.date.getMonth() + 1}/${mission.date.getFullYear()}`;
+        
+        // Define a cor do status
+        let statusClass = '';
+        if (mission.status === 'Concluída') {
+            statusClass = 'status-ok';
+        } else if (mission.status === 'Em Andamento') {
+            statusClass = 'status-warning';
+        } else if (mission.status === 'Falha') {
+            statusClass = 'status-error';
+        }
+        
+        row.innerHTML = `
+            <td>${dateFormatted}</td>
+            <td>${mission.drone}</td>
+            <td>${mission.task}</td>
+            <td class="${statusClass}">${mission.status}</td>
+            <td>
+                <button class="details-btn" data-mission-id="${mission.id}">
+                    Detalhes
+                </button>
+            </td>
+        `;
+        
+        tbody.appendChild(row);
+    });
+    
+    // Adiciona eventos aos botões de detalhes
+    document.querySelectorAll('.details-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const missionId = parseInt(this.getAttribute('data-mission-id'));
+            const mission = missions.find(m => m.id === missionId);
+            
+            if (mission) {
+                abrirModalMissao(mission);
+            }
+        });
+    });
+}
+
+// Abre modal com detalhes da missão
+function abrirModalMissao(mission) {
+    const modal = document.getElementById('mission-modal');
+    
+    // Preenche os dados da missão
+    document.getElementById('mission-duration').textContent = mission.duration;
+    document.getElementById('mission-depth').textContent = mission.depth;
+    document.getElementById('mission-energy').textContent = mission.energySpent;
+    document.getElementById('mission-temperature').textContent = mission.temperature;
+    document.getElementById('mission-salinity').textContent = mission.salinidade;
+    document.getElementById('mission-visibility').textContent = mission.visibility;
+    
+    // Exibe o modal
+    modal.classList.add('active');
+}
+
+// Abre modal com código do programa
+function abrirModalCodigo(programId) {
+    const modal = document.getElementById('code-modal');
+    const codeContent = document.getElementById('code-content');
+    const codeModalTitle = document.getElementById('code-modal-title');
+    
+    // Define o título
+    let programTitle = '';
+    switch (programId) {
+        case 'exploration':
+            programTitle = 'Exploração Básica';
+            break;
+        case 'capture':
+            programTitle = 'Captura de Imagens';
+            break;
+        case 'collect':
+            programTitle = 'Coleta de Amostras';
+            break;
+        case 'mapping':
+            programTitle = 'Mapeamento Topográfico';
+            break;
+        case 'emergency':
+            programTitle = 'Sistema Mestre de Emergência';
             break;
     }
     
-    programTitle.textContent = title;
-    programCode.textContent = code;
-    programDetails.style.display = 'block';
+    codeModalTitle.textContent = programTitle;
     
-    // Adiciona highlighting de sintaxe
-    highlightSyntax(programCode);
+    // Define o código
+    codeContent.textContent = programCodes[programId];
     
-    // Rola para o código
-    programDetails.scrollIntoView({ behavior: 'smooth' });
+    // Exibe o modal
+    modal.classList.add('active');
 }
 
-// Função para copiar o código
-function copyCode() {
-    const code = document.getElementById('programCode').textContent;
-    navigator.clipboard.writeText(code).then(() => {
-        showAlert('Código copiado para a área de transferência!', 'success');
-    });
-}
-
-// Função simples de highlighting de sintaxe
-function highlightSyntax(element) {
-    let html = element.textContent;
+// Adiciona entrada no log de atividades
+function addLogEntry(message) {
+    const logContainer = document.getElementById('activity-log');
+    if (!logContainer) return;
     
-    // Palavras-chave JavaScript
-    const keywords = ['const', 'let', 'var', 'function', 'async', 'await', 'class', 'constructor', 
-                     'return', 'if', 'else', 'for', 'while', 'try', 'catch', 'new', 'this', 'super',
-                     'extends', 'import', 'export', 'require', 'module', 'exports'];
+    // Cria a entrada do log
+    const logEntry = document.createElement('div');
+    logEntry.className = 'log-entry';
     
-    keywords.forEach(keyword => {
-        const regex = new RegExp(`\\b${keyword}\\b`, 'g');
-        html = html.replace(regex, `<span class="keyword">${keyword}</span>`);
-    });
+    // Formata a data e hora atual
+    const now = new Date();
+    const timeFormatted = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
     
-    // Strings
-    html = html.replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, '<span class="string">$&</span>');
+    // Define o conteúdo
+    logEntry.textContent = `[${timeFormatted}] ${message}`;
     
-    // Números
-    html = html.replace(/\b\d+\.?\d*\b/g, '<span class="number">$&</span>');
+    // Adiciona ao início do container
+    logContainer.insertBefore(logEntry, logContainer.firstChild);
     
-    // Comentários
-    html = html.replace(/\/\/.*$/gm, '<span class="comment">$&</span>');
-    html = html.replace(/\/\*[\s\S]*?\*\//g, '<span class="comment">$&</span>');
+    // Limita o número de entradas no log
+    while (logContainer.children.length > 50) {
+        logContainer.removeChild(logContainer.lastChild);
+    }
     
-    // Funções
-    html = html.replace(/\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\(/g, '<span class="function">$1</span>(');
-    
-    // Variáveis
-    html = html.replace(/\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*[:=]/g, '<span class="variable">$1</span> ');
-    
-    element.innerHTML = html;
+    // Rola para o topo
+    logContainer.scrollTop = 0;
 }

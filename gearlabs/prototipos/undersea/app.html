@@ -4,468 +4,357 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnderSea Control System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <button class="menu-toggle" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
-            </button>
+    <div class="app-container">
+        <!-- Cabeçalho -->
+        <header class="header">
             <div class="logo">
                 <i class="fas fa-water"></i>
-                <h1>UnderSea Control System</h1>
+                <span>UnderSea Control System</span>
             </div>
-            <div class="status-indicator">
-                <div class="status-dot"></div>
-                <span>Sistema Online</span>
+            <div class="status">
+                <div class="status-indicator online"></div>
+                <span>Online</span>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <div class="main-container">
-        <nav class="sidebar" id="sidebar">
-            <ul class="sidebar-menu">
-                <li>
-                    <a href="#" class="active" onclick="showSection('overview')">
-                        <i class="fas fa-chart-line"></i>
+        <div class="main-container">
+            <!-- Menu Lateral -->
+            <nav class="sidebar">
+                <ul class="menu">
+                    <li class="menu-item active" data-section="overview">
+                        <i class="fas fa-chart-pie"></i>
                         <span>Visão Geral</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="showSection('mother-ship')">
+                    </li>
+                    <li class="menu-item" data-section="mothership">
                         <i class="fas fa-ship"></i>
                         <span>Controle Nave Mãe</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="showSection('drones')">
+                    </li>
+                    <li class="menu-item" data-section="drones">
                         <i class="fas fa-robot"></i>
                         <span>Controle Drones Menores</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="showSection('programs')">
+                    </li>
+                    <li class="menu-item" data-section="programs">
                         <i class="fas fa-code"></i>
                         <span>Programas</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="showSection('reports')">
+                    </li>
+                    <li class="menu-item" data-section="reports">
                         <i class="fas fa-file-alt"></i>
                         <span>Relatórios</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+                    </li>
+                </ul>
+            </nav>
 
-        <main class="main-content">
-            <!-- Seção Visão Geral -->
-            <section id="overview" class="section active">
-                <h2 style="margin-bottom: 2rem;">Visão Geral da Missão</h2>
-                
-                <div class="sonar-container">
-                    <div class="sonar">
-                        <div class="sonar-sweep"></div>
-                        <div class="sonar-rings">
-                            <div class="ring"></div>
-                            <div class="ring"></div>
-                            <div class="ring"></div>
-                            <div class="ring"></div>
-                        </div>
-                        <div class="vessel-sonar">
-                            <i class="fas fa-ship"></i>
-                        </div>
-                        <div class="drone-sonar active" data-drone="drone01" style="--angle: 30deg; --distance: 60%;">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="drone-sonar active" data-drone="drone02" style="--angle: 210deg; --distance: 70%;">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="drone-sonar active" data-drone="drone03" style="--angle: 120deg; --distance: 80%;">
-                            <i class="fas fa-robot"></i>
+            <!-- Conteúdo Principal -->
+            <main class="content">
+                <!-- Seção Visão Geral -->
+                <section id="overview" class="section active">
+                    <h2>Visão Geral</h2>
+                    
+                    <div class="sonar-container">
+                        <div class="sonar">
+                            <div class="sonar-circle"></div>
+                            <div class="sonar-circle"></div>
+                            <div class="sonar-circle"></div>
+                            <div class="sonar-sweep"></div>
+                            <div class="mothership-sonar"></div>
+                            <div class="drone-sonar" id="drone1-sonar"></div>
+                            <div class="drone-sonar" id="drone2-sonar"></div>
+                            <div class="drone-sonar" id="drone3-sonar"></div>
                         </div>
                     </div>
-                </div>
 
-                <div class="grid">
-                    <div class="card status-card">
-                        <i class="fas fa-battery-three-quarters status-icon"></i>
-                        <div class="status-value" id="motherEnergy">85%</div>
-                        <div class="status-label">Energia da Nave Mãe</div>
-                    </div>
-                    <div class="card status-card">
-                        <i class="fas fa-robot status-icon"></i>
-                        <div class="status-value" id="activeDrones">3</div>
-                        <div class="status-label">Drones Ativos</div>
-                    </div>
-                    <div class="card status-card">
-                        <i class="fas fa-arrow-down status-icon"></i>
-                        <div class="status-value" id="currentDepth">150m</div>
-                        <div class="status-label">Profundidade Atual</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção Controle Nave Mãe -->
-            <section id="mother-ship" class="section">
-                <h2 style="margin-bottom: 2rem;">Controle da Nave Mãe</h2>
-                
-                <div class="grid">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Controles de Profundidade</h3>
+                    <div class="cards-container">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-battery-three-quarters"></i>
+                                <h3>Energia da Nave Mãe</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="progress-bar">
+                                    <div class="progress" id="mothership-energy"></div>
+                                </div>
+                                <span id="mothership-energy-value">100%</span>
+                            </div>
                         </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-robot"></i>
+                                <h3>Drones Ativos</h3>
+                            </div>
+                            <div class="card-content">
+                                <span id="active-drones">3/3</span>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-water"></i>
+                                <h3>Profundidade Média</h3>
+                            </div>
+                            <div class="card-content">
+                                <span id="average-depth">150m</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-log">
+                        <h3>Log de Atividades</h3>
+                        <div class="log-container" id="activity-log">
+                            <div class="log-entry">Sistema inicializado com sucesso</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção Controle Nave Mãe -->
+                <section id="mothership" class="section">
+                    <h2>Controle Nave Mãe</h2>
+                    
+                    <div class="mothership-controls">
                         <div class="control-group">
-                            <label class="control-label">Profundidade: <span id="depthValue">150</span>m</label>
-                            <input type="range" class="slider" id="depthSlider" min="0" max="500" value="150" oninput="updateDepth(this.value)">
+                            <label for="depth-slider">Profundidade: <span id="depth-value">150m</span></label>
+                            <input type="range" id="depth-slider" min="0" max="500" value="150">
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Sistemas de Comunicação</h3>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Comunicação</label>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="commToggle" checked onchange="toggleCommunication()">
-                                <span class="toggle-slider"></span>
-                            </label>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Boia Solar</label>
-                            <button class="btn btn-success" onclick="deploySolarBuoy()">
-                                <i class="fas fa-solar-panel"></i>
-                                Lançar Boia Solar
+                        <div class="control-buttons">
+                            <button id="solar-buoy-btn" class="btn primary">
+                                <i class="fas fa-solar-panel"></i> Boia Solar
+                            </button>
+                            <button id="autonomous-mode-btn" class="btn secondary">
+                                <i class="fas fa-robot"></i> Modo Autônomo
                             </button>
                         </div>
                     </div>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Modo Autônomo</h3>
-                        </div>
-                        <button class="btn btn-warning" onclick="activateAutonomousMode()">
-                            <i class="fas fa-home"></i>
-                            Ativar Retorno à Base
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Consumo de Energia</h3>
-                    </div>
                     <div class="chart-container">
-                        <canvas id="energyChart"></canvas>
+                        <h3>Histórico de Consumo de Energia</h3>
+                        <canvas id="energy-chart" width="400" height="200"></canvas>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- Seção Controle Drones Menores -->
-            <section id="drones" class="section">
-                <h2 style="margin-bottom: 2rem;">Controle de Drones Menores</h2>
-                
-                <div class="drone-item">
-                    <div class="drone-header">
-                        <div class="drone-name">
-                            <i class="fas fa-robot"></i>
-                            Drone 01 - Captura de Imagens
-                        </div>
-                        <div class="drone-status active">
-                            <i class="fas fa-circle"></i>
-                            Ativo
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-primary" onclick="sendMission('drone01')">
-                            <i class="fas fa-paper-plane"></i>
-                            Enviar Missão
-                        </button>
-                        <button class="btn btn-success" onclick="returnToShip('drone01')">
-                            <i class="fas fa-undo"></i>
-                            Retornar à Nave
-                        </button>
-                        <button class="btn btn-warning" onclick="captureImage('drone01')">
-                            <i class="fas fa-camera"></i>
-                            Capturar Imagem
-                        </button>
-                    </div>
-                    <div class="sensor-grid">
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="temp01">22°C</div>
-                            <div class="sensor-label">Temperatura</div>
-                        </div>
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="sal01">35‰</div>
-                            <div class="sensor-label">Salinidade</div>
-                        </div>
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="depth01">150m</div>
-                            <div class="sensor-label">Profundidade</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="drone-item">
-                    <div class="drone-header">
-                        <div class="drone-name">
-                            <i class="fas fa-robot"></i>
-                            Drone 02 - Coleta de Amostras
-                        </div>
-                        <div class="drone-status active">
-                            <i class="fas fa-circle"></i>
-                            Ativo
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-primary" onclick="sendMission('drone02')">
-                            <i class="fas fa-paper-plane"></i>
-                            Enviar Missão
-                        </button>
-                        <button class="btn btn-success" onclick="returnToShip('drone02')">
-                            <i class="fas fa-undo"></i>
-                            Retornar à Nave
-                        </button>
-                        <button class="btn btn-warning" onclick="collectSample('drone02')">
-                            <i class="fas fa-vial"></i>
-                            Coletar Amostra
-                        </button>
-                    </div>
-                    <div class="sensor-grid">
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="temp02">21°C</div>
-                            <div class="sensor-label">Temperatura</div>
-                        </div>
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="sal02">36‰</div>
-                            <div class="sensor-label">Salinidade</div>
-                        </div>
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="depth02">165m</div>
-                            <div class="sensor-label">Profundidade</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="drone-item">
-                    <div class="drone-header">
-                        <div class="drone-name">
-                            <i class="fas fa-robot"></i>
-                            Drone 03 - Medição de Parâmetros
-                        </div>
-                        <div class="drone-status active">
-                            <i class="fas fa-circle"></i>
-                            Ativo
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-primary" onclick="sendMission('drone03')">
-                            <i class="fas fa-paper-plane"></i>
-                            Enviar Missão
-                        </button>
-                        <button class="btn btn-success" onclick="returnToShip('drone03')">
-                            <i class="fas fa-undo"></i>
-                            Retornar à Nave
-                        </button>
-                        <button class="btn btn-warning" onclick="measureParameters('drone03')">
-                            <i class="fas fa-tachometer-alt"></i>
-                            Medir Parâmetros
-                        </button>
-                    </div>
-                    <div class="sensor-grid">
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="temp03">20°C</div>
-                            <div class="sensor-label">Temperatura</div>
-                        </div>
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="sal03">34‰</div>
-                            <div class="sensor-label">Salinidade</div>
-                        </div>
-                        <div class="sensor-item">
-                            <div class="sensor-value" id="depth03">140m</div>
-                            <div class="sensor-label">Profundidade</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção Programas -->
-            <section id="programs" class="section">
-                <h2 style="margin-bottom: 2rem;">Programas de Controle de Drones</h2>
-                
-                <div class="programs-container">
-                    <div class="program-card" onclick="showProgramDetails(1)">
-                        <div class="program-header">
-                            <i class="fas fa-robot"></i>
-                            <h3>Programa 1</h3>
-                        </div>
-                        <p>Programa de exploração básica para coleta de dados ambientais</p>
-                    </div>
+                <!-- Seção Controle Drones Menores -->
+                <section id="drones" class="section">
+                    <h2>Controle Drones Menores</h2>
                     
-                    <div class="program-card" onclick="showProgramDetails(2)">
-                        <div class="program-header">
-                            <i class="fas fa-camera"></i>
-                            <h3>Programa 2</h3>
+                    <div class="drones-container">
+                        <div class="drone-card" id="drone1-card">
+                            <div class="drone-header">
+                                <h3>Drone 1 - Captura de Imagens</h3>
+                                <div class="status-indicator ok"></div>
+                            </div>
+                            <div class="drone-content">
+                                <div class="energy-indicator">
+                                    <div class="progress-bar">
+                                        <div class="progress" id="drone1-energy"></div>
+                                    </div>
+                                    <span id="drone1-energy-value">100%</span>
+                                </div>
+                                <div class="drone-status">
+                                    Status: <span id="drone1-status">Em Base</span>
+                                </div>
+                            </div>
+                            <div class="drone-controls">
+                                <button class="drone-btn mission-btn" data-drone="1" data-task="capture">
+                                    <i class="fas fa-camera"></i> Captura de Imagens
+                                </button>
+                                <button class="drone-btn return-btn" data-drone="1">
+                                    <i class="fas fa-undo"></i> Retornar
+                                </button>
+                            </div>
                         </div>
-                        <p>Programa especializado em captura de imagens e vídeo</p>
-                    </div>
-                    
-                    <div class="program-card" onclick="showProgramDetails(3)">
-                        <div class="program-header">
-                            <i class="fas fa-vial"></i>
-                            <h3>Programa 3</h3>
-                        </div>
-                        <p>Programa para coleta de amostras biológicas e químicas</p>
-                    </div>
-                    
-                    <div class="program-card" onclick="showProgramDetails(4)">
-                        <div class="program-header">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <h3>Programa 4</h3>
-                        </div>
-                        <p>Programa de mapeamento topográfico do leito marinho</p>
-                    </div>
-                    
-                    <div class="program-card master-program" onclick="showProgramDetails(5)">
-                        <div class="program-header">
-                            <i class="fas fa-shield-alt"></i>
-                            <h3>ModerProgram</h3>
-                        </div>
-                        <p>Programa mestre de controle e gerenciamento de emergências</p>
-                    </div>
-                </div>
-                
-                <div id="programDetails" class="program-details" style="display: none;">
-                    <div class="code-container">
-                        <div class="code-header">
-                            <h3 id="programTitle">Código do Programa</h3>
-                            <button class="btn btn-primary" onclick="copyCode()">
-                                <i class="fas fa-copy"></i>
-                                Copiar Código
-                            </button>
-                        </div>
-                        <pre><code id="programCode"></code></pre>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Seção Relatórios -->
-            <section id="reports" class="section">
-                <h2 style="margin-bottom: 2rem;">Relatórios de Missão</h2>
-                
-                <div class="card">
-                    <div class="table-container">
-                        <table>
+                        <div class="drone-card" id="drone2-card">
+                            <div class="drone-header">
+                                <h3>Drone 2 - Coleta de Amostras</h3>
+                                <div class="status-indicator ok"></div>
+                            </div>
+                            <div class="drone-content">
+                                <div class="energy-indicator">
+                                    <div class="progress-bar">
+                                        <div class="progress" id="drone2-energy"></div>
+                                    </div>
+                                    <span id="drone2-energy-value">100%</span>
+                                </div>
+                                <div class="drone-status">
+                                    Status: <span id="drone2-status">Em Base</span>
+                                </div>
+                            </div>
+                            <div class="drone-controls">
+                                <button class="drone-btn mission-btn" data-drone="2" data-task="collect">
+                                    <i class="fas fa-vial"></i> Coleta de Amostras
+                                </button>
+                                <button class="drone-btn return-btn" data-drone="2">
+                                    <i class="fas fa-undo"></i> Retornar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="drone-card" id="drone3-card">
+                            <div class="drone-header">
+                                <h3>Drone 3 - Medição de Parâmetros</h3>
+                                <div class="status-indicator ok"></div>
+                            </div>
+                            <div class="drone-content">
+                                <div class="energy-indicator">
+                                    <div class="progress-bar">
+                                        <div class="progress" id="drone3-energy"></div>
+                                    </div>
+                                    <span id="drone3-energy-value">100%</span>
+                                </div>
+                                <div class="drone-status">
+                                    Status: <span id="drone3-status">Em Base</span>
+                                </div>
+                            </div>
+                            <div class="drone-controls">
+                                <button class="drone-btn mission-btn" data-drone="3" data-task="measure">
+                                    <i class="fas fa-thermometer-half"></i> Medição de Parâmetros
+                                </button>
+                                <button class="drone-btn return-btn" data-drone="3">
+                                    <i class="fas fa-undo"></i> Retornar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção Programas -->
+                <section id="programs" class="section">
+                    <h2>Programas</h2>
+                    
+                    <div class="programs-container">
+                        <div class="program-card" data-program="exploration">
+                            <div class="program-header">
+                                <h3>Exploração Básica</h3>
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="program-description">
+                                Programa para exploração básica de áreas subaquáticas
+                            </div>
+                        </div>
+
+                        <div class="program-card" data-program="capture">
+                            <div class="program-header">
+                                <h3>Captura de Imagens</h3>
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="program-description">
+                                Programa para captura de imagens de alta resolução
+                            </div>
+                        </div>
+
+                        <div class="program-card" data-program="collect">
+                            <div class="program-header">
+                                <h3>Coleta de Amostras</h3>
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <div class="program-description">
+                                Programa para coleta de amostras biológicas e geológicas
+                            </div>
+                        </div>
+
+                        <div class="program-card" data-program="mapping">
+                            <div class="program-header">
+                                <h3>Mapeamento Topográfico</h3>
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <div class="program-description">
+                                Programa para mapeamento topográfico do leito marinho
+                            </div>
+                        </div>
+
+                        <div class="program-card" data-program="emergency">
+                            <div class="program-header">
+                                <h3>Sistema Mestre de Emergência</h3>
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="program-description">
+                                Sistema de emergência para recuperação de drones
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção Relatórios -->
+                <section id="reports" class="section">
+                    <h2>Relatórios</h2>
+                    
+                    <div class="reports-table-container">
+                        <table class="reports-table">
                             <thead>
                                 <tr>
-                                    <th>Data da Missão</th>
-                                    <th>Drone Utilizado</th>
-                                    <th>Tipo de Coleta</th>
+                                    <th>Data</th>
+                                    <th>Drone</th>
+                                    <th>Tarefa</th>
                                     <th>Status</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
-                            <tbody id="reportsTable">
-                                <tr>
-                                    <td>15/11/2024 14:30</td>
-                                    <td>Drone 01</td>
-                                    <td>Captura de Imagens</td>
-                                    <td><span class="status-badge success">Concluído</span></td>
-                                </tr>
-                                <tr>
-                                    <td>15/11/2024 13:15</td>
-                                    <td>Drone 02</td>
-                                    <td>Coleta de Amostras</td>
-                                    <td><span class="status-badge success">Concluído</span></td>
-                                </tr>
-                                <tr>
-                                    <td>15/11/2024 12:00</td>
-                                    <td>Drone 03</td>
-                                    <td>Medição de Parâmetros</td>
-                                    <td><span class="status-badge warning">Em andamento</span></td>
-                                </tr>
-                                <tr>
-                                    <td>15/11/2024 10:45</td>
-                                    <td>Drone 01</td>
-                                    <td>Captura de Imagens</td>
-                                    <td><span class="status-badge danger">Falhou</span></td>
-                                </tr>
+                            <tbody id="reports-tbody">
+                                <!-- Relatórios serão inseridos aqui via JavaScript -->
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
+        </div>
     </div>
 
-    <!-- Modal de Detalhes do Relatório -->
-    <div id="reportModal" class="modal">
+    <!-- Modal para detalhes da missão -->
+    <div class="modal" id="mission-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Detalhes da Missão</h2>
-                <span class="close" onclick="closeModal()">&times;</span>
+                <h3>Detalhes da Missão</h3>
+                <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="report-detail-grid">
-                    <div class="detail-item">
-                        <label>Drone:</label>
-                        <span id="modalDroneName">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>Tipo de Coleta:</label>
-                        <span id="modalCollectionType">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>Status:</label>
-                        <span id="modalStatus">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>Duração da Missão:</label>
-                        <span id="modalDuration">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>Coordenadas Geográficas:</label>
-                        <span id="modalCoordinates">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>Programa:</label>
-                        <span id="modalProgram">-</span>
-                    </div>
+                <div class="mission-detail">
+                    <span class="detail-label">Duração:</span>
+                    <span id="mission-duration">--</span>
                 </div>
-                
-                <h3>Dados dos Sensores Externos</h3>
-                <div class="sensor-data-grid">
-                    <div class="sensor-data-item">
-                        <label>Temperatura da Água:</label>
-                        <span id="modalWaterTemp">-</span>
-                    </div>
-                    <div class="sensor-data-item">
-                        <label>Salinidade:</label>
-                        <span id="modalSalinity">-</span>
-                    </div>
-                    <div class="sensor-data-item">
-                        <label>Visibilidade:</label>
-                        <span id="modalVisibility">-</span>
-                    </div>
-                    <div class="sensor-data-item">
-                        <label>Velocidade do Drone:</label>
-                        <span id="modalDroneSpeed">-</span>
-                    </div>
-                    <div class="sensor-data-item">
-                        <label>Velocidade da Corrente:</label>
-                        <span id="modalCurrentSpeed">-</span>
-                    </div>
-                    <div class="sensor-data-item">
-                        <label>Vida Marinha (10m):</label>
-                        <span id="modalMarineLife">-</span>
-                    </div>
+                <div class="mission-detail">
+                    <span class="detail-label">Profundidade:</span>
+                    <span id="mission-depth">--</span>
+                </div>
+                <div class="mission-detail">
+                    <span class="detail-label">Energia Gasta:</span>
+                    <span id="mission-energy">--</span>
+                </div>
+                <div class="mission-detail">
+                    <span class="detail-label">Temperatura:</span>
+                    <span id="mission-temperature">--</span>
+                </div>
+                <div class="mission-detail">
+                    <span class="detail-label">Salinidade:</span>
+                    <span id="mission-salinity">--</span>
+                </div>
+                <div class="mission-detail">
+                    <span class="detail-label">Visibilidade:</span>
+                    <span id="mission-visibility">--</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="app.js" defer></script>
+    <!-- Modal para código do programa -->
+    <div class="modal" id="code-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="code-modal-title">Código do Programa</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre><code id="code-content"></code></pre>
+                <button id="copy-code-btn" class="btn primary">
+                    <i class="fas fa-copy"></i> Copiar Código
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
