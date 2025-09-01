@@ -362,7 +362,7 @@ img {
 .footer-social h4::after {
     content: '';
     display: block;
-    width: 40px;
+    width: 100px;
     height: 2px;
     background-color: var(--accent-color);
     margin-top: 10px;
@@ -519,4 +519,43 @@ img {
     .social-links {
         justify-content: center;
     }
+}
+
+/* Footer Links Styles */
+.footer-links {
+    margin: 20px 0;
+}
+
+.footer-links ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+}
+
+.footer-links ul li a {
+    color: var(--beige);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.footer-links ul li a:hover {
+    color: var(--soft-green);
+}
+
+.footer-links ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--soft-green);
+    transition: var(--transition);
+}
+
+.footer-links ul li a:hover::after {
+    width: 100%;
 }

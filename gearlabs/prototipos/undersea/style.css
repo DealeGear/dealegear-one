@@ -232,7 +232,7 @@ body {
 .comm-diagram {
     position: relative;
     height: 300px;
-    background: url('https://picsum.photos/seed/comm-system/800/300') center/cover;
+    background: url('img/nva-mae-2.jpg') center/cover;
     border-radius: 15px;
     overflow: hidden;
     margin: 2rem 0;
@@ -303,4 +303,66 @@ body {
 @keyframes wave {
     0% { background-position-x: 0; }
     100% { background-position-x: 1440px; }
+}
+/* Footer Styles */
+.footer-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0 5px;
+}
+
+.footer-link:hover {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--light-blue);
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+.social-links a {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-links a:hover {
+    background-color: var(--ocean-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 105, 148, 0.4);
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+    .footer-link {
+        font-size: 0.85rem;
+        margin: 0.25rem;
+    }
+    
+    .social-links a {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 1rem;
+    }
 }

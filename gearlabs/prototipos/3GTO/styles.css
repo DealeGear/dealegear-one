@@ -546,75 +546,56 @@ section {
     flex-wrap: wrap;
 }
 
-/* Footer */
-.footer {
-    background: var(--light-bg);
-    padding: 3rem 0 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+/* Footer Links Styles */
+.footer-links {
+    margin: 20px 0;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.footer-logo p {
-    color: var(--text-secondary);
-    margin-top: 0.5rem;
-}
-
-.footer-link-group h4 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.footer-link-group a {
-    display: block;
-    color: var(--text-secondary);
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    transition: color 0.3s ease;
-}
-
-.footer-link-group a:hover {
-    color: var(--primary-color);
-}
-
-.footer-social h4 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.social-icons {
+.footer-links ul {
     display: flex;
-    gap: 1rem;
-}
-
-.social-icons a {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: var(--card-bg);
-    border-radius: 50%;
-    color: var(--text-secondary);
-    transition: all 0.3s ease;
+    list-style: none;
+    gap: 30px;
 }
 
-.social-icons a:hover {
-    background: var(--gradient-1);
-    color: var(--text-primary);
-    transform: translateY(-3px);
+.footer-links ul li a {
+    color: var(--beige);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
 }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-secondary);
+.footer-links ul li a:hover {
+    color: var(--soft-green);
+}
+
+.footer-links ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--soft-green);
+    transition: var(--transition);
+}
+
+.footer-links ul li a:hover::after {
+    width: 100%;
+}
+
+/* Responsive adjustments for footer links */
+@media (max-width: 768px) {
+    .footer-links ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .footer-links ul li a::after {
+        display: none;
+    }
 }
 
 /* Responsive Design */

@@ -3,168 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabr - Framework de Fabricação Compartilhada</title>
-    <link rel="stylesheet" href="styles.app.css">
+    <title>Fabr — Plataforma Colaborativa de Fabricação</title>
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    <!-- Header Fixo -->
+    <!-- Header -->
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <h1>Fabr</h1>
-                </div>
-                <nav class="nav-menu">
-                    <ul>
-                        <li><a href="#" data-page="projetos">Projetos</a></li>
-                        <li><a href="#" data-page="habilidades">Minhas Habilidades</a></li>
-                        <li><a href="#" data-page="perfil">Perfil</a></li>
-                        <li><a href="#" id="logout-btn">Logout</a></li>
-                    </ul>
-                </nav>
-                <button class="dark-mode-toggle" id="dark-mode-toggle">
-                    <span class="sun-icon">☀️</span>
-                    <span class="moon-icon">🌙</span>
-                </button>
-            </div>
+        <div class="logo">
+            <span class="logo-text">Fabr</span>
         </div>
+        <nav class="nav-menu">
+            <button id="btnOportunidades" class="nav-button">Buscar Oportunidades</button>
+            <button id="btnProjetos" class="nav-button">Projetos em Destaque</button>
+            <button id="btnCadastro" class="nav-button signup-button">Se Cadastrar</button>
+                        <button id="btnLogout" class="nav-button">Logout</button>
+            <!-- Botão de modo dia/noite -->
+            <button id="modoDiaNoite" class="modo-toggle" title="Alternar modo dia/noite">
+                <span class="icone-modo">🌙</span>
+            </button>
+        </nav>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Tela de Login/Cadastro -->
-        <div id="auth-container" class="auth-container">
-            <div class="auth-box">
-                <h2 id="auth-title">Login</h2>
-                <form id="auth-form">
+        <section id="contentArea" class="content-area">
+            <div class="welcome-message">
+                <h1>Bem-vindo à Fabr</h1>
+                <p>Plataforma colaborativa de fabricação</p>
+                <p>Selecione uma opção no menu para começar</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Navigation Links -->
+            <nav class="footer-nav">
+                <ul class="footer-links">
+                    <li><a href="https://discord.gg/vKK7xVcZJ8" target="_blank">Comunidade</a></li>
+                    <li><a href="../../docs/index.html">Documentação</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="../../index.html">GearLabs</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Copyright Section -->
+            <div class="footer-copyright">
+                <p>&copy; 2025 DealeGear. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Cadastro -->
+    <div id="modalCadastro" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirmar Cadastro</h2>
+                <span class="close-button">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="cadastroForm">
                     <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" required>
-                        <span class="error-message" id="email-error"></span>
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" value="João Silva" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="senha">Senha</label>
-                        <input type="password" id="senha" name="senha" required>
-                        <span class="error-message" id="senha-error"></span>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" value="joao.silva@example.com" readonly>
                     </div>
-                    <div class="form-group" id="nome-group" style="display: none;">
-                        <label for="nome">Nome</label>
-                        <input type="text" id="nome" name="nome">
-                        <span class="error-message" id="nome-error"></span>
+                    <div class="form-group">
+                        <label for="habilidade">Habilidade Principal:</label>
+                        <input type="text" id="habilidade" value="Desenvolvimento de Software" readonly>
                     </div>
-                    <div class="form-group" id="localizacao-group" style="display: none;">
-                        <label for="localizacao">Localização</label>
-                        <input type="text" id="localizacao" name="localizacao">
-                    </div>
-                    <div class="form-group" id="habilidades-group" style="display: none;">
-                        <label>Habilidades</label>
-                        <div class="habilidades-tags" id="habilidades-cadastro"></div>
-                        <button type="button" id="add-habilidade-cadastro">+ Adicionar habilidade</button>
-                    </div>
-                    <button type="submit" class="btn-primary" id="auth-submit">Entrar</button>
-                    <p class="auth-switch">
-                        <span id="auth-switch-text">Não tem uma conta?</span>
-                        <a href="#" id="auth-switch-link">Cadastre-se</a>
-                    </p>
+                    <button type="button" id="btnConfirmarCadastro" class="submit-button">Confirmar Cadastro</button>
                 </form>
             </div>
         </div>
-
-        <!-- Dashboard -->
-        <div id="dashboard" class="container dashboard" style="display: none;">
-            <h2>Dashboard</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <h3>Projetos disponíveis</h3>
-                    <p class="card-number" id="projetos-disponiveis">0</p>
-                    <p>projetos abertos</p>
-                </div>
-                <div class="card">
-                    <h3>Projetos em andamento</h3>
-                    <p class="card-number" id="projetos-andamento">0</p>
-                    <p>participando</p>
-                </div>
-                <div class="card">
-                    <h3>Minhas contribuições</h3>
-                    <p class="card-number" id="contribuicoes">0</p>
-                    <p>módulos entregues</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Página de Projetos -->
-        <div id="projetos-page" class="container projetos-page" style="display: none;">
-            <h2>Projetos</h2>
-            <div class="projetos-filtro">
-                <label for="filtro-habilidade">Filtrar por habilidade:</label>
-                <select id="filtro-habilidade">
-                    <option value="">Todas as habilidades</option>
-                </select>
-            </div>
-            <div class="projetos-grid" id="projetos-grid">
-                <!-- Projetos serão renderizados aqui -->
-            </div>
-        </div>
-
-        <!-- Página de Habilidades -->
-        <div id="habilidades-page" class="container habilidades-page" style="display: none;">
-            <h2>Minhas Habilidades</h2>
-            <button class="btn-primary" id="add-habilidade-btn">+ Adicionar habilidade</button>
-            <div class="habilidades-list" id="habilidades-list">
-                <!-- Habilidades serão renderizadas aqui -->
-            </div>
-        </div>
-
-        <!-- Página de Perfil -->
-        <div id="perfil-page" class="container perfil-page" style="display: none;">
-            <h2>Meu Perfil</h2>
-            <div class="perfil-card">
-                <div class="perfil-info">
-                    <h3 id="perfil-nome">Nome do usuário</h3>
-                    <p id="perfil-bio">Bio do usuário</p>
-                    <p id="perfil-localizacao">📍 Localização</p>
-                </div>
-                <div class="perfil-reputacao">
-                    <h4>Reputação</h4>
-                    <div class="reputacao-bar">
-                        <div class="reputacao-fill" id="reputacao-fill"></div>
-                    </div>
-                    <p id="reputacao-pontos">0 pontos</p>
-                </div>
-                <button class="btn-secondary" id="editar-perfil-btn">Editar perfil</button>
-            </div>
-            <div class="perfil-habilidades">
-                <h3>Minhas Habilidades</h3>
-                <div class="habilidades-tags" id="perfil-habilidades"></div>
-            </div>
-            <div class="meus-projetos">
-                <h3>Meus Projetos</h3>
-                <div class="meus-projetos-list" id="meus-projetos-list">
-                    <!-- Projetos do usuário serão renderizados aqui -->
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <div id="modal-body">
-                <!-- Conteúdo do modal será inserido aqui -->
-            </div>
-        </div>
     </div>
 
-    <!-- Mensagem de Sucesso -->
-    <div id="success-message" class="success-message">
-        <span id="success-text"></span>
+    <!-- Modal de Projeto -->
+    <div id="modalProjeto" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="projetoTitulo">Título do Projeto</h2>
+                <span class="close-button">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="projetoDescricao">Descrição do projeto</p>
+                <h3>Módulos do Projeto</h3>
+                <div id="projetoModulos" class="modulos-container">
+                    <!-- Módulos serão inseridos dinamicamente -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>
-    <footer class="meu-rodape">
-  <a href="index.html">Voltar para Landpage</a>
-</footer>
-
 </body>
 </html>

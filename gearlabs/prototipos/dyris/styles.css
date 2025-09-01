@@ -2,6 +2,8 @@
 :root {
     --primary-color: #4361ee;
     --secondary-color: #3a0ca3;
+    --primary-color-2: #f07731;
+    --secondary-color-2: #ee5d09;
     --accent-color: #4cc9f0;
     --light-color: #f8f9fa;
     --dark-color: #212529;
@@ -101,11 +103,11 @@ section {
     font-size: 16px;
 }
 
-.btn-primary {
+/*.btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-}
+    color: yellow;
+    /*box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+}*/
 
 .btn-primary:hover {
     transform: translateY(-3px);
@@ -358,7 +360,7 @@ section {
 
 /* CTA Section */
 .cta {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color-2), var(--secondary-color-2));
     color: white;
     text-align: center;
     padding: 100px 0;
@@ -600,5 +602,58 @@ section {
     
     .cta {
         padding: 60px 0;
+    }
+}
+/* Footer simplificado com 4 links */
+.footer-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-links ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.footer-links ul li a:hover {
+    color: white;
+}
+
+/* Responsividade para footer simplificado */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        margin-top: 30px;
+        width: 100%;
+    }
+    
+    .footer-links ul {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-links ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .footer-links ul li {
+        width: 100%;
     }
 }

@@ -3,671 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabr — Framework de Fabricação Compartilhada</title>
-    <meta name="description" content="O Fabr conecta pessoas e habilidades para fabricar partes de projetos modulares — como o 'GitHub' do mundo físico.">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fabr.example.com/">
-    <meta property="og:title" content="Fabr — Framework de Fabricação Compartilhada">
-    <meta property="og:description" content="O Fabr conecta pessoas e habilidades para fabricar partes de projetos modulares — como o 'GitHub' do mundo físico.">
-    <meta property="og:image" content="https://fabr.example.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://fabr.example.com/">
-    <meta property="twitter:title" content="Fabr — Framework de Fabricação Compartilhada">
-    <meta property="twitter:description" content="O Fabr conecta pessoas e habilidades para fabricar partes de projetos modulares — como o 'GitHub' do mundo físico.">
-    <meta property="twitter:image" content="https://fabr.example.com/images/og-image.jpg">
-    
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.landpage.css">
+    <title>Fabr - Plataforma Colaborativa de Fabricação</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Banner de Cookies -->
-    <div id="cookie-banner" class="cookie-banner" role="alert" aria-live="polite">
-        <div class="cookie-content">
-            <p>Utilizamos cookies para melhorar sua experiência em nosso site. Ao continuar navegando, você concorda com nossa política de privacidade.</p>
-            <button id="accept-cookies" class="btn btn-primary">Aceitar</button>
-        </div>
-    </div>
-
-    <!-- Header -->
+    <!-- Header fixo -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <a href="#">Fabr</a>
-                </div>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li><a href="#como-funciona">Como funciona</a></li>
-                        <li><a href="#projetos">Projetos</a></li>
-                        <li><a href="#habilidades">Habilidades</a></li>
-                        <li><a href="#parceiros">Parceiros</a></li>
-                        <li><a href="#faq">Perguntas</a></li>
-                        <li><a href="#" class="btn btn-secondary">Entrar</a></li>
-                        <li><a href="#" class="btn btn-primary">Quero Participar</a></li>
+                <div class="logo">Fabr</div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="#como-funciona">Como Funciona</a></li>
+                        <li><a href="#projetos">Projetos Colaborativos</a></li>
+                        <li><a href="#habilidades">Habilidades Requeridas</a></li>
+                        <li><a href="#fluxo">Fluxo</a></li>
+                        <li><a href="#perguntas">Perguntas</a></li>
+                        
                     </ul>
-                    <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
                 </nav>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                        <span class="theme-icon">☀️</span>
+                    </button>
+                    <a href="app.html" class="btn btn-primary">App</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Menu mobile">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Construa coisas reais em colaboração</h1>
-                        <p>O Fabr conecta pessoas e habilidades para fabricar partes de projetos modulares — como o 'GitHub' do mundo físico.</p>
-                        <div class="hero-cta">
-                            <a href="#" class="btn btn-primary">Cadastre-se</a>
-                            <a href="#projetos" class="btn btn-secondary">Ver projetos</a>
-                        </div>
-                        <div class="trust-badge">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L2 7V12C2 16.5 4.23 20.68 7.62 23.15L12 24L16.38 23.15C19.77 20.68 22 16.5 22 12V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>Projeto de código aberto e hardware aberto</span>
-                        </div>
-                    </div>
-                    <div class="hero-visual">
-                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="modular-diagram">
-                            <!-- Módulo central -->
-                            <rect x="150" y="150" width="100" height="100" rx="10" fill="var(--color-primary)" fill-opacity="0.2" stroke="var(--color-primary)" stroke-width="2"/>
-                            <text x="200" y="205" text-anchor="middle" fill="var(--color-primary)" font-weight="bold">Fabr</text>
-                            
-                            <!-- Módulos conectados -->
-                            <rect x="50" y="50" width="80" height="80" rx="8" fill="var(--color-secondary)" fill-opacity="0.2" stroke="var(--color-secondary)" stroke-width="2"/>
-                            <text x="90" y="95" text-anchor="middle" fill="var(--color-secondary)" font-size="14">Módulo 1</text>
-                            
-                            <rect x="270" y="50" width="80" height="80" rx="8" fill="var(--color-secondary)" fill-opacity="0.2" stroke="var(--color-secondary)" stroke-width="2"/>
-                            <text x="310" y="95" text-anchor="middle" fill="var(--color-secondary)" font-size="14">Módulo 2</text>
-                            
-                            <rect x="50" y="270" width="80" height="80" rx="8" fill="var(--color-secondary)" fill-opacity="0.2" stroke="var(--color-secondary)" stroke-width="2"/>
-                            <text x="90" y="315" text-anchor="middle" fill="var(--color-secondary)" font-size="14">Módulo 3</text>
-                            
-                            <rect x="270" y="270" width="80" height="80" rx="8" fill="var(--color-secondary)" fill-opacity="0.2" stroke="var(--color-secondary)" stroke-width="2"/>
-                            <text x="310" y="315" text-anchor="middle" fill="var(--color-secondary)" font-size="14">Módulo 4</text>
-                            
-                            <!-- Conexões -->
-                            <line x1="130" y1="90" x2="150" y2="150" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="5,5"/>
-                            <line x1="270" y1="90" x2="250" y2="150" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="5,5"/>
-                            <line x1="130" y1="310" x2="150" y2="250" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="5,5"/>
-                            <line x1="270" y1="310" x2="250" y2="250" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="5,5"/>
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Fabr: Criação colaborativa, fabricação real.</h1>
+                    <p>A plataforma para fabricar projetos modulares com colaboração aberta.</p>
+                    <a href="#quero-participar" class="btn btn-large btn-primary">Quero Participar</a>
+                </div>
+                <div class="hero-image">
+                    <!-- SVG ilustrativo industrial -->
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Base -->
+                        <rect x="50" y="300" width="400" height="20" fill="#555" />
+                        
+                        <!-- Peças mecânicas -->
+                        <circle cx="150" cy="250" r="50" fill="#666" stroke="#ff7b25" stroke-width="3" />
+                        <circle cx="150" cy="250" r="30" fill="#444" />
+                        <circle cx="150" cy="250" r="15" fill="#222" />
+                        
+                        <!-- Engrenagem -->
+                        <g transform="translate(350, 250)">
+                            <circle r="50" fill="#666" stroke="#00bcd4" stroke-width="3" />
+                            <circle r="35" fill="#444" />
+                            <circle r="15" fill="#222" />
+                            <g>
+                                <rect x="-10" y="-50" width="20" height="100" fill="#666" />
+                                <rect x="-50" y="-10" width="100" height="20" fill="#666" />
+                                <rect x="-35" y="-35" width="70" height="70" fill="#666" transform="rotate(45)" />
+                            </g>
+                        </g>
+                        
+                        <!-- Placa eletrônica -->
+                        <rect x="200" y="180" width="100" height="80" rx="5" fill="#2a5d42" stroke="#00bcd4" stroke-width="2" />
+                        <rect x="210" y="190" width="15" height="15" fill="#333" />
+                        <rect x="235" y="190" width="15" height="15" fill="#333" />
+                        <rect x="260" y="190" width="15" height="15" fill="#333" />
+                        <rect x="210" y="215" width="15" height="15" fill="#333" />
+                        <rect x="235" y="215" width="15" height="15" fill="#333" />
+                        <rect x="260" y="215" width="15" height="15" fill="#333" />
+                        <rect x="210" y="240" width="15" height="15" fill="#333" />
+                        <rect x="235" y="240" width="15" height="15" fill="#333" />
+                        <rect x="260" y="240" width="15" height="15" fill="#333" />
+                        
+                        <!-- Conexões -->
+                        <line x1="200" y1="220" x2="150" y2="220" stroke="#ff7b25" stroke-width="3" />
+                        <line x1="300" y1="220" x2="350" y2="220" stroke="#00bcd4" stroke-width="3" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Como Funciona -->
+    <section id="como-funciona" class="section">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#00bcd4"/>
                         </svg>
                     </div>
+                    <h3>Cadastre suas habilidades</h3>
+                    <p>Crie seu perfil e destaque suas competências técnicas para a comunidade Fabr.</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Como Funciona Section -->
-        <section id="como-funciona" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Como funciona</h2>
-                    <p>Três passos simples para começar a fabricar o futuro</p>
-                </div>
-                <div class="steps">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h3>Cadastre suas habilidades</h3>
-                        <p>Crie seu perfil e adicione suas competências técnicas. Seja você um especialista em soldagem, CAD, eletrônica ou qualquer outra habilidade de fabricação.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h3>Seja alocado em módulos de projetos</h3>
-                        <p>Nossa plataforma conecta você a projetos que precisam das suas habilidades. Você pode escolher módulos que se alinham com seus interesses e disponibilidade.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h3>Entregue peças e ganhe reputação/remuneração</h3>
-                        <p>Complete as tarefas do módulo, entregue as peças e receba pontos de reputação. Quando o projeto se torna um produto, você compartilha dos lucros.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projetos em Destaque Section -->
-        <section id="projetos" class="section section-alt">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Projetos em destaque</h2>
-                    <p>Participe de projetos inovadores que estão mudando o mundo</p>
-                </div>
-                <div id="projetos-container" class="projects-grid">
-                    <!-- Os cards de projetos serão inseridos aqui via JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Match de Habilidades Section -->
-        <section id="habilidades" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Match de Habilidades</h2>
-                    <p>Encontre o projeto perfeito para suas competências</p>
-                </div>
-                <div class="form-container">
-                    <form id="skills-form" class="skills-form">
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" name="name" required>
-                            <span class="error-message" id="name-error"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" required>
-                            <span class="error-message" id="email-error"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="location">Cidade/Estado</label>
-                            <input type="text" id="location" name="location" required>
-                            <span class="error-message" id="location-error"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Habilidades</label>
-                            <div class="skills-tags">
-                                <div class="skill-tag">
-                                    <input type="checkbox" id="skill-soldagem" name="skills" value="soldagem">
-                                    <label for="skill-soldagem">Soldagem</label>
-                                </div>
-                                <div class="skill-tag">
-                                    <input type="checkbox" id="skill-cad" name="skills" value="CAD">
-                                    <label for="skill-cad">CAD</label>
-                                </div>
-                                <div class="skill-tag">
-                                    <input type="checkbox" id="skill-impressao3d" name="skills" value="impressao3d">
-                                    <label for="skill-impressao3d">Impressão 3D</label>
-                                </div>
-                                <div class="skill-tag">
-                                    <input type="checkbox" id="skill-microcontroladores" name="skills" value="microcontroladores">
-                                    <label for="skill-microcontroladores">Microcontroladores</label>
-                                </div>
-                                <div class="skill-tag">
-                                    <input type="checkbox" id="skill-eletronica-potencia" name="skills" value="eletronicapotencia">
-                                    <label for="skill-eletronica-potencia">Eletrônica de Potência</label>
-                                </div>
-                                <div class="skill-tag">
-                                    <input type="checkbox" id="skill-quimica-polimeros" name="skills" value="quimicapolimeros">
-                                    <label for="skill-quimica-polimeros">Química de Polímeros</label>
-                                </div>
-                                <div class="skill-tag">
-                                    <input type="checkbox" id="skill-cnc" name="skills" value="CNC">
-                                    <label for="skill-cnc">CNC</label>
-                                </div>
-                                <div class="skill-tag">
-                                    <input type="checkbox" id="skill-programacao" name="skills" value="programacao">
-                                    <label for="skill-programacao">Programação</label>
-                                </div>
-                            </div>
-                            <span class="error-message" id="skills-error"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="availability">Disponibilidade (horas/semana)</label>
-                            <select id="availability" name="availability" required>
-                                <option value="">Selecione</option>
-                                <option value="1-5">1-5 horas</option>
-                                <option value="6-10">6-10 horas</option>
-                                <option value="11-15">11-15 horas</option>
-                                <option value="16-20">16-20 horas</option>
-                                <option value="20+">Mais de 20 horas</option>
-                            </select>
-                            <span class="error-message" id="availability-error"></span>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Reputação & Incentivos Section -->
-        <section class="section section-alt">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Reputação & Incentivos</h2>
-                    <p>Seja reconhecido e recompensado pelo seu trabalho</p>
-                </div>
-                <div class="incentives">
-                    <div class="incentive-card">
-                        <div class="incentive-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3>Pontos por entregas</h3>
-                        <p>Cada entrega validada gera pontos que aumentam sua reputação na plataforma e te dão acesso a projetos mais complexos.</p>
-                    </div>
-                    <div class="incentive-card">
-                        <div class="incentive-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3>Revisões por pares</h3>
-                        <p>Participe como revisor de entregas e receba pontos extras por ajudar a manter a qualidade dos projetos.</p>
-                    </div>
-                    <div class="incentive-card">
-                        <div class="incentive-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 18V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M4.93 4.93L7.76 7.76" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16.24 16.24L19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M2 12H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M18 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M4.93 19.07L7.76 16.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16.24 7.76L19.07 4.93" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3>Divisão de receita</h3>
-                        <p>Quando um projeto vira produto, a receita é dividida conforme o registro de contribuições de cada participante.</p>
-                    </div>
-                    <div class="incentive-card">
-                        <div class="incentive-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3>Licenças abertas</h3>
-                        <p>Todos os projetos utilizam licenças Open Hardware e Creative Commons, garantindo acesso e liberdade para todos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Parceiros & Espaços Makers Section -->
-        <section id="parceiros" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Parceiros & Espaços Makers</h2>
-                    <p>Conectamos você a uma rede de makerspaces e parceiros em todo o Brasil</p>
-                </div>
-                <div class="partners-content">
-                    <div class="partners-logos">
-                        <div class="partner-logo">
-                            <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="10" y="15" width="40" height="30" rx="5" fill="var(--color-secondary)" fill-opacity="0.2"/>
-                                <text x="30" y="35" text-anchor="middle" fill="var(--color-secondary)" font-size="10">Logo 1</text>
-                            </svg>
-                        </div>
-                        <div class="partner-logo">
-                            <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="10" y="15" width="40" height="30" rx="5" fill="var(--color-secondary)" fill-opacity="0.2"/>
-                                <text x="30" y="35" text-anchor="middle" fill="var(--color-secondary)" font-size="10">Logo 2</text>
-                            </svg>
-                        </div>
-                        <div class="partner-logo">
-                            <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="10" y="15" width="40" height="30" rx="5" fill="var(--color-secondary)" fill-opacity="0.2"/>
-                                <text x="30" y="35" text-anchor="middle" fill="var(--color-secondary)" font-size="10">Logo 3</text>
-                            </svg>
-                        </div>
-                        <div class="partner-logo">
-                            <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="10" y="15" width="40" height="30" rx="5" fill="var(--color-secondary)" fill-opacity="0.2"/>
-                                <text x="30" y="35" text-anchor="middle" fill="var(--color-secondary)" font-size="10">Logo 4</text>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="map-container">
-                        <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" class="brazil-map">
-                            <!-- Mapa simplificado do Brasil -->
-                            <path d="M400,100 C500,100 600,150 650,250 C700,350 600,450 400,450 C200,450 100,350 150,250 C200,150 300,100 400,100Z" fill="var(--color-bg-secondary)" stroke="var(--color-border)" stroke-width="2"/>
-                            
-                            <!-- Pins de cidades -->
-                            <g class="city-pin" data-city="São Paulo" data-services="Corte a laser, impressoras 3D, bancada eletrônica">
-                                <circle cx="450" cy="350" r="10" fill="var(--color-primary)"/>
-                                <circle cx="450" cy="350" r="5" fill="white"/>
-                            </g>
-                            
-                            <g class="city-pin" data-city="Campinas" data-services="Impressoras 3D, CNC, bancada eletrônica">
-                                <circle cx="430" cy="320" r="10" fill="var(--color-primary)"/>
-                                <circle cx="430" cy="320" r="5" fill="white"/>
-                            </g>
-                            
-                            <g class="city-pin" data-city="Porto Alegre" data-services="Corte a laser, CNC, solda">
-                                <circle cx="350" cy="420" r="10" fill="var(--color-primary)"/>
-                                <circle cx="350" cy="420" r="5" fill="white"/>
-                            </g>
-                            
-                            <g class="city-pin" data-city="Recife" data-services="Impressoras 3D, bancada eletrônica">
-                                <circle cx="550" cy="380" r="10" fill="var(--color-primary)"/>
-                                <circle cx="550" cy="380" r="5" fill="white"/>
-                            </g>
-                            
-                            <g class="city-pin" data-city="Rio de Janeiro" data-services="Corte a laser, impressoras 3D">
-                                <circle cx="480" cy="370" r="10" fill="var(--color-primary)"/>
-                                <circle cx="480" cy="370" r="5" fill="white"/>
-                            </g>
-                            
-                            <g class="city-pin" data-city="Belo Horizonte" data-services="CNC, bancada eletrônica">
-                                <circle cx="440" cy="340" r="10" fill="var(--color-primary)"/>
-                                <circle cx="440" cy="340" r="5" fill="white"/>
-                            </g>
-                            
-                            <!-- Tooltip -->
-                            <g id="map-tooltip" visibility="hidden">
-                                <rect x="0" y="0" width="200" height="60" rx="5" fill="var(--color-bg)" stroke="var(--color-border)" stroke-width="1"/>
-                                <text x="10" y="20" fill="var(--color-text)" font-weight="bold" id="tooltip-city"></text>
-                                <text x="10" y="40" fill="var(--color-text)" font-size="12" id="tooltip-services"></text>
-                            </g>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="#00bcd4"/>
                         </svg>
                     </div>
+                    <h3>Escolha um módulo de projeto</h3>
+                    <p>Explore projetos em andamento e encontre aqueles que se alinham com suas habilidades.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#00bcd4"/>
+                        </svg>
+                    </div>
+                    <h3>Construa junto e entregue protótipos</h3>
+                    <p>Colabore com a equipe, desenvolva seu módulo e integre ao projeto final.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Linha do Tempo do Fluxo Section -->
-        <section class="section section-alt">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Linha do Tempo do Fluxo</h2>
-                    <p>Como os projetos evoluem da ideia ao produto final</p>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Ideação</h3>
-                            <p>Definição do problema, brainstorming e concepção inicial do projeto.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Prototipagem</h3>
-                            <p>Criação de protótipos iniciais para testar conceitos e funcionalidades.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Testes</h3>
-                            <p>Validação dos protótipos, identificação de problemas e ajustes necessários.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Integração</h3>
-                            <p>Conexão dos diferentes módulos e componentes do projeto.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Validação</h3>
-                            <p>Testes finais do produto integrado e validação pelos stakeholders.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Produção Piloto</h3>
-                            <p>Fabricação em pequena escala para validação de mercado e processos.</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Seção Projetos Colaborativos -->
+    <section id="projetos" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Projetos Colaborativos em Destaque</h2>
+            <div id="projetos-container" class="projects-grid">
+                <!-- Projetos serão inseridos dinamicamente via JavaScript -->
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Depoimentos Section -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Depoimentos</h2>
-                    <p>O que nossos colaboradores dizem sobre o Fabr</p>
-                </div>
-                <div class="testimonials-container">
-                    <div class="testimonials-carousel">
-                        <div class="testimonial-item active">
-                            <div class="testimonial-content">
-                                <p>"O Fabr mudou minha forma de trabalhar em projetos. Consegui aplicar minhas habilidades em eletrônica em projetos que realmente fazem a diferença."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">
-                                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="author-info">
-                                        <h4>Carlos Silva</h4>
-                                        <p>Especialista em Eletrônica</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <p>"Como líder de projeto, o Fabr me permitiu encontrar colaboradores talentosos para diferentes módulos. Conseguimos entregar nosso protótipo em metade do tempo planejado."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">
-                                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="author-info">
-                                        <h4>Ana Santos</h4>
-                                        <p>Líder de Projeto</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <p>"Sou designer industrial e sempre tive dificuldade em encontrar fabricantes para meus protótipos. Com o Fabr, conectei-me com especialistas em CNC e impressão 3D que transformaram minhas ideias em realidade."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">
-                                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                    <div class="author-info">
-                                        <h4>Ricardo Oliveira</h4>
-                                        <p>Designer Industrial</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonials-controls">
-                        <button id="prev-testimonial" class="testimonial-control" aria-label="Depoimento anterior">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <div class="testimonials-indicators">
-                            <span class="indicator active" data-index="0"></span>
-                            <span class="indicator" data-index="1"></span>
-                            <span class="indicator" data-index="2"></span>
-                        </div>
-                        <button id="next-testimonial" class="testimonial-control" aria-label="Próximo depoimento">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+    <!-- Seção Habilidades Requeridas -->
+    <section id="habilidades" class="section">
+        <div class="container">
+            <h2 class="section-title">Habilidades Requeridas</h2>
+            <div id="habilidades-container" class="skills-tags">
+                <!-- Habilidades serão inseridas dinamicamente via JavaScript -->
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="section section-alt">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Perguntas Frequentes</h2>
-                    <p>Tire suas dúvidas sobre como funciona o Fabr</p>
+    <!-- Seção Fluxo -->
+    <section id="fluxo" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Fluxo de Projeto</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Ideação</h3>
+                        <p>Definição do conceito e objetivos do projeto</p>
+                    </div>
                 </div>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Quais são os custos para participar do Fabr?</span>
-                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>O cadastro no Fabr é gratuito. Para projetos pessoais ou de código aberto, não há custos. Para projetos comerciais, cobramos uma pequena taxa sobre a receita gerada, que é usada para manter a plataforma e oferecer suporte à comunidade.</p>
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Prototipagem</h3>
+                        <p>Desenvolvimento inicial dos módulos individuais</p>
                     </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Como funciona a propriedade intelectual dos projetos?</span>
-                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>A propriedade intelectual é definida no início de cada projeto. Projetos de código aberto utilizam licenças como CERN OHL-S para hardware e Creative Commons para documentação. Projetos comerciais podem definir acordos específicos entre os participantes, com divisão proporcional dos direitos conforme as contribuições.</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Testes</h3>
+                        <p>Validação de cada componente separadamente</p>
                     </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Como são feitos os matches entre habilidades e projetos?</span>
-                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Nosso algoritmo analisa as habilidades cadastradas pelos usuários e as necessidades dos projetos, considerando também a localização geográfica e disponibilidade. Você pode se candidatar a projetos que se alinhem com seu perfil e receber convites de líderes de projeto.</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Integração</h3>
+                        <p>Conexão dos módulos em um sistema funcional</p>
                     </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Quais são os prazos típicos para os projetos?</span>
-                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Os prazos variam conforme a complexidade do projeto. Projetos simples podem levar de 2 a 4 semanas, enquanto projetos mais complexos podem levar de 3 a 6 meses. Cada módulo tem prazos específicos definidos no início do projeto, com flexibilidade para ajustes conforme necessário.</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Validação</h3>
+                        <p>Testes completos do sistema integrado</p>
                     </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Como é garantida a segurança e qualidade das entregas?</span>
-                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Implementamos um sistema de revisão por pares, onde as entregas são avaliadas por outros membros da comunidade com expertise relevante. Também temos diretrizes de qualidade e segurança que devem ser seguidas, além de um sistema de reputação que incentiva a excelência.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Que tipo de suporte é oferecido aos participantes?</span>
-                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Oferecemos suporte técnico através de fóruns da comunidade, documentação detalhada e tutoriais. Para projetos comerciais, oferecemos suporte prioritário. Também organizamos eventos e workshops para capacitação dos participantes.</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Produção Piloto</h3>
+                        <p>Fabricação dos primeiros exemplares funcionais</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Call to Action Final Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Pronto para fabricar o futuro junto?</h2>
-                    <p>Junte-se a milhares de makers, engenheiros e criadores que estão transformando ideias em realidade através do Fabr.</p>
-                    <a href="#" class="btn btn-primary btn-large">Começar agora</a>
+    
+
+    <!-- Seção Perguntas Frequentes -->
+    <section id="perguntas" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">Quanto custa para participar dos projetos?</button>
+                    <div class="faq-answer">
+                        <p>A participação na plataforma Fabr é gratuita. Cada projeto tem seu próprio modelo de financiamento, que pode incluir crowdfunding, patrocínios ou recursos compartilhados entre os participantes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como funciona a propriedade intelectual dos projetos?</button>
+                    <div class="faq-answer">
+                        <p>A propriedade intelectual é gerenciada através de licenças colaborativas. Geralmente, os resultados são compartilhados sob licenças abertas que permitem uso, modificação e distribuição, com créditos aos colaboradores.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quais são os requisitos para participar?</button>
+                    <div class="faq-answer">
+                        <p>Os requisitos variam conforme o projeto, mas geralmente incluem conhecimentos técnicos específicos, disponibilidade para colaborar e comprometimento com os prazos estabelecidos pela equipe.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Qual é o prazo médio de um projeto?</button>
+                    <div class="faq-answer">
+                        <p>O prazo varia conforme a complexidade do projeto, desde algumas semanas para protótipos simples até vários meses para sistemas mais complexos. Cada projeto define seu cronograma na fase de planejamento.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quais tipos de projetos são aceitos na plataforma?</button>
+                    <div class="faq-answer">
+                        <p>Aceitamos projetos de fabricação digital, eletrônicos, mecânicos, robótica, energia renovável, reciclagem e outras áreas relacionadas à fabricação colaborativa. Todos os projetos devem ter potencial modular e colaborativo.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como são formadas as equipes dos projetos?</button>
+                    <div class="faq-answer">
+                        <p>As equipes são formadas por interessados que se inscrevem para contribuir com habilidades específicas. O coordenador do projeto avalia os perfis e define a composição da equipe com base nas necessidades do projeto.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">O que acontece se um projeto não for concluído?</button>
+                    <div class="faq-answer">
+                        <p>Projetos interrompidos têm seu desenvolvimento documentado e disponibilizado para a comunidade, permitindo que outros possam retomar o trabalho a partir do ponto onde foi parado. O aprendizado adquirido é sempre compartilhado.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Há suporte técnico para os participantes?</button>
+                    <div class="faq-answer">
+                        <p>Sim, oferecemos suporte através dos nossos GearLabs, onde os participantes têm acesso a ferramentas, equipamentos e orientação técnica. Também mantemos fóruns de discussão e sessões de mentoria online.</p>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Seção Quero Participar -->
+    <section id="quero-participar" class="section cta">
+        <div class="container">
+            <h2 class="section-title">Pronto para construir junto?</h2>
+            <p class="section-description">Junte-se à comunidade Fabr e comece a colaborar em projetos incríveis hoje mesmo.</p>
+            <a href="app.html" class="btn btn-large btn-primary">Acessar App</a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="#">Fabr</a>
-                    <p>Framework de Fabricação Compartilhada</p>
-                </div>
+                <div class="footer-logo">Fabr</div>
                 <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Links Úteis</h4>
-                        <ul>
-                            <li><a href="#">Termos de Uso</a></li>
-                            <li><a href="#">Política de Privacidade</a></li>
-                            <li><a href="#">Diretrizes da Comunidade</a></li>
-                            <li><a href="#">Contato</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Recursos</h4>
-                        <ul>
-                            <li><a href="#">Documentação</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Eventos</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Conecte-se</h4>
-                        <ul>
-                            <li><a href="#">GitHub</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">LinkedIn</a></li>
-                            <li><a href="#">YouTube</a></li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li><a href="https://discord.gg/vKK7xVcZJ8" target="_blank">Comunidade</a></li>
+                        <li><a href="../../docs/index.html">Documentação</a></li>
+                        <li><a href="./index.html">Landpage</a></li>
+                        <li><a href="../../index.html">GearLabs</a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Fabr. Todos os direitos reservados. Projetos recomendados sob licença CERN OHL-S para hardware e CC BY-SA para documentação.</p>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 DealeGear. Todos os direitos reservados.</p>
+                </div>
             </div>
         </div>
     </footer>
-
-    <!-- Modal de Sucesso -->
-    <div id="success-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title">Cadastro realizado com sucesso!</h3>
-                <button id="close-modal" class="modal-close" aria-label="Fechar modal">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Obrigado por se cadastrar no Fabr! Em breve, você receberá um e-mail com as próximas etapas e projetos que combinam com suas habilidades.</p>
-            </div>
-            <div class="modal-footer">
-                <button id="modal-ok" class="btn btn-primary">OK</button>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
