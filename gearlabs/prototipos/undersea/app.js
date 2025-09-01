@@ -638,7 +638,8 @@ const elements = {
     navLinks: document.querySelectorAll('.nav-link'),
     contentSections: document.querySelectorAll('.content-section'),
     menuToggle: document.getElementById('menuToggle'),
-    sidebar: document.querySelector('.sidebar'),
+    sidebar: document.getElementById('sidebar'),
+    mainContent: document.getElementById('mainContent'),
     depthSlider: document.getElementById('depth-slider'),
     depthValue: document.getElementById('depth-value'),
     energyConsumption: document.getElementById('energy-consumption'),
@@ -676,7 +677,21 @@ document.addEventListener('DOMContentLoaded', () => {
     renderEnergyChart();
     renderReportsTable();
     startDataSimulation();
+    
+    // Garantir que o menu hamburguer esteja visível em dispositivos móveis
+    ensureMobileMenuVisibility();
 });
+
+// Garantir visibilidade do menu em dispositivos móveis
+function ensureMobileMenuVisibility() {
+    if (window.innerWidth <= 768) {
+        elements.sidebar.style.transform = 'translateX(-100%)';
+        elements.mainContent.style.marginLeft = '0';
+    } else {
+        elements.sidebar.style.transform = 'translateX(0)';
+        elements.mainContent.style.marginLeft = '60px';
+    }
+}
 
 // Inicializar aplicação
 function initializeApp() {
@@ -713,6 +728,16 @@ function setupEventListeners() {
     // Menu toggle para dispositivos móveis
     elements.menuToggle.addEventListener('click', () => {
         elements.sidebar.classList.toggle('active');
+    });
+    
+    // Fechar menu ao clicar fora dele em dispositivos móveis
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            !elements.sidebar.contains(e.target) && 
+            !elements.menuToggle.contains(e.target) &&
+            elements.sidebar.classList.contains('active')) {
+            elements.sidebar.classList.remove('active');
+        }
     });
     
     // Controle de profundidade
@@ -851,7 +876,10 @@ function setupEventListeners() {
     });
     
     // Redimensionamento da janela
-    window.addEventListener('resize', checkScreenSize);
+    window.addEventListener('resize', () => {
+        checkScreenSize();
+        ensureMobileMenuVisibility();
+    });
 }
 
 // Mostrar seção
@@ -869,9 +897,13 @@ function showSection(sectionId) {
 // Verificar tamanho da tela
 function checkScreenSize() {
     if (window.innerWidth <= 768) {
+        // Em dispositivos móveis, garantir que o menu esteja recolhido
         elements.sidebar.classList.remove('collapsed');
+        elements.menuToggle.style.display = 'flex';
     } else {
+        // Em desktops, usar o comportamento normal
         elements.sidebar.classList.add('collapsed');
+        elements.menuToggle.style.display = 'none';
     }
 }
 
@@ -1246,6 +1278,3 @@ function startDataSimulation() {
         });
     }, 15000);
 }
-
-
-
