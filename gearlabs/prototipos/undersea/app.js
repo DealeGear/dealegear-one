@@ -685,11 +685,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // Garantir visibilidade do menu em dispositivos móveis
 function ensureMobileMenuVisibility() {
     if (window.innerWidth <= 768) {
+        // Em dispositivos móveis, esconder o menu por padrão
         elements.sidebar.style.transform = 'translateX(-100%)';
+        elements.sidebar.classList.remove('collapsed');
         elements.mainContent.style.marginLeft = '0';
+        
+        // Garantir que o botão do menu esteja visível
+        elements.menuToggle.style.display = 'flex';
     } else {
+        // Em desktops, mostrar o menu colapsado
         elements.sidebar.style.transform = 'translateX(0)';
+        elements.sidebar.classList.add('collapsed');
         elements.mainContent.style.marginLeft = '60px';
+        
+        // Esconder o botão do menu
+        elements.menuToggle.style.display = 'none';
     }
 }
 
@@ -726,9 +736,11 @@ function setupEventListeners() {
     });
     
     // Menu toggle para dispositivos móveis
-    elements.menuToggle.addEventListener('click', () => {
-        elements.sidebar.classList.toggle('active');
-    });
+    if (elements.menuToggle) {
+        elements.menuToggle.addEventListener('click', () => {
+            elements.sidebar.classList.toggle('active');
+        });
+    }
     
     // Fechar menu ao clicar fora dele em dispositivos móveis
     document.addEventListener('click', (e) => {
@@ -900,10 +912,12 @@ function checkScreenSize() {
         // Em dispositivos móveis, garantir que o menu esteja recolhido
         elements.sidebar.classList.remove('collapsed');
         elements.menuToggle.style.display = 'flex';
+        elements.mainContent.style.marginLeft = '0';
     } else {
         // Em desktops, usar o comportamento normal
         elements.sidebar.classList.add('collapsed');
         elements.menuToggle.style.display = 'none';
+        elements.mainContent.style.marginLeft = '60px';
     }
 }
 
