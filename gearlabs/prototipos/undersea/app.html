@@ -22,7 +22,7 @@
                 <span class="status-text">Online</span>
             </div>
             <!-- Botão do menu para dispositivos móveis -->
-            <button class="menu-toggle" id="menuToggle" title="Abrir menu de navegação">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
                 <i class="fas fa-bars"></i>
             </button>
         </header>
@@ -635,6 +635,8 @@
 
     <!-- Notificações -->
     <div class="notification-container" id="notification-container"></div>
+    <!-- Adicionar antes do fechamento do body, no arquivo index.html -->
+<div class="overlay" id="overlay"></div>
 
     <script src="app.js"></script>
 </body>
