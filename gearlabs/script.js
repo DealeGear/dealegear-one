@@ -104,6 +104,13 @@ const prototypes = [
         description: "Café quente, páginas vivas e ideias infinitas",
         image: "img/versoespresso-capa.jpg",
         link: "prototipos/versoespresso/index.html"
+    },
+    {
+        id: 15,
+        name: "Mike e Tio Bob",
+        description: "As aventuras de dois dinossauros pelo tempo",
+        image: "img/mike-bob-capa.jpg",
+        link: "prototipos/mike-bob/index.html"
     }
 ];
 

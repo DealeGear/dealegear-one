@@ -1,0 +1,153 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Marker Felt', 'Chalkboard SE', cursive;
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 20px;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #FFD700;
+    border: 8px solid #FF6B6B;
+    border-radius: 20px;
+    box-shadow: 5px 5px 0 #4ECDC4;
+    transform: rotate(-1deg);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-shadow: 3px 3px 0 #FFF;
+    letter-spacing: 2px;
+}
+
+/* Container dos quadrinhos */
+.comic-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    /* Desktop: 4 colunas */
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    gap: 25px;
+}
+
+/* Estilo de cada quadro */
+.comic-panel {
+    background-color: white;
+    border: 6px solid #333;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 5px 5px 0 #555;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.comic-panel:hover {
+    transform: scale(1.02);
+}
+
+.comic-panel::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 3px solid #FF6B6B;
+    border-radius: 15px;
+    z-index: -1;
+}
+
+/* Área de imagens */
+.panel-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.panel-images img {
+    border: 3px solid #4ECDC4;
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Imagem principal */
+.panel-images img:first-child {
+    width: 100%;
+    max-height: 200px;
+}
+
+/* Imagens secundárias */
+.panel-images img:not(:first-child) {
+    width: calc(50% - 5px);
+    max-height: 100px;
+}
+
+/* Área de texto */
+.panel-text {
+    padding: 10px;
+    background-color: #FFF9C4;
+    border: 2px dashed #FF9800;
+    border-radius: 10px;
+    font-size: 1rem;
+    line-height: 1.4;
+    min-height: 80px;
+    flex-grow: 1;
+}
+
+/* Media Queries para responsividade */
+
+/* Tablets: 2 colunas e 4 linhas */
+@media (max-width: 992px) {
+    .comic-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Dispositivos móveis: 1 coluna com 8 quadros empilhados verticalmente */
+@media (max-width: 576px) {
+    .comic-container {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .comic-panel {
+        border-width: 4px;
+    }
+    
+    .panel-images img:not(:first-child) {
+        width: 100%;
+        max-height: 80px;
+    }
+}
+
+/* Cores diferentes para cada quadro */
+.comic-panel:nth-child(1)::before { border-color: #FF6B6B; }
+.comic-panel:nth-child(2)::before { border-color: #4ECDC4; }
+.comic-panel:nth-child(3)::before { border-color: #FFD166; }
+.comic-panel:nth-child(4)::before { border-color: #6A0572; }
+.comic-panel:nth-child(5)::before { border-color: #1A936F; }
+.comic-panel:nth-child(6)::before { border-color: #FF9A8B; }
+.comic-panel:nth-child(7)::before { border-color: #118AB2; }
+.comic-panel:nth-child(8)::before { border-color: #06D6A0; }
