@@ -151,3 +151,94 @@ h1 {
 .comic-panel:nth-child(6)::before { border-color: #FF9A8B; }
 .comic-panel:nth-child(7)::before { border-color: #118AB2; }
 .comic-panel:nth-child(8)::before { border-color: #06D6A0; }
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #FFD700;
+    border: 8px solid #FF6B6B;
+    border-radius: 20px;
+    box-shadow: 5px 5px 0 #4ECDC4;
+    transform: rotate(1deg);
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4ECDC4;
+    color: #333;
+    text-decoration: none;
+    border: 3px solid #333;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 0 #555;
+    position: relative;
+}
+
+.footer-links a:hover {
+    background-color: #FF6B6B;
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 0 #555;
+}
+
+.footer-links a:active {
+    transform: translateY(1px);
+    box-shadow: 2px 2px 0 #555;
+}
+
+.footer-text {
+    margin-top: 15px;
+}
+
+.footer-text p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #333;
+    text-shadow: 1px 1px 0 #FFF;
+}
+
+/* Responsividade para o footer */
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-links a {
+        width: 80%;
+        max-width: 300px;
+    }
+    
+    footer {
+        transform: none;
+        border-radius: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-text p {
+        font-size: 0.9rem;
+    }
+    
+    footer {
+        padding: 15px;
+        border-width: 6px;
+    }
+}
