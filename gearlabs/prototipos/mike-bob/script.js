@@ -1,41 +1,65 @@
-// Arquivo JavaScript para funcionalidades futuras
-// Exemplo: Adicionar interatividade aos quadros
-
+// Script para adicionar funcionalidade ao botão CTA
 document.addEventListener('DOMContentLoaded', function() {
-    // Adiciona efeito de clique nos quadros
-    const panels = document.querySelectorAll('.comic-panel');
+    //const ctaButton = document.getElementById('cta-button');
     
-    panels.forEach(panel => {
-        panel.addEventListener('click', function() {
-            // Adiciona classe de animação
-            this.classList.toggle('panel-active');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            // Remove a classe após a animação
+            // Criar uma mensagem de confirmação
+            const confirmation = document.createElement('div');
+            confirmation.style.position = 'fixed';
+            confirmation.style.top = '50%';
+            confirmation.style.left = '50%';
+            confirmation.style.transform = 'translate(-50%, -50%)';
+            confirmation.style.backgroundColor = '#6a4c93';
+            confirmation.style.color = 'white';
+            confirmation.style.padding = '20px 40px';
+            confirmation.style.borderRadius = '10px';
+            confirmation.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+            confirmation.style.zIndex = '1000';
+            confirmation.style.fontFamily = "'Nunito', sans-serif";
+            confirmation.style.fontSize = '1.2rem';
+            confirmation.style.textAlign = 'center';
+            //confirmation.innerHTML = 'Em breve você será redirecionado para as aventuras!<br><small>Esta é uma demonstração</small>';
+            
+            document.body.appendChild(confirmation);
+            
+            // Remover a mensagem após 3 segundos
             setTimeout(() => {
-                this.classList.remove('panel-active');
-            }, 1000);
+                confirmation.style.opacity = '0';
+                confirmation.style.transition = 'opacity 0.5s ease';
+                
+                setTimeout(() => {
+                    document.body.removeChild(confirmation);
+                }, 500);
+            }, 3000);
         });
-    });
-    
-    // Exemplo de como adicionar novos quadros dinamicamente
-    /*
-    function addNewPanel() {
-        const container = document.querySelector('.comic-container');
-        const newPanel = document.createElement('div');
-        newPanel.className = 'comic-panel';
-        
-        newPanel.innerHTML = `
-            <div class="panel-images">
-                <img src="https://via.placeholder.com/400x300" alt="Novo Quadro">
-            </div>
-            <div class="panel-text">
-                Texto da história aqui...
-            </div>
-        `;
-        
-        container.appendChild(newPanel);
     }
     
-    // Para usar: addNewPanel();
-    */
+    // Adicionar efeito de animação aos cards quando entram na tela
+    const cards = document.querySelectorAll('.card');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
 });
