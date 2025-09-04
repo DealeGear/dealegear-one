@@ -1,215 +1,365 @@
+// Variáveis globais
+let currentLang = 'pt';
+let currentProject = null;
+let isDarkMode = false;
+
+// Inicialização do documento
 document.addEventListener('DOMContentLoaded', function() {
-    // Elementos do DOM
-    const menuToggle = document.getElementById('menuToggle');
-    const mainContent = document.getElementById('mainContent');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const prototypeCards = document.querySelectorAll('.prototype-card');
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabPanes = document.querySelectorAll('.tab-pane');
-    const newsletterForm = document.querySelector('.newsletter-form');
+    // Carregar projetos na barra lateral
+    loadProjects();
     
-    // Função para mostrar uma seção específica
-    function showSection(sectionId) {
-        // Esconde todas as seções
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.classList.remove('active');
-        });
-        
-        // Mostra a seção selecionada
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-        }
-        
-        // Atualiza os links de navegação (apenas para links internos)
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                link.classList.remove('active');
-                if (href === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            }
-        });
-    }
+    // Configurar eventos
+    setupEventListeners();
     
-    // Função para carregar os dados de um protótipo
-    function loadPrototypeData(prototypeId) {
-        const prototype = prototypesData[prototypeId];
-        if (!prototype) return;
-        
-        // Atualiza o título do protótipo
-        document.getElementById('prototype-title').textContent = prototype.title;
-        
-        // Carrega o conteúdo de cada aba
-        Object.keys(prototype).forEach(key => {
-            if (key !== 'title') {
-                const contentElement = document.getElementById(`${key}-content`);
-                if (contentElement && prototype[key].content) {
-                    contentElement.innerHTML = prototype[key].content;
-                }
-            }
-        });
-        
-        // Mostra a seção de detalhes do protótipo
-        showSection('prototype-details');
-        
-        // Ativa a primeira aba
-        document.querySelector('.tab-btn').click();
-    }
+    // Verificar preferência de modo escuro
+    checkDarkModePreference();
     
-    // Event Listeners
-    
-    // Toggle do menu em dispositivos móveis
-    menuToggle.addEventListener('click', function() {
-        // Criar menu mobile dinamicamente se não existir
-        let mobileMenu = document.querySelector('.mobile-menu');
-        if (!mobileMenu) {
-            mobileMenu = document.createElement('div');
-            mobileMenu.className = 'mobile-menu';
-            mobileMenu.innerHTML = `
-                <ul>
-                    <li><a href="../../index.html">Landpage</a></li>
-                    <li><a href="https://www.dealegear.com.br" target="_blank">Portal</a></li>
-                    <li><a href="../index.html">GearLabs</a></li>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#prototypes">Protótipos</a></li>
-                </ul>
-            `;
-            document.body.appendChild(mobileMenu);
-            
-            // Adicionar estilos para o menu mobile
-            const style = document.createElement('style');
-            style.textContent = `
-                .mobile-menu {
-                    position: fixed;
-                    top: 80px;
-                    left: 0;
-                    width: 100%;
-                    background-color: var(--white-color);
-                    box-shadow: var(--shadow);
-                    z-index: 999;
-                    transform: translateY(-100%);
-                    transition: transform 0.3s ease;
-                }
-                
-                .mobile-menu.active {
-                    transform: translateY(0);
-                }
-                
-                .mobile-menu ul {
-                    padding: 1rem;
-                }
-                
-                .mobile-menu li {
-                    margin-bottom: 1rem;
-                }
-                
-                .mobile-menu a {
-                    font-weight: 500;
-                    color: var(--dark-color);
-                    display: block;
-                    padding: 0.5rem;
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        mobileMenu.classList.toggle('active');
-    });
-    
-    // Navegação principal
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            // Se for um link externo, não previne o comportamento padrão
-            if (href.startsWith('http') || href.startsWith('../../') || href === '../index.html') {
-                return;
-            }
-            
-            e.preventDefault();
-            const sectionId = href.substring(1);
-            showSection(sectionId);
-            
-            // Fecha o menu mobile se estiver aberto
-            const mobileMenu = document.querySelector('.mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.remove('active');
-            }
-        });
-    });
-    
-    // Cards dos protótipos na seção de protótipos
-    prototypeCards.forEach(card => {
-        const viewDetailsBtn = card.querySelector('.view-details');
-        if (viewDetailsBtn) {
-            viewDetailsBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const prototypeId = card.getAttribute('data-prototype');
-                loadPrototypeData(prototypeId);
-            });
-        }
-    });
-    
-    // Abas na seção de detalhes do protótipo
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const tabId = this.getAttribute('data-tab');
-            
-            // Atualiza os botões das abas
-            tabButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            this.classList.add('active');
-            
-            // Atualiza o conteúdo das abas
-            tabPanes.forEach(pane => {
-                pane.classList.remove('active');
-            });
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
-    
-    // Formulário de newsletter
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulação de inscrição na newsletter
-            const emailInput = this.querySelector('input[type="email"]');
-            const submitBtn = this.querySelector('button');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Inscrevendo...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.textContent = 'Inscrito!';
-                submitBtn.style.backgroundColor = 'var(--success-color)';
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.backgroundColor = '';
-                    submitBtn.disabled = false;
-                    emailInput.value = '';
-                }, 2000);
-            }, 1500);
-        });
-    }
-    
-    // Fecha o menu mobile ao clicar fora dele
-    document.addEventListener('click', function(e) {
-        const mobileMenu = document.querySelector('.mobile-menu');
-        if (mobileMenu && 
-            mobileMenu.classList.contains('active') && 
-            !mobileMenu.contains(e.target) && 
-            !menuToggle.contains(e.target)) {
-            mobileMenu.classList.remove('active');
-        }
-    });
-    
-    // Inicialização
-    showSection('home');
+    // Inicializar tooltips
+    initializeTooltips();
 });
+
+// Carregar projetos na barra lateral
+function loadProjects() {
+    const projectsList = document.getElementById('projects-list');
+    projectsList.innerHTML = '';
+    
+    projects.forEach(project => {
+        const li = document.createElement('li');
+        li.className = 'project-item';
+        li.dataset.projectId = project.id;
+        
+        const icon = document.createElement('i');
+        icon.className = `fas ${project.icon}`;
+        
+        const name = document.createElement('span');
+        name.textContent = project.name;
+        
+        li.appendChild(icon);
+        li.appendChild(name);
+        
+        li.addEventListener('click', function() {
+            selectProject(project.id);
+        });
+        
+        projectsList.appendChild(li);
+    });
+}
+
+// Selecionar um projeto
+function selectProject(projectId) {
+    // Remover classe active de todos os itens
+    document.querySelectorAll('.project-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Adicionar classe active ao item selecionado
+    const selectedItem = document.querySelector(`.project-item[data-project-id="${projectId}"]`);
+    selectedItem.classList.add('active');
+    
+    // Fechar sidebar no mobile
+    if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('open');
+    }
+    
+    // Carregar conteúdo do projeto
+    currentProject = projects.find(p => p.id === projectId);
+    loadProjectContent(projectId);
+}
+
+// Carregar conteúdo do projeto
+function loadProjectContent(projectId) {
+    const contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = '';
+    
+    // Cabeçalho do projeto
+    const projectHeader = document.createElement('div');
+    projectHeader.className = 'project-header';
+    
+    const projectTitle = document.createElement('h1');
+    projectTitle.textContent = currentProject.name;
+    projectHeader.appendChild(projectTitle);
+    
+    contentDiv.appendChild(projectHeader);
+    
+    // Carregar seções do projeto
+    currentProject.sections.forEach(sectionId => {
+        const section = document.createElement('div');
+        section.className = 'section';
+        
+        const sectionTitle = document.createElement('h2');
+        sectionTitle.className = 'section-title';
+        sectionTitle.dataset.i18n = sectionId;
+        sectionTitle.textContent = i18n[currentLang][sectionId];
+        
+        const sectionContent = document.createElement('div');
+        sectionContent.className = 'section-content';
+        sectionContent.dataset.i18n = `content.${projectId}.${sectionId}`;
+        sectionContent.textContent = i18n[currentLang].content[projectId][sectionId];
+        
+        section.appendChild(sectionTitle);
+        section.appendChild(sectionContent);
+        
+        contentDiv.appendChild(section);
+    });
+    
+    // Rolar para o topo
+    window.scrollTo(0, 0);
+}
+
+// Configurar event listeners
+function setupEventListeners() {
+    // Botões de idioma
+    document.getElementById('lang-pt').addEventListener('click', () => changeLanguage('pt'));
+    document.getElementById('lang-en').addEventListener('click', () => changeLanguage('en'));
+    document.getElementById('lang-es').addEventListener('click', () => changeLanguage('es'));
+    
+    // Botão de modo escuro
+    document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+    
+    // Botão de menu mobile
+    document.getElementById('mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
+    
+    // Botão de busca
+    document.getElementById('search-btn').addEventListener('click', performSearch);
+    document.getElementById('search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+    
+    // Botão voltar ao topo
+    document.getElementById('back-to-top').addEventListener('click', scrollToTop);
+    
+    // Monitorar rolagem para mostrar/ocultar botão voltar ao topo
+    window.addEventListener('scroll', function() {
+        const backToTopButton = document.getElementById('back-to-top');
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+}
+
+// Mudar idioma
+function changeLanguage(lang) {
+    currentLang = lang;
+    
+    // Atualizar botões de idioma
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.getElementById(`lang-${lang}`).classList.add('active');
+    
+    // Atualizar atributo lang do HTML
+    document.documentElement.lang = lang;
+    
+    // Atualizar textos com data-i18n
+    updateTexts();
+    
+    // Recarregar conteúdo do projeto se houver um selecionado
+    if (currentProject) {
+        loadProjectContent(currentProject.id);
+    }
+    
+    // Atualizar placeholder do campo de busca
+    document.getElementById('search-input').placeholder = i18n[currentLang].search;
+}
+
+// Atualizar textos com base no idioma
+function updateTexts() {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const keys = element.dataset.i18n.split('.');
+        let value = i18n[currentLang];
+        
+        for (const key of keys) {
+            if (value[key] !== undefined) {
+                value = value[key];
+            } else {
+                value = null;
+                break;
+            }
+        }
+        
+        if (value !== null) {
+            element.textContent = value;
+        }
+    });
+}
+
+// Alternar modo escuro
+function toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+    
+    if (isDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('dark-mode-toggle').innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('darkMode', 'true');
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+        document.getElementById('dark-mode-toggle').innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('darkMode', 'false');
+    }
+}
+
+// Verificar preferência de modo escuro
+function checkDarkModePreference() {
+    const darkModePreference = localStorage.getItem('darkMode');
+    
+    if (darkModePreference === 'true' || 
+        (!darkModePreference && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        isDarkMode = true;
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('dark-mode-toggle').innerHTML = '<i class="fas fa-sun"></i>';
+    }
+}
+
+// Alternar menu mobile
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('open');
+}
+
+// Realizar busca
+function performSearch() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+    
+    if (!searchTerm) {
+        return;
+    }
+    
+    const results = [];
+    
+    // Buscar em projetos
+    projects.forEach(project => {
+        // Buscar no nome do projeto
+        if (project.name.toLowerCase().includes(searchTerm)) {
+            results.push({
+                type: 'project',
+                project: project,
+                text: project.name
+            });
+        }
+        
+        // Buscar nas seções do projeto
+        project.sections.forEach(sectionId => {
+            const sectionText = i18n[currentLang].content[project.id][sectionId];
+            if (sectionText.toLowerCase().includes(searchTerm)) {
+                results.push({
+                    type: 'section',
+                    project: project,
+                    section: sectionId,
+                    text: getExcerpt(sectionText, searchTerm, 100)
+                });
+            }
+        });
+    });
+    
+    // Mostrar resultados
+    showSearchResults(results, searchTerm);
+}
+
+// Obter excerto do texto
+function getExcerpt(text, searchTerm, maxLength) {
+    const index = text.toLowerCase().indexOf(searchTerm.toLowerCase());
+    if (index === -1) return text.substring(0, maxLength);
+    
+    const start = Math.max(0, index - 30);
+    const end = Math.min(text.length, index + searchTerm.length + 70);
+    
+    let excerpt = text.substring(start, end);
+    
+    if (start > 0) excerpt = '...' + excerpt;
+    if (end < text.length) excerpt = excerpt + '...';
+    
+    return excerpt;
+}
+
+// Mostrar resultados da busca
+function showSearchResults(results, searchTerm) {
+    const contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = '';
+    
+    const resultsHeader = document.createElement('div');
+    resultsHeader.className = 'search-results-header';
+    
+    const resultsTitle = document.createElement('h2');
+    resultsTitle.textContent = `${i18n[currentLang].search}: "${searchTerm}"`;
+    resultsHeader.appendChild(resultsTitle);
+    
+    const resultsCount = document.createElement('p');
+    resultsCount.textContent = `${results.length} ${results.length === 1 ? 'resultado' : 'resultados'} encontrados`;
+    resultsHeader.appendChild(resultsCount);
+    
+    contentDiv.appendChild(resultsHeader);
+    
+    if (results.length === 0) {
+        const noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.textContent = 'Nenhum resultado encontrado para sua busca.';
+        contentDiv.appendChild(noResults);
+        return;
+    }
+    
+    const resultsList = document.createElement('div');
+    resultsList.className = 'search-results-list';
+    
+    results.forEach(result => {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'search-result-item';
+        
+        const resultTitle = document.createElement('h3');
+        resultTitle.textContent = result.project.name;
+        
+        if (result.type === 'section') {
+            const sectionName = document.createElement('span');
+            sectionName.className = 'search-result-section';
+            sectionName.textContent = ` - ${i18n[currentLang][result.section]}`;
+            resultTitle.appendChild(sectionName);
+        }
+        
+        const resultText = document.createElement('p');
+        resultText.textContent = result.text;
+        
+        const resultLink = document.createElement('a');
+        resultLink.href = '#';
+        resultLink.className = 'search-result-link';
+        resultLink.textContent = 'Ver projeto';
+        resultLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            selectProject(result.project.id);
+            
+            // Rolar para a seção específica se for uma busca de seção
+            if (result.type === 'section') {
+                setTimeout(() => {
+                    const sectionElement = document.querySelector(`.section-title[data-i18n="${result.section}"]`);
+                    if (sectionElement) {
+                        sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 100);
+            }
+        });
+        
+        resultItem.appendChild(resultTitle);
+        resultItem.appendChild(resultText);
+        resultItem.appendChild(resultLink);
+        
+        resultsList.appendChild(resultItem);
+    });
+    
+    contentDiv.appendChild(resultsList);
+}
+
+// Rolar para o topo
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Inicializar tooltips
+function initializeTooltips() {
+    // Esta função pode ser expandida para incluir tooltips
+    // Por enquanto, está aqui como placeholder
+}
