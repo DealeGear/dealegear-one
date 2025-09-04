@@ -4,86 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GearLabs Docs</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app-container">
         <!-- Header -->
         <header class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="logo-text">GearLabs Docs</span>
+            <h1>GearLabs Docs</h1>
+            <div class="header-controls">
+                <div class="language-selector">
+                    <button class="language-btn active" data-lang="pt">PT</button>
+                    <button class="language-btn" data-lang="en">EN</button>
+                    <button class="language-btn" data-lang="es">ES</button>
                 </div>
-                <div class="search-container">
-                    <input type="text" id="search-input" class="search-input" placeholder="Buscar...">
-                    <button id="search-btn" class="search-btn"><i class="fas fa-search"></i></button>
-                </div>
-                <div class="header-actions">
-                    <div class="language-switcher">
-                        <button id="lang-pt" class="lang-btn active">PT</button>
-                        <button id="lang-en" class="lang-btn">EN</button>
-                        <button id="lang-es" class="lang-btn">ES</button>
-                    </div>
-                    <button id="dark-mode-toggle" class="dark-mode-toggle">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <button id="mobile-menu-toggle" class="mobile-menu-toggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </header>
 
-        <div class="main-container">
-            <!-- Sidebar -->
-            <aside id="sidebar" class="sidebar">
-                <div class="sidebar-header">
-                    <h3 data-i18n="projects">Projetos</h3>
-                </div>
-                <nav class="sidebar-nav">
-                    <ul id="projects-list" class="projects-list">
-                        <!-- Lista de projetos será gerada dinamicamente -->
-                    </ul>
-                </nav>
-            </aside>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content" data-simplebar>
+                <ul class="project-list" id="project-list">
+                    <!-- Projects will be dynamically loaded here -->
+                </ul>
+            </div>
+        </aside>
 
-            <!-- Main Content -->
-            <main class="main-content">
-                <div id="content" class="content">
-                    <!-- Conteúdo será carregado dinamicamente -->
-                    <div class="welcome-message">
-                        <h1 data-i18n="welcome">Bem-vindo à GearLabs Docs</h1>
-                        <p data-i18n="select-project">Selecione um projeto na barra lateral para visualizar sua documentação.</p>
-                    </div>
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <div class="content-container">
+                <div class="loading">
+                    <div class="spinner"></div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
 
         <!-- Footer -->
         <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="https://discord.gg/vKK7xVcZJ8" class="footer-link" data-i18n="footer.community" target="_blank">Comunidade</a>
-                    <a href="../index.html" class="footer-link" data-i18n="footer.gearlabs">GearLabs</a>
-                    <a href="https://www.dealegear.com.br" class="footer-link" data-i18n="footer.portal" target="_blank">Portal</a>
-                    <a href="../../index.html" class="footer-link" data-i18n="footer.one">DealeGear One</a>
-                </div>
-                <div class="copyright">
-                    <span>&copy; 2023 GearLabs. Todos os direitos reservados.</span>
-                </div>
-            </div>
+            <a href="https://discord.gg/vKK7xVcZJ8" target="_blank">Comunidade</a>
+            <a href="../index.html">GearLabs</a>
+            <a href="../../index.html">DealeGear One</a>
+            <a href="https://www.dealegear.com.br/" target="_blank">Portal</a>
         </footer>
 
         <!-- Back to Top Button -->
-        <button id="back-to-top" class="back-to-top">
+        <div class="back-to-top" id="back-to-top">
             <i class="fas fa-arrow-up"></i>
-        </button>
+        </div>
     </div>
 
     <!-- Scripts -->
-    <script src="i18n.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
     <script src="data.js"></script>
+    <script src="i18n.js"></script>
+    <script src="darkmode.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

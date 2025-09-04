@@ -1,214 +1,124 @@
-// Script para adicionar funcionalidades à página
+// Espera o DOM carregar completamente
 document.addEventListener('DOMContentLoaded', function() {
-    // Animação de scroll suave para links de âncora
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+    // Menu dropdown functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const menuDropdown = document.getElementById('menuDropdown');
+    
+    // Toggle menu dropdown
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+        menuDropdown.classList.toggle('show');
     });
     
-    // Adicionar efeito de animação aos cards quando entram na tela
-    const animateOnScroll = () => {
-        const cards = document.querySelectorAll('.category-card, .course-card, .step');
-        
-        cards.forEach(card => {
-            const cardPosition = card.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.2;
-            
-            if (cardPosition < screenPosition) {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }
-        });
-    };
-    
-    // Configurar animação inicial
-    const cards = document.querySelectorAll('.category-card, .course-card, .step');
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!menuDropdown.contains(e.target) && !menuToggle.contains(e.target)) {
+            menuToggle.classList.remove('active');
+            menuDropdown.classList.remove('show');
+        }
     });
     
-    // Executar animação no carregamento e no scroll
-    animateOnScroll();
-    window.addEventListener('scroll', animateOnScroll);
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const frames = document.querySelectorAll('.frame');
     
-    // Adicionar funcionalidade aos botões de curso
-    const courseButtons = document.querySelectorAll('.course-card .btn-primary');
-    courseButtons.forEach(button => {
+    filterButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            e.preventDefault();
+            e.stopPropagation();
             
-            // Criar uma notificação de confirmação
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.innerHTML = 'Você está sendo redirecionado para o curso...';
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
             
-            document.body.appendChild(notification);
+            // Add active class to clicked button
+            this.classList.add('active');
             
-            // Remover a notificação após 3 segundos
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                notification.style.transition = 'opacity 0.5s ease';
-                
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 500);
-            }, 3000);
-        });
-    });
-    
-    // Adicionar funcionalidade ao botão CTA principal
-    const ctaButton = document.querySelector('.cta-section .btn-primary');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function(e) {
-            e.preventDefault();
+            // Get selected category
+            const selectedCategory = this.dataset.category;
             
-            // Criar um modal de cadastro
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-modal">&times;</span>
-                    <h2>Crie sua conta gratuita</h2>
-                    <form id="signup-form">
-                        <div class="form-group">
-                            <label for="name">Nome completo</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Senha</label>
-                            <input type="password" id="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Criar Conta</button>
-                    </form>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-            
-            // Fechar modal ao clicar no X
-            document.querySelector('.close-modal').addEventListener('click', function() {
-                document.body.removeChild(modal);
-            });
-            
-            // Fechar modal ao clicar fora dele
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    document.body.removeChild(modal);
+            // Filter frames
+            frames.forEach(frame => {
+                if (selectedCategory === 'all' || frame.dataset.category === selectedCategory) {
+                    frame.classList.remove('hidden');
+                } else {
+                    frame.classList.add('hidden');
                 }
             });
             
-            // Processar formulário
-            document.getElementById('signup-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Simular envio do formulário
-                const successMessage = document.createElement('div');
-                successMessage.className = 'success-message';
-                successMessage.innerHTML = 'Conta criada com sucesso! Redirecionando...';
-                
-                modal.querySelector('.modal-content').innerHTML = '';
-                modal.querySelector('.modal-content').appendChild(successMessage);
-                
-                // Fechar modal após 2 segundos
+            // Close dropdown on mobile after selection
+            if (window.innerWidth <= 640) {
                 setTimeout(() => {
-                    document.body.removeChild(modal);
-                }, 2000);
+                    menuToggle.classList.remove('active');
+                    menuDropdown.classList.remove('show');
+                }, 300);
+            }
+        });
+    });
+    
+    // Add click event to frames
+    frames.forEach(frame => {
+        frame.addEventListener('click', function() {
+            const title = this.querySelector('.frame-title').textContent;
+            const category = this.dataset.category;
+            
+            // Log to console (replace with your desired action)
+            console.log(`Quadro selecionado: ${title} (Categoria: ${category})`);
+            
+            // Example: You could open a modal or navigate to a detail page
+            // window.open(`detalhes.html?titulo=${encodeURIComponent(title)}&categoria=${category}`, '_blank');
+        });
+    });
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            // Close dropdown on resize to prevent positioning issues
+            menuToggle.classList.remove('active');
+            menuDropdown.classList.remove('show');
+        }, 250);
+    });
+    
+    // Handle orientation change
+    window.addEventListener('orientationchange', function() {
+        // Close dropdown on orientation change
+        menuToggle.classList.remove('active');
+        menuDropdown.classList.remove('show');
+        
+        // Reload page to adjust layout properly
+        setTimeout(function() {
+            window.location.reload();
+        }, 300);
+    });
+    
+    // Optional: Lazy loading for images
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.style.opacity = '0';
+                    img.addEventListener('load', function() {
+                        img.style.transition = 'opacity 0.3s ease';
+                        img.style.opacity = '1';
+                    });
+                    observer.unobserve(img);
+                }
             });
+        });
+        
+        document.querySelectorAll('.frame-image').forEach(img => {
+            imageObserver.observe(img);
         });
     }
     
-    // Adicionar estilos para elementos criados dinamicamente
-    const style = document.createElement('style');
-    style.textContent = `
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            font-family: 'Poppins', sans-serif;
+    // Add keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        // Close dropdown with Escape key
+        if (e.key === 'Escape') {
+            menuToggle.classList.remove('active');
+            menuDropdown.classList.remove('show');
         }
-        
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #666;
-        }
-        
-        .modal-content h2 {
-            margin-bottom: 20px;
-            color: #2c3e50;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-            font-weight: 600;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .success-message {
-            text-align: center;
-            color: #2ecc71;
-            font-weight: 600;
-        }
-    `;
-    document.head.appendChild(style);
+    });
 });

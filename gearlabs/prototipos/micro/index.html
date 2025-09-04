@@ -3,242 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroCursos - Aprenda em Minutos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <title>Micro - Dashboard Corporativo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Cabeçalho -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <h1>MicroCursos</h1>
+        <div class="header-content">
+            <h1>Micro</h1>
+            <!-- Menu de categorias -->
+            <nav class="category-menu">
+                <button class="menu-toggle" id="menuToggle">
+                    Categorias <span class="arrow">▼</span>
+                </button>
+                <div class="menu-dropdown" id="menuDropdown">
+                    <button class="filter-btn active" data-category="all">Todos</button>
+                    <button class="filter-btn" data-category="estrategico">Estratégico</button>
+                    <button class="filter-btn" data-category="financeiro">Financeiro</button>
+                    <button class="filter-btn" data-category="vendas">Vendas</button>
+                    <button class="filter-btn" data-category="qualidade">Qualidade</button>
+                    <button class="filter-btn" data-category="operacional">Operacional</button>
+                    <button class="filter-btn" data-category="rh">RH</button>
+                    <button class="filter-btn" data-category="pd">P&D</button>
+                    <button class="filter-btn" data-category="legal">Legal</button>
                 </div>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="#" class="nav-link">Cursos</a></li>
-                        <li><a href="#" class="nav-link">Categorias</a></li>
-                        <li><a href="#" class="nav-link">Planos</a></li>
-                        <li><a href="#" class="nav-link">Sobre</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <a href="#" class="btn btn-outline">Entrar</a>
-                    <a href="#" class="btn btn-primary">Cadastrar</a>
-                </div>
-            </div>
+            </nav>
         </div>
     </header>
-    
-    <!-- Conteúdo Principal -->
+
     <main class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h2>Aprenda novas habilidades em minutos, não em meses</h2>
-                <p>MicroCursos oferece cursos curtos e diretos para você dominar habilidades específicas rapidamente.</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary btn-large">Explorar Cursos</a>
-                    <a href="#" class="btn btn-outline btn-large">Ver Demonstração</a>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Cursos Disponíveis</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">15min</span>
-                        <span class="stat-label">Duração Média</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Alunos Satisfeitos</span>
+        <div class="grid-container">
+            <!-- Quadro 1 -->
+            <article class="frame" data-category="estrategico">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem do quadro 1" class="frame-image">
+                <div class="frame-content">
+                    <h2 class="frame-title">Análise de Dados</h2>
+                    <p class="frame-description">Descrição do conteúdo aqui... Esta seção apresenta insights valiosos sobre o desempenho atual e tendências observadas.</p>
+                    <div class="frame-meta">
+                        <span class="frame-tag">Estratégico</span>
+                        <span>Atualizado: Hoje</span>
                     </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://via.placeholder.com/600x400" alt="Plataforma de Microcursos">
-            </div>
-        </section>
-        
-        <!-- Categorias de Cursos -->
-        <section class="categories">
-            <h2>Categorias Populares</h2>
-            <div class="categories-container">
-                <div class="category-card">
-                    <div class="category-icon">💻</div>
-                    <h3>Tecnologia</h3>
-                    <p>Programação, design digital, IA e mais</p>
-                    <span class="course-count">142 cursos</span>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">📊</div>
-                    <h3>Negócios</h3>
-                    <p>Marketing, finanças, empreendedorismo</p>
-                    <span class="course-count">98 cursos</span>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">🎨</div>
-                    <h3>Design</h3>
-                    <p>UI/UX, design gráfico, ilustração</p>
-                    <span class="course-count">76 cursos</span>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">✍️</div>
-                    <h3>Escrita</h3>
-                    <p>Redação criativa, copywriting, SEO</p>
-                    <span class="course-count">54 cursos</span>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Cursos em Destaque -->
-        <section class="featured-courses">
-            <h2>Cursos em Destaque</h2>
-            <div class="courses-container">
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://via.placeholder.com/300x200" alt="Curso de Python">
-                        <span class="course-duration">12 min</span>
-                    </div>
-                    <div class="course-content">
-                        <span class="course-category">Tecnologia</span>
-                        <h3>Introdução Rápida ao Python</h3>
-                        <p>Aprenda os conceitos básicos de Python em apenas 12 minutos.</p>
-                        <div class="course-meta">
-                            <span class="course-rating">⭐ 4.8</span>
-                            <span class="course-students">2.3k alunos</span>
-                        </div>
-                        <a href="#" class="btn btn-primary btn-small">Assistir Agora</a>
+            </article>
+
+            <!-- Quadro 2 -->
+            <article class="frame" data-category="financeiro">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem do quadro 2" class="frame-image">
+                <div class="frame-content">
+                    <h2 class="frame-title">Relatórios Financeiros</h2>
+                    <p class="frame-description">Descrição do conteúdo aqui... Análise detalhada dos indicadores financeiros e projeções para o próximo trimestre.</p>
+                    <div class="frame-meta">
+                        <span class="frame-tag">Financeiro</span>
+                        <span>Atualizado: Ontem</span>
                     </div>
                 </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://via.placeholder.com/300x200" alt="Curso de Marketing Digital">
-                        <span class="course-duration">15 min</span>
-                    </div>
-                    <div class="course-content">
-                        <span class="course-category">Negócios</span>
-                        <h3>Fundamentos de Marketing Digital</h3>
-                        <p>Os conceitos essenciais de marketing digital explicados rapidamente.</p>
-                        <div class="course-meta">
-                            <span class="course-rating">⭐ 4.6</span>
-                            <span class="course-students">1.8k alunos</span>
-                        </div>
-                        <a href="#" class="btn btn-primary btn-small">Assistir Agora</a>
+            </article>
+
+            <!-- Quadro 3 -->
+            <article class="frame" data-category="vendas">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem do quadro 3" class="frame-image">
+                <div class="frame-content">
+                    <h2 class="frame-title">Desempenho de Vendas</h2>
+                    <p class="frame-description">Descrição do conteúdo aqui... Métricas de vendas por região, produto e canal de distribuição com comparações mensais.</p>
+                    <div class="frame-meta">
+                        <span class="frame-tag">Vendas</span>
+                        <span>Atualizado: 2h atrás</span>
                     </div>
                 </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://via.placeholder.com/300x200" alt="Curso de Design UI">
-                        <span class="course-duration">18 min</span>
-                    </div>
-                    <div class="course-content">
-                        <span class="course-category">Design</span>
-                        <h3>Princípios Básicos de UI Design</h3>
-                        <p>Aprenda a criar interfaces atraentes e funcionais em minutos.</p>
-                        <div class="course-meta">
-                            <span class="course-rating">⭐ 4.9</span>
-                            <span class="course-students">3.1k alunos</span>
-                        </div>
-                        <a href="#" class="btn btn-primary btn-small">Assistir Agora</a>
+            </article>
+
+            <!-- Quadro 4 -->
+            <article class="frame" data-category="qualidade">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem do quadro 4" class="frame-image">
+                <div class="frame-content">
+                    <h2 class="frame-title">Satisfação do Cliente</h2>
+                    <p class="frame-description">Descrição do conteúdo aqui... Índices de satisfação, feedbacks recebidos e áreas de melhoria identificadas.</p>
+                    <div class="frame-meta">
+                        <span class="frame-tag">Qualidade</span>
+                        <span>Atualizado: 5h atrás</span>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <!-- Como Funciona -->
-        <section class="how-it-works">
-            <h2>Como Funciona</h2>
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Escolha um Curso</h3>
-                    <p>Navegue por nossa biblioteca com mais de 500 microcursos em diversas áreas.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Aprenda no seu Ritmo</h3>
-                    <p>Assista quando e onde quiser. Nossos cursos são curtos e diretos ao ponto.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Aplique o Conhecimento</h3>
-                    <p>Use o que aprendeu imediatamente. Prática é o melhor caminho para o domínio.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Acompanhe seu Progresso</h3>
-                    <p>Monitore seu desenvolvimento com nosso sistema de conquistas e certificados.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="cta-content">
-                <h2>Comece a Aprender Hoje Mesmo</h2>
-                <p>Junte-se a milhares de alunos que estão transformando suas carreiras com microcursos.</p>
-                <a href="#" class="btn btn-primary btn-large">Criar Conta Gratuita</a>
-            </div>
-        </section>
-    </main>
-    
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>MicroCursos</h3>
-                    <p>A plataforma de aprendizado rápida para profissionais ocupados.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">FB</a>
-                        <a href="#" class="social-link">IG</a>
-                        <a href="#" class="social-link">TW</a>
-                        <a href="#" class="social-link">YT</a>
+            </article>
+
+            <!-- Quadro 5 -->
+            <article class="frame" data-category="operacional">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem do quadro 5" class="frame-image">
+                <div class="frame-content">
+                    <h2 class="frame-title">Operações</h2>
+                    <p class="frame-description">Descrição do conteúdo aqui... Status das operações diárias, eficiência produtiva e indicadores de qualidade.</p>
+                    <div class="frame-meta">
+                        <span class="frame-tag">Operacional</span>
+                        <span>Atualizado: 1h atrás</span>
                     </div>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Recursos</h4>
-                    <ul>
-                        <li><a href="#" class="footer-link">Comunidade</a></li>
-                        <li><a href="#" class="footer-link">Documentação</a></li>
-                        <li><a href="#" class="footer-link">Blog</a></li>
-                        <li><a href="#" class="footer-link">Tutoriais</a></li>
-                    </ul>
+            </article>
+
+            <!-- Quadro 6 -->
+            <article class="frame" data-category="rh">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem do quadro 6" class="frame-image">
+                <div class="frame-content">
+                    <h2 class="frame-title">Recursos Humanos</h2>
+                    <p class="frame-description">Descrição do conteúdo aqui... Indicadores de clima organizacional, turnover e programas de desenvolvimento.</p>
+                    <div class="frame-meta">
+                        <span class="frame-tag">RH</span>
+                        <span>Atualizado: Semana</span>
+                    </div>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Empresa</h4>
-                    <ul>
-                        <li><a href="#" class="footer-link">Sobre Nós</a></li>
-                        <li><a href="#" class="footer-link">Carreiras</a></li>
-                        <li><a href="#" class="footer-link">Contato</a></li>
-                        <li><a href="#" class="footer-link">GearLabs</a></li>
-                    </ul>
+            </article>
+
+            <!-- Quadro 7 -->
+            <article class="frame" data-category="pd">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem do quadro 7" class="frame-image">
+                <div class="frame-content">
+                    <h2 class="frame-title">Inovação</h2>
+                    <p class="frame-description">Descrição do conteúdo aqui... Projetos em desenvolvimento, patentes registradas e roadmap de inovação.</p>
+                    <div class="frame-meta">
+                        <span class="frame-tag">P&D</span>
+                        <span>Atualizado: 3 dias</span>
+                    </div>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#" class="footer-link">Termos de Uso</a></li>
-                        <li><a href="#" class="footer-link">Política de Privacidade</a></li>
-                        <li><a href="#" class="footer-link">Cookies</a></li>
-                        <li><a href="#" class="footer-link">FAQ</a></li>
-                    </ul>
+            </article>
+
+            <!-- Quadro 8 -->
+            <article class="frame" data-category="legal">
+                <img src="https://via.placeholder.com/400x300" alt="Imagem do quadro 8" class="frame-image">
+                <div class="frame-content">
+                    <h2 class="frame-title">Compliance</h2>
+                    <p class="frame-description">Descrição do conteúdo aqui... Status de conformidade regulatória, auditorias e ações corretivas implementadas.</p>
+                    <div class="frame-meta">
+                        <span class="frame-tag">Legal</span>
+                        <span>Atualizado: Mês</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 MicroCursos - Todos os direitos reservados</p>
-            </div>
+            </article>
         </div>
-    </footer>
-    
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
