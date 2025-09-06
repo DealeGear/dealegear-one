@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearVision - Análise de Projetos</title>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-cogs"></i>
+                <span>GearVision</span>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <button class="nav-item active" onclick="showPage('area-chart')">
+                <i class="fas fa-chart-area"></i>
+                Gráfico de Área
+            </button>
+            <button class="nav-item" onclick="showPage('donut-chart')">
+                <i class="fas fa-chart-pie"></i>
+                Gráfico Donut
+            </button>
+            <button class="nav-item" onclick="showPage('bar-chart')">
+                <i class="fas fa-chart-bar"></i>
+                Barras Horizontais
+            </button>
+            <button class="nav-item" onclick="showPage('treemap-chart')">
+                <i class="fas fa-th"></i>
+                Treemap
+            </button>
+            <button class="nav-item" onclick="showPage('gauge-chart')">
+                <i class="fas fa-tachometer-alt"></i>
+                Gauge
+            </button>
+            <button class="nav-item" onclick="showPage('map-page')">
+                <i class="fas fa-globe"></i>
+                Mapa Interativo
+            </button>
+            <button class="nav-item" onclick="showPage('insights')">
+                <i class="fas fa-lightbulb"></i>
+                Insights
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Header -->
+            <header class="header">
+                <h1 class="page-title" id="pageTitle">Análise de Projetos - Gráfico de Área</h1>
+            </header>
+
+            <!-- Area Chart Page -->
+            <div class="page active" id="area-chart">
+                <div class="card">
+                    <h2 class="card-title">Progresso dos Projetos ao Longo do Tempo</h2>
+                    
+                    <div class="legend">
+                        <h3>Finalidade do Gráfico</h3>
+                        <p>Este gráfico de área mostra a evolução do progresso dos diferentes projetos ao longo dos meses. O gradiente visualiza a intensidade do progresso, permitindo identificar rapidamente quais projetos estão avançando mais rapidamente.</p>
+                    </div>
+
+                    <div class="controls">
+                        <div class="control-group">
+                            <label class="control-label">Selecionar Período</label>
+                            <select id="areaPeriod" onchange="updateAreaChart()">
+                                <option value="6">Últimos 6 meses</option>
+                                <option value="12" selected>Últimos 12 meses</option>
+                                <option value="24">Últimos 24 meses</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Tipo de Projeto</label>
+                            <select id="areaType" onchange="updateAreaChart()">
+                                <option value="all" selected>Todos os Projetos</option>
+                                <option value="tech">Projetos de Tecnologia</option>
+                                <option value="design">Projetos de Design</option>
+                                <option value="marketing">Projetos de Marketing</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="areaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donut Chart Page -->
+            <div class="page" id="donut-chart">
+                <div class="card">
+                    <h2 class="card-title">Distribuição de Recursos por Projeto</h2>
+                    
+                    <div class="legend">
+                        <h3>Finalidade do Gráfico</h3>
+                        <p>O gráfico donut exibe a distribuição percentual de recursos (orçamento, equipe, tempo) alocados para cada projeto. É ideal para visualizar rapidamente quais projetos consomem mais recursos da organização.</p>
+                    </div>
+
+                    <div class="controls">
+                        <div class="control-group">
+                            <label class="control-label">Tipo de Recurso</label>
+                            <select id="donutResource" onchange="updateDonutChart()">
+                                <option value="budget" selected>Orçamento</option>
+                                <option value="team">Equipe</option>
+                                <option value="time">Tempo</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Departamento</label>
+                            <select id="donutDept" onchange="updateDonutChart()">
+                                <option value="all" selected>Todos</option>
+                                <option value="dev">Desenvolvimento</option>
+                                <option value="sales">Vendas</option>
+                                <option value="ops">Operações</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="donutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bar Chart Page -->
+            <div class="page" id="bar-chart">
+                <div class="card">
+                    <h2 class="card-title">Desempenho dos Projetos por Categoria</h2>
+                    
+                    <div class="legend">
+                        <h3>Finalidade do Gráfico</h3>
+                        <p>As barras horizontais minimalistas permitem comparar o desempenho dos projetos em diferentes métricas. O design limpo facilita a leitura e comparação rápida entre categorias.</p>
+                    </div>
+
+                    <div class="controls">
+                        <div class="control-group">
+                            <label class="control-label">Métrica de Desempenho</label>
+                            <select id="barMetric" onchange="updateBarChart()">
+                                <option value="completion" selected>Taxa de Conclusão</option>
+                                <option value="satisfaction">Satisfação do Cliente</option>
+                                <option value="roi">ROI</option>
+                                <option value="efficiency">Eficiência</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Filtro de Status</label>
+                            <select id="barStatus" onchange="updateBarChart()">
+                                <option value="all" selected>Todos</option>
+                                <option value="active">Ativos</option>
+                                <option value="completed">Concluídos</option>
+                                <option value="paused">Pausados</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treemap Page -->
+            <div class="page" id="treemap-chart">
+                <div class="card">
+                    <h2 class="card-title">Hierarquia de Projetos por Impacto</h2>
+                    
+                    <div class="legend">
+                        <h3>Finalidade do Gráfico</h3>
+                        <p>O treemap visualiza a hierarquia e importância relativa dos projetos. O tamanho de cada retângulo representa o impacto ou valor do projeto, enquanto as cores indicam diferentes categorias ou status.</p>
+                    </div>
+
+                    <div class="controls">
+                        <div class="control-group">
+                            <label class="control-label">Critério de Tamanho</label>
+                            <select id="treemapSize" onchange="updateTreemap()">
+                                <option value="impact" selected>Impacto no Negócio</option>
+                                <option value="revenue">Receita Gerada</option>
+                                <option value="users">Usuários Impactados</option>
+                                <option value="cost">Custo do Projeto</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Cor por Categoria</label>
+                            <select id="treemapColor" onchange="updateTreemap()">
+                                <option value="priority" selected>Prioridade</option>
+                                <option value="risk">Nível de Risco</option>
+                                <option value="complexity">Complexidade</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="treemapChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gauge Page -->
+            <div class="page" id="gauge-chart">
+                <div class="card">
+                    <h2 class="card-title">Indicador de Saúde do Projeto</h2>
+                    
+                    <div class="legend">
+                        <h3>Finalidade do Gráfico</h3>
+                        <p>O gauge funciona como um velocímetro que mostra a saúde geral do projeto em uma escala de 0 a 100. É uma forma rápida e intuitiva de avaliar se o projeto está no caminho certo.</p>
+                    </div>
+
+                    <div class="controls">
+                        <div class="control-group">
+                            <label class="control-label">Projeto Selecionado</label>
+                            <select id="gaugeProject" onchange="updateGauge()">
+                                <option value="project1" selected>Projeto Alpha</option>
+                                <option value="project2">Projeto Beta</option>
+                                <option value="project3">Projeto Gamma</option>
+                                <option value="project4">Projeto Delta</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Métrica de Saúde</label>
+                            <select id="gaugeMetric" onchange="updateGauge()">
+                                <option value="overall" selected>Saúde Geral</option>
+                                <option value="timeline">Cumprimento de Prazo</option>
+                                <option value="budget">Controle de Orçamento</option>
+                                <option value="quality">Qualidade</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="gauge-container">
+                        <canvas id="gaugeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Page -->
+            <div class="page" id="map-page">
+                <div class="card">
+                    <h2 class="card-title">Distribuição Global de Projetos</h2>
+                    
+                    <div class="legend">
+                        <h3>Finalidade do Mapa</h3>
+                        <p>O mapa interativo mostra a distribuição geográfica dos projetos ao redor do mundo. Clique em qualquer país para ver detalhes específicos sobre os projetos naquela região. Use o zoom para explorar áreas específicas.</p>
+                    </div>
+
+                    <div class="controls">
+                        <div class="control-group">
+                            <label class="control-label">Filtro por Região</label>
+                            <select id="mapRegion" onchange="filterMapRegion()">
+                                <option value="all" selected>Todas as Regiões</option>
+                                <option value="americas">Américas</option>
+                                <option value="europe">Europa</option>
+                                <option value="asia">Ásia</option>
+                                <option value="africa">África</option>
+                                <option value="oceania">Oceania</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Status dos Projetos</label>
+                            <select id="mapStatus" onchange="filterMapStatus()">
+                                <option value="all" selected>Todos os Status</option>
+                                <option value="active">Ativos</option>
+                                <option value="planning">Em Planejamento</option>
+                                <option value="completed">Concluídos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <!-- Insights Page -->
+            <div class="page" id="insights">
+                <div class="card">
+                    <h2 class="card-title">Insights Estratégicos dos Projetos</h2>
+                    
+                    <div class="insight-card">
+                        <h3><i class="fas fa-chart-line"></i> Tendência de Crescimento</h3>
+                        <p>Os projetos de tecnologia mostram um crescimento acelerado de 45% nos últimos 6 meses, com destaque para as iniciativas de transformação digital que estão superando as expectativas de ROI em 30%.</p>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Alerta de Risco</h3>
+                        <p>Projetos na região Ásia-Pacífico apresentam um atraso médio de 15% no cronograma. Recomendamos revisar a alocação de recursos e considerar a contratação de 2 gerentes de projeto adicionais.</p>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-users"></i> Otimização de Equipe</h3>
+                        <p>A análise mostra que equipes com 5-7 membros apresentam 25% mais eficiência na entrega. Projetos com equipes maiores estão sofrendo com problemas de comunicação e coordenação.</p>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-dollar-sign"></i> Oportunidade Financeira</h3>
+                        <p>Projetos de marketing digital estão gerando um ROI 3x maior que os projetos tradicionais. Sugerimos realocar 20% do orçamento de marketing convencional para iniciativas digitais.</p>
+                    </div>
+
+                    <div class="insight-card">
+                        <h3><i class="fas fa-rocket"></i> Inovação e Futuro</h3>
+                        <p>Os projetos de IA e Machine Learning representam apenas 10% do portfólio atual, mas já contribuem com 35% da inovação estratégica. Recomendamos dobrar o investimento nesta área.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#" onclick="showAlert('Sobre')">Sobre o GearVision</a>
+                <a href="#" onclick="showAlert('Documentação')">Documentação</a>
+                <a href="#" onclick="showAlert('Suporte')">Suporte Técnico</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
