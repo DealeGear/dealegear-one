@@ -253,6 +253,7 @@ input:focus, select:focus, textarea:focus {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    max-width: 140px;
 }
 
 .status-selector label, .framework-selector label {
