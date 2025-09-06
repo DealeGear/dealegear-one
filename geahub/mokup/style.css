@@ -1,0 +1,610 @@
+/* Variáveis de cores e configurações globais */
+:root {
+    --bg-light: #F9FAFB;
+    --bg-dark: #1F2937;
+    --primary: #EF4444;
+    --text-light: #1F2937;
+    --text-dark: #F9FAFB;
+    --sidebar-light: #FFFFFF;
+    --sidebar-dark: #111827;
+    --block-light: #FFFFFF;
+    --block-dark: #374151;
+    --border-light: #E5E7EB;
+    --border-dark: #4B5563;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Modo escuro */
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode .sidebar {
+    background-color: var(--sidebar-dark);
+}
+
+body.dark-mode .block {
+    background-color: var(--block-dark);
+    border-color: var(--border-dark);
+}
+
+body.dark-mode .dropdown-content {
+    background-color: var(--sidebar-dark);
+}
+
+body.dark-mode .dropdown-content a {
+    color: var(--text-dark);
+}
+
+body.dark-mode .dropdown-content a:hover {
+    background-color: var(--bg-dark);
+}
+
+/* Barra Superior */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--sidebar-light);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+body.dark-mode .top-bar {
+    background-color: var(--sidebar-dark);
+    border-bottom-color: var(--border-dark);
+}
+
+.project-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.project-name {
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.project-name:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .project-name:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 12px;
+}
+
+.status-badge.ready {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.status-badge.new {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+}
+
+.status-badge.saved {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+
+.status-badge.loaded {
+    background-color: #EDE9FE;
+    color: #5B21B6;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+body.dark-mode .btn {
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdowns {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+}
+
+body.dark-mode .dropdown-btn {
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+}
+
+.dropdown-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .dropdown-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--sidebar-light);
+    min-width: 120px;
+    box-shadow: var(--shadow-hover);
+    z-index: 1;
+    border-radius: 6px;
+    overflow: hidden;
+    top: 100%;
+    right: 0;
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    color: var(--text-light);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+
+.theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* Container Principal */
+.main-container {
+    display: flex;
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+}
+
+/* Barra Lateral */
+
+.opcoes-container {
+  border: 2px solid #ccc;   /* borda do grupo */
+  border-radius: 12px;      /* cantos arredondados */
+  padding: 12px;            /* espaço interno */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                 /* espaço entre as opções */
+  width: max-content;       /* ajusta à largura do conteúdo */
+  background-color: #fff;   /* fundo opcional */
+  margin-left: 50px;
+  font-family: 'Arial', sans-serif; /* substitua pela fonte do seu projeto */
+  font-size: 14px; /* tamanho base, se necessário */
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+ font-family: inherit;
+  font-size: inherit;
+}
+
+.opcao input[type="radio"] {
+  accent-color: #007bff;    /* bolinha azul moderna */
+  width: 16px;
+  height: 16px;
+}
+
+
+
+.sidebar {
+    width: 240px;
+    background-color: var(--sidebar-light);
+    border-right: 1px solid var(--border-light);
+    padding: 20px 0;
+    overflow-y: auto;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.sidebar-section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6B7280;
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .section-title {
+    color: #9CA3AF;
+}
+
+.sidebar-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    gap: 12px;
+}
+
+body.dark-mode .sidebar-btn {
+    color: var(--text-dark);
+}
+
+.sidebar-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .sidebar-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-btn i {
+    width: 20px;
+    text-align: center;
+    color: #6B7280;
+}
+
+body.dark-mode .sidebar-btn i {
+    color: #9CA3AF;
+}
+
+/* Área Central (Canvas) */
+.canvas {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.canvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.canvas-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.add-block-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-block-btn:hover {
+    background-color: #DC2626;
+}
+
+.blocks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.block {
+    background-color: var(--block-light);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s;
+}
+
+.block:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+body.dark-mode .block-header {
+    border-bottom-color: var(--border-dark);
+}
+
+.block-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.remove-block-btn {
+    background-color: transparent;
+    border: none;
+    color: #6B7280;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+body.dark-mode .remove-block-btn {
+    color: #9CA3AF;
+}
+
+.remove-block-btn:hover {
+    color: var(--primary);
+}
+
+.block-content {
+    padding: 15px;
+}
+
+.block-placeholder {
+    font-size: 14px;
+    color: #6B7280;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .block-placeholder {
+    color: #9CA3AF;
+}
+
+.editable-area {
+    min-height: 100px;
+    padding: 10px;
+    border: 1px dashed var(--border-light);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+body.dark-mode .editable-area {
+    border-color: var(--border-dark);
+}
+
+.editable-area:hover {
+    border-color: #9CA3AF;
+}
+
+.editable-area:focus {
+    border-color: var(--primary);
+    border-style: solid;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        padding: 20px 0;
+    }
+    
+    .sidebar-btn span {
+        display: none;
+    }
+    
+    .sidebar-btn {
+        justify-content: center;
+    }
+    
+    .section-title {
+        display: none;
+    }
+    
+    .dropdowns {
+        display: none;
+    }
+    
+    .action-buttons {
+        display: none;
+    }
+    
+    .blocks-container {
+        grid-template-columns: 1fr;
+    }
+}
+/* Estilização da barra de rolagem para Webkit (Chrome, Safari, Edge) */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--secondary);
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #3a5a9f;
+}
+
+/* Estilização da barra de rolagem para Firefox */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--secondary);
+}
+
+/* Garantir que a barra de rolagem não apareça quando não for necessária */
+.sidebar {
+  overflow-y: auto;
+  scrollbar-gutter: stable; /* Evita que o conteúdo se mova quando a barra de rolagem aparece */
+}
+
+/* Adicionar padding para evitar que o conteúdo fique muito próximo da borda */
+.sidebar {
+  padding-right: 5px;
+}
+
+/* Para telas maiores, podemos ajustar a aparência */
+@media (min-width: 769px) {
+  .sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(74, 107, 175, 0.5);
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(74, 107, 175, 0.8);
+  }
+  
+  .sidebar {
+    scrollbar-color: rgba(74, 107, 175, 0.5) transparent;
+  }
+}
