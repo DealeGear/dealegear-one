@@ -2,7 +2,7 @@
 const ferramentas = [
     { titulo: "GearHub", descricao: "Crie seus projetos com a ajuda de frameworks e templates", url: "gearhub/index.html" },
     { titulo: "GearLabs", descricao: "Veja nossos protótipos e aprenda mais sobre como criar algo novo", url: "gearlabs/index.html" },
-    { titulo: "OneVision", descricao: "Uma plataforma de informações do mundo dos projetos", url: "onevision/index.html" },
+    { titulo: "GearVision", descricao: "Uma plataforma de informações do mundo dos projetos", url: "gearvision/index.html" },
     
 ];
 
