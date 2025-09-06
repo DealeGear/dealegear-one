@@ -507,7 +507,7 @@ function loadFrameworks() {
         .then(data => {
             frameworks = data;
             populateFrameworkSelect();
-            changeFramework('minimalist'); // Carregar framework padrão
+            changeFramework('blank'); // Carregar framework padrão
         })
         .catch(error => {
             console.error('Erro ao carregar frameworks:', error);
@@ -671,13 +671,14 @@ function createNewProject() {
         id: null,
         name: '',
         status: 'editing',
+        //framework: 'minimalist',
         framework: 'minimalist',
         cards: []
     };
     
     // Limpar a interface
     document.getElementById('projectName').value = '';
-    document.getElementById('projectStatus').value = 'editing';
+    //document.getElementById('projectStatus').value = 'editing';
     changeFramework('minimalist');
     
     showNotification(translations[currentLanguage]['project-created'], 'success');

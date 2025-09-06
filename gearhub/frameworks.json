@@ -1,5 +1,74 @@
 [
     {
+        "id": "blank",
+        "name": {
+            "pt": "Selecione",
+            "en": "Select"
+        },
+        "description": {
+            "pt": "",
+            "en": ""
+        },
+        "cards": [
+            {
+                "id": "objectives",
+                "title": {
+                    "pt": "Objetivos",
+                    "en": "Objectives"
+                },
+                "placeholder": {
+                    "pt": "",
+                    "en": ""
+                }
+            },
+            {
+                "id": "stakeholders",
+                "title": {
+                    "pt": "Stakeholders",
+                    "en": "Stakeholders"
+                },
+                "placeholder": {
+                    "pt": "",
+                    "en": ""
+                }
+            },
+            {
+                "id": "resources",
+                "title": {
+                    "pt": "Recursos",
+                    "en": "Resources"
+                },
+                "placeholder": {
+                    "pt": "",
+                    "en": ""
+                }
+            },
+            {
+                "id": "timeline",
+                "title": {
+                    "pt": "Cronograma",
+                    "en": "Timeline"
+                },
+                "placeholder": {
+                    "pt": "",
+                    "en": ""
+                }
+            },
+            {
+                "id": "risks",
+                "title": {
+                    "pt": "Riscos",
+                    "en": "Risks"
+                },
+                "placeholder": {
+                    "pt": "",
+                    "en": ""
+                }
+            }
+        ]
+    },
+    {
+        
         "id": "minimalist",
         "name": {
             "pt": "Minimalista",

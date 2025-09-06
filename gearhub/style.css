@@ -197,6 +197,10 @@ input:focus, select:focus, textarea:focus {
     left: 0;
     z-index: 999;
     transition: var(--transition);
+    display: flex;
+    height: 100vh;
+    flex-direction: column ;
+
 }
 
 .sidebar.active {
@@ -267,6 +271,7 @@ input:focus, select:focus, textarea:focus {
     padding: 1.5rem;
     overflow-y: auto;
     transition: var(--transition);
+    height: 100vh;
 }
 
 .cards-container {
@@ -360,6 +365,8 @@ input:focus, select:focus, textarea:focus {
     color: var(--gray-color);
     font-style: italic;
 }
+
+
 
 /* Modal */
 .modal {
