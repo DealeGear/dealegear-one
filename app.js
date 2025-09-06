@@ -1,6 +1,6 @@
 // Dados iniciais para as ferramentas
 const ferramentas = [
-    { titulo: "IdeiaHub", descricao: "Crie seus projetos com a ajuda de frameworks e templates", url: "ideiahub/index.html" },
+    { titulo: "GearHub", descricao: "Crie seus projetos com a ajuda de frameworks e templates", url: "gearhub/index.html" },
     { titulo: "GearLabs", descricao: "Veja nossos protótipos e aprenda mais sobre como criar algo novo", url: "gearlabs/index.html" },
     { titulo: "Stairs", descricao: "Nosso aplicativo para criação de projetos em dispositivos móveis", url: "stairs/index.html" },
     { titulo: "OneVision", descricao: "Uma plataforma de informações do mundo dos projetos", url: "onevision/index.html" },
