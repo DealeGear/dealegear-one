@@ -181,13 +181,13 @@ nav ul li a:hover:after {
 }
 
 /* Seção História */
-.history {
+.personagem {
     padding: 4rem 5%;
     background-color: #f8f0ff;
     position: relative;
 }
 
-.history:before {
+.personagem:before {
     content: '';
     position: absolute;
     top: 0;

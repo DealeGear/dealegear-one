@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Menu de navegação suave
-    const navLinks = document.querySelectorAll('nav a');
+    /*const navLinks = document.querySelectorAll('nav a');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
         });
-    });
+    });*/
     
     // Animação dos cards de episódios
     const episodeCards = document.querySelectorAll('.episode-card');
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Adicionar animação ao rolar para a seção de história
-    const historySection = document.querySelector('#historia');
+    const historySection = document.querySelector('#personagem');
     const parchment = document.querySelector('.parchment');
     
     const historyObserver = new IntersectionObserver(function(entries) {

@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cards.forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
-            card.style.transition = `all 0.5s ease-out ${index * 0.1}s`;
+            card.style.transition = `all 0.5s ease-out ${index * 0.01}s`;
             observer.observe(card);
         });
     }, 100);
