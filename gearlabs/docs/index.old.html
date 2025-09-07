@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação - Projetos</title>
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-color: #ffffff;
+            --surface-color: #f9fafb;
+            --text-color: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --sidebar-width: 260px;
+            --header-height: 60px;
+            --footer-height: 50px;
+            --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --card-hover-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #111827;
+            --surface-color: #1f2937;
+            --text-color: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+            --card-hover-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            margin-right: 1rem;
+            color: var(--text-color);
+            background-color: transparent;
+            border: none;
+            transition: background-color 0.2s;
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle, .lang-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            color: var(--text-color);
+            background-color: transparent;
+            border: none;
+            transition: background-color 0.2s;
+        }
+
+        .theme-toggle:hover, .lang-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover, [data-theme="dark"] .lang-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: var(--header-height);
+            bottom: var(--footer-height);
+            left: 0;
+            width: var(--sidebar-width);
+            background-color: var(--surface-color);
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 50;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-list {
+            list-style: none;
+        }
+
+        .project-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .project-item:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] .project-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-item.active {
+            background-color: rgba(79, 70, 229, 0.1);
+            border-left-color: var(--primary-color);
+        }
+
+        .project-icon {
+            margin-right: 0.75rem;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        .project-name {
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: calc(var(--header-height) + 2rem) 1rem calc(var(--footer-height) + 2rem) 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .project-header {
+            margin-bottom: 2rem;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        .sections-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .section-card {
+            background-color: var(--surface-color);
+            border-radius: 0.5rem;
+            box-shadow: var(--card-shadow);
+            padding: 1.5rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+            scroll-margin-top: calc(var(--header-height) + 1rem);
+        }
+
+        .section-card:hover {
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-icon {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-right: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .section-content {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .section-content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .section-content p {
+            margin-bottom: 1rem;
+        }
+
+        .section-content ul, .section-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .section-content a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background-color: rgba(79, 70, 229, 0.1);
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            height: var(--footer-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Overlay for mobile sidebar */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Media queries for responsive design */
+        @media (min-width: 768px) {
+            .sidebar {
+                transform: translateX(0);
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .main-content {
+                padding-left: calc(var(--sidebar-width) + 2rem);
+            }
+
+            .overlay {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .sections-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">DocHub</div>
+        </div>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="lang-toggle" id="langToggle" title="Alternar idioma">
+                <i class="fas fa-globe"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title" data-i18n="projects">Projetos</div>
+        </div>
+        <ul class="project-list" id="projectList">
+            <!-- Projects will be dynamically inserted here -->
+        </ul>
+    </aside>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="project-header">
+            <h1 class="project-title" id="projectTitle">Selecione um projeto</h1>
+            <p class="project-description" id="projectDescription" data-i18n="selectProject">Escolha um projeto na barra lateral para visualizar sua documentação.</p>
+        </div>
+        <div class="sections-container" id="sectionsContainer">
+            <!-- Sections will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link" data-i18n="community">Comunidade</a>
+            <a href="#" class="footer-link">GearLabs</a>
+            <a href="#" class="footer-link">DealeGear One</a>
+            <a href="#" class="footer-link" data-i18n="portal">Portal</a>
+        </div>
+    </footer>
+
+    <script>
+        // Project and section data
+        const projects = [
+            { id: 'myHeart', name: 'MyHeart', icon: 'fa-heartbeat' },
+            { id: 'baristaPro', name: 'BaristaPro', icon: 'fa-coffee' },
+            { id: 'synapse', name: 'Synapse', icon: 'fa-brain' },
+            { id: '3gto', name: '3GTO', icon: 'fa-cube' },
+            { id: 'baristas', name: 'Baristas', icon: 'fa-mug-hot' },
+            { id: 'dyris', name: 'Dyris', icon: 'fa-eye' },
+            { id: 'fabr', name: 'Fabr', icon: 'fa-industry' },
+            { id: 'underSea', name: 'UnderSea', icon: 'fa-water' },
+            { id: 'oxygen', name: 'Oxygen', icon: 'fa-wind' },
+            { id: 'bosqueFrutiferas', name: 'Bosque das Frutíferas', icon: 'fa-tree' },
+            { id: 'mecanicoFantasma', name: 'Mecanico Fantasma', icon: 'fa-ghost' },
+            { id: 'viverEhUmaArte', name: 'Viver é uma Arte', icon: 'fa-palette' },
+            { id: 'aventurasPeludas', name: 'Aventuras Peludas', icon: 'fa-paw' },
+            { id: 'raizUrbana', name: 'Raiz Urbana', icon: 'fa-seedling' },
+            { id: 'versoEspresso', name: 'Verso Espresso', icon: 'fa-book-open' },
+            { id: 'mikeETioBob', name: 'Mike e Tio Bob', icon: 'fa-optin-monster' },
+            { id: 'simco', name: 'SIMCO', icon: 'fa-users' }
+        ];
+
+        const sections = [
+            { id: 'overview', icon: 'fa-info-circle' },
+            { id: 'objective', icon: 'fa-bullseye' },
+            { id: 'application', icon: 'fa-rocket' },
+            { id: 'architecture', icon: 'fa-sitemap' },
+            { id: 'userGuide', icon: 'fa-book' },
+            { id: 'nextSteps', icon: 'fa-road' },
+            { id: 'background', icon: 'fa-layer-group' },
+            { id: 'references', icon: 'fa-link' }
+        ];
+
+        // Translations
+        const translations = {
+            pt: {
+                projects: 'Projetos',
+                selectProject: 'Escolha um projeto na barra lateral para visualizar sua documentação.',
+                community: 'Comunidade',
+                portal: 'Portal',
+                overview: 'Visão Geral',
+                objective: 'Objetivo',
+                application: 'Aplicação',
+                architecture: 'Arquitetura',
+                userGuide: 'Guia do Usuário',
+                nextSteps: 'Próximos Passos',
+                background: 'Contexto',
+                references: 'Referências'
+            },
+            en: {
+                projects: 'Projects',
+                selectProject: 'Select a project from the sidebar to view its documentation.',
+                community: 'Community',
+                portal: 'Portal',
+                overview: 'Overview',
+                objective: 'Objective',
+                application: 'Application',
+                architecture: 'Architecture',
+                userGuide: 'User Guide',
+                nextSteps: 'Next Steps',
+                background: 'Background',
+                references: 'References'
+            }
+        };
+
+        // Sample content for each section
+        const sectionContent = {
+            overview: {
+                pt: (projectName) => `
+                    <p>O <span class="highlight">${projectName}</span> é um projeto inovador que visa transformar a maneira como interagimos com tecnologias emergentes.</p>
+                    <p>Esta documentação fornece informações detalhadas sobre todos os aspectos do projeto, desde sua concepção até implementação e uso.</p>
+                    <h3>Principais Características</h3>
+                    <ul>
+                        <li>Interface intuitiva e responsiva</li>
+                        <li>Alta performance e escalabilidade</li>
+                        <li>Integração com sistemas existentes</li>
+                        <li>Segurança robusta e proteção de dados</li>
+                    </ul>
+                `,
+                en: (projectName) => `
+                    <p><span class="highlight">${projectName}</span> is an innovative project that aims to transform the way we interact with emerging technologies.</p>
+                    <p>This documentation provides detailed information about all aspects of the project, from its conception to implementation and use.</p>
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Intuitive and responsive interface</li>
+                        <li>High performance and scalability</li>
+                        <li>Integration with existing systems</li>
+                        <li>Robust security and data protection</li>
+                    </ul>
+                `
+            },
+            objective: {
+                pt: (projectName) => `
+                    <p>O objetivo principal do <span class="highlight">${projectName}</span> é resolver problemas complexos através de soluções tecnológicas inovadoras.</p>
+                    <h3>Metas Específicas</h3>
+                    <ul>
+                        <li>Desenvolver uma plataforma escalável que atenda a múltiplos casos de uso</li>
+                        <li>Garantir acessibilidade e inclusão para todos os usuários</li>
+                        <li>Minimizar o impacto ambiental através de práticas sustentáveis</li>
+                        <li>Estabelecer novos padrões de qualidade e eficiência no setor</li>
+                    </ul>
+                `,
+                en: (projectName) => `
+                    <p>The main objective of <span class="highlight">${projectName}</span> is to solve complex problems through innovative technological solutions.</p>
+                    <h3>Specific Goals</h3>
+                    <ul>
+                        <li>Develop a scalable platform that serves multiple use cases</li>
+                        <li>Ensure accessibility and inclusion for all users</li>
+                        <li>Minimize environmental impact through sustainable practices</li>
+                        <li>Establish new standards of quality and efficiency in the sector</li>
+                    </ul>
+                `
+            },
+            application: {
+                pt: (projectName) => `
+                    <p>O <span class="highlight">${projectName}</span> pode ser aplicado em diversos contextos, oferecendo benefícios significativos em cada um deles.</p>
+                    <h3>Setores de Aplicação</h3>
+                    <ul>
+                        <li><strong>Educação:</strong> Ferramentas para aprendizado personalizado e colaborativo</li>
+                        <li><strong>Saúde:</strong> Soluções para monitoramento e tratamento de pacientes</li>
+                        <li><strong>Negócios:</strong> Otimização de processos e tomada de decisão</li>
+                        <li><strong>Entretenimento:</strong> Experiências imersivas e interativas</li>
+                    </ul>
+                    <p>Para mais informações sobre casos de uso específicos, consulte nossa <a href="#">galeria de exemplos</a>.</p>
+                `,
+                en: (projectName) => `
+                    <p><span class="highlight">${projectName}</span> can be applied in various contexts, offering significant benefits in each of them.</p>
+                    <h3>Application Sectors</h3>
+                    <ul>
+                        <li><strong>Education:</strong> Tools for personalized and collaborative learning</li>
+                        <li><strong>Health:</strong> Solutions for patient monitoring and treatment</li>
+                        <li><strong>Business:</strong> Process optimization and decision making</li>
+                        <li><strong>Entertainment:</strong> Immersive and interactive experiences</li>
+                    </ul>
+                    <p>For more information about specific use cases, see our <a href="#">examples gallery</a>.</p>
+                `
+            },
+            architecture: {
+                pt: (projectName) => `
+                    <p>A arquitetura do <span class="highlight">${projectName}</span> foi projetada para ser modular, escalável e de fácil manutenção.</p>
+                    <h3>Componentes Principais</h3>
+                    <ul>
+                        <li><strong>Frontend:</strong> Interface responsiva construída com tecnologias modernas</li>
+                        <li><strong>Backend:</strong> API RESTful com microserviços</li>
+                        <li><strong>Banco de Dados:</strong> Solução híbrida com SQL e NoSQL</li>
+                        <li><strong>Infraestrutura:</strong> Implantação em nuvem com contêineres</li>
+                    </ul>
+                    <p>Para detalhes técnicos completos, consulte nossa <a href="#">documentação técnica</a>.</p>
+                `,
+                en: (projectName) => `
+                    <p>The architecture of <span class="highlight">${projectName}</span> was designed to be modular, scalable, and easy to maintain.</p>
+                    <h3>Main Components</h3>
+                    <ul>
+                        <li><strong>Frontend:</strong> Responsive interface built with modern technologies</li>
+                        <li><strong>Backend:</strong> RESTful API with microservices</li>
+                        <li><strong>Database:</strong> Hybrid solution with SQL and NoSQL</li>
+                        <li><strong>Infrastructure:</strong> Cloud deployment with containers</li>
+                    </ul>
+                    <p>For complete technical details, see our <a href="#">technical documentation</a>.</p>
+                `
+            },
+            userGuide: {
+                pt: (projectName) => `
+                    <p>Este guia ajuda os usuários a começar a usar o <span class="highlight">${projectName}</span> de forma eficaz.</p>
+                    <h3>Primeiros Passos</h3>
+                    <ol>
+                        <li>Crie sua conta no sistema</li>
+                        <li>Configure seu perfil e preferências</li>
+                        <li>Explore o painel principal e suas funcionalidades</li>
+                        <li>Consulte os tutoriais em vídeo para orientação visual</li>
+                    </ol>
+                    <h3>Dicas e Truques</h3>
+                    <ul>
+                        <li>Use atalhos de teclado para aumentar sua produtividade</li>
+                        <li>Personalize seu workspace para atender às suas necessidades</li>
+                        <li>Ative as notificações para ficar atualizado sobre novidades</li>
+                    </ul>
+                    <p>Para suporte adicional, visite nossa <a href="#">central de ajuda</a>.</p>
+                `,
+                en: (projectName) => `
+                    <p>This guide helps users get started with <span class="highlight">${projectName}</span> effectively.</p>
+                    <h3>Getting Started</h3>
+                    <ol>
+                        <li>Create your account in the system</li>
+                        <li>Set up your profile and preferences</li>
+                        <li>Explore the main dashboard and its features</li>
+                        <li>Check out video tutorials for visual guidance</li>
+                    </ol>
+                    <h3>Tips and Tricks</h3>
+                    <ul>
+                        <li>Use keyboard shortcuts to increase your productivity</li>
+                        <li>Customize your workspace to meet your needs</li>
+                        <li>Enable notifications to stay updated on news</li>
+                    </ul>
+                    <p>For additional support, visit our <a href="#">help center</a>.</p>
+                `
+            },
+            nextSteps: {
+                pt: (projectName) => `
+                    <p>O desenvolvimento do <span class="highlight">${projectName}</span> continua evoluindo, com planos ambiciosos para o futuro.</p>
+                    <h3>Roadmap</h3>
+                    <ul>
+                        <li><strong>Q3 2023:</strong> Lançamento da versão 2.0 com novas funcionalidades</li>
+                        <li><strong>Q4 2023:</strong> Expansão para novos mercados internacionais</li>
+                        <li><strong>Q1 2024:</strong> Integração com plataformas de terceiros</li>
+                        <li><strong>Q2 2024:</strong> Implementação de IA para recursos avançados</li>
+                    </ul>
+                    <p>Estamos sempre abertos a sugestões da comunidade. Participe do nosso <a href="#">fórum de discussões</a> para contribuir.</p>
+                `,
+                en: (projectName) => `
+                    <p>The development of <span class="highlight">${projectName}</span> continues to evolve, with ambitious plans for the future.</p>
+                    <h3>Roadmap</h3>
+                    <ul>
+                        <li><strong>Q3 2023:</strong> Release of version 2.0 with new features</li>
+                        <li><strong>Q4 2023:</strong> Expansion to new international markets</li>
+                        <li><strong>Q1 2024:</strong> Integration with third-party platforms</li>
+                        <li><strong>Q2 2024:</strong> Implementation of AI for advanced features</li>
+                    </ul>
+                    <p>We are always open to suggestions from the community. Join our <a href="#">discussion forum</a> to contribute.</p>
+                `
+            },
+            background: {
+                pt: (projectName) => `
+                    <p>O <span class="highlight">${projectName}</span> nasceu da necessidade de resolver desafios complexos que não eram adequadamente abordados pelas soluções existentes.</p>
+                    <h3>Histórico</h3>
+                    <p>O projeto foi iniciado em 2020 por uma equipe multidisciplinar de especialistas com experiência em diversas áreas. Após extensiva pesquisa e desenvolvimento, a primeira versão foi lançada em 2021.</p>
+                    <h3>Princípios Orientadores</h3>
+                    <ul>
+                        <li>Inovação contínua e melhoria constante</li>
+                        <li>Foco no usuário e experiência de qualidade</li>
+                        <li>Transparência e ética em todas as operações</li>
+                        <li>Sustentabilidade e responsabilidade social</li>
+                    </ul>
+                `,
+                en: (projectName) => `
+                    <p><span class="highlight">${projectName}</span> was born from the need to solve complex challenges that were not adequately addressed by existing solutions.</p>
+                    <h3>History</h3>
+                    <p>The project was started in 2020 by a multidisciplinary team of experts with experience in various fields. After extensive research and development, the first version was released in 2021.</p>
+                    <h3>Guiding Principles</h3>
+                    <ul>
+                        <li>Continuous innovation and constant improvement</li>
+                        <li>User focus and quality experience</li>
+                        <li>Transparency and ethics in all operations</li>
+                        <li>Sustainability and social responsibility</li>
+                    </ul>
+                `
+            },
+            references: {
+                pt: (projectName) => `
+                    <p>Esta seção contém referências e recursos úteis relacionados ao <span class="highlight">${projectName}</span>.</p>
+                    <h3>Documentação</h3>
+                    <ul>
+                        <li><a href="#">Guia de Instalação</a></li>
+                        <li><a href="#">Referência da API</a></li>
+                        <li><a href="#">Notas de Versão</a></li>
+                        <li><a href="#">Perguntas Frequentes</a></li>
+                    </ul>
+                    <h3>Comunidade</h3>
+                    <ul>
+                        <li><a href="#">Fórum Oficial</a></li>
+                        <li><a href="#">Canal do Discord</a></li>
+                        <li><a href="#">Eventos e Meetups</a></li>
+                        <li><a href="#">Blog do Projeto</a></li>
+                    </ul>
+                    <h3>Recursos Externos</h3>
+                    <ul>
+                        <li><a href="#">Artigos e Publicações</a></li>
+                        <li><a href="#">Estudos de Caso</a></li>
+                        <li><a href="#">Vídeos Tutoriais</a></li>
+                    </ul>
+                `,
+                en: (projectName) => `
+                    <p>This section contains references and useful resources related to <span class="highlight">${projectName}</span>.</p>
+                    <h3>Documentation</h3>
+                    <ul>
+                        <li><a href="#">Installation Guide</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Release Notes</a></li>
+                        <li><a href="#">Frequently Asked Questions</a></li>
+                    </ul>
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#">Official Forum</a></li>
+                        <li><a href="#">Discord Channel</a></li>
+                        <li><a href="#">Events and Meetups</a></li>
+                        <li><a href="#">Project Blog</a></li>
+                    </ul>
+                    <h3>External Resources</h3>
+                    <ul>
+                        <li><a href="#">Articles and Publications</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Video Tutorials</a></li>
+                    </ul>
+                `
+            }
+        };
+
+        // DOM elements
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const themeToggle = document.getElementById('themeToggle');
+        const langToggle = document.getElementById('langToggle');
+        const projectList = document.getElementById('projectList');
+        const projectTitle = document.getElementById('projectTitle');
+        const projectDescription = document.getElementById('projectDescription');
+        const sectionsContainer = document.getElementById('sectionsContainer');
+        
+        // State
+        let currentProject = null;
+        let currentLang = 'pt';
+        let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+        // Initialize the app
+        function init() {
+            renderProjects();
+            setupEventListeners();
+            applyTheme();
+        }
+
+        // Render projects in the sidebar
+        function renderProjects() {
+            projectList.innerHTML = '';
+            
+            projects.forEach(project => {
+                const li = document.createElement('li');
+                li.className = 'project-item';
+                li.dataset.projectId = project.id;
+                
+                li.innerHTML = `
+                    <i class="fas ${project.icon} project-icon"></i>
+                    <span class="project-name">${project.name}</span>
+                `;
+                
+                li.addEventListener('click', () => selectProject(project.id));
+                projectList.appendChild(li);
+            });
+        }
+
+        // Select a project and render its sections
+        function selectProject(projectId) {
+            // Update active project in sidebar
+            document.querySelectorAll('.project-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.projectId === projectId) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Find the selected project
+            currentProject = projects.find(p => p.id === projectId);
+            
+            if (!currentProject) return;
+            
+            // Update project header
+            projectTitle.textContent = currentProject.name;
+            projectDescription.textContent = translations[currentLang].selectProject;
+            
+            // Render sections
+            renderSections();
+            
+            // Close sidebar on mobile
+            if (window.innerWidth < 768) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render sections for the selected project
+        function renderSections() {
+            sectionsContainer.innerHTML = '';
+            
+            sections.forEach(section => {
+                const sectionCard = document.createElement('div');
+                sectionCard.className = 'section-card';
+                sectionCard.id = section.id;
+                
+                const sectionTitle = translations[currentLang][section.id] || section.id;
+                
+                sectionCard.innerHTML = `
+                    <div class="section-header">
+                        <i class="fas ${section.icon} section-icon"></i>
+                        <h2 class="section-title">${sectionTitle}</h2>
+                    </div>
+                    <div class="section-content">
+                        ${sectionContent[section.id][currentLang](currentProject.name)}
+                    </div>
+                `;
+                
+                sectionsContainer.appendChild(sectionCard);
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Menu toggle
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('active');
+            });
+            
+            // Overlay click
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+            
+            // Theme toggle
+            themeToggle.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+                localStorage.setItem('darkMode', isDarkMode);
+                applyTheme();
+            });
+            
+            // Language toggle
+            langToggle.addEventListener('click', () => {
+                currentLang = currentLang === 'pt' ? 'en' : 'pt';
+                document.documentElement.lang = currentLang;
+                updateLanguage();
+            });
+            
+            // Window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('active');
+                }
+            });
+        }
+
+        // Apply theme (dark/light mode)
+        function applyTheme() {
+            if (isDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // Update language
+        function updateLanguage() {
+            // Update elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+            
+            // Re-render sections if a project is selected
+            if (currentProject) {
+                renderSections();
+            }
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

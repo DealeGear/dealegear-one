@@ -3,66 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearLabs Docs</title>
+    <title>Documentação - Projetos</title>
+    
+    <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.css">
+    
+    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <h1>GearLabs Docs</h1>
-            <div class="header-controls">
-                <div class="language-selector">
-                    <button class="language-btn active" data-lang="pt">PT</button>
-                    <button class="language-btn" data-lang="en">EN</button>
-                    <button class="language-btn" data-lang="es">ES</button>
-                </div>
-                <button class="theme-toggle" id="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-        </header>
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-content" data-simplebar>
-                <ul class="project-list" id="project-list">
-                    <!-- Projects will be dynamically loaded here -->
-                </ul>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content" id="main-content">
-            <div class="content-container">
-                <div class="loading">
-                    <div class="spinner"></div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <a href="https://discord.gg/vKK7xVcZJ8" target="_blank">Comunidade</a>
-            <a href="../index.html">GearLabs</a>
-            <a href="../../index.html">DealeGear One</a>
-            <a href="https://www.dealegear.com.br/" target="_blank">Portal</a>
-        </footer>
-
-        <!-- Back to Top Button -->
-        <div class="back-to-top" id="back-to-top">
-            <i class="fas fa-arrow-up"></i>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">DocHub</div>
         </div>
-    </div>
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="lang-toggle" id="langToggle" title="Alternar idioma">
+                <i class="fas fa-globe"></i>
+            </button>
+        </div>
+    </header>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
-    <script src="data.js"></script>
-    <script src="i18n.js"></script>
-    <script src="darkmode.js"></script>
-    <script src="script.js"></script>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title" data-i18n="projects">Projetos</div>
+        </div>
+        <ul class="project-list" id="projectList">
+            <!-- Projects will be dynamically inserted here -->
+        </ul>
+    </aside>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="project-header">
+            <h1 class="project-title" id="projectTitle">Selecione um projeto</h1>
+            <p class="project-description" id="projectDescription" data-i18n="selectProject">Escolha um projeto na barra lateral para visualizar sua documentação.</p>
+        </div>
+        <div class="sections-container" id="sectionsContainer">
+            <!-- Sections will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link" data-i18n="community">Comunidade</a>
+            <a href="#" class="footer-link">GearLabs</a>
+            <a href="#" class="footer-link">DealeGear One</a>
+            <a href="#" class="footer-link" data-i18n="portal">Portal</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
 </body>
 </html>

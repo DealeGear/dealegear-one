@@ -1,100 +1,177 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stairs — Sistema de Orientação Vocacional</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stairs - Transforme Ideias em Projetos Reais</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-container">
-    <!-- Cabeçalho -->
+    <!-- Menu Responsivo -->
     <header class="header">
-      <div class="header-content">
-        <div class="logo">Stairs</div>
-        <nav class="nav">
-          <div class="nav-links">
-            <a href="https://github.com/SEU_GITHUB_AQUI" class="nav-link" target="_blank" rel="noopener noreferrer" data-i18n="cta_github">GitHub do Projeto</a>
-            <a href="https://portal.dealegear.com" class="nav-link" target="_blank" rel="noopener noreferrer" data-i18n="cta_portal">Portal DealeGear</a>
-            <button class="lang-toggle" id="langToggle" aria-label="Alternar idioma">EN</button>
-          </div>
-          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu" aria-expanded="false">
-            <span class="hamburger"></span>
-            <span class="hamburger"></span>
-            <span class="hamburger"></span>
-          </button>
-        </nav>
-      </div>
+        <div class="container">
+            <div class="logo">Stairs</div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#como-funciona" class="nav-link">Como Funciona</a></li>
+                    <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Conteúdo Principal -->
-    <main class="main-content">
-      <div class="wizard-container">
-        <!-- Coluna Esquerda: Indicador de Progresso -->
-        <aside class="stepper-sidebar">
-          <div class="stepper">
-            <div class="step active" data-step="1">
-              <div class="step-indicator">
-                <span class="step-number">1</span>
-              </div>
-              <div class="step-label" data-i18n="step_category">Categoria</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Stairs</h1>
+            <p class="hero-tagline">Suba os degraus do conhecimento e transforme ideias em projetos reais</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Baixar o App</a>
+                <a href="#como-funciona" class="btn btn-secondary">Saiba Mais</a>
             </div>
-            <div class="step" data-step="2">
-              <div class="step-indicator">
-                <span class="step-number">2</span>
-              </div>
-              <div class="step-label" data-i18n="step_theme">Tema</div>
-            </div>
-            <div class="step" data-step="3">
-              <div class="step-indicator">
-                <span class="step-number">3</span>
-              </div>
-              <div class="step-label" data-i18n="step_objectives">Objetivos</div>
-            </div>
-            <div class="step" data-step="4">
-              <div class="step-indicator">
-                <span class="step-number">4</span>
-              </div>
-              <div class="step-label" data-i18n="step_time">Tempo disponível</div>
-            </div>
-          </div>
-        </aside>
-
-        <!-- Coluna Direita: Conteúdo da Etapa -->
-        <section class="step-content">
-          <div class="step-header">
-            <h1 id="stepTitle" data-i18n="step1_title">Selecione uma categoria</h1>
-            <div class="loading-indicator" id="loadingIndicator" aria-hidden="true"></div>
-          </div>
-
-          <div id="stepBody" class="step-body">
-            <!-- Conteúdo dinâmico será inserido aqui via JavaScript -->
-          </div>
-
-          <div class="error-message" id="errorMessage" role="alert" aria-live="polite"></div>
-
-          <!-- Navegação Inferior -->
-          <div class="step-navigation">
-            <button id="backBtn" class="btn btn-secondary" data-i18n="back">Voltar</button>
-            <button id="nextBtn" class="btn btn-primary" data-i18n="next" disabled>Próximo</button>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <!-- Rodapé -->
-    <footer class="footer">
-      <div class="footer-content">
-        <p>© Stairs, MIT License</p>
-        <div class="footer-links">
-          <a href="#" data-i18n="privacy_policy">Política de Privacidade</a>
-          <a href="#" data-i18n="contact">Contato</a>
         </div>
-      </div>
-    </footer>
-  </div>
+    </section>
 
-  <script type="module" src="data.js"></script>
-  <script type="module" src="app.js"></script>
+    <!-- Seção Como Funciona -->
+    <section id="como-funciona" class="section">
+        <div class="container">
+            <h2 class="section-title">Degraus do Aprendizado</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Fundamentos Cognitivos e Criativos</h3>
+                    <p>Desenvolva pensamento crítico e habilidades criativas essenciais.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Estruturação de Projetos</h3>
+                    <p>Aprenda a planejar e organizar projetos do início ao fim.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Comunicação e Colaboração</h3>
+                    <p>Domine técnicas de comunicação eficaz e trabalho em equipe.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Ferramentas Digitais</h3>
+                    <p>Utilize as melhores ferramentas para potencializar seus projetos.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Conhecimentos Interdisciplinares</h3>
+                    <p>Integre conhecimentos de diferentes áreas para soluções inovadoras.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Trilhas Avançadas</h3>
+                    <p>Especialize-se em áreas específicas com trilhas personalizadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Diferenciais -->
+    <section id="diferenciais" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Por que escolher o Stairs?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Gamificação</h3>
+                    <p>Aprenda como em um jogo, com desafios, recompensas e níveis de conquista.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Aplicação Prática</h3>
+                    <p>Crie algo real em cada fase, aplicando imediatamente o que aprendeu.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Trilhas Personalizadas</h3>
+                    <p>Escolha entre tecnologia, social, artístico ou científico conforme seu interesse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section id="depoimentos" class="section">
+        <div class="container">
+            <h2 class="section-title">O que dizem nossos usuários</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"O Stairs transformou minha ideia de negócio em um projeto real em apenas 3 meses!"</p>
+                    <div class="testimonial-author">
+                        <span class="author-name">Ana Silva</span>
+                        <span class="author-role">Empreendedora</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"A gamificação me motivou a continuar aprendendo mesmo nos dias mais difíceis."</p>
+                    <div class="testimonial-author">
+                        <span class="author-name">Carlos Mendes</span>
+                        <span class="author-role">Estudante</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Finalmente consegui estruturar meu projeto social com metodologias claras e eficazes."</p>
+                    <div class="testimonial-author">
+                        <span class="author-name">Mariana Costa</span>
+                        <span class="author-role">Assistente Social</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chamada Final -->
+    <section id="contato" class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Sua ideia merece sair do papel. Suba o primeiro degrau agora!</h2>
+            <a href="app/app.html" class="btn btn-primary btn-large">Acessar o App</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://discord.gg/vKK7xVcZJ8">Comunidade</a>
+                <a href="../../docs/index.html">Documentação</a>
+                <a href="../../index.html">GearLabs</a>
+                <a href="../../../gearblog/index.html">Blog</a>
+            </div>
+            <p class="copyright">&copy; 2025 DealeGear. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -111,6 +111,13 @@ const prototypes = [
         description: "As aventuras de dois dinossauros pelo tempo",
         image: "img/mike-bob-capa.jpg",
         link: "prototipos/mike-bob/index.html"
+    },
+    {
+        id: 16,
+        name: "SIMCO",
+        description: "Simulador da Função Coloretal",
+        image: "img/simco-capa.jpg",
+        link: "prototipos/simco/index.html"
     }
 ];
 
