@@ -4,6 +4,13 @@ let map;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    // Verificar preferência de tema salva
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        updateThemeIcon(true);
+    }
+    
     // Garante que a Home seja a página inicial
     const homePage = document.getElementById('home');
     if (homePage) {
@@ -58,6 +65,73 @@ function showPage(pageId) {
     }
 }
 
+// Theme toggle functions
+function toggleTheme() {
+    const body = document.body;
+    const isDarkMode = body.classList.contains('dark-mode');
+    
+    if (isDarkMode) {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+        updateThemeIcon(false);
+    } else {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        updateThemeIcon(true);
+    }
+    
+    // Atualizar gráficos para o novo tema
+    updateChartsTheme();
+}
+
+function updateThemeIcon(isDarkMode) {
+    const themeIcon = document.getElementById('theme-icon');
+    if (isDarkMode) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+}
+
+function updateChartsTheme() {
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    const textColor = isDarkMode ? '#F9FAFB' : '#1F2937';
+    const gridColor = isDarkMode ? '#374151' : '#E5E7EB';
+    
+    // Atualizar gráfico de área
+    if (areaChart) {
+        areaChart.options.scales.y.ticks.color = textColor;
+        areaChart.options.scales.x.ticks.color = textColor;
+        areaChart.options.scales.y.grid.color = gridColor;
+        areaChart.options.scales.x.grid.color = gridColor;
+        areaChart.options.plugins.legend.labels.color = textColor;
+        areaChart.update();
+    }
+    
+    // Atualizar gráfico donut
+    if (donutChart) {
+        donutChart.options.plugins.legend.labels.color = textColor;
+        donutChart.update();
+    }
+    
+    // Atualizar gráfico de barras
+    if (barChart) {
+        barChart.options.scales.y.ticks.color = textColor;
+        barChart.options.scales.x.ticks.color = textColor;
+        barChart.options.scales.y.grid.color = gridColor;
+        barChart.options.plugins.legend.labels.color = textColor;
+        barChart.update();
+    }
+    
+    // Atualizar gauge
+    if (gaugeChart) {
+        gaugeChart.options.plugins.legend.labels.color = textColor;
+        gaugeChart.update();
+    }
+}
+
 // Initialize all charts
 function initializeCharts() {
     initializeAreaChart();
@@ -70,6 +144,9 @@ function initializeCharts() {
 // Area Chart
 function initializeAreaChart() {
     const ctx = document.getElementById('areaChart').getContext('2d');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    const textColor = isDarkMode ? '#F9FAFB' : '#1F2937';
+    const gridColor = isDarkMode ? '#374151' : '#E5E7EB';
     
     const gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
     gradient1.addColorStop(0, 'rgba(79, 70, 229, 0.8)');
@@ -116,6 +193,9 @@ function initializeAreaChart() {
             plugins: {
                 legend: {
                     position: 'top',
+                    labels: {
+                        color: textColor
+                    }
                 },
                 tooltip: {
                     mode: 'index',
@@ -129,7 +209,19 @@ function initializeAreaChart() {
                     ticks: {
                         callback: function(value) {
                             return value + '%';
-                        }
+                        },
+                        color: textColor
+                    },
+                    grid: {
+                        color: gridColor
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: textColor
+                    },
+                    grid: {
+                        color: gridColor
                     }
                 }
             }
@@ -171,6 +263,8 @@ function updateAreaChart() {
 // Donut Chart
 function initializeDonutChart() {
     const ctx = document.getElementById('donutChart').getContext('2d');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    const textColor = isDarkMode ? '#F9FAFB' : '#1F2937';
     
     donutChart = new Chart(ctx, {
         type: 'doughnut',
@@ -194,6 +288,9 @@ function initializeDonutChart() {
             plugins: {
                 legend: {
                     position: 'right',
+                    labels: {
+                        color: textColor
+                    }
                 },
                 tooltip: {
                     callbacks: {
@@ -228,6 +325,9 @@ function updateDonutChart() {
 // Bar Chart
 function initializeBarChart() {
     const ctx = document.getElementById('barChart').getContext('2d');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    const textColor = isDarkMode ? '#F9FAFB' : '#1F2937';
+    const gridColor = isDarkMode ? '#374151' : '#E5E7EB';
     
     barChart = new Chart(ctx, {
         type: 'bar',
@@ -252,7 +352,10 @@ function initializeBarChart() {
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    display: false
+                    display: false,
+                    labels: {
+                        color: textColor
+                    }
                 },
                 tooltip: {
                     callbacks: {
@@ -269,7 +372,19 @@ function initializeBarChart() {
                     ticks: {
                         callback: function(value) {
                             return value + '%';
-                        }
+                        },
+                        color: textColor
+                    },
+                    grid: {
+                        color: gridColor
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: textColor
+                    },
+                    grid: {
+                        color: gridColor
                     }
                 }
             }
@@ -369,6 +484,7 @@ function updateTreemap() {
 // Gauge Chart
 function initializeGauge() {
     const ctx = document.getElementById('gaugeChart').getContext('2d');
+    const isDarkMode = document.body.classList.contains('dark-mode');
     
     // Create a custom gauge using Chart.js
     gaugeChart = new Chart(ctx, {
@@ -378,7 +494,7 @@ function initializeGauge() {
                 data: [75, 25],
                 backgroundColor: [
                     '#10B981',
-                    '#E5E7EB'
+                    isDarkMode ? '#374151' : '#E5E7EB'
                 ],
                 borderWidth: 0,
                 circumference: 180,
@@ -391,7 +507,10 @@ function initializeGauge() {
             cutout: '75%',
             plugins: {
                 legend: {
-                    display: false
+                    display: false,
+                    labels: {
+                        color: isDarkMode ? '#F9FAFB' : '#1F2937'
+                    }
                 },
                 tooltip: {
                     enabled: false
@@ -409,7 +528,7 @@ function initializeGauge() {
                 const fontSize = (height / 114).toFixed(2);
                 ctx.font = fontSize + "em sans-serif";
                 ctx.textBaseline = "middle";
-                ctx.fillStyle = "#1F2937";
+                ctx.fillStyle = isDarkMode ? "#F9FAFB" : "#1F2937";
                 
                 const text = "75%";
                 const textX = Math.round((width - ctx.measureText(text).width) / 2);
@@ -444,6 +563,11 @@ function updateGauge() {
     
     value = Math.max(0, Math.min(100, value));
     
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    gaugeChart.data.datasets[0].backgroundColor = [
+        '#10B981',
+        isDarkMode ? '#374151' : '#E5E7EB'
+    ];
     gaugeChart.data.datasets[0].data = [value, 100 - value];
     gaugeChart.update();
 }

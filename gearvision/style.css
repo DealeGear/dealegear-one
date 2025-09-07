@@ -574,3 +574,114 @@ select:focus {
 .tooltip.show {
     opacity: 1;
 }
+
+/*DARK MODE*/
+/* No início do arquivo, adicione as variáveis para o modo noturno */
+:root {
+    /* Cores do modo claro */
+    --primary-color: #4F46E5;
+    --secondary-color: #7C3AED;
+    --accent-color: #EC4899;
+    --bg-color: #F9FAFB;
+    --card-bg: #FFFFFF;
+    --text-primary: #1F2937;
+    --text-secondary: #6B7280;
+    --border-color: #E5E7EB;
+    --sidebar-width: 280px;
+    --transition-speed: 0.3s;
+}
+
+/* Modo noturno */
+body.dark-mode {
+    --primary-color: #6366F1;
+    --secondary-color: #8B5CF6;
+    --accent-color: #F472B6;
+    --bg-color: #111827;
+    --card-bg: #1F2937;
+    --text-primary: #F9FAFB;
+    --text-secondary: #D1D5DB;
+    --border-color: #374151;
+}
+
+/* Botão de alternância de tema */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-color);
+    transform: rotate(15deg);
+}
+
+/* Ajustes específicos para modo noturno */
+body.dark-mode .sidebar {
+    background-color: var(--card-bg);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .nav-item:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+body.dark-mode .nav-item.active {
+    background-color: rgba(99, 102, 241, 0.2);
+}
+
+body.dark-mode .header {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .card {
+    background-color: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .legend {
+    background-color: var(--bg-color);
+}
+
+body.dark-mode .info-text {
+    background-color: var(--card-bg);
+    border-left-color: var(--primary-color);
+}
+
+body.dark-mode .cta-section {
+    background-color: var(--card-bg);
+}
+
+body.dark-mode select {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+body.dark-mode select:focus {
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .feature-card {
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Ajustes para gráficos no modo noturno */
+body.dark-mode .chartjs-tooltip {
+    background-color: rgba(31, 41, 55, 0.9);
+    color: var(--text-primary);
+}
+
+/* Animação suave na transição do tema */
+body, .sidebar, .main-content, .card, .feature-card, .info-text, .cta-section {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
