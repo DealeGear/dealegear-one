@@ -4,6 +4,12 @@ let map;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    // Garante que a Home seja a página inicial
+    const homePage = document.getElementById('home');
+    if (homePage) {
+        homePage.classList.add('active');
+    }
+    
     initializeCharts();
     initializeMap();
 });
@@ -30,6 +36,7 @@ function showPage(pageId) {
 
     // Update page title
     const titles = {
+        'home': 'GearVision - Plataforma de Análise de Projetos',
         'area-chart': 'Análise de Projetos - Gráfico de Área',
         'donut-chart': 'Análise de Projetos - Gráfico Donut',
         'bar-chart': 'Análise de Projetos - Barras Horizontais',

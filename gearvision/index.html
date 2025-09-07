@@ -35,7 +35,11 @@
             </div>
         </div>
         <nav class="nav-menu">
-            <button class="nav-item active" onclick="showPage('area-chart')">
+            <button class="nav-item active" onclick="showPage('home')">
+                <i class="fas fa-home"></i>
+                Home
+            </button>
+            <button class="nav-item" onclick="showPage('area-chart')">
                 <i class="fas fa-chart-area"></i>
                 Gráfico de Área
             </button>
@@ -71,11 +75,83 @@
         <div class="content-wrapper">
             <!-- Header -->
             <header class="header">
-                <h1 class="page-title" id="pageTitle">Análise de Projetos - Gráfico de Área</h1>
+                <h1 class="page-title" id="pageTitle">GearVision - Plataforma de Análise de Projetos</h1>
             </header>
 
+            <!-- Home Page -->
+            <div class="page active" id="home">
+                <div class="home-container">
+                    <div class="hero-section">
+                        <h1 class="hero-title">Bem-vindo ao GearVision</h1>
+                        <p class="hero-subtitle">Sua plataforma inteligente para análise e gestão de projetos</p>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Análise Visual</h3>
+                            <p>Visualize o progresso dos seus projetos através de gráficos interativos e intuitivos que transformam dados complexos em insights claros.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h3>Visão Global</h3>
+                            <p>Acompanhe a distribuição geográfica dos seus projetos em tempo real com nosso mapa interativo e identifique oportunidades em diferentes regiões.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Insights Inteligentes</h3>
+                            <p>Receba análises estratégicas automáticas que ajudam na tomada de decisão e na otimização dos recursos do seu portfólio de projetos.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h2>Como o GearVision pode ajudar sua equipe</h2>
+                        
+                        <div class="info-content">
+                            <div class="info-text">
+                                <h3>Monitoramento Centralizado</h3>
+                                <p>O GearVision oferece uma visão unificada de todos os seus projetos, permitindo que gestores e equipes monitorem o progresso, alocação de recursos e desempenho em um único lugar. Com nossa interface intuitiva, você pode rapidamente identificar projetos que precisam de atenção e aqueles que estão superando as expectativas.</p>
+                            </div>
+                            
+                            <div class="info-text">
+                                <h3>Análise de Dados em Tempo Real</h3>
+                                <p>Através de gráficos dinâmicos e visualizações interativas, transformamos dados brutos em informações acionáveis. Desde gráficos de área que mostram a evolução temporal até gauges que indicam a saúde geral do projeto, cada visualização foi projetada para fornecer insights rápidos e precisos.</p>
+                            </div>
+                            
+                            <div class="info-text">
+                                <h3>Tomada de Decisão Baseada em Dados</h3>
+                                <p>Nossa seção de insights analisa automaticamente os padrões nos seus dados e fornece recomendações estratégicas. Identifique tendências de crescimento, alertas de risco, oportunidades de otimização e áreas que necessitam de intervenção imediata.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cta-section">
+                        <h2>Comece a explorar seus projetos</h2>
+                        <p>Utilize o menu lateral para navegar entre as diferentes visualizações e análises disponíveis.</p>
+                        <div class="cta-buttons">
+                            <button class="cta-button primary" onclick="showPage('area-chart')">
+                                <i class="fas fa-chart-area"></i>
+                                Ver Gráficos
+                            </button>
+                            <button class="cta-button secondary" onclick="showPage('insights')">
+                                <i class="fas fa-lightbulb"></i>
+                                Ver Insights
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Area Chart Page -->
-            <div class="page active" id="area-chart">
+            <div class="page" id="area-chart">
                 <div class="card">
                     <h2 class="card-title">Progresso dos Projetos ao Longo do Tempo</h2>
                     
