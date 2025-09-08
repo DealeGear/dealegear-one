@@ -1,23 +1,25 @@
 // Project and section data
 const projects = [
-    { id: 'myHeart', name: 'MyHeart', icon: 'fa-heartbeat' },
+    { id: 'aventurasPeludas', name: 'Aventuras Peludas', icon: 'fa-paw' },
     { id: 'baristaPro', name: 'BaristaPro', icon: 'fa-coffee' },
-    { id: 'synapse', name: 'Synapse', icon: 'fa-brain' },
-    { id: '3gto', name: '3GTO', icon: 'fa-cube' },
     { id: 'baristas', name: 'Baristas', icon: 'fa-mug-hot' },
+    { id: 'bosqueFrutiferas', name: 'Bosque das Frutíferas', icon: 'fa-tree' },
     { id: 'dyris', name: 'Dyris', icon: 'fa-eye' },
     { id: 'fabr', name: 'Fabr', icon: 'fa-industry' },
-    { id: 'underSea', name: 'UnderSea', icon: 'fa-water' },
-    { id: 'oxygen', name: 'Oxygen', icon: 'fa-wind' },
-    { id: 'bosqueFrutiferas', name: 'Bosque das Frutíferas', icon: 'fa-tree' },
     { id: 'mecanicoFantasma', name: 'Mecanico Fantasma', icon: 'fa-ghost' },
-    { id: 'viverEhUmaArte', name: 'Viver é uma Arte', icon: 'fa-palette' },
-    { id: 'aventurasPeludas', name: 'Aventuras Peludas', icon: 'fa-paw' },
-    { id: 'raizUrbana', name: 'Raiz Urbana', icon: 'fa-seedling' },
-    { id: 'versoEspresso', name: 'Verso Espresso', icon: 'fa-book-open' },
+    { id: 'myHeart', name: 'MyHeart', icon: 'fa-heartbeat' },
     { id: 'mikeETioBob', name: 'Mike e Tio Bob', icon: 'fa-optin-monster' },
-    { id: 'simco', name: 'SIMCO', icon: 'fa-users' }
+    { id: 'oxygen', name: 'Oxygen', icon: 'fa-wind' },
+    { id: 'raizUrbana', name: 'Raiz Urbana', icon: 'fa-seedling' },
+    { id: 'simco', name: 'SIMCO', icon: 'fa-users' },
+    { id: 'stairs', name: 'Stairs', icon: 'fa-stairs' },
+    { id: 'synapse', name: 'Synapse', icon: 'fa-brain' },
+    { id: 'underSea', name: 'UnderSea', icon: 'fa-water' },
+    { id: 'versoEspresso', name: 'Verso Espresso', icon: 'fa-book-open' },
+    { id: 'viverEhUmaArte', name: 'Viver é uma Arte', icon: 'fa-palette' },
+    { id: '3gto', name: '3GTO', icon: 'fa-cube' }
 ];
+
 
 const sections = [
     { id: 'overview', icon: 'fa-info-circle' },

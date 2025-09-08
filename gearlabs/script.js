@@ -118,6 +118,13 @@ const prototypes = [
         description: "Simulador da Função Coloretal",
         image: "img/simco-capa.jpg",
         link: "prototipos/simco/index.html"
+    },
+    {
+        id:17,
+        name: "Stairs",
+        description: "Suba os degraus do conhecimento e transforme suas ideias em realidade",
+        image: "img/stairs-capa.jpg",
+        link: "prototipos/stairs/index.html"
     }
 ];
 
