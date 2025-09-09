@@ -1,73 +1,285 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentação - Projetos</title>
-    
+    <title>Documentação - GearLabs</title>
+    <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-left">
+    <!-- Menu de Navegação Fixo -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-cog"></i>
+                <span>GearLabs</span>
+            </div>
+            <!-- Menu Desktop -->
+            <ul class="nav-menu desktop-menu">
+                <li><a href="#visao-geral" class="nav-link">Visão Geral</a></li>
+                <li><a href="#objetivo" class="nav-link">Objetivo</a></li>
+                <li><a href="#como-utilizar" class="nav-link">Como Utilizar</a></li>
+                <li><a href="#arquitetura" class="nav-link">Arquitetura</a></li>
+                <li><a href="#prototipos" class="nav-link">Protótipos</a></li>
+                <li><a href="#licenca" class="nav-link">Licença</a></li>
+            </ul>
+            <!-- Botão Menu Mobile -->
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
-            <div class="logo">DocHub</div>
         </div>
-        <div class="header-right">
-            <button class="theme-toggle" id="themeToggle" title="Alternar tema">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button class="lang-toggle" id="langToggle" title="Alternar idioma">
-                <i class="fas fa-globe"></i>
-            </button>
-        </div>
-    </header>
+    </nav>
 
-    <!-- Sidebar -->
+    <!-- Sidebar Mobile -->
     <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-title" data-i18n="projects">Projetos</div>
-        </div>
-        <ul class="project-list" id="projectList">
-            <!-- Projects will be dynamically inserted here -->
+        <button class="close-sidebar" id="closeSidebar">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="sidebar-menu">
+            <li><a href="#visao-geral" class="nav-link">Visão Geral</a></li>
+            <li><a href="#objetivo" class="nav-link">Objetivo</a></li>
+            <li><a href="#como-utilizar" class="nav-link">Como Utilizar</a></li>
+            <li><a href="#arquitetura" class="nav-link">Arquitetura</a></li>
+            <li><a href="#prototipos" class="nav-link">Protótipos</a></li>
+            <li><a href="#licenca" class="nav-link">Licença</a></li>
         </ul>
     </aside>
 
-    <!-- Overlay for mobile sidebar -->
-    <div class="overlay" id="overlay"></div>
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Seção Visão Geral -->
+        <section id="visao-geral" class="section">
+            <div class="container">
+                <h1 class="section-title">Visão Geral</h1>
+                <div class="content-card">
+                    <p>
+                        O <strong>GearLabs</strong> é um hub dinâmico de protótipos experimentais, criado como um espaço para 
+                        aprendizado contínuo e inovação tecnológica. Nossa plataforma serve como um laboratório virtual onde 
+                        ideias podem ser concebidas, desenvolvidas e testadas em um ambiente controlado e colaborativo.
+                    </p>
+                    <p>
+                        Cada protótipo no GearLabs representa uma exploração única de conceitos, tecnologias e soluções 
+                        criativas. Desde aplicações web interativas até sistemas de automação, nosso catálogo abrangente 
+                        demonstra o poder da experimentação e do desenvolvimento ágil.
+                    </p>
+                    <div class="highlight-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>
+                            <strong>Inovação em Ação:</strong> O GearLabs transforma ideias abstratas em protótipos tangíveis, 
+                            servindo como ponte entre a concepção criativa e a implementação prática.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Main Content -->
-    <main class="main-content" id="mainContent">
-        <div class="project-header">
-            <h1 class="project-title" id="projectTitle">Selecione um projeto</h1>
-            <p class="project-description" id="projectDescription" data-i18n="selectProject">Escolha um projeto na barra lateral para visualizar sua documentação.</p>
-        </div>
-        <div class="sections-container" id="sectionsContainer">
-            <!-- Sections will be dynamically inserted here -->
-        </div>
+        <!-- Seção Objetivo -->
+        <section id="objetivo" class="section">
+            <div class="container">
+                <h2 class="section-title">Objetivo</h2>
+                <div class="content-card">
+                    <p>
+                        O objetivo fundamental do GearLabs é criar um ecossistema onde ideias possam ser 
+                        <strong>testadas, documentadas e utilizadas como referência</strong> para futuros projetos que 
+                        visem resolver problemas reais do mundo.
+                    </p>
+                    <div class="objectives-grid">
+                        <div class="objective-item">
+                            <i class="fas fa-flask"></i>
+                            <h3>Experimentação</h3>
+                            <p>Ambiente seguro para testar novas tecnologias e abordagens</p>
+                        </div>
+                        <div class="objective-item">
+                            <i class="fas fa-book"></i>
+                            <h3>Documentação</h3>
+                            <p>Registros detalhados para aprendizado e replicação</p>
+                        </div>
+                        <div class="objective-item">
+                            <i class="fas fa-rocket"></i>
+                            <h3>Inovação</h3>
+                            <p>Impulsionar soluções criativas para desafios complexos</p>
+                        </div>
+                        <div class="objective-item">
+                            <i class="fas fa-users"></i>
+                            <h3>Colaboração</h3>
+                            <p>Espaço para compartilhamento de conhecimento e experiências</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Como Utilizar -->
+        <section id="como-utilizar" class="section">
+            <div class="container">
+                <h2 class="section-title">Como Utilizar</h2>
+                <div class="content-card">
+                    <p>
+                        Navegar pela documentação do GearLabs é simples e intuitivo. Siga estas orientações para 
+                        aproveitar ao máximo nossos recursos:
+                    </p>
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Navegação pelo Menu</h3>
+                                <p>Utilize o menu de navegação fixo no topo (desktop) ou o menu lateral (mobile) para 
+                                acessar rapidamente qualquer seção da documentação.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Explorando Protótipos</h3>
+                                <p>Na seção de protótipos, você encontrará uma lista organizada de todos os projetos. 
+                                Cada protótipo possui informações básicas e, em breve, links para documentação detalhada.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Acessando Recursos</h3>
+                                <p>Cada protótipo inclui descrição, tecnologias utilizadas e status do projeto. 
+                                Utilize essas informações como referência para seus próprios projetos.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Contribuindo</h3>
+                                <p>O GearLabs é um projeto open-source. Sinta-se à vontade para contribuir com novos 
+                                protótipos, melhorias na documentação ou sugestões.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Arquitetura -->
+        <section id="arquitetura" class="section">
+            <div class="container">
+                <h2 class="section-title">Arquitetura</h2>
+                <div class="content-card">
+                    <p>
+                        A arquitetura do GearLabs foi projetada para ser modular, escalável e de fácil manutenção. 
+                        Entenda como nossos protótipos são organizados e como as informações são estruturadas:
+                    </p>
+                    <div class="architecture-diagram">
+                        <div class="arch-layer">
+                            <h3><i class="fas fa-layer-group"></i> Camada de Protótipos</h3>
+                            <p>Cada protótipo é um projeto independente com sua própria estrutura de código, 
+                            documentação e recursos específicos.</p>
+                        </div>
+                        <div class="arch-layer">
+                            <h3><i class="fas fa-database"></i> Camada de Dados</h3>
+                            <p>Informações sobre protótipos são armazenadas de forma estruturada, permitindo 
+                            fácil acesso e atualização dinâmica da lista de projetos.</p>
+                        </div>
+                        <div class="arch-layer">
+                            <h3><i class="fas fa-palette"></i> Camada de Apresentação</h3>
+                            <p>Interface unificada e responsiva que apresenta todos os protótipos de forma 
+                            organizada e visualmente atraente.</p>
+                        </div>
+                        <div class="arch-layer">
+                            <h3><i class="fas fa-cogs"></i> Camada de Integração</h3>
+                            <p>Mecanismos que conectam os diferentes componentes e permitem a interação 
+                            entre protótipos e a documentação.</p>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <p>
+                            <strong>Organização:</strong> Os protótipos são categorizados por área de aplicação, 
+                            complexidade e status de desenvolvimento, facilitando a navegação e o aprendizado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Lista de Protótipos -->
+        <section id="prototipos" class="section">
+            <div class="container">
+                <h2 class="section-title">Lista de Protótipos</h2>
+                <div class="content-card">
+                    <p>
+                        Explore nossa coleção de protótipos experimentais. Cada projeto representa uma jornada única 
+                        de inovação e aprendizado:
+                    </p>
+                    <!-- Container dinâmico para os protótipos -->
+                    <div class="prototypes-grid" id="prototypesGrid">
+                        <!-- Os protótipos serão inseridos aqui via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Licença -->
+        <section id="licenca" class="section">
+            <div class="container">
+                <h2 class="section-title">Licença</h2>
+                <div class="content-card">
+                    <div class="license-content">
+                        <i class="fas fa-copyright"></i>
+                        <h3>Apache License 2.0</h3>
+                        <p>
+                            O projeto GearLabs é disponibilizado sob a <strong>Apache License 2.0</strong>, uma licença 
+                            permissiva de software livre que permite:
+                        </p>
+                        <ul class="license-features">
+                            <li><i class="fas fa-check"></i> Uso comercial do software</li>
+                            <li><i class="fas fa-check"></i> Modificação e distribuição</li>
+                            <li><i class="fas fa-check"></i> Uso privado</li>
+                            <li><i class="fas fa-check"></i> Distribuição sob licença diferente</li>
+                        </ul>
+                        <div class="license-notice">
+                            <p>
+                                <strong>Importante:</strong> Ao utilizar ou modificar o GearLabs, é necessário preservar 
+                                o reconhecimento ao projeto original e à DealeGear, mantendo os avisos de direitos autorais 
+                                existentes.
+                            </p>
+                        </div>
+                        <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" class="license-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Ver licença completa
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-links">
-            <a href="https://discord.gg/vKK7xVcZJ8" class="footer-link" data-i18n="community" target="_blank">Comunidade</a>
-            <a href="../../gearlabs/index.html" class="footer-link">GearLabs</a>
-            <a href="../../index.html" class="footer-link">DealeGear</a>
-            <a href="../../gearblog/index.html" class="footer-link" data-i18n="portal">Blog</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-cog"></i>
+                    <span>GearLabs</span>
+                </div>
+                <div class="footer-links">
+                    <a href="../../index.html">DealeGear</a>
+                    <a href="../../gearlabs/index.html">GearLabs</a>
+                    <a href="https://discord.gg/vKK7xVcZJ8" target="_blank">Comunidade</a>
+                    <a href="../../gearblog/index.html">Blog</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GearLabs. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="app.js"></script>
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
