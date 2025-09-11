@@ -1,320 +1,238 @@
-// ===== GESTÃO DO MENU LATERAL (MOBILE) =====
-document.addEventListener('DOMContentLoaded', function() {
-    // Elementos do DOM
-    const menuToggle = document.getElementById('menuToggle');
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
+    const languageSelect = document.getElementById('language-select');
+    const themeToggle = document.getElementById('theme-toggle');
+    const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
-    const closeSidebar = document.getElementById('closeSidebar');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const projectsList = document.getElementById('projects-list');
+    const projectContent = document.getElementById('project-content');
     
-    // Criar overlay dinamicamente
-    const overlay = document.createElement('div');
-    overlay.className = 'overlay';
-    document.body.appendChild(overlay);
+    // State
+    let currentLanguage = localStorage.getItem('language') || 'pt';
+    let currentTheme = localStorage.getItem('theme') || 'light';
+    let currentProject = null;
+    let projectsData = [];
     
-    // Função para abrir o sidebar
-    function openSidebar() {
-        sidebar.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    // Função para fechar o sidebar
-    function closeSidebarFunc() {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    // Event listeners
-    menuToggle.addEventListener('click', openSidebar);
-    closeSidebar.addEventListener('click', closeSidebarFunc);
-    overlay.addEventListener('click', closeSidebarFunc);
-    
-    // Fechar sidebar ao clicar em um link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 640) {
-                closeSidebarFunc();
-            }
-        });
-    });
-    
-    // ===== SMOOTH SCROLL =====
-    // Adicionar smooth scroll aos links de navegação
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 100; // Ajuste para o menu fixo
-                
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // ===== DESTAQUE DA SEÇÃO ATIVA =====
-    // Função para destacar a seção ativa no menu durante o scroll
-    function highlightActiveSection() {
-        const sections = document.querySelectorAll('.section');
-        const scrollPosition = window.scrollY + 150; // Offset para considerar o menu fixo
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    
-    // Adicionar evento de scroll
-    window.addEventListener('scroll', highlightActiveSection);
-    
-    // ===== LISTA DINÂMICA DE PROTÓTIPOS =====
-    // Array de protótipos (pode ser alimentado por API futuramente)
-    const prototypes = [
-        {
-            name: 'Aventuras Peludas',
-            description: 'Plataforma de gerenciamento de pets com rastreamento de saúde e atividades',
-            status: 'active',
-            icon: 'fa-paw'
-        },
-        {
-            name: 'BaristaPro',
-            description: 'Sistema inteligente para gestão de cafeterias e controle de estoque',
-            status: 'development',
-            icon: 'fa-coffee'
-        },
-        {
-            name: 'Baristas',
-            description: 'Rede social para amantes de café compartilharem experiências',
-            status: 'prototype',
-            icon: 'fa-mug-hot'
-        },
-        {
-            name: 'Bosque das Frutíferas',
-            description: 'Aplicativo de cultivo sustentável e troca de sementes',
-            status: 'active',
-            icon: 'fa-seedling'
-        },
-        {
-            name: 'Dyris',
-            description: 'Ferramenta de análise de dados em tempo real para negócios',
-            status: 'development',
-            icon: 'fa-chart-line'
-        },
-        {
-            name: 'Fabr',
-            description: 'Plataforma de fabricação digital e prototipagem rápida',
-            status: 'prototype',
-            icon: 'fa-industry'
-        },
-        {
-            name: 'Mecanico Fantasma',
-            description: 'Sistema de diagnóstico automotivo com IA',
-            status: 'active',
-            icon: 'fa-car'
-        },
-        {
-            name: 'MyHeart',
-            description: 'Monitor de saúde cardíaca com alertas inteligentes',
-            status: 'development',
-            icon: 'fa-heartbeat'
-        },
-        {
-            name: 'Mike e Tio Bob',
-            description: 'Plataforma educacional para crianças com histórias interativas',
-            status: 'active',
-            icon: 'fa-book-open'
-        },
-        {
-            name: 'Oxygen',
-            description: 'Sistema de monitoramento de qualidade do ar',
-            status: 'prototype',
-            icon: 'fa-wind'
-        },
-        {
-            name: 'Raiz Urbana',
-            description: 'App de agricultura urbana e hortas comunitárias',
-            status: 'active',
-            icon: 'fa-tree'
-        },
-        {
-            name: 'SIMCO',
-            description: 'Sistema integrado de gestão comercial',
-            status: 'development',
-            icon: 'fa-shopping-cart'
-        },
-        {
-            name: 'Stairs',
-            description: 'Plataforma de fitness com desafios diários',
-            status: 'prototype',
-            icon: 'fa-running'
-        },
-        {
-            name: 'Synapse',
-            description: 'Rede neural para processamento de linguagem natural',
-            status: 'development',
-            icon: 'fa-brain'
-        },
-        {
-            name: 'UnderSea',
-            description: 'Explorador virtual de ecossistemas marinhos',
-            status: 'active',
-            icon: 'fa-fish'
-        },
-        {
-            name: 'Verso Espresso',
-            description: 'Marketplace de cafés especiais e produtores',
-            status: 'prototype',
-            icon: 'fa-store'
-        },
-        {
-            name: 'Viver é uma Arte',
-            description: 'Plataforma de bem-estar e mindfulness',
-            status: 'active',
-            icon: 'fa-spa'
-        },
-        {
-            name: '3GTO',
-            description: 'Sistema de gestão de projetos em 3D',
-            status: 'development',
-            icon: 'fa-cube'
+    // Initialize
+    function init() {
+        // Set initial theme
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
-    ];
+        
+        // Set initial language
+        languageSelect.value = currentLanguage;
+        
+        // Load projects data
+        fetchProjectsData();
+        
+        // Event listeners
+        languageSelect.addEventListener('change', handleLanguageChange);
+        themeToggle.addEventListener('click', toggleTheme);
+        menuToggle.addEventListener('click', toggleSidebar);
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(e.target) && 
+                !menuToggle.contains(e.target) && 
+                sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+    }
     
-    // Função para renderizar os protótipos
-    function renderPrototypes() {
-        const prototypesGrid = document.getElementById('prototypesGrid');
-        
-        // Limpar o container
-        prototypesGrid.innerHTML = '';
-        
-        // Iterar sobre os protótipos e criar os cards
-        prototypes.forEach((prototype, index) => {
-            const card = document.createElement('div');
-            card.className = 'prototype-card';
+    // Fetch projects data from JSON
+    async function fetchProjectsData() {
+        try {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            projectsData = data.projects;
+            renderProjectsList();
             
-            // Definir a classe de status
-            const statusClass = `status-${prototype.status}`;
-            const statusText = {
-                'active': 'Ativo',
-                'development': 'Em Desenvolvimento',
-                'prototype': 'Protótipo'
-            }[prototype.status];
+            // Load the first project by default
+            if (projectsData.length > 0) {
+                loadProject(projectsData[0].id);
+            }
+        } catch (error) {
+            console.error('Error loading projects data:', error);
+            projectContent.innerHTML = `
+                <div class="error-message">
+                    <h2>Erro ao carregar dados</h2>
+                    <p>Não foi possível carregar os dados dos projetos. Tente novamente mais tarde.</p>
+                </div>
+            `;
+        }
+    }
+    
+    // Render projects list in sidebar
+    function renderProjectsList() {
+        projectsList.innerHTML = '';
+        
+        projectsData.forEach(project => {
+            const li = document.createElement('li');
+            const isActive = currentProject === project.id;
             
-            // Estrutura HTML do card
-            card.innerHTML = `
-                <h3>
-                    <i class="fas ${prototype.icon}"></i>
-                    ${prototype.name}
-                </h3>
-                <p>${prototype.description}</p>
-                <span class="prototype-status ${statusClass}">${statusText}</span>
+            li.innerHTML = `
+                <a href="#" data-project-id="${project.id}" class="${isActive ? 'active' : ''}">
+                    <i class="fas ${project.icon}"></i>
+                    <span>${project.name[currentLanguage]}</span>
+                </a>
             `;
             
-            // Adicionar evento de clique (para futura implementação de páginas detalhadas)
-            card.addEventListener('click', () => {
-                // Placeholder para futura navegação para página detalhada
-                console.log(`Clicou no protótipo: ${prototype.name}`);
-                // window.location.href = `/prototipos/${prototype.name.toLowerCase().replace(/\s+/g, '-')}`;
-            });
-            
-            // Adicionar o card ao grid
-            prototypesGrid.appendChild(card);
+            projectsList.appendChild(li);
         });
-    }
-    
-    // Chamar a função para renderizar os protótipos
-    renderPrototypes();
-    
-    // ===== ANIMAÇÃO AO SCROLL =====
-    // Função para adicionar animação aos elementos quando entram na viewport
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.prototype-card, .objective-item, .arch-layer');
         
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementBottom = element.getBoundingClientRect().bottom;
-            
-            if (elementTop < window.innerHeight && elementBottom > 0) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
+        // Add click event to project links
+        document.querySelectorAll('[data-project-id]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = e.currentTarget.getAttribute('data-project-id');
+                loadProject(projectId);
+                
+                // Close sidebar on mobile after selection
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                }
+            });
         });
     }
     
-    // Adicionar evento de scroll para animação
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Chamar a função uma vez para animar elementos visíveis no carregamento
-    animateOnScroll();
-    
-    // ===== MELHORIAS DE ACESSIBILIDADE =====
-    // Adicionar suporte a teclado para navegação
-    document.addEventListener('keydown', function(e) {
-        // Fechar sidebar com ESC
-        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-            closeSidebarFunc();
-        }
-    });
-    
-    // ===== DETECÇÃO DE TAMANHO DE TELA =====
-    // Função para ajustar comportamentos baseado no tamanho da tela
-    function handleResize() {
-        if (window.innerWidth > 640 && sidebar.classList.contains('active')) {
-            closeSidebarFunc();
-        }
-    }
-    
-    // Adicionar evento de resize
-    window.addEventListener('resize', handleResize);
-    
-    // ===== PREVENÇÃO DE SCROLL DUPLICADO =====
-    // Prevenir scroll duplo quando o sidebar está aberto
-    let scrollPosition = 0;
-    
-    menuToggle.addEventListener('click', function() {
-        if (!sidebar.classList.contains('active')) {
-            scrollPosition = window.pageYOffset;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollPosition}px`;
-            document.body.style.width = '100%';
-        }
-    });
-    
-    function closeSidebarWithScroll() {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, scrollPosition);
-    }
-    
-    // Atualizar listeners para usar a nova função
-    closeSidebar.addEventListener('click', closeSidebarWithScroll);
-    overlay.addEventListener('click', closeSidebarWithScroll);
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 640) {
-                closeSidebarWithScroll();
+    // Load project content
+    function loadProject(projectId) {
+        currentProject = projectId;
+        const project = projectsData.find(p => p.id === projectId);
+        
+        if (!project) return;
+        
+        // Update active state in sidebar
+        document.querySelectorAll('[data-project-id]').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-project-id') === projectId) {
+                link.classList.add('active');
             }
         });
-    });
+        
+        // Render project content
+        renderProjectContent(project);
+    }
+    
+    // Render project content
+    function renderProjectContent(project) {
+        const sections = [
+            { id: 'overview', icon: 'fa-eye', title: getSectionTitle('overview') },
+            { id: 'objective', icon: 'fa-bullseye', title: getSectionTitle('objective') },
+            { id: 'application', icon: 'fa-laptop-code', title: getSectionTitle('application') },
+            { id: 'architecture', icon: 'fa-sitemap', title: getSectionTitle('architecture') },
+            { id: 'userGuide', icon: 'fa-book', title: getSectionTitle('userGuide') },
+            { id: 'nextSteps', icon: 'fa-arrow-right', title: getSectionTitle('nextSteps') },
+            { id: 'background', icon: 'fa-history', title: getSectionTitle('background') },
+            { id: 'references', icon: 'fa-link', title: getSectionTitle('references') }
+        ];
+        
+        let contentHTML = `
+            <div class="project-header">
+                <h1><i class="fas ${project.icon}"></i> ${project.name[currentLanguage]}</h1>
+            </div>
+        `;
+        
+        sections.forEach(section => {
+            const sectionContent = project.sections[section.id][currentLanguage];
+            contentHTML += `
+                <div class="section-card">
+                    <h2><i class="fas ${section.icon}"></i> ${section.title}</h2>
+                    <div class="section-content">
+                        ${sectionContent}
+                    </div>
+                </div>
+            `;
+        });
+        
+        projectContent.innerHTML = contentHTML;
+    }
+    
+    // Get section title based on current language
+    function getSectionTitle(sectionId) {
+        const titles = {
+            overview: {
+                pt: 'Visão Geral',
+                en: 'Overview',
+                es: 'Visión General'
+            },
+            objective: {
+                pt: 'Objetivo',
+                en: 'Objective',
+                es: 'Objetivo'
+            },
+            application: {
+                pt: 'Aplicação',
+                en: 'Application',
+                es: 'Aplicación'
+            },
+            architecture: {
+                pt: 'Arquitetura',
+                en: 'Architecture',
+                es: 'Arquitectura'
+            },
+            userGuide: {
+                pt: 'Guia do Usuário',
+                en: 'User Guide',
+                es: 'Guía del Usuario'
+            },
+            nextSteps: {
+                pt: 'Próximos Passos',
+                en: 'Next Steps',
+                es: 'Próximos Pasos'
+            },
+            background: {
+                pt: 'Contexto',
+                en: 'Background',
+                es: 'Contexto'
+            },
+            references: {
+                pt: 'Referências',
+                en: 'References',
+                es: 'Referencias'
+            }
+        };
+        
+        return titles[sectionId][currentLanguage];
+    }
+    
+    // Handle language change
+    function handleLanguageChange() {
+        currentLanguage = languageSelect.value;
+        localStorage.setItem('language', currentLanguage);
+        
+        // Update projects list
+        renderProjectsList();
+        
+        // Reload current project content if exists
+        if (currentProject) {
+            loadProject(currentProject);
+        }
+    }
+    
+    // Toggle theme
+    function toggleTheme() {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', currentTheme);
+        
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    }
+    
+    // Toggle sidebar on mobile
+    function toggleSidebar() {
+        sidebar.classList.toggle('active');
+    }
+    
+    // Initialize the app
+    init();
 });

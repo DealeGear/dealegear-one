@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearOps - Central de Comando DealeGear</title>
+    <link rel="stylesheet" href="styles.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 modal-backdrop">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 w-full max-w-md mx-4">
+            <div class="text-center mb-6">
+                <i class="fas fa-cogs text-4xl text-blue-600 dark:text-blue-400 mb-2"></i>
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white">GearOps</h2>
+                <p class="text-gray-600 dark:text-gray-400">Central de Comando DealeGear</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                    <input type="email" id="loginEmail" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" placeholder="seu@email.com" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Senha</label>
+                    <input type="password" id="loginPassword" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" placeholder="••••••••" required>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2 rounded">
+                        <span class="text-sm text-gray-600 dark:text-gray-400">Lembrar-me</span>
+                    </label>
+                    <a href="#" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">Esqueceu a senha?</a>
+                </div>
+                
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                    Entrar
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400">Acesso rápido:</p>
+                <div class="flex justify-center space-x-4 mt-2">
+                    <button onclick="quickLogin('admin')" class="text-xs bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-600">Admin</button>
+                    <button onclick="quickLogin('manager')" class="text-xs bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-600">Gestor</button>
+                    <button onclick="quickLogin('partner')" class="text-xs bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-600">Sócio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="hidden">
+        <!-- Sidebar -->
+        <aside class="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg z-40 transition-transform duration-300">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-cogs text-2xl text-blue-600 dark:text-blue-400"></i>
+                        <h1 class="text-xl font-bold text-gray-800 dark:text-white">GearOps</h1>
+                    </div>
+                    <button id="sidebarToggle" class="lg:hidden text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <nav class="p-4 space-y-2">
+                <a href="#" onclick="showModule('dashboard')" class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                
+                <a href="#" onclick="showModule('projects')" class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projetos DealeGear</span>
+                </a>
+                
+                <a href="#" onclick="showModule('finance')" class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Financeiro</span>
+                </a>
+                
+                <a href="#" onclick="showModule('marketing')" class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Marketing</span>
+                </a>
+                
+                <a href="#" onclick="showModule('partners')" class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-users"></i>
+                    <span>Societário</span>
+                </a>
+                
+                <a href="#" onclick="showModule('calendar')" class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendário</span>
+                </a>
+                
+                <a href="#" onclick="showModule('tasks')" class="sidebar-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tarefas</span>
+                </a>
+            </nav>
+            
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="User" class="w-10 h-10 rounded-full">
+                        <div>
+                            <p class="text-sm font-medium text-gray-800 dark:text-white" id="userName">Usuário</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400" id="userRole">Cargo</p>
+                        </div>
+                    </div>
+                    <button onclick="logout()" class="text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lg:ml-64 min-h-screen">
+            <!-- Header -->
+            <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between p-4">
+                    <button id="mobileMenuToggle" class="lg:hidden text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="relative text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="notification-badge absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                        </button>
+                        
+                        <button onclick="toggleDarkMode()" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:inline"></i>
+                        </button>
+                        
+                        <button onclick="exportReport()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-200">
+                            <i class="fas fa-download mr-2"></i>Exportar
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Module Content -->
+            <div class="p-6">
+                <!-- Dashboard Module -->
+                <div id="dashboardModule" class="module-content">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Dashboard Geral</h2>
+                    
+                    <!-- Key Metrics -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-green-100 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-dollar-sign text-green-600 dark:text-green-400 text-xl"></i>
+                                </div>
+                                <span class="text-green-600 dark:text-green-400 text-sm font-medium">+12.5%</span>
+                            </div>
+                            <h3 class="text-gray-600 dark:text-gray-400 text-sm">Receita Mensal</h3>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-white">R$ 45.230</p>
+                        </div>
+                        
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-users text-blue-600 dark:text-blue-400 text-xl"></i>
+                                </div>
+                                <span class="text-blue-600 dark:text-blue-400 text-sm font-medium">+8.2%</span>
+                            </div>
+                            <h3 class="text-gray-600 dark:text-gray-400 text-sm">Usuários Ativos</h3>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-white">12.450</p>
+                        </div>
+                        
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-purple-100 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-chart-line text-purple-600 dark:text-purple-400 text-xl"></i>
+                                </div>
+                                <span class="text-red-600 dark:text-red-400 text-sm font-medium">-2.1%</span>
+                            </div>
+                            <h3 class="text-gray-600 dark:text-gray-400 text-sm">ROI Marketing</h3>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-white">245%</p>
+                        </div>
+                        
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-orange-100 dark:bg-orange-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-clock text-orange-600 dark:text-orange-400 text-xl"></i>
+                                </div>
+                                <span class="text-orange-600 dark:text-orange-400 text-sm font-medium">5 pendentes</span>
+                            </div>
+                            <h3 class="text-gray-600 dark:text-gray-400 text-sm">Pagamentos</h3>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-white">R$ 8.450</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Charts -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Receita vs Despesas</h3>
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Status dos Aplicativos</h3>
+                            <div class="chart-container">
+                                <canvas id="appsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activities -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Atividades Recentes</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg">
+                                <div class="bg-blue-100 dark:bg-blue-900/20 p-2 rounded-full">
+                                    <i class="fas fa-check text-blue-600 dark:text-blue-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-800 dark:text-white">Pagamento realizado</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Aluguel do escritório - R$ 3.500</p>
+                                </div>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">2h atrás</span>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg">
+                                <div class="bg-green-100 dark:bg-green-900/20 p-2 rounded-full">
+                                    <i class="fas fa-chart-line text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-800 dark:text-white">Meta atingida</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Campanha Instagram - +150 leads</p>
+                                </div>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">5h atrás</span>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg">
+                                <div class="bg-purple-100 dark:bg-purple-900/20 p-2 rounded-full">
+                                    <i class="fas fa-code-branch text-purple-600 dark:text-purple-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-800 dark:text-white">Novo deploy</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">App de ensino - versão 2.1.0</p>
+                                </div>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">1d atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Module -->
+                <div id="projectsModule" class="module-content hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Gestão do Projeto DealeGear</h2>
+                    
+                    <!-- Apps Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- App de Ensino -->
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-400 text-2xl"></i>
+                                </div>
+                                <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativo</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">App de Ensino</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Plataforma de aprendizado de projetos</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Usuários</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">8.450</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Engajamento</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">78%</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Receita</span>
+                                    <span class="font-medium text-green-600 dark:text-green-400">R$ 12.300/mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Acessar
+                                </button>
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- App de Insights -->
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-purple-100 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-lightbulb text-purple-600 dark:text-purple-400 text-2xl"></i>
+                                </div>
+                                <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativo</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">App de Insights</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Análise de dados e métricas</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Usuários</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">3.200</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Relatórios</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">1.250/dia</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Receita</span>
+                                    <span class="font-medium text-green-600 dark:text-green-400">R$ 8.900/mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Acessar
+                                </button>
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- App de Protótipos -->
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-orange-100 dark:bg-orange-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-cube text-orange-600 dark:text-orange-400 text-2xl"></i>
+                                </div>
+                                <span class="bg-yellow-100 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-xs px-2 py-1 rounded-full">Beta</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">App de Protótipos</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Criação rápida de protótipos</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Usuários</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">450</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Projetos</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">1.200</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Receita</span>
+                                    <span class="font-medium text-gray-600 dark:text-gray-400">Em desenvolvimento</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-orange-600 hover:bg-orange-700 text-white text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Acessar
+                                </button>
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Blog -->
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-green-100 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-blog text-green-600 dark:text-green-400 text-2xl"></i>
+                                </div>
+                                <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativo</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Blog</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Conteúdo educativo e técnico</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Visitantes</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">15.800/mês</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Artigos</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">124</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Receita</span>
+                                    <span class="font-medium text-green-600 dark:text-green-400">R$ 3.200/mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-green-600 hover:bg-green-700 text-white text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Acessar
+                                </button>
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Canal YouTube -->
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-red-100 dark:bg-red-900/20 p-3 rounded-lg">
+                                    <i class="fab fa-youtube text-red-600 dark:text-red-400 text-2xl"></i>
+                                </div>
+                                <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativo</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Canal YouTube</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Tutoriais e demos em vídeo</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Inscritos</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">45.200</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Visualizações</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">1.2M</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Receita</span>
+                                    <span class="font-medium text-green-600 dark:text-green-400">R$ 5.800/mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-red-600 hover:bg-red-700 text-white text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Acessar
+                                </button>
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Curso Hotmart -->
+                        <div class="card-hover bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-indigo-100 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-graduation-cap text-indigo-600 dark:text-indigo-400 text-2xl"></i>
+                                </div>
+                                <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativo</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Curso Hotmart</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Curso completo de projetos</p>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Alunos</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">2.850</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Conclusão</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">68%</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600 dark:text-gray-400">Receita</span>
+                                    <span class="font-medium text-green-600 dark:text-green-400">R$ 28.500/mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Acessar
+                                </button>
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm py-2 px-3 rounded-lg transition duration-200">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finance Module -->
+                <div id="financeModule" class="module-content hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Financeiro</h2>
+                    
+                    <!-- Financial Summary -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Receita Total</h3>
+                                <i class="fas fa-arrow-up text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <p class="text-3xl font-bold text-green-600 dark:text-green-400">R$ 64.500</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Mês atual</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Despesas</h3>
+                                <i class="fas fa-arrow-down text-red-600 dark:text-red-400"></i>
+                            </div>
+                            <p class="text-3xl font-bold text-red-600 dark:text-red-400">R$ 38.200</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Mês atual</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Lucro Líquido</h3>
+                                <i class="fas fa-chart-line text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <p class="text-3xl font-bold text-blue-600 dark:text-blue-400">R$ 26.300</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Mês atual</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Fixed Costs -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Custos Fixos</h3>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition duration-200">
+                                <i class="fas fa-plus mr-2"></i>Adicionar
+                            </button>
+                        </div>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700 dark:text-gray-300">Descrição</th>
+                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700 dark:text-gray-300">Categoria</th>
+                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700 dark:text-gray-300">Valor</th>
+                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700 dark:text-gray-300">Vencimento</th>
+                                        <th class="text-left py-3 px-4 text-sm font-medium text-gray-700 dark:text-gray-300">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                        <td class="py-3 px-4 text-sm text-gray-800 dark:text-white">Aluguel Escritório</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">Infraestrutura</td>
+                                        <td class="py-3 px-4 text-sm font-medium text-gray-800 dark:text-white">R$ 3.500</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">05/12</td>
+                                        <td class="py-3 px-4">
+                                            <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Pago</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                        <td class="py-3 px-4 text-sm text-gray-800 dark:text-white">AWS Services</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">SaaS</td>
+                                        <td class="py-3 px-4 text-sm font-medium text-gray-800 dark:text-white">R$ 1.200</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">10/12</td>
+                                        <td class="py-3 px-4">
+                                            <span class="bg-yellow-100 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-xs px-2 py-1 rounded-full">Pendente</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                        <td class="py-3 px-4 text-sm text-gray-800 dark:text-white">Freelancer Design</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">Terceiros</td>
+                                        <td class="py-3 px-4 text-sm font-medium text-gray-800 dark:text-white">R$ 2.500</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">15/12</td>
+                                        <td class="py-3 px-4">
+                                            <span class="bg-yellow-100 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-xs px-2 py-1 rounded-full">Pendente</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                        <td class="py-3 px-4 text-sm text-gray-800 dark:text-white">Slack Premium</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">SaaS</td>
+                                        <td class="py-3 px-4 text-sm font-medium text-gray-800 dark:text-white">R$ 350</td>
+                                        <td class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">20/12</td>
+                                        <td class="py-3 px-4">
+                                            <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Pago</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Financial Charts -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Evolução Financeira</h3>
+                            <div class="chart-container">
+                                <canvas id="financeEvolutionChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Distribuição de Despesas</h3>
+                            <div class="chart-container">
+                                <canvas id="expensesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Module -->
+                <div id="marketingModule" class="module-content hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Publicidade & Marketing</h2>
+                    
+                    <!-- Campaign Summary -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-bullhorn text-blue-600 dark:text-blue-400"></i>
+                                </div>
+                                <span class="text-green-600 dark:text-green-400 text-sm font-medium">+15%</span>
+                            </div>
+                            <h3 class="text-gray-600 dark:text-gray-400 text-sm">Campanhas Ativas</h3>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-white">12</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-green-100 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-dollar-sign text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <span class="text-green-600 dark:text-green-400 text-sm font-medium">+8%</span>
+                            </div>
+                            <h3 class="text-gray-600 dark:text-gray-400 text-sm">Investimento</h3>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-white">R$ 8.500</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-purple-100 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-users text-purple-600 dark:text-purple-400"></i>
+                                </div>
+                                <span class="text-green-600 dark:text-green-400 text-sm font-medium">+22%</span>
+                            </div>
+                            <h3 class="text-gray-600 dark:text-gray-400 text-sm">Leads Gerados</h3>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-white">450</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="bg-orange-100 dark:bg-orange-900/20 p-3 rounded-lg">
+                                    <i class="fas fa-chart-line text-orange-600 dark:text-orange-400"></i>
+                                </div>
+                                <span class="text-green-600 dark:text-green-400 text-sm font-medium">+5%</span>
+                            </div>
+                            <h3 class="text-gray-600 dark:text-gray-400 text-sm">ROI Médio</span>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-white">245%</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Active Campaigns -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Campanhas Ativas</h3>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition duration-200">
+                                <i class="fas fa-plus mr-2"></i>Nova Campanha
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 dark:text-white">Lançamento App Protótipos</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Instagram e Facebook Ads</p>
+                                    </div>
+                                    <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativa</span>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Orçamento</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">R$ 2.000</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Gasto</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">R$ 1.450</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Leads</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">85</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">ROI</p>
+                                        <p class="font-medium text-green-600 dark:text-green-400">320%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 dark:text-white">Black Friday Curso</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Google Ads e Email Marketing</p>
+                                    </div>
+                                    <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativa</span>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Orçamento</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">R$ 3.500</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Gasto</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">R$ 2.100</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Leads</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">156</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">ROI</p>
+                                        <p class="font-medium text-green-600 dark:text-green-400">280%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 dark:text-white">YouTube Growth</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">YouTube Ads e Influenciadores</p>
+                                    </div>
+                                    <span class="bg-yellow-100 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-xs px-2 py-1 rounded-full">Pausada</span>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Orçamento</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">R$ 1.500</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Gasto</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">R$ 1.500</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">Leads</p>
+                                        <p class="font-medium text-gray-800 dark:text-white">42</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400">ROI</p>
+                                        <p class="font-medium text-yellow-600 dark:text-yellow-400">180%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Metrics -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Métricas das Redes Sociais</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="bg-blue-100 dark:bg-blue-900/20 p-4 rounded-lg mb-3">
+                                    <i class="fab fa-instagram text-3xl text-pink-600"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-800 dark:text-white">Instagram</h4>
+                                <p class="text-2xl font-bold text-gray-800 dark:text-white">12.5K</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Seguidores</p>
+                                <div class="mt-2 text-sm">
+                                    <span class="text-green-600 dark:text-green-400">+5.2%</span>
+                                    <span class="text-gray-600 dark:text-gray-400"> este mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="bg-blue-100 dark:bg-blue-900/20 p-4 rounded-lg mb-3">
+                                    <i class="fab fa-linkedin text-3xl text-blue-600"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-800 dark:text-white">LinkedIn</h4>
+                                <p class="text-2xl font-bold text-gray-800 dark:text-white">8.3K</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Seguidores</p>
+                                <div class="mt-2 text-sm">
+                                    <span class="text-green-600 dark:text-green-400">+3.8%</span>
+                                    <span class="text-gray-600 dark:text-gray-400"> este mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="bg-red-100 dark:bg-red-900/20 p-4 rounded-lg mb-3">
+                                    <i class="fab fa-youtube text-3xl text-red-600"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-800 dark:text-white">YouTube</h4>
+                                <p class="text-2xl font-bold text-gray-800 dark:text-white">45.2K</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Inscritos</p>
+                                <div class="mt-2 text-sm">
+                                    <span class="text-green-600 dark:text-green-400">+8.1%</span>
+                                    <span class="text-gray-600 dark:text-gray-400"> este mês</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partners Module -->
+                <div id="partnersModule" class="module-content hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Societário</h2>
+                    
+                    <!-- Partners List -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Sócios</h3>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition duration-200">
+                                <i class="fas fa-user-plus mr-2"></i>Adicionar Sócio
+                            </button>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <img src="https://picsum.photos/seed/partner1/60/60.jpg" alt="Sócio" class="w-16 h-16 rounded-full">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 dark:text-white">João Silva</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">CEO & Fundador</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-3">
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Participação</p>
+                                        <div class="flex items-center space-x-2">
+                                            <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                                <div class="bg-blue-600 h-2 rounded-full" style="width: 40%"></div>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800 dark:text-white">40%</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Responsabilidades</p>
+                                        <p class="text-sm text-gray-800 dark:text-white">Estratégia, Finanças, Operações</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Status</p>
+                                        <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <img src="https://picsum.photos/seed/partner2/60/60.jpg" alt="Sócio" class="w-16 h-16 rounded-full">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 dark:text-white">Maria Santos</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">CTO & Co-fundadora</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-3">
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Participação</p>
+                                        <div class="flex items-center space-x-2">
+                                            <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                                <div class="bg-purple-600 h-2 rounded-full" style="width: 35%"></div>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800 dark:text-white">35%</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Responsabilidades</p>
+                                        <p class="text-sm text-gray-800 dark:text-white">Tecnologia, Produto, Inovação</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Status</p>
+                                        <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <img src="https://picsum.photos/seed/partner3/60/60.jpg" alt="Sócio" class="w-16 h-16 rounded-full">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 dark:text-white">Pedro Oliveira</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">CMO & Sócio</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-3">
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Participação</p>
+                                        <div class="flex items-center space-x-2">
+                                            <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                                <div class="bg-green-600 h-2 rounded-full" style="width: 25%"></div>
+                                            </div>
+                                            <span class="text-sm font-medium text-gray-800 dark:text-white">25%</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Responsabilidades</p>
+                                        <p class="text-sm text-gray-800 dark:text-white">Marketing, Vendas, Crescimento</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Status</p>
+                                        <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded-full">Ativo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Governance Reports -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-6">Relatórios de Governança</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 dark:text-white">Reunião de Diretoria - Novembro 2024</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Discussão sobre Q4 e planejamento 2025</p>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">15/11/2024</span>
+                                        <button class="text-blue-600 dark:text-blue-400 hover:underline">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 dark:text-white">Relatório Financeiro Trimestral</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Análise de desempenho Q3 2024</p>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">30/10/2024</span>
+                                        <button class="text-blue-600 dark:text-blue-400 hover:underline">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800 dark:text-white">Ata de Assembleia Geral</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Aprovação de investimentos e novos projetos</p>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">20/09/2024</span>
+                                        <button class="text-blue-600 dark:text-blue-400 hover:underline">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar Module -->
+                <div id="calendarModule" class="module-content hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Calendário</h2>
+                    
+                    <!-- Calendar View -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Dezembro 2024</h3>
+                            <div class="flex space-x-2">
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-lg text-sm">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-lg text-sm">
+                                    Hoje
+                                </button>
+                                <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-lg text-sm">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Simple Calendar Grid -->
+                        <div class="grid grid-cols-7 gap-1 text-center">
+                            <div class="text-sm font-medium text-gray-600 dark:text-gray-400 py-2">Dom</div>
+                            <div class="text-sm font-medium text-gray-600 dark:text-gray-400 py-2">Seg</div>
+                            <div class="text-sm font-medium text-gray-600 dark:text-gray-400 py-2">Ter</div>
+                            <div class="text-sm font-medium text-gray-600 dark:text-gray-400 py-2">Qua</div>
+                            <div class="text-sm font-medium text-gray-600 dark:text-gray-400 py-2">Qui</div>
+                            <div class="text-sm font-medium text-gray-600 dark:text-gray-400 py-2">Sex</div>
+                            <div class="text-sm font-medium text-gray-600 dark:text-gray-400 py-2">Sáb</div>
+                            
+                            <!-- Calendar Days -->
+                            <div class="text-gray-400 dark:text-gray-600 py-2">1</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">2</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">3</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer relative">
+                                4
+                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full"></div>
+                            </div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">5</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer relative">
+                                6
+                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-500 rounded-full"></div>
+                            </div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">7</div>
+                            
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">8</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">9</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">10</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer relative">
+                                11
+                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="bg-blue-600 text-white py-2 rounded cursor-pointer">12</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">13</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">14</div>
+                            
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer relative">
+                                15
+                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full"></div>
+                            </div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">16</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">17</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">18</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">19</div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer relative">
+                                20
+                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-500 rounded-full"></div>
+                            </div>
+                            <div class="text-gray-800 dark:text-white py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cursor-pointer">21</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Upcoming Events -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-6">Próximos Eventos</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4 p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/10 rounded-r-lg">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-red-100 dark:bg-red-900/20 p-2 rounded-lg">
+                                        <i class="fas fa-exclamation-triangle text-red-600 dark:text-red-400"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-gray-800 dark:text-white">Vencimento - AWS Services</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Pagamento mensal dos serviços cloud</p>
+                                    <div class="flex items-center space-x-4 mt-2 text-sm">
+                                        <span class="text-gray-600 dark:text-gray-400"><i class="fas fa-calendar mr-1"></i>10/12/2024</span>
+                                        <span class="text-gray-600 dark:text-gray-400"><i class="fas fa-clock mr-1"></i>09:00</span>
+                                        <span class="text-red-600 dark:text-red-400 font-medium">R$ 1.200</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4 p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/10 rounded-r-lg">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-blue-100 dark:bg-blue-900/20 p-2 rounded-lg">
+                                        <i class="fas fa-users text-blue-600 dark:text-blue-400"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-gray-800 dark:text-white">Reunião de Diretoria</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Planejamento estratégico Q1 2025</p>
+                                    <div class="flex items-center space-x-4 mt-2 text-sm">
+                                        <span class="text-gray-600 dark:text-gray-400"><i class="fas fa-calendar mr-1"></i>06/12/2024</span>
+                                        <span class="text-gray-600 dark:text-gray-400"><i class="fas fa-clock mr-1"></i>14:00</span>
+                                        <span class="text-gray-600 dark:text-gray-400">Sala de Reuniões</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4 p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/10 rounded-r-lg">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-green-100 dark:bg-green-900/20 p-2 rounded-lg">
+                                        <i class="fas fa-rocket text-green-600 dark:text-green-400"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-gray-800 dark:text-white">Lançamento App Protótipos</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Release oficial da versão 1.0</p>
+                                    <div class="flex items-center space-x-4 mt-2 text-sm">
+                                        <span class="text-gray-600 dark:text-gray-400"><i class="fas fa-calendar mr-1"></i>11/12/2024</span>
+                                        <span class="text-gray-600 dark:text-gray-400"><i class="fas fa-clock mr-1"></i>10:00</span>
+                                        <span class="text-gray-600 dark:text-gray-400">Online</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4 p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/10 rounded-r-lg">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-purple-100 dark:bg-purple-900/20 p-2 rounded-lg">
+                                        <i class="fas fa-dollar-sign text-purple-600 dark:text-purple-400"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-gray-800 dark:text-white">Recebimento - Cliente X</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Pagamento do projeto de consultoria</p>
+                                    <div class="flex items-center space-x-4 mt-2 text-sm">
+                                        <span class="text-gray-600 dark:text-gray-400"><i class="fas fa-calendar mr-1"></i>15/12/2024</span>
+                                        <span class="text-gray-600 dark:text-gray-400"><i class="fas fa-clock mr-1"></i>Todo dia</span>
+                                        <span class="text-green-600 dark:text-green-400 font-medium">R$ 5.000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tasks Module -->
+                <div id="tasksModule" class="module-content hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Tarefas</h2>
+                    
+                    <!-- Kanban Board -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- To Do Column -->
+                        <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-semibold text-gray-800 dark:text-white">A Fazer</h3>
+                                <span class="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">5</span>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="kanban-card bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm cursor-move">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h4 class="font-medium text-gray-800 dark:text-white text-sm">Atualizar documentação API</h4>
+                                        <span class="bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs px-2 py-1 rounded">Dev</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Adicionar novos endpoints e exemplos</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://picsum.photos/seed/user2/24/24.jpg" alt="Assignee" class="w-6 h-6 rounded-full">
+                                            <span class="text-xs text-gray-600 dark:text-gray-400">Maria</span>
+                                        </div>
+                                        <span class="text-xs text-gray-500 dark:text-gray-400">Due: 15/12</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="kanban-card bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm cursor-move">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h4 class="font-medium text-gray-800 dark:text-white text-sm">Revisar orçamento marketing</h4>
+                                        <span class="bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs px-2 py-1 rounded">Marketing</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Analisar gastos e propor otimizações</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://picsum.photos/seed/user3/24/24.jpg" alt="Assignee" class="w-6 h-6 rounded-full">
+                                            <span class="text-xs text-gray-600 dark:text-gray-400">Pedro</span>
+                                        </div>
+                                        <span class="text-xs text-gray-500 dark:text-gray-400">Due: 18/12</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="kanban-card bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm cursor-move">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h4 class="font-medium text-gray-800 dark:text-white text-sm">Configurar analytics novo app</h4>
+                                        <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded">Data</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Implementar GA4 e eventos customizados</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://picsum.photos/seed/user4/24/24.jpg" alt="Assignee" class="w-6 h-6 rounded-full">
+                                            <span class="text-xs text-gray-600 dark:text-gray-400">Carlos</span>
+                                        </div>
+                                        <span class="text-xs text-gray-500 dark:text-gray-400">Due: 20/12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- In Progress Column -->
+                        <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-semibold text-gray-800 dark:text-white">Em Progresso</h3>
+                                <span class="bg-yellow-300 dark:bg-yellow-700 text-yellow-800 dark:text-yellow-200 text-xs px-2 py-1 rounded-full">3</span>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="kanban-card bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm cursor-move">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h4 class="font-medium text-gray-800 dark:text-white text-sm">Desenvolver feature X</h4>
+                                        <span class="bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs px-2 py-1 rounded">Dev</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Implementação da nova funcionalidade</p>
+                                    <div class="mb-3">
+                                        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-1">
+                                            <span>Progresso</span>
+                                            <span>65%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                                            <div class="bg-blue-600 h-2 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://picsum.photos/seed/user5/24/24.jpg" alt="Assignee" class="w-6 h-6 rounded-full">
+                                            <span class="text-xs text-gray-600 dark:text-gray-400">Ana</span>
+                                        </div>
+                                        <span class="text-xs text-gray-500 dark:text-gray-400">Due: 22/12</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="kanban-card bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm cursor-move">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h4 class="font-medium text-gray-800 dark:text-white text-sm">Criar campanha natal</h4>
+                                        <span class="bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs px-2 py-1 rounded">Marketing</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Preparar materiais e programação</p>
+                                    <div class="mb-3">
+                                        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400 mb-1">
+                                            <span>Progresso</span>
+                                            <span>40%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                                            <div class="bg-purple-600 h-2 rounded-full" style="width: 40%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://picsum.photos/seed/user6/24/24.jpg" alt="Assignee" class="w-6 h-6 rounded-full">
+                                            <span class="text-xs text-gray-600 dark:text-gray-400">Lucas</span>
+                                        </div>
+                                        <span class="text-xs text-gray-500 dark:text-gray-400">Due: 25/12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Done Column -->
+                        <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-semibold text-gray-800 dark:text-white">Concluído</h3>
+                                <span class="bg-green-300 dark:bg-green-700 text-green-800 dark:text-green-200 text-xs px-2 py-1 rounded-full">8</span>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="kanban-card bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm cursor-move opacity-75">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h4 class="font-medium text-gray-800 dark:text-white text-sm line-through">Atualizar landing page</h4>
+                                        <span class="bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs px-2 py-1 rounded">Design</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Novo layout e otimizações</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://picsum.photos/seed/user7/24/24.jpg" alt="Assignee" class="w-6 h-6 rounded-full">
+                                            <span class="text-xs text-gray-600 dark:text-gray-400">Julia</span>
+                                        </div>
+                                        <span class="text-xs text-green-600 dark:text-green-400">Concluído</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="kanban-card bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm cursor-move opacity-75">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h4 class="font-medium text-gray-800 dark:text-white text-sm line-through">Revisar contratos</h4>
+                                        <span class="bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 text-xs px-2 py-1 rounded">Legal</span>
+                                    </div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Atualizar termos e condições</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://picsum.photos/seed/user8/24/24.jpg" alt="Assignee" class="w-6 h-6 rounded-full">
+                                            <span class="text-xs text-gray-600 dark:text-gray-400">Roberto</span>
+                                        </div>
+                                        <span class="text-xs text-green-600 dark:text-green-400">Concluído</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add Task Button -->
+                    <div class="mt-6 text-center">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-200">
+                            <i class="fas fa-plus mr-2"></i>Adicionar Nova Tarefa
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

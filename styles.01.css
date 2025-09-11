@@ -667,6 +667,27 @@ h3 a {
     color: var(--text-secondary);
 }
 
+.footer .social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.footer .social-icons a {
+    color: #fff; /* ou outra cor */
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.footer .social-icons a:hover {
+    color: #ff4b4b; /* cor de destaque no hover */
+}
+.social {
+    text-align: center; /* centraliza o título 'Siga-nos' */
+}
+
+
 /* Modal */
 .modal {
     display: none;

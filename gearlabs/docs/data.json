@@ -1,0 +1,933 @@
+{
+  "projects": [
+
+
+    {
+      "id": "documentation",
+      "icon": "fa-house",
+      "name": {
+        "pt": "Home",
+        "en": "Home",
+        "es": "Home"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Este aplicativo centraliza a documentação de todos os protótipos conceituais da plataforma DealeGear. Esses protótipos estão disponíveis ao público por meio da ferramenta GearLabs e podem ser utilizados por qualquer pessoa sob a licença Apache 2.0, promovendo colaboração e compartilhamento aberto de conhecimento.",
+          "en": "This application centralizes the documentation of all conceptual prototypes of the DealeGear platform. These prototypes are publicly available through the GearLabs tool and can be used by anyone under the Apache 2.0 license, fostering collaboration and open knowledge sharing.",
+          "es": "Esta aplicación centraliza la documentación de todos los prototipos conceptuales de la plataforma DealeGear. Estos prototipos están disponibles públicamente a través de la herramienta GearLabs y pueden ser utilizados por cualquier persona bajo la licencia Apache 2.0, fomentando la colaboración y el intercambio abierto de conocimientos."
+        },
+        "objective": {
+          "pt": "Os protótipos conceituais foram criados para inspirar você a transformar ideias em projetos reais. Eles não são MVPs prontos nem produtos finais, e muitas vezes ultrapassam os limites do exequível devido à sua complexidade ou desafios técnicos. Mas esse é justamente o ponto: eles servem como faíscas de criatividade, mostrando possibilidades e abrindo caminhos para que você invente, experimente e construa algo totalmente novo. Cada protótipo é um convite para explorar, aprender e criar além do óbvio.",
+          "en": "The conceptual prototypes are designed to inspire you to turn ideas into real projects. They are not ready-made MVPs or finished products, and many often go beyond what is feasible due to their complexity or technical challenges. But that is exactly the point: they act as sparks of creativity, showcasing possibilities and opening pathways for you to invent, experiment, and build something entirely new. Each prototype is an invitation to explore, learn, and create beyond the obvious.",
+          "es": "Los prototipos conceptuales fueron creados para inspirarte a convertir ideas en proyectos reales. No son MVPs listos ni productos finales, y muchos superan los límites de lo factible debido a su complejidad o desafíos técnicos. Pero ese es precisamente el punto: actúan como chispas de creatividad, mostrando posibilidades y abriendo caminos para que inventes, experimentes y construyas algo completamente nuevo. Cada prototipo es una invitación a explorar, aprender y crear más allá de lo evidente."
+        },
+        "application": {
+          "pt": "Cada um desses protótipos pode ser explorado de diversas maneiras, dependendo do seu talento e interesse. Desenvolvedores podem replicar o protótipo completo, incorporando suas próprias ideias e melhorias. Designers podem reinterpretar e aprimorar o design usando ferramentas como Figma ou Stitch. E mesmo aqueles sem experiência em código ou design podem transformar esses protótipos em planos concretos, utilizando ferramentas como ChatGPT, Notion ou GearHub. Cada protótipo é um ponto de partida para a sua criatividade — a forma como você o transforma é totalmente sua.",
+          "en": "Each of these prototypes can be explored in multiple ways, depending on your skills and interests. Developers can replicate the entire prototype, adding their own ideas and enhancements. Designers can reinterpret and refine the design using tools like Figma or Stitch. Even those without coding or design experience can turn these prototypes into actionable plans using tools like ChatGPT, Notion, or GearHub. Each prototype is a springboard for your creativity — how you shape it is entirely up to you.",
+          "es": "Cada uno de estos prototipos puede explorarse de múltiples maneras, según tus habilidades e intereses. Los desarrolladores pueden replicar el prototipo completo, incorporando sus propias ideas y mejoras. Los diseñadores pueden reinterpretar y perfeccionar el diseño utilizando herramientas como Figma o Stitch. Incluso quienes no tengan experiencia en código o diseño pueden convertir estos prototipos en planes concretos con herramientas como ChatGPT, Notion o GearHub. Cada prototipo es un punto de partida para tu creatividad: la forma en que lo transformes depende totalmente de ti."
+        },
+        "architecture": {
+          "pt": "A arquitetura dos protótipos é simples e acessível, geralmente composta por uma landpage e um app. A landpage apresenta o protótipo, fornecendo informações essenciais que ajudam a compreender seu propósito e potencial. O app funciona como uma demonstração interativa, permitindo experimentar ideias na prática. Ele não é um produto completo nem traz todas as funcionalidades possíveis — mas é exatamente esse espaço aberto que estimula sua criatividade e permite que você imagine, teste e desenvolva novas possibilidades a partir dele.",
+          "en": "The architecture of the prototypes is simple and approachable, usually consisting of a landing page and an app. The landing page introduces the prototype, providing essential information to understand its purpose and potential. The app serves as an interactive demonstration, allowing ideas to be explored in practice. It is not a fully finished product and does not include all possible features — but this very openness is what sparks creativity, letting you imagine, experiment, and develop new possibilities from it.",
+          "es": "La arquitectura de los prototipos es simple y accesible, generalmente compuesta por una landing page y una app. La landing page presenta el prototipo, proporcionando información esencial para comprender su propósito y potencial. La app funciona como una demostración interactiva, permitiendo experimentar ideas en la práctica. No es un producto completo ni incluye todas las funcionalidades posibles; pero precisamente este espacio abierto estimula la creatividad, permitiéndote imaginar, probar y desarrollar nuevas posibilidades a partir de él."
+        },
+        "userGuide": { parei aqui
+          "pt": "<ol><li>Acesse o site do 3GTO e crie uma conta como estudante, professor ou pai.</li><li>Complete seu perfil com informações relevantes para personalizar a experiência.</li><li>Explore o catálogo de jogos disponíveis e selecione aqueles que deseja jogar.</li><li>Acompanhe seu progresso através do painel de controle e receba recomendações personalizadas.</li><li>Professores podem criar turmas e atribuir jogos específicos para seus alunos.</li></ol>",
+          "en": "<ol><li>Access the 3GTO website and create an account as a student, teacher, or parent.</li><li>Complete your profile with relevant information to personalize the experience.</li><li>Explore the catalog of available games and select those you want to play.</li><li>Track your progress through the dashboard and receive personalized recommendations.</li><li>Teachers can create classes and assign specific games to their students.</li></ol>",
+          "es": "<ol><li>Acceda al sitio web de 3GTO y cree una cuenta como estudiante, profesor o padre.</li><li>Complete su perfil con información relevante para personalizar la experiencia.</li><li>Explore el catálogo de juegos disponibles y seleccione aquellos que desea jugar.</li><li>Siga su progreso a través del panel de control y reciba recomendaciones personalizadas.</li><li>Los profesores pueden crear clases y asignar juegos específicos a sus estudiantes.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o 3GTO incluem a expansão do conteúdo para incluir mais disciplinas e níveis de ensino, o desenvolvimento de recursos de realidade aumentada para uma experiência mais imersiva, e a criação de uma comunidade para que professores possam compartilhar materiais e práticas pedagógicas.",
+          "en": "Next steps for 3GTO include expanding the content to include more subjects and educational levels, developing augmented reality features for a more immersive experience, and creating a community for teachers to share materials and pedagogical practices.",
+          "es": "Los próximos pasos para 3GTO incluyen la expansión del contenido para incluir más asignaturas y niveles educativos, el desarrollo de características de realidad aumentada para una experiencia más inmersiva, y la creación de una comunidad para que los profesores puedan compartir materiales y prácticas pedagógicas."
+        },
+        "background": {
+          "pt": "3GTO foi criado por uma equipe de educadores, desenvolvedores de jogos e psicólogos que acreditavam no potencial dos jogos como ferramenta de aprendizado. A plataforma foi desenvolvida com base em pesquisas sobre psicologia educacional e design de jogos, visando criar uma experiência que seja ao mesmo tempo educativa e divertida.",
+          "en": "3GTO was created by a team of educators, game developers, and psychologists who believed in the potential of games as a learning tool. The platform was developed based on research on educational psychology and game design, aiming to create an experience that is both educational and fun.",
+          "es": "3GTO fue creado por un equipo de educadores, desarrolladores de juegos y psicólogos que creían en el potencial de los juegos como herramienta de aprendizaje. La plataforma fue desarrollada basándose en investigaciones sobre psicología educativa y diseño de juegos, con el objetivo de crear una experiencia que sea a la vez educativa y divertida."
+        },
+        "references": {
+          "pt": "<ul><li>Prensky, M. (2001). Digital Game-Based Learning.</li><li>Ministério da Educação. (2022). Diretrizes para Inovação Educacional.</li><li>Gee, J.P. (2003). What Video Games Have to Teach Us About Learning and Literacy.</li></ul>",
+          "en": "<ul><li>Prensky, M. (2001). Digital Game-Based Learning.</li><li>Ministry of Education. (2022). Guidelines for Educational Innovation.</li><li>Gee, J.P. (2003). What Video Games Have to Teach Us About Learning and Literacy.</li></ul>",
+          "es": "<ul><li>Prensky, M. (2001). Aprendizaje Basado en Juegos Digitales.</li><li>Ministerio de Educación. (2022). Directrices para la Innovación Educativa.</li><li>Gee, J.P. (2003). What Video Games Have to Teach Us About Learning and Literacy.</li></ul>"
+        }
+      }
+    },
+
+    
+
+
+    {
+      "id": "3GTO",
+      "icon": "fa-gamepad",
+      "name": {
+        "pt": "3GTO",
+        "en": "3GTO",
+        "es": "3GTO"
+      },
+      "sections": {
+        "overview": {
+          "pt": "3GTO é uma plataforma de jogos educativos que combina aprendizado e entretenimento para crianças e adolescentes. Com uma variedade de jogos interativos em diferentes áreas do conhecimento, a plataforma torna o aprendizado divertido e envolvente.",
+          "en": "3GTO is an educational gaming platform that combines learning and entertainment for children and teenagers. With a variety of interactive games in different knowledge areas, the platform makes learning fun and engaging.",
+          "es": "3GTO es una plataforma de juegos educativos que combina el aprendizaje y el entretenimiento para niños y adolescentes. Con una variedad de juegos interactivos en diferentes áreas del conocimiento, la plataforma hace que el aprendizaje sea divertido y atractivo."
+        },
+        "objective": {
+          "pt": "O objetivo do 3GTO é revolucionar a educação através da gamificação, proporcionando uma experiência de aprendizado personalizada e adaptativa que atenda às necessidades individuais de cada estudante, tornando o processo educacional mais eficaz e prazeroso.",
+          "en": "The objective of 3GTO is to revolutionize education through gamification, providing a personalized and adaptive learning experience that meets the individual needs of each student, making the educational process more effective and enjoyable.",
+          "es": "El objetivo de 3GTO es revolucionar la educación a través de la gamificación, proporcionando una experiencia de aprendizaje personalizada y adaptativa que satisfaga las necesidades individuales de cada estudiante, haciendo que el proceso educativo sea más efectivo y agradable."
+        },
+        "application": {
+          "pt": "3GTO é destinado a estudantes do ensino fundamental e médio, bem como a professores que buscam ferramentas inovadoras para complementar suas aulas. A plataforma também pode ser utilizada por pais que desejam apoiar o desenvolvimento educacional de seus filhos de forma lúdica.",
+          "en": "3GTO is intended for elementary and high school students, as well as teachers looking for innovative tools to complement their classes. The platform can also be used by parents who want to support their children's educational development in a playful way.",
+          "es": "3GTO está destinado a estudiantes de educación primaria y secundaria, así como a profesores que buscan herramientas innovadoras para complementar sus clases. La plataforma también puede ser utilizada por padres que deseen apoyar el desarrollo educativo de sus hijos de manera lúdica."
+        },
+        "architecture": {
+          "pt": "A arquitetura do 3GTO é baseada em uma estrutura cliente-servidor, com o frontend desenvolvido em tecnologias web modernas e o backend utilizando microsserviços para gerenciamento de usuários, conteúdo educacional, progresso dos alunos e análise de desempenho. A plataforma é compatível com navegadores modernos e dispositivos móveis.",
+          "en": "3GTO's architecture is based on a client-server framework, with the frontend developed in modern web technologies and the backend using microservices for user management, educational content, student progress, and performance analysis. The platform is compatible with modern browsers and mobile devices.",
+          "es": "La arquitectura de 3GTO se basa en un marco cliente-servidor, con el frontend desarrollado en tecnologías web modernas y el backend utilizando microservicios para la gestión de usuarios, contenido educativo, progreso de los estudiantes y análisis de rendimiento. La plataforma es compatible con navegadores modernos y dispositivos móviles."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Acesse o site do 3GTO e crie uma conta como estudante, professor ou pai.</li><li>Complete seu perfil com informações relevantes para personalizar a experiência.</li><li>Explore o catálogo de jogos disponíveis e selecione aqueles que deseja jogar.</li><li>Acompanhe seu progresso através do painel de controle e receba recomendações personalizadas.</li><li>Professores podem criar turmas e atribuir jogos específicos para seus alunos.</li></ol>",
+          "en": "<ol><li>Access the 3GTO website and create an account as a student, teacher, or parent.</li><li>Complete your profile with relevant information to personalize the experience.</li><li>Explore the catalog of available games and select those you want to play.</li><li>Track your progress through the dashboard and receive personalized recommendations.</li><li>Teachers can create classes and assign specific games to their students.</li></ol>",
+          "es": "<ol><li>Acceda al sitio web de 3GTO y cree una cuenta como estudiante, profesor o padre.</li><li>Complete su perfil con información relevante para personalizar la experiencia.</li><li>Explore el catálogo de juegos disponibles y seleccione aquellos que desea jugar.</li><li>Siga su progreso a través del panel de control y reciba recomendaciones personalizadas.</li><li>Los profesores pueden crear clases y asignar juegos específicos a sus estudiantes.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o 3GTO incluem a expansão do conteúdo para incluir mais disciplinas e níveis de ensino, o desenvolvimento de recursos de realidade aumentada para uma experiência mais imersiva, e a criação de uma comunidade para que professores possam compartilhar materiais e práticas pedagógicas.",
+          "en": "Next steps for 3GTO include expanding the content to include more subjects and educational levels, developing augmented reality features for a more immersive experience, and creating a community for teachers to share materials and pedagogical practices.",
+          "es": "Los próximos pasos para 3GTO incluyen la expansión del contenido para incluir más asignaturas y niveles educativos, el desarrollo de características de realidad aumentada para una experiencia más inmersiva, y la creación de una comunidad para que los profesores puedan compartir materiales y prácticas pedagógicas."
+        },
+        "background": {
+          "pt": "3GTO foi criado por uma equipe de educadores, desenvolvedores de jogos e psicólogos que acreditavam no potencial dos jogos como ferramenta de aprendizado. A plataforma foi desenvolvida com base em pesquisas sobre psicologia educacional e design de jogos, visando criar uma experiência que seja ao mesmo tempo educativa e divertida.",
+          "en": "3GTO was created by a team of educators, game developers, and psychologists who believed in the potential of games as a learning tool. The platform was developed based on research on educational psychology and game design, aiming to create an experience that is both educational and fun.",
+          "es": "3GTO fue creado por un equipo de educadores, desarrolladores de juegos y psicólogos que creían en el potencial de los juegos como herramienta de aprendizaje. La plataforma fue desarrollada basándose en investigaciones sobre psicología educativa y diseño de juegos, con el objetivo de crear una experiencia que sea a la vez educativa y divertida."
+        },
+        "references": {
+          "pt": "<ul><li>Prensky, M. (2001). Digital Game-Based Learning.</li><li>Ministério da Educação. (2022). Diretrizes para Inovação Educacional.</li><li>Gee, J.P. (2003). What Video Games Have to Teach Us About Learning and Literacy.</li></ul>",
+          "en": "<ul><li>Prensky, M. (2001). Digital Game-Based Learning.</li><li>Ministry of Education. (2022). Guidelines for Educational Innovation.</li><li>Gee, J.P. (2003). What Video Games Have to Teach Us About Learning and Literacy.</li></ul>",
+          "es": "<ul><li>Prensky, M. (2001). Aprendizaje Basado en Juegos Digitales.</li><li>Ministerio de Educación. (2022). Directrices para la Innovación Educativa.</li><li>Gee, J.P. (2003). What Video Games Have to Teach Us About Learning and Literacy.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "aventurasPeludas",
+      "icon": "fa-paw",
+      "name": {
+        "pt": "Aventuras Peludas",
+        "en": "Furry Adventures",
+        "es": "Aventuras Peludas"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Aventuras Peludas é uma plataforma social para donos de pets que facilita a organização de encontros, compartilhamento de experiências e descoberta de locais pet-friendly. A solução conecta pessoas com interesses similares, permitindo que seus pets socializem enquanto seus tutores criam laços de amizade e compartilham dicas úteis.",
+          "en": "Furry Adventures is a social platform for pet owners that facilitates the organization of meetups, sharing of experiences, and discovery of pet-friendly places. The solution connects people with similar interests, allowing their pets to socialize while their owners create friendship bonds and share useful tips.",
+          "es": "Aventuras Peludas es una plataforma social para dueños de mascotas que facilita la organización de encuentros, el intercambio de experiencias y el descubrimiento de lugares pet-friendly. La solución conecta a personas con intereses similares, permitiendo que sus mascotas socialicen mientras sus dueños crean lazos de amistad y comparten consejos útiles."
+        },
+        "objective": {
+          "pt": "O objetivo do Aventuras Peludas é criar uma comunidade engajada de amantes de animais, promovendo a socialização tanto dos pets quanto de seus tutores. A plataforma busca facilitar a criação de grupos por localidade, tipo de animal ou interesse, além de fornecer informações confiáveis sobre estabelecimentos e serviços que acolhem animais de estimação.",
+          "en": "The objective of Furry Adventures is to create an engaged community of animal lovers, promoting the socialization of both pets and their owners. The platform seeks to facilitate the creation of groups by location, type of animal, or interest, in addition to providing reliable information about establishments and services that welcome pets.",
+          "es": "El objetivo de Aventuras Peludas es crear una comunidad comprometida de amantes de los animales, promoviendo la socialización tanto de las mascotas como de sus dueños. La plataforma busca facilitar la creación de grupos por localidad, tipo de animal o interés, además de proporcionar información confiable sobre establecimientos y servicios que acogen a las mascotas."
+        },
+        "application": {
+          "pt": "Aventuras Peludas é destinado a donos de cães, gatos e outros animais de estimação que desejam encontrar companhia para seus pets, compartilhar experiências e descobrir novos lugares para visitar com seus animais. A plataforma é útil para recém-chegados a uma cidade, pessoas com pets de necessidades especiais e quem busca expandir o círculo social com interesses em comum.",
+          "en": "Furry Adventures is intended for owners of dogs, cats, and other pets who want to find company for their animals, share experiences, and discover new places to visit with their pets. The platform is useful for newcomers to a city, people with pets with special needs, and those looking to expand their social circle with common interests.",
+          "es": "Aventuras Peludas está destinado a dueños de perros, gatos y otras mascotas que desean encontrar compañía para sus animales, compartir experiencias y descubrir nuevos lugares para visitar con sus mascotas. La plataforma es útil para recién llegados a una ciudad, personas con mascotas con necesidades especiales y quienes buscan expandir su círculo social con intereses comunes."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Aventuras Peludas é baseada em um aplicativo mobile com interface web complementar, utilizando geolocalização para conectar usuários próximos com interesses similares. A plataforma emprega um banco de dados relacional para armazenar perfis de usuários e pets, além de informações sobre estabelecimentos pet-friendly. O sistema inclui funcionalidades de chat, agendamento de encontros e avaliações de locais.",
+          "en": "Furry Adventures' architecture is based on a mobile application with a complementary web interface, using geolocation to connect nearby users with similar interests. The platform employs a relational database to store user and pet profiles, as well as information about pet-friendly establishments. The system includes chat functionalities, meetup scheduling, and location reviews.",
+          "es": "La arquitectura de Aventuras Peludas se basa en una aplicación móvil con interfaz web complementaria, utilizando geolocalización para conectar usuarios cercanos con intereses similares. La plataforma emplea una base de datos relacional para almacenar perfiles de usuarios y mascotas, así como información sobre establecimientos pet-friendly. El sistema incluye funcionalidades de chat, programación de encuentros y evaluaciones de lugares."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Baixe o aplicativo Aventuras Peludas e crie um perfil para você e seu pet.</li><li>Adicione informações detalhadas sobre seu animal, como raça, idade, temperamento e preferências.</li><li>Explore o mapa para encontrar outros usuários e estabelecimentos pet-friendly próximos a você.</li><li>Participe de grupos existentes ou crie o seu próprio baseado em localização ou interesses.</li><li>Organize encontros, compartilhe experiências e avalie os locais que visitar com seu pet.</li></ol>",
+          "en": "<ol><li>Download the Furry Adventures app and create a profile for you and your pet.</li><li>Add detailed information about your animal, such as breed, age, temperament, and preferences.</li><li>Explore the map to find other users and pet-friendly establishments near you.</li><li>Join existing groups or create your own based on location or interests.</li><li>Organize meetups, share experiences, and rate the places you visit with your pet.</li></ol>",
+          "es": "<ol><li>Descargue la aplicación Aventuras Peludas y cree un perfil para usted y su mascota.</li><li>Agregue información detallada sobre su animal, como raza, edad, temperamento y preferencias.</li><li>Explore el mapa para encontrar otros usuarios y establecimientos pet-friendly cerca de usted.</li><li>Únase a grupos existentes o cree el suyo propio basado en ubicación o intereses.</li><li>Organice encuentros, comparta experiencias y evalúe los lugares que visite con su mascota.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Aventuras Peludas incluem o desenvolvimento de funcionalidades para rastreamento de atividades físicas dos pets, integração com serviços veterinários para agendamento de consultas, e a criação de um programa de fidelidade com estabelecimentos parceiros para oferecer benefícios aos usuários da plataforma.",
+          "en": "Next steps for Furry Adventures include the development of features for tracking pets' physical activities, integration with veterinary services for scheduling appointments, and the creation of a loyalty program with partner establishments to offer benefits to platform users.",
+          "es": "Los próximos pasos para Aventuras Peludas incluyen el desarrollo de funcionalidades para el seguimiento de las actividades físicas de las mascotas, la integración con servicios veterinarios para la programación de citas, y la creación de un programa de fidelidad con establecimientos asociados para ofrecer beneficios a los usuarios de la plataforma."
+        },
+        "background": {
+          "pt": "Aventuras Peludas surgiu da dificuldade enfrentada pelos fundadores em encontrar companhia para seus pets e locais adequados para visitá-los. Identificando que muitos outros donos de animais compartilhavam desse desafio, eles criaram uma plataforma que não apenas conectasse pessoas, mas também construísse uma comunidade em torno do amor e cuidado pelos animais de estimação.",
+          "en": "Furry Adventures emerged from the difficulty faced by the founders in finding company for their pets and suitable places to visit them. Identifying that many other pet owners shared this challenge, they created a platform that not only connected people but also built a community around the love and care for pets.",
+          "es": "Aventuras Peludas surgió de la dificultad enfrentada por los fundadores para encontrar compañía para sus mascotas y lugares adecuados para visitarlos. Al identificar que muchos otros dueños de animales compartían este desafío, crearon una plataforma que no solo conectara a las personas, sino que también construyera una comunidad en torno al amor y cuidado por las mascotas."
+        },
+        "references": {
+          "pt": "<ul><li>Conselho Brasileiro de Medicina Veterinária. (2022). Guia de Bem-Estar Animal.</li><li>Revista Cães & Gatos. (2021). Tendências no Mercado Pet.</li><li>International Association of Animal Behavior Consultants. (2023). Importância da Socialização para Pets.</li></ul>",
+          "en": "<ul><li>Brazilian Council of Veterinary Medicine. (2022). Animal Welfare Guide.</li><li>Dogs & Cats Magazine. (2021). Trends in the Pet Market.</li><li>International Association of Animal Behavior Consultants. (2023). Importance of Socialization for Pets.</li></ul>",
+          "es": "<ul><li>Consejo Brasileño de Medicina Veterinaria. (2022). Guía de Bienestar Animal.</li><li>Revista Perros & Gatos. (2021). Tendencias en el Mercado Pet.</li><li>Asociación Internacional de Consultores de Comportamiento Animal. (2023). Importancia de la Socialización para Mascotas.</li></ul>"
+        }
+      }
+    },
+
+    {
+      "id": "baristas",
+      "icon": "fa-mug-hot",
+      "name": {
+        "pt": "Baristas",
+        "en": "Baristas",
+        "es": "Baristas"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Baristas é uma rede social exclusiva para profissionais da área de cafeterias e amantes de café. A plataforma permite que os usuários compartilhem conhecimentos, técnicas de preparo, avaliações de cafés e se conectem com outros entusiastas da bebida.",
+          "en": "Baristas is an exclusive social network for coffee shop professionals and coffee lovers. The platform allows users to share knowledge, brewing techniques, coffee reviews, and connect with other enthusiasts of the beverage.",
+          "es": "Baristas es una red social exclusiva para profesionales del ámbito de las cafeterías y amantes del café. La plataforma permite a los usuarios compartir conocimientos, técnicas de preparación, reseñas de café y conectarse con otros entusiastas de la bebida."
+        },
+        "objective": {
+          "pt": "O objetivo do Baristas é criar uma comunidade global para profissionais e entusiastas de café, promovendo o compartilhamento de conhecimento, o desenvolvimento de habilidades e a descoberta de novas tendências no mundo do café especial.",
+          "en": "The objective of Baristas is to create a global community for coffee professionals and enthusiasts, promoting knowledge sharing, skill development, and the discovery of new trends in the specialty coffee world.",
+          "es": "El objetivo de Baristas es crear una comunidad global para profesionales y entusiastas del café, promoviendo el intercambio de conocimientos, el desarrollo de habilidades y el descubrimiento de nuevas tendencias en el mundo del café especial."
+        },
+        "application": {
+          "pt": "Baristas é destinado a baristas profissionais, proprietários de cafeterias, torrefadores, produtores de café e consumidores apaixonados pela bebida. A plataforma oferece recursos específicos para cada perfil, permitindo que todos contribuam e se beneficiem do conhecimento coletivo da comunidade.",
+          "en": "Baristas is intended for professional baristas, coffee shop owners, roasters, coffee producers, and consumers passionate about the beverage. The platform offers specific features for each profile, allowing everyone to contribute and benefit from the collective knowledge of the community.",
+          "es": "Baristas está destinado a baristas profesionales, propietarios de cafeterías, tostadores, productores de café y consumidores apasionados por la bebida. La plataforma ofrece características específicas para cada perfil, permitiendo que todos contribuyan y se beneficien del conocimiento colectivo de la comunidad."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Baristas é baseada em microsserviços, com componentes separados para gerenciamento de usuários, conteúdo, interações sociais e análise de dados. A plataforma utiliza uma API GraphQL para comunicação eficiente entre o frontend e o backend, e é compatível com bancos de dados relacionais e NoSQL para diferentes tipos de dados.",
+          "en": "Baristas' architecture is based on microservices, with separate components for user management, content, social interactions, and data analysis. The platform uses a GraphQL API for efficient communication between the frontend and backend, and is compatible with relational and NoSQL databases for different types of data.",
+          "es": "La arquitectura de Baristas se basa en microservicios, con componentes separados para la gestión de usuarios, contenido, interacciones sociales y análisis de datos. La plataforma utiliza una API GraphQL para una comunicación eficiente entre el frontend y el backend, y es compatible con bases de datos relacionales y NoSQL para diferentes tipos de datos."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Baixe o aplicativo Baristas ou acesse o site e crie uma conta.</li><li>Complete seu perfil com informações sobre sua experiência e preferências de café.</li><li>Explore o feed de conteúdo para descobrir postagens de outros membros da comunidade.</li><li>Compartilhe suas próprias experiências, técnicas e avaliações.</li><li>Participe de grupos temáticos e eventos para expandir sua rede de contatos.</li></ol>",
+          "en": "<ol><li>Download the Baristas app or access the website and create an account.</li><li>Complete your profile with information about your experience and coffee preferences.</li><li>Explore the content feed to discover posts from other community members.</li><li>Share your own experiences, techniques, and reviews.</li><li>Participate in thematic groups and events to expand your network.</li></ol>",
+          "es": "<ol><li>Descargue la aplicación Baristas o acceda al sitio web y cree una cuenta.</li><li>Complete su perfil con información sobre su experiencia y preferencias de café.</li><li>Explore el feed de contenido para descubrir publicaciones de otros miembros de la comunidad.</li><li>Comparta sus propias experiencias, técnicas y reseñas.</li><li>Participe en grupos temáticos y eventos para expandir su red de contactos.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Baristas incluem o desenvolvimento de recursos de aprendizado online com cursos e certificações, a implementação de um sistema de matchmaking para conectar profissionais a oportunidades de emprego, e a criação de um marketplace para produtos e equipamentos relacionados ao café.",
+          "en": "Next steps for Baristas include the development of online learning features with courses and certifications, the implementation of a matchmaking system to connect professionals with job opportunities, and the creation of a marketplace for coffee-related products and equipment.",
+          "es": "Los próximos pasos para Baristas incluyen el desarrollo de características de aprendizaje en línea con cursos y certificaciones, la implementación de un sistema de emparejamiento para conectar a profesionales con oportunidades de empleo, y la creación de un mercado para productos y equipos relacionados con el café."
+        },
+        "background": {
+          "pt": "Baristas surgiu da observação de que profissionais e entusiastas de café careciam de uma plataforma dedicada para compartilhar conhecimento e experiências. Os fundadores, com experiência em tecnologia e no setor de cafeterias especiais, identificaram uma oportunidade para criar uma comunidade global que pudesse impulsionar a inovação e o desenvolvimento do setor.",
+          "en": "Baristas emerged from the observation that coffee professionals and enthusiasts lacked a dedicated platform to share knowledge and experiences. The founders, with experience in technology and the specialty coffee sector, identified an opportunity to create a global community that could drive innovation and development in the industry.",
+          "es": "Baristas surgió de la observación de que los profesionales y entusiastas del café carecían de una plataforma dedicada para compartir conocimientos y experiencias. Los fundadores, con experiencia en tecnología y en el sector de las cafeterías especiales, identificaron una oportunidad para crear una comunidad global que pudiera impulsar la innovación y el desarrollo del sector."
+        },
+        "references": {
+          "pt": "<ul><li>Specialty Coffee Association. (2023). Guia de Boas Práticas para Baristas.</li><li>Revista Espresso. (2022). Tendências Globais no Mercado de Café.</li><li>International Coffee Organization. (2021). Relatório Anual da Indústria Cafeicultora.</li></ul>",
+          "en": "<ul><li>Specialty Coffee Association. (2023). Best Practices Guide for Baristas.</li><li>Espresso Magazine. (2022). Global Trends in the Coffee Market.</li><li>International Coffee Organization. (2021). Annual Coffee Industry Report.</li></ul>",
+          "es": "<ul><li>Specialty Coffee Association. (2023). Guía de Buenas Prácticas para Baristas.</li><li>Revista Espresso. (2022). Tendencias Globales en el Mercado del Café.</li><li>Organización Internacional del Café. (2021). Informe Anual de la Industria Cafetera.</li></ul>"
+        }
+      }
+    },
+
+    {
+      "id": "baristaPro",
+      "icon": "fa-coffee",
+      "name": {
+        "pt": "BaristaPro",
+        "en": "BaristaPro",
+        "es": "BaristaPro"
+      },
+      "sections": {
+        "overview": {
+          "pt": "BaristaPro é um sistema completo para gerenciamento de cafeterias, oferecendo recursos para controle de estoque, gestão de pedidos, relacionamento com clientes e análise de desempenho. Desenvolvido para simplificar as operações diárias e aumentar a rentabilidade do negócio.",
+          "en": "BaristaPro is a complete system for coffee shop management, offering features for inventory control, order management, customer relationship, and performance analysis. Developed to simplify daily operations and increase business profitability.",
+          "es": "BaristaPro es un sistema completo para la gestión de cafeterías, que ofrece características para el control de inventario, gestión de pedidos, relación con clientes y análisis de rendimiento. Desarrollado para simplificar las operaciones diarias y aumentar la rentabilidad del negocio."
+        },
+        "objective": {
+          "pt": "O objetivo do BaristaPro é fornecer uma solução integrada e acessível para proprietários de cafeterias gerenciarem todos os aspectos do seu negócio em um único lugar, otimizando processos e melhorando a experiência do cliente.",
+          "en": "The objective of BaristaPro is to provide an integrated and accessible solution for coffee shop owners to manage all aspects of their business in one place, optimizing processes and improving the customer experience.",
+          "es": "El objetivo de BaristaPro es proporcionar una solución integrada y accesible para que los propietarios de cafeterías gestionen todos los aspectos de su negocio en un solo lugar, optimizando procesos y mejorando la experiencia del cliente."
+        },
+        "application": {
+          "pt": "BaristaPro é ideal para cafeterias de todos os tamanhos, desde pequenos estabelecimentos familiares até grandes redes de cafés. O sistema pode ser personalizado para atender às necessidades específicas de cada negócio, independentemente do seu porte ou modelo de operação.",
+          "en": "BaristaPro is ideal for coffee shops of all sizes, from small family establishments to large coffee chains. The system can be customized to meet the specific needs of each business, regardless of its size or operating model.",
+          "es": "BaristaPro es ideal para cafeterías de todos los tamaños, desde pequeños establecimientos familiares hasta grandes cadenas de café. El sistema puede ser personalizado para satisfacer las necesidades específicas de cada negocio, independientemente de su tamaño o modelo de operación."
+        },
+        "architecture": {
+          "pt": "A arquitetura do BaristaPro é baseada em uma estrutura modular, com um núcleo central e módulos adicionais que podem ser ativados conforme necessário. O sistema utiliza uma API RESTful para comunicação entre componentes e é compatível com bancos de dados SQL e NoSQL.",
+          "en": "BaristaPro's architecture is based on a modular framework, with a central core and additional modules that can be activated as needed. The system uses a RESTful API for communication between components and is compatible with SQL and NoSQL databases.",
+          "es": "La arquitectura de BaristaPro se basa en un marco modular, con un núcleo central y módulos adicionales que pueden ser activados según sea necesario. El sistema utiliza una API RESTful para la comunicación entre componentes y es compatible con bases de datos SQL y NoSQL."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Crie uma conta no BaristaPro com as informações da sua cafeteria.</li><li>Configure seu menu, preços e estoque inicial.</li><li>Cadastre seus funcionários e defina suas permissões de acesso.</li><li>Personalize as configurações do sistema de acordo com suas necessidades.</li><li>Comece a usar o sistema para gerenciar pedidos, estoque e clientes.</li></ol>",
+          "en": "<ol><li>Create an account on BaristaPro with your coffee shop's information.</li><li>Set up your menu, prices, and initial inventory.</li><li>Register your employees and define their access permissions.</li><li>Customize the system settings according to your needs.</li><li>Start using the system to manage orders, inventory, and customers.</li></ol>",
+          "es": "<ol><li>Cree una cuenta en BaristaPro con la información de su cafetería.</li><li>Configure su menú, precios e inventario inicial.</li><li>Registre a sus empleados y defina sus permisos de acceso.</li><li>Personalice la configuración del sistema según sus necesidades.</li><li>Comience a usar el sistema para gestionar pedidos, inventario y clientes.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o BaristaPro incluem o desenvolvimento de um aplicativo móvel para clientes, integração com sistemas de pagamento digitais e a implementação de recursos de inteligência artificial para análise de dados e previsão de demanda.",
+          "en": "Next steps for BaristaPro include the development of a mobile app for customers, integration with digital payment systems, and the implementation of artificial intelligence features for data analysis and demand forecasting.",
+          "es": "Los próximos pasos para BaristaPro incluyen el desarrollo de una aplicación móvil para clientes, la integración con sistemas de pago digitales y la implementación de características de inteligencia artificial para el análisis de datos y la previsión de la demanda."
+        },
+        "background": {
+          "pt": "BaristaPro nasceu da necessidade observada em muitas cafeterias de gerenciar múltiplos aspectos do negócio de forma integrada. Os fundadores, com experiência em tecnologia e hospitalidade, identificaram uma lacuna no mercado para soluções acessíveis e completas para pequenas e médias cafeterias.",
+          "en": "BaristaPro was born from the need observed in many coffee shops to manage multiple aspects of the business in an integrated way. The founders, with experience in technology and hospitality, identified a gap in the market for affordable and comprehensive solutions for small and medium-sized coffee shops.",
+          "es": "BaristaPro nació de la necesidad observada en muchas cafeterías de gestionar múltiples aspectos del negocio de manera integrada. Los fundadores, con experiencia en tecnología y hostelería, identificaron un vacío en el mercado para soluciones asequibles y completas para cafeterías pequeñas y medianas."
+        },
+        "references": {
+          "pt": "<ul><li>Associação Brasileira de Cafeterias Especiais. (2022). Tendências do Mercado de Café.</li><li>Revista Café Tecnologia. (2021). Inovações em Gestão de Cafeterias.</li><li>International Coffee Organization. (2023). Global Coffee Market Report.</li></ul>",
+          "en": "<ul><li>Brazilian Association of Specialty Coffee Shops. (2022). Coffee Market Trends.</li><li>Coffee Technology Magazine. (2021). Innovations in Coffee Shop Management.</li><li>International Coffee Organization. (2023). Global Coffee Market Report.</li></ul>",
+          "es": "<ul><li>Asociación Brasileña de Cafeterías Especiales. (2022). Tendencias del Mercado del Café.</li><li>Revista Café Tecnología. (2021). Innovaciones en Gestión de Cafeterías.</li><li>Organización Internacional del Café. (2023). Informe del Mercado Mundial del Café.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "bosqueFrutiferas",
+      "icon": "fa-tree",
+      "name": {
+        "pt": "Bosque das Frutíferas",
+        "en": "Fruit Forest",
+        "es": "Bosque de Frutales"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Bosque das Frutíferas é uma plataforma de agricultura urbana que conecta comunidades locais para o cultivo compartilhado de frutas em espaços públicos e privados. A solução utiliza tecnologia para mapear árvores frutíferas, gerenciar colheitas e distribuir o excedente de produção para instituições de caridade.",
+          "en": "Fruit Forest is an urban agriculture platform that connects local communities for the shared cultivation of fruits in public and private spaces. The solution uses technology to map fruit trees, manage harvests, and distribute surplus production to charitable institutions.",
+          "es": "Bosque de Frutales es una plataforma de agricultura urbana que conecta comunidades locales para el cultivo compartido de frutas en espacios públicos y privados. La solución utiliza tecnología para mapear árboles frutales, gestionar cosechas y distribuir el excedente de producción a instituciones benéficas."
+        },
+        "objective": {
+          "pt": "O objetivo do Bosque das Frutíferas é promover a segurança alimentar, fortalecer laços comunitários e reduzir o desperdício de alimentos através do cultivo coletivo de frutas em ambientes urbanos. A plataforma busca transformar espaços subutilizados em áreas produtivas e educativas para as comunidades.",
+          "en": "The objective of Fruit Forest is to promote food security, strengthen community bonds, and reduce food waste through the collective cultivation of fruits in urban environments. The platform seeks to transform underutilized spaces into productive and educational areas for communities.",
+          "es": "El objetivo de Bosque de Frutales es promover la seguridad alimentaria, fortalecer los lazos comunitarios y reducir el desperdicio de alimentos a través del cultivo colectivo de frutas en entornos urbanos. La plataforma busca transformar espacios subutilizados en áreas productivas y educativas para las comunidades."
+        },
+        "application": {
+          "pt": "Bosque das Frutíferas é destinado a comunidades urbanas, escolas, associações de bairro, prefeituras e organizações não governamentais interessadas em agricultura urbana e segurança alimentar. A plataforma pode ser utilizada em cidades de todos os tamanhos, adaptando-se às características e necessidades específicas de cada localidade.",
+          "en": "Fruit Forest is intended for urban communities, schools, neighborhood associations, city halls, and non-governmental organizations interested in urban agriculture and food security. The platform can be used in cities of all sizes, adapting to the specific characteristics and needs of each location.",
+          "es": "Bosque de Frutales está destinado a comunidades urbanas, escuelas, asociaciones vecinales, municipalidades y organizaciones no gubernamentales interesadas en agricultura urbana y seguridad alimentaria. La plataforma puede utilizarse en ciudades de todos los tamaños, adaptándose a las características y necesidades específicas de cada localidad."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Bosque das Frutíferas é baseada em um sistema web com aplicativo móvel complementar, utilizando mapas interativos para georreferenciar árvores e áreas de cultivo. A plataforma emprega um banco de dados geográfico para armazenar informações sobre as árvores, colheitas e participantes. O sistema inclui módulos para comunidade, gestão de colheitas e distribuição de alimentos.",
+          "en": "Fruit Forest's architecture is based on a web system with a complementary mobile application, using interactive maps to georeference trees and cultivation areas. The platform employs a geographic database to store information about trees, harvests, and participants. The system includes modules for community, harvest management, and food distribution.",
+          "es": "La arquitectura de Bosque de Frutales se basa en un sistema web con una aplicación móvil complementaria, utilizando mapas interactivos para georreferenciar árboles y áreas de cultivo. La plataforma emplea una base de datos geográfica para almacenar información sobre los árboles, cosechas y participantes. El sistema incluye módulos para comunidad, gestión de cosechas y distribución de alimentos."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Baixe o aplicativo Bosque das Frutíferas ou acesse o site e crie uma conta.</li><li>Explore o mapa para encontrar árvores frutíferas cadastradas em sua região.</li><li>Cadastre novas árvores ou áreas de cultivo que você conheça.</li><li>Participe de eventos de plantio e colheita organizados pela comunidade.</li><li>Registre suas colheitas e ofereça o excedente para instituições cadastradas na plataforma.</li></ol>",
+          "en": "<ol><li>Download the Fruit Forest app or access the website and create an account.</li><li>Explore the map to find registered fruit trees in your region.</li><li>Register new trees or cultivation areas that you know.</li><li>Participate in planting and harvesting events organized by the community.</li><li>Record your harvests and offer the surplus to institutions registered on the platform.</li></ol>",
+          "es": "<ol><li>Descargue la aplicación Bosque de Frutales o acceda al sitio web y cree una cuenta.</li><li>Explore el mapa para encontrar árboles frutales registrados en su región.</li><li>Registre nuevos árboles o áreas de cultivo que usted conozca.</li><li>Participe en eventos de plantación y cosecha organizados por la comunidad.</li><li>Registre sus cosechas y ofrezca el excedente a instituciones registradas en la plataforma.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Bosque das Frutíferas incluem o desenvolvimento de recursos educacionais sobre agricultura urbana e permacultura, a criação de um sistema de pontos para incentivar a participação dos usuários, e o estabelecimento de parcerias com prefeituras para integrar a plataforma em políticas públicas de agricultura urbana e segurança alimentar.",
+          "en": "Next steps for Fruit Forest include the development of educational resources on urban agriculture and permaculture, the creation of a points system to encourage user participation, and the establishment of partnerships with city halls to integrate the platform into public policies for urban agriculture and food security.",
+          "es": "Los próximos pasos para Bosque de Frutales incluyen el desarrollo de recursos educativos sobre agricultura urbana y permacultura, la creación de un sistema de puntos para incentivar la participación de los usuarios, y el establecimiento de asociaciones con municipalidades para integrar la plataforma en políticas públicas de agricultura urbana y seguridad alimentaria."
+        },
+        "background": {
+          "pt": "Bosque das Frutíferas nasceu da observação do paradoxo entre a fome em comunidades urbanas e o desperdício de frutas em árvores públicas e privadas. Os fundadores, com experiência em agronomia, tecnologia e trabalho comunitário, identificaram uma oportunidade para criar uma solução que conectasse pessoas, recursos e necessidades, promovendo a sustentabilidade e a solidariedade.",
+          "en": "Fruit Forest was born from the observation of the paradox between hunger in urban communities and the waste of fruits in public and private trees. The founders, with experience in agronomy, technology, and community work, identified an opportunity to create a solution that would connect people, resources, and needs, promoting sustainability and solidarity.",
+          "es": "Bosque de Frutales nació de la observación de la paradoja entre el hambre en las comunidades urbanas y el desperdicio de frutas en árboles públicos y privados. Los fundadores, con experiencia en agronomía, tecnología y trabajo comunitario, identificaron una oportunidad para crear una solución que conectara personas, recursos y necesidades, promoviendo la sostenibilidad y la solidaridad."
+        },
+        "references": {
+          "pt": "<ul><li>Organização das Nações Unidas para a Alimentação e a Agricultura. (2022). Agricultura Urbana e Segurança Alimentar.</li><li>Ministério da Agricultura. (2021). Guia de Agricultura Urbana Sustentável.</li><li>Revista Ambiente & Sociedade. (2023). Experiências de Agricultura Urbana no Brasil.</li></ul>",
+          "en": "<ul><li>Food and Agriculture Organization of the United Nations. (2022). Urban Agriculture and Food Security.</li><li>Ministry of Agriculture. (2021). Guide to Sustainable Urban Agriculture.</li><li>Environment & Society Journal. (2023). Urban Agriculture Experiences in Brazil.</li></ul>",
+          "es": "<ul><li>Organización de las Naciones Unidas para la Alimentación y la Agricultura. (2022). Agricultura Urbana y Seguridad Alimentaria.</li><li>Ministerio de Agricultura. (2021). Guía de Agricultura Urbana Sostenible.</li><li>Revista Ambiente & Sociedad. (2023). Experiencias de Agricultura Urbana en Brasil.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "dyris",
+      "icon": "fa-eye",
+      "name": {
+        "pt": "Dyris",
+        "en": "Dyris",
+        "es": "Dyris"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Dyris é uma plataforma de visão computacional que utiliza inteligência artificial para analisar imagens e vídeos em tempo real. Com algoritmos avançados de reconhecimento de padrões, a solução pode identificar objetos, pessoas, cenas e anomalias com alta precisão.",
+          "en": "Dyris is a computer vision platform that uses artificial intelligence to analyze images and videos in real time. With advanced pattern recognition algorithms, the solution can identify objects, people, scenes, and anomalies with high accuracy.",
+          "es": "Dyris es una plataforma de visión por computadora que utiliza inteligencia artificial para analizar imágenes y videos en tiempo real. Con algoritmos avanzados de reconocimiento de patrones, la solución puede identificar objetos, personas, escenas y anomalías con alta precisión."
+        },
+        "objective": {
+          "pt": "O objetivo do Dyris é fornecer uma solução acessível e poderosa de visão computacional para empresas de diversos setores, permitindo que automatizem processos, melhorem a segurança e obtenham insights valiosos a partir de dados visuais.",
+          "en": "The objective of Dyris is to provide an affordable and powerful computer vision solution for companies in various sectors, allowing them to automate processes, improve security, and gain valuable insights from visual data.",
+          "es": "El objetivo de Dyris es proporcionar una solución asequible y potente de visión por computadora para empresas de diversos sectores, permitiéndoles automatizar procesos, mejorar la seguridad y obtener información valiosa a partir de datos visuales."
+        },
+        "application": {
+          "pt": "Dyris pode ser aplicado em diversos setores, como segurança (monitoramento de ambientes e detecção de intrusos), varejo (análise de comportamento de clientes e gestão de estoque), saúde (análise de imagens médicas), indústria (controle de qualidade) e agricultura (monitoramento de plantações e detecção de pragas).",
+          "en": "Dyris can be applied in various sectors, such as security (environmental monitoring and intrusion detection), retail (customer behavior analysis and inventory management), healthcare (medical image analysis), industry (quality control), and agriculture (crop monitoring and pest detection).",
+          "es": "Dyris puede aplicarse en diversos sectores, como seguridad (monitoreo de ambientes y detección de intrusos), comercio minorista (análisis del comportamiento del cliente y gestión de inventario), salud (análisis de imágenes médicas), industria (control de calidad) y agricultura (monitoreo de cultivos y detección de plagas)."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Dyris é baseada em uma pipeline de processamento de imagens distribuída, com módulos para captura, pré-processamento, análise e pós-processamento. A plataforma utiliza redes neurais convolucionais para extração de características e oferece APIs RESTful e SDKs para integração com sistemas existentes. O sistema é escalável e pode ser implantado em nuvem ou em infraestrutura local.",
+          "en": "Dyris' architecture is based on a distributed image processing pipeline, with modules for capture, pre-processing, analysis, and post-processing. The platform uses convolutional neural networks for feature extraction and offers RESTful APIs and SDKs for integration with existing systems. The system is scalable and can be deployed in the cloud or on-premises infrastructure.",
+          "es": "La arquitectura de Dyris se basa en una canalización de procesamiento de imágenes distribuida, con módulos para captura, preprocesamiento, análisis y posprocesamiento. La plataforma utiliza redes neuronales convolucionales para la extracción de características y ofrece APIs RESTful y SDKs para la integración con sistemas existentes. El sistema es escalable y puede implementarse en la nube o en infraestructura local."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Crie uma conta no Dyris e faça login na plataforma.</li><li>Configure suas fontes de dados (câmeras, arquivos de imagem/vídeo, streams).</li><li>Selecione os modelos de análise pré-treinados ou treine modelos personalizados.</li><li>Defina as regras de processamento e alertas conforme suas necessidades.</li><li>Visualize os resultados e análises através do painel de controle da plataforma.</li></ol>",
+          "en": "<ol><li>Create an account on Dyris and log in to the platform.</li><li>Configure your data sources (cameras, image/video files, streams).</li><li>Select the pre-trained analysis models or train custom models.</li><li>Define the processing rules and alerts according to your needs.</li><li>View the results and analyses through the platform's dashboard.</li></ol>",
+          "es": "<ol><li>Cree una cuenta en Dyris e inicie sesión en la plataforma.</li><li>Configure sus fuentes de datos (cámaras, archivos de imagen/video, transmisiones).</li><li>Seleccione los modelos de análisis preentrenados o entrene modelos personalizados.</li><li>Defina las reglas de procesamiento y alertas según sus necesidades.</li><li>Vea los resultados y análisis a través del panel de control de la plataforma.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Dyris incluem o desenvolvimento de recursos de processamento de vídeo em tempo real com menor latência, a expansão da biblioteca de modelos pré-treinados para novos casos de uso, e a criação de uma interface de programação visual para que usuários não técnicos possam criar fluxos de análise personalizados.",
+          "en": "Next steps for Dyris include the development of real-time video processing features with lower latency, the expansion of the pre-trained model library for new use cases, and the creation of a visual programming interface for non-technical users to create custom analysis flows.",
+          "es": "Los próximos pasos para Dyris incluyen el desarrollo de características de procesamiento de video en tiempo real con menor latencia, la expansión de la biblioteca de modelos preentrenados para nuevos casos de uso, y la creación de una interfaz de programación visual para que usuarios no técnicos puedan crear flujos de análisis personalizados."
+        },
+        "background": {
+          "pt": "Dyris foi desenvolvido por uma equipe de especialistas em visão computacional e aprendizado de máquina que identificaram a necessidade de soluções acessíveis e fáceis de implementar no campo da análise de imagens. A plataforma foi concebida para democratizar o acesso a tecnologias avançadas de visão computacional, que antes eram restritas a grandes corporações com equipes especializadas.",
+          "en": "Dyris was developed by a team of computer vision and machine learning specialists who identified the need for affordable and easy-to-implement solutions in the field of image analysis. The platform was designed to democratize access to advanced computer vision technologies, which were previously restricted to large corporations with specialized teams.",
+          "es": "Dyris fue desarrollado por un equipo de especialistas en visión por computadora y aprendizaje automático que identificaron la necesidad de soluciones asequibles y fáciles de implementar en el campo del análisis de imágenes. La plataforma fue diseñada para democratizar el acceso a tecnologías avanzadas de visión por computadora, que antes estaban restringidas a grandes corporaciones con equipos especializados."
+        },
+        "references": {
+          "pt": "<ul><li>Szeliski, R. (2010). Computer Vision: Algorithms and Applications.</li><li>IEEE Conference on Computer Vision and Pattern Recognition. (2022). Advances in Deep Learning for Vision.</li><li>Journal of Machine Vision and Applications. (2023). Real-time Image Processing Techniques.</li></ul>",
+          "en": "<ul><li>Szeliski, R. (2010). Computer Vision: Algorithms and Applications.</li><li>IEEE Conference on Computer Vision and Pattern Recognition. (2022). Advances in Deep Learning for Vision.</li><li>Journal of Machine Vision and Applications. (2023). Real-time Image Processing Techniques.</li></ul>",
+          "es": "<ul><li>Szeliski, R. (2010). Computer Vision: Algorithms and Applications.</li><li>Conferencia IEEE sobre Visión por Computadora y Reconocimiento de Patrones. (2022). Avances en Deep Learning para Visión.</li><li>Journal of Machine Vision and Applications. (2023). Técnicas de Procesamiento de Imágenes en Tiempo Real.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "fabr",
+      "icon": "fa-industry",
+      "name": {
+        "pt": "Fabr",
+        "en": "Fabr",
+        "es": "Fabr"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Fabr é uma plataforma de gestão de manufatura que integra processos de produção, controle de qualidade, gerenciamento de estoque e logística. Com uma interface intuitiva e ferramentas analíticas avançadas, a solução otimiza operações industriais e aumenta a eficiência produtiva.",
+          "en": "Fabr is a manufacturing management platform that integrates production processes, quality control, inventory management, and logistics. With an intuitive interface and advanced analytical tools, the solution optimizes industrial operations and increases production efficiency.",
+          "es": "Fabr es una plataforma de gestión de manufactura que integra procesos de producción, control de calidad, gestión de inventario y logística. Con una interfaz intuitiva y herramientas analíticas avanzadas, la solución optimiza las operaciones industriales y aumenta la eficiencia productiva."
+        },
+        "objective": {
+          "pt": "O objetivo do Fabr é fornecer uma solução completa e integrada para empresas de manufatura, permitindo que digitalizem suas operações, reduzam custos, melhorem a qualidade dos produtos e aumentem sua competitividade no mercado através de dados e automação.",
+          "en": "The objective of Fabr is to provide a complete and integrated solution for manufacturing companies, allowing them to digitize their operations, reduce costs, improve product quality, and increase their market competitiveness through data and automation.",
+          "es": "El objetivo de Fabr es proporcionar una solución completa e integrada para empresas de manufactura, permitiéndoles digitalizar sus operaciones, reducir costos, mejorar la calidad de los productos y aumentar su competitividad en el mercado a través de datos y automatización."
+        },
+        "application": {
+          "pt": "Fabr é adequado para empresas de manufatura de todos os tamanhos e setores, desde pequenas oficinas até grandes indústrias. A plataforma é especialmente útil para setores como automotivo, eletrônicos, alimentos e bebidas, farmacêutico e têxtil, onde o controle preciso dos processos produtivos é essencial.",
+          "en": "Fabr is suitable for manufacturing companies of all sizes and sectors, from small workshops to large industries. The platform is especially useful for sectors such as automotive, electronics, food and beverage, pharmaceutical, and textile, where precise control of production processes is essential.",
+          "es": "Fabr es adecuado para empresas de manufactura de todos los tamaños y sectores, desde pequeños talleres hasta grandes industrias. La plataforma es especialmente útil para sectores como el automotriz, electrónica, alimentos y bebidas, farmacéutico y textil, donde el control preciso de los procesos de producción es esencial."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Fabr é baseada em microsserviços, com componentes modulares para cada área funcional da manufatura. A plataforma utiliza uma API RESTful para integração com sistemas existentes (ERP, MES, SCM) e é compatível com dispositivos IoT para coleta de dados em tempo real do chão de fábrica. O sistema pode ser implantado em nuvem ou em infraestrutura local.",
+          "en": "Fabr's architecture is based on microservices, with modular components for each functional area of manufacturing. The platform uses a RESTful API for integration with existing systems (ERP, MES, SCM) and is compatible with IoT devices for real-time data collection from the factory floor. The system can be deployed in the cloud or on-premises infrastructure.",
+          "es": "La arquitectura de Fabr se basa en microservicios, con componentes modulares para cada área funcional de la manufactura. La plataforma utiliza una API RESTful para la integración con sistemas existentes (ERP, MES, SCM) y es compatible con dispositivos IoT para la recolección de datos en tiempo real del piso de fábrica. El sistema puede implementarse en la nube o en infraestructura local."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Crie uma conta no Fabr e configure sua empresa com informações relevantes.</li><li>Configure suas linhas de produção, máquinas e processos no sistema.</li><li>Integre seus sistemas existentes através das APIs disponíveis.</li><li>Conecte dispositivos IoT para coleta automática de dados do chão de fábrica.</li><li>Utilize o painel de controle para monitorar a produção e analisar o desempenho.</li></ol>",
+          "en": "<ol><li>Create an account on Fabr and set up your company with relevant information.</li><li>Configure your production lines, machines, and processes in the system.</li><li>Integrate your existing systems through the available APIs.</li><li>Connect IoT devices for automatic data collection from the factory floor.</li><li>Use the dashboard to monitor production and analyze performance.</li></ol>",
+          "es": "<ol><li>Cree una cuenta en Fabr y configure su empresa con información relevante.</li><li>Configure sus líneas de producción, máquinas y procesos en el sistema.</li><li>Integre sus sistemas existentes a través de las APIs disponibles.</li><li>Conecte dispositivos IoT para la recolección automática de datos del piso de fábrica.</li><li>Utilice el panel de control para monitorear la producción y analizar el rendimiento.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Fabr incluem o desenvolvimento de recursos de gêmeos digitais para simulação e otimização de processos, a implementação de algoritmos de aprendizado de máquina para manutenção preditiva, e a criação de um marketplace para integração com soluções complementares da indústria 4.0.",
+          "en": "Next steps for Fabr include the development of digital twin features for process simulation and optimization, the implementation of machine learning algorithms for predictive maintenance, and the creation of a marketplace for integration with complementary Industry 4.0 solutions.",
+          "es": "Los próximos pasos para Fabr incluyen el desarrollo de características de gemelos digitales para la simulación y optimización de procesos, la implementación de algoritmos de aprendizaje automático para el mantenimiento predictivo, y la creación de un mercado para la integración con soluciones complementarias de la Industria 4.0."
+        },
+        "background": {
+          "pt": "Fabr foi desenvolvido por uma equipe de engenheiros de produção e especialistas em tecnologia industrial que identificaram a necessidade de uma solução acessível e integrada para a digitalização da manufatura. A plataforma foi concebida para ajudar empresas de todos os tamanhos a adotar tecnologias da indústria 4.0, superando barreiras de custo e complexidade.",
+          "en": "Fabr was developed by a team of production engineers and industrial technology specialists who identified the need for an affordable and integrated solution for manufacturing digitalization. The platform was designed to help companies of all sizes adopt Industry 4.0 technologies, overcoming cost and complexity barriers.",
+          "es": "Fabr fue desarrollado por un equipo de ingenieros de producción y especialistas en tecnología industrial que identificaron la necesidad de una solución asequible e integrada para la digitalización de la manufactura. La plataforma fue diseñada para ayudar a empresas de todos los tamaños a adoptar tecnologías de la Industria 4.0, superando barreras de costo y complejidad."
+        },
+        "references": {
+          "pt": "<ul><li>Associação Brasileira da Indústria 4.0. (2022). Guia de Transformação Digital na Manufatura.</li><li>McKinsey Global Institute. (2021). Notas sobre a Indústria 4.0.</li><li>World Economic Forum. (2023). O Futuro da Produção.</li></ul>",
+          "en": "<ul><li>Brazilian Industry 4.0 Association. (2022). Guide to Digital Transformation in Manufacturing.</li><li>McKinsey Global Institute. (2021). Notes on Industry 4.0.</li><li>World Economic Forum. (2023). The Future of Production.</li></ul>",
+          "es": "<ul><li>Asociación Brasileña de la Industria 4.0. (2022). Guía de Transformación Digital en la Manufactura.</li><li>McKinsey Global Institute. (2021). Notas sobre la Industria 4.0.</li><li>Foro Económico Mundial. (2023). El Futuro de la Producción.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "mecanicoFantasma",
+      "icon": "fa-ghost",
+      "name": {
+        "pt": "Mecânico Fantasma",
+        "en": "Ghost Mechanic",
+        "es": "Mecánico Fantasma"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Mecânico Fantasma é uma plataforma de diagnóstico de veículos que utiliza inteligência artificial para identificar problemas mecânicos e eletrônicos através da análise de sons e vibrações. A solução permite que motoristas e oficinas identifiquem falhas com precisão antes que se tornem problemas graves, economizando tempo e dinheiro.",
+          "en": "Ghost Mechanic is a vehicle diagnostics platform that uses artificial intelligence to identify mechanical and electronic problems through the analysis of sounds and vibrations. The solution allows drivers and workshops to identify faults with precision before they become serious problems, saving time and money.",
+          "es": "Mecánico Fantasma es una plataforma de diagnóstico de vehículos que utiliza inteligencia artificial para identificar problemas mecánicos y electrónicos mediante el análisis de sonidos y vibraciones. La solución permite que los conductores y talleres identifiquen fallos con precisión antes de que se conviertan en problemas graves, ahorrando tiempo y dinero."
+        },
+        "objective": {
+          "pt": "O objetivo do Mecânico Fantasma é revolucionar a indústria automotiva fornecendo uma ferramenta acessível e precisa para diagnóstico de veículos, reduzindo a dependência de mecânicos especializados e equipamentos caros. A plataforma busca democratizar o acesso a diagnósticos de qualidade, tornando a manutenção veicular mais transparente e eficiente.",
+          "en": "The objective of Ghost Mechanic is to revolutionize the automotive industry by providing an affordable and accurate tool for vehicle diagnostics, reducing dependence on specialized mechanics and expensive equipment. The platform seeks to democratize access to quality diagnostics, making vehicle maintenance more transparent and efficient.",
+          "es": "El objetivo de Mecánico Fantasma es revolucionar la industria automotriz proporcionando una herramienta asequible y precisa para el diagnóstico de vehículos, reduciendo la dependencia de mecánicos especializados y equipos costosos. La plataforma busca democratizar el acceso a diagnósticos de calidad, haciendo el mantenimiento vehicular más transparente y eficiente."
+        },
+        "application": {
+          "pt": "Mecânico Fantasma é destinado a proprietários de veículos, motoristas profissionais, oficinas mecânicas, concessionárias e empresas de frota. A plataforma pode ser utilizada para diagnóstico preventivo, identificação de problemas em tempo real, manutenção preditiva e como ferramenta de ensino para estudantes de mecânica.",
+          "en": "Ghost Mechanic is intended for vehicle owners, professional drivers, mechanical workshops, dealerships, and fleet companies. The platform can be used for preventive diagnostics, real-time problem identification, predictive maintenance, and as a teaching tool for mechanics students.",
+          "es": "Mecánico Fantasma está destinado a propietarios de vehículos, conductores profesionales, talleres mecánicos, concesionarias y empresas de flota. La plataforma puede utilizarse para diagnóstico preventivo, identificación de problemas en tiempo real, mantenimiento predictivo y como herramienta de enseñanza para estudiantes de mecánica."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Mecânico Fantasma é baseada em um aplicativo móvel que captura áudio e vibrações do veículo, enviando esses dados para servidores na nuvem onde são processados por algoritmos de machine learning. A plataforma utiliza redes neurais profundas treinadas com milhares de horas de gravações de diferentes modelos de veículos e tipos de falhas. O sistema oferece uma API para integração com sistemas de gestão de oficinas e frotas.",
+          "en": "Ghost Mechanic's architecture is based on a mobile application that captures vehicle audio and vibrations, sending this data to cloud servers where it is processed by machine learning algorithms. The platform uses deep neural networks trained with thousands of hours of recordings from different vehicle models and types of failures. The system offers an API for integration with workshop and fleet management systems.",
+          "es": "La arquitectura de Mecánico Fantasma se basa en una aplicación móvil que captura audio y vibraciones del vehículo, enviando estos datos a servidores en la nube donde son procesados por algoritmos de machine learning. La plataforma utiliza redes neuronales profundas entrenadas con miles de horas de grabaciones de diferentes modelos de vehículos y tipos de fallos. El sistema ofrece una API para la integración con sistemas de gestión de talleres y flotas."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Baixe o aplicativo Mecânico Fantasma e crie uma conta.</li><li>Adicione informações sobre seu veículo (marca, modelo, ano, motor).</li><li>Posicione o celular próximo ao motor ou em áreas específicas do veículo conforme orientado.</li><li>Grave o som ou vibração suspeita por alguns segundos.</li><li>Aguarde a análise e receba o diagnóstico com possíveis causas e soluções.</li></ol>",
+          "en": "<ol><li>Download the Ghost Mechanic app and create an account.</li><li>Add information about your vehicle (make, model, year, engine).</li><li>Position the phone near the engine or in specific areas of the vehicle as directed.</li><li>Record the suspicious sound or vibration for a few seconds.</li><li>Wait for the analysis and receive the diagnosis with possible causes and solutions.</li></ol>",
+          "es": "<ol><li>Descargue la aplicación Mecánico Fantasma y cree una cuenta.</li><li>Agregue información sobre su vehículo (marca, modelo, año, motor).</li><li>Posicione el teléfono cerca del motor o en áreas específicas del vehículo según se le indique.</li><li>Grabe el sonido o vibración sospechoso durante unos segundos.</li><li>Espere el análisis y reciba el diagnóstico con posibles causas y soluciones.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Mecânico Fantasma incluem a expansão da base de dados de treinamento para cobrir mais modelos de veículos e tipos de falhas, o desenvolvimento de recursos de realidade aumentada para auxiliar na localização visual de problemas, e a criação de uma rede de oficinas parceiras para oferecer serviços de reparo com descontos para usuários da plataforma.",
+          "en": "Next steps for Ghost Mechanic include expanding the training database to cover more vehicle models and types of failures, developing augmented reality features to assist in the visual location of problems, and creating a network of partner workshops to offer repair services with discounts for platform users.",
+          "es": "Los próximos pasos para Mecánico Fantasma incluyen la expansión de la base de datos de entrenamiento para cubrir más modelos de vehículos y tipos de fallos, el desarrollo de características de realidad aumentada para ayudar en la localización visual de problemas, y la creación de una red de talleres asociados para ofrecer servicios de reparación con descuentos para los usuarios de la plataforma."
+        },
+        "background": {
+          "pt": "Mecânico Fantasma foi criado por uma equipe de engenheiros automotivos, especialistas em acústica e cientistas de dados que identificaram a oportunidade de aplicar tecnologias de IA em um setor tradicionalmente analógico. A plataforma foi desenvolvida para resolver problemas comuns de proprietários de veículos, como diagnósticos imprecisos, custos elevados e a falta de transparência nas oficinas mecânicas.",
+          "en": "Ghost Mechanic was created by a team of automotive engineers, acoustics specialists, and data scientists who identified the opportunity to apply AI technologies in a traditionally analog sector. The platform was developed to solve common problems of vehicle owners, such as inaccurate diagnostics, high costs, and lack of transparency in mechanical workshops.",
+          "es": "Mecánico Fantasma fue creado por un equipo de ingenieros automotrices, especialistas en acústica y científicos de datos que identificaron la oportunidad de aplicar tecnologías de IA en un sector tradicionalmente analógico. La plataforma fue desarrollada para resolver problemas comunes de los propietarios de vehículos, como diagnósticos imprecisos, costos elevados y la falta de transparencia en los talleres mecánicos."
+        },
+        "references": {
+          "pt": "<ul><li>Sociedade Brasileira de Engenharia Automotiva. (2022). Tendências em Diagnóstico Veicular.</li><li>Revista Automotive Engineering. (2021). Aplicações de IA na Indústria Automotiva.</li><li>International Journal of Vehicle Design. (2023). Avanços em Manutenção Preditiva.</li></ul>",
+          "en": "<ul><li>Brazilian Society of Automotive Engineering. (2022). Trends in Vehicle Diagnostics.</li><li>Automotive Engineering Magazine. (2021). AI Applications in the Automotive Industry.</li><li>International Journal of Vehicle Design. (2023). Advances in Predictive Maintenance.</li></ul>",
+          "es": "<ul><li>Sociedad Brasileña de Ingeniería Automotriz. (2022). Tendencias en Diagnóstico Vehicular.</li><li>Revista Automotive Engineering. (2021). Aplicaciones de IA en la Industria Automotriz.</li><li>International Journal of Vehicle Design. (2023). Avances en Mantenimiento Predictivo.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "mikeTioBob",
+      "icon": "fa-users",
+      "name": {
+        "pt": "Mike e Tio Bob",
+        "en": "Mike and Uncle Bob",
+        "es": "Mike y Tío Bob"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Mike e Tio Bob é uma plataforma de storytelling interativo que permite aos usuários criar e compartilhar histórias colaborativas. A solução oferece ferramentas para construção de narrativas, criação de personagens e desenvolvimento de mundos fictícios, permitindo que múltiplos autores contribuam para uma mesma história de forma organizada e criativa.",
+          "en": "Mike and Uncle Bob is an interactive storytelling platform that allows users to create and share collaborative stories. The solution offers tools for narrative construction, character creation, and fictional world development, allowing multiple authors to contribute to the same story in an organized and creative way.",
+          "es": "Mike y Tío Bob es una plataforma de storytelling interactivo que permite a los usuarios crear y compartir historias colaborativas. La solución ofrece herramientas para la construcción de narrativas, creación de personajes y desarrollo de mundos ficticios, permitiendo que múltiples autores contribuyan a la misma historia de forma organizada y creativa."
+        },
+        "objective": {
+          "pt": "O objetivo do Mike e Tio Bob é democratizar a criação de histórias, fornecendo ferramentas acessíveis que incentivem a colaboração e a criatividade. A plataforma busca remover barreiras técnicas para a escrita criativa, conectar pessoas com interesses literários similares e criar uma comunidade vibrante em torno da arte de contar histórias.",
+          "en": "The objective of Mike and Uncle Bob is to democratize story creation by providing accessible tools that encourage collaboration and creativity. The platform seeks to remove technical barriers to creative writing, connect people with similar literary interests, and create a vibrant community around the art of storytelling.",
+          "es": "El objetivo de Mike y Tío Bob es democratizar la creación de historias, proporcionando herramientas accesibles que fomenten la colaboración y la creatividad. La plataforma busca eliminar barreras técnicas para la escritura creativa, conectar a personas con intereses literarios similares y crear una comunidad vibrante en torno al arte de contar historias."
+        },
+        "application": {
+          "pt": "Mike e Tio Bob é destinado a escritores amadores e profissionais, estudantes de literatura, professores, RPGistas, roteiristas e qualquer pessoa interessada em criar ou participar de histórias colaborativas. A plataforma é útil para projetos educativos, desenvolvimento de conteúdo para jogos e mídias, e como ferramenta de entretenimento criativo para grupos de amigos.",
+          "en": "Mike and Uncle Bob is intended for amateur and professional writers, literature students, teachers, RPG players, screenwriters, and anyone interested in creating or participating in collaborative stories. The platform is useful for educational projects, content development for games and media, and as a creative entertainment tool for groups of friends.",
+          "es": "Mike y Tío Bob está destinado a escritores aficionados y profesionales, estudiantes de literatura, profesores, jugadores de RPG, guionistas y cualquier persona interesada en crear o participar en historias colaborativas. La plataforma es útil para proyectos educativos, desarrollo de contenido para juegos y medios, y como herramienta de entretenimiento creativo para grupos de amigos."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Mike e Tio Bob é baseada em uma aplicação web com editor de texto colaborativo em tempo real, utilizando tecnologias como WebSockets para sincronização entre múltiplos usuários. A plataforma emprega um banco de dados NoSQL para armazenar histórias, personagens e elementos de mundo de forma flexível. O sistema inclui módulos para gestão de permissões, controle de versões e organização de elementos narrativos.",
+          "en": "Mike and Uncle Bob's architecture is based on a web application with a real-time collaborative text editor, using technologies like WebSockets for synchronization between multiple users. The platform employs a NoSQL database to store stories, characters, and world elements in a flexible way. The system includes modules for permission management, version control, and organization of narrative elements.",
+          "es": "La arquitectura de Mike y Tío Bob se basa en una aplicación web con editor de texto colaborativo en tiempo real, utilizando tecnologías como WebSockets para la sincronización entre múltiples usuarios. La plataforma emplea una base de datos NoSQL para almacenar historias, personajes y elementos del mundo de manera flexible. El sistema incluye módulos para gestión de permisos, control de versiones y organización de elementos narrativos."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Acesse o site Mike e Tio Bob e crie uma conta.</li><li>Comece uma nova história ou junte-se a uma existente através da página de descoberta.</li><li>Utilize as ferramentas de criação para desenvolver personagens, cenários e elementos de mundo.</li><li>Convide colaboradores ou participe de histórias abertas a contribuições.</li><li>Organize a narrativa utilizando a estrutura de capítulos e cenas, e acompanhe as contribuições de cada autor.</li></ol>",
+          "en": "<ol><li>Access the Mike and Uncle Bob website and create an account.</li><li>Start a new story or join an existing one through the discovery page.</li><li>Use the creation tools to develop characters, settings, and world elements.</li><li>Invite collaborators or participate in stories open to contributions.</li><li>Organize the narrative using the chapter and scene structure, and track each author's contributions.</li></ol>",
+          "es": "<ol><li>Acceda al sitio web Mike y Tío Bob y cree una cuenta.</li><li>Comience una nueva historia o únase a una existente a través de la página de descubrimiento.</li><li>Utilice las herramientas de creación para desarrollar personajes, escenarios y elementos del mundo.</li><li>Invite colaboradores o participe en historias abiertas a contribuciones.</li><li>Organice la narrativa utilizando la estructura de capítulos y escenas, y siga las contribuciones de cada autor.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Mike e Tio Bob incluem o desenvolvimento de recursos de visualização de elementos narrativos em mapas mentais, a criação de ferramentas de exportação para formatos de e-book e impressão, e a implementação de um sistema de recomendação inteligente para conectar autores com estilos e interesses complementares.",
+          "en": "Next steps for Mike and Uncle Bob include the development of features for visualizing narrative elements in mind maps, the creation of export tools for e-book and print formats, and the implementation of an intelligent recommendation system to connect authors with complementary styles and interests.",
+          "es": "Los próximos pasos para Mike y Tío Bob incluyen el desarrollo de características para visualizar elementos narrativos en mapas mentales, la creación de herramientas de exportación para formatos de libro electrónico e impresión, y la implementación de un sistema de recomendación inteligente para conectar autores con estilos e intereses complementarios."
+        },
+        "background": {
+          "pt": "Mike e Tio Bob foi criado por escritores, designers e desenvolvedores que compartilhavam uma paixão por histórias e colaboração criativa. A plataforma nasceu da frustração com as limitações das ferramentas existentes para escrita colaborativa e da crença de que a tecnologia poderia facilitar e enriquecer o processo de criação coletiva de narrativas.",
+          "en": "Mike and Uncle Bob was created by writers, designers, and developers who shared a passion for stories and creative collaboration. The platform was born from the frustration with the limitations of existing tools for collaborative writing and the belief that technology could facilitate and enrich the process of collective narrative creation.",
+          "es": "Mike y Tío Bob fue creado por escritores, diseñadores y desarrolladores que compartían una pasión por las historias y la colaboración creativa. La plataforma nació de la frustración con las limitaciones de las herramientas existentes para la escritura colaborativa y la creencia de que la tecnología podría facilitar y enriquecer el proceso de creación colectiva de narrativas."
+        },
+        "references": {
+          "pt": "<ul><li>Campbell, J. (1949). O Herói de Mil Faces.</li><li>Revista Escrita Criativa. (2022). Técnicas de Narrativa Colaborativa.</li><li>McLuhan, M. (1964). Os Meios de Comunicação como Extensões do Homem.</li></ul>",
+          "en": "<ul><li>Campbell, J. (1949). The Hero with a Thousand Faces.</li><li>Creative Writing Magazine. (2022). Collaborative Narrative Techniques.</li><li>McLuhan, M. (1964). Understanding Media: The Extensions of Man.</li></ul>",
+          "es": "<ul><li>Campbell, J. (1949). El Héroe de las Mil Caras.</li><li>Revista de Escritura Creativa. (2022). Técnicas de Narrativa Colaborativa.</li><li>McLuhan, M. (1964). Comprender los Medios de Comunicación.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "myHeart",
+      "icon": "fa-heartbeat",
+      "name": {
+        "pt": "MyHeart",
+        "en": "MyHeart",
+        "es": "MyHeart"
+      },
+      "sections": {
+        "overview": {
+          "pt": "MyHeart é uma aplicação de monitoramento cardíaco que permite aos usuários acompanhar sua saúde cardiovascular em tempo real. Com uma interface intuitiva e recursos avançados, o aplicativo oferece análises detalhadas do ritmo cardíaco e alertas personalizados.",
+          "en": "MyHeart is a heart monitoring application that allows users to track their cardiovascular health in real time. With an intuitive interface and advanced features, the app offers detailed heart rhythm analysis and personalized alerts.",
+          "es": "MyHeart es una aplicación de monitoreo cardíaco que permite a los usuarios seguir su salud cardiovascular en tiempo real. Con una interfaz intuitiva y características avanzadas, la aplicación ofrece análisis detallados del ritmo cardíaco y alertas personalizadas."
+        },
+        "objective": {
+          "pt": "O objetivo principal do MyHeart é fornecer uma ferramenta acessível e confiável para monitoramento da saúde cardíaca, permitindo que os usuários identifiquem padrões anormais e busquem ajuda médica quando necessário.",
+          "en": "The main objective of MyHeart is to provide an accessible and reliable tool for heart health monitoring, allowing users to identify abnormal patterns and seek medical help when necessary.",
+          "es": "El objetivo principal de MyHeart es proporcionar una herramienta accesible y confiable para el monitoreo de la salud cardíaca, permitiendo a los usuarios identificar patrones anormales y buscar ayuda médica cuando sea necesario."
+        },
+        "application": {
+          "pt": "O MyHeart pode ser utilizado por pessoas de todas as idades que desejam monitorar sua saúde cardiovascular. É especialmente útil para pacientes com condições cardíacas pré-existentes, atletas que desejam otimizar seu treinamento e indivíduos preocupados com a saúde do coração.",
+          "en": "MyHeart can be used by people of all ages who want to monitor their cardiovascular health. It is especially useful for patients with pre-existing heart conditions, athletes who want to optimize their training, and individuals concerned about heart health.",
+          "es": "MyHeart puede ser utilizado por personas de todas las edades que deseen monitorear su salud cardiovascular. Es especialmente útil para pacientes con condiciones cardíacas preexistentes, atletas que desean optimizar su entrenamiento e individuos preocupados por la salud del corazón."
+        },
+        "architecture": {
+          "pt": "A arquitetura do MyHeart é baseada em microserviços, com componentes separados para coleta de dados, processamento, armazenamento e interface do usuário. A comunicação entre os serviços é realizada através de APIs RESTful e o sistema é escalável para suportar milhões de usuários.",
+          "en": "MyHeart's architecture is based on microservices, with separate components for data collection, processing, storage, and user interface. Communication between services is done through RESTful APIs and the system is scalable to support millions of users.",
+          "es": "La arquitectura de MyHeart se basa en microservicios, con componentes separados para la recolección de datos, procesamiento, almacenamiento e interfaz de usuario. La comunicación entre los servicios se realiza a través de APIs RESTful y el sistema es escalable para soportar millones de usuarios."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Baixe e instale o aplicativo MyHeart na loja de aplicativos do seu dispositivo.</li><li>Crie uma conta com seu e-mail e uma senha segura.</li><li>Conecte seu dispositivo de monitoramento cardíaco ao aplicativo via Bluetooth.</li><li>Configure seus alertas e preferências nas configurações.</li><li>Use o aplicativo diariamente para monitorar sua saúde cardíaca.</li></ol>",
+          "en": "<ol><li>Download and install the MyHeart app from your device's app store.</li><li>Create an account with your email and a secure password.</li><li>Connect your heart monitoring device to the app via Bluetooth.</li><li>Set up your alerts and preferences in the settings.</li><li>Use the app daily to monitor your heart health.</li></ol>",
+          "es": "<ol><li>Descargue e instale la aplicación MyHeart desde la tienda de aplicaciones de su dispositivo.</li><li>Cree una cuenta con su correo electrónico y una contraseña segura.</li><li>Conecte su dispositivo de monitoreo cardíaco a la aplicación a través de Bluetooth.</li><li>Configure sus alertas y preferencias en la configuración.</li><li>Use la aplicación diariamente para monitorear su salud cardíaca.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o MyHeart incluem a integração com mais dispositivos de monitoramento, o desenvolvimento de recursos de inteligência artificial para análise preditiva e a expansão para novos mercados internacionais.",
+          "en": "Next steps for MyHeart include integration with more monitoring devices, development of artificial intelligence features for predictive analysis, and expansion to new international markets.",
+          "es": "Los próximos pasos para MyHeart incluyen la integración con más dispositivos de monitoreo, el desarrollo de características de inteligencia artificial para análisis predictivo y la expansión a nuevos mercados internacionales."
+        },
+        "background": {
+          "pt": "O MyHeart foi concebido em 2020 por uma equipe de médicos e engenheiros que identificaram a necessidade de uma solução acessível para monitoramento cardíaco contínuo. Com o aumento das doenças cardiovasculares em todo o mundo, a ferramenta visa capacitar os indivíduos a assumir o controle de sua saúde cardíaca.",
+          "en": "MyHeart was conceived in 2020 by a team of doctors and engineers who identified the need for an accessible solution for continuous heart monitoring. With the increase in cardiovascular diseases worldwide, the tool aims to empower individuals to take control of their heart health.",
+          "es": "MyHeart fue concebido en 2020 por un equipo de médicos e ingenieros que identificaron la necesidad de una solución accesible para el monitoreo cardíaco continuo. Con el aumento de las enfermedades cardiovasculares en todo el mundo, la herramienta tiene como objetivo capacitar a las personas para tomar el control de su salud cardíaca."
+        },
+        "references": {
+          "pt": "<ul><li>Organização Mundial da Saúde. (2021). Doenças Cardiovasculares.</li><li>Sociedade Brasileira de Cardiologia. (2022). Diretrizes para Monitoramento Cardíaco.</li><li>Instituto Nacional do Coração. (2020). Avanços em Tecnologia Cardíaca.</li></ul>",
+          "en": "<ul><li>World Health Organization. (2021). Cardiovascular Diseases.</li><li>Brazilian Society of Cardiology. (2022). Guidelines for Cardiac Monitoring.</li><li>National Heart Institute. (2020). Advances in Cardiac Technology.</li></ul>",
+          "es": "<ul><li>Organización Mundial de la Salud. (2021). Enfermedades Cardiovasculares.</li><li>Sociedad Brasileña de Cardiología. (2022). Pautas para Monitoreo Cardíaco.</li><li>Instituto Nacional del Corazón. (2020). Avances en Tecnología Cardíaca.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "oxygen",
+      "icon": "fa-lungs",
+      "name": {
+        "pt": "Oxygen",
+        "en": "Oxygen",
+        "es": "Oxygen"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Oxygen é uma plataforma de monitoramento da qualidade do ar que utiliza sensores distribuídos e tecnologias de análise de dados para fornecer informações em tempo real sobre a poluição atmosférica. A solução permite o acompanhamento de diversos poluentes e oferece alertas para populações em áreas de risco.",
+          "en": "Oxygen is an air quality monitoring platform that uses distributed sensors and data analysis technologies to provide real-time information about air pollution. The solution allows tracking of various pollutants and offers alerts for populations in at-risk areas.",
+          "es": "Oxygen es una plataforma de monitoreo de la calidad del aire que utiliza sensores distribuidos y tecnologías de análisis de datos para proporcionar información en tiempo real sobre la contaminación atmosférica. La solución permite el seguimiento de diversos contaminantes y ofrece alertas para poblaciones en áreas de riesgo."
+        },
+        "objective": {
+          "pt": "O objetivo do Oxygen é fornecer dados precisos e acessíveis sobre a qualidade do ar para cidadãos, autoridades públicas, pesquisadores e organizações de saúde, apoiando a tomada de decisões informadas e a implementação de políticas públicas para melhorar a qualidade do ar e proteger a saúde pública.",
+          "en": "The objective of Oxygen is to provide accurate and accessible data on air quality to citizens, public authorities, researchers, and health organizations, supporting informed decision-making and the implementation of public policies to improve air quality and protect public health.",
+          "es": "El objetivo de Oxygen es proporcionar datos precisos y accesibles sobre la calidad del aire a ciudadanos, autoridades públicas, investigadores y organizaciones de salud, apoyando la toma de decisiones informadas y la implementación de políticas públicas para mejorar la calidad del aire y proteger la salud pública."
+        },
+        "application": {
+          "pt": "Oxygen é utilizado por agências ambientais, prefeituras, instituições de saúde pública, escolas, universidades e cidadãos preocupados com a qualidade do ar. A plataforma é especialmente útil em áreas urbanas com altos níveis de poluição, regiões industriais e locais próximos a fontes de emissão de poluentes.",
+          "en": "Oxygen is used by environmental agencies, city halls, public health institutions, schools, universities, and citizens concerned about air quality. The platform is especially useful in urban areas with high pollution levels, industrial regions, and locations near pollutant emission sources.",
+          "es": "Oxygen es utilizado por agencias ambientales, municipalidades, instituciones de salud pública, escuelas, universidades y ciudadanos preocupados por la calidad del aire. La plataforma es especialmente útil en áreas urbanas con altos niveles de contaminación, regiones industriales y ubicaciones cercanas a fuentes de emisión de contaminantes."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Oxygen é baseada em uma rede de sensores de baixo custo conectados à internet, que coletam dados continuamente e os enviam para servidores centrais. A plataforma utiliza algoritmos de calibração automática e técnicas de machine learning para processar os dados, identificar padrões e gerar previsões sobre a qualidade do ar. O sistema oferece APIs para integração com outras aplicações e serviços.",
+          "en": "Oxygen's architecture is based on a network of low-cost internet-connected sensors that continuously collect data and send it to central servers. The platform uses automatic calibration algorithms and machine learning techniques to process the data, identify patterns, and generate air quality forecasts. The system offers APIs for integration with other applications and services.",
+          "es": "La arquitectura de Oxygen se basa en una red de sensores de bajo costo conectados a internet que recopilan datos continuamente y los envían a servidores centrales. La plataforma utiliza algoritmos de calibración automática y técnicas de machine learning para procesar los datos, identificar patrones y generar pronósticos sobre la calidad del aire. El sistema ofrece APIs para la integración con otras aplicaciones y servicios."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Acesse o site ou aplicativo do Oxygen e crie uma conta.</li><li>Explore o mapa interativo para visualizar a qualidade do ar em sua região e em outras áreas de interesse.</li><li>Configure alertas personalizados para ser notificado quando a qualidade do ar atingir níveis prejudiciais à saúde.</li><li>Consulte o histórico de dados para analisar tendências e comparar diferentes períodos.</li><li>Contribua com a plataforma instalando um sensor em sua residência ou estabelecimento.</li></ol>",
+          "en": "<ol><li>Access the Oxygen website or app and create an account.</li><li>Explore the interactive map to view air quality in your region and other areas of interest.</li><li>Set up custom alerts to be notified when air quality reaches levels harmful to health.</li><li>Consult the historical data to analyze trends and compare different periods.</li><li>Contribute to the platform by installing a sensor at your home or establishment.</li></ol>",
+          "es": "<ol><li>Acceda al sitio web o aplicación de Oxygen y cree una cuenta.</li><li>Explore el mapa interactivo para ver la calidad del aire en su región y otras áreas de interés.</li><li>Configure alertas personalizados para ser notificado cuando la calidad del aire alcance niveles perjudiciales para la salud.</li><li>Consulte los datos históricos para analizar tendencias y comparar diferentes períodos.</li><li>Contribuya con la plataforma instalando un sensor en su residencia o establecimiento.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Oxygen incluem a expansão da rede de sensores para cobrir mais regiões, o desenvolvimento de modelos preditivos mais precisos utilizando inteligência artificial, a criação de uma API aberta para desenvolvedores, e o estabelecimento de parcerias com instituições de pesquisa para validar e melhorar os dados coletados.",
+          "en": "Next steps for Oxygen include expanding the sensor network to cover more regions, developing more accurate predictive models using artificial intelligence, creating an open API for developers, and establishing partnerships with research institutions to validate and improve the collected data.",
+          "es": "Los próximos pasos para Oxygen incluyen la expansión de la red de sensores para cubrir más regiones, el desarrollo de modelos predictivos más precisos utilizando inteligencia artificial, la creación de una API abierta para desarrolladores, y el establecimiento de asociaciones con instituciones de investigación para validar y mejorar los datos recopilados."
+        },
+        "background": {
+          "pt": "Oxygen foi criado por uma equipe multidisciplinar de engenheiros ambientais, cientistas de dados e especialistas em saúde pública, preocupados com os efeitos da poluição do ar na saúde humana e no meio ambiente. A plataforma foi desenvolvida para democratizar o acesso a informações sobre qualidade do ar, que historicamente eram limitadas, caras ou de difícil obtenção pela população em geral.",
+          "en": "Oxygen was created by a multidisciplinary team of environmental engineers, data scientists, and public health specialists, concerned about the effects of air pollution on human health and the environment. The platform was developed to democratize access to air quality information, which was historically limited, expensive, or difficult to obtain by the general population.",
+          "es": "Oxygen fue creado por un equipo multidisciplinario de ingenieros ambientales, científicos de datos y especialistas en salud pública, preocupados por los efectos de la contaminación del aire en la salud humana y el medio ambiente. La plataforma fue desarrollada para democratizar el acceso a información sobre la calidad del aire, que históricamente era limitada, costosa o difícil de obtener para la población en general."
+        },
+        "references": {
+          "pt": "<ul><li>Organização Mundial da Saúde. (2021). Diretrizes Globais sobre Qualidade do Ar.</li><li>Ministério do Meio Ambiente. (2022). Relatório Nacional de Qualidade do Ar.</li><li>Revista Science of The Total Environment. (2023). Impactos da Poluição do Ar na Saúde Humana.</li></ul>",
+          "en": "<ul><li>World Health Organization. (2021). Global Air Quality Guidelines.</li><li>Ministry of the Environment. (2022). National Air Quality Report.</li><li>Science of The Total Environment Journal. (2023). Impacts of Air Pollution on Human Health.</li></ul>",
+          "es": "<ul><li>Organización Mundial de la Salud. (2021). Directrices Globales sobre Calidad del Aire.</li><li>Ministerio del Medio Ambiente. (2022). Informe Nacional de Calidad del Aire.</li><li>Revista Science of The Total Environment. (2023). Impactos de la Contaminación del Aire en la Salud Humana.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "raizUrbana",
+      "icon": "fa-seedling",
+      "name": {
+        "pt": "Raiz Urbana",
+        "en": "Urban Root",
+        "es": "Raíz Urbana"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Raiz Urbana é uma plataforma de mapeamento e gestão de jardins comunitários e hortas urbanas. A solução conecta voluntários, organizações e espaços disponíveis, facilitando a criação e manutenção de áreas verdes em cidades. A plataforma oferece ferramentas para planejamento, cultivo e distribuição dos alimentos produzidos.",
+          "en": "Urban Root is a mapping and management platform for community gardens and urban vegetable gardens. The solution connects volunteers, organizations, and available spaces, facilitating the creation and maintenance of green areas in cities. The platform offers tools for planning, cultivation, and distribution of the food produced.",
+          "es": "Raíz Urbana es una plataforma de mapeo y gestión de jardines comunitarios y huertas urbanas. La solución conecta voluntarios, organizaciones y espacios disponibles, facilitando la creación y mantenimiento de áreas verdes en las ciudades. La plataforma ofrece herramientas para planificación, cultivo y distribución de los alimentos producidos."
+        },
+        "objective": {
+          "pt": "O objetivo do Raiz Urbana é promover a agricultura urbana como ferramenta de transformação social, ambiental e educacional. A plataforma busca aumentar o acesso a alimentos frescos e saudáveis, fortalecer a resiliência comunitária, recuperar espaços urbanos subutilizados e criar oportunidades de aprendizado sobre práticas sustentáveis.",
+          "en": "The objective of Urban Root is to promote urban agriculture as a tool for social, environmental, and educational transformation. The platform seeks to increase access to fresh and healthy food, strengthen community resilience, recover underutilized urban spaces, and create learning opportunities about sustainable practices.",
+          "es": "El objetivo de Raíz Urbana es promover la agricultura urbana como herramienta de transformación social, ambiental y educacional. La plataforma busca aumentar el acceso a alimentos frescos y saludables, fortalecer la resiliencia comunitaria, recuperar espacios urbanos subutilizados y crear oportunidades de aprendizaje sobre prácticas sostenibles."
+        },
+        "application": {
+          "pt": "Raiz Urbana é destinado a comunidades locais, escolas, organizações não governamentais, prefeituras, empresas e cidadãos interessados em agricultura urbana. A plataforma pode ser utilizada para mapear espaços disponíveis, organizar voluntários, planejar cultivos, gerenciar recursos e compartilhar conhecimentos sobre práticas agrícolas sustentáveis em ambientes urbanos.",
+          "en": "Urban Root is intended for local communities, schools, non-governmental organizations, city halls, companies, and citizens interested in urban agriculture. The platform can be used to map available spaces, organize volunteers, plan crops, manage resources, and share knowledge about sustainable agricultural practices in urban environments.",
+          "es": "Raíz Urbana está destinado a comunidades locales, escuelas, organizaciones no gubernamentales, municipalidades, empresas y ciudadanos interesados en agricultura urbana. La plataforma puede utilizarse para mapear espacios disponibles, organizar voluntarios, planificar cultivos, gestionar recursos y compartir conocimientos sobre prácticas agrícolas sostenibles en entornos urbanos."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Raiz Urbana é baseada em um sistema web com aplicativo móvel, utilizando mapas interativos para georreferenciar espaços de cultivo e recursos disponíveis. A plataforma emprega um banco de dados geográfico para armazenar informações sobre jardins, voluntários, cultivos e colheitas. O sistema inclui módulos para comunicação entre usuários, gestão de tarefas e rastreamento do impacto social e ambiental.",
+          "en": "Urban Root's architecture is based on a web system with a mobile application, using interactive maps to georeference cultivation spaces and available resources. The platform employs a geographic database to store information about gardens, volunteers, crops, and harvests. The system includes modules for communication between users, task management, and tracking of social and environmental impact.",
+          "es": "La arquitectura de Raíz Urbana se basa en un sistema web con aplicación móvil, utilizando mapas interactivos para georreferenciar espacios de cultivo y recursos disponibles. La plataforma emplea una base de datos geográfica para almacenar información sobre jardines, voluntarios, cultivos y cosechas. El sistema incluye módulos para comunicación entre usuarios, gestión de tareas y seguimiento del impacto social y ambiental."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Acesse o site Raiz Urbana ou baixe o aplicativo e crie uma conta.</li><li>Explore o mapa para encontrar jardins comunitários e hortas urbanas em sua região.</li><li>Cadastre espaços disponíveis que possam ser utilizados para novos projetos.</li><li>Participe de projetos existentes ou crie o seu próprio, convidando outros usuários para colaborar.</li><li>Utilize as ferramentas de planejamento para organizar cultivos, tarefas e distribuição de colheitas.</li></ol>",
+          "en": "<ol><li>Access the Urban Root website or download the app and create an account.</li><li>Explore the map to find community gardens and urban vegetable gardens in your region.</li><li>Register available spaces that can be used for new projects.</li><li>Participate in existing projects or create your own, inviting other users to collaborate.</li><li>Use the planning tools to organize crops, tasks, and distribution of harvests.</li></ol>",
+          "es": "<ol><li>Acceda al sitio web Raíz Urbana o descargue la aplicación y cree una cuenta.</li><li>Explore el mapa para encontrar jardines comunitarios y huertas urbanas en su región.</li><li>Registre espacios disponibles que puedan utilizarse para nuevos proyectos.</li><li>Participe en proyectos existentes o cree el suyo propio, invitando a otros usuarios a colaborar.</li><li>Utilice las herramientas de planificación para organizar cultivos, tareas y distribución de cosechas.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Raiz Urbana incluem o desenvolvimento de recursos de realidade aumentada para visualização de projetos futuros, a criação de um sistema de pontos para incentivar a participação voluntária, e o estabelecimento de parcerias com instituições de ensino e pesquisa para documentar e disseminar os impactos positivos da agricultura urbana.",
+          "en": "Next steps for Urban Root include the development of augmented reality features for visualization of future projects, the creation of a points system to encourage voluntary participation, and the establishment of partnerships with educational and research institutions to document and disseminate the positive impacts of urban agriculture.",
+          "es": "Los próximos pasos para Raíz Urbana incluyen el desarrollo de características de realidad aumentada para la visualización de proyectos futuros, la creación de un sistema de puntos para incentivar la participación voluntaria, y el establecimiento de asociaciones con instituciones educativas y de investigación para documentar y difundir los impactos positivos de la agricultura urbana."
+        },
+        "background": {
+          "pt": "Raiz Urbana foi criado por urbanistas, agrônomos e ativistas comunitários que identificaram o potencial transformador da agricultura urbana e a necessidade de ferramentas para facilitar sua implementação. A plataforma foi desenvolvida para superar barreiras como a falta de informação sobre espaços disponíveis, a dificuldade na organização de voluntários e a fragmentação de iniciativas isoladas.",
+          "en": "Urban Root was created by urban planners, agronomists, and community activists who identified the transformative potential of urban agriculture and the need for tools to facilitate its implementation. The platform was developed to overcome barriers such as lack of information about available spaces, difficulty in organizing volunteers, and fragmentation of isolated initiatives.",
+          "es": "Raíz Urbana fue creado por urbanistas, agrónomos y activistas comunitarios que identificaron el potencial transformador de la agricultura urbana y la necesidad de herramientas para facilitar su implementación. La plataforma fue desarrollada para superar barreras como la falta de información sobre espacios disponibles, la dificultad en la organización de voluntarios y la fragmentación de iniciativas aisladas."
+        },
+        "references": {
+          "pt": "<ul><li>Organização das Nações Unidas para a Alimentação e a Agricultura. (2022). Guia de Agricultura Urbana.</li><li>Ministério das Cidades. (2021). Políticas Públicas para Espaços Verdes Urbanos.</li><li>Revista Ambiente Urbano. (2023). Impactos Sociais da Agricultura em Cidades.</li></ul>",
+          "en": "<ul><li>Food and Agriculture Organization of the United Nations. (2022). Urban Agriculture Guide.</li><li>Ministry of Cities. (2021). Public Policies for Urban Green Spaces.</li><li>Urban Environment Journal. (2023). Social Impacts of Agriculture in Cities.</li></ul>",
+          "es": "<ul><li>Organización de las Naciones Unidas para la Alimentación y la Agricultura. (2022). Guía de Agricultura Urbana.</li><li>Ministerio de las Ciudades. (2021). Políticas Públicas para Espacios Verdes Urbanos.</li><li>Revista Ambiente Urbano. (2023). Impactos Sociales de la Agricultura en Ciudades.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "simco",
+      "icon": "fa-chart-line",
+      "name": {
+        "pt": "SIMCO",
+        "en": "SIMCO",
+        "es": "SIMCO"
+      },
+      "sections": {
+        "overview": {
+          "pt": "SIMCO (Sistema Integrado de Monitoramento e Controle) é uma plataforma de gestão empresarial que combina ferramentas de ERP, CRM e BI em uma única solução. Desenvolvida para pequenas e médias empresas, a plataforma oferece recursos para gestão financeira, controle de estoque, relacionamento com clientes e análise de dados em tempo real.",
+          "en": "SIMCO (Integrated Monitoring and Control System) is a business management platform that combines ERP, CRM, and BI tools in a single solution. Developed for small and medium-sized businesses, the platform offers features for financial management, inventory control, customer relationship, and real-time data analysis.",
+          "es": "SIMCO (Sistema Integrado de Monitoreo y Control) es una plataforma de gestión empresarial que combina herramientas de ERP, CRM y BI en una única solución. Desarrollada para pequeñas y medianas empresas, la plataforma ofrece características para gestión financiera, control de inventario, relación con clientes y análisis de datos en tiempo real."
+        },
+        "objective": {
+          "pt": "O objetivo do SIMCO é fornecer uma solução acessível e integrada para gestão empresarial, permitindo que pequenas e médias empresas tenham acesso a ferramentas antes disponíveis apenas para grandes corporações. A plataforma busca otimizar processos, reduzir custos operacionais e fornecer insights estratégicos através da análise de dados.",
+          "en": "The objective of SIMCO is to provide an affordable and integrated solution for business management, allowing small and medium-sized businesses to access tools previously available only to large corporations. The platform seeks to optimize processes, reduce operational costs, and provide strategic insights through data analysis.",
+          "es": "El objetivo de SIMCO es proporcionar una solución asequible e integrada para la gestión empresarial, permitiendo que pequeñas y medianas empresas accedan a herramientas anteriormente disponibles solo para grandes corporaciones. La plataforma busca optimizar procesos, reducir costos operativos y proporcionar información estratégica mediante el análisis de datos."
+        },
+        "application": {
+          "pt": "SIMCO é destinado a pequenas e médias empresas de diversos setores, como varejo, serviços, manufatura e comércio. A plataforma é especialmente útil para empresas que estão crescendo e precisam de sistemas mais robustos para gerenciar suas operações, mas não têm recursos para adquirir múltiplas soluções especializadas ou contratar equipes de TI dedicadas.",
+          "en": "SIMCO is intended for small and medium-sized businesses in various sectors, such as retail, services, manufacturing, and commerce. The platform is especially useful for companies that are growing and need more robust systems to manage their operations, but do not have resources to acquire multiple specialized solutions or hire dedicated IT teams.",
+          "es": "SIMCO está destinado a pequeñas y medianas empresas de diversos sectores, como comercio minorista, servicios, manufactura y comercio. La plataforma es especialmente útil para empresas que están creciendo y necesitan sistemas más robustos para gestionar sus operaciones, pero no tienen recursos para adquirir múltiples soluciones especializadas o contratar equipos de TI dedicados."
+        },
+        "architecture": {
+          "pt": "A arquitetura do SIMCO é baseada em microsserviços, com módulos independentes para cada área funcional (financeiro, vendas, estoque, etc.) que se comunicam através de APIs. A plataforma utiliza uma arquitetura em nuvem com banco de dados relacional para transações e NoSQL para análise de dados. O sistema oferece uma interface web responsiva e aplicativos móveis para acesso remoto.",
+          "en": "SIMCO's architecture is based on microservices, with independent modules for each functional area (financial, sales, inventory, etc.) that communicate through APIs. The platform uses a cloud architecture with a relational database for transactions and NoSQL for data analysis. The system offers a responsive web interface and mobile applications for remote access.",
+          "es": "La arquitectura de SIMCO se basa en microservicios, con módulos independientes para cada área funcional (financiero, ventas, inventario, etc.) que se comunican a través de APIs. La plataforma utiliza una arquitectura en la nube con base de datos relacional para transacciones y NoSQL para análisis de datos. El sistema ofrece una interfaz web receptiva y aplicaciones móviles para acceso remoto."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Acesse o site do SIMCO e solicite uma demonstração ou crie uma conta de teste.</li><li>Configure o perfil da sua empresa, informando setor, tamanho e necessidades específicas.</li><li>Personalize os módulos que deseja utilizar, ativando ou desativando funcionalidades conforme necessário.</li><li>Importe seus dados existentes ou comece a inserir informações diretamente no sistema.</li><li>Explore os dashboards e relatórios para analisar o desempenho do seu negócio.</li></ol>",
+          "en": "<ol><li>Access the SIMCO website and request a demo or create a trial account.</li><li>Set up your company profile, informing sector, size, and specific needs.</li><li>Customize the modules you want to use, activating or deactivating features as needed.</li><li>Import your existing data or start entering information directly into the system.</li><li>Explore the dashboards and reports to analyze your business performance.</li></ol>",
+          "es": "<ol><li>Acceda al sitio web de SIMCO y solicite una demostración o cree una cuenta de prueba.</li><li>Configure el perfil de su empresa, informando sector, tamaño y necesidades específicas.</li><li>Personalice los módulos que desea utilizar, activando o desactivando funcionalidades según sea necesario.</li><li>Importe sus datos existentes o comience a ingresar información directamente en el sistema.</li><li>Explore los tableros e informes para analizar el rendimiento de su negocio.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o SIMCO incluem o desenvolvimento de recursos de inteligência artificial para previsão de demanda e detecção de anomalias, a criação de conectores para integração com marketplaces online e plataformas de logística, e a expansão da plataforma para incluir funcionalidades de gestão de projetos e recursos humanos.",
+          "en": "Next steps for SIMCO include the development of artificial intelligence features for demand forecasting and anomaly detection, the creation of connectors for integration with online marketplaces and logistics platforms, and the expansion of the platform to include project management and human resources functionalities.",
+          "es": "Los próximos pasos para SIMCO incluyen el desarrollo de características de inteligencia artificial para previsión de demanda y detección de anomalías, la creación de conectores para la integración con mercados en línea y plataformas de logística, y la expansión de la plataforma para incluir funcionalidades de gestión de proyectos y recursos humanos."
+        },
+        "background": {
+          "pt": "SIMCO foi desenvolvido por uma equipe de consultores de negócios e especialistas em tecnologia que identificaram uma lacuna no mercado para soluções de gestão integrada acessíveis a pequenas e médias empresas. Observando a dificuldade dessas organizações em coordenar múltiplos sistemas desconectados e o alto custo das soluções corporativas tradicionais, eles criaram uma plataforma flexível e escalável que cresce junto com o negócio do cliente.",
+          "en": "SIMCO was developed by a team of business consultants and technology specialists who identified a gap in the market for integrated management solutions accessible to small and medium-sized businesses. Observing the difficulty of these organizations in coordinating multiple disconnected systems and the high cost of traditional corporate solutions, they created a flexible and scalable platform that grows along with the client's business.",
+          "es": "SIMCO fue desarrollado por un equipo de consultores de negocios y especialistas en tecnología que identificaron una brecha en el mercado para soluciones de gestión integrada accesibles para pequeñas y medianas empresas. Observando la dificultad de estas organizaciones para coordinar múltiples sistemas desconectados y el alto costo de las soluciones corporativas tradicionales, crearon una plataforma flexible y escalable que crece junto con el negocio del cliente."
+        },
+        "references": {
+          "pt": "<ul><li>SEBRAE. (2022). Pesquisa sobre Adoção de Tecnologia por PMEs.</li><li>Revista de Administração de Empresas. (2021). Tendências em Sistemas de Gestão Integrada.</li><li>MIT Sloan Management Review. (2023). O Impacto da Transformação Digital em Pequenas Empresas.</li></ul>",
+          "en": "<ul><li>SEBRAE. (2022). Research on Technology Adoption by SMEs.</li><li>Journal of Business Administration. (2021). Trends in Integrated Management Systems.</li><li>MIT Sloan Management Review. (2023). The Impact of Digital Transformation on Small Businesses.</li></ul>",
+          "es": "<ul><li>SEBRAE. (2022). Investigación sobre Adopción de Tecnología por PYMES.</li><li>Revista de Administración de Empresas. (2021). Tendencias en Sistemas de Gestión Integrada.</li><li>MIT Sloan Management Review. (2023). El Impacto de la Transformación Digital en Pequeñas Empresas.</li></ul>"
+        }
+      }
+    },
+    {
+      "id": "synapse",
+      "icon": "fa-brain",
+      "name": {
+        "pt": "Synapse",
+        "en": "Synapse",
+        "es": "Synapse"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Synapse é uma plataforma de aprendizado de máquina que permite aos cientistas de dados e desenvolvedores criar, treinar e implantar modelos de IA de forma simplificada. Com uma interface intuitiva e ferramentas avançadas, a plataforma acelera o desenvolvimento de soluções inteligentes.",
+          "en": "Synapse is a machine learning platform that allows data scientists and developers to create, train, and deploy AI models in a simplified way. With an intuitive interface and advanced tools, the platform accelerates the development of intelligent solutions.",
+          "es": "Synapse es una plataforma de aprendizaje automático que permite a los científicos de datos y desarrolladores crear, entrenar e implementar modelos de IA de manera simplificada. Con una interfaz intuitiva y herramientas avanzadas, la plataforma acelera el desarrollo de soluciones inteligentes."
+        },
+        "objective": {
+          "pt": "O objetivo do Synapse é democratizar o acesso à inteligência artificial, fornecendo ferramentas acessíveis e poderosas que permitem que profissionais de diversos níveis de habilidade criem e implementem modelos de ML sem a necessidade de conhecimentos avançados em programação.",
+          "en": "The objective of Synapse is to democratize access to artificial intelligence by providing accessible and powerful tools that allow professionals of various skill levels to create and implement ML models without the need for advanced programming knowledge.",
+          "es": "El objetivo de Synapse es democratizar el acceso a la inteligencia artificial, proporcionando herramientas accesibles y potentes que permitan a profesionales de varios niveles de habilidad crear e implementar modelos de ML sin necesidad de conocimientos avanzados de programación."
+        },
+        "application": {
+          "pt": "Synapse é adequado para empresas de todos os tamanhos que desejam implementar soluções de IA, desde startups até grandes corporações. A plataforma é especialmente útil para setores como saúde, finanças, varejo e manufatura, onde a análise de dados pode gerar insights valiosos.",
+          "en": "Synapse is suitable for businesses of all sizes looking to implement AI solutions, from startups to large corporations. The platform is especially useful for sectors such as healthcare, finance, retail, and manufacturing, where data analysis can generate valuable insights.",
+          "es": "Synapse es adecuado para empresas de todos los tamaños que buscan implementar soluciones de IA, desde startups hasta grandes corporaciones. La plataforma es especialmente útil para sectores como la salud, las finanzas, el comercio minorista y la fabricación, donde el análisis de datos puede generar información valiosa."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Synapse é baseada em microsserviços em contêineres, com componentes separados para ingestão de dados, treinamento de modelos, implantação e monitoramento. A plataforma utiliza Kubernetes para orquestração de contêineres e oferece APIs RESTful e SDKs para integração com sistemas externos.",
+          "en": "Synapse's architecture is based on containerized microservices, with separate components for data ingestion, model training, deployment, and monitoring. The platform uses Kubernetes for container orchestration and offers RESTful APIs and SDKs for integration with external systems.",
+          "es": "La arquitectura de Synapse se basa en microservicios en contenedores, con componentes separados para la ingesta de datos, el entrenamiento de modelos, la implementación y el monitoreo. La plataforma utiliza Kubernetes para la orquestación de contenedores y ofrece APIs RESTful y SDKs para la integración con sistemas externos."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Crie uma conta no Synapse e faça login na plataforma.</li><li>Conecte suas fontes de dados através dos conectores disponíveis.</li><li>Selecione um modelo de ML pré-construído ou crie um modelo personalizado.</li><li>Treine seu modelo usando os dados fornecidos e ajuste os parâmetros conforme necessário.</li><li>Implante seu modelo e monitore seu desempenho através do painel de controle.</li></ol>",
+          "en": "<ol><li>Create an account on Synapse and log in to the platform.</li><li>Connect your data sources through the available connectors.</li><li>Select a pre-built ML model or create a custom model.</li><li>Train your model using the provided data and adjust parameters as needed.</li><li>Deploy your model and monitor its performance through the dashboard.</li></ol>",
+          "es": "<ol><li>Cree una cuenta en Synapse e inicie sesión en la plataforma.</li><li>Conecte sus fuentes de datos a través de los conectores disponibles.</li><li>Seleccione un modelo de ML preconstruido o cree un modelo personalizado.</li><li>Entrene su modelo utilizando los datos proporcionados y ajuste los parámetros según sea necesario.</li><li>Implemente su modelo y monitoree su rendimiento a través del panel de control.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Synapse incluem a expansão da biblioteca de modelos pré-construídos, o desenvolvimento de recursos de aprendizado federado para privacidade de dados e a criação de uma comunidade para compartilhamento de modelos e conhecimentos entre usuários.",
+          "en": "Next steps for Synapse include expanding the library of pre-built models, developing federated learning features for data privacy, and creating a community for sharing models and knowledge among users.",
+          "es": "Los próximos pasos para Synapse incluyen la expansión de la biblioteca de modelos preconstruidos, el desarrollo de características de aprendizaje federado para la privacidad de datos y la creación de una comunidad para compartir modelos y conocimientos entre los usuarios."
+        },
+        "background": {
+          "pt": "Synapse foi desenvolvido por uma equipe de cientistas de dados e engenheiros de software que reconheceram a complexidade e as barreiras técnicas no desenvolvimento de soluções de IA. A plataforma foi concebida para simplificar o ciclo de vida do aprendizado de máquina, tornando-o acessível a um público mais amplo.",
+          "en": "Synapse was developed by a team of data scientists and software engineers who recognized the complexity and technical barriers in developing AI solutions. The platform was designed to simplify the machine learning lifecycle, making it accessible to a wider audience.",
+          "es": "Synapse fue desarrollado por un equipo de científicos de datos e ingenieros de software que reconocieron la complejidad y las barreras técnicas en el desarrollo de soluciones de IA. La plataforma fue diseñada para simplificar el ciclo de vida del aprendizaje automático, haciéndolo accesible a un público más amplio."
+        },
+        "references": {
+          "pt": "<ul><li>Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning.</li><li>Sociedade Brasileira de Computação. (2022). Diretrizes para Ética em IA.</li><li>MIT Technology Review. (2023). Tendências em Inteligência Artificial.</li></ul>",
+          "en": "<ul><li>Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning.</li><li>Brazilian Computer Society. (2022). Guidelines for AI Ethics.</li><li>MIT Technology Review. (2023). Trends in Artificial Intelligence.</li></ul>",
+          "es": "<ul><li>Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning.</li><li>Sociedad Brasileña de Computación. (2022). Pautas para Ética en IA.</li><li>MIT Technology Review. (2023). Tendencias en Inteligencia Artificial.</li></ul>"
+        }
+      }
+    },
+
+    {
+      "id": "underSea",
+      "icon": "fa-water",
+      "name": {
+        "pt": "UnderSea",
+        "en": "UnderSea",
+        "es": "UnderSea"
+      },
+      "sections": {
+        "overview": {
+          "pt": "UnderSea é uma plataforma de monitoramento oceânico que utiliza sensores e tecnologias avançadas para coletar dados sobre a saúde dos oceanos em tempo real. A solução permite o acompanhamento de parâmetros como temperatura, salinidade, pH, níveis de poluição e vida marinha.",
+          "en": "UnderSea is an ocean monitoring platform that uses sensors and advanced technologies to collect data on ocean health in real time. The solution allows tracking parameters such as temperature, salinity, pH, pollution levels, and marine life.",
+          "es": "UnderSea es una plataforma de monitoreo oceánico que utiliza sensores y tecnologías avanzadas para recopilar datos sobre la salud de los océanos en tiempo real. La solución permite el seguimiento de parámetros como temperatura, salinidad, pH, niveles de contaminación y vida marina."
+        },
+        "objective": {
+          "pt": "O objetivo do UnderSea é fornecer dados precisos e acessíveis sobre a saúde dos oceanos para cientistas, pesquisadores, órgãos governamentais e o público em geral, apoiando iniciativas de conservação marinha e políticas ambientais baseadas em evidências.",
+          "en": "The objective of UnderSea is to provide accurate and accessible data on ocean health to scientists, researchers, government agencies, and the general public, supporting marine conservation initiatives and evidence-based environmental policies.",
+          "es": "El objetivo de UnderSea es proporcionar datos precisos y accesibles sobre la salud de los océanos a científicos, investigadores, agencias gubernamentales y al público en general, apoyando iniciativas de conservación marina y políticas ambientales basadas en evidencias."
+        },
+        "application": {
+          "pt": "UnderSea é utilizado por instituições de pesquisa marinha, agências governamentais de meio ambiente, organizações de conservação, indústrias pesqueiras e empresas de turismo marítimo. A plataforma também é acessível ao público interessado em monitorar a saúde dos oceanos e participar de iniciativas de cidadania científica.",
+          "en": "UnderSea is used by marine research institutions, government environmental agencies, conservation organizations, fishing industries, and maritime tourism companies. The platform is also accessible to the public interested in monitoring ocean health and participating in citizen science initiatives.",
+          "es": "UnderSea es utilizado por instituciones de investigación marina, agencias gubernamentales de medio ambiente, organizaciones de conservación, industrias pesqueras y empresas de turismo marítimo. La plataforma también es accesible al público interesado en monitorear la salud de los océanos y participar en iniciativas de ciencia ciudadana."
+        },
+        "architecture": {
+          "pt": "A arquitetura do UnderSea é baseada em uma rede distribuída de sensores, boias e veículos subaquáticos autônomos que transmitem dados para servidores centrais via satélite ou redes de comunicação submarinas. A plataforma utiliza técnicas de big data para processar e analisar grandes volumes de informações, oferecendo APIs para integração com sistemas externos e visualizações interativas dos dados.",
+          "en": "UnderSea's architecture is based on a distributed network of sensors, buoys, and autonomous underwater vehicles that transmit data to central servers via satellite or underwater communication networks. The platform uses big data techniques to process and analyze large volumes of information, offering APIs for integration with external systems and interactive data visualizations.",
+          "es": "La arquitectura de UnderSea se basa en una red distribuida de sensores, boyas y vehículos subacuáticos autónomos que transmiten datos a servidores centrales vía satélite o redes de comunicación submarinas. La plataforma utiliza técnicas de big data para procesar y analizar grandes volúmenes de información, ofreciendo APIs para la integración con sistemas externos y visualizaciones interactivas de los datos."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Crie uma conta no UnderSea e acesse o painel de controle.</li><li>Explore os mapas interativos para visualizar dados em tempo real de diferentes regiões oceânicas.</li><li>Utilize as ferramentas de análise para comparar dados históricos e identificar tendências.</li><li>Configure alertas personalizados para ser notificado sobre mudanças significativas nos parâmetros monitorados.</li><li>Contribua com a plataforma relatando observações marítimas através do módulo de ciência cidadã.</li></ol>",
+          "en": "<ol><li>Create an account on UnderSea and access the dashboard.</li><li>Explore the interactive maps to view real-time data from different ocean regions.</li><li>Use the analysis tools to compare historical data and identify trends.</li><li>Set up custom alerts to be notified of significant changes in monitored parameters.</li><li>Contribute to the platform by reporting maritime observations through the citizen science module.</li></ol>",
+          "es": "<ol><li>Cree una cuenta en UnderSea y acceda al panel de control.</li><li>Explore los mapas interactivos para ver datos en tiempo real de diferentes regiones oceánicas.</li><li>Utilice las herramientas de análisis para comparar datos históricos e identificar tendencias.</li><li>Configure alertas personalizados para ser notificado sobre cambios significativos en los parámetros monitoreados.</li><li>Contribuya con la plataforma reportando observaciones marítimas a través del módulo de ciencia ciudadana.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o UnderSea incluem a expansão da rede de sensores para cobrir áreas oceânicas ainda não monitoradas, o desenvolvimento de algoritmos de inteligência artificial para análise preditiva de fenômenos oceânicos, e a criação de parcerias com instituições de pesquisa global para compartilhamento de dados e conhecimentos.",
+          "en": "Next steps for UnderSea include expanding the sensor network to cover unmonitored ocean areas, developing artificial intelligence algorithms for predictive analysis of ocean phenomena, and creating partnerships with global research institutions for data and knowledge sharing.",
+          "es": "Los próximos pasos para UnderSea incluyen la expansión de la red de sensores para cubrir áreas oceánicas aún no monitoreadas, el desarrollo de algoritmos de inteligencia artificial para el análisis predictivo de fenómenos oceánicos, y la creación de asociaciones con instituciones de investigación global para el intercambio de datos y conocimientos."
+        },
+        "background": {
+          "pt": "UnderSea foi concebido por oceanógrafos, engenheiros e ambientalistas preocupados com a rápida degradação dos ecossistemas marinhos e a falta de dados abrangentes para apoiar ações de conservação. A plataforma foi desenvolvida como uma iniciativa colaborativa para preencher lacunas críticas no monitoramento oceânico e fornecer informações baseadas em evidências para formuladores de políticas.",
+          "en": "UnderSea was conceived by oceanographers, engineers, and environmentalists concerned about the rapid degradation of marine ecosystems and the lack of comprehensive data to support conservation actions. The platform was developed as a collaborative initiative to fill critical gaps in ocean monitoring and provide evidence-based information for policymakers.",
+          "es": "UnderSea fue concebido por oceanógrafos, ingenieros y ambientalistas preocupados por la rápida degradación de los ecosistemas marinos y la falta de datos integrales para apoyar acciones de conservación. La plataforma fue desarrollada como una iniciativa colaborativa para llenar vacíos críticos en el monitoreo oceánico y proporcionar información basada en evidencias para los formuladores de políticas."
+        },
+        "references": {
+          "pt": "<ul><li>Programa das Nações Unidas para o Meio Ambiente. (2022). Relatório sobre o Estado dos Oceanos.</li><li>Intergovernmental Oceanographic Commission. (2023). Estratégia Global para Monitoramento Oceânico.</li><li>Revista Marine Policy. (2021). Desafios na Conservação dos Ecossistemas Marinhos.</li></ul>",
+          "en": "<ul><li>United Nations Environment Programme. (2022). Report on the State of the Oceans.</li><li>Intergovernmental Oceanographic Commission. (2023). Global Strategy for Ocean Monitoring.</li><li>Marine Policy Journal. (2021). Challenges in Marine Ecosystem Conservation.</li></ul>",
+          "es": "<ul><li>Programa de las Naciones Unidas para el Medio Ambiente. (2022). Informe sobre el Estado de los Océanos.</li><li>Comisión Oceanográfica Intergubernamental. (2023). Estrategia Global para el Monitoreo Oceánico.</li><li>Revista Marine Policy. (2021). Desafíos en la Conservación de los Ecosistemas Marinos.</li></ul>"
+        }
+      }
+    },
+
+    {
+      "id": "versoEspresso",
+      "icon": "fa-coffee",
+      "name": {
+        "pt": "Verso Espresso",
+        "en": "Verse Espresso",
+        "es": "Verso Espresso"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Verso Espresso é uma plataforma de conteúdo e comunidade para amantes de café especial. A solução oferece artigos, vídeos, cursos e fóruns de discussão sobre todos os aspectos do café, desde o cultivo até a preparação da bebida. A plataforma conecta produtores, torrefadores, baristas e consumidores apaixonados por café de qualidade.",
+          "en": "Verse Espresso is a content and community platform for specialty coffee lovers. The solution offers articles, videos, courses, and discussion forums on all aspects of coffee, from cultivation to beverage preparation. The platform connects producers, roasters, baristas, and consumers passionate about quality coffee.",
+          "es": "Verso Espresso es una plataforma de contenido y comunidad para amantes del café especial. La solución ofrece artículos, videos, cursos y foros de discusión sobre todos los aspectos del café, desde el cultivo hasta la preparación de la bebida. La plataforma conecta a productores, tostadores, baristas y consumidores apasionados por el café de calidad."
+        },
+        "objective": {
+          "pt": "O objetivo do Verso Espresso é educar e inspirar a comunidade de café especial, promovendo o conhecimento sobre todas as etapas da cadeia produtiva e valorizando o trabalho dos produtores. A plataforma busca democratizar o acesso a informações de qualidade sobre café, formar novos consumidores e profissionais, e fortalecer a cultura do café de especialidade.",
+          "en": "The objective of Verse Espresso is to educate and inspire the specialty coffee community, promoting knowledge about all stages of the production chain and valuing the work of producers. The platform seeks to democratize access to quality information about coffee, train new consumers and professionals, and strengthen the specialty coffee culture.",
+          "es": "El objetivo de Verso Espresso es educar e inspirar a la comunidad del café especial, promoviendo el conocimiento sobre todas las etapas de la cadena productiva y valorando el trabajo de los productores. La plataforma busca democratizar el acceso a información de calidad sobre el café, formar nuevos consumidores y profesionales, y fortalecer la cultura del café de especialidad."
+        },
+        "application": {
+          "pt": "Verso Espresso é destinado a produtores de café, torrefadores, baristas, proprietários de cafeterias, distribuidores e consumidores finais interessados em aprofundar seus conhecimentos sobre café especial. A plataforma também é útil para estudantes e profissionais que desejam se especializar na área, além de entusiastas que buscam informações sobre como apreciar e preparar melhor a bebida.",
+          "en": "Verse Espresso is intended for coffee producers, roasters, baristas, coffee shop owners, distributors, and end consumers interested in deepening their knowledge about specialty coffee. The platform is also useful for students and professionals who want to specialize in the area, as well as enthusiasts looking for information on how to better appreciate and prepare the beverage.",
+          "es": "Verso Espresso está destinado a productores de café, tostadores, baristas, propietarios de cafeterías, distribuidores y consumidores finales interesados en profundizar sus conocimientos sobre café especial. La plataforma también es útil para estudiantes y profesionales que desean especializarse en el área, así como para entusiastas que buscan información sobre cómo apreciar y preparar mejor la bebida."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Verso Espresso é baseada em um sistema de gestão de conteúdo com recursos de comunidade, utilizando uma combinação de CMS (Sistema de Gestão de Conteúdo) e funcionalidades de rede social. A plataforma emprega um banco de dados relacional para armazenar perfis de usuários, conteúdos e interações. O sistema inclui módulos para cursos online, fóruns de discussão, avaliações de cafés e integração com plataformas de streaming de vídeo.",
+          "en": "Verse Espresso's architecture is based on a content management system with community features, using a combination of CMS (Content Management System) and social networking functionalities. The platform employs a relational database to store user profiles, content, and interactions. The system includes modules for online courses, discussion forums, coffee reviews, and integration with video streaming platforms.",
+          "es": "La arquitectura de Verso Espresso se basa en un sistema de gestión de contenido con características de comunidad, utilizando una combinación de CMS (Sistema de Gestión de Contenido) y funcionalidades de red social. La plataforma emplea una base de datos relacional para almacenar perfiles de usuarios, contenidos e interacciones. El sistema incluye módulos para cursos en línea, foros de discusión, reseñas de cafés e integración con plataformas de transmisión de video."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Acesse o site Verso Espresso e crie uma conta com suas informações básicas.</li><li>Complete seu perfil com seus interesses específicos no universo do café.</li><li>Explore a biblioteca de conteúdos, filtrando por tópicos de seu interesse.</li><li>Inscreva-se em cursos disponíveis para aprofundar seus conhecimentos.</li><li>Participe dos fóruns de discussão, compartilhando suas experiências e aprendendo com outros membros da comunidade.</li></ol>",
+          "en": "<ol><li>Access the Verse Espresso website and create an account with your basic information.</li><li>Complete your profile with your specific interests in the coffee universe.</li><li>Explore the content library, filtering by topics of interest.</li><li>Enroll in available courses to deepen your knowledge.</li><li>Participate in discussion forums, sharing your experiences and learning from other community members.</li></ol>",
+          "es": "<ol><li>Acceda al sitio web Verso Espresso y cree una cuenta con su información básica.</li><li>Complete su perfil con sus intereses específicos en el universo del café.</li><li>Explore la biblioteca de contenidos, filtrando por temas de su interés.</li><li>Inscríbase en cursos disponibles para profundizar sus conocimientos.</li><li>Participe en los foros de discusión, compartiendo sus experiencias y aprendiendo de otros miembros de la comunidad.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Verso Espresso incluem o desenvolvimento de um aplicativo móvel para acesso offline a conteúdos, a criação de um programa de certificação para profissionais do café, e o estabelecimento de parcerias com produtores e torrefadores para oferecer cafés exclusivos para membros da plataforma.",
+          "en": "Next steps for Verse Espresso include the development of a mobile app for offline access to content, the creation of a certification program for coffee professionals, and the establishment of partnerships with producers and roasters to offer exclusive coffees to platform members.",
+          "es": "Los próximos pasos para Verso Espresso incluyen el desarrollo de una aplicación móvil para acceso sin conexión a contenidos, la creación de un programa de certificación para profesionales del café, y el establecimiento de asociaciones con productores y tostadores para ofrecer cafés exclusivos para miembros de la plataforma."
+        },
+        "background": {
+          "pt": "Verso Espresso foi criado por jornalistas especializados em café, mestres de torra e baristas que identificaram a necessidade de uma plataforma centralizada e de qualidade para disseminar conhecimento sobre café especial. Observando a crescente demanda por informações confiáveis e a fragmentação dos conteúdos existentes, eles desenvolveram uma solução que unisse educação, comunidade e valorização de toda a cadeia produtiva do café.",
+          "en": "Verse Espresso was created by coffee-specialized journalists, master roasters, and baristas who identified the need for a centralized, quality platform to disseminate knowledge about specialty coffee. Observing the growing demand for reliable information and the fragmentation of existing content, they developed a solution that combined education, community, and appreciation of the entire coffee production chain.",
+          "es": "Verso Espresso fue creado por periodistas especializados en café, maestros tostadores y baristas que identificaron la necesidad de una plataforma centralizada y de calidad para difundir conocimiento sobre café especial. Observando la creciente demanda de información confiable y la fragmentación de los contenidos existentes, desarrollaron una solución que uniera educación, comunidad y valorización de toda la cadena productiva del café."
+        },
+        "references": {
+          "pt": "<ul><li>Specialty Coffee Association. (2022). Guia de Café de Especialidade.</li><li>Revista Espresso. (2021). Tendências do Mercado de Café.</li><li>Livro O Mundo do Café. (2023). Da Planta à Xícara.</li></ul>",
+          "en": "<ul><li>Specialty Coffee Association. (2022). Specialty Coffee Guide.</li><li>Espresso Magazine. (2021). Coffee Market Trends.</li><li>The World of Coffee Book. (2023). From Plant to Cup.</li></ul>",
+          "es": "<ul><li>Specialty Coffee Association. (2022). Guía de Café Especial.</li><li>Revista Espresso. (2021). Tendencias del Mercado del Café.</li><li>Libro El Mundo del Café. (2023). De la Planta a la Taza.</li></ul>"
+        }
+      }
+    },
+
+    {
+      "id": "viverArte",
+      "icon": "fa-palette",
+      "name": {
+        "pt": "Viver é uma Arte",
+        "en": "Living is an Art",
+        "es": "Vivir es un Arte"
+      },
+      "sections": {
+        "overview": {
+          "pt": "Viver é uma Arte é uma plataforma de bem-estar e desenvolvimento pessoal que combina práticas de mindfulness, criatividade e psicologia positiva. A solução oferece ferramentas e recursos para ajudar os usuários a cultivarem uma vida mais equilibrada, significativa e plena através de exercícios diários e acompanhamento personalizado.",
+          "en": "Living is an Art is a well-being and personal development platform that combines mindfulness practices, creativity, and positive psychology. The solution offers tools and resources to help users cultivate a more balanced, meaningful, and fulfilling life through daily exercises and personalized follow-up.",
+          "es": "Vivir es un Arte es una plataforma de bienestar y desarrollo personal que combina prácticas de mindfulness, creatividad y psicología positiva. La solución ofrece herramientas y recursos para ayudar a los usuarios a cultivar una vida más equilibrada, significativa y plena a través de ejercicios diarios y seguimiento personalizado."
+        },
+        "objective": {
+          "pt": "O objetivo do Viver é uma Arte é fornecer acesso a ferramentas de desenvolvimento pessoal e bem-estar que sejam cientificamente embasadas, acessíveis e adaptáveis às necessidades individuais. A plataforma busca capacitar os usuários a desenvolverem resiliência emocional, criatividade e um senso de propósito em suas vidas.",
+          "en": "The objective of Living is an Art is to provide access to scientifically based, accessible, and adaptable personal development and well-being tools. The platform seeks to empower users to develop emotional resilience, creativity, and a sense of purpose in their lives.",
+          "es": "El objetivo de Vivir es un Arte es proporcionar acceso a herramientas de desarrollo personal y bienestar que estén científicamente fundamentadas, sean accesibles y adaptables a las necesidades individuales. La plataforma busca capacitar a los usuarios a desarrollar resiliencia emocional, creatividad y un sentido de propósito en sus vidas."
+        },
+        "application": {
+          "pt": "Viver é uma Arte é destinado a pessoas de todas as idades que buscam melhorar sua qualidade de vida, desenvolver habilidades emocionais e criativas, ou encontrar mais significado em suas rotinas diárias. A plataforma também pode ser utilizada por profissionais de saúde mental como complemento a terapias tradicionais e por empresas em programas de bem-estar corporativo.",
+          "en": "Living is an Art is intended for people of all ages who seek to improve their quality of life, develop emotional and creative skills, or find more meaning in their daily routines. The platform can also be used by mental health professionals as a complement to traditional therapies and by companies in corporate well-being programs.",
+          "es": "Vivir es un Arte está destinado a personas de todas las edades que buscan mejorar su calidad de vida, desarrollar habilidades emocionales y creativas, o encontrar más significado en sus rutinas diarias. La plataforma también puede ser utilizada por profesionales de la salud mental como complemento a terapias tradicionales y por empresas en programas de bienestar corporativo."
+        },
+        "architecture": {
+          "pt": "A arquitetura do Viver é uma Arte é baseada em uma aplicação web e mobile com um backend que utiliza inteligência artificial para personalizar a experiência do usuário. A plataforma armazena dados de forma segura e anônima, empregando algoritmos de aprendizado de máquina para adaptar os conteúdos e exercícios às necessidades e preferências de cada usuário. O sistema oferece integração com dispositivos wearable para monitoramento de indicadores de bem-estar.",
+          "en": "The architecture of Living is an Art is based on a web and mobile application with a backend that uses artificial intelligence to personalize the user experience. The platform stores data securely and anonymously, employing machine learning algorithms to adapt content and exercises to the needs and preferences of each user. The system offers integration with wearable devices for monitoring well-being indicators.",
+          "es": "La arquitectura de Vivir es un Arte se basa en una aplicación web y móvil con un backend que utiliza inteligencia artificial para personalizar la experiencia del usuario. La plataforma almacena datos de forma segura y anónima, empleando algoritmos de aprendizaje automático para adaptar los contenidos y ejercicios a las necesidades y preferencias de cada usuario. El sistema ofrece integración con dispositivos wearable para el monitoreo de indicadores de bienestar."
+        },
+        "userGuide": {
+          "pt": "<ol><li>Baixe o aplicativo Viver é uma Arte e crie uma conta.</li><li>Responda ao questionário inicial para ajudar a plataforma a entender suas necessidades e objetivos.</li><li>Explore as diferentes seções: mindfulness, criatividade, psicologia positiva e desenvolvimento pessoal.</li><li>Estabeleça metas diárias ou semanais e acompanhe seu progresso através do painel.</li><li>Participe de desafios e comunidade para compartilhar experiências e aprender com outros usuários.</li></ol>",
+          "en": "<ol><li>Download the Living is an Art app and create an account.</li><li>Answer the initial questionnaire to help the platform understand your needs and goals.</li><li>Explore the different sections: mindfulness, creativity, positive psychology, and personal development.</li><li>Set daily or weekly goals and track your progress through the dashboard.</li><li>Participate in challenges and community to share experiences and learn from other users.</li></ol>",
+          "es": "<ol><li>Descargue la aplicación Vivir es un Arte y cree una cuenta.</li><li>Responda el cuestionario inicial para ayudar a la plataforma a entender sus necesidades y objetivos.</li><li>Explore las diferentes secciones: mindfulness, creatividad, psicología positiva y desarrollo personal.</li><li>Establezca metas diarias o semanales y siga su progreso a través del panel.</li><li>Participe en desafíos y comunidad para compartir experiencias y aprender de otros usuarios.</li></ol>"
+        },
+        "nextSteps": {
+          "pt": "Os próximos passos para o Viver é uma Arte incluem o desenvolvimento de recursos de realidade virtual para imersão em práticas de mindfulness, a criação de programas específicos para diferentes grupos (como estudantes, idosos e profissionais), e o estabelecimento de parcerias com instituições de pesquisa para validar e aprimorar continuamente a eficácia das intervenções propostas.",
+          "en": "Next steps for Living is an Art include the development of virtual reality features for immersion in mindfulness practices, the creation of specific programs for different groups (such as students, the elderly, and professionals), and the establishment of partnerships with research institutions to validate and continuously improve the effectiveness of the proposed interventions.",
+          "es": "Los próximos pasos para Vivir es un Arte incluyen el desarrollo de características de realidad virtual para la inmersión en prácticas de mindfulness, la creación de programas específicos para diferentes grupos (como estudiantes, ancianos y profesionales), y el establecimiento de asociaciones con instituciones de investigación para validar y mejorar continuamente la eficacia de las intervenciones propuestas."
+        },
+        "background": {
+          "pt": "Viver é uma Arte foi criado por psicólogos, artistas e especialistas em tecnologia que reconheceram a necessidade de integrar abordagens científicas de bem-estar com práticas criativas e acessíveis. A plataforma foi desenvolvida com base em pesquisas sobre psicologia positiva, neurociência e artes terapêuticas, visando oferecer uma abordagem holística ao desenvolvimento pessoal e à saúde mental.",
+          "en": "Living is an Art was created by psychologists, artists, and technology specialists who recognized the need to integrate scientific approaches to well-being with creative and accessible practices. The platform was developed based on research on positive psychology, neuroscience, and therapeutic arts, aiming to offer a holistic approach to personal development and mental health.",
+          "es": "Vivir es un Arte fue creado por psicólogos, artistas y especialistas en tecnología que reconocieron la necesidad de integrar enfoques científicos de bienestar con prácticas creativas y accesibles. La plataforma fue desarrollada basándose en investigaciones sobre psicología positiva, neurociencia y artes terapéuticas, con el objetivo de ofrecer un enfoque holístico al desarrollo personal y la salud mental."
+        },
+        "references": {
+          "pt": "<ul><li>Seligman, M.E.P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-being.</li><li>Kabat-Zinn, J. (2013). Full Catastrophe Living: Using the Wisdom of Your Body and Mind to Face Stress, Pain, and Illness.</li><li>Revista de Psicologia Positiva. (2022). Evidências Científicas em Práticas de Bem-Estar.</li></ul>",
+          "en": "<ul><li>Seligman, M.E.P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-being.</li><li>Kabat-Zinn, J. (2013). Full Catastrophe Living: Using the Wisdom of Your Body and Mind to Face Stress, Pain, and Illness.</li><li>Journal of Positive Psychology. (2022). Scientific Evidence in Well-Being Practices.</li></ul>",
+          "es": "<ul><li>Seligman, M.E.P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-being.</li><li>Kabat-Zinn, J. (2013). Full Catastrophe Living: Using the Wisdom of Your Body and Mind to Face Stress, Pain, and Illness.</li><li>Revista de Psicología Positiva. (2022). Evidencias Científicas en Prácticas de Bienestar.</li></ul>"
+        }
+      }
+    }
+  ]
+}
