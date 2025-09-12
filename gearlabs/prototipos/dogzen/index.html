@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DogZen - Casinha Anti-Ruído Premium para Cães</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-amber-700 to-amber-900 rounded-full flex items-center justify-center">
+                        <i class="fas fa-paw text-white text-xl"></i>
+                    </div>
+                    <span class="playfair text-2xl font-bold text-gray-800">DogZen</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#sobre" class="nav-item text-gray-600 hover:text-gray-800">Sobre</a>
+                    <a href="#beneficios" class="nav-item text-gray-600 hover:text-gray-800">Benefícios</a>
+                    <a href="#galeria" class="nav-item text-gray-600 hover:text-gray-800">Galeria</a>
+                    <a href="#depoimentos" class="nav-item text-gray-600 hover:text-gray-800">Depoimentos</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <!-- Language Selector -->
+                    <select id="languageSelector" class="bg-transparent border border-gray-300 rounded-lg px-3 py-1 text-sm focus:outline-none focus:border-amber-700">
+                        <option value="pt">PT</option>
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                    </select>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-moon text-gray-600"></i>
+                    </button>
+                    
+                    <!-- Mobile Menu -->
+                    <button id="mobileMenuToggle" class="md:hidden p-2">
+                        <i class="fas fa-bars text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#sobre" class="block py-2 text-gray-600 hover:text-gray-800">Sobre</a>
+                <a href="#beneficios" class="block py-2 text-gray-600 hover:text-gray-800">Benefícios</a>
+                <a href="#galeria" class="block py-2 text-gray-600 hover:text-gray-800">Galeria</a>
+                <a href="#depoimentos" class="block py-2 text-gray-600 hover:text-gray-800">Depoimentos</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-24 pb-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="playfair text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+                        O Refúgio Perfeito para o Seu Melhor Amigo
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        A DogZen combina tecnologia anti-ruído premium com design sofisticado, criando um espaço de tranquilidade e conforto para seu cão.
+                    </p>
+                    <button class="cta-button text-white px-8 py-4 rounded-full font-semibold text-lg">
+                        Garanta a Casinha do Seu Pet
+                    </button>
+                    <div class="mt-8 flex items-center space-x-6">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-amber-700"></i>
+                            <span class="text-gray-600">Garantia de 2 anos</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-truck text-amber-700"></i>
+                            <span class="text-gray-600">Frete grátis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://picsum.photos/seed/dogzen-hero/600/500" alt="Cachorro feliz na casinha DogZen" class="hero-image w-full rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-volume-mute text-amber-700 text-2xl"></i>
+                            <div>
+                                <p class="font-semibold text-gray-800">Redução de Ruído</p>
+                                <p class="text-sm text-gray-600">Até 70% de isolamento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre DogZen -->
+    <section id="sobre" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="playfair text-4xl font-bold text-gray-800 mb-4">Sobre a DogZen</h2>
+                <div class="w-24 h-1 wood-texture mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://picsum.photos/seed/dogzen-about/500/400" alt="Detalhes da casinha DogZen" class="rounded-2xl shadow-xl">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Tecnologia e Conforto em Harmonia</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        A DogZen nasceu da necessidade de criar um espaço seguro e silencioso para cães sensíveis a ruídos. Nossa tecnologia exclusiva de isolamento acústico reduz sons externos em até 70%, proporcionando um ambiente tranquilo para seu pet.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Fabricada com materiais premium e design pensado para se integrar perfeitamente à decoração da sua casa, a DogZen é mais que uma casinha - é um santuário de bem-estar para seu companheiro de quatro patas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-leaf text-green-600 text-xl"></i>
+                            <span class="text-gray-700">Materiais ecológicos</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-certificate text-blue-600 text-xl"></i>
+                            <span class="text-gray-700">Certificação de qualidade</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-paint-brush text-purple-600 text-xl"></i>
+                            <span class="text-gray-700">Design exclusivo</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-heart text-red-600 text-xl"></i>
+                            <span class="text-gray-700">Feito com amor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="playfair text-4xl font-bold text-gray-800 mb-4">Benefícios Exclusivos</h2>
+                <div class="w-24 h-1 wood-texture mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="benefit-card bg-white p-8 rounded-2xl text-center">
+                    <div class="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-volume-down text-amber-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Isolamento Acústico</h3>
+                    <p class="text-gray-600">Tecnologia avançada que reduz ruídos externos em até 70%, criando um ambiente tranquilo e seguro.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-8 rounded-2xl text-center">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-couch text-green-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Conforto Máximo</h3>
+                    <p class="text-gray-600">Almofada ortopédica inclusa e design ergonômico para garantir o descanso perfeito do seu pet.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-8 rounded-2xl text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-spray-can text-blue-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Fácil de Limpar</h3>
+                    <p class="text-gray-600">Materiais resistentes à água e almofada removível, facilitando a higiene e manutenção diária.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-8 rounded-2xl text-center">
+                    <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-red-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Segurança Garantida</h3>
+                    <p class="text-gray-600">Materiais não tóxicos e bordas arredondadas para garantir a segurança do seu cão em todos os momentos.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-8 rounded-2xl text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-palette text-purple-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Design Moderno</h3>
+                    <p class="text-gray-600">Estilo elegante que complementa qualquer decoração, transformando a casinha em um item de design.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-8 rounded-2xl text-center">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-temperature-high text-yellow-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Clima Controlado</h3>
+                    <p class="text-gray-600">Ventilação inteligente que mantém a temperatura ideal durante todas as estações do ano.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="playfair text-4xl font-bold text-gray-800 mb-4">Galeria do Produto</h2>
+                <div class="w-24 h-1 wood-texture mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/dogzen-1/400/300" alt="Vista frontal da DogZen" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/dogzen-2/400/300" alt="Interior da DogZen" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/dogzen-3/400/300" alt="DogZen na sala" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/dogzen-4/400/300" alt="Detalhes do material" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/dogzen-5/400/300" alt="DogZen com pet" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/dogzen-6/400/300" alt="DogZen em diferentes ambientes" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="playfair text-4xl font-bold text-gray-800 mb-4">O Que Dizem Nossos Clientes</h2>
+                <div class="w-24 h-1 wood-texture mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/seed/user1/60/60" alt="Cliente 1" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Ana Silva</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Meu cão Max sempre teve medo de trovões. Desde que ganhamos a DogZen, ele se sente seguro e tranquilo. Vale cada centavo!"</p>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/seed/user2/60/60" alt="Cliente 2" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Carlos Mendes</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Além de linda, a DogZen é extremamente funcional. Meu apartamento é pequeno e ela se encaixa perfeitamente na decoração."</p>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/seed/user3/60/60" alt="Cliente 3" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Juliana Costa</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"A qualidade do material é impressionante. Fácil de limpar e meu filhote adora. Recomendo para todos os amantes de pets!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Final -->
+    <section class="py-16 bg-gradient-to-br from-amber-50 to-orange-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="playfair text-4xl font-bold text-gray-800 mb-4">Transforme a Vida do Seu Pet Hoje</h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Ofereça o melhor em conforto, segurança e tranquilidade para seu companheiro. 
+                Compre agora e receba em casa com frete grátis!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="cta-button text-white px-8 py-4 rounded-full font-semibold text-lg">
+                    Comprar Agora
+                </button>
+                <button class="bg-white text-amber-700 px-8 py-4 rounded-full font-semibold text-lg border-2 border-amber-700 hover:bg-amber-50 transition-colors">
+                    Receber Ofertas
+                </button>
+            </div>
+            <div class="mt-8 flex justify-center space-x-8 text-gray-600">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-credit-card text-amber-700"></i>
+                    <span>Parcelamento em até 12x</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-undo text-amber-700"></i>
+                    <span>30 dias para devolução</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-amber-700 to-amber-900 rounded-full flex items-center justify-center">
+                            <i class="fas fa-paw text-white text-xl"></i>
+                        </div>
+                        <span class="playfair text-2xl font-bold">DogZen</span>
+                    </div>
+                    <p class="text-gray-400">O refúgio perfeito para o seu melhor amigo.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Sobre Nós</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Produtos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contato</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Suporte</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Central de Ajuda</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Política de Troca</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Garantia</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Siga-nos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 DogZen. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,74 +1,76 @@
 // Dados dos protótipos
 const prototypes = [
+
     {
         id: 1,
-        name: "MyHeart",
-        description: "Simulador cardiácico, com visualizações gráficas e ajustes personalizados.",
-        image: "img/myheart-capa.jpg",
-        link: "prototipos/myheart/index.html"
-    },
-    {
-        id: 2,
-        name: "BaristaPro",
-        description: "Gestão eficiente de cafeterias com foco em viabilidade e performance",
-        image: "img/baristapro-capa.jpg",
-        link: "prototipos/barista_pro/index.html"
-    },
-    {
-        id: 3,
-        name: "Synapse",
-        description: "Conexão interativa de ideias para colaboração criativa e descoberta coletiva",
-        image: "img/synapse-capa.jpg",
-        link: "prototipos/synapse/index.html"
-    },
-    {
-        id: 4,
         name: "3GTO",
         description: "Realidade virtual que conecta aventura e tecnologia",
         image: "img/3gto-capa.jpg",
         link: "prototipos/3gto/index.html"
     },
+
     {
-        id: 5,
+        id: 2,
+        name: "Aloi",
+        description: "Plantas que trazem saúde e inovação",
+        image: "img/aloi-capa.jpg",
+        link: "prototipos/3gto/index.html"
+    },
+    {
+        id: 3,
+        name: "Aventuras Peludas",
+        description: "As aventuras de uma poodle excêntrica chamada Amelia",
+        image: "img/aventuras_peludas_capa.jpg",
+        link: "prototipos/aventuras_peludas/index.html"
+    },
+    {
+        id: 4,
         name: "Baristas",
         description: "Uma cafeteria aconchegante com cafés especiais e muitas novidades",
         image: "img/baristas-capa.jpg",
         link: "prototipos/baristas/index.html"
     },
     {
+        id: 5,
+        name: "BaristaPro",
+        description: "Gestão eficiente de cafeterias com foco em viabilidade e performance",
+        image: "img/baristapro-capa.jpg",
+        link: "prototipos/barista_pro/index.html"
+    },
+    {
         id: 6,
+        name: "Bosque das Frutíferas",
+        description: "Trazendo natureza, educação e bem-estar para as cidades",
+        image: "img/bosquedasfrutiferas-capa.jpg",
+        link: "prototipos/bosquedasfrutiferas/index.html"
+    },
+    {
+        id: 7,
         name: "Dyris",
         description: "Acompanhe sua saúde ao longo da vida, prevena riscos e personalizse cuidados",
         image: "img/dyris-capa.jpg",
         link: "prototipos/dyris/index.html"
     },
     {
-        id: 7,
+        id: 8,
+        name: "DogZen",
+        description: "Conforto acústico para pets",
+        image: "img/dogzen-capa.jpg",
+        link: "prototipos/dyris/index.html"
+    },
+    {
+        id: 9,
+        name: "E-Motion",
+        description: "Motores mais eficientes e duráveis",
+        image: "img/emotion-capa.jpg",
+        link: "prototipos/emotion/index.html"
+    },
+    {
+        id: 10,
         name: "Fabr",
         description: "Uma plataforma de fabricação colaborativa, onde pessoas combinam habilidades para criar algo novo",
         image: "img/fabr-capa.jpg",
         link: "prototipos/fabr/index.html"
-    },
-    {
-        id: 8,
-        name: "UnderSea",
-        description: "Drones subaquáticos para explorar, monitorar e estudar os oceanos de forma autônoma",
-        image: "img/undersea-capa.jpg",
-        link: "prototipos/undersea/index.html"
-    },
-    {
-        id: 9,
-        name: "Oxygen",
-        description: "Explorando novas formas de gerar energia eficiente e sustentável",
-        image: "img/oxygen-capa.jpg",
-        link: "prototipos/oxygen/index.html"
-    },
-    {
-        id: 10,
-        name: "Bosque das Frutíferas",
-        description: "Trazendo natureza, educação e bem-estar para as cidades",
-        image: "img/bosquedasfrutiferas-capa.jpg",
-        link: "prototipos/bosquedasfrutiferas/index.html"
     },
     {
         id: 11,
@@ -79,38 +81,32 @@ const prototypes = [
     },
     {
         id: 12,
-        name: "Viver é uma Arte",
-        description: "Criação e exposição de arte a áreas carentes, proporcionando bem-estar e renda",
-        image: "img/viverarte-capa.jpg",
-        link: "prototipos/vivererte/index.html"
-    },
-    {
-        id: 13,
-        name: "Aventuras Peludas",
-        description: "As aventuras de uma poodle excêntrica chamada Amelia",
-        image: "img/aventuras_peludas_capa.jpg",
-        link: "prototipos/aventuras_peludas/index.html"
-    },
-    {
-        id: 14,
-        name: "Raiz Urbana",
-        description: "Ensinando agricultura urbana de forma simples e acessível",
-        image: "img/raiz_urbana_capa.jpg",
-        link: "prototipos/raiz_urbana/index.html"
-    },
-    {
-        id: 14,
-        name: "VersoEspresso",
-        description: "Café quente, páginas vivas e ideias infinitas",
-        image: "img/versoespresso-capa.jpg",
-        link: "prototipos/versoespresso/index.html"
-    },
-    {
-        id: 15,
         name: "Mike e Tio Bob",
         description: "As aventuras de dois dinossauros pelo tempo",
         image: "img/mike-bob-capa.jpg",
         link: "prototipos/mike-bob/index.html"
+    },
+
+    {
+        id: 13,
+        name: "MyHeart",
+        description: "Simulador cardiácico, com visualizações gráficas e ajustes personalizados.",
+        image: "img/myheart-capa.jpg",
+        link: "prototipos/myheart/index.html"
+    },
+    {
+        id: 14,
+        name: "Oxygen",
+        description: "Explorando novas formas de gerar energia eficiente e sustentável",
+        image: "img/oxygen-capa.jpg",
+        link: "prototipos/oxygen/index.html"
+    },
+    {
+        id: 15,
+        name: "Raiz Urbana",
+        description: "Ensinando agricultura urbana de forma simples e acessível",
+        image: "img/raiz_urbana_capa.jpg",
+        link: "prototipos/raiz_urbana/index.html"
     },
     {
         id: 16,
@@ -125,6 +121,36 @@ const prototypes = [
         description: "Suba os degraus do conhecimento e transforme suas ideias em realidade",
         image: "img/stairs-capa.jpg",
         link: "prototipos/stairs/index.html"
+    },
+    
+    {
+        id: 18,
+        name: "Synapse",
+        description: "Conexão interativa de ideias para colaboração criativa e descoberta coletiva",
+        image: "img/synapse-capa.jpg",
+        link: "prototipos/synapse/index.html"
+    },
+    {
+        id: 19,
+        name: "UnderSea",
+        description: "Drones subaquáticos para explorar, monitorar e estudar os oceanos de forma autônoma",
+        image: "img/undersea-capa.jpg",
+        link: "prototipos/undersea/index.html"
+    },
+    
+    {
+        id: 20,
+        name: "VersoEspresso",
+        description: "Café quente, páginas vivas e ideias infinitas",
+        image: "img/versoespresso-capa.jpg",
+        link: "prototipos/versoespresso/index.html"
+    },
+    {
+        id: 21,
+        name: "Viver é uma Arte",
+        description: "Criação e exposição de arte a áreas carentes, proporcionando bem-estar e renda",
+        image: "img/viverarte-capa.jpg",
+        link: "prototipos/vivererte/index.html"
     }
 ];
 
