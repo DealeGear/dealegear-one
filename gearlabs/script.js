@@ -14,7 +14,7 @@ const prototypes = [
         name: "Aloi",
         description: "Plantas que trazem saúde e inovação",
         image: "img/aloi-capa.jpg",
-        link: "prototipos/3gto/index.html"
+        link: "prototipos/aloi/index.html"
     },
     {
         id: 3,
@@ -45,42 +45,63 @@ const prototypes = [
         link: "prototipos/bosquedasfrutiferas/index.html"
     },
     {
-        id: 7,
+    id: 7,
+        name: "Conexa",
+        description: "Pós-vendas digital para pequenos negócios",
+        image: "img/conexa-capa.jpg",
+        link: "prototipos/conexa/index.html"
+    },
+    {
+    id: 8,
+        name: "Crush",
+        description: "Conexões geek e relacionamentos divertidos",
+        image: "img/crush-capa.jpg",
+        link: "prototipos/crush/index.html"
+    },
+    {
+        id: 9,
         name: "Dyris",
         description: "Acompanhe sua saúde ao longo da vida, prevena riscos e personalizse cuidados",
         image: "img/dyris-capa.jpg",
         link: "prototipos/dyris/index.html"
     },
     {
-        id: 8,
+        id: 10,
         name: "DogZen",
         description: "Conforto acústico para pets",
         image: "img/dogzen-capa.jpg",
         link: "prototipos/dyris/index.html"
     },
     {
-        id: 9,
+        id: 11,
         name: "E-Motion",
         description: "Motores mais eficientes e duráveis",
         image: "img/emotion-capa.jpg",
         link: "prototipos/emotion/index.html"
     },
     {
-        id: 10,
+        id: 12,
         name: "Fabr",
         description: "Uma plataforma de fabricação colaborativa, onde pessoas combinam habilidades para criar algo novo",
         image: "img/fabr-capa.jpg",
         link: "prototipos/fabr/index.html"
     },
     {
-        id: 11,
+        id: 13,
+        name: "GearCity",
+        description: "m protótipo de simulação social, onde diferentes papéis se conectam como engrenagens, movimentando a cidade de forma colaborativa e imprevisível.",
+        image: "img/gearcity-capa.jpg",
+        link: "prototipos/gearcity/index.html"
+    },
+    {
+        id: 14,
         name: "Mecanico Fantasma",
         description: "Monitoramento e analise de sons mecânicos de veículos, identificando divergências e prevenindo falhas",
         image: "img/mecanicofantasma-capa.jpg",
         link: "prototipos/mecanicofantasma/index.html"
     },
     {
-        id: 12,
+        id: 15,
         name: "Mike e Tio Bob",
         description: "As aventuras de dois dinossauros pelo tempo",
         image: "img/mike-bob-capa.jpg",
@@ -88,35 +109,35 @@ const prototypes = [
     },
 
     {
-        id: 13,
+        id: 16,
         name: "MyHeart",
         description: "Simulador cardiácico, com visualizações gráficas e ajustes personalizados.",
         image: "img/myheart-capa.jpg",
         link: "prototipos/myheart/index.html"
     },
     {
-        id: 14,
+        id: 17,
         name: "Oxygen",
         description: "Explorando novas formas de gerar energia eficiente e sustentável",
         image: "img/oxygen-capa.jpg",
         link: "prototipos/oxygen/index.html"
     },
     {
-        id: 15,
+        id: 18,
         name: "Raiz Urbana",
         description: "Ensinando agricultura urbana de forma simples e acessível",
         image: "img/raiz_urbana_capa.jpg",
         link: "prototipos/raiz_urbana/index.html"
     },
     {
-        id: 16,
+        id: 19,
         name: "SIMCO",
         description: "Simulador da Função Coloretal",
         image: "img/simco-capa.jpg",
         link: "prototipos/simco/index.html"
     },
     {
-        id:17,
+        id:20,
         name: "Stairs",
         description: "Suba os degraus do conhecimento e transforme suas ideias em realidade",
         image: "img/stairs-capa.jpg",
@@ -124,14 +145,14 @@ const prototypes = [
     },
     
     {
-        id: 18,
+        id: 21,
         name: "Synapse",
         description: "Conexão interativa de ideias para colaboração criativa e descoberta coletiva",
         image: "img/synapse-capa.jpg",
         link: "prototipos/synapse/index.html"
     },
     {
-        id: 19,
+        id: 22,
         name: "UnderSea",
         description: "Drones subaquáticos para explorar, monitorar e estudar os oceanos de forma autônoma",
         image: "img/undersea-capa.jpg",
@@ -139,14 +160,14 @@ const prototypes = [
     },
     
     {
-        id: 20,
+        id: 23,
         name: "VersoEspresso",
         description: "Café quente, páginas vivas e ideias infinitas",
         image: "img/versoespresso-capa.jpg",
         link: "prototipos/versoespresso/index.html"
     },
     {
-        id: 21,
+        id: 24,
         name: "Viver é uma Arte",
         description: "Criação e exposição de arte a áreas carentes, proporcionando bem-estar e renda",
         image: "img/viverarte-capa.jpg",

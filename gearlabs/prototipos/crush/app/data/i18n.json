@@ -1,0 +1,146 @@
+    {
+    "pt-BR": {
+        "app": {
+            "title": "Crush"
+        },
+        "onboarding": {
+            "subtitle": "Encontre seu par geek perfeito!"
+        },
+        "profile": {
+            "name": "Nome",
+            "age": "Idade",
+            "interests": "Interesses",
+            "avatar": "Avatar (URL)",
+            "save": "Salvar Perfil"
+        },
+        "interests": {
+            "games": "Games",
+            "anime": "Anime",
+            "comics": "HQs/Comics",
+            "scifi": "Ficção Científica",
+            "fantasy": "Fantasia",
+            "tech": "Tecnologia"
+        },
+        "nav": {
+            "discover": "Descobrir",
+            "matches": "Matches",
+            "chat": "Chat",
+            "quests": "Quests"
+        },
+        "discover": {
+            "like": "Curtir",
+            "pass": "Passar"
+        },
+        "match": {
+            "title": "Novo Match!",
+            "message": "Você combinou com {name}!",
+            "close": "Fechar"
+        },
+        "chat": {
+            "placeholder": "Digite uma mensagem...",
+            "send": "Enviar",
+            "empty": "Selecione um match para começar a conversar"
+        },
+        "quests": {
+            "join": "Entrar",
+            "joined": "Você entrou nesta quest!",
+            "participants": "Participantes: {count}"
+        }
+    },
+    "en-US": {
+        "app": {
+            "title": "Crush"
+        },
+        "onboarding": {
+            "subtitle": "Find your perfect geek match!"
+        },
+        "profile": {
+            "name": "Name",
+            "age": "Age",
+            "interests": "Interests",
+            "avatar": "Avatar (URL)",
+            "save": "Save Profile"
+        },
+        "interests": {
+            "games": "Games",
+            "anime": "Anime",
+            "comics": "Comics",
+            "scifi": "Sci-Fi",
+            "fantasy": "Fantasy",
+            "tech": "Technology"
+        },
+        "nav": {
+            "discover": "Discover",
+            "matches": "Matches",
+            "chat": "Chat",
+            "quests": "Quests"
+        },
+        "discover": {
+            "like": "Like",
+            "pass": "Pass"
+        },
+        "match": {
+            "title": "New Match!",
+            "message": "You matched with {name}!",
+            "close": "Close"
+        },
+        "chat": {
+            "placeholder": "Type a message...",
+            "send": "Send",
+            "empty": "Select a match to start chatting"
+        },
+        "quests": {
+            "join": "Join",
+            "joined": "You joined this quest!",
+            "participants": "Participants: {count}"
+        }
+    },
+    "es-ES": {
+        "app": {
+            "title": "Crush"
+        },
+        "onboarding": {
+            "subtitle": "¡Encuentra tu pareja geek perfecta!"
+        },
+        "profile": {
+            "name": "Nombre",
+            "age": "Edad",
+            "interests": "Intereses",
+            "avatar": "Avatar (URL)",
+            "save": "Guardar Perfil"
+        },
+        "interests": {
+            "games": "Juegos",
+            "anime": "Anime",
+            "comics": "Cómics",
+            "scifi": "Ciencia Ficción",
+            "fantasy": "Fantasía",
+            "tech": "Tecnología"
+        },
+        "nav": {
+            "discover": "Descubrir",
+            "matches": "Matches",
+            "chat": "Chat",
+            "quests": "Misiones"
+        },
+        "discover": {
+            "like": "Me Gusta",
+            "pass": "Pasar"
+        },
+        "match": {
+            "title": "¡Nuevo Match!",
+            "message": "¡Hiciste match con {name}!",
+            "close": "Cerrar"
+        },
+        "chat": {
+            "placeholder": "Escribe un mensaje...",
+            "send": "Enviar",
+            "empty": "Selecciona un match para empezar a chatear"
+        },
+        "quests": {
+            "join": "Unirse",
+            "joined": "¡Te uniste a esta misión!",
+            "participants": "Participantes: {count}"
+        }
+    }
+}

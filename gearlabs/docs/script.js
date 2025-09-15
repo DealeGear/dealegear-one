@@ -82,6 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             
             projectsList.appendChild(li);
+            console.log("Rendering project:", project.name);
+
         });
         
         // Add click event to project links

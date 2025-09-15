@@ -1,0 +1,230 @@
+{
+  "pt-BR": {
+    "menu": {
+      "dashboard": "Dashboard",
+      "whatsapp": "WhatsApp",
+      "social": "Redes Sociais",
+      "reports": "Relatórios",
+      "plans": "Planos",
+      "settings": "Configurações",
+      "about": "Sobre"
+    },
+    "cta": {
+      "start": "Começar agora",
+      "subscribe": "Assinar",
+      "export": "Exportar CSV"
+    },
+    "dashboard": {
+      "attendances": "Atendimentos",
+      "scheduled": "Posts Agendados",
+      "reports": "Relatórios"
+    },
+    "whatsapp": {
+      "placeholder": "Digite uma mensagem...",
+      "send": "Enviar",
+      "quickReplies": "Respostas Rápidas"
+    },
+    "social": {
+      "schedule": "Agendar Post",
+      "schedulePost": "Agendar Post",
+      "postTitle": "Título do Post",
+      "postContent": "Conteúdo",
+      "scheduleDate": "Data de Agendamento",
+      "platform": "Plataforma",
+      "scheduleSuccess": "Post agendado com sucesso!"
+    },
+    "reports": {
+      "attendancesChart": "Atendimentos por Dia",
+      "postsChart": "Engajamento de Posts"
+    },
+    "plans": {
+      "basic": "Básico",
+      "pro": "Pro",
+      "premium": "Premium",
+      "basic1": "50 atendimentos/mês",
+      "basic2": "2 redes sociais",
+      "basic3": "Relatórios básicos",
+      "pro1": "200 atendimentos/mês",
+      "pro2": "5 redes sociais",
+      "pro3": "Relatórios avançados",
+      "pro4": "Integração API",
+      "premium1": "Atendimentos ilimitados",
+      "premium2": "10 redes sociais",
+      "premium3": "Relatórios completos",
+      "premium4": "Suporte prioritário",
+      "subscribeTitle": "Assinar Plano",
+      "subscribeMessage": "Você está prestes a assinar o plano",
+      "fullName": "Nome Completo",
+      "email": "E-mail",
+      "cardNumber": "Número do Cartão",
+      "expiry": "Validade",
+      "cvv": "CVV",
+      "confirm": "Confirmar Assinatura",
+      "subscribeSuccess": "Assinatura confirmada com sucesso!"
+    },
+    "settings": {
+      "companyName": "Nome da Empresa",
+      "whatsapp": "WhatsApp",
+      "language": "Idioma Preferido",
+      "save": "Salvar",
+      "success": "Configurações salvas com sucesso!"
+    },
+    "about": {
+      "description": "Conexa – Um projeto open source de pós-vendas digital para pequenos negócios.",
+      "mission": "Nossa missão é democratizar o acesso a ferramentas de gestão de relacionamento com clientes, permitindo que pequenos negócios possam oferecer um atendimento de qualidade e crescer de forma sustentável.",
+      "github": "Ver no GitHub"
+    }
+  },
+  "en-US": {
+    "menu": {
+      "dashboard": "Dashboard",
+      "whatsapp": "WhatsApp",
+      "social": "Social Media",
+      "reports": "Reports",
+      "plans": "Plans",
+      "settings": "Settings",
+      "about": "About"
+    },
+    "cta": {
+      "start": "Start now",
+      "subscribe": "Subscribe",
+      "export": "Export CSV"
+    },
+    "dashboard": {
+      "attendances": "Attendances",
+      "scheduled": "Scheduled Posts",
+      "reports": "Reports"
+    },
+    "whatsapp": {
+      "placeholder": "Type a message...",
+      "send": "Send",
+      "quickReplies": "Quick Replies"
+    },
+    "social": {
+      "schedule": "Schedule Post",
+      "schedulePost": "Schedule Post",
+      "postTitle": "Post Title",
+      "postContent": "Content",
+      "scheduleDate": "Schedule Date",
+      "platform": "Platform",
+      "scheduleSuccess": "Post scheduled successfully!"
+    },
+    "reports": {
+      "attendancesChart": "Daily Attendances",
+      "postsChart": "Post Engagement"
+    },
+    "plans": {
+      "basic": "Basic",
+      "pro": "Pro",
+      "premium": "Premium",
+      "basic1": "50 attendances/month",
+      "basic2": "2 social networks",
+      "basic3": "Basic reports",
+      "pro1": "200 attendances/month",
+      "pro2": "5 social networks",
+      "pro3": "Advanced reports",
+      "pro4": "API Integration",
+      "premium1": "Unlimited attendances",
+      "premium2": "10 social networks",
+      "premium3": "Complete reports",
+      "premium4": "Priority support",
+      "subscribeTitle": "Subscribe to Plan",
+      "subscribeMessage": "You are about to subscribe to the",
+      "fullName": "Full Name",
+      "email": "Email",
+      "cardNumber": "Card Number",
+      "expiry": "Expiry",
+      "cvv": "CVV",
+      "confirm": "Confirm Subscription",
+      "subscribeSuccess": "Subscription confirmed successfully!"
+    },
+    "settings": {
+      "companyName": "Company Name",
+      "whatsapp": "WhatsApp",
+      "language": "Preferred Language",
+      "save": "Save",
+      "success": "Settings saved successfully!"
+    },
+    "about": {
+      "description": "Conexa – An open source digital after-sales project for small businesses.",
+      "mission": "Our mission is to democratize access to customer relationship management tools, allowing small businesses to provide quality service and grow sustainably.",
+      "github": "View on GitHub"
+    }
+  },
+  "es-ES": {
+    "menu": {
+      "dashboard": "Panel",
+      "whatsapp": "WhatsApp",
+      "social": "Redes Sociales",
+      "reports": "Informes",
+      "plans": "Planes",
+      "settings": "Configuración",
+      "about": "Acerca de"
+    },
+    "cta": {
+      "start": "Comenzar ahora",
+      "subscribe": "Suscribir",
+      "export": "Exportar CSV"
+    },
+    "dashboard": {
+      "attendances": "Atenciones",
+      "scheduled": "Posts Programados",
+      "reports": "Informes"
+    },
+    "whatsapp": {
+      "placeholder": "Escribe un mensaje...",
+      "send": "Enviar",
+      "quickReplies": "Respuestas Rápidas"
+    },
+    "social": {
+      "schedule": "Programar Post",
+      "schedulePost": "Programar Post",
+      "postTitle": "Título del Post",
+      "postContent": "Contenido",
+      "scheduleDate": "Fecha de Programación",
+      "platform": "Plataforma",
+      "scheduleSuccess": "¡Post programado con éxito!"
+    },
+    "reports": {
+      "attendancesChart": "Atenciones Diarias",
+      "postsChart": "Engagement de Posts"
+    },
+    "plans": {
+      "basic": "Básico",
+      "pro": "Pro",
+      "premium": "Premium",
+      "basic1": "50 atenciones/mes",
+      "basic2": "2 redes sociales",
+      "basic3": "Informes básicos",
+      "pro1": "200 atenciones/mes",
+      "pro2": "5 redes sociales",
+      "pro3": "Informes avanzados",
+      "pro4": "Integración API",
+      "premium1": "Atenciones ilimitadas",
+      "premium2": "10 redes sociales",
+      "premium3": "Informes completos",
+      "premium4": "Soporte prioritario",
+      "subscribeTitle": "Suscribirse al Plan",
+      "subscribeMessage": "Estás a punto de suscribirte al plan",
+      "fullName": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "cardNumber": "Número de Tarjeta",
+      "expiry": "Vencimiento",
+      "cvv": "CVV",
+      "confirm": "Confirmar Suscripción",
+      "subscribeSuccess": "¡Suscripción confirmada con éxito!"
+    },
+    "settings": {
+      "companyName": "Nombre de la Empresa",
+      "whatsapp": "WhatsApp",
+      "language": "Idioma Preferido",
+      "save": "Guardar",
+      "success": "¡Configuración guardada con éxito!"
+    },
+    "about": {
+      "description": "Conexa – Un proyecto open source de postventa digital para pequeños negocios.",
+      "mission": "Nuestra misión es democratizar el acceso a herramientas de gestión de relación con clientes, permitiendo que pequeños negocios puedan ofrecer un servicio de calidad y crecer de forma sostenible.",
+      "github": "Ver en GitHub"
+    }
+  }
+}

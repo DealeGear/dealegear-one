@@ -128,7 +128,8 @@ body {
     position: fixed;
     left: 0;
     top: var(--header-height);
-    bottom: var(--footer-height);
+    /*/bottom: var(--footer-height);*/
+    bottom: 0;
     z-index: 999;
 }
 
@@ -245,6 +246,8 @@ body {
     align-items: center;
     padding: 0 20px;
     transition: background-color var(--transition-speed), border-color var(--transition-speed);
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
 }
 
 .footer-links {
@@ -290,6 +293,8 @@ body {
         height: auto;
         padding: 10px;
         text-align: center;
+        margin-left: 0;
+        width: 100%;
     }
     
     .footer-links {

@@ -3,179 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crush - App de Relacionamentos Geek</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title id="page-title">Crush - Conexões Geek</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <div class="logo-icon">❤️</div>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <div class="nav-logo">
+                <i class="fas fa-gamepad"></i>
                 <span>Crush</span>
             </div>
-            <div class="nav-buttons">
-                <button class="nav-btn" id="profile-nav" data-page="profile">
-                    <span>👤</span> Perfil
+            <ul class="nav-menu">
+                <li><a href="#sobre" data-i18n="nav.about">Sobre</a></li>
+                <li><a href="#funcionalidades" data-i18n="nav.features">Funcionalidades</a></li>
+                <li><a href="#side-quests" data-i18n="nav.sidequests">Side Quests</a></li>
+                <li><a href="#download" data-i18n="nav.download">Download</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="lang-toggle" id="langToggle">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentLang">PT</span>
                 </button>
-                <button class="nav-btn active" id="discover-nav" data-page="discover">
-                    <span>🔍</span> Descobrir
-                </button>
-                <button class="nav-btn" id="matches-nav" data-page="matches">
-                    <span>💬</span> Matches
-                </button>
-                <button class="nav-btn" id="quests-nav" data-page="quests">
-                    <span>🎮</span> Missões
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
-            <button class="theme-toggle" id="theme-toggle">🌙</button>
-        </header>
+        </nav>
+    </header>
 
-        <main>
-            <!-- Página de Onboarding/Perfil -->
-            <section class="page active" id="profile-page">
-                <div class="card">
-                    <h1>Crie seu perfil</h1>
-                    <form id="profile-form">
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" class="form-control" placeholder="Seu nome" required>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-i18n="hero.title">Encontre seu match geek!</h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">Conecte-se com outros entusiastas e participe de missões temáticas</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" data-i18n="hero.cta">Experimente o Crush</button>
+                <button class="btn btn-secondary" data-i18n="hero.github">
+                    <i class="fab fa-github"></i>
+                    Ver no GitHub
+                </button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="app-preview">
+                        <div class="preview-header">
+                            <div class="preview-avatar"></div>
+                            <div class="preview-name">GeekGirl42</div>
                         </div>
-                        <div class="form-group">
-                            <label for="age">Idade</label>
-                            <input type="number" id="age" class="form-control" placeholder="Sua idade" min="18" max="100" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Interesses</label>
-                            <div class="interests-group">
-                                <div class="interest-item" data-interest="games">
-                                    <input type="checkbox" id="games" name="interests" value="games">
-                                    <label for="games">🎮 Games</label>
-                                </div>
-                                <div class="interest-item" data-interest="sci-fi">
-                                    <input type="checkbox" id="sci-fi" name="interests" value="sci-fi">
-                                    <label for="sci-fi">🚀 Sci-Fi</label>
-                                </div>
-                                <div class="interest-item" data-interest="animes">
-                                    <input type="checkbox" id="animes" name="interests" value="animes">
-                                    <label for="animes">🌸 Animes</label>
-                                </div>
-                                <div class="interest-item" data-interest="hqs">
-                                    <input type="checkbox" id="hqs" name="interests" value="hqs">
-                                    <label for="hqs">📚 HQs</label>
+                        <div class="preview-content">
+                            <div class="preview-card">
+                                <div class="card-avatar"></div>
+                                <div class="card-info">
+                                    <div class="card-name">DevNinja</div>
+                                    <div class="card-tags">
+                                        <span class="tag">Gaming</span>
+                                        <span class="tag">Anime</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="avatar">Avatar</label>
-                            <input type="file" id="avatar" class="form-control" accept="image/*">
-                        </div>
-                        <button type="submit" class="btn">Salvar Perfil</button>
-                    </form>
-                </div>
-            </section>
-
-            <!-- Página de Descoberta -->
-            <section class="page" id="discover-page">
-                <div class="card discover-card">
-                    <div class="discover-image-container">
-                        <img id="discover-image" class="discover-image" src="https://picsum.photos/seed/user1/400/400.jpg" alt="Avatar">
-                        <div class="online-indicator"></div>
                     </div>
-                    <div class="discover-info">
-                        <h2 id="discover-name">Carregando...</h2>
-                        <p id="discover-age">Idade: --</p>
-                        <div id="discover-interests" class="interests-tags"></div>
-                    </div>
-                    <div class="discover-actions">
-                        <button class="action-btn pass-btn" id="pass-btn" title="Passar">
-                            <span class="btn-icon">✖</span>
-                        </button>
-                        <button class="action-btn superlike-btn" id="superlike-btn" title="Super Like">
-                            <span class="btn-icon">⭐</span>
-                        </button>
-                        <button class="action-btn like-btn" id="like-btn" title="Curtir">
-                            <span class="btn-icon">❤️</span>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Página de Matches -->
-            <section class="page" id="matches-page">
-                <h1>Seus Matches</h1>
-                <div id="matches-container">
-                    <div class="matches-list" id="matches-list"></div>
-                </div>
-            </section>
-
-            <!-- Página de Chat -->
-            <section class="page" id="chat-page">
-                <button class="back-btn" id="back-to-matches">
-                    <span class="back-icon">←</span> Voltar
-                </button>
-                <div class="chat-container">
-                    <div class="chat-header">
-                        <div class="chat-avatar-container">
-                            <img id="chat-avatar" class="match-avatar" src="" alt="Avatar">
-                            <div class="chat-online-indicator"></div>
-                        </div>
-                        <div>
-                            <h2 id="chat-name"></h2>
-                            <p id="chat-status">Online agora</p>
-                        </div>
-                    </div>
-                    <div class="chat-messages" id="chat-messages"></div>
-                    <div class="chat-input-container">
-                        <input type="text" id="chat-input" class="chat-input" placeholder="Digite uma mensagem...">
-                        <button class="send-btn" id="send-btn">
-                            <span class="send-icon">➤</span>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Página de Missões -->
-            <section class="page" id="quests-page">
-                <h1>Side Quests</h1>
-                <div class="quests-list" id="quests-list"></div>
-            </section>
-
-            <!-- Página de Conquistas -->
-            <section class="page" id="achievements-page">
-                <h1>Conquistas</h1>
-                <div class="achievements-grid" id="achievements-grid"></div>
-            </section>
-        </main>
-
-        <!-- Notificação -->
-        <div class="notification" id="notification">
-            <span class="notification-text"></span>
-            <button class="notification-close">&times;</button>
-        </div>
-
-        <!-- Modal de Match -->
-        <div class="modal" id="match-modal">
-            <div class="modal-content">
-                <div class="match-animation">
-                    <div class="match-hearts">❤️</div>
-                    <div class="match-images">
-                        <img id="match-user1" src="" alt="User 1">
-                        <img id="match-user2" src="" alt="User 2">
-                    </div>
-                    <h2>É um Match!</h2>
-                    <p>Você e <span id="match-name"></span> curtiram um ao outro!</p>
-                    <button class="btn" id="start-chat-btn">Iniciar Conversa</button>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Scripts -->
-        <script src="js/data.js"></script>
-        <script src="js/darkmode.js"></script>
-        <script src="js/main.js"></script>
-    </div>
+    <!-- Sobre Section -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <h2 class="section-title" data-i18n="about.title">Sobre o Crush</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-i18n="about.description">
+                        O Crush é um projeto open-source que conecta entusiastas geek através de interesses comuns. 
+                        Crie seu perfil, descubra pessoas com paixões similares e participe de side quests temáticas!
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-heart"></i>
+                            <span data-i18n="about.feature1">Matches baseados em interesses</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-comments"></i>
+                            <span data-i18n="about.feature2">Chat integrado</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-trophy"></i>
+                            <span data-i18n="about.feature3">Missões e conquistas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://picsum.photos/seed/geekcommunity/400/300.jpg" alt="Comunidade Geek">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades Section -->
+    <section class="section section-dark" id="funcionalidades">
+        <div class="container">
+            <h2 class="section-title" data-i18n="features.title">Funcionalidades</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3 data-i18n="features.profile">Perfil Geek</h3>
+                    <p data-i18n="features.profile_desc">Crie seu perfil com seus interesses, jogos favoritos e animes preferidos</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 data-i18n="features.discover">Descubra Matches</h3>
+                    <p data-i18n="features.discover_desc">Encontre pessoas com interesses similares usando nosso algoritmo inteligente</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 data-i18n="features.chat">Chat Simples</h3>
+                    <p data-i18n="features.chat_desc">Converse com seus matches e compartilhe suas paixões geek</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dice-d20"></i>
+                    </div>
+                    <h3 data-i18n="features.quests">Side Quests</h3>
+                    <p data-i18n="features.quests_desc">Participe de missões temáticas e ganhe conquistas exclusivas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona Section -->
+    <section class="section" id="como-funciona">
+        <div class="container">
+            <h2 class="section-title" data-i18n="how.title">Como Funciona</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 data-i18n="steps.1">Crie seu perfil</h3>
+                        <p data-i18n="steps.1_desc">Adicione seus interesses, jogos favoritos e o que você procura</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 data-i18n="steps.2">Descubra matches</h3>
+                        <p data-i18n="steps.2_desc">Navegue por perfis de pessoas com interesses similares</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 data-i18n="steps.3">Converse e conecte</h3>
+                        <p data-i18n="steps.3_desc">Inicie conversas e construa conexões significativas</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 data-i18n="steps.4">Participe de Side Quests</h3>
+                        <p data-i18n="steps.4_desc">Complete missões temáticas e ganhe conquistas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Side Quests Section -->
+    <section class="section section-dark" id="side-quests">
+        <div class="container">
+            <h2 class="section-title" data-i18n="quests.title">Side Quests</h2>
+            <div class="quests-grid">
+                <div class="quest-card">
+                    <div class="quest-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <h3 data-i18n="quests.gaming">Gaming Master</h3>
+                    <p data-i18n="quests.gaming_desc">Complete desafios de jogos e compartilhe suas conquistas</p>
+                    <div class="quest-reward">
+                        <i class="fas fa-star"></i>
+                        <span data-i18n="quests.reward">+100 XP</span>
+                    </div>
+                </div>
+                <div class="quest-card">
+                    <div class="quest-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 data-i18n="quests.anime">Anime Expert</h3>
+                    <p data-i18n="quests.anime_desc">Discuta seus animes favoritos e descubra novas recomendações</p>
+                    <div class="quest-reward">
+                        <i class="fas fa-star"></i>
+                        <span data-i18n="quests.reward">+100 XP</span>
+                    </div>
+                </div>
+                <div class="quest-card">
+                    <div class="quest-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 data-i18n="quests.tech">Tech Wizard</h3>
+                    <p data-i18n="quests.tech_desc">Compartilhe conhecimento técnico e aprenda com a comunidade</p>
+                    <div class="quest-reward">
+                        <i class="fas fa-star"></i>
+                        <span data-i18n="quests.reward">+100 XP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 data-i18n="cta.title">Pronto para começar?</h2>
+                <p data-i18n="cta.subtitle">Junte-se à comunidade geek e encontre seu match perfeito!</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" data-i18n="cta.primary">Baixe o código</button>
+                    <button class="btn btn-secondary" data-i18n="cta.secondary">Crie sua versão</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-i18n="footer.links">Links Úteis</h4>
+                    <ul>
+                        <li><a href="#" data-i18n="footer.github">GitHub/Open Source</a></li>
+                        <li><a href="#" data-i18n="footer.license">Licença</a></li>
+                        <li><a href="#" data-i18n="footer.docs">Documentação</a></li>
+                        <li><a href="#" data-i18n="footer.contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.community">Comunidade</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-reddit"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <!--<p class="footer-note" data-i18n="footer.note">
+                        Projeto open-source inspirado na comunidade geek.
+                    </p>-->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Crush. Projeto open-source inspirado na comunidade geek. <i class="fas fa-heart"></i> for geeks.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
 </body>
 </html>

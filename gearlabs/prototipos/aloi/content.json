@@ -1,0 +1,196 @@
+{
+  "languages": {
+    "pt": {
+      "hero": {
+        "title": "AloiBio 2025 – Um protótipo open source para explorar e transformar substâncias de plantas nativas brasileiras."
+      },
+      "about": {
+        "title": "Sobre o Protótipo",
+        "description": "Nosso protótipo permite explorar e simular a extração de bioativos de plantas nativas brasileiras, combinando tecnologia de ponta com a riqueza da nossa biodiversidade."
+      },
+      "howItWorks": {
+        "title": "Como Funciona",
+        "steps": [
+          {
+            "title": "Coleta",
+            "description": "Identificação e coleta sustentável de plantas nativas"
+          },
+          {
+            "title": "Extração",
+            "description": "Processos inovadores de isolamento de compostos bioativos"
+          },
+          {
+            "title": "Análise",
+            "description": "Caracterização molecular e potencial de aplicação"
+          }
+        ]
+      },
+      "applications": {
+        "title": "Aplicações",
+        "items": [
+          {
+            "title": "Saúde",
+            "description": "Desenvolvimento de novos fármacos e terapias"
+          },
+          {
+            "title": "Cosméticos",
+            "description": "Ingredientes naturais para produtos de beleza"
+          },
+          {
+            "title": "Nutracêuticos",
+            "description": "Suplementos alimentares com propriedades funcionais"
+          },
+          {
+            "title": "Agricultura",
+            "description": "Bioinsumos para cultivos sustentáveis"
+          }
+        ]
+      },
+      "access": {
+        "title": "Acesso ao Protótipo",
+        "button": "Acessar Simulação"
+      },
+      "menu": {
+        "home": "Início",
+        "about": "Sobre",
+        "how": "Como Funciona",
+        "apps": "Aplicações",
+        "access": "Acesso"
+      },
+      "footer": {
+        "about": "Sobre",
+        "docs": "Documentação",
+        "github": "GitHub",
+        "contact": "Contato"
+      }
+    },
+    "en": {
+      "hero": {
+        "title": "AloiBio 2025 – An open-source prototype to explore and transform compounds from Brazilian native plants."
+      },
+      "about": {
+        "title": "About the Prototype",
+        "description": "Our prototype allows you to explore and simulate the extraction of bioactive compounds from Brazilian native plants, combining cutting-edge technology with our biodiversity richness."
+      },
+      "howItWorks": {
+        "title": "How It Works",
+        "steps": [
+          {
+            "title": "Collection",
+            "description": "Sustainable identification and collection of native plants"
+          },
+          {
+            "title": "Extraction",
+            "description": "Innovative processes for isolating bioactive compounds"
+          },
+          {
+            "title": "Analysis",
+            "description": "Molecular characterization and application potential"
+          }
+        ]
+      },
+      "applications": {
+        "title": "Applications",
+        "items": [
+          {
+            "title": "Health",
+            "description": "Development of new drugs and therapies"
+          },
+          {
+            "title": "Cosmetics",
+            "description": "Natural ingredients for beauty products"
+          },
+          {
+            "title": "Nutraceuticals",
+            "description": "Food supplements with functional properties"
+          },
+          {
+            "title": "Agriculture",
+            "description": "Bioinputs for sustainable farming"
+          }
+        ]
+      },
+      "access": {
+        "title": "Access Prototype",
+        "button": "Access Simulation"
+      },
+      "menu": {
+        "home": "Home",
+        "about": "About",
+        "how": "How It Works",
+        "apps": "Applications",
+        "access": "Access"
+      },
+      "footer": {
+        "about": "About",
+        "docs": "Documentation",
+        "github": "GitHub",
+        "contact": "Contact"
+      }
+    },
+    "es": {
+      "hero": {
+        "title": "AloiBio 2025 – Un prototipo open source para explorar y transformar compuestos de plantas nativas brasileñas."
+      },
+      "about": {
+        "title": "Sobre el Prototipo",
+        "description": "Nuestro prototipo permite explorar y simular la extracción de bioactivos de plantas nativas brasileñas, combinando tecnología de punta con la riqueza de nuestra biodiversidad."
+      },
+      "howItWorks": {
+        "title": "Cómo Funciona",
+        "steps": [
+          {
+            "title": "Recolección",
+            "description": "Identificación y recolección sostenible de plantas nativas"
+          },
+          {
+            "title": "Extracción",
+            "description": "Procesos innovadores de aislamiento de compuestos bioactivos"
+          },
+          {
+            "title": "Análisis",
+            "description": "Caracterización molecular y potencial de aplicación"
+          }
+        ]
+      },
+      "applications": {
+        "title": "Aplicaciones",
+        "items": [
+          {
+            "title": "Salud",
+            "description": "Desarrollo de nuevos fármacos y terapias"
+          },
+          {
+            "title": "Cosméticos",
+            "description": "Ingredientes naturales para productos de belleza"
+          },
+          {
+            "title": "Nutracéuticos",
+            "description": "Suplementos alimenticios con propiedades funcionales"
+          },
+          {
+            "title": "Agricultura",
+            "description": "Bioinsumos para cultivos sostenibles"
+          }
+        ]
+      },
+      "access": {
+        "title": "Acceso al Prototipo",
+        "button": "Acceder a Simulación"
+      },
+      "menu": {
+        "home": "Inicio",
+        "about": "Acerca de",
+        "how": "Cómo Funciona",
+        "apps": "Aplicaciones",
+        "access": "Acceso"
+      },
+      "footer": {
+        "about": "Acerca de",
+        "docs": "Documentación",
+        "github": "GitHub",
+        "contact": "Contacto"
+      }
+    }
+  }
+}
