@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Estrutura Técnica do 3GTO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 data-i18n="title">Estrutura Técnica do 3GTO</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" data-i18n="nav_home">Início</a></li>
+                        <li><a href="#" class="active" data-i18n="nav_structure">Estrutura</a></li>
+                    </ul>
+                </nav>
+                <div class="language-selector">
+                    <button id="lang-pt" class="lang-btn active">PT</button>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                    <button id="lang-es" class="lang-btn">ES</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2 data-i18n="intro_title">Introdução</h2>
+            <p data-i18n="intro_text">Esta página apresenta os detalhes construtivos e técnicos do protótipo 3GTO.</p>
+        </section>
+
+        <section class="construction">
+            <h2 data-i18n="construction_title">Detalhes Construtivos</h2>
+            
+            <div class="construction-item">
+                <h3 data-i18n="aluminum_title">Estrutura em Alumínio</h3>
+                <p data-i18n="aluminum_text">Estruturas dos veículos feitas em alumínio leve.</p>
+                <div class="image-placeholder">
+                    <img src="https://picsum.photos/seed/aluminum-structure/800/400.jpg" alt="Estrutura de alumínio">
+                </div>
+            </div>
+            
+            <div class="construction-item">
+                <h3 data-i18n="plastic_title">Partes Plásticas Impressas</h3>
+                <p data-i18n="plastic_text">Carenagens e encaixes produzidos por impressão 3D.</p>
+                <div class="image-placeholder">
+                    <img src="https://picsum.photos/seed/3d-printed-parts/800/400.jpg" alt="Partes impressas em 3D">
+                </div>
+            </div>
+            
+            <div class="construction-item">
+                <h3 data-i18n="electronics_title">Eletrônica e Controle</h3>
+                <p data-i18n="electronics_text">Placas Raspberry Pi controlam motores, sensores e câmeras.</p>
+                <div class="image-placeholder">
+                    <img src="https://picsum.photos/seed/electronics-control/800/400.jpg" alt="Eletrônica e controle">
+                </div>
+                <div class="connectivity-diagram">
+                    <p>Esquema de conectividade:</p>
+                    <div class="diagram">
+                        <div class="diagram-item">Raspberry Pi</div>
+                        <div class="diagram-connector">→</div>
+                        <div class="diagram-item">Motores</div>
+                        <div class="diagram-connector">→</div>
+                        <div class="diagram-item">Sensores</div>
+                        <div class="diagram-connector">→</div>
+                        <div class="diagram-item">Câmeras</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="code-examples">
+            <h2 data-i18n="code_section_title">Exemplos de Código</h2>
+            
+            <div class="code-block">
+                <h3 data-i18n="code_motor_title">Controle básico de motor (Python / RPi.GPIO)</h3>
+                <div class="code-container">
+                    <pre><code class="language-python">import RPi.GPIO as GPIO
+import time
+
+# Configuração dos pinos
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
+
+# Função para controlar o motor
+def control_motor(direction, duration):
+    if direction == "forward":
+        GPIO.output(17, GPIO.HIGH)
+        GPIO.output(18, GPIO.LOW)
+    elif direction == "backward":
+        GPIO.output(17, GPIO.LOW)
+        GPIO.output(18, GPIO.HIGH)
+    else:  # stop
+        GPIO.output(17, GPIO.LOW)
+        GPIO.output(18, GPIO.LOW)
+    
+    time.sleep(duration)
+    GPIO.output(17, GPIO.LOW)
+    GPIO.output(18, GPIO.LOW)
+
+# Exemplo de uso
+try:
+    control_motor("forward", 2)
+    control_motor("stop", 1)
+    control_motor("backward", 2)
+finally:
+    GPIO.cleanup()</code></pre>
+                    <button class="copy-btn" data-i18n="copy_button">Copiar</button>
+                </div>
+            </div>
+            
+            <div class="code-block">
+                <h3 data-i18n="code_ultrasonic_title">Leitura de sensor ultrassônico</h3>
+                <div class="code-container">
+                    <pre><code class="language-python">import RPi.GPIO as GPIO
+import time
+
+# Configuração dos pinos do sensor
+TRIG = 23
+ECHO = 24
+
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
+
+def measure_distance():
+    # Envia pulso de trigger
+    GPIO.output(TRIG, True)
+    time.sleep(0.00001)
+    GPIO.output(TRIG, False)
+    
+    # Mede o tempo do echo
+    while GPIO.input(ECHO) == 0:
+        pulse_start = time.time()
+    
+    while GPIO.input(ECHO) == 1:
+        pulse_end = time.time()
+    
+    # Calcula a distância
+    pulse_duration = pulse_end - pulse_start
+    distance = pulse_duration * 17150  # velocidade do som / 2
+    
+    return round(distance, 2)
+
+# Exemplo de uso
+try:
+    while True:
+        dist = measure_distance()
+        print(f"Distância: {dist} cm")
+        time.sleep(1)
+finally:
+    GPIO.cleanup()</code></pre>
+                    <button class="copy-btn" data-i18n="copy_button">Copiar</button>
+                </div>
+            </div>
+            
+            <div class="code-block">
+                <h3 data-i18n="code_joystick_title">Recepção de controle remoto (PyGame)</h3>
+                <div class="code-container">
+                    <pre><code class="language-python">import pygame
+import sys
+import RPi.GPIO as GPIO
+
+# Inicializa o PyGame e o joystick
+pygame.init()
+pygame.joystick.init()
+
+# Verifica se há joystick conectado
+if pygame.joystick.get_count() == 0:
+    print("Nenhum joystick detectado")
+    sys.exit(0)
+
+# Configura o primeiro joystick
+joystick = pygame.joystick.Joystick(0)
+joystick.init()
+
+# Configuração dos pinos dos motores
+GPIO.setmode(GPIO.BCM)
+motor_pins = [17, 18, 22, 27]  # Exemplo de pinos
+for pin in motor_pins:
+    GPIO.setup(pin, GPIO.OUT)
+
+# Loop principal
+try:
+    while True:
+        pygame.event.pump()
+        
+        # Lê os eixos do joystick
+        x_axis = joystick.get_axis(0)
+        y_axis = joystick.get_axis(1)
+        
+        # Lógica para controlar os motores com base nos eixos
+        if abs(y_axis) > 0.1:  # Threshold para evitar movimentos acidentais
+            if y_axis < 0:  # Para frente
+                GPIO.output(motor_pins[0], GPIO.HIGH)
+                GPIO.output(motor_pins[1], GPIO.LOW)
+            else:  # Para trás
+                GPIO.output(motor_pins[0], GPIO.LOW)
+                GPIO.output(motor_pins[1], GPIO.HIGH)
+        else:
+            GPIO.output(motor_pins[0], GPIO.LOW)
+            GPIO.output(motor_pins[1], GPIO.LOW)
+            
+        # Lógica similar para outros motores com base no eixo X
+        
+        time.sleep(0.05)
+finally:
+    GPIO.cleanup()
+    pygame.quit()</code></pre>
+                    <button class="copy-btn" data-i18n="copy_button">Copiar</button>
+                </div>
+            </div>
+            
+            <div class="code-block">
+                <h3 data-i18n="code_failsafe_title">Failsafe — perda de sinal</h3>
+                <div class="code-container">
+                    <pre><code class="language-python">import time
+import RPi.GPIO as GPIO
+from datetime import datetime, timedelta
+
+# Configuração dos pinos
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
+
+# Variáveis de controle
+last_signal_time = datetime.now()
+signal_timeout = timedelta(seconds=2)  # Timeout de 2 segundos
+
+def stop_vehicle():
+    """Para o veículo imediatamente"""
+    GPIO.output(17, GPIO.LOW)
+    GPIO.output(18, GPIO.LOW)
+    # Adicionar código para parar outros motores também
+    print("Veículo parado por segurança (failsafe)")
+
+def check_signal():
+    """Verifica se houve perda de sinal"""
+    global last_signal_time
+    if datetime.now() - last_signal_time > signal_timeout:
+        stop_vehicle()
+        return False
+    return True
+
+# Simulação de recepção de comandos
+def receive_command():
+    """Simula a recepção de um comando"""
+    global last_signal_time
+    # Em uma implementação real, esta função receberia comandos via RF, Wi-Fi, etc.
+    # Aqui estamos apenas simulando a atualização do timestamp
+    last_signal_time = datetime.now()
+    return True  # Retorna True se um comando foi recebido
+
+# Loop principal
+try:
+    while True:
+        # Simulação de recepção de comando
+        if receive_command():
+            # Processar o comando e controlar o veículo
+            pass
+        
+        # Verificar se houve perda de sinal
+        if not check_signal():
+            # Ação de failsafe já foi tomada pela função check_signal
+            pass
+        
+        time.sleep(0.1)
+finally:
+    GPIO.cleanup()</code></pre>
+                    <button class="copy-btn" data-i18n="copy_button">Copiar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="safety-note">
+            <h3 data-i18n="safety_note_title">Nota de Segurança</h3>
+            <p data-i18n="safety_note_text">Ao operar o 3GTO em espaços públicos, certifique-se de seguir todas as regulamentações locais e manter distância segura de pessoas e propriedades.</p>
+        </section>
+
+        <section class="action-buttons">
+            <a href="especificacoes.html" class="btn" data-i18n="diagram_button">Especificações Técnicas</a>
+            <a href="https://dealegear.example.com" target="_blank" class="btn" data-i18n="dealegear_button">DealeGear</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul>
+                <li><a href="#" data-i18n="footer_community">Comunidade</a></li>
+                <li><a href="../../../docs/index.html" data-i18n="footer_docs">Documentação</a></li>
+                <li><a href="../../../index.html" data-i18n="footer_gearlabs">GearLabs</a></li>
+                <li><a href="../../../../index.html"  data-i18n="footer_dealegear">DealeGear</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <div id="browser-support" class="browser-support" style="display: none;">
+        <p>Seu navegador não suporta WebUSB/WebSerial. Algumas funcionalidades podem não estar disponíveis.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

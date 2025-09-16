@@ -1,269 +1,201 @@
-// Menu Mobile Toggle
-const hamburger = document.querySelector('.hamburger');
+// Menu Mobile
+const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
+menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Close menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}));
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+// Fechar menu ao clicar em um link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
     });
 });
 
-// Scroll reveal animation
-const revealElements = document.querySelectorAll('.environment-card, .benefit-item, .link-card, .vr-highlight, .objective-content');
-
-const revealOnScroll = () => {
-    revealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('scroll-reveal');
-            setTimeout(() => {
-                element.classList.add('active');
-            }, 100);
+// Sistema de Tradução
+const translations = {
+    pt: {
+        menu: {
+            home: "Início",
+            about: "Sobre",
+            objective: "Objetivo",
+            contact: "Contato"
+        },
+        hero: {
+            title: "Mistura Perfeita entre Realidade e Virtual",
+            description: "O 3GTO é um jogo inovador que combina o mundo real com a realidade virtual, oferecendo três ambientes distintos para exploração imersiva."
+        },
+        env: {
+            submarine: "Subaquático",
+            "submarine-desc": "Explore oceanos profundos com veículos submarinos",
+            urban: "Urbano",
+            "urban-desc": "Navegue por cidades futuristas com veículos terrestres",
+            forest: "Floresta",
+            "forest-desc": "Aventure-se em selvas densas com veículos todo-terreno"
+        },
+        tech: {
+            vr: "Óculos de Realidade Virtual",
+            controls: "Controles Remotos",
+            missions: "Missões Desafiadoras"
+        },
+        objective: {
+            title: "Nosso Objetivo",
+            description: "O projeto 3GTO não busca crescimento exponencial, mas sim oferecer uma alternativa inovadora de entretenimento para shoppings, centros comerciais e outros negócios que desejam engajar seus clientes com experiências imersivas e memoráveis."
+        },
+        benefits: {
+            engagement: "Engajamento",
+            "engagement-desc": "Atraia e retenha clientes com experiências únicas",
+            differentiation: "Diferenciação",
+            "differentiation-desc": "Destaque-se da concorrência com tecnologia inovadora",
+            experience: "Experiência",
+            "experience-desc": "Ofereça entretenimento de última geração"
+        },
+        cta: {
+            structure: "Acessar Estrutura"
+        },
+        footer: {
+            community: "Comunidade",
+            documentation: "Documentação",
+            gearlabs: "GearLabs",
+            dealegear: "DealeGear"
         }
-    });
+    },
+    en: {
+        menu: {
+            home: "Home",
+            about: "About",
+            objective: "Objective",
+            contact: "Contact"
+        },
+        hero: {
+            title: "Perfect Blend of Reality and Virtual",
+            description: "3GTO is an innovative game that combines the real world with virtual reality, offering three distinct environments for immersive exploration."
+        },
+        env: {
+            submarine: "Underwater",
+            "submarine-desc": "Explore deep oceans with submarine vehicles",
+            urban: "Urban",
+            "urban-desc": "Navigate futuristic cities with land vehicles",
+            forest: "Forest",
+            "forest-desc": "Adventure through dense jungles with all-terrain vehicles"
+        },
+        tech: {
+            vr: "Virtual Reality Glasses",
+            controls: "Remote Controls",
+            missions: "Challenging Missions"
+        },
+        objective: {
+            title: "Our Objective",
+            description: "The 3GTO project does not seek exponential growth, but rather to offer an innovative entertainment alternative for shopping malls, commercial centers and other businesses that want to engage their customers with immersive and memorable experiences."
+        },
+        benefits: {
+            engagement: "Engagement",
+            "engagement-desc": "Attract and retain customers with unique experiences",
+            differentiation: "Differentiation",
+            "differentiation-desc": "Stand out from the competition with innovative technology",
+            experience: "Experience",
+            "experience-desc": "Offer state-of-the-art entertainment"
+        },
+        cta: {
+            structure: "Access Structure"
+        },
+        footer: {
+            community: "Community",
+            documentation: "Documentation",
+            gearlabs: "GearLabs",
+            dealegear: "DealeGear"
+        }
+    },
+    es: {
+        menu: {
+            home: "Inicio",
+            about: "Acerca de",
+            objective: "Objetivo",
+            contact: "Contacto"
+        },
+        hero: {
+            title: "Mezcla Perfecta entre Realidad y Virtual",
+            description: "3GTO es un juego innovador que combina el mundo real con la realidad virtual, ofreciendo tres entornos distintos para exploración inmersiva."
+        },
+        env: {
+            submarine: "Subacuático",
+            "submarine-desc": "Explora océanos profundos con vehículos submarinos",
+            urban: "Urbano",
+            "urban-desc": "Navega por ciudades futuristas con vehículos terrestres",
+            forest: "Bosque",
+            "forest-desc": "Aventúrate en selvas densas con vehículos todo terreno"
+        },
+        tech: {
+            vr: "Gafas de Realidad Virtual",
+            controls: "Controles Remotos",
+            missions: "Misiones Desafiantes"
+        },
+        objective: {
+            title: "Nuestro Objetivo",
+            description: "El proyecto 3GTO no busca un crecimiento exponencial, sino ofrecer una alternativa innovadora de entretenimiento para centros comerciales, centros comerciales y otros negocios que deseen involucrar a sus clientes con experiencias inmersivas y memorables."
+        },
+        benefits: {
+            engagement: "Participación",
+            "engagement-desc": "Atrae y retén clientes con experiencias únicas",
+            differentiation: "Diferenciación",
+            "differentiation-desc": "Destácate de la competencia con tecnología innovadora",
+            experience: "Experiencia",
+            "experience-desc": "Ofrece entretenimiento de última generación"
+        },
+        cta: {
+            structure: "Acceder a Estructura"
+        },
+        footer: {
+            community: "Comunidad",
+            documentation: "Documentación",
+            gearlabs: "GearLabs",
+            dealegear: "DealeGear"
+        }
+    }
 };
 
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll(); // Initial check
+// Elementos de idioma
+const langButtons = document.querySelectorAll('.language-selector button');
+const elementsToTranslate = document.querySelectorAll('[data-i18n]');
 
-// Header scroll effect
-const header = document.querySelector('.header');
+let currentLang = 'pt';
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        header.style.background = 'rgba(10, 10, 10, 0.98)';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-    } else {
-        header.style.background = 'rgba(10, 10, 10, 0.95)';
-        header.style.boxShadow = 'none';
-    }
-});
-
-// Interactive environment cards
-const environmentCards = document.querySelectorAll('.environment-card');
-
-environmentCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        const environment = this.dataset.environment;
-        this.style.background = getEnvironmentGradient(environment);
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.background = 'rgba(255, 255, 255, 0.05)';
-    });
-});
-
-function getEnvironmentGradient(environment) {
-    const gradients = {
-        subaquatic: 'linear-gradient(135deg, rgba(0, 119, 190, 0.2), rgba(0, 212, 255, 0.1))',
-        urban: 'linear-gradient(135deg, rgba(128, 0, 255, 0.2), rgba(255, 0, 255, 0.1))',
-        forest: 'linear-gradient(135deg, rgba(0, 128, 0, 0.2), rgba(0, 255, 136, 0.1))'
-    };
-    return gradients[environment] || 'rgba(255, 255, 255, 0.05)';
-}
-
-// Parallax effect for hero section
-/*const heroVisual = document.querySelector('.hero-visual');
-
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallax = scrolled * 0.5;
-    
-    if (heroVisual) {
-        heroVisual.style.transform = `translateY(${parallax}px)`;
-    }
-});*/
-
-// Add typing effect to hero title
-const heroTitle = document.querySelector('.hero-title .gradient-text');
-const text = heroTitle.textContent;
-heroTitle.textContent = '';
-
-let charIndex = 0;
-function typeWriter() {
-    if (charIndex < text.length) {
-        heroTitle.textContent += text.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeWriter, 100);
-    }
-}
-
-// Start typing effect when page loads
-window.addEventListener('load', () => {
-    setTimeout(typeWriter, 500);
-});
-
-// Interactive floating elements
-const floatElements = document.querySelectorAll('.float-element');
-
-floatElements.forEach((element, index) => {
-    element.addEventListener('mouseenter', function() {
-        this.style.animationPlayState = 'paused';
-        this.style.transform = 'scale(1.2)';
-        this.style.color = '#00ff88';
-    });
-    
-    element.addEventListener('mouseleave', function() {
-        this.style.animationPlayState = 'running';
-        this.style.transform = 'scale(1)';
-        this.style.color = '#00d4ff';
-    });
-});
-
-// Button hover effects
-const buttons = document.querySelectorAll('.btn');
-
-buttons.forEach(button => {
-    button.addEventListener('mouseenter', function(e) {
-        const x = e.pageX - this.offsetLeft;
-        const y = e.pageY - this.offsetTop;
+// Função para traduzir a página
+function translatePage(lang) {
+    elementsToTranslate.forEach(element => {
+        const keys = element.getAttribute('data-i18n').split('.');
+        let translation = translations[lang];
         
-        const ripple = document.createElement('span');
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
-        
-        this.appendChild(ripple);
-        
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
-
-// Add ripple effect styles
-const style = document.createElement('style');
-style.textContent = `
-    .btn {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
-        width: 100px;
-        height: 100px;
-        margin-top: -50px;
-        margin-left: -50px;
-        animation: ripple 0.6s;
-        pointer-events: none;
-    }
-    
-    @keyframes ripple {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Form submission handling (if any forms are added later)
-function handleFormSubmit(formId, successMessage) {
-    const form = document.getElementById(formId);
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'success-message';
-            messageDiv.textContent = successMessage;
-            messageDiv.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, #00ff88, #00d4ff);
-                color: #0a0a0a;
-                padding: 1rem 2rem;
-                border-radius: 10px;
-                font-weight: 600;
-                z-index: 10000;
-                animation: slideIn 0.5s ease;
-            `;
-            
-            document.body.appendChild(messageDiv);
-            
-            // Reset form
-            form.reset();
-            
-            // Remove message after 3 seconds
-            setTimeout(() => {
-                messageDiv.style.animation = 'slideOut 0.5s ease';
-                setTimeout(() => messageDiv.remove(), 500);
-            }, 3000);
+        keys.forEach(key => {
+            translation = translation[key];
         });
-    }
+        
+        if (translation) {
+            element.textContent = translation;
+        }
+    });
+    
+    // Atualizar botão ativo
+    langButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.id === `lang-${lang}`) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Atualizar atributo lang do HTML
+    document.documentElement.lang = lang;
+    currentLang = lang;
 }
 
-// Add slide animations
-const animationStyles = document.createElement('style');
-animationStyles.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(animationStyles);
-
-// Initialize page
-document.addEventListener('DOMContentLoaded', () => {
-    // Add loading animation
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
+// Event listeners para botões de idioma
+langButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const lang = button.id.split('-')[1];
+        translatePage(lang);
+    });
 });
 
-// Track scroll progress
-const scrollProgress = () => {
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
-    
-    // You can use this for a progress bar if needed
-    console.log(`Scroll progress: ${scrollPercent}%`);
-};
-
-window.addEventListener('scroll', scrollProgress);
+// Inicializar com português
+translatePage('pt');

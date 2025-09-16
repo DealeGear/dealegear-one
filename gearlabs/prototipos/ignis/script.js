@@ -1,489 +1,451 @@
-// Estado da aplicação
-const state = {
-    contractorBalance: 1000.00,
-    providerBalance: 500.00,
-    contracts: [],
-    currentContractId: null,
-    contractCounter: 0,
-    completedContracts: 0
-};
+// ===== VARIÁVEIS GLOBAIS =====
+let currentLanguage = 'pt'; // Idioma padrão
+let texts = {}; // Objeto para armazenar os textos carregados do JSON
 
-// Status dos contratos
-const CONTRACT_STATUS = {
-    CREATED: 'created',
-    AWAITING_PROOF: 'awaiting_proof',
-    UNDER_REVIEW: 'under_review',
-    IN_DISPUTE: 'in_dispute',
-    COMPLETED: 'completed',
-    CANCELLED: 'cancelled'
-};
+// Elementos do DOM
+const languageButtons = document.querySelectorAll('.language-selector button');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
 
-// Inicialização
-document.addEventListener('DOMContentLoaded', function() {
-    updateBalances();
-    updateStats();
-    document.getElementById('contractForm').addEventListener('submit', createContract);
+// ===== FUNÇÕES =====
+
+/**
+ * Carrega o arquivo JSON com os textos em diferentes idiomas
+ */
+async function loadTexts() {
+    try {
+        // Em um ambiente real, usaríamos fetch para carregar o arquivo JSON
+        // const response = await fetch('texts.json');
+        // texts = await response.json();
+        
+        // Para este exemplo, vamos simular a carga do JSON
+        texts = {
+            "pt": {
+                "menu": {
+                    "inicio": "Início",
+                    "comoFunciona": "Como Funciona",
+                    "aplicacoes": "Aplicações",
+                    "beneficios": "Benefícios",
+                    "contato": "Contato"
+                },
+                "hero": {
+                    "titulo": "Ignis – O Sol Transformado em Energia Útil",
+                    "subtitulo": "Tecnologia inovadora de concentração solar para aplicações térmicas industriais e comerciais",
+                    "botao": "Saiba Mais"
+                },
+                "comoFunciona": {
+                    "titulo": "Como Funciona",
+                    "passo1": {
+                        "titulo": "Coletores Solares",
+                        "descricao": "Sistema de espelhos parabólicos que captam a radiação solar durante todo o dia."
+                    },
+                    "passo2": {
+                        "titulo": "Concentração Térmica",
+                        "descricao": "A luz solar é concentrada em um ponto focal, gerando temperaturas elevadas."
+                    },
+                    "passo3": {
+                        "titulo": "Condução Óptica",
+                        "descricao": "O calor é transferido através de um sistema de fluidos com alta eficiência."
+                    },
+                    "passo4": {
+                        "titulo": "Uso Final",
+                        "descricao": "A energia térmica é utilizada diretamente nos processos industriais."
+                    }
+                },
+                "aplicacoes": {
+                    "titulo": "Aplicações",
+                    "aplicacao1": {
+                        "titulo": "Geração de Vapor",
+                        "descricao": "Produção de vapor para processos industriais sem custos de combustível."
+                    },
+                    "aplicacao2": {
+                        "titulo": "Painéis Híbridos",
+                        "descricao": "Sistemas combinados que geram energia elétrica e térmica simultaneamente."
+                    },
+                    "aplicacao3": {
+                        "titulo": "Fogões Industriais",
+                        "descricao": "Soluções para cozimento industrial em larga escala com energia solar."
+                    },
+                    "aplicacao4": {
+                        "titulo": "Climatização",
+                        "descricao": "Sistemas de refrigeração e aquecimento movidos a energia solar térmica."
+                    }
+                },
+                "beneficios": {
+                    "titulo": "Benefícios",
+                    "beneficio1": {
+                        "titulo": "Sustentabilidade",
+                        "descricao": "Zero emissões de carbono durante a operação, contribuindo para um planeta mais limpo."
+                    },
+                    "beneficio2": {
+                        "titulo": "Economia",
+                        "descricao": "Redução de até 80% nos custos com energia térmica a longo prazo."
+                    },
+                    "beneficio3": {
+                        "titulo": "Eficiência",
+                        "descricao": "Tecnologia com rendimento energético superior a 70%, muito acima da média do mercado."
+                    },
+                    "beneficio4": {
+                        "titulo": "Durabilidade",
+                        "descricao": "Sistemas projetados para operar por mais de 25 anos com mínima manutenção."
+                    }
+                },
+                "cta": {
+                    "titulo": "Ignis é o futuro da energia térmica solar. Junte-se à revolução.",
+                    "botao": "Painel"
+                },
+                "footer": {
+                    "documentacao": "Documentação",
+                    "sobre": "Sobre",
+                    "blog": "Blog",
+                    "contato": "Contato",
+                    "copyright": "Ignis © 2025 – Energia transformada pelo sol"
+                }
+            },
+            "en": {
+                "menu": {
+                    "inicio": "Home",
+                    "comoFunciona": "How It Works",
+                    "aplicacoes": "Applications",
+                    "beneficios": "Benefits",
+                    "contato": "Contact"
+                },
+                "hero": {
+                    "titulo": "Ignis – The Sun Transformed into Useful Energy",
+                    "subtitulo": "Innovative solar concentration technology for industrial and commercial thermal applications",
+                    "botao": "Learn More"
+                },
+                "comoFunciona": {
+                    "titulo": "How It Works",
+                    "passo1": {
+                        "titulo": "Solar Collectors",
+                        "descricao": "System of parabolic mirrors that capture solar radiation throughout the day."
+                    },
+                    "passo2": {
+                        "titulo": "Thermal Concentration",
+                        "descricao": "Sunlight is concentrated at a focal point, generating high temperatures."
+                    },
+                    "passo3": {
+                        "titulo": "Optical Conduction",
+                        "descricao": "Heat is transferred through a high-efficiency fluid system."
+                    },
+                    "passo4": {
+                        "titulo": "Final Use",
+                        "descricao": "Thermal energy is used directly in industrial processes."
+                    }
+                },
+                "aplicacoes": {
+                    "titulo": "Applications",
+                    "aplicacao1": {
+                        "titulo": "Steam Generation",
+                        "descricao": "Steam production for industrial processes without fuel costs."
+                    },
+                    "aplicacao2": {
+                        "titulo": "Hybrid Panels",
+                        "descricao": "Combined systems that generate electrical and thermal energy simultaneously."
+                    },
+                    "aplicacao3": {
+                        "titulo": "Industrial Stoves",
+                        "descricao": "Solutions for large-scale industrial cooking with solar energy."
+                    },
+                    "aplicacao4": {
+                        "titulo": "Air Conditioning",
+                        "descricao": "Cooling and heating systems powered by solar thermal energy."
+                    }
+                },
+                "beneficios": {
+                    "titulo": "Benefits",
+                    "beneficio1": {
+                        "titulo": "Sustainability",
+                        "descricao": "Zero carbon emissions during operation, contributing to a cleaner planet."
+                    },
+                    "beneficio2": {
+                        "titulo": "Economy",
+                        "descricao": "Reduction of up to 80% in thermal energy costs in the long term."
+                    },
+                    "beneficio3": {
+                        "titulo": "Efficiency",
+                        "descricao": "Technology with energy efficiency above 70%, well above the market average."
+                    },
+                    "beneficio4": {
+                        "titulo": "Durability",
+                        "descricao": "Systems designed to operate for over 25 years with minimal maintenance."
+                    }
+                },
+                "cta": {
+                    "titulo": "Ignis is the future of solar thermal energy. Join the revolution.",
+                    "botao": "Dashboard"
+                },
+                "footer": {
+                    "documentacao": "Documentation",
+                    "sobre": "About",
+                    "blog": "Blog",
+                    "contato": "Contact",
+                    "copyright": "Ignis © 2025 – Energy transformed by the sun"
+                }
+            },
+            "es": {
+                "menu": {
+                    "inicio": "Inicio",
+                    "comoFunciona": "Cómo Funciona",
+                    "aplicacoes": "Aplicaciones",
+                    "beneficios": "Beneficios",
+                    "contato": "Contacto"
+                },
+                "hero": {
+                    "titulo": "Ignis – El Sol Transformado en Energía Útil",
+                    "subtitulo": "Tecnología innovadora de concentración solar para aplicaciones térmicas industriales y comerciales",
+                    "botao": "Saber Más"
+                },
+                "comoFunciona": {
+                    "titulo": "Cómo Funciona",
+                    "passo1": {
+                        "titulo": "Colectores Solares",
+                        "descricao": "Sistema de espejos parabólicos que captan la radiación solar durante todo el día."
+                    },
+                    "passo2": {
+                        "titulo": "Concentración Térmica",
+                        "descricao": "La luz solar se concentra en un punto focal, generando altas temperaturas."
+                    },
+                    "passo3": {
+                        "titulo": "Conducción Óptica",
+                        "descricao": "El calor se transfiere a través de un sistema de fluidos con alta eficiencia."
+                    },
+                    "passo4": {
+                        "titulo": "Uso Final",
+                        "descricao": "La energía térmica se utiliza directamente en los procesos industriales."
+                    }
+                },
+                "aplicacoes": {
+                    "titulo": "Aplicaciones",
+                    "aplicacao1": {
+                        "titulo": "Generación de Vapor",
+                        "descricao": "Producción de vapor para procesos industriales sin costos de combustible."
+                    },
+                    "aplicacao2": {
+                        "titulo": "Paneles Híbridos",
+                        "descricao": "Sistemas combinados que generan energía eléctrica y térmica simultáneamente."
+                    },
+                    "aplicacao3": {
+                        "titulo": "Cocinas Industriales",
+                        "descricao": "Soluciones para cocción industrial a gran escala con energía solar."
+                    },
+                    "aplicacao4": {
+                        "titulo": "Climatización",
+                        "descricao": "Sistemas de refrigeración y calefacción impulsados por energía solar térmica."
+                    }
+                },
+                "beneficios": {
+                    "titulo": "Beneficios",
+                    "beneficio1": {
+                        "titulo": "Sostenibilidad",
+                        "descricao": "Cero emisiones de carbono durante la operación, contribuyendo a un planeta más limpio."
+                    },
+                    "beneficio2": {
+                        "titulo": "Economía",
+                        "descricao": "Reducción de hasta el 80% en los costos de energía térmica a largo plazo."
+                    },
+                    "beneficio3": {
+                        "titulo": "Eficiencia",
+                        "descricao": "Tecnología con rendimiento energético superior al 70%, muy por encima del promedio del mercado."
+                    },
+                    "beneficio4": {
+                        "titulo": "Durabilidad",
+                        "descricao": "Sistemas diseñados para operar durante más de 25 años con mantenimiento mínimo."
+                    }
+                },
+                "cta": {
+                    "titulo": "Ignis es el futuro de la energía solar térmica. Únase a la revolución.",
+                    "botao": "Panel"
+                },
+                "footer": {
+                    "documentacao": "Documentación",
+                    "sobre": "Acerca de",
+                    "blog": "Blog",
+                    "contato": "Contacto",
+                    "copyright": "Ignis © 2025 – Energía transformada por el sol"
+                }
+            }
+        };
+        
+        // Aplica os textos iniciais após o carregamento
+        updateTexts();
+    } catch (error) {
+        console.error('Erro ao carregar os textos:', error);
+    }
+}
+
+/**
+ * Atualiza todos os textos da página com base no idioma selecionado
+ */
+function updateTexts() {
+    // Verifica se os textos foram carregados
+    if (!texts[currentLanguage]) {
+        console.error('Textos não disponíveis para o idioma:', currentLanguage);
+        return;
+    }
     
-    // Fechar modais ao clicar fora
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
+    // Seleciona todos os elementos com o atributo data-text
+    const elementsWithDataText = document.querySelectorAll('[data-text]');
+    
+    // Para cada elemento, atualiza o texto com base no caminho em data-text
+    elementsWithDataText.forEach(element => {
+        const path = element.getAttribute('data-text');
+        const textValue = getTextByPath(path);
+        
+        if (textValue) {
+            element.textContent = textValue;
+        }
+    });
+    
+    // Atualiza o atributo lang do HTML
+    document.documentElement.lang = currentLanguage;
+}
+
+/**
+ * Obtém o texto a partir do caminho (ex: "hero.titulo")
+ * @param {string} path - Caminho para o texto no objeto texts
+ * @returns {string} - Texto correspondente ao caminho
+ */
+function getTextByPath(path) {
+    const keys = path.split('.');
+    let current = texts[currentLanguage];
+    
+    for (const key of keys) {
+        if (current && current[key] !== undefined) {
+            current = current[key];
+        } else {
+            return null;
+        }
+    }
+    
+    return typeof current === 'string' ? current : null;
+}
+
+/**
+ * Define o idioma atual e atualiza os textos
+ * @param {string} language - Idioma a ser definido (pt, en, es)
+ */
+function setLanguage(language) {
+    if (['pt', 'en', 'es'].includes(language)) {
+        currentLanguage = language;
+        
+        // Atualiza os botões de idioma
+        languageButtons.forEach(button => {
+            if (button.id === `lang-${language}`) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+        
+        // Atualiza os textos na página
+        updateTexts();
+        
+        // Salva a preferência de idioma no localStorage
+        localStorage.setItem('preferredLanguage', language);
+    }
+}
+
+/**
+ * Alterna o menu móvel (abre/fecha)
+ */
+function toggleMobileMenu() {
+    mobileMenu.classList.toggle('active');
+    
+    // Altera o ícone do menu hambúrguer
+    const icon = hamburger.querySelector('i');
+    if (mobileMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+}
+
+/**
+ * Verifica a preferência de modo escuro do usuário
+ */
+function checkDarkModePreference() {
+    // Verifica se há uma preferência salva no localStorage
+    const savedMode = localStorage.getItem('darkMode');
+    
+    if (savedMode === 'true') {
+        document.body.classList.add('dark-mode');
+    } else if (savedMode === null) {
+        // Se não houver preferência salva, verifica a preferência do sistema
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDarkMode) {
+            document.body.classList.add('dark-mode');
+        }
+    }
+}
+
+/**
+ * Inicializa os event listeners
+ */
+function initEventListeners() {
+    // Event listeners para os botões de idioma
+    languageButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const language = button.id.replace('lang-', '');
+            setLanguage(language);
+        });
+    });
+    
+    // Event listener para o menu hambúrguer
+    hamburger.addEventListener('click', toggleMobileMenu);
+    
+    // Event listeners para os links do menu mobile (fechar o menu após clicar)
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
             }
         });
     });
-});
-
-// Criar novo contrato
-function createContract(e) {
-    e.preventDefault();
     
-    const serviceName = document.getElementById('serviceName').value;
-    const value = parseFloat(document.getElementById('contractValue').value);
-    const deadline = parseInt(document.getElementById('contractDeadline').value);
-
-    if (value > state.contractorBalance) {
-        showNotification('Saldo insuficiente!', 'error');
-        return;
-    }
-
-    const contract = {
-        id: ++state.contractCounter,
-        serviceName,
-        value,
-        deadline,
-        status: CONTRACT_STATUS.CREATED,
-        createdAt: new Date(),
-        proof: null,
-        disputeCount: 0,
-        finalDecision: null
-    };
-
-    state.contracts.push(contract);
-    state.contractorBalance -= value;
-
-    addLog(`Contratante criou contrato #${contract.id}: ${serviceName} - ${value} USDC`);
-    updateBalances();
-    updateStats();
-    renderContracts();
-    updateActionPanels();
-
-    // Iniciar contador de prazo
-    startDeadlineTimer(contract);
-
-    // Resetar formulário
-    document.getElementById('contractForm').reset();
-
-    showNotification('Contrato criado com sucesso!', 'success');
-}
-
-// Iniciar timer de prazo
-function startDeadlineTimer(contract) {
-    const timer = setInterval(() => {
-        contract.deadline--;
+    // Detecta cliques fora do menu mobile para fechá-lo
+    document.addEventListener('click', (event) => {
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickOnHamburger = hamburger.contains(event.target);
         
-        if (contract.deadline <= 0) {
-            clearInterval(timer);
-            handleDeadlineExpiry(contract);
+        if (!isClickInsideMenu && !isClickOnHamburger && mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
         }
-        
-        renderContracts();
-    }, 1000);
-
-    contract.timer = timer;
+    });
 }
 
-// Lidar com expiração do prazo
-function handleDeadlineExpiry(contract) {
-    if (contract.status === CONTRACT_STATUS.CREATED) {
-        contract.status = CONTRACT_STATUS.CANCELLED;
-        state.contractorBalance += contract.value;
-        addLog(`Contrato #${contract.id} cancelado por expiração de prazo`);
-        updateBalances();
-    } else if (contract.status === CONTRACT_STATUS.UNDER_REVIEW) {
-        contract.status = CONTRACT_STATUS.IN_DISPUTE;
-        contract.disputeCount = 1;
-        addLog(`Contrato #${contract.id} em disputa automática por falta de resposta`);
-        showDisputeModal(contract);
-        simulateJudgeDecision(contract);
-    }
-    renderContracts();
-    updateActionPanels();
-}
-
-// Renderizar lista de contratos
-function renderContracts() {
-    const container = document.getElementById('contractsList');
+/**
+ * Função de inicialização
+ */
+function init() {
+    // Verifica a preferência de modo escuro
+    checkDarkModePreference();
     
-    if (state.contracts.length === 0) {
-        container.innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-inbox"></i>
-                <p>Nenhum contrato criado ainda</p>
-                <p class="empty-subtitle">Crie seu primeiro contrato para começar</p>
-            </div>
-        `;
-        document.getElementById('contractCount').textContent = '0 contratos';
-        return;
-    }
-
-    document.getElementById('contractCount').textContent = `${state.contracts.length} contrato(s)`;
-
-    container.innerHTML = state.contracts.map(contract => `
-        <div class="contract-card status-${contract.status}">
-            <div class="contract-header">
-                <div>
-                    <h3 class="contract-title">${contract.serviceName}</h3>
-                    <p class="contract-id">Contrato #${contract.id}</p>
-                </div>
-                <span class="status-badge status-${contract.status}">
-                    ${getStatusText(contract.status)}
-                </span>
-            </div>
-            
-            <div class="contract-details">
-                <div class="detail-item">
-                    <p class="detail-label">Valor</p>
-                    <p class="detail-value">${contract.value.toFixed(2)} USDC</p>
-                </div>
-                <div class="detail-item">
-                    <p class="detail-label">Prazo Restante</p>
-                    <p class="detail-value ${contract.deadline <= 5 ? 'warning' : ''}">${contract.deadline}s</p>
-                </div>
-            </div>
-
-            ${contract.proof ? `
-                <div class="proof-section">
-                    <p class="proof-label">Prova enviada:</p>
-                    <p class="proof-text">${contract.proof}</p>
-                </div>
-            ` : ''}
-
-            <div class="contract-actions">
-                ${getActionButtons(contract)}
-            </div>
-        </div>
-    `).join('');
-}
-
-// Obter texto do status
-function getStatusText(status) {
-    const texts = {
-        [CONTRACT_STATUS.CREATED]: 'Criado',
-        [CONTRACT_STATUS.AWAITING_PROOF]: 'Aguardando Prova',
-        [CONTRACT_STATUS.UNDER_REVIEW]: 'Em Revisão',
-        [CONTRACT_STATUS.IN_DISPUTE]: 'Em Disputa',
-        [CONTRACT_STATUS.COMPLETED]: 'Concluído',
-        [CONTRACT_STATUS.CANCELLED]: 'Cancelado'
-    };
-    return texts[status] || 'Desconhecido';
-}
-
-// Obter botões de ação
-function getActionButtons(contract) {
-    switch (contract.status) {
-        case CONTRACT_STATUS.CREATED:
-            return `
-                <button onclick="openProofModal(${contract.id})" class="btn btn-primary">
-                    <i class="fas fa-upload"></i>
-                    Enviar Prova
-                </button>
-            `;
-        case CONTRACT_STATUS.UNDER_REVIEW:
-            return `
-                <button onclick="openReviewModal(${contract.id})" class="btn btn-primary">
-                    <i class="fas fa-eye"></i>
-                    Revisar
-                </button>
-            `;
-        case CONTRACT_STATUS.IN_DISPUTE:
-            if (contract.disputeCount < 2) {
-                return `
-                    <button onclick="showDisputeModal(${contract.id})" class="btn btn-warning">
-                        <i class="fas fa-gavel"></i>
-                        Ver Disputa
-                    </button>
-                `;
-            }
-            return '';
-        default:
-            return '';
-    }
-}
-
-// Atualizar painéis de ação
-function updateActionPanels() {
-    updateContractorActions();
-    updateProviderActions();
-}
-
-// Atualizar ações do contratante
-function updateContractorActions() {
-    const container = document.getElementById('contractorActions');
-    const reviewContracts = state.contracts.filter(c => c.status === CONTRACT_STATUS.UNDER_REVIEW);
+    // Carrega os textos do JSON
+    loadTexts();
     
-    if (reviewContracts.length === 0) {
-        container.innerHTML = '<p class="empty-message">Nenhuma ação pendente</p>';
-        return;
-    }
-
-    container.innerHTML = reviewContracts.map(contract => `
-        <div class="action-item">
-            <h4>Contrato #${contract.id}</h4>
-            <p>${contract.serviceName}</p>
-            <button onclick="openReviewModal(${contract.id})" class="btn btn-primary">
-                <i class="fas fa-eye"></i>
-                Revisar Prova
-            </button>
-        </div>
-    `).join('');
-}
-
-// Atualizar ações do prestador
-function updateProviderActions() {
-    const container = document.getElementById('providerActions');
-    const pendingContracts = state.contracts.filter(c => c.status === CONTRACT_STATUS.CREATED);
-    
-    if (pendingContracts.length === 0) {
-        container.innerHTML = '<p class="empty-message">Nenhum serviço pendente</p>';
-        return;
-    }
-
-    container.innerHTML = pendingContracts.map(contract => `
-        <div class="action-item">
-            <h4>Contrato #${contract.id}</h4>
-            <p>${contract.serviceName}</p>
-            <p>Valor: ${contract.value.toFixed(2)} USDC</p>
-            <button onclick="openProofModal(${contract.id})" class="btn btn-primary">
-                <i class="fas fa-upload"></i>
-                Enviar Prova
-            </button>
-        </div>
-    `).join('');
-}
-
-// Abrir modal de prova
-function openProofModal(contractId) {
-    state.currentContractId = contractId;
-    document.getElementById('proofModal').classList.add('active');
-    document.getElementById('proofText').focus();
-}
-
-// Fechar modal de prova
-function closeProofModal() {
-    document.getElementById('proofModal').classList.remove('active');
-    document.getElementById('proofText').value = '';
-    state.currentContractId = null;
-}
-
-// Enviar prova
-function submitProof() {
-    const proof = document.getElementById('proofText').value.trim();
-    if (!proof) {
-        showNotification('Por favor, insira uma prova!', 'error');
-        return;
-    }
-
-    const contract = state.contracts.find(c => c.id === state.currentContractId);
-    if (contract) {
-        contract.proof = proof;
-        contract.status = CONTRACT_STATUS.UNDER_REVIEW;
-        addLog(`Prestador enviou prova para contrato #${contract.id}`);
-        renderContracts();
-        updateActionPanels();
-        closeProofModal();
-        showNotification('Prova enviada com sucesso!', 'success');
-    }
-}
-
-// Abrir modal de revisão
-function openReviewModal(contractId) {
-    state.currentContractId = contractId;
-    const contract = state.contracts.find(c => c.id === contractId);
-    document.getElementById('reviewProof').textContent = contract.proof;
-    document.getElementById('reviewModal').classList.add('active');
-}
-
-// Fechar modal de revisão
-function closeReviewModal() {
-    document.getElementById('reviewModal').classList.remove('active');
-    state.currentContractId = null;
-}
-
-// Aprovar prova
-function approveProof() {
-    const contract = state.contracts.find(c => c.id === state.currentContractId);
-    if (contract) {
-        contract.status = CONTRACT_STATUS.COMPLETED;
-        state.providerBalance += contract.value;
-        state.completedContracts++;
-        clearInterval(contract.timer);
-        addLog(`Contratante aprovou contrato #${contract.id}! Pagamento liberado`);
-        updateBalances();
-        updateStats();
-        renderContracts();
-        updateActionPanels();
-        closeReviewModal();
-        showNotification('Contrato aprovado com sucesso!', 'success');
-    }
-}
-
-// Rejeitar prova
-function rejectProof() {
-    const contract = state.contracts.find(c => c.id === state.currentContractId);
-    if (contract) {
-        contract.status = CONTRACT_STATUS.IN_DISPUTE;
-        contract.disputeCount = 1;
-        addLog(`Contratante recusou contrato #${contract.id}! Iniciando disputa`);
-        renderContracts();
-        updateActionPanels();
-        closeReviewModal();
-        showDisputeModal(contract);
-        simulateJudgeDecision(contract);
-    }
-}
-
-// Mostrar modal de disputa
-function showDisputeModal(contract) {
-    state.currentContractId = contract.id;
-    document.getElementById('disputeContractId').textContent = `#${contract.id}`;
-    document.getElementById('disputeNumber').textContent = `${contract.disputeCount}ª disputa`;
-    document.getElementById('disputeModal').classList.add('active');
-    
-    if (contract.disputeCount === 1) {
-        document.getElementById('judgeMessage').textContent = 'Primeiro juiz analisando a prova...';
-        document.getElementById('secondReviewBtn').style.display = 'none';
-    } else {
-        document.getElementById('judgeMessage').textContent = 'Segundo juiz analisando a prova...';
-        document.getElementById('secondReviewBtn').style.display = 'none';
-    }
-}
-
-// Fechar modal de disputa
-function closeDisputeModal() {
-    document.getElementById('disputeModal').classList.remove('active');
-    state.currentContractId = null;
-}
-
-// Simular decisão do juiz
-function simulateJudgeDecision(contract) {
-    setTimeout(() => {
-        const isValid = Math.random() > 0.5; // 50% de chance de ser válido
+    // Verifica se há um idioma preferido salvo
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    if (savedLanguage && ['pt', 'en', 'es'].includes(savedLanguage)) {
+        currentLanguage = savedLanguage;
         
-        if (isValid) {
-            contract.status = CONTRACT_STATUS.COMPLETED;
-            state.providerBalance += contract.value;
-            state.completedContracts++;
-            document.getElementById('judgeMessage').textContent = 'Juiz decidiu: Prova válida! Pagamento liberado';
-            addLog(`Juiz decidiu: Contrato #${contract.id} - Prova válida! Pagamento liberado`);
-        } else {
-            contract.status = CONTRACT_STATUS.CANCELLED;
-            state.contractorBalance += contract.value;
-            document.getElementById('judgeMessage').textContent = 'Juiz decidiu: Prova inválida! Pagamento devolvido';
-            addLog(`Juiz decidiu: Contrato #${contract.id} - Prova inválida! Pagamento devolvido`);
-        }
-        
-        if (contract.disputeCount === 1) {
-            document.getElementById('secondReviewBtn').style.display = 'block';
-        }
-        
-        clearInterval(contract.timer);
-        updateBalances();
-        updateStats();
-        renderContracts();
-        updateActionPanels();
-    }, 2000);
-}
-
-// Solicitar segunda revisão
-function requestSecondReview() {
-    const contract = state.contracts.find(c => c.id === state.currentContractId);
-    if (contract && contract.disputeCount === 1) {
-        contract.disputeCount = 2;
-        document.getElementById('disputeNumber').textContent = '2ª disputa';
-        document.getElementById('judgeMessage').textContent = 'Segundo juiz analisando a prova...';
-        document.getElementById('secondReviewBtn').style.display = 'none';
-        addLog(`Segunda revisão solicitada para contrato #${contract.id}`);
-        
-        setTimeout(() => {
-            const isValid = Math.random() > 0.5;
-            
-            if (isValid) {
-                contract.status = CONTRACT_STATUS.COMPLETED;
-                state.providerBalance += contract.value;
-                state.completedContracts++;
-                document.getElementById('judgeMessage').textContent = 'Segundo juiz decidiu: Prova válida! Pagamento liberado';
-                addLog(`Segundo juiz decidiu: Contrato #${contract.id} - Prova válida! Pagamento liberado`);
+        // Atualiza os botões de idioma
+        languageButtons.forEach(button => {
+            if (button.id === `lang-${currentLanguage}`) {
+                button.classList.add('active');
             } else {
-                contract.status = CONTRACT_STATUS.CANCELLED;
-                state.contractorBalance += contract.value;
-                document.getElementById('judgeMessage').textContent = 'Segundo juiz decidiu: Prova inválida! Pagamento devolvido';
-                addLog(`Segundo juiz decidiu: Contrato #${contract.id} - Prova inválida! Pagamento devolvido`);
+                button.classList.remove('active');
             }
-            
-            clearInterval(contract.timer);
-            updateBalances();
-            updateStats();
-            renderContracts();
-            updateActionPanels();
-        }, 2000);
-    }
-}
-
-// Atualizar saldos
-function updateBalances() {
-    document.getElementById('contractorBalance').textContent = `${state.contractorBalance.toFixed(2)} USDC`;
-    document.getElementById('providerBalance').textContent = `${state.providerBalance.toFixed(2)} USDC`;
-}
-
-// Atualizar estatísticas
-function updateStats() {
-    const activeCount = state.contracts.filter(c => 
-        c.status !== CONTRACT_STATUS.COMPLETED && c.status !== CONTRACT_STATUS.CANCELLED
-    ).length;
-    
-    document.getElementById('completedCount').textContent = state.completedContracts;
-    document.getElementById('activeCount').textContent = activeCount;
-}
-
-// Adicionar log
-function addLog(message) {
-    const logContainer = document.getElementById('eventLog');
-    const timestamp = new Date().toLocaleTimeString('pt-BR');
-    
-    if (logContainer.children[0]?.classList.contains('empty-log')) {
-        logContainer.innerHTML = '';
+        });
     }
     
-    const logEntry = document.createElement('div');
-    logEntry.className = 'log-entry';
-    logEntry.innerHTML = `
-        <span class="log-time">[${timestamp}]</span>
-        <span class="log-message">${message}</span>
-    `;
-    
-    logContainer.insertBefore(logEntry, logContainer.firstChild);
-    
-    // Manter apenas os últimos 20 logs
-    while (logContainer.children.length > 20) {
-        logContainer.removeChild(logContainer.lastChild);
-    }
+    // Inicializa os event listeners
+    initEventListeners();
 }
 
-// Mostrar notificação
-function showNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-            ${message}
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
-}
+// Inicializa a aplicação quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', init);
