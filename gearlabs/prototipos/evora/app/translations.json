@@ -1,0 +1,230 @@
+{
+    "pt": {
+        "nav": {
+            "home": "Início",
+            "about": "Sobre",
+            "benefits": "Benefícios",
+            "prototypes": "Protótipos",
+            "examples": "Exemplos",
+            "app": "App"
+        },
+        "hero": {
+            "title": "Evora: Cidades Inteligentes para o Futuro",
+            "subtitle": "Unindo modelos virtuais e protótipos físicos para criar ecossistemas urbanos sustentáveis",
+            "cta": "Acessar o App"
+        },
+        "about": {
+            "title": "Sobre o Projeto Evora",
+            "description": "Evora é uma plataforma educacional que combina modelos 3D interativos com protótipos físicos controlados por Raspberry Pi. Nosso objetivo é ensinar sobre ecossistemas urbanos, permitindo que estudantes e pesquisadores testem soluções sustentáveis para cidades do futuro.",
+            "imageAlt": "Cidade inteligente"
+        },
+        "benefits": {
+            "title": "Benefícios do Evora",
+            "education": {
+                "title": "Educação Prática",
+                "description": "Aprenda sobre urbanismo, sustentabilidade e tecnologia através de exemplos práticos e interativos."
+            },
+            "research": {
+                "title": "Pesquisa Aplicada",
+                "description": "Teste hipóteses e soluções em um ambiente controlado antes da implementação real."
+            },
+            "collaboration": {
+                "title": "Colaboração",
+                "description": "Conecte estudantes, pesquisadores e urbanistas em um projeto colaborativo."
+            }
+        },
+        "prototypes": {
+            "title": "Nossos Protótipos",
+            "hydro": {
+                "title": "Sistema Hidráulico",
+                "description": "Modelo de gestão de recursos hídricos urbanos com sensores e atuadores controlados por Raspberry Pi.",
+                "imageAlt": "Sistema hidráulico"
+            },
+            "energy": {
+                "title": "Modelo Energético",
+                "description": "Sistema de geração e distribuição de energia com fontes renováveis e monitoramento em tempo real.",
+                "imageAlt": "Modelo energético"
+            }
+        },
+        "examples": {
+            "title": "Exemplos com Three.js",
+            "preview": "Preview",
+            "code": "Código",
+            "codeTitle": "Código Three.js",
+            "copy": "Copiar"
+        },
+        "raspberry": {
+            "title": "Exemplos com Raspberry Pi",
+            "python": "Exemplo Python",
+            "mqtt": "MQTT / REST",
+            "pythonTitle": "Controle de Sensores e Atuadores",
+            "mqttTitle": "Comunicação MQTT",
+            "download": "Baixar"
+        },
+        "app": {
+            "title": "Acesse o Aplicativo Evora",
+            "description": "Experimente nossa plataforma interativa e comece a criar suas próprias soluções para cidades sustentáveis.",
+            "web": "Acessar Versão Web",
+            "download": "Baixar Aplicativo"
+        },
+        "footer": {
+            "about": "Sobre",
+            "help": "Como Ajuda",
+            "prototypes": "Protótipos",
+            "app": "App",
+            "copyright": "© 2023 Evora. Todos os direitos reservados."
+        }
+    },
+    "en": {
+        "nav": {
+            "home": "Home",
+            "about": "About",
+            "benefits": "Benefits",
+            "prototypes": "Prototypes",
+            "examples": "Examples",
+            "app": "App"
+        },
+        "hero": {
+            "title": "Evora: Smart Cities for the Future",
+            "subtitle": "Combining virtual models and physical prototypes to create sustainable urban ecosystems",
+            "cta": "Access the App"
+        },
+        "about": {
+            "title": "About the Evora Project",
+            "description": "Evora is an educational platform that combines interactive 3D models with physical prototypes controlled by Raspberry Pi. Our goal is to teach about urban ecosystems, allowing students and researchers to test sustainable solutions for future cities.",
+            "imageAlt": "Smart city"
+        },
+        "benefits": {
+            "title": "Benefits of Evora",
+            "education": {
+                "title": "Practical Education",
+                "description": "Learn about urban planning, sustainability, and technology through practical and interactive examples."
+            },
+            "research": {
+                "title": "Applied Research",
+                "description": "Test hypotheses and solutions in a controlled environment before real implementation."
+            },
+            "collaboration": {
+                "title": "Collaboration",
+                "description": "Connect students, researchers, and urban planners in a collaborative project."
+            }
+        },
+        "prototypes": {
+            "title": "Our Prototypes",
+            "hydro": {
+                "title": "Hydraulic System",
+                "description": "Urban water resource management model with sensors and actuators controlled by Raspberry Pi.",
+                "imageAlt": "Hydraulic system"
+            },
+            "energy": {
+                "title": "Energy Model",
+                "description": "Energy generation and distribution system with renewable sources and real-time monitoring.",
+                "imageAlt": "Energy model"
+            }
+        },
+        "examples": {
+            "title": "Three.js Examples",
+            "preview": "Preview",
+            "code": "Code",
+            "codeTitle": "Three.js Code",
+            "copy": "Copy"
+        },
+        "raspberry": {
+            "title": "Raspberry Pi Examples",
+            "python": "Python Example",
+            "mqtt": "MQTT / REST",
+            "pythonTitle": "Sensor and Actuator Control",
+            "mqttTitle": "MQTT Communication",
+            "download": "Download"
+        },
+        "app": {
+            "title": "Access the Evora App",
+            "description": "Experience our interactive platform and start creating your own solutions for sustainable cities.",
+            "web": "Access Web Version",
+            "download": "Download App"
+        },
+        "footer": {
+            "about": "About",
+            "help": "How It Helps",
+            "prototypes": "Prototypes",
+            "app": "App",
+            "copyright": "© 2023 Evora. All rights reserved."
+        }
+    },
+    "es": {
+        "nav": {
+            "home": "Inicio",
+            "about": "Acerca de",
+            "benefits": "Beneficios",
+            "prototypes": "Prototipos",
+            "examples": "Ejemplos",
+            "app": "App"
+        },
+        "hero": {
+            "title": "Evora: Ciudades Inteligentes para el Futuro",
+            "subtitle": "Combinando modelos virtuales y prototipos físicos para crear ecosistemas urbanos sostenibles",
+            "cta": "Acceder a la App"
+        },
+        "about": {
+            "title": "Acerca del Proyecto Evora",
+            "description": "Evora es una plataforma educativa que combina modelos 3D interactivos con prototipos físicos controlados por Raspberry Pi. Nuestro objetivo es enseñar sobre ecosistemas urbanos, permitiendo que estudiantes e investigadores prueben soluciones sostenibles para las ciudades del futuro.",
+            "imageAlt": "Ciudad inteligente"
+        },
+        "benefits": {
+            "title": "Beneficios de Evora",
+            "education": {
+                "title": "Educación Práctica",
+                "description": "Aprende sobre urbanismo, sostenibilidad y tecnología a través de ejemplos prácticos e interactivos."
+            },
+            "research": {
+                "title": "Investigación Aplicada",
+                "description": "Prueba hipótesis y soluciones en un entorno controlado antes de la implementación real."
+            },
+            "collaboration": {
+                "title": "Colaboración",
+                "description": "Conecta estudiantes, investigadores y urbanistas en un proyecto colaborativo."
+            }
+        },
+        "prototypes": {
+            "title": "Nuestros Prototipos",
+            "hydro": {
+                "title": "Sistema Hidráulico",
+                "description": "Modelo de gestión de recursos hídricos urbanos con sensores y actuadores controlados por Raspberry Pi.",
+                "imageAlt": "Sistema hidráulico"
+            },
+            "energy": {
+                "title": "Modelo Energético",
+                "description": "Sistema de generación y distribución de energía con fuentes renovables y monitoreo en tiempo real.",
+                "imageAlt": "Modelo energético"
+            }
+        },
+        "examples": {
+            "title": "Ejemplos con Three.js",
+            "preview": "Vista previa",
+            "code": "Código",
+            "codeTitle": "Código Three.js",
+            "copy": "Copiar"
+        },
+        "raspberry": {
+            "title": "Ejemplos con Raspberry Pi",
+            "python": "Ejemplo Python",
+            "mqtt": "MQTT / REST",
+            "pythonTitle": "Control de Sensores y Actuadores",
+            "mqttTitle": "Comunicación MQTT",
+            "download": "Descargar"
+        },
+        "app": {
+            "title": "Accede a la App Evora",
+            "description": "Experimenta nuestra plataforma interactiva y comienza a crear tus propias soluciones para ciudades sostenibles.",
+            "web": "Acceder a Versión Web",
+            "download": "Descargar App"
+        },
+        "footer": {
+            "about": "Acerca de",
+            "help": "Cómo Ayuda",
+            "prototypes": "Prototipos",
+            "app": "App",
+            "copyright": "© 2023 Evora. Todos los derechos reservados."
+        }
+    }
+}

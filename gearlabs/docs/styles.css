@@ -238,7 +238,7 @@ body {
 }
 
 /* Footer Styles */
-.footer {
+/*.footer {
     height: var(--footer-height);
     background-color: var(--surface-color);
     border-top: 1px solid var(--border-color);
@@ -249,7 +249,24 @@ body {
     transition: background-color var(--transition-speed), border-color var(--transition-speed);
     margin-left: var(--sidebar-width);
     width: calc(100% - var(--sidebar-width));
+}*/
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: var(--sidebar-width); /* respeita a largura da sidebar */
+    height: var(--footer-height);
+    background-color: var(--surface-color);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+    margin-left: 0; /* não precisa mais, já controlamos com left */
+    width: calc(100% - var(--sidebar-width));
+    z-index: 100; /* garante que fique acima do conteúdo */
 }
+
 
 .footer-links {
     display: flex;
@@ -276,6 +293,11 @@ body {
     .menu-toggle {
         display: block;
     }
+    .footer {
+    left: 0;                 /* não compensa sidebar */
+    width: 100%;             /* ocupa toda a largura */
+    margin-left: 0;          /* garante que não desloque */
+  }
     
     .sidebar {
         transform: translateX(-100%);
