@@ -92,6 +92,13 @@ const prototypes = [
   },
   {
     id: 13,
+    name: "Evora",
+    description: "Um protótipo híbrido que une cidade virtual e modelos físicos para ensinar sobre ecossistemas urbanos e inspirar soluções para desafios reais",
+    image: "img/evora-capa.jpg",
+    link: "prototipos/evora/index.html",
+  },
+  {
+    id: 14,
     name: "Fabr",
     description:
       "Uma plataforma de fabricação colaborativa, onde pessoas combinam habilidades para criar algo novo",
@@ -99,14 +106,14 @@ const prototypes = [
     link: "prototipos/fabr/index.html",
   },
   {
-    id: 14,
+    id: 15,
     name: "GearCity",
     description: "protótipo de simulação social, onde diferentes papéis se conectam como engrenagens, movimentando a cidade de forma colaborativa e imprevisível.",
     image: "img/gearcity-capa.jpg",
     link: "prototipos/gearcity/index.html",
   },
   {
-    id: 15,
+    id: 16,
     name: "Ignis",
     description:"Um concentrador óptico solar que leva a luz do sol para dentro de edifícios, gerando calor para energia, aquecimento e processos industriais. O painel de controle simulado permite monitorar sensores e visualizar dados em tempo real.",
     image: "img/ignis-capa.jpg",
@@ -114,7 +121,7 @@ const prototypes = [
   },
 
   {
-    id: 16,
+    id: 17,
     name: "Mecanico Fantasma",
     description:
       "Monitoramento e analise de sons mecânicos de veículos, identificando divergências e prevenindo falhas",
@@ -122,7 +129,7 @@ const prototypes = [
     link: "prototipos/mecanicofantasma/index.html",
   },
   {
-    id: 17,
+    id: 18,
     name: "Mike e Tio Bob",
     description: "As aventuras de dois dinossauros pelo tempo",
     image: "img/mike-bob-capa.jpg",
@@ -130,7 +137,7 @@ const prototypes = [
   },
 
   {
-    id: 18,
+    id: 19,
     name: "MyHeart",
     description:
       "Simulador cardiácico, com visualizações gráficas e ajustes personalizados.",
@@ -138,7 +145,7 @@ const prototypes = [
     link: "prototipos/myheart/index.html",
   },
   {
-    id: 19,
+    id: 20,
     name: "Oxygen",
     description:
       "Explorando novas formas de gerar energia eficiente e sustentável",
@@ -146,21 +153,21 @@ const prototypes = [
     link: "prototipos/oxygen/index.html",
   },
   {
-    id: 20,
+    id: 21,
     name: "Raiz Urbana",
     description: "Ensinando agricultura urbana de forma simples e acessível",
     image: "img/raiz_urbana_capa.jpg",
     link: "prototipos/raiz_urbana/index.html",
   },
   {
-    id: 21,
+    id: 22,
     name: "SIMCO",
     description: "Simulador da Função Coloretal",
     image: "img/simco-capa.jpg",
     link: "prototipos/simco/index.html",
   },
   {
-    id: 22,
+    id: 23,
     name: "Stairs",
     description:
       "Suba os degraus do conhecimento e transforme suas ideias em realidade",
@@ -169,7 +176,7 @@ const prototypes = [
   },
 
   {
-    id: 23,
+    id: 24,
     name: "Synapse",
     description:
       "Conexão interativa de ideias para colaboração criativa e descoberta coletiva",
@@ -177,7 +184,7 @@ const prototypes = [
     link: "prototipos/synapse/index.html",
   },
   {
-    id: 24,
+    id: 25,
     name: "UnderSea",
     description:
       "Drones subaquáticos para explorar, monitorar e estudar os oceanos de forma autônoma",
@@ -186,14 +193,14 @@ const prototypes = [
   },
 
   {
-    id: 25,
+    id: 26,
     name: "VersoEspresso",
     description: "Café quente, páginas vivas e ideias infinitas",
     image: "img/versoespresso-capa.jpg",
     link: "prototipos/versoespresso/index.html",
   },
   {
-    id: 26,
+    id: 27,
     name: "Viver é uma Arte",
     description:
       "Criação e exposição de arte a áreas carentes, proporcionando bem-estar e renda",

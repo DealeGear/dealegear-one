@@ -1,8 +1,8 @@
 // Dados iniciais para as ferramentas
 const ferramentas = [
-    { titulo: "GearHub", descricao: "Crie seus projetos com a ajuda de frameworks e templates", url: "gearhub/index.html" },
-    { titulo: "GearLabs", descricao: "Veja nossos protótipos e aprenda mais sobre como criar algo novo", url: "gearlabs/index.html" },
-    { titulo: "GearVision", descricao: "Uma plataforma de informações do mundo dos projetos", url: "gearvision/index.html" },
+    { titulo: "GearHub", descricao: "Estruture seu caminho com clareza. Conte com GearHub para montar um planejamento sólido e organizado", url: "gearhub/index.html" },
+    { titulo: "GearLabs", descricao: "Transforme sua melhor ideia em realidade. Precisa de inspiração? Explore GearLabs e conheça nossos protótipos conceituais", url: "gearlabs/index.html" },
+    { titulo: "GearVision", descricao: "Quer dar um passo além? Descubra insights estratégicos para projetos profissionais e comerciais com GearVision", url: "gearvision/index.html" },
     
 ];
 
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     renderFerramentas();
     //initFormValidation();
-    initFAQ();
+    //initFAQ();
     //initTestimonials();
     initMobileMenu();
-    initTimelineAnimation();
+    //initTimelineAnimation();
     initProjectObjective();
 });
 
@@ -135,7 +135,7 @@ function initProjectObjective() {
     }
 }
 // Mostrar modal de sucesso
-function showSuccessModal() {
+/*function showSuccessModal() {
     const modal = document.getElementById('successModal');
     modal.classList.add('show');
     
@@ -148,15 +148,15 @@ function showSuccessModal() {
             closeModal();
         }
     });
-}
+}*/
 
-function closeModal() {
+/*function closeModal() {
     const modal = document.getElementById('successModal');
     modal.classList.remove('show');
-}
+}*/
 
 // Inicializar FAQ accordion
-function initFAQ() {
+/*function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
     
     faqItems.forEach(item => {
@@ -176,7 +176,7 @@ function initFAQ() {
             }
         });
     });
-}
+}*/
 
 // Inicializar carrossel de depoimentos
 /*function initTestimonials() {
@@ -227,7 +227,7 @@ function initMobileMenu() {
 }
 
 // Animação da timeline ao rolar
-function initTimelineAnimation() {
+/*function initTimelineAnimation() {
     const timelineItems = document.querySelectorAll('.timeline-item');
     
     const observerOptions = {
@@ -246,17 +246,17 @@ function initTimelineAnimation() {
     timelineItems.forEach(item => {
         observer.observe(item);
     });
-}
+}*/
 
 // Adicionar efeito parallax suave ao hero
-window.addEventListener('scroll', function() {
+/*window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     const heroIllustration = document.querySelector('.hero-illustration');
     
     if (heroIllustration) {
         heroIllustration.style.transform = `translateY(${scrolled * 0.2}px)`;
     }
-});
+});*/
 
 // Adicionar micro-interações aos cards
 document.addEventListener('DOMContentLoaded', function() {

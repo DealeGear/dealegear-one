@@ -48,20 +48,12 @@ body.dark-mode {
     --text-light: #ffffff;
 }
 
-/* Modo escuro */
-body.dark-mode {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
-    --bg-alt: #404040;
-    --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --text-light: #ffffff;
-}
+
 
 /* Adicione esta regra para garantir que a cor do texto da pergunta mude no modo escuro */
-body.dark-mode .faq-question {
+/*body.dark-mode .faq-question {
     color: var(--text-primary);
-}
+}*/
 
 /* Reset e estilos base */
 * {
@@ -161,7 +153,59 @@ body {
     background: none;
     border: none;
     padding: var(--spacing-xs) var(--spacing-sm);
+  
 }
+
+
+
+
+
+/* Classe para links bonitos e sem marcação de visitado */
+/*.fancy-link,
+.fancy-link:visited {
+  color: #f5f6f7;               /* mesma cor para normal e visitado 
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;       /* necessário para o ::after animar corretamente 
+  transition: color .25s ease;
+  cursor: pointer;
+}*/
+
+/* underline animado que usa a cor do link (currentColor) 
+.fancy-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width .28s cubic-bezier(.2,.8,.2,1);
+  border-radius: 2px;
+}*/
+
+/* hover + foco (acessibilidade) 
+.fancy-link:hover,
+.fancy-link:focus,
+.fancy-link:focus-visible {
+  color: #1e40af;
+  outline: none;               /* o foco visual é tratado abaixo 
+}*/
+
+/* underline aparece no hover/focus 
+.fancy-link:hover::after,
+.fancy-link:focus::after,
+.fancy-link:focus-visible::after {
+  width: 100%;
+}*/
+
+/* foco visível para teclado (acessibilidade) 
+.fancy-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+  border-radius: 4px;
+}*/
+
 
 /* Botões */
 .btn {
@@ -264,6 +308,9 @@ body {
     margin-bottom: var(--spacing-xl);
 }
 
+
+
+
 /* Passos */
 .steps-grid {
     display: grid;
@@ -304,6 +351,11 @@ h3 a {
 }
 
 
+
+
+
+
+
 /* Projetos */
 .projects-grid {
     display: grid;
@@ -336,6 +388,7 @@ h3 a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-md);
+    text-align: center;
 }
 
 .tool-card {
@@ -401,7 +454,7 @@ h3 a {
 }*/
 
 /* Depoimentos */
-.testimonials-container {
+/*.testimonials-container {
     position: relative;
     max-width: 800px;
     margin: 0 auto var(--spacing-lg);
@@ -457,7 +510,7 @@ h3 a {
 
 .community-cta {
     text-align: center;
-}
+}*/
 
 /* Banner de Recursos */
 .resources-banner {
@@ -556,7 +609,7 @@ h3 a {
 }*/
 
 /* FAQ */
-.faq-container {
+/*.faq-container {
     max-width: 800px;
     margin: 0 auto;
 }
@@ -609,7 +662,7 @@ h3 a {
 .faq-answer p {
     padding: 0 var(--spacing-md) var(--spacing-md);
     color: var(--text-secondary);
-}
+}*/
 
 /* CTA Final */
 .cta-final {
