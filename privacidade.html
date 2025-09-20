@@ -4,364 +4,192 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidade - DealeGear</title>
-    
-    <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        /* ===== VARIÁVEIS CSS E ESTILOS GLOBAIS ===== */
+        /* Variáveis de cores e tipografia */
         :root {
-            /* Cores tema claro */
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
             --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-tertiary: #e9ecef;
-            --text-primary: #212529;
-            --text-secondary: #6c757d;
-            --text-tertiary: #868e96;
-            --accent-primary: #2563eb;
-            --accent-secondary: #3b82f6;
-            --accent-hover: #1d4ed8;
-            --border-color: #dee2e6;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-secondary: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --transition: all 0.3s ease;
         }
 
-        [data-theme="dark"] {
-            /* Cores tema escuro */
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-tertiary: #94a3b8;
-            --accent-primary: #60a5fa;
-            --accent-secondary: #3b82f6;
-            --accent-hover: #93c5fd;
-            --border-color: #334155;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* ===== RESET E ESTILOS BASE ===== */
+        /* Reset e estilos base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: var(--font-family);
             line-height: 1.6;
-            transition: var(--transition);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ===== HEADER ===== */
+        /* Container principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
         header {
-            background-color: var(--bg-secondary);
+            background-color: var(--bg-primary);
             border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background-color: rgba(var(--bg-secondary-rgb), 0.95);
-            transition: var(--transition);
+            z-index: 100;
         }
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            padding: 1rem 0;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--accent-primary);
+            color: var(--primary-color);
             text-decoration: none;
-            display: flex;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--primary-hover);
+        }
+
+        .back-button {
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        .back-btn {
-            background-color: var(--bg-tertiary);
-            color: var(--text-primary);
-            border: none;
             padding: 0.5rem 1rem;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            text-decoration: none;
             border-radius: 0.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             font-size: 0.875rem;
             font-weight: 500;
             transition: var(--transition);
-        }
-
-        .back-btn:hover {
-            background-color: var(--accent-primary);
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .controls {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .language-selector, .theme-toggle {
-            background-color: var(--bg-tertiary);
             border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-size: 0.875rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .language-selector:hover, .theme-toggle:hover {
-            background-color: var(--accent-primary);
+        .back-button:hover {
+            background-color: var(--primary-color);
             color: white;
-            border-color: var(--accent-primary);
+            border-color: var(--primary-color);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
 
-        /* ===== HERO SECTION ===== */
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-            padding: 4rem 1.5rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
             text-align: center;
-        }
-
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
+            margin-bottom: 3rem;
         }
 
         .hero h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--text-primary);
             margin-bottom: 1rem;
-            line-height: 1.2;
+            animation: fadeInUp 0.6s ease-out;
         }
 
         .hero p {
             font-size: 1.125rem;
-            color: var(--text-secondary);
+            opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
         }
 
-        /* ===== MAIN CONTENT ===== */
+        /* Conteúdo principal */
         main {
-            flex: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-            width: 100%;
+            padding-bottom: 4rem;
         }
 
-        .policy-section {
+        .privacy-section {
             margin-bottom: 3rem;
-            background-color: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            animation: fadeIn 0.8s ease-out;
         }
 
-        .policy-section:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .policy-section h2 {
-            font-size: 1.5rem;
+        .privacy-section h2 {
+            font-size: 1.75rem;
             font-weight: 600;
-            color: var(--accent-primary);
+            color: var(--text-primary);
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
         }
 
-        .policy-section h2 i {
-            font-size: 1.25rem;
-        }
-
-        .policy-section p {
+        .privacy-section p {
             color: var(--text-secondary);
-            line-height: 1.8;
             margin-bottom: 1rem;
+            text-align: justify;
         }
 
-        .policy-section p:last-child {
-            margin-bottom: 0;
-        }
-
-        .policy-section ul {
+        .privacy-section ul {
             list-style: none;
             padding-left: 1.5rem;
-            margin: 1rem 0;
+            margin-bottom: 1rem;
         }
 
-        .policy-section li {
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
+        .privacy-section li {
             position: relative;
             padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
         }
 
-        .policy-section li::before {
+        .privacy-section li::before {
             content: "•";
-            color: var(--accent-primary);
             position: absolute;
             left: 0;
+            color: var(--primary-color);
             font-weight: bold;
         }
 
-        /* ===== FOOTER ===== */
+        /* Footer */
         footer {
             background-color: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
-            padding: 2rem 1.5rem;
-            margin-top: auto;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 2rem 0;
             text-align: center;
         }
 
-        .footer-brand {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-slogan {
-            color: var(--text-tertiary);
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-copyright {
-            color: var(--text-tertiary);
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
+        .footer-content {
             color: var(--text-secondary);
-            text-decoration: none;
             font-size: 0.875rem;
-            transition: var(--transition);
+            line-height: 1.8;
         }
 
-        .footer-links a:hover {
-            color: var(--accent-primary);
-            text-decoration: underline;
+        .footer-content strong {
+            color: var(--text-primary);
         }
 
-        /* ===== RESPONSIVIDADE ===== */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-wrap: wrap;
-                gap: 0.75rem;
-            }
-
-            .controls {
-                order: 3;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .policy-section {
-                padding: 1.5rem;
-            }
-
-            .policy-section h2 {
-                font-size: 1.25rem;
-            }
-
-            .footer-links {
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-container {
-                padding: 0.75rem 1rem;
-            }
-
-            .hero {
-                padding: 3rem 1rem 2rem;
-            }
-
-            main {
-                padding: 2rem 1rem;
-            }
-
-            .policy-section {
-                padding: 1rem;
-            }
-        }
-
-        /* ===== ANIMAÇÕES ===== */
+        /* Animações */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -373,365 +201,266 @@
             }
         }
 
-        .policy-section {
-            animation: fadeIn 0.6s ease-out forwards;
-            opacity: 0;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .policy-section:nth-child(1) { animation-delay: 0.1s; }
-        .policy-section:nth-child(2) { animation-delay: 0.2s; }
-        .policy-section:nth-child(3) { animation-delay: 0.3s; }
-        .policy-section:nth-child(4) { animation-delay: 0.4s; }
-        .policy-section:nth-child(5) { animation-delay: 0.5s; }
-        .policy-section:nth-child(6) { animation-delay: 0.6s; }
-        .policy-section:nth-child(7) { animation-delay: 0.7s; }
-        .policy-section:nth-child(8) { animation-delay: 0.8s; }
-        .policy-section:nth-child(9) { animation-delay: 0.9s; }
-        .policy-section:nth-child(10) { animation-delay: 1s; }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .privacy-section {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Melhorias de acessibilidade */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
-    <!-- ===== HEADER ===== -->
+    <!-- Header -->
     <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <a href="#" class="logo">
-                    <i class="fas fa-gear"></i>
-                    <span>DealeGear</span>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">DealeGear</a>
+                <a href="#" class="back-button" onclick="goBack()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Voltar
                 </a>
-                <button class="back-btn" onclick="goBack()">
-                    <i class="fas fa-arrow-left"></i>
-                    <span data-i18n="back">Voltar</span>
-                </button>
-            </div>
-            <div class="controls">
-                <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
-                    <option value="pt">🇧🇷 PT</option>
-                    <option value="en">🇺🇸 EN</option>
-                    <option value="es">🇪🇸 ES</option>
-                </select>
-                <button class="theme-toggle" onclick="toggleTheme()">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
             </div>
         </div>
     </header>
 
-    <!-- ===== HERO SECTION ===== -->
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container">
-            <h1 data-i18n="hero_title">Política de Privacidade</h1>
-            <p data-i18n="hero_subtitle">A leitura desta política é importante para entender como o DealeGear lida com seus dados e informações pessoais.</p>
+        <div class="container">
+            <h1>Política de Privacidade</h1>
+            <p>Na DealeGear, levamos sua privacidade a sério. Esta política explica como coletamos, usamos e protegemos suas informações pessoais.</p>
         </div>
     </section>
 
-    <!-- ===== MAIN CONTENT ===== -->
+    <!-- Conteúdo Principal -->
     <main>
-        <section class="policy-section">
-            <h2><i class="fas fa-info-circle"></i> <span data-i18n="section1_title">Introdução</span></h2>
-            <p data-i18n="section1_content">Bem-vindo à Política de Privacidade do DealeGear. Esta política descreve como coletamos, usamos, compartilhamos e protegemos suas informações pessoais quando você utiliza nossos serviços. Estamos comprometidos em garantir a privacidade e segurança dos seus dados.</p>
-        </section>
+        <div class="container">
+            <!-- Introdução -->
+            <section class="privacy-section">
+                <h2>1. Introdução</h2>
+                <p>Bem-vindo à DealeGear! Esta Política de Privacidade descreve como coletamos, usamos, compartilhamos e protegemos suas informações pessoais quando você utiliza nossa plataforma.</p>
+                <p>Estamos comprometidos em proteger sua privacidade e garantir que suas informações sejam tratadas com o máximo cuidado e transparência.</p>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-database"></i> <span data-i18n="section2_title">Coleta de Informações</span></h2>
-            <p data-i18n="section2_content">Coletamos informações que você nos fornece diretamente, como:</p>
-            <ul>
-                <li data-i18n="section2_item1">Nome e informações de contato</li>
-                <li data-i18n="section2_item2">Informações de cadastro e perfil</li>
-                <li data-i18n="section2_item3">Dados de transações e pagamentos</li>
-                <li data-i18n="section2_item4">Informações de comunicação conosco</li>
-            </ul>
-            <p data-i18n="section2_content2">Também coletamos automaticamente informações sobre seu uso dos nossos serviços.</p>
-        </section>
+            <!-- Coleta de Informações -->
+            <section class="privacy-section">
+                <h2>2. Coleta de Informações</h2>
+                <p>Coletamos informações para fornecer e melhorar nossos serviços. As informações podem ser coletadas das seguintes formas:</p>
+                <ul>
+                    <li><strong>Informações fornecidas por você:</strong> Nome, email, senha, perfil e outras informações de cadastro</li>
+                    <li><strong>Informações de uso:</strong> Dados sobre como você interage com a plataforma, como páginas visitadas e recursos utilizados</li>
+                    <li><strong>Informações técnicas:</strong> Endereço IP, tipo de navegador, sistema operacional e dados de dispositivo</li>
+                    <li><strong>Informações de comunicação:</strong> Correspondências e conversas com nossa equipe de suporte</li>
+                </ul>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-cogs"></i> <span data-i18n="section3_title">Uso das Informações</span></h2>
-            <p data-i18n="section3_content">Utilizamos suas informações para:</p>
-            <ul>
-                <li data-i18n="section3_item1">Fornecer e melhorar nossos serviços</li>
-                <li data-i18n="section3_item2">Personalizar sua experiência</li>
-                <li data-i18n="section3_item3">Comunicar atualizações e novidades</li>
-                <li data-i18n="section3_item4">Garantir a segurança e prevenção de fraudes</li>
-                <li data-i18n="section3_item5">Cumprir obrigações legais</li>
-            </ul>
-        </section>
+            <!-- Uso das Informações -->
+            <section class="privacy-section">
+                <h2>3. Uso das Informações</h2>
+                <p>Utilizamos suas informações para os seguintes propósitos:</p>
+                <ul>
+                    <li>Fornecer e manter nossos serviços</li>
+                    <li>Personalizar sua experiência na plataforma</li>
+                    <li>Comunicar atualizações e informações importantes</li>
+                    <li>Oferecer suporte técnico e atendimento ao cliente</li>
+                    <li>Analisar e melhorar nossos serviços</li>
+                    <li>Prevenir atividades fraudulentas e garantir a segurança</li>
+                    <li>Cumprir obrigações legais e regulatórias</li>
+                </ul>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-share-alt"></i> <span data-i18n="section4_title">Compartilhamento de Dados</span></h2>
-            <p data-i18n="section4_content">Não vendemos suas informações pessoais. Compartilhamos dados apenas nas seguintes circunstâncias:</p>
-            <ul>
-                <li data-i18n="section4_item1">Com seu consentimento explícito</li>
-                <li data-i18n="section4_item2">Com parceiros de serviço que nos ajudam a operar</li>
-                <li data-i18n="section4_item3">Quando exigido por lei ou autoridades governamentais</li>
-                <li data-i18n="section4_item4">Para proteger nossos direitos, segurança ou propriedade</li>
-            </ul>
-        </section>
+            <!-- Compartilhamento de Informações -->
+            <section class="privacy-section">
+                <h2>4. Compartilhamento de Informações</h2>
+                <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, exceto nas seguintes circunstâncias:</p>
+                <ul>
+                    <li><strong>Com seu consentimento:</strong> Quando você autoriza expressamente o compartilhamento</li>
+                    <li><strong>Fornecedores de serviços:</strong> Empresas que nos ajudam a operar a plataforma (processamento de pagamentos, hospedagem, etc.)</li>
+                    <li><strong>Obrigações legais:</strong> Quando exigido por lei, ordem judicial ou autoridades governamentais</li>
+                    <li><strong>Proteção de direitos:</strong> Para proteger nossos direitos, propriedade ou segurança</li>
+                </ul>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-cookie-bite"></i> <span data-i18n="section5_title">Cookies e Tecnologias Semelhantes</span></h2>
-            <p data-i18n="section5_content">Utilizamos cookies e tecnologias similares para melhorar sua experiência, analisar o uso do site e personalizar conteúdo. Você pode gerenciar suas preferências de cookies através das configurações do seu navegador.</p>
-        </section>
+            <!-- Armazenamento e Segurança -->
+            <section class="privacy-section">
+                <h2>5. Armazenamento e Segurança</h2>
+                <p>Implementamos medidas técnicas e organizacionais adequadas para proteger suas informações pessoais contra acesso não autorizado, perda, destruição ou alteração.</p>
+                <ul>
+                    <li>Criptografia de dados sensíveis durante transmissão e armazenamento</li>
+                    <li>Controle de acesso restrito a informações pessoais</li>
+                    <li>Monitoramento contínuo de sistemas e atividades</li>
+                    <li>Treinamento regular da equipe sobre práticas de segurança</li>
+                </ul>
+                <p>Seus dados são armazenados em servidores seguros localizados em data centers com alta proteção física e digital.</p>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-shield-alt"></i> <span data-i18n="section6_title">Segurança das Informações</span></h2>
-            <p data-i18n="section6_content">Implementamos medidas de segurança técnicas e organizacionais adequadas para proteger suas informações pessoais contra acesso não autorizado, perda, destruição ou alteração. No entanto, nenhum sistema é 100% seguro, por isso recomendamos que você também tome precauções.</p>
-        </section>
+            <!-- Seus Direitos -->
+            <section class="privacy-section">
+                <h2>6. Seus Direitos</h2>
+                <p>Você tem direitos sobre suas informações pessoais, incluindo:</p>
+                <ul>
+                    <li><strong>Acesso:</strong> Solicitar cópia das informações que mantemos sobre você</li>
+                    <li><strong>Correção:</strong> Atualizar ou corrigir informações imprecisas</li>
+                    <li><strong>Exclusão:</strong> Solicitar remoção de suas informações pessoais</li>
+                    <li><strong>Portabilidade:</strong> Receber suas informações em formato portável</li>
+                    <li><strong>Oposição:</strong> Limitar ou opor-se ao processamento de seus dados</li>
+                </ul>
+                <p>Para exercer esses direitos, entre em contato conosco através dos canais disponíveis nesta política.</p>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-user-shield"></i> <span data-i18n="section7_title">Direitos dos Usuários</span></h2>
-            <p data-i18n="section7_content">Você tem direitos sobre seus dados pessoais, incluindo:</p>
-            <ul>
-                <li data-i18n="section7_item1">Acessar seus dados pessoais</li>
-                <li data-i18n="section7_item2">Corrigir informações incorretas</li>
-                <li data-i18n="section7_item3">Solicitar exclusão de dados</li>
-                <li data-i18n="section7_item4">Limitar o processamento de dados</li>
-                <li data-i18n="section7_item5">Portabilidade de dados</li>
-            </ul>
-        </section>
+            <!-- Cookies e Tecnologias Similares -->
+            <section class="privacy-section">
+                <h2>7. Cookies e Tecnologias Similares</h2>
+                <p>Utilizamos cookies e tecnologias similares para melhorar sua experiência na plataforma:</p>
+                <ul>
+                    <li><strong>Cookies essenciais:</strong> Necessários para o funcionamento básico da plataforma</li>
+                    <li><strong>Cookies de desempenho:</strong> Coletam informações sobre como você utiliza a plataforma</li>
+                    <li><strong>Cookies de funcionalidade:</strong> Lembram suas preferências e configurações</li>
+                    <li><strong>Cookies de publicidade:</strong> Utilizados para exibir anúncios relevantes</li>
+                </ul>
+                <p>Você pode gerenciar suas preferências de cookies através das configurações do seu navegador ou da plataforma.</p>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-sync-alt"></i> <span data-i18n="section8_title">Alterações nesta Política</span></h2>
-            <p data-i18n="section8_content">Podemos atualizar esta política de privacidade periodicamente. Notificaremos sobre alterações significativas através de nossos serviços ou por outros meios de comunicação. Recomendamos que você revise esta política regularmente.</p>
-        </section>
+            <!-- Links para Terceiros -->
+            <section class="privacy-section">
+                <h2>8. Links para Terceiros</h2>
+                <p>Nossa plataforma pode conter links para sites e serviços de terceiros. Esta Política de Privacidade não se aplica a esses sites externos.</p>
+                <p>Recomendamos que você revise as políticas de privacidade desses terceiros antes de fornecer qualquer informação pessoal.</p>
+                <p>A DealeGear não se responsabiliza pelas práticas de privacidade de sites ou serviços de terceiros.</p>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-archive"></i> <span data-i18n="section9_title">Armazenamento e Retenção de Dados</span></h2>
-            <p data-i18n="section9_content">Armazenamos seus dados apenas pelo tempo necessário para cumprir os fins para os quais foram coletados, ou conforme exigido por lei. Após esse período, seus dados serão excluídos ou anonimizados de forma segura.</p>
-        </section>
+            <!-- Alterações nesta Política -->
+            <section class="privacy-section">
+                <h2>9. Alterações nesta Política</h2>
+                <p>Podemos atualizar esta Política de Privacidade periodicamente para refletir mudanças em nossas práticas ou por motivos operacionais, legais ou regulatórios.</p>
+                <p>Notificaremos você sobre quaisquer alterações significativas através:</p>
+                <ul>
+                    <li>Comunicação direta por email</li>
+                    <li>Aviso destacado na plataforma</li>
+                    <li>Atualização da data de "Última atualização" no início desta política</li>
+                </ul>
+                <p>O uso contínuo da plataforma após quaisquer alterações constitui aceitação da nova política.</p>
+            </section>
 
-        <section class="policy-section">
-            <h2><i class="fas fa-envelope"></i> <span data-i18n="section10_title">Contato</span></h2>
-            <p data-i18n="section10_content">Se você tiver dúvidas sobre esta política de privacidade ou sobre como tratamos seus dados, entre em contato conosco através do nosso canal de suporte. Estamos à disposição para ajudar e esclarecer qualquer questão.</p>
-        </section>
+            <!-- Contato -->
+            <section class="privacy-section">
+                <h2>10. Contato</h2>
+                <p>Se você tiver dúvidas, preocupações ou solicitações relacionadas a esta Política de Privacidade, entre em contato conosco:</p>
+                <ul>
+                    <li>Email: privacidade@dealegear.com</li>
+                    <li>Formulário de contato disponível na plataforma</li>
+                    <li>Horário de atendimento: Segunda a Sexta, 9h às 18h</li>
+                </ul>
+                <p>Responderemos às suas solicitações dentro dos prazos legais aplicáveis e com o máximo de transparência possível.</p>
+            </section>
+        </div>
     </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-brand">DealeGear</div>
-            <div class="footer-slogan" data-i18n="footer_slogan">O segredo do sucesso é começar</div>
-            <div class="footer-copyright">© 2022-2025 DealeGear. Todos os direitos reservados. | Licenças abertas quando aplicável.</div>
-            <div class="footer-links">
-                <a href="#" data-i18n="footer_link1">Termos de Uso</a>
-                <a href="#" data-i18n="footer_link2">Central de Ajuda</a>
-                <a href="#" data-i18n="footer_link3">Sobre Nós</a>
-                <a href="#" data-i18n="footer_link4">Blog</a>
+        <div class="container">
+            <div class="footer-content">
+                <strong>DealeGear</strong> – O segredo do sucesso é começar<br>
+                © 2022-2025 DealeGear. Todos os direitos reservados. | Licenças abertas quando aplicável.
             </div>
         </div>
     </footer>
 
     <script>
-        // ===== JSON COM TRADUÇÕES =====
-        const translations = {
-            pt: {
-                back: "Voltar",
-                hero_title: "Política de Privacidade",
-                hero_subtitle: "A leitura desta política é importante para entender como o DealeGear lida com seus dados e informações pessoais.",
-                section1_title: "Introdução",
-                section1_content: "Bem-vindo à Política de Privacidade do DealeGear. Esta política descreve como coletamos, usamos, compartilhamos e protegemos suas informações pessoais quando você utiliza nossos serviços. Estamos comprometidos em garantir a privacidade e segurança dos seus dados.",
-                section2_title: "Coleta de Informações",
-                section2_content: "Coletamos informações que você nos fornece diretamente, como:",
-                section2_item1: "Nome e informações de contato",
-                section2_item2: "Informações de cadastro e perfil",
-                section2_item3: "Dados de transações e pagamentos",
-                section2_item4: "Informações de comunicação conosco",
-                section2_content2: "Também coletamos automaticamente informações sobre seu uso dos nossos serviços.",
-                section3_title: "Uso das Informações",
-                section3_content: "Utilizamos suas informações para:",
-                section3_item1: "Fornecer e melhorar nossos serviços",
-                section3_item2: "Personalizar sua experiência",
-                section3_item3: "Comunicar atualizações e novidades",
-                section3_item4: "Garantir a segurança e prevenção de fraudes",
-                section3_item5: "Cumprir obrigações legais",
-                section4_title: "Compartilhamento de Dados",
-                section4_content: "Não vendemos suas informações pessoais. Compartilhamos dados apenas nas seguintes circunstâncias:",
-                section4_item1: "Com seu consentimento explícito",
-                section4_item2: "Com parceiros de serviço que nos ajudam a operar",
-                section4_item3: "Quando exigido por lei ou autoridades governamentais",
-                section4_item4: "Para proteger nossos direitos, segurança ou propriedade",
-                section5_title: "Cookies e Tecnologias Semelhantes",
-                section5_content: "Utilizamos cookies e tecnologias similares para melhorar sua experiência, analisar o uso do site e personalizar conteúdo. Você pode gerenciar suas preferências de cookies através das configurações do seu navegador.",
-                section6_title: "Segurança das Informações",
-                section6_content: "Implementamos medidas de segurança técnicas e organizacionais adequadas para proteger suas informações pessoais contra acesso não autorizado, perda, destruição ou alteração. No entanto, nenhum sistema é 100% seguro, por isso recomendamos que você também tome precauções.",
-                section7_title: "Direitos dos Usuários",
-                section7_content: "Você tem direitos sobre seus dados pessoais, incluindo:",
-                section7_item1: "Acessar seus dados pessoais",
-                section7_item2: "Corrigir informações incorretas",
-                section7_item3: "Solicitar exclusão de dados",
-                section7_item4: "Limitar o processamento de dados",
-                section7_item5: "Portabilidade de dados",
-                section8_title: "Alterações nesta Política",
-                section8_content: "Podemos atualizar esta política de privacidade periodicamente. Notificaremos sobre alterações significativas através de nossos serviços ou por outros meios de comunicação. Recomendamos que você revise esta política regularmente.",
-                section9_title: "Armazenamento e Retenção de Dados",
-                section9_content: "Armazenamos seus dados apenas pelo tempo necessário para cumprir os fins para os quais foram coletados, ou conforme exigido por lei. Após esse período, seus dados serão excluídos ou anonimizados de forma segura.",
-                section10_title: "Contato",
-                section10_content: "Se você tiver dúvidas sobre esta política de privacidade ou sobre como tratamos seus dados, entre em contato conosco através do nosso canal de suporte. Estamos à disposição para ajudar e esclarecer qualquer questão.",
-                footer_slogan: "O segredo do sucesso é começar",
-                footer_link1: "Termos de Uso",
-                footer_link2: "Central de Ajuda",
-                footer_link3: "Sobre Nós",
-                footer_link4: "Blog"
-            },
-            en: {
-                back: "Back",
-                hero_title: "Privacy Policy",
-                hero_subtitle: "Reading this policy is important to understand how DealeGear handles your data and personal information.",
-                section1_title: "Introduction",
-                section1_content: "Welcome to DealeGear's Privacy Policy. This policy describes how we collect, use, share, and protect your personal information when you use our services. We are committed to ensuring the privacy and security of your data.",
-                section2_title: "Information Collection",
-                section2_content: "We collect information that you provide directly to us, such as:",
-                section2_item1: "Name and contact information",
-                section2_item2: "Registration and profile information",
-                section2_item3: "Transaction and payment data",
-                section2_item4: "Communication information with us",
-                section2_content2: "We also automatically collect information about your use of our services.",
-                section3_title: "Use of Information",
-                section3_content: "We use your information to:",
-                section3_item1: "Provide and improve our services",
-                section3_item2: "Personalize your experience",
-                section3_item3: "Communicate updates and news",
-                section3_item4: "Ensure security and fraud prevention",
-                section3_item5: "Comply with legal obligations",
-                section4_title: "Data Sharing",
-                section4_content: "We do not sell your personal information. We share data only in the following circumstances:",
-                section4_item1: "With your explicit consent",
-                section4_item2: "With service partners who help us operate",
-                section4_item3: "When required by law or government authorities",
-                section4_item4: "To protect our rights, security, or property",
-                section5_title: "Cookies and Similar Technologies",
-                section5_content: "We use cookies and similar technologies to improve your experience, analyze site usage, and personalize content. You can manage your cookie preferences through your browser settings.",
-                section6_title: "Information Security",
-                section6_content: "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, loss, destruction, or alteration. However, no system is 100% secure, so we recommend that you also take precautions.",
-                section7_title: "User Rights",
-                section7_content: "You have rights over your personal data, including:",
-                section7_item1: "Access your personal data",
-                section7_item2: "Correct incorrect information",
-                section7_item3: "Request data deletion",
-                section7_item4: "Limit data processing",
-                section7_item5: "Data portability",
-                section8_title: "Changes to this Policy",
-                section8_content: "We may update this privacy policy periodically. We will notify you of significant changes through our services or other communication methods. We recommend that you review this policy regularly.",
-                section9_title: "Data Storage and Retention",
-                section9_content: "We store your data only for as long as necessary to fulfill the purposes for which it was collected, or as required by law. After this period, your data will be securely deleted or anonymized.",
-                section10_title: "Contact",
-                section10_content: "If you have questions about this privacy policy or how we handle your data, please contact us through our support channel. We are available to help and clarify any questions.",
-                footer_slogan: "The secret to success is to begin",
-                footer_link1: "Terms of Use",
-                footer_link2: "Help Center",
-                footer_link3: "About Us",
-                footer_link4: "Blog"
-            },
-            es: {
-                back: "Volver",
-                hero_title: "Política de Privacidad",
-                hero_subtitle: "La lectura de esta política es importante para entender cómo DealeGear maneja sus datos e información personal.",
-                section1_title: "Introducción",
-                section1_content: "Bienvenido a la Política de Privacidad de DealeGear. Esta política describe cómo recopilamos, usamos, compartimos y protegemos su información personal cuando utiliza nuestros servicios. Estamos comprometidos en garantizar la privacidad y seguridad de sus datos.",
-                section2_title: "Recopilación de Información",
-                section2_content: "Recopilamos información que nos proporciona directamente, como:",
-                section2_item1: "Nombre e información de contacto",
-                section2_item2: "Información de registro y perfil",
-                section2_item3: "Datos de transacciones y pagos",
-                section2_item4: "Información de comunicación con nosotros",
-                section2_content2: "También recopilamos automáticamente información sobre su uso de nuestros servicios.",
-                section3_title: "Uso de la Información",
-                section3_content: "Utilizamos su información para:",
-                section3_item1: "Proporcionar y mejorar nuestros servicios",
-                section3_item2: "Personalizar su experiencia",
-                section3_item3: "Comunicar actualizaciones y novedades",
-                section3_item4: "Garantizar la seguridad y prevención de fraudes",
-                section3_item5: "Cumplir obligaciones legales",
-                section4_title: "Compartición de Datos",
-                section4_content: "No vendemos su información personal. Compartimos datos solo en las siguientes circunstancias:",
-                section4_item1: "Con su consentimiento explícito",
-                section4_item2: "Con socios de servicio que nos ayudan a operar",
-                section4_item3: "Cuando lo exige la ley o autoridades gubernamentales",
-                section4_item4: "Para proteger nuestros derechos, seguridad o propiedad",
-                section5_title: "Cookies y Tecnologías Similares",
-                section5_content: "Utilizamos cookies y tecnologías similares para mejorar su experiencia, analizar el uso del sitio y personalizar contenido. Puede gestionar sus preferencias de cookies a través de la configuración de su navegador.",
-                section6_title: "Seguridad de la Información",
-                section6_content: "Implementamos medidas de seguridad técnicas y organizativas adecuadas para proteger su información personal contra acceso no autorizado, pérdida, destrucción o alteración. Sin embargo, ningún sistema es 100% seguro, por lo que recomendamos que también tome precauciones.",
-                section7_title: "Derechos de los Usuarios",
-                section7_content: "Usted tiene derechos sobre sus datos personales, incluyendo:",
-                section7_item1: "Acceder a sus datos personales",
-                section7_item2: "Corregir información incorrecta",
-                section7_item3: "Solicitar eliminación de datos",
-                section7_item4: "Limitar el procesamiento de datos",
-                section7_item5: "Portabilidad de datos",
-                section8_title: "Cambios en esta Política",
-                section8_content: "Podemos actualizar esta política de privacidad periódicamente. Le notificaremos sobre cambios significativos a través de nuestros servicios u otros medios de comunicación. Recomendamos que revise esta política regularmente.",
-                section9_title: "Almacenamiento y Retención de Datos",
-                section9_content: "Almacenamos sus datos solo por el tiempo necesario para cumplir los fines para los cuales fueron recopilados, o según lo exija la ley. Después de este período, sus datos serán eliminados o anonimizados de forma segura.",
-                section10_title: "Contacto",
-                section10_content: "Si tiene preguntas sobre esta política de privacidad o sobre cómo manejamos sus datos, contáctenos a través de nuestro canal de soporte. Estamos disponibles para ayudar y aclarar cualquier duda.",
-                footer_slogan: "El secreto del éxito es comenzar",
-                footer_link1: "Términos de Uso",
-                footer_link2: "Centro de Ayuda",
-                footer_link3: "Sobre Nosotros",
-                footer_link4: "Blog"
-            }
-        };
-
-        // ===== FUNÇÕES DE TEMA =====
-        function toggleTheme() {
-            const body = document.body;
-            const themeIcon = document.getElementById('themeIcon');
-            
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                themeIcon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // ===== FUNÇÕES DE IDIOMA =====
-        function changeLanguage() {
-            const selector = document.getElementById('languageSelector');
-            const selectedLanguage = selector.value;
-            
-            // Atualizar o atributo lang do HTML
-            document.documentElement.lang = selectedLanguage === 'pt' ? 'pt-BR' : selectedLanguage;
-            
-            // Atualizar todos os elementos com data-i18n
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[selectedLanguage] && translations[selectedLanguage][key]) {
-                    element.textContent = translations[selectedLanguage][key];
-                }
-            });
-            
-            // Salvar preferência no localStorage
-            localStorage.setItem('language', selectedLanguage);
-        }
-
-        // ===== FUNÇÃO VOLTAR =====
+        // Função para voltar à página anterior
         function goBack() {
-            // Redireciona para a página principal
-            window.location.href = '/';
+            // Se houver histórico, volta para a página anterior
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // Se não houver histórico, redireciona para a homepage
+                window.location.href = '/';
+            }
         }
 
-        // ===== INICIALIZAÇÃO =====
+        // Adiciona animação suave ao scroll
         document.addEventListener('DOMContentLoaded', function() {
-            // Carregar tema salvo
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.setAttribute('data-theme', 'dark');
-                document.getElementById('themeIcon').className = 'fas fa-sun';
-            }
-            
-            // Carregar idioma salvo
-            const savedLanguage = localStorage.getItem('language');
-            if (savedLanguage) {
-                document.getElementById('languageSelector').value = savedLanguage;
-                changeLanguage();
-            }
-            
-            // Adicionar suavidade ao scroll
+            // Observador de interseção para animar seções ao aparecer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observa todas as seções de privacidade
+            document.querySelectorAll('.privacy-section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+
+            // Adiciona comportamento de scroll suave para links âncora
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -744,26 +473,12 @@
                     }
                 });
             });
-            
-            // Adicionar efeito de parallax no hero
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const hero = document.querySelector('.hero');
-                if (hero) {
-                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-                }
-            });
         });
 
-        // ===== UTILITÁRIOS =====
-        // Converter valores RGB para suporte de backdrop-filter
-        const style = document.createElement('style');
-        style.textContent = `
-            :root {
-                --bg-secondary-rgb: ${getComputedStyle(document.documentElement).getPropertyValue('--bg-secondary').replace('#', '')};
-            }
-        `;
-        document.head.appendChild(style);
+        // Melhora a experiência de leitura em dispositivos móveis
+        if ('ontouchstart' in window) {
+            document.body.addEventListener('touchstart', function() {}, {passive: true});
+        }
     </script>
 </body>
 </html>
