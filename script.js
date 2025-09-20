@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //initTestimonials();
     initMobileMenu();
     //initTimelineAnimation();
-    initProjectObjective();
+    //initProjectObjective();
 });
 
 // Toggle de tema claro/escuro
@@ -84,46 +84,16 @@ function renderFerramentas() {
     });
 }
 
-
-// Validação do formulário
-/*function initFormValidation() {
-    const form = document.getElementById('projectForm');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Obter valores do formulário
-        const formData = {
-            projectName: document.getElementById('projectName').value,
-            category: document.getElementById('category').value,
-            objective: document.getElementById('objective').value,
-            resources: document.getElementById('resources').value
-        };
-        
-        // Validação simples
-        if (!formData.projectName || !formData.category || !formData.objective || !formData.resources) {
-            alert('Por favor, preencha todos os campos.');
-            return;
-        }
-        
-        // Simular envio e mostrar modal de sucesso
-        showSuccessModal();
-        
-        // Limpar formulário
-        form.reset();
-    });
-}*/
-
 // Textos pré-definidos para o campo 'Objetivo principal'
-const objectiveTexts = {
-    'hobby': 'Meu objetivo é desenvolver um projeto criativo para meu próprio prazer, sem fins lucrativos.',
-    'renda': 'Meu objetivo é criar um projeto que me gere uma fonte de renda extra, complementando meus ganhos atuais.',
-    'carreira': 'Meu objetivo é desenvolver um projeto para construir um portfólio e me ajudar na transição ou crescimento da minha carreira profissional.',
-    'startup': 'Meu objetivo é criar um projeto com potencial para se tornar um negócio escalável e inovador no mercado.'
-};
+//const objectiveTexts = {
+//  'hobby': 'Meu objetivo é desenvolver um projeto criativo para meu próprio prazer, sem fins lucrativos.',
+//    'renda': 'Meu objetivo é criar um projeto que me gere uma fonte de renda extra, complementando meus ganhos atuais.',
+//  'carreira': 'Meu objetivo é desenvolver um projeto para construir um portfólio e me ajudar na transição ou crescimento da minha carreira profissional.',
+//    'startup': 'Meu objetivo é criar um projeto com potencial para se tornar um negócio escalável e inovador no mercado.'
+//};
 
 // Lógica para preencher o campo 'Objetivo principal' com base na categoria
-function initProjectObjective() {
+/*function initProjectObjective() {
     const categorySelect = document.getElementById('category');
     const objectiveTextarea = document.getElementById('objective');
 
@@ -133,7 +103,7 @@ function initProjectObjective() {
             objectiveTextarea.value = objectiveTexts[selectedCategory] || '';
         });
     }
-}
+}*/
 // Mostrar modal de sucesso
 /*function showSuccessModal() {
     const modal = document.getElementById('successModal');

@@ -9,11 +9,16 @@
     <!--<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="icon" type="image/png" href="img/favicon/dealegear-fav.png" />
+    <link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
+<link 
+  rel="icon" 
+  type="image/png" 
+  href="img/favicon/dealegear-fav.png" 
+/>
+
   </head>
   <body>
     <!-- Header Fixo -->
@@ -31,23 +36,10 @@
           </button>
           <ul class="nav-menu" id="navMenu">
             <li><a href="#como-funciona">Como funciona</a></li>
-            <li><a href="#tipos-projetos">Oportunidades</a></li>
-            <!--<li><a href="#comunidade">Comunidade</a></li>-->
-            <!--<li><a href="#ferramentas">Ferramentas</a></li>-->
-            <li>
-              <a href="#treinamentos" class="btn-link" target="_blank"
-                >Aprenda</a
-              >
-            </li>
+            <li><a href="#tipos-projetos">Categorias</a></li>
+            <li><a href="#treinamentos" class="btn-link" target="_blank">Aprenda</a></li>
             <li><a href="#duvidas">Dúvidas</a></li>
-            <li>
-              <a
-                href="gearhub/index.html"
-                class="btn btn-primary"
-                target="_blank"
-                >GearHub</a
-              >
-            </li>
+            <!--<li><a href="gearhub/index.html" class="btn btn-primary" target="_blank">GearHub</a></li>-->
           </ul>
         </div>
       </nav>
@@ -57,15 +49,13 @@
     <section class="hero" id="hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">Ideias não esperam. Construa a sua agora.</h1>
+          <h1 class="hero-title">Ideias não esperam</h1>
+          <h2 class="hero-subtitle-h2">Construa a sua agora</h2>
           <p class="hero-subtitle">
             DealeGear é uma plataforma que ajuda você a iniciar seu próprio
-            projeto — seja hobby, renda extra, mudança de carreira ou startup.
+            projeto, seja hobby, renda extra, mudança de carreira ou startup.
           </p>
-          <!--<div class="hero-buttons">
-                    <a href="#iniciar-projeto" class="btn btn-primary">Iniciar projeto</a>-->
-          <!--<a href="https://dealegear.github.io/Gears/" class="btn btn-secondary" target="_blank" >Explorar ideias</a>
-                </div>-->
+    
         </div>
         <div class="hero-illustration">
           <img
@@ -85,68 +75,51 @@
       </div>
     </section>
 
-    <!-- Ferramentas da Plataforma -->
-    <!--<section id="ferramentas" class="section">
-        <div class="container">
-            <h2 class="section-title">Ferramentas da plataforma</h2>
-            <div id="ferramentas-container" class="tools-grid">-->
-    <!-- Conteúdo dinâmico via JavaScript -->
-    <!--</div>
-        </div>
-    </section>-->
-
-    <!-- Tipos de Projetos -->
+    
+    
     <section id="tipos-projetos" class="section section-alt">
-      <div class="container">
-        <h2 class="section-title">Tipos de projetos possíveis</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <svg class="project-icon" viewBox="0 0 40 40" fill="currentColor">
-              <path d="M20 5 L35 15 L35 25 L20 35 L5 25 L5 15 Z" />
-              <circle cx="20" cy="20" r="8" />
-            </svg>
-            <h3>Hobby</h3>
-            <p>
-              Aprenda enquanto se diverte e transforme seu hobby em algo
-              significativo
-            </p>
-          </div>
-          <div class="project-card">
-            <svg class="project-icon" viewBox="0 0 40 40" fill="currentColor">
-              <path d="M10 15 L30 15 L30 25 L10 25 Z" />
-              <circle cx="15" cy="20" r="3" />
-              <circle cx="25" cy="20" r="3" />
-            </svg>
-            <h3>Renda extra</h3>
-            <p>
-              Crie algo que possa se tornar uma nova fonte de renda no futuro
-            </p>
-          </div>
-          <div class="project-card">
-            <svg class="project-icon" viewBox="0 0 40 40" fill="currentColor">
-              <path d="M20 10 L25 20 L20 30 L15 20 Z" />
-              <path d="M10 20 L30 20" stroke="currentColor" stroke-width="2" />
-            </svg>
-            <h3>Carreira</h3>
-            <p>
-              Use seu conhecimento e suas ideias para gerar novas oportunidades
-              no mercado
-            </p>
-          </div>
-          <div class="project-card">
-            <svg class="project-icon" viewBox="0 0 40 40" fill="currentColor">
-              <path d="M20 5 L30 15 L25 30 L15 30 L10 15 Z" />
-              <circle cx="20" cy="20" r="5" />
-            </svg>
-            <h3>Startup</h3>
-            <p>
-              Transforme uma ideia em negócio: comece pequeno, aprenda e cresça
-              com consitência
-            </p>
-          </div>
-        </div>
+  <div class="container">
+    <h2 class="section-title">Tipos de projetos possíveis</h2>
+    <div class="projects-grid">
+      
+      <div class="project-card">
+        <i class="fas fa-gamepad project-icon"></i>
+        <h3>Hobby</h3>
+        <p>
+          Aprenda enquanto se diverte e transforme seu hobby em algo significativo
+        </p>
       </div>
-    </section>
+
+      <div class="project-card">
+        <i class="fas fa-coins project-icon"></i>
+        <h3>Renda extra</h3>
+        <p>
+          Crie algo que possa se tornar uma nova fonte de renda no futuro
+        </p>
+      </div>
+
+      <div class="project-card">
+        <i class="fas fa-briefcase project-icon"></i>
+        <h3>Carreira</h3>
+        <p>
+          Use seu conhecimento e suas ideias para gerar novas oportunidades no mercado
+        </p>
+      </div>
+
+      <div class="project-card">
+        <i class="fas fa-lightbulb project-icon"></i>
+        <h3>Startup</h3>
+        <p>
+          Transforme uma ideia em negócio: comece pequeno, aprenda e cresça com consistência
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    
+    
 
     <!-- Como Funciona -->
     <!--background: linear-gradient(135deg, var(--accent-blue), var(--accent-lime));
@@ -155,166 +128,49 @@
       <div class="container">
         <h2 class="resources-banner-title">Quer aprender mais?</h2>
         <div class="steps-grid">
-          
-             <a href="gearblog/index.html">
+          <a href="gearblog/index.html" class="step-link">
             <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Blog</h3>
-            <p>
-             
-                Acompanhe postagens atualizadas sobre projetos e criações
+              <div class="step-number">1</div>
+              <h3>Blog</h3>
+              <p>
+                Acompanhe postagens sobre criações
                 inspiradoras feitas por pessoas como nós em todo o mundo
-              
-            </p>
-          </div></a>
+              </p>
+            </div></a>
+          
 
-          <a href="https://www.youtube.com/@dealegear" target="_blank">
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>Youtube</h3>
-            <p>
-              Confira nossa playlist com conteúdos práticos e úteis para
-              impulsionar suas próprias criações
-            </p>
-          </div></a>
-          <a href="https://hotmart.com/pt-br/marketplace/produtos/treinamento-dealegear-um-novo-jeito-de-criar-projetos-para-iniciantes-e-avancados" target="_blank">
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>Treinamento</h3>
-            <p>
-              Desenvolvemos um treinamento completo na Hotmart — clique aqui e
-              descubra tudo o que preparamos para você aprender
-            </p>
-          </div>
-          </a>
+          <a href="https://www.youtube.com/@dealegear" class="step-link" target="_blank">
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <h3>Youtube</h3>
+              <p>
+                Confira nossa playlist com conteúdos úteis para
+                impulsionar suas próprias criações
+              </p>
+            </div></a>
+          <a
+            href="https://hotmart.com/pt-br/marketplace/produtos/treinamento-dealegear-um-novo-jeito-de-criar-projetos-para-iniciantes-e-avancados" class="step-link"
+            target="_blank"
+          >
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <h3>Treinamento</h3>
+              <p>
+                Desenvolvemos um treinamento na Hotmart — clique aqui e
+                descubra tudo o que preparamos para você
+              </p>
+            </div></a>
+          
         </div>
       </div>
     </section>
 
-    <!-- TREINAMENTO -->
-    <!--<section class="resources-banner">
-        <section id="treinamento"></section>
-        <div class="container">
-            <h2 class="section-title">Treinamentos</h2>
-            <div class="resources-grid">
-                <div class="resource-item">
-                    <svg class="resource-icon" viewBox="0 0 40 40" fill="currentColor">
-                        <path d="M20 5 L35 20 L20 35 L5 20 Z"/>
-                        <text x="20" y="25" text-anchor="middle" font-size="12" fill="white">?</text>
-                    </svg>
-                    <h3>Cursos Grátis</h3>
-                    <p>Não espere a perfeição para começar. Ação vale mais que planejamento: o primeiro passo é o que tira sua ideia do papel e inicia sua jornada empreendedora.</p>
-                </div>
-                <div class="resource-item">
-                    <svg class="resource-icon" viewBox="0 0 40 40" fill="currentColor">
-                        <circle cx="20" cy="20" r="15"/>
-                        <path d="M20 10 L25 20 L20 30 L15 20 Z" fill="white"/>
-                    </svg>
-                    <h3>Cursos Pagos</h3>
-                    <p>O sucesso de um projeto está na utilidade: resolva um problema real ou desejo do público para ter propósito e motivação</p>
-                </div>-->
-    <!--<div class="resource-item">
-                   <svg class="resource-icon" viewBox="0 0 40 40" fill="currentColor">
-                        <rect x="10" y="10" width="20" height="20"/>
-                        <line x1="15" y1="15" x2="25" y2="15" stroke="white" stroke-width="2"/>
-                        <line x1="15" y1="20" x2="25" y2="20" stroke="white" stroke-width="2"/>
-                        <line x1="15" y1="25" x2="20" y2="25" stroke="white" stroke-width="2"/>
-                    </svg>
-                    <h3>Comece Pequeno para Crescer Grande</h3>
-                    <p>Comece com a versão mais simples do projeto. Lance rápido, aprenda com o feedback e evolua continuamente</p>
-                </div>
-                <div class="resource-item">
-                    <svg class="resource-icon" viewBox="0 0 40 40" fill="currentColor">
-                        <circle cx="20" cy="20" r="15"/>
-                        <path d="M15 20 L18 23 L25 16" stroke="white" stroke-width="3" fill="none"/>
-                    </svg>
-                    <h3>O Aprendizado Nunca Termina</h3>
-                    <p>Seu primeiro projeto é aprendizado: aceite erros, busque ajuda e adapte-se. A evolução traz resiliência</p>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
-    <!-- FAQ -->
-    <!--- <section id="perguntas" class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">Perguntas Frequentes</h2>
-    <div class="faq-container" id="faqContainer">
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>O que é o DealeGear?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-            <p></p>
-          <p>O DealeGear é uma plataforma criada para transformar ideias em projetos concretos. Com ferramentas, templates e protótipos, você pode estruturar seu planejamento e evoluir passo a passo. Não garantimos sucesso instantâneo, mas prometemos uma jornada rica em aprendizados que você levará para toda a vida.</p>
-          <p></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>Preciso pagar para usar?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-            <p></p>
-          <p>Não. O acesso ao DealeGear é gratuito enquanto a plataforma estiver em fase beta. No futuro, poderemos oferecer planos avançados com recursos extras para quem deseja expandir seus projetos.</p>
-          <p></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>Quais benefícios eu ganho criando um projeto?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-            <p></p>
-          <p>Ao criar um projeto, você desenvolve novas habilidades, adquire experiência prática e fortalece sua capacidade de resolver problemas. Esse conhecimento poderá ser aplicado em outros projetos, em sua carreira profissional e até para apoiar pessoas ao seu redor.</p>
-          <p></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>Existe algum desafio ou desvantagem?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-            <p></p>
-          <p>Sim, dedicar-se a um projeto exige tempo e disciplina, e pode significar abrir mão de outras atividades. Mas com equilíbrio e organização, esses desafios se tornam parte natural do processo de crescimento.</p>
-          <p></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>Meu projeto pode virar uma startup?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-            <p></p>
-          <p>Com certeza. Muitos projetos nascem pequenos e evoluem até se tornarem startups de sucesso. O DealeGear te apoia nas fases iniciais — planejamento, prototipagem e aprendizado. Para avançar, pode ser necessário buscar novos parceiros e recursos externos.</p>
-          <p> </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>-->
 
     <!-- CTA Final -->
     <section id="duvidas" class="cta-final">
       <div class="container">
-        <h2 class="cta-title">Ainda tem dúvidas?</h2>
-        <a
-          href="gearhub/index.html"
-          class="btn btn-primary btn-xlarge"
-          target="_blank"
-          >Comece por aqui</a
-        >
+        <h2 class="cta-title">Ainda tem dúvidas? Comece por aqui!</h2>
+        <a href="gearmap.html" class="btn btn-primary btn-xlarge" target="_blank">GearMap</a>
       </div>
     </section>
 
@@ -330,9 +186,9 @@
           <div class="footer-section">
             <h4>Termos</h4>
             <ul>
-              <li><a href="#">Termos de Uso</a></li>
-              <li><a href="#">Política de Privacidade</a></li>
-              <li><a href="#">Licença de Uso</a></li>
+              <li><a href="termos.html">Termos de Uso</a></li>
+              <li><a href="privacidade.html">Política de Privacidade</a></li>
+              <li><a href="uso.html">Licença de Uso</a></li>
             </ul>
           </div>
 
@@ -341,8 +197,8 @@
             <ul>
               <!--<li><a href="gearops/index.html">GearOps</a></li>-->
               <li><a href="gearlabs/docs/index.html">Documentação</a></li>
-              <li><a href="gearblog/index.html">Figma</a></li>
-              <li><a href="gearblog/index.html">Notion</a></li>
+              <li><a href="https://www.figma.com/@dealegear" target="_blank">Figma</a></li>
+              <li><a href="https://www.notion.so/DealeGear-27495ef334078046811ae77285d93099?source=copy_link" target="_blank">Notion</a></li>
             </ul>
           </div>
 
@@ -366,7 +222,7 @@
 
         <div class="footer-bottom">
           <p>
-            &copy; 2025 DealeGear. Todos os direitos reservados. | Licenças
+            &copy; 2022-2025 DealeGear. Todos os direitos reservados. | Licenças
             abertas quando aplicável.
           </p>
         </div>
@@ -457,6 +313,6 @@
       </svg>
     </button>
 
-    <script src="app.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Termos de Uso - DealeGear</title>
+
+    <!-- Ícone da página -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>"
+    />
+
+    <style>
+      /* Variáveis CSS para temas */
+      :root {
+        /* Cores do tema claro */
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8f9fa;
+        --bg-tertiary: #e9ecef;
+        --text-primary: #212529;
+        --text-secondary: #6c757d;
+        --text-tertiary: #495057;
+        --accent: #0066cc;
+        --accent-hover: #0052a3;
+        --border: #dee2e6;
+         --border-color: #dee2e6;
+        --shadow: rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+         --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+         --bg-card: #ffffff;
+      }
+
+      [data-theme="dark"] {
+        /* Cores do tema escuro */
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2d2d2d;
+        --bg-tertiary: #3a3a3a;
+        --text-primary: #ffffff;
+        --text-secondary: #b0b0b0;
+        --text-tertiary: #d0d0d0;
+        --accent: #4da3ff;
+        --accent-hover: #3d8fe6;
+        --border: #404040;
+        --border-color: #404040;
+        --shadow: rgba(0, 0, 0, 0.3);
+         --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+         --bg-card: #242424;
+      }
+
+      /* Reset e estilos base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        transition: var(--transition);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Container principal */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+      }
+
+      /* Header */
+      header {
+        background-color: var(--bg-card);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+      }
+
+      .header-content {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-between;
+               
+      }
+
+      
+      .back-button {
+        align-items: center;
+        background-color: var(--accent);
+        
+        border: none;
+        border-radius: 0.5rem;
+        color: white;
+        cursor: pointer;
+        display: inline-flex;
+        font-size: 0.9rem;
+        font-weight: 500;
+        gap: 0.5rem;
+        padding: 0.3rem 1rem;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .back-button:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-1px);
+        /*box-shadow: 0 4px 12px var(--shadow);*/
+        box-shadow: var(--shadow-hover);
+      }
+
+      /*Novo estilo logo*/
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: var(--transition);
+      }
+
+      .logo:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Controles de tema e idioma */
+      .controls {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .control-button {
+       align-items: center;
+
+  background-color: var(--bg-card);
+border:0px solid var(--border-color);
+border-radius: 6px;
+color: var(--text-primary);
+cursor: pointer;
+display: flex;
+font-size: 0.9rem;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+transition: var(--transition);
+
+      }
+
+      .control-button:hover {
+        background-color: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      /* Seção Hero */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--accent-hover) 100%
+        );
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Conteúdo principal */
+      main {
+        flex: 1;
+        padding-bottom: 3rem;
+      }
+
+      .terms-content {
+        background-color: var(--bg-secondary);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px var(--shadow);
+        margin-bottom: 2rem;
+      }
+
+      .terms-section {
+        margin-bottom: 2.5rem;
+      }
+
+      .terms-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .terms-section h2 {
+        color: var(--accent);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--border);
+      }
+
+      .terms-section p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        text-align: justify;
+      }
+
+      .terms-section ul {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+
+      .terms-section li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--bg-tertiary);
+        border-top: 1px solid var(--border);
+        padding: 2rem 0;
+        margin-top: auto;
+      }
+
+      .footer-content {
+        text-align: center;
+      }
+
+      .footer-brand {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-copyright {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: var(--text-tertiary);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+
+      /* Responsividade */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .header-content {
+          justify-content: center;
+          text-align: center;
+        }
+
+        .terms-content {
+          padding: 1.5rem;
+        }
+
+        .footer-links {
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .controls {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .control-button {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .hero {
+          padding: 2rem 0;
+        }
+
+        .hero h1 {
+          font-size: 1.75rem;
+        }
+      }
+
+      /* Animações */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .terms-section {
+        animation: fadeIn 0.5s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo-section">
+            <div class="logo">
+              <span>⚙️</span>
+              <span>DealeGear</span>
+            </div>
+            <a href="index.html" class="back-button" onclick="goBack()">
+              <span>←</span>
+              <span data-i18n="back">Voltar</span>
+            </a>
+          </div>
+          <div class="controls">
+            <button class="control-button" onclick="toggleLanguage()">
+              <span>🌐</span>
+              <span id="currentLang">PT</span>
+            </button>
+            <button class="control-button" onclick="toggleTheme()">
+              <span id="themeIcon">🌙</span>
+              <span data-i18n="theme">Modo Escuro</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1 data-i18n="heroTitle">Termos de Uso</h1>
+        <p data-i18n="heroSubtitle">
+          É importante ler atentamente estes termos antes de utilizar nossa
+          plataforma.
+        </p>
+      </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <main>
+      <div class="container">
+        <div class="terms-content">
+          <!-- Introdução -->
+          <section class="terms-section">
+            <h2 data-i18n="section1Title">1. Introdução</h2>
+            <p data-i18n="section1Content">
+              Bem-vindo ao DealeGear. Estes Termos de Uso regem sua utilização
+              de nossa plataforma e serviços. Ao acessar ou utilizar nossos
+              serviços, você concorda em cumprir estes termos. Se você não
+              concorda com qualquer parte destes termos, por favor, não utilize
+              nossos serviços.
+            </p>
+          </section>
+
+          <!-- Aceitação dos Termos -->
+          <section class="terms-section">
+            <h2 data-i18n="section2Title">2. Aceitação dos Termos</h2>
+            <p data-i18n="section2Content">
+              Ao criar uma conta ou utilizar a plataforma DealeGear, você
+              declara ter lido, compreendido e concordado com estes Termos de
+              Uso. Estes termos constituem um acordo legalmente vinculativo
+              entre você e o DealeGear.
+            </p>
+          </section>
+
+          <!-- Uso da Plataforma -->
+          <section class="terms-section">
+            <h2 data-i18n="section3Title">3. Uso da Plataforma</h2>
+            <p data-i18n="section3Content">
+              O DealeGear oferece uma plataforma para conexão entre usuários
+              interessados em negócios e oportunidades. Você concorda em
+              utilizar a plataforma apenas para fins legais e de acordo com
+              todas as leis aplicáveis.
+            </p>
+            <ul>
+              <li data-i18n="section3Item1">
+                Não utilizar a plataforma para atividades fraudulentas ou
+                ilegais
+              </li>
+              <li data-i18n="section3Item2">
+                Respeitar os direitos de outros usuários
+              </li>
+              <li data-i18n="section3Item3">
+                Não compartilhar informações falsas ou enganosas
+              </li>
+              <li data-i18n="section3Item4">
+                Manter a confidencialidade de suas credenciais de acesso
+              </li>
+            </ul>
+          </section>
+
+          <!-- Cadastro e Conta do Usuário -->
+          <section class="terms-section">
+            <h2 data-i18n="section4Title">4. Cadastro e Conta do Usuário</h2>
+            <p data-i18n="section4Content">
+              Para utilizar determinados recursos da plataforma, você precisará
+              criar uma conta. Você é responsável por fornecer informações
+              precisas e atualizadas durante o cadastro e mantê-las atualizadas.
+            </p>
+          </section>
+
+          <!-- Direitos e Responsabilidades do Usuário -->
+          <section class="terms-section">
+            <h2 data-i18n="section5Title">
+              5. Direitos e Responsabilidades do Usuário
+            </h2>
+            <p data-i18n="section5Content">
+              Como usuário da plataforma DealeGear, você tem o direito de:
+            </p>
+            <ul>
+              <li data-i18n="section5Item1">
+                Acessar e utilizar os recursos disponíveis na plataforma
+              </li>
+              <li data-i18n="section5Item2">
+                Receber suporte técnico quando necessário
+              </li>
+              <li data-i18n="section5Item3">
+                Solicitar a exclusão de sua conta a qualquer momento
+              </li>
+            </ul>
+            <p data-i18n="section5Content2">Você é responsável por:</p>
+            <ul>
+              <li data-i18n="section5Item4">Manter a segurança de sua conta</li>
+              <li data-i18n="section5Item5">
+                Respeitar as políticas da plataforma
+              </li>
+              <li data-i18n="section5Item6">Reportar atividades suspeitas</li>
+            </ul>
+          </section>
+
+          <!-- Direitos e Responsabilidades da Plataforma -->
+          <section class="terms-section">
+            <h2 data-i18n="section6Title">
+              6. Direitos e Responsabilidades da Plataforma
+            </h2>
+            <p data-i18n="section6Content">O DealeGear se compromete a:</p>
+            <ul>
+              <li data-i18n="section6Item1">
+                Manter a plataforma funcionando adequadamente
+              </li>
+              <li data-i18n="section6Item2">
+                Proteger os dados dos usuários conforme nossa política de
+                privacidade
+              </li>
+              <li data-i18n="section6Item3">
+                Fornecer atualizações e melhorias contínuas
+              </li>
+            </ul>
+            <p data-i18n="section6Content2">
+              A plataforma reserva-se o direito de:
+            </p>
+            <ul>
+              <li data-i18n="section6Item4">
+                Suspender contas que violem estes termos
+              </li>
+              <li data-i18n="section6Item5">
+                Modificar ou descontinuar serviços a qualquer momento
+              </li>
+            </ul>
+          </section>
+
+          <!-- Propriedade Intelectual -->
+          <section class="terms-section">
+            <h2 data-i18n="section7Title">7. Propriedade Intelectual</h2>
+            <p data-i18n="section7Content">
+              Todo o conteúdo disponível na plataforma DealeGear, incluindo
+              textos, gráficos, logos, imagens e software, é propriedade do
+              DealeGear ou de seus licenciadores e está protegido por leis de
+              propriedade intelectual.
+            </p>
+          </section>
+
+          <!-- Limitação de Responsabilidade -->
+          <section class="terms-section">
+            <h2 data-i18n="section8Title">8. Limitação de Responsabilidade</h2>
+            <p data-i18n="section8Content">
+              O DealeGear não será responsável por quaisquer danos diretos,
+              indiretos, incidentais, especiais ou consequenciais resultantes do
+              uso ou da incapacidade de usar a plataforma, incluindo, mas não se
+              limitando a, lucros cessantes, perda de dados ou danos à
+              reputação.
+            </p>
+          </section>
+
+          <!-- Modificações dos Termos -->
+          <section class="terms-section">
+            <h2 data-i18n="section9Title">9. Modificações dos Termos</h2>
+            <p data-i18n="section9Content">
+              O DealeGear reserva-se o direito de modificar estes Termos de Uso
+              a qualquer momento. As modificações entrarão em vigor
+              imediatamente após sua publicação na plataforma. É sua
+              responsabilidade revisar periodicamente estes termos.
+            </p>
+          </section>
+
+          <!-- Contato -->
+          <section class="terms-section">
+            <h2 data-i18n="section10Title">10. Contato</h2>
+            <p data-i18n="section10Content">
+              Se você tiver dúvidas sobre estes Termos de Uso, entre em contato
+              conosco através do e-mail: contato@dealegear.com ou através de
+              nosso formulário de suporte na plataforma.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            DealeGear – O segredo do sucesso é começar
+          </div>
+          <div class="footer-copyright">
+            © 2022-2025 DealeGear. Todos os direitos reservados. | Licenças
+            abertas quando aplicável.
+          </div>
+         
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // JSON com textos em três idiomas
+      const translations = {
+        pt: {
+          back: "Voltar",
+          theme: "Modo Escuro",
+          heroTitle: "Termos de Uso",
+          heroSubtitle:
+            "É importante ler atentamente estes termos antes de utilizar nossa plataforma.",
+          section1Title: "1. Introdução",
+          section1Content:
+            "Bem-vindo ao DealeGear. Estes Termos de Uso regem sua utilização de nossa plataforma e serviços. Ao acessar ou utilizar nossos serviços, você concorda em cumprir estes termos. Se você não concorda com qualquer parte destes termos, por favor, não utilize nossos serviços.",
+          section2Title: "2. Aceitação dos Termos",
+          section2Content:
+            "Ao criar uma conta ou utilizar a plataforma DealeGear, você declara ter lido, compreendido e concordado com estes Termos de Uso. Estes termos constituem um acordo legalmente vinculativo entre você e o DealeGear.",
+          section3Title: "3. Uso da Plataforma",
+          section3Content:
+            "O DealeGear oferece uma plataforma para conexão entre usuários interessados em negócios e oportunidades. Você concorda em utilizar a plataforma apenas para fins legais e de acordo com todas as leis aplicáveis.",
+          section3Item1:
+            "Não utilizar a plataforma para atividades fraudulentas ou ilegais",
+          section3Item2: "Respeitar os direitos de outros usuários",
+          section3Item3: "Não compartilhar informações falsas ou enganosas",
+          section3Item4:
+            "Manter a confidencialidade de suas credenciais de acesso",
+          section4Title: "4. Cadastro e Conta do Usuário",
+          section4Content:
+            "Para utilizar determinados recursos da plataforma, você precisará criar uma conta. Você é responsável por fornecer informações precisas e atualizadas durante o cadastro e mantê-las atualizadas.",
+          section5Title: "5. Direitos e Responsabilidades do Usuário",
+          section5Content:
+            "Como usuário da plataforma DealeGear, você tem o direito de:",
+          section5Item1:
+            "Acessar e utilizar os recursos disponíveis na plataforma",
+          section5Item2: "Receber suporte técnico quando necessário",
+          section5Item3: "Solicitar a exclusão de sua conta a qualquer momento",
+          section5Content2: "Você é responsável por:",
+          section5Item4: "Manter a segurança de sua conta",
+          section5Item5: "Respeitar as políticas da plataforma",
+          section5Item6: "Reportar atividades suspeitas",
+          section6Title: "6. Direitos e Responsabilidades da Plataforma",
+          section6Content: "O DealeGear se compromete a:",
+          section6Item1: "Manter a plataforma funcionando adequadamente",
+          section6Item2:
+            "Proteger os dados dos usuários conforme nossa política de privacidade",
+          section6Item3: "Fornecer atualizações e melhorias contínuas",
+          section6Content2: "A plataforma reserva-se o direito de:",
+          section6Item4: "Suspender contas que violem estes termos",
+          section6Item5:
+            "Modificar ou descontinuar serviços a qualquer momento",
+          section7Title: "7. Propriedade Intelectual",
+          section7Content:
+            "Todo o conteúdo disponível na plataforma DealeGear, incluindo textos, gráficos, logos, imagens e software, é propriedade do DealeGear ou de seus licenciadores e está protegido por leis de propriedade intelectual.",
+          section8Title: "8. Limitação de Responsabilidade",
+          section8Content:
+            "O DealeGear não será responsável por quaisquer danos diretos, indiretos, incidentais, especiais ou consequenciais resultantes do uso ou da incapacidade de usar a plataforma, incluindo, mas não se limitando a, lucros cessantes, perda de dados ou danos à reputação.",
+          section9Title: "9. Modificações dos Termos",
+          section9Content:
+            "O DealeGear reserva-se o direito de modificar estes Termos de Uso a qualquer momento. As modificações entrarão em vigor imediatamente após sua publicação na plataforma. É sua responsabilidade revisar periodicamente estes termos.",
+          section10Title: "10. Contato",
+          section10Content:
+            "Se você tiver dúvidas sobre estes Termos de Uso, entre em contato conosco através do e-mail: contato@dealegear.com ou através de nosso formulário de suporte na plataforma.",
+          footerLink1: "Sobre Nós",
+          footerLink2: "Privacidade",
+          footerLink3: "Suporte",
+          footerLink4: "Blog",
+        },
+        en: {
+          back: "Back",
+          theme: "Dark Mode",
+          heroTitle: "Terms of Use",
+          heroSubtitle:
+            "It is important to carefully read these terms before using our platform.",
+          section1Title: "1. Introduction",
+          section1Content:
+            "Welcome to DealeGear. These Terms of Use govern your use of our platform and services. By accessing or using our services, you agree to comply with these terms. If you do not agree with any part of these terms, please do not use our services.",
+          section2Title: "2. Acceptance of Terms",
+          section2Content:
+            "By creating an account or using the DealeGear platform, you declare that you have read, understood, and agree to these Terms of Use. These terms constitute a legally binding agreement between you and DealeGear.",
+          section3Title: "3. Platform Use",
+          section3Content:
+            "DealeGear offers a platform for connecting users interested in business and opportunities. You agree to use the platform only for legal purposes and in accordance with all applicable laws.",
+          section3Item1:
+            "Do not use the platform for fraudulent or illegal activities",
+          section3Item2: "Respect the rights of other users",
+          section3Item3: "Do not share false or misleading information",
+          section3Item4:
+            "Maintain the confidentiality of your access credentials",
+          section4Title: "4. User Registration and Account",
+          section4Content:
+            "To use certain features of the platform, you will need to create an account. You are responsible for providing accurate and up-to-date information during registration and keeping it updated.",
+          section5Title: "5. User Rights and Responsibilities",
+          section5Content:
+            "As a user of the DealeGear platform, you have the right to:",
+          section5Item1:
+            "Access and use the features available on the platform",
+          section5Item2: "Receive technical support when necessary",
+          section5Item3: "Request account deletion at any time",
+          section5Content2: "You are responsible for:",
+          section5Item4: "Maintaining your account security",
+          section5Item5: "Respecting platform policies",
+          section5Item6: "Reporting suspicious activities",
+          section6Title: "6. Platform Rights and Responsibilities",
+          section6Content: "DealeGear commits to:",
+          section6Item1: "Keeping the platform functioning properly",
+          section6Item2: "Protecting user data according to our privacy policy",
+          section6Item3: "Providing continuous updates and improvements",
+          section6Content2: "The platform reserves the right to:",
+          section6Item4: "Suspend accounts that violate these terms",
+          section6Item5: "Modify or discontinue services at any time",
+          section7Title: "7. Intellectual Property",
+          section7Content:
+            "All content available on the DealeGear platform, including texts, graphics, logos, images, and software, is the property of DealeGear or its licensors and is protected by intellectual property laws.",
+          section8Title: "8. Limitation of Liability",
+          section8Content:
+            "DealeGear will not be liable for any direct, indirect, incidental, special, or consequential damages resulting from the use or inability to use the platform, including but not limited to lost profits, data loss, or reputational damage.",
+          section9Title: "9. Modifications to Terms",
+          section9Content:
+            "DealeGear reserves the right to modify these Terms of Use at any time. Modifications will take effect immediately upon their publication on the platform. It is your responsibility to periodically review these terms.",
+          section10Title: "10. Contact",
+          section10Content:
+            "If you have questions about these Terms of Use, please contact us at: contato@dealegear.com or through our support form on the platform.",
+          footerLink1: "About Us",
+          footerLink2: "Privacy",
+          footerLink3: "Support",
+          footerLink4: "Blog",
+        },
+        es: {
+          back: "Volver",
+          theme: "Modo Oscuro",
+          heroTitle: "Términos de Uso",
+          heroSubtitle:
+            "Es importante leer atentamente estos términos antes de utilizar nuestra plataforma.",
+          section1Title: "1. Introducción",
+          section1Content:
+            "Bienvenido a DealeGear. Estos Términos de Uso rigen su utilización de nuestra plataforma y servicios. Al acceder o utilizar nuestros servicios, usted acepta cumplir con estos términos. Si no está de acuerdo con alguna parte de estos términos, por favor no utilice nuestros servicios.",
+          section2Title: "2. Aceptación de los Términos",
+          section2Content:
+            "Al crear una cuenta o utilizar la plataforma DealeGear, usted declara haber leído, comprendido y aceptado estos Términos de Uso. Estos términos constituyen un acuerdo legalmente vinculante entre usted y DealeGear.",
+          section3Title: "3. Uso de la Plataforma",
+          section3Content:
+            "DealeGear ofrece una plataforma para conectar a usuarios interesados en negocios y oportunidades. Usted acepta utilizar la plataforma solo para fines legales y de acuerdo con todas las leyes aplicables.",
+          section3Item1:
+            "No utilizar la plataforma para actividades fraudulentas o ilegales",
+          section3Item2: "Respetar los derechos de otros usuarios",
+          section3Item3: "No compartir información falsa o engañosa",
+          section3Item4:
+            "Mantener la confidencialidad de sus credenciales de acceso",
+          section4Title: "4. Registro y Cuenta de Usuario",
+          section4Content:
+            "Para utilizar determinadas funciones de la plataforma, necesitará crear una cuenta. Usted es responsable de proporcionar información precisa y actualizada durante el registro y mantenerla actualizada.",
+          section5Title: "5. Derechos y Responsabilidades del Usuario",
+          section5Content:
+            "Como usuario de la plataforma DealeGear, usted tiene derecho a:",
+          section5Item1:
+            "Acceder y utilizar las funciones disponibles en la plataforma",
+          section5Item2: "Recibir soporte técnico cuando sea necesario",
+          section5Item3:
+            "Solicitar la eliminación de su cuenta en cualquier momento",
+          section5Content2: "Usted es responsable de:",
+          section5Item4: "Mantener la seguridad de su cuenta",
+          section5Item5: "Respetar las políticas de la plataforma",
+          section5Item6: "Reportar actividades sospechosas",
+          section6Title: "6. Derechos y Responsabilidades de la Plataforma",
+          section6Content: "DealeGear se compromete a:",
+          section6Item1: "Mantener la plataforma funcionando adecuadamente",
+          section6Item2:
+            "Proteger los datos de los usuarios según nuestra política de privacidad",
+          section6Item3: "Proporcionar actualizaciones y mejoras continuas",
+          section6Content2: "La plataforma se reserva el derecho de:",
+          section6Item4: "Suspender cuentas que violen estos términos",
+          section6Item5:
+            "Modificar o discontinuar servicios en cualquier momento",
+          section7Title: "7. Propiedad Intelectual",
+          section7Content:
+            "Todo el contenido disponible en la plataforma DealeGear, incluyendo textos, gráficos, logos, imágenes y software, es propiedad de DealeGear o sus licenciantes y está protegido por leyes de propiedad intelectual.",
+          section8Title: "8. Limitación de Responsabilidad",
+          section8Content:
+            "DealeGear no será responsable por ningún daño directo, indirecto, incidental, especial o consecuente que resulte del uso o la incapacidad de usar la plataforma, incluyendo pero no limitado a pérdidas de beneficios, pérdida de datos o daños a la reputación.",
+          section9Title: "9. Modificaciones de los Términos",
+          section9Content:
+            "DealeGear se reserva el derecho de modificar estos Términos de Uso en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación en la plataforma. Es su responsabilidad revisar periódicamente estos términos.",
+          section10Title: "10. Contacto",
+          section10Content:
+            "Si tiene preguntas sobre estos Términos de Uso, contáctenos a través del correo electrónico: contato@dealegear.com o a través de nuestro formulario de soporte en la plataforma.",
+          footerLink1: "Sobre Nosotros",
+          footerLink2: "Privacidad",
+          footerLink3: "Soporte",
+          footerLink4: "Blog",
+        },
+      };
+
+      // Variáveis globais
+      let currentLanguage = "pt";
+      let currentTheme = "light";
+
+      // Inicialização
+      document.addEventListener("DOMContentLoaded", function () {
+        // Verificar tema salvo
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+          currentTheme = savedTheme;
+          applyTheme();
+        }
+
+        // Verificar idioma salvo
+        const savedLanguage = localStorage.getItem("language");
+        if (savedLanguage && translations[savedLanguage]) {
+          currentLanguage = savedLanguage;
+          updateLanguage();
+        }
+
+        // Adicionar listener para tecla ESC
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            goBack();
+          }
+        });
+      });
+
+      // Função para voltar à página principal
+      function goBack() {
+        // Simula volta para a landpage
+        window.location.href = "#";
+        // Em produção, seria: window.history.back() ou redirecionar para a URL da landpage
+      }
+
+      // Função para alternar tema
+      function toggleTheme() {
+        currentTheme = currentTheme === "light" ? "dark" : "light";
+        applyTheme();
+        localStorage.setItem("theme", currentTheme);
+      }
+
+      // Aplicar tema
+      function applyTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById("themeIcon");
+        const themeText = document.querySelector('[data-i18n="theme"]');
+
+        if (currentTheme === "dark") {
+          body.setAttribute("data-theme", "dark");
+          themeIcon.textContent = "☀️";
+          if (themeText) {
+            themeText.textContent =
+              translations[currentLanguage].theme === "Modo Escuro"
+                ? "Modo Claro"
+                : translations[currentLanguage].theme === "Dark Mode"
+                ? "Light Mode"
+                : "Modo Claro";
+          }
+        } else {
+          body.removeAttribute("data-theme");
+          themeIcon.textContent = "🌙";
+          if (themeText) {
+            themeText.textContent = translations[currentLanguage].theme;
+          }
+        }
+      }
+
+      // Função para alternar idioma
+      function toggleLanguage() {
+        const languages = ["pt", "en", "es"];
+        const currentIndex = languages.indexOf(currentLanguage);
+        currentLanguage = languages[(currentIndex + 1) % languages.length];
+        updateLanguage();
+        localStorage.setItem("language", currentLanguage);
+      }
+
+      // Atualizar idioma
+      function updateLanguage() {
+        const elements = document.querySelectorAll("[data-i18n]");
+        const langCode = document.getElementById("currentLang");
+
+        // Atualizar todos os elementos com data-i18n
+        elements.forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[currentLanguage][key]) {
+            element.textContent = translations[currentLanguage][key];
+          }
+        });
+
+        // Atualizar código do idioma no botão
+        if (langCode) {
+          langCode.textContent = currentLanguage.toUpperCase();
+        }
+
+        // Atualizar atributo lang do HTML
+        document.documentElement.lang = currentLanguage;
+      }
+
+      // Adicionar suavização de scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Detectar preferência de tema do sistema
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        if (!localStorage.getItem("theme")) {
+          currentTheme = "dark";
+          applyTheme();
+        }
+      }
+
+      // Ouvir mudanças na preferência de tema do sistema
+      if (window.matchMedia) {
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (!localStorage.getItem("theme")) {
+              currentTheme = e.matches ? "dark" : "light";
+              applyTheme();
+            }
+          });
+      }
+    </script>
+  </body>
+</html>

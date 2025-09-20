@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Licença de Uso - DealeGear</title>
+
+    <!-- Ícone da página -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>"
+    />
+
+    <!-- Estilos CSS -->
+    <style>
+      /* ===== VARIÁVEIS CSS E RESET ===== */
+      :root {
+        /* Cores modo claro */
+        --bg-primary: #ffffff;
+        --bg-secondary: #0676e6;
+        --bg-card: #ffffff;
+        --text-primary: #212529;
+        --text-secondary: #6c757d;
+        --text-muted: #adb5bd;
+        --border-color: #dee2e6;
+        --accent-color: #0066cc;
+        --accent-hover: #0052a3;
+        --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+        --transition: all 0.3s ease;
+      }
+
+      [data-theme="dark"] {
+        /* Cores modo escuro */
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #0676e6;
+        --bg-card: #242424;
+        --text-primary: #ffffff;
+        --text-secondary: #b0b0b0;
+        --text-muted: #6c757d;
+        --accent: #4da3ff;
+        --border-color: #404040;
+        --accent-color: white;
+        --accent-hover: #66b3ff;
+        --shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Reset e estilos base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        transition: var(--transition);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background-color: var(--bg-card);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: var(--transition);
+      }
+
+      .header-container {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        
+        
+        
+        
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: var(--transition);
+      }
+
+      .logo:hover {
+        transform: translateY(-2px);
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .btn {
+        align-items: center;
+background-color: var(--accent);
+border: none;
+border-radius: 0.5rem;
+color: var(--text-primary);
+cursor: pointer;
+display: flex;
+font-size: 0.9rem;
+font-weight: 500;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+text-decoration: none;
+transition: var(--transition);
+
+      }
+
+      .btn-primary {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color:var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn-secondary {
+        background-color:var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--border-color);
+        transform: translateY(-2px);
+      }
+
+      .btn-icon {
+        padding: 0.5rem;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Dropdown para seleção de idioma */
+      .language-dropdown {
+        position: relative;
+      }
+
+      .language-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 0.5rem;
+        background-color: var(--bg-card);
+        border: 0px solid var(--border-color);
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow-hover);
+        display: none;
+        min-width: 150px;
+        overflow: hidden;
+      }
+
+      .language-menu.active {
+        display: block;
+      }
+
+      .language-option {
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .language-option:hover {
+        background-color: var(--bg-secondary);
+
+        
+      }
+
+/*Botão de idioma*/
+      .control-button {
+       align-items: center;
+background-color: var(--bg-tertiary);
+border:1px solid var(--border);
+border-radius: 6px;
+color: var(--text-primary);
+cursor: pointer;
+display: flex;
+font-size: 0.9rem;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+transition: var(--transition);
+
+      }
+
+      .control-button:hover {
+        background-color: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      /* ===== MAIN CONTENT ===== */
+      main {
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem 0;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* License Sections */
+      .license-container {
+        background-color: var(--bg-card);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+      }
+
+      .license-section {
+        margin-bottom: 2.5rem;
+      }
+
+      .license-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .license-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .license-section p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        text-align: justify;
+      }
+
+      .license-section ul {
+        list-style: none;
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .license-section li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+      }
+
+      .license-section li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background-color: var(--bg-secondary);
+        border-top: 1px solid var(--border-color);
+        padding: 2rem 1.5rem;
+        margin-top: auto;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .footer-brand {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .footer-copyright {
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-color);
+        transform: translateY(-2px);
+      }
+
+      /* ===== RESPONSIVIDADE ===== */
+      @media (max-width: 768px) {
+        .header-container {
+          padding: 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .license-container {
+          padding: 1.5rem;
+        }
+
+        .license-section h2 {
+          font-size: 1.3rem;
+        }
+
+        .footer-links {
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-container {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .controls {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .hero h1 {
+          font-size: 1.75rem;
+        }
+
+        .license-container {
+          padding: 1rem;
+        }
+      }
+
+      /* ===== ANIMAÇÕES ===== */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .license-section {
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      /* ===== SCROLLBAR ===== */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-hover);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== HEADER ===== -->
+    <header>
+      <div class="header-container">
+        <div class="logo-section">
+          <a href="#" class="logo" onclick="goBack()"> ⚙️ DealeGear </a>
+           <!-- Botão Voltar -->
+          <button class="btn btn-secondary" onclick="goBack()">
+            ← <span data-i18n="back">Voltar</span>
+          </button>
+        </div>
+        
+
+
+        <div class="controls">
+         <button class="control-button" onclick="toggleLanguage()">
+              <span>🌐</span>
+              <span id="currentLang">PT</span>
+            </button>
+            <button class="control-button" onclick="toggleTheme()">
+              <span id="themeIcon">🌙</span>
+              <span data-i18n="theme">Modo Escuro</span>
+            </button>
+
+          <!-- Seletor de Idioma -->
+          <div class="language-dropdown">
+            <button
+              class="btn btn-secondary btn-icon"
+              onclick="toggleLanguageMenu()"
+            >
+              🌐
+            </button>
+            <div class="language-menu" id="languageMenu">
+              <div class="language-option" onclick="changeLanguage('pt')">
+                🇧🇷 Português
+              </div>
+              <div class="language-option" onclick="changeLanguage('en')">
+                🇺🇸 English
+              </div>
+              <div class="language-option" onclick="changeLanguage('es')">
+                🇪🇸 Español
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão Modo Escuro -->
+          <button class="btn btn-secondary btn-icon" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1 data-i18n="licenseTitle">Licença de Uso</h1>
+        <p data-i18n="licenseSubtitle">
+          Este documento define como o usuário pode utilizar o DealeGear e seus
+          conteúdos.
+        </p>
+      </section>
+
+      <!-- License Container -->
+      <div class="license-container">
+        <!-- Introdução -->
+        <section class="license-section">
+          <h2 data-i18n="introduction">Introdução</h2>
+          <p data-i18n="introText1">
+            Bem-vindo ao DealeGear. Ao utilizar nosso software, serviços e
+            conteúdos, você concorda com os termos e condições estabelecidos
+            nesta Licença de Uso.
+          </p>
+          <p data-i18n="introText2">
+            Esta licença concede a você direitos específicos de uso e estabelece
+            as obrigações e restrições aplicáveis à sua interação com nossa
+            plataforma.
+          </p>
+        </section>
+
+        <!-- Concessão da Licença -->
+        <section class="license-section">
+          <h2 data-i18n="licenseGrant">Concessão da Licença</h2>
+          <p data-i18n="grantText1">
+            O DealeGear concede ao usuário uma licença não exclusiva, não
+            transferível e limitada para utilizar o software e serviços conforme
+            estabelecido nestes termos.
+          </p>
+          <p data-i18n="grantText2">
+            Esta licença é válida enquanto o usuário cumprir com todos os termos
+            estabelecidos e enquanto o DealeGear disponibilizar os serviços.
+          </p>
+        </section>
+
+        <!-- Restrições de Uso -->
+        <section class="license-section">
+          <h2 data-i18n="usageRestrictions">Restrições de Uso</h2>
+          <p data-i18n="restrictionsText1">O usuário não poderá:</p>
+          <ul>
+            <li data-i18n="restriction1">
+              Copiar, modificar ou distribuir o software sem autorização
+              expressa
+            </li>
+            <li data-i18n="restriction2">
+              Utilizar o software para fins ilegais ou não autorizados
+            </li>
+            <li data-i18n="restriction3">
+              Tentar descompilar, engenharia reversa ou desmontar o software
+            </li>
+            <li data-i18n="restriction4">
+              Remover ou alterar quaisquer avisos de direitos autorais ou marcas
+              registradas
+            </li>
+          </ul>
+        </section>
+
+        <!-- Propriedade Intelectual -->
+        <section class="license-section">
+          <h2 data-i18n="intellectualProperty">Propriedade Intelectual</h2>
+          <p data-i18n="propertyText1">
+            Todo o conteúdo do DealeGear, incluindo mas não limitado a software,
+            textos, gráficos, logos e imagens, é propriedade intelectual do
+            DealeGear ou de seus licenciadores.
+          </p>
+          <p data-i18n="propertyText2">
+            Nenhuma propriedade intelectual é transferida ao usuário através
+            desta licença, exceto os direitos expressamente concedidos aqui.
+          </p>
+        </section>
+
+        <!-- Uso Pessoal e Comercial -->
+        <section class="license-section">
+          <h2 data-i18n="personalCommercialUse">Uso Pessoal e Comercial</h2>
+          <p data-i18n="useText1">
+            O DealeGear oferece diferentes tipos de licença para uso pessoal e
+            comercial. Consulte nosso plano de serviços para determinar qual
+            licença se aplica ao seu caso.
+          </p>
+          <p data-i18n="useText2">
+            O uso comercial requer a aquisição de uma licença comercial
+            específica e está sujeito a termos adicionais.
+          </p>
+        </section>
+
+        <!-- Limitações e Responsabilidades -->
+        <section class="license-section">
+          <h2 data-i18n="limitations">Limitações e Responsabilidades</h2>
+          <p data-i18n="limitationsText1">
+            O DealeGear não se responsabiliza por:
+          </p>
+          <ul>
+            <li data-i18n="limitation1">
+              Danos diretos, indiretos, incidentais ou consequenciais
+              resultantes do uso do software
+            </li>
+            <li data-i18n="limitation2">
+              Perda de dados ou interrupção de negócios
+            </li>
+            <li data-i18n="limitation3">
+              Uso indevido do software por parte do usuário
+            </li>
+          </ul>
+        </section>
+
+        <!-- Garantias e Isenções -->
+        <section class="license-section">
+          <h2 data-i18n="warranties">Garantias e Isenções</h2>
+          <p data-i18n="warrantiesText1">
+            O DealeGear fornece o software "no estado em que se encontra", sem
+            garantias expressas ou implícitas de qualquer tipo.
+          </p>
+          <p data-i18n="warrantiesText2">
+            Não garantimos que o software será ininterrupto, livre de erros ou
+            atenderá às suas necessidades específicas.
+          </p>
+        </section>
+
+        <!-- Término da Licença -->
+        <section class="license-section">
+          <h2 data-i18n="termination">Término da Licença</h2>
+          <p data-i18n="terminationText1">
+            Esta licença será automaticamente terminada se o usuário violar
+            qualquer um de seus termos.
+          </p>
+          <p data-i18n="terminationText2">
+            Após o término, o usuário deve cessar imediatamente o uso do
+            software e destruir todas as cópias em seu poder.
+          </p>
+        </section>
+
+        <!-- Alterações da Licença -->
+        <section class="license-section">
+          <h2 data-i18n="changes">Alterações da Licença</h2>
+          <p data-i18n="changesText1">
+            O DealeGear reserva-se o direito de modificar esta licença a
+            qualquer momento, notificando os usuários através de nossos canais
+            oficiais.
+          </p>
+          <p data-i18n="changesText2">
+            O uso continuado do software após quaisquer alterações constitui
+            aceitação dos novos termos.
+          </p>
+        </section>
+
+        <!-- Contato -->
+        <section class="license-section">
+          <h2 data-i18n="contact">Contato</h2>
+          <p data-i18n="contactText1">
+            Para dúvidas sobre esta licença ou para solicitar autorizações
+            especiais, entre em contato conosco:
+          </p>
+          <p data-i18n="contactText2">Email: legal@dealegear.com</p>
+          <p data-i18n="contactText3">Suporte: support@dealegear.com</p>
+        </section>
+      </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-brand" data-i18n="footerBrand">
+          DealeGear – O segredo do sucesso é começar
+        </div>
+        <div class="footer-copyright" data-i18n="footerCopyright">
+          © 2022-2025 DealeGear. Todos os direitos reservados. | Licenças
+          abertas quando aplicável.
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+      // ===== DADOS DE TRADUÇÃO (JSON) =====
+      const translations = {
+        pt: {
+          back: "Voltar",
+          licenseTitle: "Licença de Uso",
+          licenseSubtitle:
+            "Este documento define como o usuário pode utilizar o DealeGear e seus conteúdos.",
+          introduction: "Introdução",
+          introText1:
+            "Bem-vindo ao DealeGear. Ao utilizar nosso software, serviços e conteúdos, você concorda com os termos e condições estabelecidos nesta Licença de Uso.",
+          introText2:
+            "Esta licença concede a você direitos específicos de uso e estabelece as obrigações e restrições aplicáveis à sua interação com nossa plataforma.",
+          licenseGrant: "Concessão da Licença",
+          grantText1:
+            "O DealeGear concede ao usuário uma licença não exclusiva, não transferível e limitada para utilizar o software e serviços conforme estabelecido nestes termos.",
+          grantText2:
+            "Esta licença é válida enquanto o usuário cumprir com todos os termos estabelecidos e enquanto o DealeGear disponibilizar os serviços.",
+          usageRestrictions: "Restrições de Uso",
+          restrictionsText1: "O usuário não poderá:",
+          restriction1:
+            "Copiar, modificar ou distribuir o software sem autorização expressa",
+          restriction2:
+            "Utilizar o software para fins ilegais ou não autorizados",
+          restriction3:
+            "Tentar descompilar, engenharia reversa ou desmontar o software",
+          restriction4:
+            "Remover ou alterar quaisquer avisos de direitos autorais ou marcas registradas",
+          intellectualProperty: "Propriedade Intelectual",
+          propertyText1:
+            "Todo o conteúdo do DealeGear, incluindo mas não limitado a software, textos, gráficos, logos e imagens, é propriedade intelectual do DealeGear ou de seus licenciadores.",
+          propertyText2:
+            "Nenhuma propriedade intelectual é transferida ao usuário através desta licença, exceto os direitos expressamente concedidos aqui.",
+          personalCommercialUse: "Uso Pessoal e Comercial",
+          useText1:
+            "O DealeGear oferece diferentes tipos de licença para uso pessoal e comercial. Consulte nosso plano de serviços para determinar qual licença se aplica ao seu caso.",
+          useText2:
+            "O uso comercial requer a aquisição de uma licença comercial específica e está sujeito a termos adicionais.",
+          limitations: "Limitações e Responsabilidades",
+          limitationsText1: "O DealeGear não se responsabiliza por:",
+          limitation1:
+            "Danos diretos, indiretos, incidentais ou consequenciais resultantes do uso do software",
+          limitation2: "Perda de dados ou interrupção de negócios",
+          limitation3: "Uso indevido do software por parte do usuário",
+          warranties: "Garantias e Isenções",
+          warrantiesText1:
+            'O DealeGear fornece o software "no estado em que se encontra", sem garantias expressas ou implícitas de qualquer tipo.',
+          warrantiesText2:
+            "Não garantimos que o software será ininterrupto, livre de erros ou atenderá às suas necessidades específicas.",
+          termination: "Término da Licença",
+          terminationText1:
+            "Esta licença será automaticamente terminada se o usuário violar qualquer um de seus termos.",
+          terminationText2:
+            "Após o término, o usuário deve cessar imediatamente o uso do software e destruir todas as cópias em seu poder.",
+          changes: "Alterações da Licença",
+          changesText1:
+            "O DealeGear reserva-se o direito de modificar esta licença a qualquer momento, notificando os usuários através de nossos canais oficiais.",
+          changesText2:
+            "O uso continuado do software após quaisquer alterações constitui aceitação dos novos termos.",
+          contact: "Contato",
+          contactText1:
+            "Para dúvidas sobre esta licença ou para solicitar autorizações especiais, entre em contato conosco:",
+          contactText2: "Email: legal@dealegear.com",
+          contactText3: "Suporte: support@dealegear.com",
+          footerBrand: "DealeGear – O segredo do sucesso é começar",
+          footerCopyright:
+            "© 2022-2025 DealeGear. Todos os direitos reservados. | Licenças abertas quando aplicável.",
+        },
+        en: {
+          back: "Back",
+          licenseTitle: "License of Use",
+          licenseSubtitle:
+            "This document defines how the user can use DealeGear and its contents.",
+          introduction: "Introduction",
+          introText1:
+            "Welcome to DealeGear. By using our software, services and content, you agree to the terms and conditions established in this License of Use.",
+          introText2:
+            "This license grants you specific usage rights and establishes the obligations and restrictions applicable to your interaction with our platform.",
+          licenseGrant: "License Grant",
+          grantText1:
+            "DealeGear grants the user a non-exclusive, non-transferable and limited license to use the software and services as established in these terms.",
+          grantText2:
+            "This license is valid as long as the user complies with all established terms and while DealeGear provides the services.",
+          usageRestrictions: "Usage Restrictions",
+          restrictionsText1: "The user may not:",
+          restriction1:
+            "Copy, modify or distribute the software without express authorization",
+          restriction2: "Use the software for illegal or unauthorized purposes",
+          restriction3:
+            "Attempt to decompile, reverse engineer or disassemble the software",
+          restriction4: "Remove or alter any copyright or trademark notices",
+          intellectualProperty: "Intellectual Property",
+          propertyText1:
+            "All content of DealeGear, including but not limited to software, texts, graphics, logos and images, is intellectual property of DealeGear or its licensors.",
+          propertyText2:
+            "No intellectual property is transferred to the user through this license, except the rights expressly granted herein.",
+          personalCommercialUse: "Personal and Commercial Use",
+          useText1:
+            "DealeGear offers different types of licenses for personal and commercial use. Consult our service plan to determine which license applies to your case.",
+          useText2:
+            "Commercial use requires the acquisition of a specific commercial license and is subject to additional terms.",
+          limitations: "Limitations and Responsibilities",
+          limitationsText1: "DealeGear is not responsible for:",
+          limitation1:
+            "Direct, indirect, incidental or consequential damages resulting from the use of the software",
+          limitation2: "Loss of data or business interruption",
+          limitation3: "Improper use of the software by the user",
+          warranties: "Warranties and Disclaimers",
+          warrantiesText1:
+            'DealeGear provides the software "as is", without express or implied warranties of any kind.',
+          warrantiesText2:
+            "We do not guarantee that the software will be uninterrupted, error-free or will meet your specific needs.",
+          termination: "License Termination",
+          terminationText1:
+            "This license will be automatically terminated if the user violates any of its terms.",
+          terminationText2:
+            "After termination, the user must immediately cease use of the software and destroy all copies in their possession.",
+          changes: "License Changes",
+          changesText1:
+            "DealeGear reserves the right to modify this license at any time, notifying users through our official channels.",
+          changesText2:
+            "Continued use of the software after any changes constitutes acceptance of the new terms.",
+          contact: "Contact",
+          contactText1:
+            "For questions about this license or to request special authorizations, please contact us:",
+          contactText2: "Email: legal@dealegear.com",
+          contactText3: "Support: support@dealegear.com",
+          footerBrand: "DealeGear – The secret of success is to begin",
+          footerCopyright:
+            "© 2022-2025 DealeGear. All rights reserved. | Open licenses when applicable.",
+        },
+        es: {
+          back: "Volver",
+          licenseTitle: "Licencia de Uso",
+          licenseSubtitle:
+            "Este documento define cómo el usuario puede utilizar DealeGear y sus contenidos.",
+          introduction: "Introducción",
+          introText1:
+            "Bienvenido a DealeGear. Al utilizar nuestro software, servicios y contenidos, usted acepta los términos y condiciones establecidos en esta Licencia de Uso.",
+          introText2:
+            "Esta licencia le otorga derechos específicos de uso y establece las obligaciones y restricciones aplicables a su interacción con nuestra plataforma.",
+          licenseGrant: "Otorgamiento de la Licencia",
+          grantText1:
+            "DealeGear otorga al usuario una licencia no exclusiva, no transferible y limitada para utilizar el software y servicios según lo establecido en estos términos.",
+          grantText2:
+            "Esta licencia es válida mientras el usuario cumpla con todos los términos establecidos y mientras DealeGear disponibilice los servicios.",
+          usageRestrictions: "Restricciones de Uso",
+          restrictionsText1: "El usuario no podrá:",
+          restriction1:
+            "Copiar, modificar o distribuir el software sin autorización expresa",
+          restriction2:
+            "Utilizar el software para fines ilegales o no autorizados",
+          restriction3:
+            "Intentar descompilar, ingeniería inversa o desmontar el software",
+          restriction4:
+            "Remover o alterar cualquier aviso de derechos de autor o marcas registradas",
+          intellectualProperty: "Propiedad Intelectual",
+          propertyText1:
+            "Todo el contenido de DealeGear, incluyendo pero no limitado a software, textos, gráficos, logos e imágenes, es propiedad intelectual de DealeGear o sus licenciantes.",
+          propertyText2:
+            "Ninguna propiedad intelectual es transferida al usuario a través de esta licencia, excepto los derechos expresamente otorgados aquí.",
+          personalCommercialUse: "Uso Personal y Comercial",
+          useText1:
+            "DealeGear ofrece diferentes tipos de licencia para uso personal y comercial. Consulte nuestro plan de servicios para determinar qué licencia se aplica a su caso.",
+          useText2:
+            "El uso comercial requiere la adquisición de una licencia comercial específica y está sujeto a términos adicionales.",
+          limitations: "Limitaciones y Responsabilidades",
+          limitationsText1: "DealeGear no se responsabiliza por:",
+          limitation1:
+            "Daños directos, indirectos, incidentales o consecuentes resultantes del uso del software",
+          limitation2: "Pérdida de datos o interrupción de negocios",
+          limitation3: "Uso indebido del software por parte del usuario",
+          warranties: "Garantías y Exenciones",
+          warrantiesText1:
+            'DealeGear proporciona el software "tal cual", sin garantías expresas o implícitas de ningún tipo.',
+          warrantiesText2:
+            "No garantizamos que el software será ininterrumpido, libre de errores o cumplirá con sus necesidades específicas.",
+          termination: "Terminación de la Licencia",
+          terminationText1:
+            "Esta licencia será automáticamente terminada si el usuario viola cualquiera de sus términos.",
+          terminationText2:
+            "Después de la terminación, el usuario debe cesar inmediatamente el uso del software y destruir todas las copias en su poder.",
+          changes: "Cambios en la Licencia",
+          changesText1:
+            "DealeGear se reserva el derecho de modificar esta licencia en cualquier momento, notificando a los usuarios a través de nuestros canales oficiales.",
+          changesText2:
+            "El uso continuado del software después de cualquier cambio constituye aceptación de los nuevos términos.",
+          contact: "Contacto",
+          contactText1:
+            "Para preguntas sobre esta licencia o para solicitar autorizaciones especiales, contáctenos:",
+          contactText2: "Email: legal@dealegear.com",
+          contactText3: "Soporte: support@dealegear.com",
+          footerBrand: "DealeGear – El secreto del éxito es empezar",
+          footerCopyright:
+            "© 2022-2025 DealeGear. Todos los derechos reservados. | Licencias abiertas cuando sea aplicable.",
+        },
+      };
+
+      // ===== VARIÁVEIS GLOBAIS =====
+      let currentLanguage = "pt";
+      let currentTheme = "light";
+
+      // ===== FUNÇÕES DE TEMA =====
+      /**
+       * Alterna entre modo claro e escuro
+       */
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById("themeIcon");
+
+        if (currentTheme === "light") {
+          body.setAttribute("data-theme", "dark");
+          themeIcon.textContent = "☀️";
+          currentTheme = "dark";
+          localStorage.setItem("theme", "dark");
+        } else {
+          body.removeAttribute("data-theme");
+          themeIcon.textContent = "🌙";
+          currentTheme = "light";
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      /**
+       * Inicializa o tema com base na preferência salva ou do sistema
+       */
+      function initializeTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+          document.body.setAttribute("data-theme", "dark");
+          document.getElementById("themeIcon").textContent = "☀️";
+          currentTheme = "dark";
+        }
+      }
+
+      // ===== FUNÇÕES DE IDIOMA =====
+      /**
+       * Alterna o menu de idiomas
+       */
+      function toggleLanguageMenu() {
+        const menu = document.getElementById("languageMenu");
+        menu.classList.toggle("active");
+      }
+
+      /**
+       * Altera o idioma da página
+       * @param {string} lang - Código do idioma (pt, en, es)
+       */
+      function changeLanguage(lang) {
+        if (translations[lang]) {
+          currentLanguage = lang;
+          updatePageLanguage();
+          localStorage.setItem("language", lang);
+          document.documentElement.lang = lang;
+
+          // Fecha o menu
+          document.getElementById("languageMenu").classList.remove("active");
+        }
+      }
+
+      /**
+       * Atualiza todos os textos da página com base no idioma selecionado
+       */
+      function updatePageLanguage() {
+        const elements = document.querySelectorAll("[data-i18n]");
+        elements.forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[currentLanguage][key]) {
+            element.textContent = translations[currentLanguage][key];
+          }
+        });
+      }
+
+      /**
+       * Inicializa o idioma com base na preferência salva ou do navegador
+       */
+      function initializeLanguage() {
+        const savedLanguage = localStorage.getItem("language");
+        const browserLang = navigator.language.split("-")[0];
+
+        if (savedLanguage && translations[savedLanguage]) {
+          currentLanguage = savedLanguage;
+        } else if (translations[browserLang]) {
+          currentLanguage = browserLang;
+        }
+
+        document.documentElement.lang = currentLanguage;
+        updatePageLanguage();
+      }
+
+      // ===== FUNÇÕES DE NAVEGAÇÃO =====
+      /**
+       * Retorna para a página anterior ou para a home
+       */
+      function goBack() {
+        // Tenta voltar para a página anterior
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          // Se não há histórico, redireciona para a home
+          window.location.href = "/";
+        }
+      }
+
+      // ===== FUNÇÕES DE INICIALIZAÇÃO =====
+      /**
+       * Inicializa todos os componentes da página
+       */
+      function initializePage() {
+        initializeTheme();
+        initializeLanguage();
+
+        // Adiciona event listeners
+        document.addEventListener("click", (e) => {
+          // Fecha o menu de idiomas ao clicar fora
+          if (!e.target.closest(".language-dropdown")) {
+            document.getElementById("languageMenu").classList.remove("active");
+          }
+        });
+
+        // Adiciona animação de fade-in às seções
+        const sections = document.querySelectorAll(".license-section");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        sections.forEach((section) => {
+          section.style.opacity = "0";
+          section.style.transform = "translateY(20px)";
+          section.style.transition = "all 0.5s ease-out";
+          observer.observe(section);
+        });
+      }
+
+      // ===== INICIALIZAÇÃO QUANDO O DOM ESTIVER PRONTO =====
+      document.addEventListener("DOMContentLoaded", initializePage);
+    </script>
+  </body>
+</html>
