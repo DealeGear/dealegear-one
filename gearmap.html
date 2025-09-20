@@ -1,99 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DealeGear - Instruções</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="gearmap.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="gearmap.css" />
+  </head>
+  <body>
     <!-- Header Fixo -->
     <header class="header">
-        <div class="container">
-            <div class="logo">
-                <a href="#">DealeGear</a>
-            </div>
-            <nav class="nav-menu">
-                <!--<ul>
-                    <li><a href="#home" data-translate="header.menu.home">Início</a></li>
-                    <li><a href="#roadmap" data-translate="header.menu.roadmap">Roadmap</a></li>
-                    <li><a href="#tips" data-translate="header.menu.tips">Dicas</a></li>
-                </ul>-->
-            </nav>
-            <div class="header-actions">
-                <a href="index.html"><button class="btn-back" data-translate="header.back">DealeGear</button></a>
-                <button class="btn-language" data-translate="header.language">Idioma</button>
-                <button class="btn-theme" data-translate="header.theme">Tema</button>
-            </div>
-            <button class="menu-toggle" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+      <div class="container">
+        <div class="logo">
+          <a href="#">DealeGear</a>
         </div>
+        <nav class="nav-menu"></nav>
+        <div class="header-actions">
+          <a href="index.html"
+            ><button class="btn-back" data-translate="header.back">
+              DealeGear
+            </button></a
+          >
+          <button class="btn-language" data-translate="header.language">
+            Idioma
+          </button>
+          <button class="btn-theme" data-translate="header.theme">Tema</button>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </header>
 
     <!-- Conteúdo Principal -->
     <main>
-        <!-- Seção Hero -->
-        <section id="home" class="hero">
-            <div class="container">
-                <h1 data-translate="hero.title">O ponto de partida</h1>
-                <!--<h2 data-translate="hero.subtitle">Sua jornada para o sucesso começa aqui</h2>-->
-                <p data-translate="hero.intro">Antes de começar o planejamento, percorra estes quatro passos iniciais. Reflita com atenção, seja honesto(a) consigo mesmo(a), registre suas respostas e avance para a próxima etapa apenas quando se sentir confiante em suas ideias</p>
-            </div>
-        </section>
-
-        <!-- Seção Roadmap -->
-       <!-- Seção Roadmap -->
-<section id="roadmap" class="roadmap">
-    <div class="container">
-        <!--<h2 data-translate="roadmap.title">Roadmap - 10 Passos</h2>-->
-        <!--<button class="btn-reset" data-translate="roadmap.reset">Recomeçar Tarefas</button>-->
-        <div class="roadmap-steps">
-            <!-- Os passos serão gerados dinamicamente pelo JavaScript -->
+      <!-- Seção Hero -->
+      <section id="home" class="hero">
+        <div class="container">
+          <h1 data-translate="hero.title">O ponto de partida</h1>
+          <!--<h2 data-translate="hero.subtitle">Sua jornada para o sucesso começa aqui</h2>-->
+          <p data-translate="hero.intro">
+            Antes de começar o planejamento, percorra estes quatro passos
+            iniciais. Reflita com atenção, seja honesto(a) consigo mesmo(a),
+            registre suas respostas e avance para a próxima etapa apenas quando
+            se sentir confiante em suas ideias
+          </p>
         </div>
-        <button class="btn-reset" data-translate="roadmap.reset">Recomeçar Tarefas</button>
-    </div>
-    
-</section>
+      </section>
 
-        <!-- Seção nova etapa -->
-        <section id="tips" class="tips">
-            <div class="container">
-                <h2 data-translate="tips.title" >Etapa finalizada? Vamos para a próxima!</h2>
-                <p data-translate="tips.content">Acesse nossa ferramenta GearHub e comece a dar forma ao seu projeto. Mas antes, lembre-se: planejar pode parecer cansativo, porém é no planejamento que você aprende a prever desafios e encontrar soluções. Dedique-se a essa etapa com atenção e aumente consideravelmente suas chances de sucesso!</p>
-                <!--<button class="btn-gearhub" data-translate="gearHub.btn">GearHub</button>-->
-            </div>
-            <div>
-                <button class="btn-gearhub" data-translate="gearHub.btn">GearHub</button>
-            </div>
-        </section>
+      <!-- Seção Roadmap -->
+      <!-- Seção Roadmap -->
+      <section id="roadmap" class="roadmap">
+        <div class="container">
+          <!--<h2 data-translate="roadmap.title">Roadmap - 10 Passos</h2>-->
+          <!--<button class="btn-reset" data-translate="roadmap.reset">Recomeçar Tarefas</button>-->
+          <div class="roadmap-steps">
+            <!-- Os passos serão gerados dinamicamente pelo JavaScript -->
+          </div>
+          <div class="div-btn-reset">
+            <button class="btn-reset" data-translate="roadmap.reset">
+              Recomeçar Tarefas
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção nova etapa -->
+      <section id="tips" class="tips">
+        <div class="container">
+          <h2 data-translate="tips.title">
+            Etapa finalizada? Vamos para a próxima!
+          </h2>
+          <p data-translate="tips.content">
+            Acesse nossa ferramenta GearHub e comece a dar forma ao seu projeto.
+            Mas antes, lembre-se: planejar pode parecer cansativo, porém é no
+            planejamento que você aprende a prever desafios e encontrar
+            soluções. Dedique-se a essa etapa com atenção e aumente
+            consideravelmente suas chances de sucesso!
+          </p>
+          <!--<button class="btn-gearhub" data-translate="gearHub.btn">GearHub</button>-->
+        </div>
+        <div>
+          <button class="btn-gearhub" data-translate="gearHub.btn">
+            GearHub
+          </button>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p data-translate="footer.slogan">DealeGear – O segredo do sucesso é começar</p>
-            <p data-translate="footer.copyright">© 2022-2025 DealeGear. Todos os direitos reservados. | Licenças abertas quando aplicável.</p>
-            <!--<div class="footer-links">
-                <a href="#" data-translate="footer.links.contact">Contato</a>
-                <a href="#" data-translate="footer.links.twitter">Twitter</a>
-                <a href="#" data-translate="footer.links.github">GitHub</a>
-                <a href="#" data-translate="footer.links.about">Sobre</a>
-            </div>--:
-        </div>
+      <div class="container">
+        <p data-translate="footer.slogan">
+          DealeGear – O segredo do sucesso é começar
+        </p>
+        <p data-translate="footer.copyright">
+          © 2022-2025 DealeGear. Todos os direitos reservados. | Licenças
+          abertas quando aplicável.
+        </p>
+      </div>
     </footer>
 
     <!-- Modal para os passos do roadmap -->
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3 id="modal-title"></h3>
-            <p id="modal-details"></p>
-            <button id="modal-done" class="btn-done" data-translate="roadmap.modal.done">Tarefa Concluída</button>
-        </div>
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title"></h3>
+        <p id="modal-details"></p>
+        <button
+          id="modal-done"
+          class="btn-done"
+          data-translate="roadmap.modal.done"
+        >
+          Tarefa Concluída
+        </button>
+      </div>
     </div>
 
     <script src="gearmap.js"></script>
-</body>
+  </body>
 </html>
