@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
         });
         generateRoadmapSteps();
-        updateTexts(); 
+        //updateTexts(); 
 
         // Atualizar o atributo lang do HTML
         document.documentElement.lang = currentLanguage;
@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Menu hamburger
-    //menuToggle.addEventListener('click', function() {
-      //  navMenu.classList.toggle('active');
-    //});
+    menuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+    });
 
     btnReset.addEventListener('click', function() {
         if (confirm(translations[currentLanguage].roadmap.resetConfirm)) {
