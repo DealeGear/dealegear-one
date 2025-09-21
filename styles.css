@@ -387,8 +387,9 @@ h3 a {
 }
 
 .project-icon {
-    width: 40px;
-    height: 40px;
+    /*width: 5rem;
+    height: 5rem;*/
+    font-size: 3rem;
     color: var(--accent-orange);
     margin-bottom: var(--spacing-sm);
 }
