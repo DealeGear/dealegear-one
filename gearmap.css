@@ -2,8 +2,8 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #333333;
-    --header-bg: #f8f9fa;
-    --header-text: #333333;
+    --header-bg: #032444;
+    --header-text: #ffffff;
     --primary-color: #007bff;
     --secondary-color: #6c757d;
     --border-color: #dee2e6;
@@ -247,7 +247,7 @@ section#tips div:last-child {
 
 /*botão de acesso ao GearHub*/
 .btn-gearhub {
-    margin: 0 auto 2rem;
+    margin: 0 auto 0.2rem;
     display: block;
     padding: 0.5rem 1rem;
     background-color: #dc3545;
