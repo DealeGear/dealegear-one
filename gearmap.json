@@ -1,199 +1,65 @@
 {
-  "pt": {
-    "header": {
-      "logo": "DealeGear",
-      "menu": {
-        "home": "Início",
-        "roadmap": "Roadmap",
-        "tips": "Dicas"
-      },
-      "back": "DealeGear",
-      "language": "PT",
-      "theme": "Tema"
+    "pt": {
+        "backToDealeGear": "Voltar para DealeGear",
+        "roadmapTitle": "Seu Caminho para o Sucesso",
+        "roadmapSubtitle": "Siga estas etapas para iniciar seu projeto com o pé direito",
+        "step1Title": "Inspiração",
+        "step1Desc": "Dê forma ao que você deseja conquistar",
+        "step2Title": "Exploração",
+        "step2Desc": "Descubra caminhos já existentes",
+        "step3Title": "Definição",
+        "step3Desc": "Transforme a ideia em clareza",
+        "step4Title": "Propósito",
+        "step4Desc": "Descubra o motivo real",
+        "seeDetails": "Ver detalhes",
+        "resetTasks": "Recomeçar Tarefas",
+        "ctaTitle": "Vamos Acelerar para o Próximo Nível?",
+        "ctaText": "Acesse GearHub e aprimore o planejamento do seu projeto.",
+        "ctaButton": "Acessar GearHub",
+        "footerText": "© 2022-2025 DealeGear. O segredo do sucesso é começar",
+        "markComplete": "Marcar como concluído",
+        "markIncomplete": "Marcar como não concluído"
     },
-    "hero": {
-      "title": "O ponto de partida",
-      "subtitle": "Sua jornada para o sucesso começa aqui",
-      "intro": "Antes de começar o planejamento, percorra estes quatro passos iniciais. Reflita com atenção, seja honesto(a) consigo mesmo(a), registre suas respostas e avance para a próxima etapa apenas quando se sentir confiante em suas ideias."
+    "en": {
+        "backToDealeGear": "Back to DealeGear",
+        "roadmapTitle": "Your Path to Success",
+        "roadmapSubtitle": "Follow these steps to start your project on the right foot",
+        "step1Title": "Inspiration",
+        "step1Desc": "Shape what you want to achieve",
+        "step2Title": "Exploration",
+        "step2Desc": "Discover what’s already out there",
+        "step3Title": "Definition",
+        "step3Desc": "Turn the idea into clarity",
+        "step4Title": "Purpose",
+        "step4Desc": "Uncover the real reason",
+        "seeDetails": "See details",
+        "resetTasks": "Reset Tasks",
+        "ctaTitle": "Ready to Accelerate to the Next Level?",
+        "ctaText": "Access GearHub and refine your project planning",
+        "ctaButton": "Access GearHub",
+        "footerText": "© 2022-2025 DealeGear. The secret of success is to start",
+        "markComplete": "Mark as complete",
+        "markIncomplete": "Mark as incomplete"
     },
-    "roadmap": {
-      "title": "Roadmap - 10 Passos",
-      "reset": "Recomeçar Tarefas",
-      "resetConfirm": "Tem certeza de que deseja recomeçar todas as tarefas? Esta ação não pode ser desfeita.",
-      "steps": [
-        {
-          "title": "Passo 1: Inspiração",
-          "short": "",
-          "details": "Liste interesses pessoais, problemas que gostaria de resolver ou oportunidades que enxerga."
-        },
-        {
-          "title": "Passo 2: Exploração",
-          "short": "",
-          "details": "Pesquise referências rápidas (concorrentes, soluções existentes, ideias parecidas)"
-        },
-        {
-          "title": "Passo 3: Definição",
-          "short": "",
-          "details": "Escreva sua ideia em 1 ou 2 frases simples"
-        },
-        {
-          "title": "Passo 4: Propósito",
-          "short": "",
-          "details": "Identifique o “porquê” da sua ideia (impacto, público, objetivo pessoal)."
-        }
-        
-      ],
-      "modal": {
-        "done": "Tarefa Concluída"
-      }
-    },
-    "tips": {
-      "title": "Etapa finalizada? Vamos para a próxima!",
-      "content": "Acesse nossa ferramenta GearHub e comece a dar forma ao seu projeto. Mas antes, lembre-se: planejar pode parecer cansativo, porém é no planejamento que você aprende a prever desafios e encontrar soluções. Dedique-se a essa etapa com atenção e aumente consideravelmente suas chances de sucesso!"
-    },
-    "gearHub":{
-      "btn":"GearHub"
-    },
-    "footer": {
-      "slogan": "DealeGear – O segredo do sucesso é começar",
-      "copyright": "© 2022-2025 DealeGear. Todos os direitos reservados. | Licenças abertas quando aplicável.",
-      "links": {
-        "contact": "Contato",
-        "twitter": "Twitter",
-        "github": "GitHub",
-        "about": "Sobre"
-      }
+    "es": {
+        "backToDealeGear": "Volver a DealeGear",
+        "roadmapTitle": "Tu Camino al Éxito",
+        "roadmapSubtitle": "Sigue estos pasos para iniciar tu proyecto con el pie derecho",
+        "step1Title": "Inspiración",
+        "step1Desc": "Da forma a lo que quieres lograr",
+        "step2Title": "Exploración",
+        "step2Desc": "Descubre lo que ya existe",
+        "step3Title": "Definición",
+        "step3Desc": "Convierte la idea en claridad",
+        "step4Title": "Propósito",
+        "step4Desc": "Descubre la razón real",
+        "seeDetails": "Ver detalles",
+        "resetTasks": "Reiniciar Tareas",
+        "ctaTitle": "¿Listo para Acelerar al Siguiente Nivel?",
+        "ctaText": "Accede a GearHub y mejora la planificación de tu proyecto.",
+        "ctaButton": "Acceder a GearHub",
+        "footerText": "© 2022-2025 DealeGear. El secreto del éxito es empezar",
+        "markComplete": "Marcar como completado",
+        "markIncomplete": "Marcar como no completado"
     }
-  },
-  "en": {
-    "header": {
-      "logo": "DealeGear",
-      "menu": {
-        "home": "Home",
-        "roadmap": "Roadmap",
-        "tips": "Tips"
-      },
-      "back": "DealeGear",
-      "language": "EN",
-      "theme": "Theme"
-    },
-    "hero": {
-      "title": "The Starting Point",
-      "subtitle": "Your journey to success starts here",
-      "intro": "Before starting the planning stage, go through these four initial steps. Reflect carefully, be honest with yourself, write down your answers, and move on to the next stage only when you feel confident in your ideas"
-    },
-    "roadmap": {
-      "title": "Roadmap - 10 Steps",
-       "reset": "Reset Tasks",
-      "resetConfirm": "Are you sure you want to reset all tasks? This action cannot be undone.",
-      "steps": [
-        {
-          "title": "Step 1: Inspiration",
-          "short": "",
-          "details": "List personal interests, problems you’d like to solve, or opportunities you see."
-        },
-        {
-          "title": "Step 2: Exploration",
-          "short": "",
-          "details": "Do quick research (competitors, existing solutions, similar ideas)."
-        },
-        {
-          "title": "Step 3: Definition",
-          "short": "",
-          "details": "Write your idea in 1 or 2 simple sentences"
-        },
-        {
-          "title": "Step 4: Purpose",
-          "short": "",
-          "details": "Identify the “why” behind your idea (impact, audience, personal goal)."
-        }
-        
-      ],
-      "modal": {
-        "done": "Task Completed"
-      }
-    },
-    "tips": {
-      "title": "Step completed? Let's move on to the next one!",
-      "content": "Access our GearHub tool and start shaping your project. But first, remember: planning may seem tiring, but it’s through planning that you learn to anticipate challenges and find solutions. Dedicate yourself to this stage with care, and you’ll significantly increase your chances of success!"
-    },
-    "gearHub":{
-      "btn":"GearHub"
-    },
-    "footer": {
-      "slogan": "DealeGear – The secret to success is to begin",
-      "copyright": "© 2022-2025 DealeGear. All rights reserved. | Open licenses where applicable.",
-      "links": {
-        "contact": "Contact",
-        "twitter": "Twitter",
-        "github": "GitHub",
-        "about": "About"
-      }
-    }
-  },
-  "es": {
-    "header": {
-      "logo": "DealeGear",
-      "menu": {
-        "home": "Inicio",
-        "roadmap": "Roadmap",
-        "tips": "Consejos"
-      },
-      "back": "DealeGear",
-      "language": "ES",
-      "theme": "Tema"
-    },
-    "hero": {
-      "title": "El Punto de Partida",
-      "subtitle": "Tu viaje hacia el éxito comienza aquí",
-      "intro": "Antes de comenzar la etapa de planificación, recorre estos cuatro pasos iniciales. Reflexiona con atención, sé honesto/a contigo mismo/a, registra tus respuestas y avanza a la siguiente etapa solo cuando te sientas seguro/a de tus ideas."
-    },
-    "roadmap": {
-      "title": "Roadmap - 10 Pasos",
-       "reset": "Reiniciar Tareas",
-      "resetConfirm": "¿Estás seguro de que deseas reiniciar todas las tareas? Esta acción no se puede deshacer.",
-      "steps": [
-        {
-          "title": "Paso 1: Inspiración",
-          "short": "",
-          "details": "Haz una lista de intereses personales, problemas que quieras resolver u oportunidades que veas."
-        },
-        {
-          "title": "Paso 2: Exploración",
-          "short": "",
-          "details": "Investiga referencias rápidas (competidores, soluciones existentes, ideas similares)."
-        },
-        {
-          "title": "Paso 3: Definición",
-          "short": "",
-          "details": "Escribe tu idea en 1 o 2 frases sencillas"
-        },
-        {
-          "title": "Paso 4: Propósito",
-          "short": "",
-          "details": "Identifica el “por qué” de tu idea (impacto, público, objetivo personal)"
-        }
-      ],
-      "modal": {
-        "done": "Tarea Completada"
-      }
-    },
-    "tips": {
-      "title": "¿Etapa finalizada? ¡Vamos a la próxima!",
-      "content": "Accede a nuestra herramienta GearHub y empieza a darle forma a tu proyecto. Pero antes, recuerda: planear puede parecer cansador, pero es en la planificación donde aprendes a anticipar desafíos y encontrar soluciones. Dedica atención a esta etapa y aumentarás considerablemente tus posibilidades de éxito."
-    },
-    "gearHub":{
-      "btn":"GearHub"
-    },
-    "footer": {
-      "slogan": "DealeGear – El secreto del éxito es comenzar",
-      "copyright": "© 2022-2025 DealeGear. Todos los derechos reservados. | Licencias abiertas cuando sea aplicable.",
-      "links": {
-        "contact": "Contacto",
-        "twitter": "Twitter",
-        "github": "GitHub",
-        "about": "Acerca de"
-      }
-    }
-  }
 }
