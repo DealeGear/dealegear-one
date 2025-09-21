@@ -1,250 +1,110 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearBlog - Blog de Tecnologia</title>
+    <title>GearBlog</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Cabeçalho Fixo -->
     <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>GearBlog</h1>
+        <div class="logo">GearBlog</div>
+                <!--<nav class="nav-menu">
+            <a href="#" id="home-link" class="nav-link active">Home</a>
+            <a href="#" id="articles-link" class="nav-link">Artigos</a>
+        </nav>-->
+        <div class="header-actions">
+            <div class="language-switcher">
+                <button id="lang-pt" class="lang-btn active">PT</button>
+                <button id="lang-en" class="lang-btn">EN</button>
+                <button id="lang-es" class="lang-btn">ES</button>
             </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Artigos</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </nav>
-            <div class="theme-toggle">
-                <button id="theme-toggle-btn"><i class="fas fa-moon"></i></button>
-            </div>
-            <div class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
-    <main class="main-content">
-        <section class="hero">
-            <div class="container">
-                <h2>Bem-vindo ao GearBlog</h2>
-                <p>Seu portal de conteúdo técnico e tecnológico</p>
+<!-- Conteúdo Principal -->
+<main class="main-content">
+    <!-- Seção Home (agora mostra os artigos) -->
+    <section id="home-section" class="section active">
+        <h2 id="articles-title">Artigos</h2>
+        <div id="articles-container" class="articles-grid">
+            <!-- Artigos serão carregados dinamicamente -->
+        </div>
+    </section>
+
+    <!-- Detalhe do Artigo -->
+    <section id="article-detail-section" class="section">
+        <button id="back-to-articles" class="back-button">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+        <div id="article-detail">
+            <!-- Conteúdo do artigo será carregado dinamicamente -->
+        </div>
+    </section>
+</main>
+
+    <!-- Detalhe do Artigo -->
+    <section id="article-detail-section" class="section">
+        <button id="back-to-articles" class="back-button">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+        <div id="article-detail">
+            <!-- Conteúdo do artigo será carregado dinamicamente -->
+        </div>
+    </section>
+</main>
+
+        <!-- Seção Artigos -->
+        <section id="articles-section" class="section">
+            <h2 id="articles-title">Artigos</h2>
+            <div id="articles-container" class="articles-grid">
+                <!-- Artigos serão carregados dinamicamente -->
             </div>
         </section>
 
-        <section class="articles-section">
-            <div class="container">
-                <h2 class="section-title">Artigos Recentes</h2>
-                <div class="articles-grid">
-                    <!-- Artigo 1 -->
-                    <article class="article-card">
-                        <div class="article-image">
-                            <img src="https://picsum.photos/seed/tech1/600/400.jpg" alt="Imagem do artigo">
-                        </div>
-                        <div class="article-content">
-                            <h3>Introdução ao Desenvolvimento Web Moderno</h3>
-                            <p>Explore as tecnologias mais recentes e as melhores práticas para criar aplicações web robustas e escaláveis.</p>
-                            <a href="#" class="read-more-btn">Leia mais</a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 2 -->
-                    <article class="article-card">
-                        <div class="article-image">
-                            <img src="https://picsum.photos/seed/tech2/600/400.jpg" alt="Imagem do artigo">
-                        </div>
-                        <div class="article-content">
-                            <h3>Guia Completo de JavaScript ES6+</h3>
-                            <p>Aprenda os recursos mais importantes do JavaScript moderno e como aplicá-los em seus projetos.</p>
-                            <a href="#" class="read-more-btn">Leia mais</a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 3 -->
-                    <article class="article-card">
-                        <div class="article-image">
-                            <img src="https://picsum.photos/seed/tech3/600/400.jpg" alt="Imagem do artigo">
-                        </div>
-                        <div class="article-content">
-                            <h3>Segurança em Aplicações Web: O Essencial</h3>
-                            <p>Descubra as principais vulnerabilidades e como proteger suas aplicações contra ataques comuns.</p>
-                            <a href="#" class="read-more-btn">Leia mais</a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 4 -->
-                    <article class="article-card">
-                        <div class="article-image">
-                            <img src="https://picsum.photos/seed/tech4/600/400.jpg" alt="Imagem do artigo">
-                        </div>
-                        <div class="article-content">
-                            <h3>DevOps: Integrando Desenvolvimento e Operações</h3>
-                            <p>Entenda os princípios do DevOps e como implementar uma cultura de integração contínua.</p>
-                            <a href="#" class="read-more-btn">Leia mais</a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 5 -->
-                    <article class="article-card">
-                        <div class="article-image">
-                            <img src="https://picsum.photos/seed/tech5/600/400.jpg" alt="Imagem do artigo">
-                        </div>
-                        <div class="article-content">
-                            <h3>Arquitetura de Microsserviços: Vantagens e Desafios</h3>
-                            <p>Uma análise aprofundada sobre microsserviços, quando usá-los e os desafios dessa abordagem.</p>
-                            <a href="#" class="read-more-btn">Leia mais</a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 6 -->
-                    <article class="article-card">
-                        <div class="article-image">
-                            <img src="https://picsum.photos/seed/tech6/600/400.jpg" alt="Imagem do artigo">
-                        </div>
-                        <div class="article-content">
-                            <h3>Inteligência Artificial Aplicada ao Desenvolvimento</h3>
-                            <p>Como a IA está transformando o processo de desenvolvimento de software e ferramentas que você pode usar.</p>
-                            <a href="#" class="read-more-btn">Leia mais</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Página de artigo (inicialmente oculta) -->
-        <section id="article-page" class="article-page hidden">
-            <div class="container">
-                <article class="full-article">
-                    <h1 class="article-title">Introdução ao Desenvolvimento Web Moderno</h1>
-                    <div class="article-meta">
-                        <span class="author">Por João Silva</span>
-                        <span class="date">15 de julho, 2023</span>
-                        <span class="category">Desenvolvimento Web</span>
-                    </div>
-                    <div class="article-image">
-                        <img src="https://picsum.photos/seed/tech1/1200/600.jpg" alt="Imagem do artigo">
-                    </div>
-                    <div class="article-body">
-                        <p>O desenvolvimento web moderno evoluiu drasticamente nos últimos anos. Hoje, temos acesso a ferramentas, frameworks e tecnologias que tornam o processo de criação de aplicações web mais eficiente e robusto.</p>
-                        
-                        <h2>HTML5 e Semântica</h2>
-                        <p>O HTML5 trouxe consigo uma série de elementos semânticos que ajudam a estruturar melhor o conteúdo e melhorar a acessibilidade. Elementos como &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt; e &lt;footer&gt; proporcionam um significado claro ao conteúdo, facilitando a compreensão tanto para desenvolvedores quanto para motores de busca.</p>
-                        
-                        <h2>CSS3 e Design Responsivo</h2>
-                        <p>O CSS3 introduziu recursos poderosos como Flexbox e Grid Layout, que revolucionaram a forma como criamos layouts. Com essas ferramentas, é possível construir interfaces complexas e responsivas com muito menos código e maior flexibilidade.</p>
-                        
-                        <p>Além disso, o conceito de Mobile First tornou-se essencial. Projetar para dispositivos móveis primeiro e depois adaptar para telas maiores garante uma experiência otimizada para todos os usuários, independentemente do dispositivo que estão usando.</p>
-                        
-                        <h2>JavaScript Moderno</h2>
-                        <p>O JavaScript passou por uma transformação significativa com a introdução do ES6 e versões posteriores. Recursos como arrow functions, template literals, destructuring, modules e async/await tornaram o código mais legível, conciso e poderoso.</p>
-                        
-                        <p>O ecossistema JavaScript também se expandiu com frameworks e bibliotecas como React, Vue.js e Angular, que facilitam a criação de Single Page Applications (SPAs) e interfaces de usuário interativas.</p>
-                        
-                        <h2>Ferramentas de Desenvolvimento</h2>
-                        <p>Ferramentas como Webpack, Babel e npm/yarn tornaram-se parte essencial do fluxo de trabalho moderno. Elas permitem a modularização do código, transpilação de recursos mais recentes para compatibilidade com navegadores mais antigos, e gerenciamento eficiente de dependências.</p>
-                        
-                        <h2>Conclusão</h2>
-                        <p>O desenvolvimento web moderno oferece um conjunto poderoso de tecnologias e práticas que, quando combinadas adequadamente, resultam em aplicações web rápidas, responsivas e fáceis de manter. Manter-se atualizado com essas tendências é fundamental para qualquer desenvolvedor que deseja criar experiências web de alta qualidade.</p>
-                    </div>
-                    
-                    <div class="comments-section">
-                        <h3>Comentários</h3>
-                        <div class="comment-form">
-                            <form id="comment-form">
-                                <div class="form-group">
-                                    <label for="name">Nome</label>
-                                    <input type="text" id="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">E-mail</label>
-                                    <input type="email" id="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="comment">Comentário</label>
-                                    <textarea id="comment" rows="4" required></textarea>
-                                </div>
-                                <button type="submit" class="submit-btn">Enviar Comentário</button>
-                            </form>
-                        </div>
-                        
-                        <div class="comments-list">
-                            <div class="comment">
-                                <div class="comment-header">
-                                    <span class="comment-author">Maria Oliveira</span>
-                                    <span class="comment-date">10 de julho, 2023</span>
-                                </div>
-                                <p class="comment-text">Ótimo artigo! A abordagem sobre HTML5 semântico foi muito esclarecedora. Estou começando a aplicar esses conceitos em meus projetos.</p>
-                            </div>
-                            
-                            <div class="comment">
-                                <div class="comment-header">
-                                    <span class="comment-author">Carlos Santos</span>
-                                    <span class="comment-date">12 de julho, 2023</span>
-                                </div>
-                                <p class="comment-text">Concordo plenamente sobre a importância do JavaScript moderno. As arrow functions e async/await realmente mudaram a forma como escrevo código.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                
-                <div class="back-to-home">
-                    <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar para Home</a>
-                </div>
+        <!-- Detalhe do Artigo -->
+        <section id="article-detail-section" class="section">
+            <button id="back-to-articles" class="back-button">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+            <div id="article-detail">
+                <!-- Conteúdo do artigo será carregado dinamicamente -->
             </div>
         </section>
     </main>
 
+    <!-- Rodapé -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>GearBlog</h3>
-                    <p>GearBlog traz artigos, tutoriais e ideias para quem gosta de inovar e entender o mundo dos projetos</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Links Rápidos</h3>
-                    <ul>
-                        <li><a href="../index.html">DealeGear</a></li>
-                        <li><a href="../gearlabs/index.html">GearLabs</a></li>
-                        <li><a href="../onevision/index.html">OneVision</a></li>
-                        <li><a href="../gearhub/index.html">GearHub</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Categorias</h3>
-                    <ul>
-                        <li><a href="#">Gerenciamento</a></li>
-                        <li><a href="#">Criatividade</a></li>
-                        <li><a href="#">Disrupção</a></li>
-                        <li><a href="#">Tendências</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Siga-nos</h3>
-                    <div class="social-icons">
-                        <a href="https://www.youtube.com/@dealegear" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://x.com/DealeGear" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/dealegear?igsh=MTRkbGw4bTBuaXBuaQ==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://github.com/DealeGear" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.tiktok.com/@dealegear?_t=zm-8uiarbtyqp7&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GearBlog</h3>
+                <p>GearBlog traz artigos, tutoriais e ideias para quem gosta de inovar e entender o mundo dos projetos</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">DealeGear</a></li>
+                    <li><a href="../gearlabs/index.html">GearLabs</a></li>
+                    <li><a href="../gearvision/index.html">OneVision</a></li>
+                    <li><a href="../gearhub/index.html">GearHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Siga-nos</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dealegear/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@dealegear" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://twitter.com/dealegear" target="_blank"><i class="fab fa-x"></i></a>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 DealeGear. Todos os direitos reservados.</p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2022-2025 DealeGear. O segredo do sucesso é começar</p>
         </div>
     </footer>
 

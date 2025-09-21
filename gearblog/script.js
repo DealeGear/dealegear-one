@@ -1,158 +1,132 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Alternância de tema (modo claro/escuro)
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    const body = document.body;
-    const themeIcon = themeToggleBtn.querySelector('i');
-    
-    // Verificar se há uma preferência de tema salva
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-    }
-    
-    themeToggleBtn.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        
-        if (body.classList.contains('dark-mode')) {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-            localStorage.setItem('theme', 'light');
+    // Elementos do DOM
+    const homeLink = document.getElementById('home-link');
+    const articlesLink = document.getElementById('articles-link');
+    const homeSection = document.getElementById('home-section');
+    const articleDetailSection = document.getElementById('article-detail-section');
+    const articlesContainer = document.getElementById('articles-container');
+    const articleDetail = document.getElementById('article-detail');
+    const backToArticlesBtn = document.getElementById('back-to-articles');
+    const langButtons = document.querySelectorAll('.lang-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+    const articlesTitle = document.getElementById('articles-title');
+
+    // Estado da aplicação
+    let currentLang = 'pt';
+    let currentTheme = 'light';
+    let contentData = {};
+    let currentArticle = null; // Armazenar o artigo atualmente exibido
+
+    // Carregar conteúdo do JSON
+    fetch('content.json')
+        .then(response => response.json())
+        .then(data => {
+            contentData = data;
+            updateContent();
+        })
+        .catch(error => console.error('Erro ao carregar conteúdo:', error));
+
+    // Função para atualizar o conteúdo com base no idioma
+    function updateContent() {
+        if (!contentData.welcome) return;
+
+        // Atualizar título da seção de artigos
+        articlesTitle.textContent = currentLang === 'pt' ? 'Artigos' : 
+                                    currentLang === 'en' ? 'Articles' : 
+                                    'Artículos';
+
+        // Se estiver na seção home (que mostra os artigos), atualizar os cards
+        if (homeSection.classList.contains('active')) {
+            renderArticles();
         }
-    });
-    
-    // Menu móvel
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    mobileMenuBtn.addEventListener('click', function() {
-        mobileMenuBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-    
-    // Fechar menu ao clicar em um link
-    const navLinks = document.querySelectorAll('.nav-menu ul li a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            mobileMenuBtn.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-    
-    // Navegação entre páginas
-    const readMoreBtns = document.querySelectorAll('.read-more-btn');
-    const articlesSection = document.querySelector('.articles-section');
-    const articlePage = document.getElementById('article-page');
-    const backToHomeBtn = document.querySelector('.back-btn');
-    
-    readMoreBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            articlesSection.classList.add('hidden');
-            articlePage.classList.remove('hidden');
-            window.scrollTo(0, 0);
-        });
-    });
-    
-    backToHomeBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        articlePage.classList.add('hidden');
-        articlesSection.classList.remove('hidden');
-        window.scrollTo(0, 0);
-    });
-    
-    // Formulário de comentários
-    const commentForm = document.getElementById('comment-form');
-    const commentsList = document.querySelector('.comments-list');
-    
-    commentForm.addEventListener('submit', function(e) {
-        e.preventDefault();
         
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const comment = document.getElementById('comment').value;
-        
-        if (name && email && comment) {
-            // Criar elemento de comentário
-            const newComment = document.createElement('div');
-            newComment.className = 'comment';
-            
-            // Data atual
-            const currentDate = new Date();
-            const formattedDate = currentDate.toLocaleDateString('pt-BR', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
-            
-            // Conteúdo do comentário
-            newComment.innerHTML = `
-                <div class="comment-header">
-                    <span class="comment-author">${name}</span>
-                    <span class="comment-date">${formattedDate}</span>
+        // Se estiver na seção de detalhes do artigo, atualizar o conteúdo
+        if (articleDetailSection.classList.contains('active') && currentArticle) {
+            showArticleDetail(currentArticle);
+        }
+    }
+
+    // Função para renderizar os artigos
+    function renderArticles() {
+        articlesContainer.innerHTML = '';
+        contentData.articles.forEach(article => {
+            const card = document.createElement('div');
+            card.className = 'article-card';
+            card.innerHTML = `
+                <img src="${article.image}" alt="${article.title[currentLang]}">
+                <div class="article-card-content">
+                    <h3>${article.title[currentLang]}</h3>
+                    <p>${article.summary[currentLang]}</p>
                 </div>
-                <p class="comment-text">${comment}</p>
             `;
-            
-            // Adicionar à lista de comentários
-            commentsList.prepend(newComment);
-            
-            // Limpar formulário
-            commentForm.reset();
-            
-            // Exibir mensagem de sucesso (opcional)
-            const successMessage = document.createElement('div');
-            successMessage.style.padding = '10px';
-            successMessage.style.marginTop = '10px';
-            successMessage.style.backgroundColor = '#d4edda';
-            successMessage.style.color = '#155724';
-            successMessage.style.borderRadius = '4px';
-            successMessage.textContent = 'Comentário enviado com sucesso!';
-            
-            commentForm.appendChild(successMessage);
-            
-            // Remover mensagem após 3 segundos
-            setTimeout(() => {
-                successMessage.remove();
-            }, 3000);
-        }
-    });
-    
-    // Ativar link de navegação atual
-    const currentLocation = location.href;
-    const menuItem = document.querySelectorAll('.nav-menu ul li a');
-    const menuLength = menuItem.length;
-    
-    for (let i = 0; i < menuLength; i++) {
-        if (menuItem[i].href === currentLocation) {
-            menuItem[i].classList.add('active');
-        }
+            card.addEventListener('click', () => showArticleDetail(article));
+            articlesContainer.appendChild(card);
+        });
     }
-    
-    // Rolagem suave para âncoras - CORREÇÃO
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            // Ignorar links que são apenas "#"
-            if (href === '#') {
-                return;
-            }
-            
-            e.preventDefault();
-            
-            const target = document.querySelector(href);
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
+
+    // Função para mostrar detalhes do artigo
+    function showArticleDetail(article) {
+        currentArticle = article; // Armazenar o artigo atual
+        articleDetail.innerHTML = `
+            <h2>${article.title[currentLang]}</h2>
+            <img src="${article.image}" alt="${article.title[currentLang]}">
+            <p>${article.content[currentLang]}</p>
+        `;
+        homeSection.classList.remove('active');
+        articleDetailSection.classList.add('active');
+    }
+
+    // Navegação entre seções
+    /*homeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        homeSection.classList.add('active');
+        articleDetailSection.classList.remove('active');
+        homeLink.classList.add('active');
+        articlesLink.classList.remove('active');
+        currentArticle = null; // Limpar artigo atual ao voltar para home
+        renderArticles(); // Renderizar os artigos ao voltar para home
+    });*/
+
+    /*articlesLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        homeSection.classList.add('active');
+        articleDetailSection.classList.remove('active');
+        articlesLink.classList.add('active');
+        homeLink.classList.remove('active');
+        currentArticle = null; // Limpar artigo atual ao voltar para lista de artigos
+        renderArticles(); // Renderizar os artigos
+    });*/   
+
+    backToArticlesBtn.addEventListener('click', () => {
+        articleDetailSection.classList.remove('active');
+        homeSection.classList.add('active');
+        currentArticle = null; // Limpar artigo atual ao voltar
+        // Não precisamos renderizar novamente porque os artigos já estão na home
+    });
+
+    // Troca de idioma
+    langButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            currentLang = button.id.split('-')[1];
+            updateContent(); // Atualizar todo o conteúdo incluindo o artigo atual
         });
     });
+
+    // Alternar tema
+    themeToggle.addEventListener('click', () => {
+        if (currentTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            currentTheme = 'dark';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            currentTheme = 'light';
+        }
+    });
+
+    // Inicializar
+    updateContent();
 });
