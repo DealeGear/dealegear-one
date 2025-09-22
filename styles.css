@@ -20,7 +20,7 @@
     --radius: 8px;
     
     /* Tipografia */
-    --font-primary: 'Inter', sans-serif;
+    --font-primary: 'verdana', sans-serif;
     --font-size-xs: clamp(0.75rem, 2vw, 0.875rem);
     --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);
     --font-size-base: clamp(1rem, 3vw, 1.125rem);
