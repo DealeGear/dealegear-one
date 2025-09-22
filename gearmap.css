@@ -386,6 +386,21 @@ body:not(.dark-theme) .moon-icon {
     font-size: 0.875rem;
 }
 
+/*link DealeGear*/
+.dealegear-btn {
+    display: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.dealegear-btn:hover {
+    color: var(--primary-color);
+}
+
 /* ===== Modal ===== */
 .modal {
     display: none;

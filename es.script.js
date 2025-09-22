@@ -1,26 +1,31 @@
-// Dados iniciais para as ferramentas
-const ferramentas = [
-    { titulo: "GearHub", descricao: "Estruture seu caminho com clareza. Conte com GearHub para montar um planejamento sólido e organizado", url: "gearhub/index.html" },
-    { titulo: "GearLabs", descricao: "Transforme sua melhor ideia em realidade. Precisa de inspiração? Explore GearLabs e conheça nossos protótipos conceituais", url: "gearlabs/index.html" },
-    { titulo: "GearVision", descricao: "Quer dar um passo além? Descubra insights estratégicos para projetos profissionais e comerciais com GearVision", url: "gearvision/index.html" },
-    
+// Datos iniciales para las herramientas
+const herramientas = [
+    { 
+        titulo: "GearHub", 
+        descripcion: "Estructura tu camino con claridad. Cuenta con GearHub para armar una planificación sólida y organizada", 
+        url: "gearhub/index.html" 
+    },
+    { 
+        titulo: "GearLabs", 
+        descripcion: "Transforma tu mejor idea en realidad. ¿Necesitas inspiración? Explora GearLabs y conoce nuestros prototipos conceptuales", 
+        url: "gearlabs/index.html" 
+    },
+    { 
+        titulo: "GearVision", 
+        descripcion: "¿Quieres dar un paso más? Descubre insights estratégicos para proyectos profesionales y comerciales con GearVision", 
+        url: "gearvision/index.html" 
+    },
 ];
 
-
-// Inicialização quando o DOM estiver carregado
+// Inicialización cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function() {
     initTheme();
     initSmoothScroll();
-    renderFerramentas();
-    //initFormValidation();
-    //initFAQ();
-    //initTestimonials();
+    renderHerramientas();
     initMobileMenu();
-    //initTimelineAnimation();
-    //initProjectObjective();
 });
 
-// Toggle de tema claro/escuro
+// Toggle de tema claro/oscuro
 function initTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const savedTheme = localStorage.getItem('theme');
@@ -36,7 +41,7 @@ function initTheme() {
     });
 }
 
-// Scroll suave para âncoras
+// Scroll suave para anclas
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -56,7 +61,7 @@ function initSmoothScroll() {
                     behavior: 'smooth'
                 });
                 
-                // Fechar menu mobile se estiver aberto
+                // Cerrar menú móvil si está abierto
                 const navMenu = document.getElementById('navMenu');
                 navMenu.classList.remove('active');
             }
@@ -64,29 +69,27 @@ function initSmoothScroll() {
     });
 }
 
-// Renderizar ferramentas dinamicamente
-function renderFerramentas() {
+// Renderizar herramientas dinámicamente
+function renderHerramientas() {
     const container = document.getElementById('ferramentas-container');
     
-    ferramentas.forEach((ferramenta, index) => {
-        const card = document.createElement('a'); // agora é link
+    herramientas.forEach((herramienta, index) => {
+        const card = document.createElement('a');
         card.className = 'tool-card';
-        card.href = ferramenta.url;
-        card.target = "_self"; // abre em nova aba
+        card.href = herramienta.url;
+        card.target = "_self";
         card.style.animationDelay = `${index * 0.1}s`;
         
         card.innerHTML = `
-            <h3>${ferramenta.titulo}</h3>
-            <p>${ferramenta.descricao}</p>
+            <h3>${herramienta.titulo}</h3>
+            <p>${herramienta.descripcion}</p>
         `;
         
         container.appendChild(card);
     });
 }
 
-
-
-// Menu mobile
+// Menú móvil
 function initMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
@@ -95,7 +98,7 @@ function initMobileMenu() {
         navMenu.classList.toggle('active');
     });
     
-    // Fechar menu ao clicar em um link
+    // Cerrar menú al hacer clic en un enlace
     const navLinks = navMenu.querySelectorAll('a');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -104,25 +107,21 @@ function initMobileMenu() {
     });
 }
 
-// Função para menu de idiomas
-
-// JavaScript
+// Función para menú de idiomas
 document.addEventListener('DOMContentLoaded', function () {
   const dropdown = document.getElementById('languageDropdown');
   if (!dropdown) return;
 
-  // Detecta idioma atual pelo nome do arquivo
-  const file = window.location.pathname.split('/').pop(); // ex: "en.index.html"
-  let currentLang = 'pt'; // padrão
+  const file = window.location.pathname.split('/').pop();
+  let currentLang = 'pt'; 
   if (file.startsWith('en.')) currentLang = 'en';
   if (file.startsWith('es.')) currentLang = 'es';
 
-  // Ajusta o select para refletir o idioma atual
   dropdown.value = currentLang;
 
   dropdown.addEventListener('change', function () {
     const lang = this.value;
-    let target = 'index.html'; // padrão (pt)
+    let target = 'index.html';
 
     if (lang === 'en') target = 'en.index.html';
     if (lang === 'es') target = 'es.index.html';
@@ -131,26 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
-
-/*document.getElementById('languageDropdown').addEventListener('change', function () {
-  const lang = this.value;
-  if (lang =="pt"){
-window.location.href = "index.html";
-  } 
-  else if (lang =="en"){
-window.location.href = "en.index.html";
-  }
-  else if (lang =="es"){
-window.location.href = "es.index.html";
-  }
-  // aqui você coloca sua função de troca de idioma
-  console.log("Idioma selecionado:", lang);
-  // exemplo: changeLanguage(lang);
-});*/
-
-
-// Adicionar micro-interações aos cards
+// Micro-interacciones para los cards
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.step-card, .project-card, .tool-card');
     
@@ -164,4 +144,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-

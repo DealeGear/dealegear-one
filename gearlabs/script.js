@@ -336,6 +336,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Função para menu de idiomas
+document.getElementById('languageDropdown').addEventListener('change', function () {
+  const lang = this.value;
+  if (lang =="pt"){
+window.location.href = "index.html";
+  } 
+  else if (lang =="en"){
+window.location.href = "en.index.html";
+  }
+  else if (lang =="es"){
+window.location.href = "es.index.html";
+  }
+  // aqui você coloca sua função de troca de idioma
+  console.log("Idioma selecionado:", lang);
+  // exemplo: changeLanguage(lang);
+});
+
+
+
+
 // Exemplo de como adicionar um novo protótipo dinamicamente
 // Você pode chamar esta função quando precisar adicionar novos projetos
 /*

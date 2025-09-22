@@ -1,6 +1,6 @@
 {
     "pt": {
-        "backToDealeGear": "Voltar para DealeGear",
+        "backToDealeGear": "Voltar",
         "roadmapTitle": "Seu Caminho para o Sucesso",
         "roadmapSubtitle": "Siga estas etapas para iniciar seu projeto com o pé direito",
         "step1Title": "Inspiração",
@@ -16,12 +16,13 @@
         "ctaTitle": "Vamos Acelerar para o Próximo Nível?",
         "ctaText": "Acesse GearHub e aprimore o planejamento do seu projeto.",
         "ctaButton": "Acessar GearHub",
-        "footerText": "© 2022-2025 DealeGear. O segredo do sucesso é começar",
+        "footerText": "© 2022-2025 DealeGear",
         "markComplete": "Marcar como concluído",
-        "markIncomplete": "Marcar como não concluído"
+        "markIncomplete": "Marcar como não concluído",
+        "footerlink":"DealeGear"
     },
     "en": {
-        "backToDealeGear": "Back to DealeGear",
+        "backToDealeGear": "Back",
         "roadmapTitle": "Your Path to Success",
         "roadmapSubtitle": "Follow these steps to start your project on the right foot",
         "step1Title": "Inspiration",
@@ -37,12 +38,13 @@
         "ctaTitle": "Ready to Accelerate to the Next Level?",
         "ctaText": "Access GearHub and refine your project planning",
         "ctaButton": "Access GearHub",
-        "footerText": "© 2022-2025 DealeGear. The secret of success is to start",
+        "footerText": "© 2022-2025 DealeGear",
         "markComplete": "Mark as complete",
-        "markIncomplete": "Mark as incomplete"
+        "markIncomplete": "Mark as incomplete",
+        "footerlink":"DealeGear"
     },
     "es": {
-        "backToDealeGear": "Volver a DealeGear",
+        "backToDealeGear": "Volver",
         "roadmapTitle": "Tu Camino al Éxito",
         "roadmapSubtitle": "Sigue estos pasos para iniciar tu proyecto con el pie derecho",
         "step1Title": "Inspiración",
@@ -58,8 +60,9 @@
         "ctaTitle": "¿Listo para Acelerar al Siguiente Nivel?",
         "ctaText": "Accede a GearHub y mejora la planificación de tu proyecto.",
         "ctaButton": "Acceder a GearHub",
-        "footerText": "© 2022-2025 DealeGear. El secreto del éxito es empezar",
+        "footerText": "© 2022-2025 DealeGear",
         "markComplete": "Marcar como completado",
-        "markIncomplete": "Marcar como no completado"
+        "markIncomplete": "Marcar como no completado",
+        "footerlink":"DealeGear"
     }
 }

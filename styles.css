@@ -156,8 +156,17 @@ body {
     padding: var(--spacing-xs) var(--spacing-sm);
   
 }
-
-
+/*Estilo para o botão de Seleção de idioma*/
+.lang-select {
+  padding: 0.3rem 0.5rem;
+  border-radius: none;
+  border: 0.2 rem;
+  border-radius: 20px;
+  /*border: 1px solid var(--border, #ccc);*/
+  background-color: var(--bg-tertiary, #f9f9f9);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
 
 
 

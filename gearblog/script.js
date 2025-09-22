@@ -104,6 +104,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Não precisamos renderizar novamente porque os artigos já estão na home
     });
 
+    //função para tornar o comportamento do menu dropdown igual ao dos botões de idioma
+
+    const dropdown = document.getElementById('languageDropdown');
+
+  dropdown.addEventListener('change', function() {
+    const lang = this.value;
+
+    // Atualiza o botão ativo visualmente
+    langButtons.forEach(btn => btn.classList.remove('active'));
+    const btn = document.getElementById('lang-' + lang);
+    if (btn) btn.classList.add('active');
+
+    // Atualiza a variável de idioma e o conteúdo
+    currentLang = lang;
+    updateContent();
+  });
+
     // Troca de idioma
     langButtons.forEach(button => {
         button.addEventListener('click', () => {

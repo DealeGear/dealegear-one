@@ -16,11 +16,23 @@
             <a href="#" id="articles-link" class="nav-link">Artigos</a>
         </nav>-->
         <div class="header-actions">
-            <div class="language-switcher">
+            
+            <!--Menu de idiomas-->
+            <div class="language-selector">
+  <select id="languageDropdown" class="lang-select">
+    <option value="pt">PT</option>
+    <option value="en">EN</option>
+    <option value="es">ES</option>
+  </select>
+</div>
+
+            <!--<div class="language-switcher">
                 <button id="lang-pt" class="lang-btn active">PT</button>
                 <button id="lang-en" class="lang-btn">EN</button>
                 <button id="lang-es" class="lang-btn">ES</button>
-            </div>
+            </div>-->
+            
+            
             <button id="theme-toggle" class="theme-toggle">
                 <i class="fas fa-moon"></i>
             </button>
@@ -31,7 +43,7 @@
 <main class="main-content">
     <!-- Seção Home (agora mostra os artigos) -->
     <section id="home-section" class="section active">
-        <h2 id="articles-title">Artigos</h2>
+        <!--<h2 id="articles-title">Artigos</h2>-->
         <div id="articles-container" class="articles-grid">
             <!-- Artigos serão carregados dinamicamente -->
         </div>
@@ -104,7 +116,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2022-2025 DealeGear. O segredo do sucesso é começar</p>
+            <p>© 2022-2025 DealeGear</p>
         </div>
     </footer>
 

@@ -2,7 +2,7 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #333333;
-    --header-bg: #f8f9fa;
+    --header-bg: #faf8f8;
     --header-text: #333333;
     --nav-link-color: #555555;
     --nav-link-hover: #007bff;
@@ -104,7 +104,23 @@ body {
     gap: 1rem;
 }
 
-.language-switcher {
+/*CSS para o novo seletor de idiomas*/
+.lang-select {
+  padding: 0.3rem 0.5rem;
+  border-radius: none;
+  border: 0.2 rem;
+  border-radius: 20px;
+  /*border: 1px solid var(--border, #ccc);*/
+  background-color: var(--bg-tertiary, #f9f9f9);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+
+
+
+
+/*.language-switcher {
     display: flex;
     gap: 0.5rem;
 }
@@ -124,7 +140,7 @@ body {
     background-color: var(--button-bg);
     color: var(--button-text);
     border-color: var(--button-bg);
-}
+}*/
 
 .theme-toggle {
     background: none;
