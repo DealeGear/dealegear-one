@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - DealeGear</title>
+    <style>
+        /* Variáveis de cores e tipografia */
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --transition: all 0.3s ease;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+        }
+
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--primary-hover);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        /* Conteúdo principal */
+        main {
+            padding-bottom: 4rem;
+        }
+
+        .contact-section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .contact-section h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .contact-info {
+            background-color: var(--bg-secondary);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-details a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        /* Formulário */
+        .contact-form {
+            background-color: var(--bg-secondary);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-family: var(--font-family);
+            font-size: 1rem;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: var(--error-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .submit-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-button:disabled {
+            background-color: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-button svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Mensagem de feedback */
+        .feedback-message {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .feedback-message.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+
+        .feedback-message.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
+        }
+
+        .feedback-message.show {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.8;
+        }
+
+        .footer-content strong {
+            color: var(--text-primary);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .contact-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .contact-section {
+                margin-bottom: 2rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Melhorias de acessibilidade */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">DealeGear</a>
+                <a href="#" class="back-button" onclick="goBack()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Voltar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Contato</h1>
+            <p>Estamos aqui para ajudar! Entre em contato conosco e nossa equipe responderá o mais rápido possível.</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <div class="container">
+            <!-- Informações de Contato -->
+            <section class="contact-section">
+                <h2>Informações de Contato</h2>
+                <div class="contact-info">
+                    <h3>Como podemos ajudar?</h3>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p><a href="mailto:contato@dealegear.com">contato@dealegear.com</a></p>
+                                <p>Resposta em até 24 horas úteis</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Telefone</h4>
+                                <p><a href="tel:+5511999999999">(11) 99999-9999</a></p>
+                                <p>Segunda a Sexta, 9h às 18h</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Endereço</h4>
+                                <p>Av. Paulista, 1000</p>
+                                <p>São Paulo - SP, 01310-100</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 9h às 18h</p>
+                                <p>Sábado: 9h às 12h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Formulário de Contato -->
+            <section class="contact-section">
+                <h2>Envie-nos uma mensagem</h2>
+                <div class="contact-form">
+                    <div class="feedback-message" id="feedbackMessage"></div>
+                    <form id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome *</label>
+                                <input type="text" id="name" name="name" required>
+                                <div class="error-message">Por favor, informe seu nome</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                                <div class="error-message">Por favor, informe um email válido</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Assunto *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Selecione um assunto</option>
+                                    <option value="suporte">Suporte Técnico</option>
+                                    <option value="comercial">Comercial</option>
+                                    <option value="parceria">Parceria</option>
+                                    <option value="sugestao">Sugestão</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                                <div class="error-message">Por favor, selecione um assunto</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem *</label>
+                            <textarea id="message" name="message" required placeholder="Digite sua mensagem aqui..."></textarea>
+                            <div class="error-message">Por favor, digite sua mensagem</div>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <strong>DealeGear</strong> – O segredo do sucesso é começar<br>
+                © 2022-2025 DealeGear. Todos os direitos reservados. | Licenças abertas quando aplicável.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para voltar à página anterior
+        function goBack() {
+            // Se houver histórico, volta para a página anterior
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // Se não houver histórico, redireciona para a homepage
+                window.location.href = '/';
+            }
+        }
+
+        // Validação e envio do formulário
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            
+            // Observador de interseção para animar seções ao aparecer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observa todas as seções de contato
+            document.querySelectorAll('.contact-section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+
+            // Validação do formulário
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Remove mensagens de erro anteriores
+                document.querySelectorAll('.form-group').forEach(group => {
+                    group.classList.remove('error');
+                });
+                
+                // Validação dos campos
+                let isValid = true;
+                
+                // Validação do nome
+                const nameInput = document.getElementById('name');
+                if (nameInput.value.trim() === '') {
+                    nameInput.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validação do email
+                const emailInput = document.getElementById('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    emailInput.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validação do assunto
+                const subjectInput = document.getElementById('subject');
+                if (subjectInput.value === '') {
+                    subjectInput.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validação da mensagem
+                const messageInput = document.getElementById('message');
+                if (messageInput.value.trim() === '') {
+                    messageInput.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+                
+                // Se o formulário for válido, simula o envio
+                if (isValid) {
+                    // Desabilita o botão de envio
+                    const submitButton = form.querySelector('.submit-button');
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = `
+                        <svg class="animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Enviando...
+                    `;
+                    
+                    // Simula o envio do formulário
+                    setTimeout(() => {
+                        // Mostra mensagem de sucesso
+                        feedbackMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                        feedbackMessage.className = 'feedback-message success show';
+                        
+                        // Reseta o formulário
+                        form.reset();
+                        
+                        // Restaura o botão de envio
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = `
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                            Enviar Mensagem
+                        `;
+                        
+                        // Esconde a mensagem após 5 segundos
+                        setTimeout(() => {
+                            feedbackMessage.classList.remove('show');
+                        }, 5000);
+                    }, 2000);
+                } else {
+                    // Mostra mensagem de erro
+                    feedbackMessage.textContent = 'Por favor, corrija os erros no formulário.';
+                    feedbackMessage.className = 'feedback-message error show';
+                    
+                    // Esconde a mensagem após 5 segundos
+                    setTimeout(() => {
+                        feedbackMessage.classList.remove('show');
+                    }, 5000);
+                }
+            });
+            
+            // Remove a classe de erro quando o usuário começa a digitar
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                input.addEventListener('input', function() {
+                    this.closest('.form-group').classList.remove('error');
+                });
+            });
+        });
+
+        // Melhora a experiência de leitura em dispositivos móveis
+        if ('ontouchstart' in window) {
+            document.body.addEventListener('touchstart', function() {}, {passive: true});
+        }
+    </script>
+</body>
+</html>
