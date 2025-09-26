@@ -1,370 +1,432 @@
+// Estado da aplicação
+let currentLang = 'pt';
+let currentTheme = 'light';
+let appData = null;
 
-// Dados dos protótipos
-const prototypes = [
-  {
-    id: 1,
-    name: "3GTO",
-    description: "Realidade virtual que conecta aventura e tecnologia",
-    image: "img/3gto-capa.jpg",
-    link: "prototipos/3gto/index.html",
-  },
+// Inicialização
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+});
 
-  {
-    id: 2,
-    name: "Aloi",
-    description: "Plantas que trazem saúde e inovação",
-    image: "img/aloi-capa.jpg",
-    link: "prototipos/aloi/index.html",
-  },
-  {
-    id: 3,
-    name: "Aventuras Peludas",
-    description: "As aventuras de uma poodle excêntrica chamada Amelia",
-    image: "img/aventuras_peludas_capa.jpg",
-    link: "prototipos/aventuras_peludas/index.html",
-  },
-  {
-    id: 4,
-    name: "Baristas",
-    description:
-      "Uma cafeteria aconchegante com cafés especiais e muitas novidades",
-    image: "img/baristas-capa.jpg",
-    link: "prototipos/baristas/index.html",
-  },
-  {
-    id: 5,
-    name: "BaristaPro",
-    description:
-      "Gestão eficiente de cafeterias com foco em viabilidade e performance",
-    image: "img/baristapro-capa.jpg",
-    link: "prototipos/barista_pro/index.html",
-  },
-  {
-    id: 6,
-    name: "Bosque das Frutíferas",
-    description: "Trazendo natureza, educação e bem-estar para as cidades",
-    image: "img/bosquedasfrutiferas-capa.jpg",
-    link: "prototipos/bosquedasfrutiferas/index.html",
-  },
-  {
-    id: 7,
-    name: "Conexa",
-    description: "Pós-vendas digital para pequenos negócios",
-    image: "img/conexa-capa.jpg",
-    link: "prototipos/conexa/index.html",
-  },
-  {
-    id: 8,
-    name: "Crush",
-    description: "Conexões geek e relacionamentos divertidos",
-    image: "img/crush-capa.jpg",
-    link: "prototipos/crush/index.html",
-  },
-  {
-    id: 9,
-    name: "Dyris",
-    description:
-      "Acompanhe sua saúde ao longo da vida, prevena riscos e personalizse cuidados",
-    image: "img/dyris-capa.jpg",
-    link: "prototipos/dyris/index.html",
-  },
-  {
-    id: 10,
-    name: "DogZen",
-    description: "Conforto acústico para pets",
-    image: "img/dogzen-capa.jpg",
-    link: "prototipos/dyris/index.html",
-  },
-  {
-    id: 11,
-    name: "Dust Protocol",
-    description:
-      "um jogo cyberpunk distópico: humanos sob renda básica e IA total, e o jogador, como membro do Neon Silence, tenta invadir Plastic Eden para restaurar a agência humana",
-    image: "img/dustprotocol-capa.jpg",
-    link: "prototipos/dustprotocol/index.html",
-  },
-  {
-    id: 12,
-    name: "E-Motion",
-    description: "Motores mais eficientes e duráveis",
-    image: "img/emotion-capa.jpg",
-    link: "prototipos/emotion/index.html",
-  },
-  {
-    id: 13,
-    name: "Evora",
-    description: "Um protótipo híbrido que une cidade virtual e modelos físicos para ensinar sobre ecossistemas urbanos e inspirar soluções para desafios reais",
-    image: "img/evora-capa.jpg",
-    link: "prototipos/evora/index.html",
-  },
-  {
-    id: 14,
-    name: "Fabr",
-    description:
-      "Uma plataforma de fabricação colaborativa, onde pessoas combinam habilidades para criar algo novo",
-    image: "img/fabr-capa.jpg",
-    link: "prototipos/fabr/index.html",
-  },
-  {
-    id: 15,
-    name: "GearCity",
-    description: "protótipo de simulação social, onde diferentes papéis se conectam como engrenagens, movimentando a cidade de forma colaborativa e imprevisível.",
-    image: "img/gearcity-capa.jpg",
-    link: "prototipos/gearcity/index.html",
-  },
-  {
-    id: 16,
-    name: "Ignis",
-    description:"Um concentrador óptico solar que leva a luz do sol para dentro de edifícios, gerando calor para energia, aquecimento e processos industriais. O painel de controle simulado permite monitorar sensores e visualizar dados em tempo real.",
-    image: "img/ignis-capa.jpg",
-    link: "prototipos/ignis/index.html",
-  },
+async function initializeApp() {
+    try {
+        // Carregar dados do JSON
+        await loadData();
+        
+        // Configurar event listeners
+        setupEventListeners();
+        
+        // Carregar preferências salvas
+        const savedLang = getStoredPreference('gearlabs-lang', 'pt');
+        const savedTheme = getStoredPreference('gearlabs-theme', 'light');
+        
+        setLanguage(savedLang);
+        setTheme(savedTheme);
+        
+        // Carregar protótipos
+        loadPrototypes();
+        
+        // Inicializar animações
+        setTimeout(observeCards, 100);
+        
+    } catch (error) {
+        console.error('Erro ao inicializar aplicação:', error);
+        showError('Erro ao carregar dados da aplicação');
+    }
+}
 
-  {
-    id: 17,
-    name: "Mecanico Fantasma",
-    description:
-      "Monitoramento e analise de sons mecânicos de veículos, identificando divergências e prevenindo falhas",
-    image: "img/mecanicofantasma-capa.jpg",
-    link: "prototipos/mecanicofantasma/index.html",
-  },
-  {
-    id: 18,
-    name: "Mike e Tio Bob",
-    description: "As aventuras de dois dinossauros pelo tempo",
-    image: "img/mike-bob-capa.jpg",
-    link: "prototipos/mike-bob/index.html",
-  },
+async function loadData() {
+    try {
+        const response = await fetch('data.json');
+        if (!response.ok) {
+            throw new Error('Falha ao carregar dados');
+        }
+        appData = await response.json();
+    } catch (error) {
+        console.error('Erro ao carregar dados:', error);
+        // Dados de fallback em caso de erro
+        appData = {
+            translations: {
+                pt: {
+                    heroText: "Protótipos ajudam a desenvolver habilidades em projetos.",
+                    prototypesTitle: "Protótipos",
+                    ctaTitle: "O Poder dos Protótipos",
+                    ctaText: "Cada protótipo é uma oportunidade de aprendizado.",
+                    ctaButton: "Comece agora",
+                    footerAbout: "Sobre",
+                    footerContact: "Contato",
+                    footerDocs: "Documentação",
+                    footerCommunity: "Comunidade",
+                    viewProject: "Ver Projeto"
+                }
+            },
+            prototypes: {
+                pt: []
+            }
+        };
+        throw error;
+    }
+}
 
-  {
-    id: 19,
-    name: "MyHeart",
-    description:
-      "Simulador cardiácico, com visualizações gráficas e ajustes personalizados.",
-    image: "img/myheart-capa.jpg",
-    link: "prototipos/myheart/index.html",
-  },
-  {
-    id: 20,
-    name: "Oxygen",
-    description:
-      "Explorando novas formas de gerar energia eficiente e sustentável",
-    image: "img/oxygen-capa.jpg",
-    link: "prototipos/oxygen/index.html",
-  },
-  {
-    id: 21,
-    name: "Raiz Urbana",
-    description: "Ensinando agricultura urbana de forma simples e acessível",
-    image: "img/raiz_urbana_capa.jpg",
-    link: "prototipos/raiz_urbana/index.html",
-  },
-  {
-    id: 22,
-    name: "SIMCO",
-    description: "Simulador da Função Coloretal",
-    image: "img/simco-capa.jpg",
-    link: "prototipos/simco/index.html",
-  },
-  {
-    id: 23,
-    name: "Stairs",
-    description:
-      "Suba os degraus do conhecimento e transforme suas ideias em realidade",
-    image: "img/stairs-capa.jpg",
-    link: "prototipos/stairs/index.html",
-  },
+function setupEventListeners() {
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggleSidebar = document.getElementById('themeToggleSidebar');
+    
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (themeToggleSidebar) themeToggleSidebar.addEventListener('click', toggleTheme);
+    
+    // Language select
+    const langSelect = document.getElementById('langSelect');
+    const langSelectSidebar = document.getElementById('langSelectSidebar');
+    
+    if (langSelect) {
+        langSelect.addEventListener('change', (e) => {
+            setLanguage(e.target.value);
+        });
+    }
+    
+    if (langSelectSidebar) {
+        langSelectSidebar.addEventListener('change', (e) => {
+            setLanguage(e.target.value);
+        });
+    }
 
-  {
-    id: 24,
-    name: "Synapse",
-    description:
-      "Conexão interativa de ideias para colaboração criativa e descoberta coletiva",
-    image: "img/synapse-capa.jpg",
-    link: "prototipos/synapse/index.html",
-  },
-  {
-    id: 25,
-    name: "UnderSea",
-    description:
-      "Drones subaquáticos para explorar, monitorar e estudar os oceanos de forma autônoma",
-    image: "img/undersea-capa.jpg",
-    link: "prototipos/undersea/index.html",
-  },
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    
+    if (menuToggle) menuToggle.addEventListener('click', toggleSidebar);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
 
-  {
-    id: 26,
-    name: "VersoEspresso",
-    description: "Café quente, páginas vivas e ideias infinitas",
-    image: "img/versoespresso-capa.jpg",
-    link: "prototipos/versoespresso/index.html",
-  },
-  {
-    id: 27,
-    name: "Viver é uma Arte",
-    description:
-      "Criação e exposição de arte a áreas carentes, proporcionando bem-estar e renda",
-    image: "img/viverarte-capa.jpg",
-    link: "prototipos/vivererte/index.html",
-  },
-];
+    // CTA Button
+    const ctaButton = document.getElementById('ctaButton');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', () => {
+            const prototypesSection = document.querySelector('.prototypes-section');
+            if (prototypesSection) {
+                prototypesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 
-// Função para criar um card de protótipo
+    // Fechar sidebar quando clicar em um link
+    document.addEventListener('click', (e) => {
+        if (e.target.matches('.sidebar a')) {
+            closeSidebar();
+        }
+    });
+
+    // Smooth scroll para links internos
+    document.addEventListener('click', (e) => {
+        if (e.target.matches('a[href^="#"]')) {
+            e.preventDefault();
+            const target = document.querySelector(e.target.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+
+    // Navegação por teclado
+    document.addEventListener('keydown', (e) => {
+        // ESC para fechar sidebar
+        if (e.key === 'Escape') {
+            closeSidebar();
+        }
+        
+        // Enter para ativar cards focados
+        if (e.key === 'Enter' && e.target.classList.contains('prototype-card')) {
+            e.target.click();
+        }
+    });
+
+    // Efeito parallax no hero
+    window.addEventListener('scroll', handleParallaxScroll);
+}
+
+function handleParallaxScroll() {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    if (hero && scrolled < window.innerHeight) {
+        const rate = scrolled * -0.5;
+        hero.style.transform = `translateY(${rate}px)`;
+    }
+}
+
+function toggleTheme() {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setTheme(currentTheme);
+}
+
+function setTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    const themeButtons = [
+        document.getElementById('themeToggle'),
+        document.getElementById('themeToggleSidebar')
+    ].filter(Boolean);
+    
+    themeButtons.forEach(button => {
+        button.textContent = theme === 'light' ? '🌙' : '☀️';
+    });
+
+    // Salvar preferência
+    storePreference('gearlabs-theme', theme);
+}
+
+function setLanguage(lang) {
+    if (!appData || !appData.translations[lang]) {
+        console.warn('Idioma não encontrado:', lang);
+        return;
+    }
+    
+    currentLang = lang;
+    
+    // Atualizar selects
+    const langSelect = document.getElementById('langSelect');
+    const langSelectSidebar = document.getElementById('langSelectSidebar');
+    
+    if (langSelect) langSelect.value = lang;
+    if (langSelectSidebar) langSelectSidebar.value = lang;
+    
+    // Atualizar textos
+    updateTexts();
+    
+    // Recarregar protótipos
+    loadPrototypes();
+
+    // Salvar preferência
+    storePreference('gearlabs-lang', lang);
+}
+
+function updateTexts() {
+    if (!appData || !appData.translations[currentLang]) return;
+    
+    const texts = appData.translations[currentLang];
+    
+    Object.keys(texts).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+            element.textContent = texts[key];
+        }
+    });
+}
+
+function loadPrototypes() {
+    const grid = document.getElementById('prototypesGrid');
+    if (!grid || !appData || !appData.prototypes[currentLang]) return;
+    
+    // Mostrar loading
+    showLoading(grid);
+    
+    // Simular carregamento para melhor UX
+    setTimeout(() => {
+        grid.innerHTML = '';
+        const prototypes = appData.prototypes[currentLang];
+        
+        prototypes.forEach((prototype, index) => {
+            const card = createPrototypeCard(prototype);
+            grid.appendChild(card);
+        });
+        
+        // Reinicializar observador de animações
+        setTimeout(observeCards, 100);
+    }, 500);
+}
+
+// Função modificada para usar fotos reais ao invés de ícones
 function createPrototypeCard(prototype) {
-  return `
-        <article class="prototype-card">
-            <img src="${prototype.image}" alt="${prototype.name}" class="prototype-image">
-            <div class="prototype-content">
-                <h3 class="prototype-title">${prototype.name}</h3>
-                <p class="prototype-description">${prototype.description}</p>
-                <a href="${prototype.link}" target="_self" class="prototype-link">
-                    <span>Acessar Landpage</span>
-                    <i class="fas fa-external-link-alt"></i>
-                </a>
+    const card = document.createElement('div');
+    card.className = 'prototype-card';
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.onclick = () => window.open(prototype.link, '_blank');
+
+    const buttonText = appData.translations[currentLang].viewProject || 'Ver Projeto';
+
+    card.innerHTML = `
+        <div class="card-image-photo" style="background-image: url('${prototype.image}')">
+            <div class="card-overlay">
+                <div class="card-overlay-content">
+                    <h3 class="card-title-overlay">${escapeHtml(prototype.name)}</h3>
+                </div>
             </div>
-        </article>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">${escapeHtml(prototype.name)}</h3>
+            <p class="card-description">${escapeHtml(prototype.description)}</p>
+            <button class="card-button" onclick="event.stopPropagation(); window.open('${prototype.link}', '_blank')">
+                ${buttonText}
+            </button>
+        </div>
+    `;
+
+    return card;
+}
+
+function getProjectIcon(name) {
+    // Mapear ícones baseados no nome do projeto
+    const icons = {
+        '3GTO': '🥽',
+        'Aloi': '🌿',
+        'Aventuras Peludas': '🐕',
+        'Furry Adventures': '🐕',
+        'Baristas': '☕',
+        'BaristaPro': '📊',
+        'Bosque das Frutíferas': '🌳',
+        'Fruit Tree Grove': '🌳',
+        'Bosque de Frutales': '🌳',
+        'Conexa': '🔗',
+        'Crush': '💘',
+        'Dyris': '❤️',
+        'DogZen': '🐾',
+        'Dust Protocol': '🎮',
+        'E-Motion': '⚡',
+        'Evora': '🏙️',
+        'Fabr': '🔧',
+        'GearCity': '⚙️',
+        'Ignis': '☀️',
+        'Mecânico Fantasma': '🔊',
+        'Ghost Mechanic': '🔊',
+        'Mecánico Fantasma': '🔊',
+        'Mike e Tio Bob': '🦕',
+        'Mike and Uncle Bob': '🦕',
+        'Mike y Tío Bob': '🦕',
+        'MyHeart': '💓',
+        'Oxygen': '🌬️',
+        'Raiz Urbana': '🌱',
+        'Urban Root': '🌱',
+        'Raíz Urbana': '🌱',
+        'SIMCO': '🩺',
+        'Stairs': '📚',
+        'Synapse': '🧠',
+        'UnderSea': '🤖',
+        'VersoEspresso': '📖',
+        'Viver é uma Arte': '🎨',
+        'Living is an Art': '🎨',
+        'Vivir es un Arte': '🎨'
+    };
+
+    return icons[name] || '⭐';
+}
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    
+    if (sidebar && overlay) {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('open');
+    }
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    
+    if (sidebar && overlay) {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+    }
+}
+
+function showLoading(container) {
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="loading">
+            <div class="spinner"></div>
+        </div>
     `;
 }
 
-// Função para renderizar todos os protótipos
-function renderPrototypes() {
-  const grid = document.getElementById("prototypesGrid");
-  grid.innerHTML = prototypes
-    .map((prototype) => createPrototypeCard(prototype))
-    .join("");
-}
-
-// Função para adicionar novo protótipo
-function addPrototype(newPrototype) {
-  prototypes.push(newPrototype);
-  renderPrototypes();
-}
-
-// Menu Mobile Toggle
-const navToggle = document.getElementById("nav-toggle");
-const navMenu = document.getElementById("nav-menu");
-
-if (navToggle) {
-  navToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-    navToggle.classList.toggle("active");
-  });
-}
-
-// Fechar menu ao clicar em um link
-const navLinks = document.querySelectorAll(".nav-link");
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    navMenu.classList.remove("active");
-    navToggle.classList.remove("active");
-  });
-});
-
-// Smooth scroll para seções
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+function showError(message) {
+    const grid = document.getElementById('prototypesGrid');
+    if (grid) {
+        grid.innerHTML = `
+            <div class="loading">
+                <p style="color: var(--text-secondary); text-align: center;">
+                    ${message}
+                </p>
+            </div>
+        `;
     }
-  });
-});
+}
 
-// Animação de scroll para elementos
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-};
+// Animação de entrada dos cards quando aparecem na tela
+function observeCards() {
+    const cards = document.querySelectorAll('.prototype-card');
+    
+    if (!cards.length) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 50);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+}
+
+// Utilitários para localStorage
+function storePreference(key, value) {
+    try {
+        if (window.localStorage) {
+            window.localStorage.setItem(key, value);
+        }
+    } catch (error) {
+        console.warn('Não foi possível salvar preferência:', error);
     }
-  });
-}, observerOptions);
+}
 
-// Efeito parallax suave no hero
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset;
-  const hero = document.querySelector(".hero");
+function getStoredPreference(key, defaultValue) {
+    try {
+        if (window.localStorage) {
+            return window.localStorage.getItem(key) || defaultValue;
+        }
+    } catch (error) {
+        console.warn('Não foi possível carregar preferência:', error);
+    }
+    return defaultValue;
+}
 
-  // Limitar o efeito parallax para evitar problemas de sobreposição
-  if (scrolled < window.innerHeight) {
-    hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-  }
+// Utilitário para escape de HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
 
-  // Mudar estilo do navbar ao rolar
-  const navbar = document.querySelector(".navbar");
-  if (scrolled > 50) {
-    navbar.style.boxShadow = "var(--shadow-md)";
-    navbar.style.background = "rgba(255, 255, 255, 0.98)";
-  } else {
-    navbar.style.boxShadow = "var(--shadow-sm)";
-    navbar.style.background = "rgba(255, 255, 255, 0.95)";
-  }
-});
+// Debounce para otimizar eventos de scroll
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
-// Inicialização quando o DOM estiver carregado
-document.addEventListener("DOMContentLoaded", () => {
-  renderPrototypes();
-
-  // Adicionar animação aos cards
-  setTimeout(() => {
-    const cards = document.querySelectorAll(".prototype-card");
-    cards.forEach((card, index) => {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(20px)";
-      card.style.transition = `all 0.5s ease-out ${index * 0.01}s`;
-      observer.observe(card);
-    });
-  }, 100);
-
-  // Adicionar evento de clique no indicador de scroll
-  const scrollIndicator = document.querySelector(".scroll-indicator");
-  if (scrollIndicator) {
-    scrollIndicator.addEventListener("click", () => {
-      document.querySelector(".prototypes-section").scrollIntoView({
-        behavior: "smooth",
-      });
-    });
-  }
-});
-
-// Função para menu de idiomas
-document.getElementById('languageDropdown').addEventListener('change', function () {
-  const lang = this.value;
-  if (lang =="pt"){
-window.location.href = "index.html";
-  } 
-  else if (lang =="en"){
-window.location.href = "en.index.html";
-  }
-  else if (lang =="es"){
-window.location.href = "es.index.html";
-  }
-  // aqui você coloca sua função de troca de idioma
-  console.log("Idioma selecionado:", lang);
-  // exemplo: changeLanguage(lang);
-});
-
-
-
-
-// Exemplo de como adicionar um novo protótipo dinamicamente
-// Você pode chamar esta função quando precisar adicionar novos projetos
-/*
-const newProject = {
-    id: 7,
-    name: "Novo Projeto",
-    description: "Descrição do novo projeto",
-    image: "https://picsum.photos/seed/newproject/400/300.jpg",
-    link: "https://github.com/gearlabs/newproject"
-};
-addPrototype(newProject);
-*/
+// Aplicar debounce no scroll para melhor performance
+const debouncedParallaxScroll = debounce(handleParallaxScroll, 16);
+window.removeEventListener('scroll', handleParallaxScroll);
+window.addEventListener('scroll', debouncedParallaxScroll);

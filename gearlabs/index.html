@@ -1,131 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearLabs - Hub de Protótipos</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome para ícones Substituir -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Arquivo CSS -->
-    <link rel="stylesheet" href="style.01.css">
-    <link rel="icon" type="image/png" href="../favicon/dealegear-fav.png">
-
+    <title>GearLabs</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Menu de Navegação -->
-    <nav class="navbar">
-        <div class="nav-container">
-           <div class="nav-logo">
-            <a href="#hero">
-                GearLabs 
-                <!--<span class="byline">by DealeGear</span>-->
-            </a>
+    <!-- Overlay do sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar para mobile -->
+    <div class="sidebar" id="sidebar">
+        <div class="nav-controls" style="flex-direction: column; gap: 1rem;">
+            <select class="lang-select" id="langSelectSidebar">
+                <option value="pt">Português</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+            </select>
+            <button class="theme-toggle" id="themeToggleSidebar">🌙</button>
         </div>
-       
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">GearLabs</div>
+            <div class="nav-controls">
+                <select class="lang-select" id="langSelect">
+                    <option value="pt">Português</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="menu-toggle" id="menuToggle">☰</button>
             </div>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="../index.html" class="nav-link"  >DealeGear</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../gearhub/index.html" class="nav-link" >GearHub</a>
-                </li>
-                <li class="nav-item">
-                    <a href="docs/index.html" class="nav-link" >Documentação</a>
-                </li>
-                <li>
-                    <div class="language-selector">
-  <select id="languageDropdown" class="lang-select">
-    <option value="pt">PT</option>
-    <option value="en">EN</option>
-    <option value="es">ES</option>
-  </select>
-</div>
-                </li>
-                <!--<li class="nav-item">
-                    <a href="#onevision" class="nav-link">OneVision</a>
-                </li>-->
-            </ul>
-            
-            <div class="nav-toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Header/Hero Section -->
-    <header class="hero" id="hero">
-        <div class="hero-content">
-            <h1>GearLabs</h1>
-            Protótipos conceituais que desenvolvem habilidades e criam o futuro</p>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+        </nav>
     </header>
-    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 id="heroText">Carregando...</h1>
+    </section>
+
     <!-- Seção de Protótipos -->
-    <main>
-        <section class="prototypes-section">
-            <h2 class="section-title">Nossos Protótipos</h2>
-            <p class="section-subtitle">Tudo começa quando você se permite questionar o comum e transformar ideias em realidade. Foi desse impulso que nasceram as inovações que mudaram o mundo.</p>
-            <div class="prototypes-grid" id="prototypesGrid">
-                <!-- Cards serão inseridos dinamicamente via JavaScript -->
-            </div>
-        </section>
-        
-        <!-- Seção de Inspiração -->
-        <section class="inspiration-section">
-            <div class="inspiration-content">
-                <h3 class="inspiration-title">O Poder dos Protótipos</h3>
-                <p class="inspiration-text">
-                    Cada protótipo é uma oportunidade de aprendizado, um passo em direção à inovação. 
-                    Através da experimentação e do desenvolvimento contínuo, transformamos ideias simples 
-                    em soluções que podem impactar positivamente a vida das pessoas. Acreditamos que todo 
-                    grande projeto começa com um pequeno protótipo.
-                </p>
-            </div>
-        </section>
-    </main>
-    
+    <section class="prototypes-section">
+        <h2 class="section-title" id="prototypesTitle">Carregando...</h2>
+        <div class="prototypes-grid" id="prototypesGrid">
+            <!-- Os cards serão gerados dinamicamente via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title" id="ctaTitle">Carregando...</h2>
+            <p class="cta-text" id="ctaText">Carregando...</p>
+            <button class="cta-button" id="ctaButton">Carregando...</button>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <!--<a href="mailto:contato@gearlabs.com">
-                    <i class="fas fa-envelope"></i>
-                    contato@gearlabs.com
-                </a>-->
-                <a href="../index.html">
-                    
-                    DealeGear
-                </a>
-                <a href="../gearhub/index.html" >
-                    
-                    GearHub
-                </a>
-                <a href="docs/index.html" >
-                    
-                    Documentação
-                </a>
-            </div>
-            <p class="footer-copyright">
-                © 2022-2025 DealeGear
-            </p>
+            <a href="#" class="footer-link" id="footerAbout">Carregando...</a>
+            <a href="#" class="footer-link" id="footerContact">Carregando...</a>
+            <a href="#" class="footer-link" id="footerDocs">Carregando...</a>
+            <a href="#" class="footer-link" id="footerCommunity">Carregando...</a>
         </div>
     </footer>
-    
-    <!-- Arquivo JavaScript -->
+
     <script src="script.js"></script>
 </body>
 </html>
