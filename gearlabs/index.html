@@ -3,70 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearLabs</title>
-    <link rel="stylesheet" href="style.css">
+    <title>GearLabs - Hub de Protótipos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Overlay do sidebar -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <!-- Sidebar para mobile -->
-    <div class="sidebar" id="sidebar">
-        <div class="nav-controls" style="flex-direction: column; gap: 1rem;">
-            <select class="lang-select" id="langSelectSidebar">
-                <option value="pt">Português</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-            </select>
-            <button class="theme-toggle" id="themeToggleSidebar">🌙</button>
-        </div>
-    </div>
-
     <!-- Header -->
     <header>
-        <nav>
-            <div class="logo">GearLabs</div>
-            <div class="nav-controls">
-                <select class="lang-select" id="langSelect">
-                    <option value="pt">Português</option>
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                </select>
-                <button class="theme-toggle" id="themeToggle">🌙</button>
-                <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="header-content">
+            <a href="" class="logo">GearLabs</a>
+            
+            <nav class="nav-desktop">
+                <a href="#prototypes" onclick="showSection('prototypes')">Protótipos</a>
+                <a href="#challenges" onclick="showSection('challenges')">Desafios</a>
+            </nav>
+
+            <div class="header-controls">
+                <div class="language-dropdown">
+                    <button class="control-btn" onclick="toggleLanguageMenu()">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <div class="language-menu" id="languageMenu">
+                        <div class="language-option" onclick="changeLanguage('pt')">Português</div>
+                        <div class="language-option" onclick="changeLanguage('en')">English</div>
+                        <div class="language-option" onclick="changeLanguage('es')">Español</div>
+                    </div>
+                </div>
+                <button class="control-btn" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-        </nav>
+        </div>
     </header>
+
+    <!-- Menu Mobile -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo">GearLabs</span>
+            <button class="control-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-content">
+            <a href="#prototypes" onclick="showSection('prototypes'); toggleMobileMenu();">Protótipos</a>
+            <a href="#challenges" onclick="showSection('challenges'); toggleMobileMenu();">Desafios</a>
+            <a href="#" onclick="changeLanguage('pt'); toggleMobileMenu();">Português</a>
+            <a href="#" onclick="changeLanguage('en'); toggleMobileMenu();">English</a>
+            <a href="#" onclick="changeLanguage('es'); toggleMobileMenu();">Español</a>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1 id="heroText">Carregando...</h1>
+        <h1 id="heroTitle">O Poder dos Protótipos</h1>
+        <p id="heroDescription">
+            Cada protótipo é uma oportunidade de aprendizado, um passo em direção à inovação. 
+            Através da experimentação e do desenvolvimento contínuo, transformamos ideias simples 
+            em soluções que podem impactar positivamente a vida das pessoas. Acreditamos que todo 
+            grande projeto começa com um pequeno protótipo.
+        </p>
+        <a href="#prototypes" class="cta-button" id="ctaButton">Comece agora</a>
     </section>
 
     <!-- Seção de Protótipos -->
-    <section class="prototypes-section">
-        <h2 class="section-title" id="prototypesTitle">Carregando...</h2>
+    <section class="prototypes-section" id="prototypes">
+        <h2 class="section-title" id="prototypesTitle">Nossos Protótipos</h2>
         <div class="prototypes-grid" id="prototypesGrid">
-            <!-- Os cards serão gerados dinamicamente via JavaScript -->
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Carregando protótipos...</p>
+            </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2 class="cta-title" id="ctaTitle">Carregando...</h2>
-            <p class="cta-text" id="ctaText">Carregando...</p>
-            <button class="cta-button" id="ctaButton">Carregando...</button>
+    <!-- Seção de Desafios -->
+    <section class="challenges-section" id="challenges">
+        <h2 class="section-title" id="challengesTitle">Desafios de Inovação</h2>
+        <div class="challenges-grid" id="challengesGrid">
+            <div class="challenge-card">
+                <div class="challenge-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="challenge-title" id="challenge1Title">Motor elétrico de alto desempenho</h3>
+                <p class="challenge-description" id="challenge1Desc">
+                    Desenvolver um motor elétrico que supere as limitações atuais em eficiência, 
+                    potência e durabilidade, tornando-se uma alternativa viável para aplicações 
+                    industriais e de transporte.
+                </p>
+            </div>
+            <div class="challenge-card">
+                <div class="challenge-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3 class="challenge-title" id="challenge2Title">Alternativa ao uso de hélio em dirigíveis</h3>
+                <p class="challenge-description" id="challenge2Desc">
+                    Criar uma solução inovadora que possa substituir o hélio na flutuação de 
+                    dirigíveis, considerando custos, segurança e impacto ambiental.
+                </p>
+            </div>
+            <div class="challenge-card">
+                <div class="challenge-icon">
+                    <i class="fas fa-recycle"></i>
+                </div>
+                <h3 class="challenge-title" id="challenge3Title">Energia limpa para comunidades isoladas</h3>
+                <p class="challenge-description" id="challenge3Desc">
+                    Projetar um sistema de geração de energia sustentável e de baixo custo 
+                    para comunidades rurais e isoladas, utilizando recursos locais disponíveis.
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <a href="#" class="footer-link" id="footerAbout">Carregando...</a>
-            <a href="#" class="footer-link" id="footerContact">Carregando...</a>
-            <a href="#" class="footer-link" id="footerDocs">Carregando...</a>
-            <a href="#" class="footer-link" id="footerCommunity">Carregando...</a>
+            <div class="footer-links">
+                <a href="" id="footerAbout">Sobre</a>
+                <a href="" id="footerContact">Contato</a>
+                <a href="" id="footerDocs">Documentação</a>
+                <a href="" id="footerCommunity">Comunidade</a>
+            </div>
+            <p class="footer-copyright" id="footerCopyright">
+                © 2024 GearLabs. Todos os direitos reservados.
+            </p>
         </div>
     </footer>
 
