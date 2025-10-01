@@ -13,9 +13,9 @@ const translations = {
         challenge3Title: "Energia limpa para comunidades isoladas",
         challenge3Desc: "Projetar um sistema de geração de energia sustentável e de baixo custo para comunidades rurais e isoladas, utilizando recursos locais disponíveis.",
         footerHome: "DealeGear",
-        footerGearHub: "GearHub",
+        footerLicence: "Licença",
         footerDocs: "Documentação",
-        footerCommunity: "Telegram",
+        //footerCommunity: "Telegram",
         footerCopyright: "© 2022-2025 DealeGear - São Paulo - Brasil",
         prototypes: [
             { id: 1, name: "3GTO", description: "3GTO é um jogo imersivo que combina VR e veículos em três mundos (água, cidade, floresta), criado como entretenimento para negócios.", image: "img/3gto-capa.jpg", link: "prototipos/3gto/index.html" },
@@ -60,9 +60,9 @@ const translations = {
         challenge3Title: "Clean energy for isolated communities",
         challenge3Desc: "Design a sustainable and low-cost energy generation system for rural and isolated communities, using locally available resources.",
         footerHome: "DealeGear",
-        footerGearHub: "GearHub",
+        footerLicence: "Licence",
         footerDocs: "Documentation",
-        footerCommunity: "Telegram",
+        //footerCommunity: "Telegram",
         footerCopyright: "© 2022-2025 DealeGear - São Paulo - Brasil",
         prototypes: [
             { id: 1, name: "3GTO", description: "3GTO is an immersive game mixing VR and vehicles across three worlds—water, city, forest—designed as entertainment for businesses", image: "img/3gto-capa.jpg", link: "prototipos/3gto/index.html" },
@@ -107,9 +107,9 @@ const translations = {
         challenge3Title: "Energía limpia para comunidades aisladas",
         challenge3Desc: "Diseñar un sistema de generación de energía sostenible y de bajo costo para comunidades rurales y aisladas, utilizando recursos locales disponibles.",
         footerHome: "DealeGear",
-        footerGearHub: "GearHub",
+        footerLicence: "Licencia",
         footerDocs: "Documentación",
-        footerCommunity: "Telegram",
+        //footerCommunity: "Telegram",
         footerCopyright: "© 2022-2025 DealeGear - São Paulo - Brasil",
         prototypes: [
             { id: 1, name: "3GTO", description: "3GTO es un juego inmersivo que une RV y vehículos en tres mundos (agua, ciudad, bosque), creado como entretenimiento para negocios", image: "img/3gto-capa.jpg", link: "prototipos/3gto/index.html" },
@@ -218,9 +218,9 @@ function updateTranslations() {
     document.getElementById('challenge3Title').textContent = t.challenge3Title;
     document.getElementById('challenge3Desc').textContent = t.challenge3Desc;
     document.getElementById('footerHome').textContent = t.footerHome;
-    document.getElementById('footerGearHub').textContent = t.footerGearHub;
+    document.getElementById('footerLicence').textContent = t.footerLicence;
     document.getElementById('footerDocs').textContent = t.footerDocs;
-    document.getElementById('footerCommunity').textContent = t.footerCommunity;
+    //document.getElementById('footerCommunity').textContent = t.footerCommunity;
     document.getElementById('footerCopyright').textContent = t.footerCopyright;
 }
 
