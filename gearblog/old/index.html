@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearBlog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho Fixo -->
+    <header class="header">
+        <div class="logo">GearBlog</div>
+                <!--<nav class="nav-menu">
+            <a href="#" id="home-link" class="nav-link active">Home</a>
+            <a href="#" id="articles-link" class="nav-link">Artigos</a>
+        </nav>-->
+        <div class="header-actions">
+            
+            <!--Menu de idiomas-->
+            <div class="language-selector">
+  <select id="languageDropdown" class="lang-select">
+    <option value="pt">PT</option>
+    <option value="en">EN</option>
+    <option value="es">ES</option>
+  </select>
+</div>
+
+            <!--<div class="language-switcher">
+                <button id="lang-pt" class="lang-btn active">PT</button>
+                <button id="lang-en" class="lang-btn">EN</button>
+                <button id="lang-es" class="lang-btn">ES</button>
+            </div>-->
+            
+            
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+<!-- Conteúdo Principal -->
+<main class="main-content">
+    <!-- Seção Home (agora mostra os artigos) -->
+    <section id="home-section" class="section active">
+        <!--<h2 id="articles-title">Artigos</h2>-->
+        <div id="articles-container" class="articles-grid">
+            <!-- Artigos serão carregados dinamicamente -->
+        </div>
+    </section>
+
+    <!-- Detalhe do Artigo -->
+    <section id="article-detail-section" class="section">
+        <button id="back-to-articles" class="back-button">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+        <div id="article-detail">
+            <!-- Conteúdo do artigo será carregado dinamicamente -->
+        </div>
+    </section>
+</main>
+
+    <!-- Detalhe do Artigo -->
+    <section id="article-detail-section" class="section">
+        <button id="back-to-articles" class="back-button">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+        <div id="article-detail">
+            <!-- Conteúdo do artigo será carregado dinamicamente -->
+        </div>
+    </section>
+</main>
+
+        <!-- Seção Artigos -->
+        <section id="articles-section" class="section">
+            <h2 id="articles-title">Artigos</h2>
+            <div id="articles-container" class="articles-grid">
+                <!-- Artigos serão carregados dinamicamente -->
+            </div>
+        </section>
+
+        <!-- Detalhe do Artigo -->
+        <section id="article-detail-section" class="section">
+            <button id="back-to-articles" class="back-button">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+            <div id="article-detail">
+                <!-- Conteúdo do artigo será carregado dinamicamente -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GearBlog</h3>
+                <p>GearBlog traz artigos, tutoriais e ideias para quem gosta de inovar e entender o mundo dos projetos</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="../index.html">DealeGear</a></li>
+                    <li><a href="../gearlabs/index.html">GearLabs</a></li>
+                    <li><a href="../gearvision/index.html">OneVision</a></li>
+                    <li><a href="../gearhub/index.html">GearHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Siga-nos</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dealegear/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@dealegear" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://twitter.com/dealegear" target="_blank"><i class="fab fa-x"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2022-2025 DealeGear</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

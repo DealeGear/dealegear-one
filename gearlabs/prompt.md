@@ -36,7 +36,7 @@ Três idiomas (pt, en, es), todos os textos devem ser carregados de um arquivo .
 
 Estrutura de código limpa, comentada e organizada para manutenção.
 
-Os protótipos devem ser carregados via JavaScript (array de objetos) como no exemplo fornecido:
+Os protótipos devem ser carregados via JavaScript (array de objetos) como no exemplo fornecido, ressaltando que o conteúdo dos cards também precisa ser traduzido para português, inglês ou espanhol de acordo com a seleção:
 
 const prototypes = [
 {
