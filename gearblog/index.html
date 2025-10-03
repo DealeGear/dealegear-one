@@ -144,10 +144,59 @@ README RÁPIDO:
                 </nav>
             </div>
 
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Menu mobile">
                 <div class="mobile-menu-content">
-                    <!-- Conteúdo duplicado para mobile com melhor usabilidade -->
+                    <div class="mode-slider-container">
+                        <span class="mode-label" id="mode-label-business-mobile">Negócios</span>
+                        <label class="mode-slider" aria-label="Alternar entre modo Negócios e Técnico">
+                            <input 
+                                type="checkbox" 
+                                id="mode-toggle-mobile" 
+                                role="switch" 
+                                aria-checked="false"
+                                aria-describedby="mode-description-mobile"
+                            >
+                            <span class="mode-slider-track">
+                                <span class="mode-slider-thumb"></span>
+                            </span>
+                        </label>
+                        <span class="mode-label" id="mode-label-technical-mobile">Técnico</span>
+                        <span id="mode-description-mobile" class="sr-only">
+                            Alterne entre conteúdo focado em negócios ou técnico
+                        </span>
+                    </div>
+
+                    <div class="language-selector">
+                        <label for="language-select-mobile" class="sr-only">Selecionar idioma</label>
+                        <select id="language-select-mobile" aria-label="Idioma">
+                            <option value="pt">🇧🇷 PT</option>
+                            <option value="en">🇺🇸 EN</option>
+                            <option value="es">🇪🇸 ES</option>
+                        </select>
+                    </div>
+
+                    <button 
+                        id="theme-toggle-mobile" 
+                        class="theme-toggle" 
+                        aria-label="Alternar modo claro/escuro"
+                        aria-pressed="false"
+                    >
+                         <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+                            <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
+                            <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    
                 </div>
             </div>
         </div>

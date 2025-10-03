@@ -797,17 +797,25 @@ function formatArticleContent(content) {
  * Configura todos os event listeners da aplicação
  */
 function setupEventListeners() {
-  // Theme toggle
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle?.addEventListener('click', toggleTheme);
+  // Theme toggle - Seleciona todos os botões de tema (desktop e mobile)
+  const themeToggles = document.querySelectorAll('.theme-toggle');
+  themeToggles.forEach(toggle => {
+      toggle?.addEventListener('click', toggleTheme);
+  });
   
-  // Language selector
-  const languageSelect = document.getElementById('language-select');
-  languageSelect?.addEventListener('change', (e) => changeLanguage(e.target.value));
+  // Language selector - Seleciona todos os selects de idioma (desktop e mobile)
+  const languageSelects = document.querySelectorAll('.language-selector select');
+  languageSelects.forEach(select => {
+      select?.addEventListener('change', (e) => changeLanguage(e.target.value));
+  });
   
-  // Mode toggle
-  const modeToggle = document.getElementById('mode-toggle');
-  modeToggle?.addEventListener('change', toggleMode);
+  // Mode toggle - Seleciona todos os inputs de modo (desktop e mobile)
+  const modeToggles = document.querySelectorAll('input[type="checkbox"][role="switch"]');
+  modeToggles.forEach(toggle => {
+      toggle?.addEventListener('change', toggleMode);
+  });
+
+  
   
   // Search input
   const searchInput = document.getElementById('search-input');
