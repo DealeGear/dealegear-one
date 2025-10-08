@@ -78,6 +78,7 @@ function renderFerramentas() {
         card.innerHTML = `
             <h3>${ferramenta.titulo}</h3>
             <p>${ferramenta.descricao}</p>
+            <button class="tool-button">Explorar</button>
         `;
         
         container.appendChild(card);

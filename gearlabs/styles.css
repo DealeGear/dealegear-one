@@ -441,3 +441,27 @@ footer {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* Estilo básico do botão */
+#scrollToTopBtn {
+    display: none; /* Esconde o botão por padrão */
+    position: fixed; /* Posição fixa na tela */
+    bottom: 20px; /* 20px da parte inferior */
+    right: 30px; /* 30px da direita */
+    z-index: 99; /* Garante que fique acima de outros elementos */
+    border: none;
+    outline: none;
+    background-color: #555; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    opacity: 0.7; /* Transparência leve */
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #333; /* Cor mais escura ao passar o mouse */
+    opacity: 1;
+}

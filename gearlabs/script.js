@@ -17,6 +17,10 @@ const translations = {
         footerDocs: "Documentação",
         //footerCommunity: "Telegram",
         footerCopyright: "© 2022-2025 DealeGear - São Paulo - Brasil",
+        licence: "Licença",
+        documentation: "Documentação",
+        dealegear: "DealeGear",
+        scrollToTopBtn: "Topo",
         prototypes: [
             { id: 1, name: "3GTO", description: "3GTO é um jogo imersivo que combina VR e veículos em três mundos (água, cidade, floresta), criado como entretenimento para negócios.", image: "img/3gto-capa.jpg", link: "prototipos/3gto/index.html" },
             { id: 2, name: "Aloi", description: "Protótipo open source que simula a extração e análise de substâncias bioativas obtidas de plantas nativas brasileiras", image: "img/aloi-capa.jpg", link: "prototipos/aloi/index.html" },
@@ -64,6 +68,10 @@ const translations = {
         footerDocs: "Documentation",
         //footerCommunity: "Telegram",
         footerCopyright: "© 2022-2025 DealeGear - São Paulo - Brasil",
+        licence: "Licence",
+        documentation: "Documentation",
+        dealegear: "DealeGear",
+        scrollToTopBtn: "Top",
         prototypes: [
             { id: 1, name: "3GTO", description: "3GTO is an immersive game mixing VR and vehicles across three worlds—water, city, forest—designed as entertainment for businesses", image: "img/3gto-capa.jpg", link: "prototipos/3gto/index.html" },
             { id: 2, name: "Aloi", description: "Open-source prototype simulating extraction and analysis of bioactive compounds obtained from Brazilian native plants", image: "img/aloi-capa.jpg", link: "prototipos/aloi/index.html" },
@@ -111,6 +119,10 @@ const translations = {
         footerDocs: "Documentación",
         //footerCommunity: "Telegram",
         footerCopyright: "© 2022-2025 DealeGear - São Paulo - Brasil",
+        licence: "Licencia",
+        documentation: "Documentación", 
+        dealegear: "DealeGear",
+        scrollToTopBtn: "Inicio",
         prototypes: [
             { id: 1, name: "3GTO", description: "3GTO es un juego inmersivo que une RV y vehículos en tres mundos (agua, ciudad, bosque), creado como entretenimiento para negocios", image: "img/3gto-capa.jpg", link: "prototipos/3gto/index.html" },
             { id: 2, name: "Aloi", description: "Prototipo open source que simula la extracción y análisis de compuestos bioactivos obtenidos de plantas nativas brasileñas", image: "img/aloi-capa.jpg", link: "prototipos/aloi/index.html" },
@@ -222,6 +234,10 @@ function updateTranslations() {
     document.getElementById('footerDocs').textContent = t.footerDocs;
     //document.getElementById('footerCommunity').textContent = t.footerCommunity;
     document.getElementById('footerCopyright').textContent = t.footerCopyright;
+    document.getElementById('licence').textContent = t.licence;
+    document.getElementById('documentation').textContent = t.documentation;
+    document.getElementById('dealegear').textContent = t.dealegear;
+    document.getElementById('scrollToTopBtn').textContent = t.scrollToTopBtn;
 }
 
 // Funções do menu mobile
@@ -246,6 +262,31 @@ function showSection(section) {
         challengesSection.style.display = 'block';
     }
 }
+//Função de scroll to top
+// Pega o botão
+const scrollBtn = document.getElementById("scrollToTopBtn");
+
+// Quando o usuário rolar a página 20px do topo, mostra o botão
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+}
+
+// Quando o usuário clica no botão, rola suavemente para o topo
+scrollBtn.addEventListener("click", function() {
+    // Para rolagem suave (smooth scroll) em navegadores modernos
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+    });
+});
 
 // Carregar protótipos
 function loadPrototypes() {
@@ -285,20 +326,6 @@ function createPrototypeCard(prototype) {
     return card;
 }
 
-// Smooth scroll para âncoras
-/*document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});*/
 
 
 

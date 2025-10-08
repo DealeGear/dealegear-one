@@ -76,7 +76,7 @@ README RÁPIDO:
                 <!-- Desktop Navigation -->
                 <nav class="main-nav" aria-label="Navegação principal">
                     <!-- Mode Slider (Negócios/Técnico) -->
-                    <div class="mode-slider-container">
+                    <!--<div class="mode-slider-container">
                         <span class="mode-label" id="mode-label-business">Negócios</span>
                         <label class="mode-slider" aria-label="Alternar entre modo Negócios e Técnico">
                             <input 
@@ -94,15 +94,28 @@ README RÁPIDO:
                         <span id="mode-description" class="sr-only">
                             Alterne entre conteúdo focado em negócios ou técnico
                         </span>
+                    </div>-->
+
+                    <!--Substituto do código acima-->
+
+                    <div class="mode-slider-container">
+                        <span class="mode-label" id="mode-label-business">Negócios</span>
+                        <label class="mode-slider">
+                            <input type="checkbox" id="mode-toggle" role="switch">
+                            <span class="mode-slider-track">
+                                <span class="mode-slider-thumb"></span>
+                            </span>
+                        </label>
+                        <span class="mode-label" id="mode-label-technical">Técnico</span>
                     </div>
 
                     <!-- Language Selector -->
                     <div class="language-selector">
                         <label for="language-select" class="sr-only">Selecionar idioma</label>
                         <select id="language-select" aria-label="Idioma">
-                            <option value="pt">🇧🇷 PT</option>
-                            <option value="en">🇺🇸 EN</option>
-                            <option value="es">🇪🇸 ES</option>
+                            <option value="pt">PT</option>
+                            <option value="en">EN</option>
+                            <option value="es">ES</option>
                         </select>
                     </div>
 
@@ -133,9 +146,7 @@ README RÁPIDO:
                     <button 
                         id="hamburger-toggle" 
                         class="hamburger" 
-                        aria-label="Abrir menu"
-                        aria-expanded="false"
-                        aria-controls="mobile-menu"
+                     
                     >
                         <span></span>
                         <span></span>
@@ -169,9 +180,9 @@ README RÁPIDO:
                     <div class="language-selector">
                         <label for="language-select-mobile" class="sr-only">Selecionar idioma</label>
                         <select id="language-select-mobile" aria-label="Idioma">
-                            <option value="pt">🇧🇷 PT</option>
-                            <option value="en">🇺🇸 EN</option>
-                            <option value="es">🇪🇸 ES</option>
+                            <option value="pt">PT</option>
+                            <option value="en">EN</option>
+                            <option value="es">ES</option>
                         </select>
                     </div>
 

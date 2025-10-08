@@ -105,6 +105,7 @@ function renderTools() {
         card.innerHTML = `
             <h3>${tool.title}</h3>
             <p>${tool.description}</p>
+            <button class="tool-button">Explore</button>
         `;
         
         container.appendChild(card);

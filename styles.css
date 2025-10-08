@@ -431,6 +431,85 @@ h3 a {
     margin-bottom: var(--spacing-sm);
 }
 
+.tool-button {
+    /* Cores e Espaçamento */
+    margin-top: var(--spacing-md);
+    background-color: var(--accent-blue); /* Cor principal do botão */
+    color: var(--text-light); /* Cor do texto (branco ou claro) */
+    padding: 10px 20px; /* Espaçamento interno vertical e horizontal */
+    
+    /* Forma e Borda */
+    border: none; /* Remove a borda padrão do navegador */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    
+    /* Tipografia */
+    font-size: 1rem; /* Tamanho do texto */
+    font-weight: 600; /* Deixa o texto mais encorpado */
+    text-transform: uppercase; /* Deixa as letras maiúsculas */
+    letter-spacing: 0.5px; /* Pequeno espaçamento entre as letras */
+    
+    /* Interação */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Transição suave para hover/clique */
+    
+    /* Certifica que o botão se comporta como um bloco para o espaçamento */
+    display: inline-block;
+}
+
+/* Efeito ao Passar o Mouse (Hover) */
+.tool-button:hover {
+    background-color: #0056b3; /* Uma cor ligeiramente mais escura que o accent-blue */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para "levantar" o botão */
+}
+
+/* Efeito ao Clicar (Active) */
+.tool-button:active {
+    background-color: #003366; /* Uma cor ainda mais escura para o feedback de clique */
+    transform: translateY(1px); /* Move o botão 1px para baixo para simular o "pressionar" */
+}
+
+/*Botão para acesso ao blog, youtube e curso*/
+
+.tool-button-learningMore {
+    /* Cores e Fundo */
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a); /* Fundo escuro em degradê */
+    color: #ffffff; /* Texto branco */
+    padding: 12px 24px; /* Espaçamento mais confortável */
+    margin-top: var(--spacing-md);
+
+    /* Forma e Borda */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Borda sutil e elegante */
+    border-radius: 10px; /* Bordas mais suaves */
+    backdrop-filter: blur(4px); /* Efeito levemente translúcido se o fundo permitir */
+
+    /* Tipografia */
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.1); /* Brilho leve no texto */
+
+    /* Interação */
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    /* Layout */
+    display: inline-block;
+}
+
+/* Hover: brilho e destaque */
+.tool-button:hover {
+    background: linear-gradient(135deg, #0048ff, #0077ff);
+    box-shadow: 0 0 12px rgba(0, 119, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Active: toque mais escuro e movimento sutil */
+.tool-button:active {
+    background: linear-gradient(135deg, #0033aa, #0055cc);
+    transform: translateY(1px);
+    box-shadow: 0 0 6px rgba(0, 119, 255, 0.3);
+}
 
 
 
