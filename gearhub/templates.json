@@ -1,100 +1,402 @@
-[
-    {
-        "id": "business-plan",
-        "name": {
-            "pt": "Plano de Negócios",
-            "en": "Business Plan"
-        },
-        "description": {
-            "pt": "Template para planejamento de um novo negócio",
-            "en": "Template for planning a new business"
-        },
-        "framework": "corporate",
-        "cards": {
-            "objectives": {
-                "pt": "Lançar um novo produto no mercado em 6 meses\nAtingir 1000 clientes no primeiro ano\nExpandir para 3 cidades no segundo ano",
-                "en": "Launch a new product in the market in 6 months\nReach 1000 customers in the first year\nExpand to 3 cities in the second year"
-            },
-            "stakeholders": {
-                "pt": "Sócios: Investimento inicial e gestão\nClientes: Necessidade do produto\nFornecedores: Parceria estratégica\nEquipe: Execução e inovação",
-                "en": "Partners: Initial investment and management\nCustomers: Need for the product\nSuppliers: Strategic partnership\nTeam: Execution and innovation"
-            },
-            "resources": {
-                "pt": "Financeiros: R$ 100.000 para investimento inicial\nHumanos: Equipe de 5 pessoas\nTecnológicos: Plataforma de e-commerce\nFísicos: Escritório e estoque",
-                "en": "Financial: $100,000 for initial investment\nHuman: Team of 5 people\nTechnological: E-commerce platform\nPhysical: Office and inventory"
-            },
-            "timeline": {
-                "pt": "Mês 1-2: Pesquisa e desenvolvimento\nMês 3-4: Testes e ajustes\nMês 5: Marketing pré-lançamento\nMês 6: Lançamento oficial",
-                "en": "Month 1-2: Research and development\nMonth 3-4: Testing and adjustments\nMonth 5: Pre-launch marketing\nMonth 6: Official launch"
-            },
-            "risks": {
-                "pt": "Risco: Concorrência agressiva\nMitigação: Diferenciação do produto\n\nRisco: Baixa adoção inicial\nMitigação: Estratégia de marketing agressiva\n\nRisco: Problemas na cadeia de suprimentos\nMitigação: Diversificação de fornecedores",
-                "en": "Risk: Aggressive competition\nMitigation: Product differentiation\n\nRisk: Low initial adoption\nMitigation: Aggressive marketing strategy\n\nRisk: Supply chain problems\nMitigation: Supplier diversification"
-            }
-        }
+{
+  "hobby": {
+    "name": {
+      "pt": "Hobby",
+      "en": "Hobby",
+      "es": "Hobby"
     },
-    {
-        "id": "mobile-app",
-        "name": {
-            "pt": "Aplicativo Móvel",
-            "en": "Mobile App"
+    "fields": [
+      {
+        "id": "title",
+        "title": {
+          "pt": "Título do Projeto",
+          "en": "Project Title",
+          "es": "Título del Proyecto"
         },
-        "description": {
-            "pt": "Template para desenvolvimento de um aplicativo móvel",
-            "en": "Template for developing a mobile application"
-        },
-        "framework": "creative",
-        "cards": {
-            "inspiration": {
-                "pt": "A necessidade de conectar pessoas com interesses semelhantes de forma mais eficiente e intuitiva",
-                "en": "The need to connect people with similar interests more efficiently and intuitively"
-            },
-            "concept": {
-                "pt": "Uma plataforma social que utiliza inteligência artificial para sugerir conexões significativas baseadas em interesses, valores e objetivos de vida",
-                "en": "A social platform that uses artificial intelligence to suggest meaningful connections based on interests, values, and life goals"
-            },
-            "innovation": {
-                "pt": "Algoritmo proprietário de compatibilidade que vai além de interesses superficiais\nInterface minimalista e intuitiva\nFoco em privacidade e segurança dos dados",
-                "en": "Proprietary compatibility algorithm that goes beyond superficial interests\nMinimalist and intuitive interface\nFocus on privacy and data security"
-            },
-            "target": {
-                "pt": "Jovens adultos (18-35 anos)\nPessoas interessadas em expandir seu círculo social\nProfissionais buscando networking de qualidade",
-                "en": "Young adults (18-35 years old)\nPeople interested in expanding their social circle\nProfessionals seeking quality networking"
-            },
-            "experience": {
-                "pt": "Experiência de cadastro simplificada\nDescoberta fluida de pessoas com interesses compatíveis\nInteração através de mensagens, eventos e grupos temáticos",
-                "en": "Simplified registration experience\nFluid discovery of people with compatible interests\nInteraction through messages, events, and thematic groups"
-            },
-            "impact": {
-                "pt": "Redução da solidão e isolamento social\nCriação de comunidades mais coesas\nFacilitação de colaborações profissionais e pessoais",
-                "en": "Reduction of loneliness and social isolation\nCreation of more cohesive communities\nFacilitation of professional and personal collaborations"
-            }
+        "placeholder": {
+          "pt": "Dê um nome para o seu projeto de hobby",
+          "en": "Give a name to your hobby project",
+          "es": "Dale un nombre a tu proyecto de hobby"
         }
+      },
+      {
+        "id": "objective",
+        "title": {
+          "pt": "Objetivo Pessoal",
+          "en": "Personal Objective",
+          "es": "Objetivo Personal"
+        },
+        "placeholder": {
+          "pt": "O que você espera alcançar com este hobby?",
+          "en": "What do you hope to achieve with this hobby?",
+          "es": "¿Qué esperas lograr con este hobby?"
+        }
+      },
+      {
+        "id": "activities",
+        "title": {
+          "pt": "Atividades Principais",
+          "en": "Main Activities",
+          "es": "Actividades Principales"
+        },
+        "placeholder": {
+          "pt": "Descreva as principais atividades do seu hobby",
+          "en": "Describe the main activities of your hobby",
+          "es": "Describe las principales actividades de tu hobby"
+        }
+      },
+      {
+        "id": "schedule",
+        "title": {
+          "pt": "Cronograma",
+          "en": "Schedule",
+          "es": "Cronograma"
+        },
+        "placeholder": {
+          "pt": "Com que frequência e quando você praticará este hobby?",
+          "en": "How often and when will you practice this hobby?",
+          "es": "¿Con qué frecuencia y cuándo practicarás este hobby?"
+        }
+      },
+      {
+        "id": "resources",
+        "title": {
+          "pt": "Recursos Necessários",
+          "en": "Necessary Resources",
+          "es": "Recursos Necesarios"
+        },
+        "placeholder": {
+          "pt": "Quais materiais, ferramentas ou recursos você precisa?",
+          "en": "What materials, tools or resources do you need?",
+          "es": "¿Qué materiales, herramientas o recursos necesitas?"
+        }
+      },
+      {
+        "id": "metrics",
+        "title": {
+          "pt": "Métricas de Satisfação",
+          "en": "Satisfaction Metrics",
+          "es": "Métricas de Satisfacción"
+        },
+        "placeholder": {
+          "pt": "Como você medirá seu progresso e satisfação com este hobby?",
+          "en": "How will you measure your progress and satisfaction with this hobby?",
+          "es": "¿Cómo medirás tu progreso y satisfacción con este hobby?"
+        }
+      }
+    ]
+  },
+  "renda_extra": {
+    "name": {
+      "pt": "Renda Extra",
+      "en": "Side Income",
+      "es": "Ingresos Adicionales"
     },
-    {
-        "id": "social-project",
-        "name": {
-            "pt": "Projeto Social",
-            "en": "Social Project"
+    "fields": [
+      {
+        "id": "idea",
+        "title": {
+          "pt": "Ideia",
+          "en": "Idea",
+          "es": "Idea"
         },
-        "description": {
-            "pt": "Template para planejamento de um projeto social",
-            "en": "Template for planning a social project"
-        },
-        "framework": "minimalist",
-        "cards": {
-            "problem": {
-                "pt": "Falta de acesso a educação de qualidade em comunidades carentes, resultando em baixas oportunidades de emprego e desenvolvimento social",
-                "en": "Lack of access to quality education in underprivileged communities, resulting in low employment opportunities and social development"
-            },
-            "solution": {
-                "pt": "Criar centros de aprendizagem comunitários que oferecem aulas gratuitas, acesso a tecnologia e mentoria para jovens e adultos",
-                "en": "Create community learning centers that offer free classes, access to technology, and mentoring for youth and adults"
-            },
-            "metrics": {
-                "pt": "Número de participantes atendidos\nTaxa de conclusão dos cursos\nNúmero de participantes que conseguiram emprego após o programa\nSatisfação dos participantes",
-                "en": "Number of participants served\nCourse completion rate\nNumber of participants who secured employment after the program\nParticipant satisfaction"
-            }
+        "placeholder": {
+          "pt": "Descreva sua ideia para gerar renda extra",
+          "en": "Describe your idea to generate side income",
+          "es": "Describe tu idea para generar ingresos adicionales"
         }
-    }
-]
+      },
+      {
+        "id": "audience",
+        "title": {
+          "pt": "Público",
+          "en": "Audience",
+          "es": "Público"
+        },
+        "placeholder": {
+          "pt": "Quem são seus potenciais clientes?",
+          "en": "Who are your potential customers?",
+          "es": "¿Quiénes son tus clientes potenciales?"
+        }
+      },
+      {
+        "id": "value_proposition",
+        "title": {
+          "pt": "Proposta de Valor",
+          "en": "Value Proposition",
+          "es": "Propuesta de Valor"
+        },
+        "placeholder": {
+          "pt": "Que problema você resolve ou que valor oferece?",
+          "en": "What problem do you solve or what value do you offer?",
+          "es": "¿Qué problema resuelves o qué valor ofreces?"
+        }
+      },
+      {
+        "id": "sales_channels",
+        "title": {
+          "pt": "Canais de Venda",
+          "en": "Sales Channels",
+          "es": "Canales de Venta"
+        },
+        "placeholder": {
+          "pt": "Como você alcançará seus clientes e fará vendas?",
+          "en": "How will you reach your customers and make sales?",
+          "es": "¿Cómo llegarás a tus clientes y harás ventas?"
+        }
+      },
+      {
+        "id": "initial_costs",
+        "title": {
+          "pt": "Custos Iniciais",
+          "en": "Initial Costs",
+          "es": "Costos Iniciales"
+        },
+        "placeholder": {
+          "pt": "Quanto você precisa investir para começar?",
+          "en": "How much do you need to invest to start?",
+          "es": "¿Cuánto necesitas invertir para empezar?"
+        }
+      },
+      {
+        "id": "estimated_price",
+        "title": {
+          "pt": "Preço Estimado",
+          "en": "Estimated Price",
+          "es": "Precio Estimado"
+        },
+        "placeholder": {
+          "pt": "Quanto você cobrará por seu produto/serviço?",
+          "en": "How much will you charge for your product/service?",
+          "es": "¿Cuánto cobrarás por tu producto/servicio?"
+        }
+      },
+      {
+        "id": "revenue_goals",
+        "title": {
+          "pt": "Metas de Receita",
+          "en": "Revenue Goals",
+          "es": "Metas de Ingresos"
+        },
+        "placeholder": {
+          "pt": "Quanto você espera ganhar e em que prazo?",
+          "en": "How much do you expect to earn and in what timeframe?",
+          "es": "¿Cuánto esperas ganar y en qué plazo?"
+        }
+      }
+    ]
+  },
+  "carreira": {
+    "name": {
+      "pt": "Carreira",
+      "en": "Career",
+      "es": "Carrera"
+    },
+    "fields": [
+      {
+        "id": "career_goal",
+        "title": {
+          "pt": "Objetivo de Carreira",
+          "en": "Career Goal",
+          "es": "Objetivo de Carrera"
+        },
+        "placeholder": {
+          "pt": "Onde você quer chegar profissionalmente?",
+          "en": "Where do you want to get professionally?",
+          "es": "¿A dónde quieres llegar profesionalmente?"
+        }
+      },
+      {
+        "id": "skills",
+        "title": {
+          "pt": "Habilidades a Desenvolver",
+          "en": "Skills to Develop",
+          "es": "Habilidades a Desarrollar"
+        },
+        "placeholder": {
+          "pt": "Quais competências você precisa adquirir ou melhorar?",
+          "en": "What skills do you need to acquire or improve?",
+          "es": "¿Qué competencias necesitas adquirir o mejorar?"
+        }
+      },
+      {
+        "id": "study_plan",
+        "title": {
+          "pt": "Plano de Estudos/Ações",
+          "en": "Study Plan/Actions",
+          "es": "Plan de Estudios/Acciones"
+        },
+        "placeholder": {
+          "pt": "Quais cursos, livros, projetos ou experiências você buscará?",
+          "en": "What courses, books, projects or experiences will you seek?",
+          "es": "¿Qué cursos, libros, proyectos o experiencias buscarás?"
+        }
+      },
+      {
+        "id": "milestones",
+        "title": {
+          "pt": "Marcos",
+          "en": "Milestones",
+          "es": "Hitos"
+        },
+        "placeholder": {
+          "pt": "Quais são as metas intermediárias no seu caminho?",
+          "en": "What are the intermediate goals on your path?",
+          "es": "¿Cuáles son las metas intermedias en tu camino?"
+        }
+      },
+      {
+        "id": "progress_metrics",
+        "title": {
+          "pt": "Métricas de Progresso",
+          "en": "Progress Metrics",
+          "es": "Métricas de Progreso"
+        },
+        "placeholder": {
+          "pt": "Como você medirá seu avanço em direção ao objetivo?",
+          "en": "How will you measure your progress toward the goal?",
+          "es": "¿Cómo medirás tu avance hacia el objetivo?"
+        }
+      }
+    ]
+  },
+  "startup": {
+    "name": {
+      "pt": "Startup",
+      "en": "Startup",
+      "es": "Startup"
+    },
+    "fields": [
+      {
+        "id": "problem",
+        "title": {
+          "pt": "Problema",
+          "en": "Problem",
+          "es": "Problema"
+        },
+        "placeholder": {
+          "pt": "Que problema do mercado você está resolvendo?",
+          "en": "What market problem are you solving?",
+          "es": "¿Qué problema del mercado estás resolviendo?"
+        }
+      },
+      {
+        "id": "solution",
+        "title": {
+          "pt": "Solução",
+          "en": "Solution",
+          "es": "Solución"
+        },
+        "placeholder": {
+          "pt": "Como sua solução resolve este problema?",
+          "en": "How does your solution solve this problem?",
+          "es": "¿Cómo tu solución resuelve este problema?"
+        }
+      },
+      {
+        "id": "value_proposition",
+        "title": {
+          "pt": "Proposta de Valor",
+          "en": "Value Proposition",
+          "es": "Propuesta de Valor"
+        },
+        "placeholder": {
+          "pt": "Por que os clientes escolheriam sua solução?",
+          "en": "Why would customers choose your solution?",
+          "es": "¿Por qué los clientes elegirían tu solución?"
+        }
+      },
+      {
+        "id": "audience",
+        "title": {
+          "pt": "Público",
+          "en": "Audience",
+          "es": "Público"
+        },
+        "placeholder": {
+          "pt": "Quem são seus clientes ideais?",
+          "en": "Who are your ideal customers?",
+          "es": "¿Quiénes son tus clientes ideales?"
+        }
+      },
+      {
+        "id": "mvp",
+        "title": {
+          "pt": "MVP",
+          "en": "MVP",
+          "es": "MVP"
+        },
+        "placeholder": {
+          "pt": "Qual é a versão mínima viável do seu produto?",
+          "en": "What is the minimum viable version of your product?",
+          "es": "¿Cuál es la versión mínima viable de tu producto?"
+        }
+      },
+      {
+        "id": "channels",
+        "title": {
+          "pt": "Canais",
+          "en": "Channels",
+          "es": "Canales"
+        },
+        "placeholder": {
+          "pt": "Como você alcançará seus clientes?",
+          "en": "How will you reach your customers?",
+          "es": "¿Cómo llegarás a tus clientes?"
+        }
+      },
+      {
+        "id": "revenues",
+        "title": {
+          "pt": "Receitas",
+          "en": "Revenues",
+          "es": "Ingresos"
+        },
+        "placeholder": {
+          "pt": "Como sua startup gerará receita?",
+          "en": "How will your startup generate revenue?",
+          "es": "¿Cómo generará ingresos tu startup?"
+        }
+      },
+      {
+        "id": "costs",
+        "title": {
+          "pt": "Custos",
+          "en": "Costs",
+          "es": "Costos"
+        },
+        "placeholder": {
+          "pt": "Quais são seus principais custos?",
+          "en": "What are your main costs?",
+          "es": "¿Cuáles son tus principales costos?"
+        }
+      },
+      {
+        "id": "key_metric",
+        "title": {
+          "pt": "Métrica-Chave",
+          "en": "Key Metric",
+          "es": "Métrica Clave"
+        },
+        "placeholder": {
+          "pt": "Qual é a métrica mais importante para seu sucesso?",
+          "en": "What is the most important metric for your success?",
+          "es": "¿Cuál es la métrica más importante para tu éxito?"
+        }
+      },
+      {
+        "id": "next_steps",
+        "title": {
+          "pt": "Próximos Passos",
+          "en": "Next Steps",
+          "es": "Próximos Pasos"
+        },
+        "placeholder": {
+          "pt": "Quais são as ações imediatas a serem tomadas?",
+          "en": "What are the immediate actions to be taken?",
+          "es": "¿Cuáles son las acciones inmediatas a tomar?"
+        }
+      }
+    ]
+  }
+}

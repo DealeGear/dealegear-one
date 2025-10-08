@@ -1,921 +1,1031 @@
-// ========================================
-// GEARHUB - PLANEJAMENTO DE PROJETOS
-// ========================================
+// ===== GEARHUB APPLICATION =====
+// Main application logic for GearHub - a project creation and testing tool
 
-// ========================================
-// VARIÁVEIS GLOBAIS
-// ========================================
-let currentLanguage = 'pt';
-let currentFramework = 'minimalist';
-let currentProject = {
-    id: null,
-    name: '',
-    status: 'editing',
-    framework: 'minimalist',
-    cards: []
-};
-let frameworks = [];
-let templates = [];
+// ===== GLOBAL VARIABLES =====
+let currentLanguage = 'pt'; // Default language
+let currentTheme = 'light'; // Default theme
+let currentProject = null; // Current project data
+let projects = []; // Array of all projects
+let texts = {}; // Texts for internationalization
+let templates = {}; // Templates data
+let db = null; // IndexedDB instance
 
-// ========================================
-// i18n → INTERNACIONALIZAÇÃO (PORTUGUÊS/INGLÊS)
-// ========================================
-const translations = {
-    pt: {
-        'project': 'Projeto',
-        'status': 'Status:',
-        'status-ready': 'Pronto',
-        'status-editing': 'Editando',
-        'status-saved': 'Salvo',
-        'status-error': 'Erro',
-        'new-project': 'Novo Projeto',
-        'framework': 'Framework:',
-        'my-projects': 'Meus Projetos',
-        'save-project': 'Salvar Projeto',
-        'edit-fields': 'Reeditar Campos',
-        'delete-project': 'Deletar Projeto',
-        'export-pdf': 'Exportar PDF',
-        'help': 'Ajuda',
-        'tools': 'Ferramentas',
-        'templates': 'Templates',
-        'prototypes': 'Protótipos',
-        'criticize': 'Criticar',
-        'test-hypothesis': 'Testar Hipótese',
-        'extras': 'Extras',
-        'documentation': 'Documentação',
-        //'dealegear-one': 'DealeGear One',
-        'dealegear': 'DealeGear',
-        'blog': 'Blog',
-        'add-card': 'Adicionar Bloco',
-        'image-placeholder': 'Área para imagem',
-        'help-title': 'Ajuda',
-        'help-content': `
-            <h3>Bem-vindo ao GearHub!</h3>
-            <p>O GearHub é uma ferramenta para planejamento de projetos através de cards interativos.</p>
-            <h4>Como começar:</h4>
-            <ol>
-                <li>Dê um nome ao seu projeto no campo superior</li>
-                <li>Selecione um framework (Minimalista, Corporativo ou Criativo)</li>
-                <li>Preencha os cards com as informações do seu projeto</li>
-                <li>Salve seu projeto localmente usando o botão "Salvar Projeto"</li>
-            </ol>
-            <h4>Funcionalidades:</h4>
-            <ul>
-                <li><strong>Frameworks:</strong> Estruturas pré-definidas para diferentes tipos de projetos</li>
-                <li><strong>Templates:</strong> Exemplos prontos para inspiração</li>
-                <li><strong>Salvar/Carregar:</strong> Armazene seus projetos localmente</li>
-                <li><strong>Exportar PDF:</strong> Gere um documento com seu projeto</li>
-                <li><strong>Modo Escuro:</strong> Alternância entre temas claro e escuro</li>
-            </ul>
-            <p>Para mais informações, acesse nossa documentação.</p>
-        `,
-        'project-saved': 'Projeto salvo com sucesso!',
-        'project-deleted': 'Projeto deletado com sucesso!',
-        'confirm-delete': 'Tem certeza que deseja deletar este projeto?',
-        'no-projects': 'Nenhum projeto salvo ainda.',
-        'select-project': 'Selecione um projeto para carregar:',
-        'load-template': 'Carregar Template',
-        'no-templates': 'Nenhum template disponível.',
-        'select-template': 'Selecione um template para carregar:',
-        'template-loaded': 'Template carregado com sucesso!',
-        'project-created': 'Novo projeto criado!',
-        'fields-enabled': 'Campos habilitados para edição!',
-        'criticism-generated': 'Crítica gerada com sucesso!',
-        'hypothesis-tested': 'Hipótese testada com sucesso!',
-        'pdf-generated': 'PDF gerado com sucesso!',
-        'error-saving': 'Erro ao salvar o projeto. Tente novamente.',
-        'error-loading': 'Erro ao carregar os dados. Tente novamente.',
-        'error-deleting': 'Erro ao deletar o projeto. Tente novamente.',
-        'error-pdf': 'Erro ao gerar o PDF. Tente novamente.'
-    },
-    en: {
-        'project': 'Project',
-        'status': 'Status:',
-        'status-ready': 'Ready',
-        'status-editing': 'Editing',
-        'status-saved': 'Saved',
-        'status-error': 'Error',
-        'new-project': 'New Project',
-        'framework': 'Framework:',
-        'my-projects': 'My Projects',
-        'save-project': 'Save Project',
-        'edit-fields': 'Edit Fields',
-        'delete-project': 'Delete Project',
-        'export-pdf': 'Export PDF',
-        'help': 'Help',
-        'tools': 'Tools',
-        'templates': 'Templates',
-        'prototypes': 'Prototypes',
-        'criticize': 'Criticize',
-        'test-hypothesis': 'Test Hypothesis',
-        'extras': 'Extras',
-        'documentation': 'Documentation',
-        'dealegear-one': 'DealeGear One',
-        'blog': 'Blog',
-        'add-card': 'Add Block',
-        'image-placeholder': 'Image Area',
-        'help-title': 'Help',
-        'help-content': `
-            <h3>Welcome to GearHub!</h3>
-            <p>GearHub is a tool for project planning through interactive cards.</p>
-            <h4>How to start:</h4>
-            <ol>
-                <li>Name your project in the top field</li>
-                <li>Select a framework (Minimalist, Corporate, or Creative)</li>
-                <li>Fill in the cards with your project information</li>
-                <li>Save your project locally using the "Save Project" button</li>
-            </ol>
-            <h4>Features:</h4>
-            <ul>
-                <li><strong>Frameworks:</strong> Predefined structures for different types of projects</li>
-                <li><strong>Templates:</strong> Ready examples for inspiration</li>
-                <li><strong>Save/Load:</strong> Store your projects locally</li>
-                <li><strong>Export PDF:</strong> Generate a document with your project</li>
-                <li><strong>Dark Mode:</strong> Toggle between light and dark themes</li>
-            </ul>
-            <p>For more information, check our documentation.</p>
-        `,
-        'project-saved': 'Project saved successfully!',
-        'project-deleted': 'Project deleted successfully!',
-        'confirm-delete': 'Are you sure you want to delete this project?',
-        'no-projects': 'No saved projects yet.',
-        'select-project': 'Select a project to load:',
-        'load-template': 'Load Template',
-        'no-templates': 'No templates available.',
-        'select-template': 'Select a template to load:',
-        'template-loaded': 'Template loaded successfully!',
-        'project-created': 'New project created!',
-        'fields-enabled': 'Fields enabled for editing!',
-        'criticism-generated': 'Criticism generated successfully!',
-        'hypothesis-tested': 'Hypothesis tested successfully!',
-        'pdf-generated': 'PDF generated successfully!',
-        'error-saving': 'Error saving the project. Please try again.',
-        'error-loading': 'Error loading data. Please try again.',
-        'error-deleting': 'Error deleting the project. Please try again.',
-        'error-pdf': 'Error generating PDF. Please try again.'
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the application
+    initApp();
+});
+
+// Initialize the application
+async function initApp() {
+    try {
+        // Load texts and templates
+        await loadTexts();
+        await loadTemplates();
+        
+        // Initialize IndexedDB
+        await initDB();
+        
+        // Load saved projects
+        await loadProjects();
+        
+        // Initialize UI
+        initUI();
+        
+        // Apply saved settings
+        applySavedSettings();
+        
+        // ===== WELCOME SCREEN LOGIC (ALTERADO) =====
+        // A tela de boas-vindas agora é sempre o ponto de partida.
+        // Nenhum projeto é criado até que o usuário interaja com a tela.
+        // A variável 'currentProject' permanece como 'null'.
+        
+        console.log('GearHub initialized successfully');
+    } catch (error) {
+        console.error('Error initializing GearHub:', error);
+        showToast('Error initializing application. Please refresh the page.', 'error');
     }
-};
+}
 
-// Função para atualizar o idioma da interface
-function updateLanguage() {
+// ===== INTERNATIONALIZATION (i18n) =====
+// Load texts from JSON file
+async function loadTexts() {
+    try {
+        const response = await fetch('texts.json');
+        texts = await response.json();
+        console.log('Texts loaded successfully');
+    } catch (error) {
+        console.error('Error loading texts:', error);
+        // Fallback to default texts if loading fails
+        texts = {
+            pt: { app_title: "GearHub" },
+            en: { app_title: "GearHub" },
+            es: { app_title: "GearHub" }
+        };
+    }
+}
+
+// Load templates from JSON file
+async function loadTemplates() {
+    try {
+        const response = await fetch('templates.json');
+        templates = await response.json();
+        console.log('Templates loaded successfully');
+    } catch (error) {
+        console.error('Error loading templates:', error);
+        // Fallback to default templates if loading fails
+        templates = {
+            hobby: { name: { pt: "Hobby", en: "Hobby", es: "Hobby" }, fields: [] },
+            renda_extra: { name: { pt: "Renda Extra", en: "Side Income", es: "Ingresos Adicionales" }, fields: [] },
+            carreira: { name: { pt: "Carreira", en: "Career", es: "Carrera" }, fields: [] },
+            startup: { name: { pt: "Startup", en: "Startup", es: "Startup" }, fields: [] }
+        };
+    }
+}
+
+// Apply language to UI elements
+function applyLanguage(lang) {
+    currentLanguage = lang;
+    
+    // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (translations[currentLanguage][key]) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = translations[currentLanguage][key];
-            } else {
-                element.textContent = translations[currentLanguage][key];
-            }
+        if (texts[lang] && texts[lang][key]) {
+            element.textContent = texts[lang][key];
         }
     });
-
-    // Atualizar opções de idioma
-    document.querySelectorAll('#projectStatus option, #frameworkSelect option').forEach(option => {
-        const key = option.getAttribute('data-i18n');
-        if (key && translations[currentLanguage][key]) {
-            option.textContent = translations[currentLanguage][key];
+    
+    // Update placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (texts[lang] && texts[lang][key]) {
+            element.placeholder = texts[lang][key];
         }
     });
-
-    // Atualizar conteúdo da ajuda
-    document.getElementById('helpContent').innerHTML = translations[currentLanguage]['help-content'];
+    
+    // Update project cards if a project is loaded
+    if (currentProject) {
+        updateCardsPlaceholders();
+    }
+    
+    // Save language preference
+    localStorage.setItem('gearhub-language', lang);
 }
 
-// ========================================
-// DARKMODE → ALTERNÂNCIA CLARO/ESCURO
-// ========================================
-function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    
-    // Salvar preferência no localStorage
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode);
-    
-    // Atualizar ícone
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const icon = darkModeToggle.querySelector('.icon');
-    icon.textContent = isDarkMode ? '☀️' : '🌙';
+// ===== DARK MODE =====
+// Toggle between light and dark theme
+function toggleTheme() {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme(currentTheme);
 }
 
-// Carregar preferência de modo escuro
-function loadDarkModePreference() {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    if (isDarkMode) {
-        document.body.classList.add('dark-mode');
-        document.getElementById('darkModeToggle').querySelector('.icon').textContent = '☀️';
+// Apply theme to the document
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Update theme toggle button
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        themeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+    }
+    
+    // Save theme preference
+    localStorage.setItem('gearhub-theme', theme);
+}
+
+// Apply saved settings from localStorage
+function applySavedSettings() {
+    // Apply saved language
+    const savedLanguage = localStorage.getItem('gearhub-language');
+    if (savedLanguage && ['pt', 'en', 'es'].includes(savedLanguage)) {
+        currentLanguage = savedLanguage;
+        document.getElementById('language-select').value = savedLanguage;
+        applyLanguage(savedLanguage);
+    }
+    
+    // Apply saved theme
+    const savedTheme = localStorage.getItem('gearhub-theme');
+    if (savedTheme && ['light', 'dark'].includes(savedTheme)) {
+        currentTheme = savedTheme;
+        applyTheme(savedTheme);
     }
 }
 
-// ========================================
-// DB → SALVAR/CARREGAR LOCALMENTE VIA INDEXEDDB
-// ========================================
-let db;
-
-// Inicializar o IndexedDB
-function initDB() {
-    const request = indexedDB.open('GearHubDB', 1);
-
-    request.onerror = function(event) {
-        console.error('Erro ao abrir o banco de dados:', event.target.error);
-        showNotification(translations[currentLanguage]['error-loading'], 'error');
-    };
-
-    request.onsuccess = function(event) {
-        db = event.target.result;
-        console.log('Banco de dados aberto com sucesso');
-    };
-
-    request.onupgradeneeded = function(event) {
-        db = event.target.result;
+// ===== INDEXEDDB (DATABASE) =====
+// Initialize IndexedDB
+async function initDB() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open('GearHubDB', 1);
         
-        // Criar object store para projetos
-        if (!db.objectStoreNames.contains('projects')) {
-            const projectsStore = db.createObjectStore('projects', { keyPath: 'id', autoIncrement: true });
-            projectsStore.createIndex('name', 'name', { unique: false });
-            projectsStore.createIndex('date', 'date', { unique: false });
-        }
-    };
-}
-
-// Salvar projeto no IndexedDB
-function saveProject() {
-    if (!db) {
-        showNotification(translations[currentLanguage]['error-saving'], 'error');
-        return;
-    }
-
-    // Coletar dados dos cards
-    const cardsData = [];
-    document.querySelectorAll('.card').forEach(card => {
-        const cardId = card.getAttribute('data-card-id');
-        const title = card.querySelector('.card-title').textContent;
-        const content = card.querySelector('.card-textarea').value;
-        
-        cardsData.push({
-            id: cardId,
-            title: title,
-            content: content
-        });
-    });
-
-    // Preparar objeto do projeto
-    const projectData = {
-        name: document.getElementById('projectName').value || 'Sem nome',
-        status: document.getElementById('projectStatus').value,
-        framework: document.getElementById('frameworkSelect').value,
-        cards: cardsData,
-        date: new Date().toISOString()
-    };
-
-    // Se for um projeto existente, atualizar
-    if (currentProject.id) {
-        projectData.id = currentProject.id;
-        
-        const transaction = db.transaction(['projects'], 'readwrite');
-        const objectStore = transaction.objectStore('projects');
-        const request = objectStore.put(projectData);
-
-        request.onsuccess = function() {
-            showNotification(translations[currentLanguage]['project-saved'], 'success');
-            currentProject = projectData;
+        request.onerror = function(event) {
+            console.error('Database error:', event.target.error);
+            reject(event.target.error);
         };
-
-        request.onerror = function() {
-            showNotification(translations[currentLanguage]['error-saving'], 'error');
-        };
-    } else {
-        // Criar novo projeto
-        const transaction = db.transaction(['projects'], 'readwrite');
-        const objectStore = transaction.objectStore('projects');
-        const request = objectStore.add(projectData);
-
+        
         request.onsuccess = function(event) {
-            projectData.id = event.target.result;
-            showNotification(translations[currentLanguage]['project-saved'], 'success');
-            currentProject = projectData;
+            db = event.target.result;
+            console.log('Database initialized successfully');
+            resolve(db);
         };
-
-        request.onerror = function() {
-            showNotification(translations[currentLanguage]['error-saving'], 'error');
-        };
-    }
-}
-
-//Telas de boas vindas - Tela Inicial - Home Page
-const welcome = document.getElementById("welcome");
-const workspace = document.getElementById("workspace");
-
-// Botão "Novo Projeto" já existente no seu menu
-document.getElementById("newProjectBtn").addEventListener("click", () => {
-    welcome.classList.remove("active");
-    workspace.classList.add("active");
-});
-
-document.getElementById("btnNovo").addEventListener("click", () => {
-    welcome.classList.remove("active");
-    workspace.classList.add("active");
-});
-
-
-// Carregar projetos do IndexedDB
-function loadProjects() {
-    if (!db) {
-        showNotification(translations[currentLanguage]['error-loading'], 'error');
-        return;
-    }
-
-    const transaction = db.transaction(['projects'], 'readonly');
-    const objectStore = transaction.objectStore('projects');
-    const request = objectStore.getAll();
-
-    request.onsuccess = function(event) {
-        const projects = event.target.result;
-        displayProjects(projects);
-    };
-
-    request.onerror = function() {
-        showNotification(translations[currentLanguage]['error-loading'], 'error');
-    };
-}
-
-// Exibir projetos na modal
-function displayProjects(projects) {
-    const projectsList = document.getElementById('projectsList');
-    projectsList.innerHTML = '';
-
-    if (projects.length === 0) {
-        projectsList.innerHTML = `<p>${translations[currentLanguage]['no-projects']}</p>`;
-        return;
-    }
-
-    projects.forEach(project => {
-        const projectItem = document.createElement('div');
-        projectItem.className = 'project-item';
-        projectItem.innerHTML = `
-            <h3>${project.name}</h3>
-            <p>${project.framework} - ${new Date(project.date).toLocaleDateString()}</p>
-        `;
         
-        projectItem.addEventListener('click', () => loadProject(project));
-        projectsList.appendChild(projectItem);
+        request.onupgradeneeded = function(event) {
+            const db = event.target.result;
+            
+            // Create object store for projects
+            if (!db.objectStoreNames.contains('projects')) {
+                const objectStore = db.createObjectStore('projects', { keyPath: 'id', autoIncrement: true });
+                objectStore.createIndex('name', 'name', { unique: false });
+                objectStore.createIndex('date', 'date', { unique: false });
+            }
+            
+            console.log('Database schema created');
+        };
     });
 }
 
-// Carregar um projeto específico
-function loadProject(project) {
-    // Atualizar dados do projeto atual
+// Load all projects from IndexedDB
+async function loadProjects() {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['projects'], 'readonly');
+        const objectStore = transaction.objectStore('projects');
+        const request = objectStore.getAll();
+        
+        request.onerror = function(event) {
+            console.error('Error loading projects:', event.target.error);
+            reject(event.target.error);
+        };
+        
+        request.onsuccess = function(event) {
+            projects = event.target.result;
+            console.log(`Loaded ${projects.length} projects`);
+            resolve(projects);
+        };
+    });
+}
+
+// Save project to IndexedDB
+async function saveProject(project) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['projects'], 'readwrite');
+        const objectStore = transaction.objectStore('projects');
+        
+        // Add or update project
+        const request = project.id 
+            ? objectStore.put(project) 
+            : objectStore.add(project);
+        
+        request.onerror = function(event) {
+            console.error('Error saving project:', event.target.error);
+            reject(event.target.error);
+        };
+        
+        request.onsuccess = function(event) {
+            const projectId = project.id || event.target.result;
+            console.log(`Project saved with ID: ${projectId}`);
+            
+            // Update current project if it's the one being saved
+            if (!project.id) {
+                project.id = projectId;
+                currentProject = project;
+            }
+            
+            // Reload projects list
+            loadProjects().then(() => {
+                resolve(projectId);
+            }).catch(reject);
+        };
+    });
+}
+
+// Delete project from IndexedDB
+async function deleteProject(projectId) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['projects'], 'readwrite');
+        const objectStore = transaction.objectStore('projects');
+        const request = objectStore.delete(projectId);
+        
+        request.onerror = function(event) {
+            console.error('Error deleting project:', event.target.error);
+            reject(event.target.error);
+        };
+        
+        request.onsuccess = function(event) {
+            console.log(`Project deleted with ID: ${projectId}`);
+            
+            // Reload projects list
+            loadProjects().then(() => {
+                resolve(projectId);
+            }).catch(reject);
+        };
+    });
+}
+
+// ===== PROJECT MANAGEMENT =====
+// Create a new project
+function createNewProject(templateType) {
+    const template = templates[templateType];
+    if (!template) {
+        console.error(`Template not found: ${templateType}`);
+        return;
+    }
+    
+    // CORREÇÃO: Removido 'id: null' para permitir que o IndexedDB gere o ID
+    currentProject = {
+        name: `${template.name[currentLanguage]} - ${new Date().toLocaleDateString()}`,
+        template: templateType,
+        language: currentLanguage,
+        date: new Date().toISOString(),
+        cards: template.fields.map(field => ({
+            id: field.id,
+            title: field.title[currentLanguage],
+            placeholder: field.placeholder[currentLanguage],
+            value: ''
+        }))
+    };
+    
+    // Update UI
+    updateProjectName();
+    renderCards();
+    updateStatus('editing');
+    
+    // Close modal
+    closeModal('new-project-modal');
+    
+    showToast(texts[currentLanguage].new_project || 'New project created');
+}
+
+// Create a default project if none exists
+function createDefaultProject() {
+    // CORREÇÃO: Removido 'id: null' para permitir que o IndexedDB gere o ID
+    currentProject = {
+        name: texts[currentLanguage].project_name || 'Project Name',
+        template: 'hobby',
+        language: currentLanguage,
+        date: new Date().toISOString(),
+        cards: []
+    };
+    
+    updateProjectName();
+    renderCards();
+    updateStatus('ready');
+}
+
+// Load a project
+function loadProject(projectId) {
+    const project = projects.find(p => p.id == projectId);
+    if (!project) {
+        console.error(`Project not found: ${projectId}`);
+        return;
+    }
+    
     currentProject = project;
     
-    // Atualizar campos da interface
-    document.getElementById('projectName').value = project.name;
-    document.getElementById('projectStatus').value = project.status;
-    document.getElementById('frameworkSelect').value = project.framework;
+    // Apply project language if different
+    if (project.language && project.language !== currentLanguage) {
+        document.getElementById('language-select').value = project.language;
+        applyLanguage(project.language);
+    }
     
-    // Mudar para o framework do projeto
-    changeFramework(project.framework);
+    // Update UI
+    updateProjectName();
+    renderCards();
+    updateStatus('ready');
     
-    // Aguardar a criação dos cards antes de preenchê-los
-    setTimeout(() => {
-        // Preencher os cards com os dados do projeto
-        project.cards.forEach(cardData => {
-            const card = document.querySelector(`.card[data-card-id="${cardData.id}"]`);
-            if (card) {
-                const textarea = card.querySelector('.card-textarea');
-                if (textarea) {
-                    textarea.value = cardData.content;
-                }
-            }
-        });
-    }, 100);
+    // Close modal
+    closeModal('my-projects-modal');
     
-    // Fechar a modal
-    document.getElementById('projectsModal').classList.remove('active');
-    
-    showNotification(translations[currentLanguage]['fields-enabled'], 'success');
+    showToast(texts[currentLanguage].save_success || 'Project loaded successfully');
 }
 
-// Deletar projeto atual
-function deleteProject() {
-    if (!currentProject.id) {
-        showNotification(translations[currentLanguage]['error-deleting'], 'error');
+// Rename current project
+function renameProject(newName) {
+    if (!currentProject) return;
+    
+    currentProject.name = newName;
+    updateProjectName();
+    
+    // Save project
+    saveProject(currentProject).then(() => {
+        showToast(texts[currentLanguage].save_success || 'Project renamed successfully');
+    }).catch(error => {
+        console.error('Error renaming project:', error);
+        showToast('Error renaming project', 'error');
+    });
+    
+    // Close modal
+    closeModal('rename-project-modal');
+}
+
+// Delete current project
+function deleteCurrentProject() {
+    if (!currentProject || !currentProject.id) {
+        showToast('No project to delete', 'error');
         return;
     }
-
-    if (confirm(translations[currentLanguage]['confirm-delete'])) {
-        const transaction = db.transaction(['projects'], 'readwrite');
-        const objectStore = transaction.objectStore('projects');
-        const request = objectStore.delete(currentProject.id);
-
-        request.onsuccess = function() {
-            showNotification(translations[currentLanguage]['project-deleted'], 'success');
-            // Resetar o projeto atual
-            currentProject = {
-                id: null,
-                name: '',
-                status: 'editing',
-                framework: 'minimalist',
-                cards: []
-            };
-            // Limpar a interface
-            document.getElementById('projectName').value = '';
-            document.getElementById('projectStatus').value = 'editing';
-            changeFramework('minimalist');
-        };
-
-        request.onerror = function() {
-            showNotification(translations[currentLanguage]['error-deleting'], 'error');
-        };
-    }
-}
-
-// ========================================
-// PDF → EXPORTAÇÃO DO PROJETO PARA PDF
-// ========================================
-function exportToPDF() {
-    // Verificar se a biblioteca jsPDF está carregada
-    if (typeof jsPDF === 'undefined') {
-        // Carregar a biblioteca jsPDF dinamicamente
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-        script.onload = function() {
-            generatePDF();
-        };
-        document.head.appendChild(script);
-    } else {
-        generatePDF();
-    }
-}
-
-function generatePDF() {
-    try {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-        
-        // Configurações do documento
-        const pageWidth = doc.internal.pageSize.getWidth();
-        const pageHeight = doc.internal.pageSize.getHeight();
-        const margin = 20;
-        let yPosition = margin;
-        
-        // Adicionar título do projeto
-        const projectName = document.getElementById('projectName').value || 'Sem nome';
-        doc.setFontSize(20);
-        doc.text(projectName, margin, yPosition);
-        yPosition += 15;
-        
-        // Adicionar informações do projeto
-        doc.setFontSize(12);
-        doc.text(`${translations[currentLanguage]['status']}: ${document.getElementById('projectStatus').value}`, margin, yPosition);
-        yPosition += 10;
-        doc.text(`${translations[currentLanguage]['framework']}: ${document.getElementById('frameworkSelect').value}`, margin, yPosition);
-        yPosition += 10;
-        doc.text(`Date: ${new Date().toLocaleDateString()}`, margin, yPosition);
-        yPosition += 20;
-        
-        // Adicionar conteúdo dos cards
-        doc.setFontSize(16);
-        doc.text('Project Content:', margin, yPosition);
-        yPosition += 15;
-        
-        doc.setFontSize(12);
-        document.querySelectorAll('.card').forEach(card => {
-            const title = card.querySelector('.card-title').textContent;
-            const content = card.querySelector('.card-textarea').value;
-            
-            // Verificar se há espaço suficiente na página
-            if (yPosition > pageHeight - 40) {
-                doc.addPage();
-                yPosition = margin;
-            }
-            
-            // Adicionar título do card
-            doc.setFont('helvetica', 'bold');
-            doc.text(title, margin, yPosition);
-            yPosition += 10;
-            
-            // Adicionar conteúdo do card
-            doc.setFont('helvetica', 'normal');
-            const lines = doc.splitTextToSize(content, pageWidth - 2 * margin);
-            doc.text(lines, margin, yPosition);
-            yPosition += lines.length * 7 + 10;
-        });
-        
-        // Salvar o PDF
-        doc.save(`${projectName.replace(/\s+/g, '_')}_GearHub.pdf`);
-        showNotification(translations[currentLanguage]['pdf-generated'], 'success');
-    } catch (error) {
-        console.error('Erro ao gerar PDF:', error);
-        showNotification(translations[currentLanguage]['error-pdf'], 'error');
-    }
-}
-
-// ========================================
-// FRAMEWORKS E TEMPLATES
-// ========================================
-// Carregar frameworks do arquivo JSON
-function loadFrameworks() {
-    fetch('frameworks.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar frameworks');
-            }
-            return response.json();
-        })
-        .then(data => {
-            frameworks = data;
-            populateFrameworkSelect();
-            changeFramework('blank'); // Carregar framework padrão
-        })
-        .catch(error => {
-            console.error('Erro ao carregar frameworks:', error);
-            showNotification(translations[currentLanguage]['error-loading'], 'error');
-        });
-}
-
-// Preencher seletor de frameworks
-function populateFrameworkSelect() {
-    const frameworkSelect = document.getElementById('frameworkSelect');
-    frameworkSelect.innerHTML = '';
     
-    frameworks.forEach(framework => {
-        const option = document.createElement('option');
-        option.value = framework.id;
-        option.textContent = framework.name[currentLanguage];
-        frameworkSelect.appendChild(option);
+    deleteProject(currentProject.id).then(() => {
+        showToast(texts[currentLanguage].delete_success || 'Project deleted successfully');
+        
+        // Create a new default project
+        createDefaultProject();
+    }).catch(error => {
+        console.error('Error deleting project:', error);
+        showToast('Error deleting project', 'error');
     });
-}
-
-// Mudar framework
-function changeFramework(frameworkId) {
-    currentFramework = frameworkId;
-    const framework = frameworks.find(f => f.id === frameworkId);
     
-    if (framework) {
-        // Limpar cards existentes
-        const cardsContainer = document.getElementById('cardsContainer');
-        cardsContainer.innerHTML = '';
-        
-        // Criar novos cards com base no framework
-        framework.cards.forEach(cardData => {
-            createCard(cardData.id, cardData.title[currentLanguage], cardData.placeholder[currentLanguage]);
-        });
-        
-        // Atualizar o seletor de framework
-        document.getElementById('frameworkSelect').value = frameworkId;
-    }
+    // Close modal
+    closeModal('delete-project-modal');
 }
 
-// Carregar templates do arquivo JSON
-function loadTemplates() {
-    fetch('templates.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar templates');
-            }
-            return response.json();
-        })
-        .then(data => {
-            templates = data;
-        })
-        .catch(error => {
-            console.error('Erro ao carregar templates:', error);
-            showNotification(translations[currentLanguage]['error-loading'], 'error');
-        });
-}
-
-// Exibir templates na modal
-function displayTemplates() {
-    const templatesList = document.getElementById('templatesList');
-    templatesList.innerHTML = '';
-
-    if (templates.length === 0) {
-        templatesList.innerHTML = `<p>${translations[currentLanguage]['no-templates']}</p>`;
-        return;
-    }
-
-    templates.forEach(template => {
-        const templateItem = document.createElement('div');
-        templateItem.className = 'template-item';
-        templateItem.innerHTML = `
-            <h3>${template.name[currentLanguage]}</h3>
-            <p>${template.description[currentLanguage]}</p>
-        `;
-        
-        templateItem.addEventListener('click', () => loadTemplate(template));
-        templatesList.appendChild(templateItem);
-    });
-}
-
-// Carregar um template específico
-function loadTemplate(template) {
-    // Mudar para o framework do template
-    changeFramework(template.framework);
+// Add a new block/card to the current project
+function addNewBlock() {
+    if (!currentProject) return;
     
-    // Aguardar a criação dos cards antes de preenchê-los
+    const blockId = `custom_${Date.now()}`;
+    const newBlock = {
+        id: blockId,
+        title: texts[currentLanguage].new_block || 'New Block',
+        placeholder: texts[currentLanguage].add_block || 'Add content here',
+        value: ''
+    };
+    
+    currentProject.cards.push(newBlock);
+    renderCards();
+    updateStatus('editing');
+    
+    // Focus on the new card
     setTimeout(() => {
-        // Preencher os cards com os dados do template
-        Object.entries(template.cards).forEach(([cardId, cardContent]) => {
-            const card = document.querySelector(`.card[data-card-id="${cardId}"]`);
-            if (card) {
-                const textarea = card.querySelector('.card-textarea');
-                if (textarea) {
-                    textarea.value = cardContent[currentLanguage];
-                }
-            }
-        });
+        const newCard = document.getElementById(`card-${blockId}`);
+        if (newCard) {
+            const textarea = newCard.querySelector('.card-textarea');
+            if (textarea) textarea.focus();
+        }
     }, 100);
-    
-    // Fechar a modal
-    document.getElementById('templatesModal').classList.remove('active');
-    
-    showNotification(translations[currentLanguage]['template-loaded'], 'success');
 }
 
-// ========================================
-// MANIPULAÇÃO DE CARDS
-// ========================================
-// Criar um novo card
-function createCard(id, title, placeholder) {
-    const cardsContainer = document.getElementById('cardsContainer');
+// Remove a block/card from the current project
+function removeBlock(blockId) {
+    if (!currentProject) return;
     
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.setAttribute('data-card-id', id);
-    
-    card.innerHTML = `
-        <div class="card-header">
-            <h3 class="card-title">${title}</h3>
-            <button class="card-remove" data-card-id="${id}">×</button>
-        </div>
-        <div class="card-content">
-            <textarea class="card-textarea" placeholder="${placeholder}"></textarea>
-        </div>
-    `;
-    
-    cardsContainer.appendChild(card);
-    
-    // Adicionar evento de remoção
-    card.querySelector('.card-remove').addEventListener('click', function() {
-        removeCard(id);
-    });
+    const index = currentProject.cards.findIndex(card => card.id === blockId);
+    if (index !== -1) {
+        currentProject.cards.splice(index, 1);
+        renderCards();
+        updateStatus('editing');
+    }
 }
 
-// Remover um card
-function removeCard(cardId) {
-    const card = document.querySelector(`.card[data-card-id="${cardId}"]`);
+// Update card value
+function updateCardValue(blockId, value) {
+    if (!currentProject) return;
+    
+    const card = currentProject.cards.find(c => c.id === blockId);
     if (card) {
-        card.remove();
+        card.value = value;
+        updateStatus('editing');
     }
 }
 
-// Adicionar um novo card personalizado
-function addNewCard() {
-    const cardId = 'custom_' + Date.now();
-    const title = prompt(translations[currentLanguage]['add-card'] + ':');
+// Update card title
+function updateCardTitle(blockId, title) {
+    if (!currentProject) return;
     
-    if (title) {
-        createCard(cardId, title, '');
+    const card = currentProject.cards.find(c => c.id === blockId);
+    if (card) {
+        card.title = title;
+        updateStatus('editing');
     }
 }
 
-// ========================================
-// FUNCIONALIDADES ADICIONAIS
-// ========================================
-// Criar novo projeto
-function createNewProject() {
-    // Resetar o projeto atual
-    currentProject = {
-        id: null,
-        name: '',
-        status: 'editing',
-        //framework: 'minimalist',
-        framework: 'minimalist',
-        cards: []
-    };
+// Update placeholders for cards when language changes
+function updateCardsPlaceholders() {
+    if (!currentProject) return;
     
-    // Limpar a interface
-    document.getElementById('projectName').value = '';
-    //document.getElementById('projectStatus').value = 'editing';
-    changeFramework('minimalist');
-    
-    showNotification(translations[currentLanguage]['project-created'], 'success');
-}
-
-// Habilitar edição de campos
-function enableFieldEditing() {
-    // Habilitar todos os campos de texto
-    document.querySelectorAll('.card-textarea').forEach(textarea => {
-        textarea.disabled = false;
-        textarea.focus();
-    });
-    
-    showNotification(translations[currentLanguage]['fields-enabled'], 'success');
-}
-
-// Gerar crítica do projeto
-function generateCriticism() {
-    // Coletar dados do projeto
-    const projectData = {
-        name: document.getElementById('projectName').value || 'Sem nome',
-        status: document.getElementById('projectStatus').value,
-        framework: document.getElementById('frameworkSelect').value,
-        cards: []
-    };
-    
-    document.querySelectorAll('.card').forEach(card => {
-        const cardId = card.getAttribute('data-card-id');
-        const title = card.querySelector('.card-title').textContent;
-        const content = card.querySelector('.card-textarea').value;
+    // Update placeholders based on template
+    if (currentProject.template && templates[currentProject.template]) {
+        const template = templates[currentProject.template];
         
-        projectData.cards.push({
-            id: cardId,
-            title: title,
-            content: content
-        });
-    });
-    
-    // Converter para JSON e exibir
-    const jsonStr = JSON.stringify(projectData, null, 2);
-    
-    // Criar uma janela modal para exibir o JSON
-    const modal = document.createElement('div');
-    modal.className = 'modal active';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>${translations[currentLanguage]['criticize']}</h2>
-            <pre style="background-color: var(--light-gray); padding: 1rem; border-radius: var(--border-radius); overflow: auto; max-height: 400px;">${jsonStr}</pre>
-            <button style="margin-top: 1rem;" onclick="navigator.clipboard.writeText(\`${jsonStr.replace(/`/g, '\\`')}\`).then(() => alert('Copiado para a área de transferência!'));">Copiar JSON</button>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // Adicionar evento para fechar a modal
-    modal.querySelector('.close-modal').addEventListener('click', function() {
-        document.body.removeChild(modal);
-    });
-    
-    showNotification(translations[currentLanguage]['criticism-generated'], 'success');
-}
-
-// Testar hipótese
-function testHypothesis() {
-    // Criar uma estrutura básica para testar hipóteses
-    changeFramework('minimalist');
-    
-    // Preencher os cards com conteúdo básico
-    setTimeout(() => {
-        const problemCard = document.querySelector('.card[data-card-id="problem"] .card-textarea');
-        const solutionCard = document.querySelector('.card[data-card-id="solution"] .card-textarea');
-        const metricsCard = document.querySelector('.card[data-card-id="metrics"] .card-textarea');
-        
-        if (problemCard) problemCard.value = "Defina claramente o problema que você está tentando resolver...";
-        if (solutionCard) solutionCard.value = "Descreva sua solução proposta e como ela resolve o problema...";
-        if (metricsCard) metricsCard.value = "Defina como você medirá o sucesso da sua solução...";
-    }, 100);
-    
-    showNotification(translations[currentLanguage]['hypothesis-tested'], 'success');
-}
-
-// ========================================
-// UTILITÁRIOS
-// ========================================
-// Exibir notificação
-function showNotification(message, type = 'info') {
-    // Criar elemento de notificação
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    
-    // Estilização da notificação
-    notification.style.position = 'fixed';
-    notification.style.bottom = '20px';
-    notification.style.right = '20px';
-    notification.style.padding = '15px 20px';
-    notification.style.borderRadius = 'var(--border-radius)';
-    notification.style.boxShadow = 'var(--shadow)';
-    notification.style.zIndex = '3000';
-    notification.style.maxWidth = '300px';
-    notification.style.opacity = '0';
-    notification.style.transform = 'translateY(20px)';
-    notification.style.transition = 'all 0.3s ease';
-    
-    // Cores baseadas no tipo
-    if (type === 'success') {
-        notification.style.backgroundColor = '#4cc9f0';
-        notification.style.color = 'white';
-    } else if (type === 'error') {
-        notification.style.backgroundColor = '#f72585';
-        notification.style.color = 'white';
-    } else {
-        notification.style.backgroundColor = 'var(--white)';
-        notification.style.color = 'var(--dark-color)';
-    }
-    
-    // Adicionar ao DOM
-    document.body.appendChild(notification);
-    
-    // Animar entrada
-    setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateY(0)';
-    }, 10);
-    
-    // Remover após 3 segundos
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
+        currentProject.cards.forEach(card => {
+            const templateField = template.fields.find(field => field.id === card.id);
+            if (templateField) {
+                card.placeholder = templateField.placeholder[currentLanguage];
+                card.title = templateField.title[currentLanguage];
             }
-        }, 300);
-    }, 3000);
+        });
+    }
+    
+    // Re-render cards to update placeholders
+    renderCards();
 }
 
-// ========================================
-// INICIALIZAÇÃO DA APLICAÇÃO
-// ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    // Carregar preferências do usuário
-    loadDarkModePreference();
+// ===== UI HANDLERS =====
+// Initialize UI event listeners
+function initUI() {
+    // Language selector
+    document.getElementById('language-select').addEventListener('change', function() {
+        applyLanguage(this.value);
+    });
     
-    // Inicializar banco de dados
-    initDB();
+    // Theme toggle
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
     
-    // Carregar frameworks e templates
-    loadFrameworks();
-    loadTemplates();
-    
-    // Configurar eventos
-    
-    // Menu toggle para mobile
-    document.getElementById('menuToggle').addEventListener('click', function() {
+    // Hamburger menu
+    document.getElementById('hamburger').addEventListener('click', function() {
+        this.classList.toggle('active');
         document.getElementById('sidebar').classList.toggle('active');
     });
     
-    // Alternar modo escuro
-    document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
-    
-    // Mudança de idioma
-    document.getElementById('languageSelect').addEventListener('change', function() {
-        currentLanguage = this.value;
-        updateLanguage();
-        populateFrameworkSelect();
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(event) {
+        const sidebar = document.getElementById('sidebar');
+        const hamburger = document.getElementById('hamburger');
+        
+        if (window.innerWidth <= 767 && 
+            !sidebar.contains(event.target) && 
+            !hamburger.contains(event.target) && 
+            sidebar.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+        }
     });
     
-    // Mudança de framework
-    document.getElementById('frameworkSelect').addEventListener('change', function() {
-        changeFramework(this.value);
+    // New project button
+    document.getElementById('new-project-btn').addEventListener('click', function() {
+        openModal('new-project-modal');
     });
     
-    // Botões da barra lateral
-    document.getElementById('newProjectBtn').addEventListener('click', createNewProject);
-    document.getElementById('myProjectsBtn').addEventListener('click', function() {
-        loadProjects();
-        document.getElementById('projectsModal').classList.add('active');
-    });
-    document.getElementById('saveProjectBtn').addEventListener('click', saveProject);
-    document.getElementById('editFieldsBtn').addEventListener('click', enableFieldEditing);
-    document.getElementById('deleteProjectBtn').addEventListener('click', deleteProject);
-    document.getElementById('exportPdfBtn').addEventListener('click', exportToPDF);
-    document.getElementById('helpBtn').addEventListener('click', function() {
-        document.getElementById('helpModal').classList.add('active');
+    // My projects button
+    document.getElementById('my-projects-btn').addEventListener('click', function() {
+        renderProjectsList();
+        openModal('my-projects-modal');
     });
     
-    document.getElementById('templatesBtn').addEventListener('click', function() {
-        displayTemplates();
-        document.getElementById('templatesModal').classList.add('active');
-    });
-    
-    document.getElementById('prototypesBtn').addEventListener('click', function() {
-        window.open('#', '_blank');
-    });
-    
-    document.getElementById('criticizeBtn').addEventListener('click', generateCriticism);
-    document.getElementById('testHypothesisBtn').addEventListener('click', testHypothesis);
-    
-    // Botão adicionar card
-    document.getElementById('addCardBtn').addEventListener('click', addNewCard);
-    
-    // Fechar modais
-    document.querySelectorAll('.close-modal').forEach(button => {
-        button.addEventListener('click', function() {
-            this.closest('.modal').classList.remove('active');
+    // Save button
+    document.getElementById('save-btn').addEventListener('click', function() {
+        if (!currentProject) {
+            showToast('No project to save', 'error');
+            return;
+        }
+        
+        saveProject(currentProject).then(() => {
+            updateStatus('saved');
+            showToast(texts[currentLanguage].save_success || 'Project saved successfully');
+        }).catch(error => {
+            console.error('Error saving project:', error);
+            showToast('Error saving project', 'error');
         });
     });
     
-    // Fechar modal ao clicar fora
+    // Rename project button
+    document.getElementById('rename-project-btn').addEventListener('click', function() {
+        if (!currentProject) {
+            showToast('No project to rename', 'error');
+            return;
+        }
+        
+        document.getElementById('new-project-name').value = currentProject.name;
+        openModal('rename-project-modal');
+    });
+    
+    // Confirm rename button
+    document.getElementById('confirm-rename').addEventListener('click', function() {
+        const newName = document.getElementById('new-project-name').value.trim();
+        if (newName) {
+            renameProject(newName);
+        } else {
+            showToast('Please enter a valid project name', 'error');
+        }
+    });
+    
+    // Reedit fields button
+    document.getElementById('reedit-fields-btn').addEventListener('click', function() {
+        if (!currentProject) {
+            showToast('No project to edit', 'error');
+            return;
+        }
+        
+        // Make all card titles editable
+        document.querySelectorAll('.card-title').forEach(title => {
+            title.contentEditable = true;
+            title.style.backgroundColor = 'var(--secondary-color)';
+            title.style.padding = 'var(--spacing-xs)';
+            title.style.borderRadius = 'var(--border-radius-sm)';
+        });
+        
+        showToast('You can now edit the card titles. Click outside to save.', 'info');
+        
+        // Add event listeners to save title changes
+        document.querySelectorAll('.card-title').forEach(title => {
+            title.addEventListener('blur', function() {
+                const cardId = this.closest('.card').id.replace('card-', '');
+                updateCardTitle(cardId, this.textContent);
+                
+                // Make it non-editable again
+                this.contentEditable = false;
+                this.style.backgroundColor = 'transparent';
+                this.style.padding = '0';
+            });
+            
+            title.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    this.blur();
+                }
+            });
+        });
+    });
+    
+    // Delete project button
+    document.getElementById('delete-project-btn').addEventListener('click', function() {
+        if (!currentProject) {
+            showToast('No project to delete', 'error');
+            return;
+        }
+        
+        openModal('delete-project-modal');
+    });
+    
+    // Confirm delete button
+    document.getElementById('confirm-delete').addEventListener('click', deleteCurrentProject);
+    
+    // New block button
+    document.getElementById('new-block-btn').addEventListener('click', addNewBlock);
+    
+    // Remove block button
+    document.getElementById('remove-block-btn').addEventListener('click', function() {
+        showToast('Click the × button on any card to remove it', 'info');
+    });
+    
+    // Test hypothesis button
+    document.getElementById('test-hypothesis-btn').addEventListener('click', function() {
+        if (!currentProject) {
+            showToast('No project to export', 'error');
+            return;
+        }
+        
+        exportProjectAsHTML();
+    });
+    
+    // Criticize button
+    document.getElementById('criticize-btn').addEventListener('click', function() {
+        if (!currentProject) {
+            showToast('No project to criticize', 'error');
+            return;
+        }
+        
+        exportProjectAsJSON();
+    });
+    
+    // Templates button
+    document.getElementById('templates-btn').addEventListener('click', function() {
+        openModal('templates-modal');
+    });
+    
+    // Help button
+    document.getElementById('help-btn').addEventListener('click', function() {
+        openModal('help-modal');
+    });
+    
+    // Login button
+    document.getElementById('login-btn').addEventListener('click', function() {
+        openModal('login-modal');
+    });
+    
+    // Google login button
+    document.getElementById('google-login-btn').addEventListener('click', function() {
+        // TODO: Implement Google OAuth integration
+        // This is a placeholder for the actual OAuth flow
+        showToast('Google login integration coming soon!', 'info');
+        
+        // Example of how the OAuth flow might work:
+        // window.open('/auth/google', '_blank');
+        
+        // For now, just close the modal
+        closeModal('login-modal');
+    });
+    
+    // Add block button in workspace
+    document.getElementById('add-block-btn').addEventListener('click', addNewBlock);
+    
+    // Template option buttons
+    document.querySelectorAll('.template-option').forEach(button => {
+        button.addEventListener('click', function() {
+            const templateType = this.getAttribute('data-template');
+            createNewProject(templateType);
+        });
+    });
+    
+    // Close modal buttons
+    document.querySelectorAll('.close-modal').forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            closeModal(modal.id);
+        });
+    });
+    
+    // Close modal when clicking outside
     document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
+        modal.addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal(this.id);
             }
         });
     });
+
+    // ===== WELCOME SCREEN EVENT LISTENERS (SEM ALTERAÇÕES) =====
+    document.getElementById('start-btn').addEventListener('click', function() {
+        // Hide welcome screen
+        document.getElementById('welcome-screen').classList.add('hidden');
+        // Open the new project modal to guide the user
+        openModal('new-project-modal');
+    });
+
+    document.getElementById('learn-more-btn').addEventListener('click', function() {
+        // Hide welcome screen
+        document.getElementById('welcome-screen').classList.add('hidden');
+        // Open the help modal
+        openModal('help-modal');
+        // After closing help, if no project exists, create a default one
+        const helpModal = document.getElementById('help-modal');
+        helpModal.addEventListener('click', function handler(event) {
+            if (event.target === helpModal || event.target.classList.contains('close-modal')) {
+                if (!currentProject) {
+                    createDefaultProject();
+                }
+                helpModal.removeEventListener('click', handler);
+            }
+        });
+    });
+}
+
+// Update project name in UI
+function updateProjectName() {
+    if (currentProject) {
+        document.getElementById('project-name-display').textContent = currentProject.name;
+    }
+}
+
+// Update project status
+function updateStatus(status) {
+    const statusBadge = document.getElementById('status-badge');
+    if (statusBadge) {
+        statusBadge.textContent = texts[currentLanguage][status] || status;
+        
+        // Update status badge color
+        statusBadge.className = 'status-badge';
+        switch (status) {
+            case 'ready':
+                statusBadge.style.backgroundColor = 'var(--secondary-color)';
+                statusBadge.style.color = 'var(--primary-color)';
+                break;
+            case 'editing':
+                statusBadge.style.backgroundColor = '#fff3cd';
+                statusBadge.style.color = '#856404';
+                break;
+            case 'saved':
+                statusBadge.style.backgroundColor = '#d4edda';
+                statusBadge.style.color = '#155724';
+                break;
+            case 'error':
+                statusBadge.style.backgroundColor = '#f8d7da';
+                statusBadge.style.color = '#721c24';
+                break;
+        }
+    }
+}
+
+// Render cards in workspace
+function renderCards() {
+    const container = document.getElementById('cards-container');
+    if (!container) return;
     
-    // Atualizar idioma inicial
-    updateLanguage();
+    container.innerHTML = '';
+    
+    if (!currentProject || !currentProject.cards || currentProject.cards.length === 0) {
+        container.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">${texts[currentLanguage].no_projects_saved || 'No cards yet. Add a block to get started.'}</p>`;
+        return;
+    }
+    
+    currentProject.cards.forEach(card => {
+        const cardElement = createCardElement(card);
+        container.appendChild(cardElement);
+    });
+}
+
+// Create a card element
+function createCardElement(card) {
+    const cardDiv = document.createElement('div');
+    cardDiv.className = 'card';
+    cardDiv.id = `card-${card.id}`;
+    
+    cardDiv.innerHTML = `
+        <div class="card-header">
+            <h3 class="card-title">${card.title}</h3>
+            <button class="card-remove" aria-label="Remove card">×</button>
+        </div>
+        <textarea class="card-textarea" placeholder="${card.placeholder}" data-i18n-placeholder="${card.id}">${card.value || ''}</textarea>
+    `;
+    
+    // Add event listeners
+    const textarea = cardDiv.querySelector('.card-textarea');
+    textarea.addEventListener('input', function() {
+        updateCardValue(card.id, this.value);
+    });
+    
+    const removeBtn = cardDiv.querySelector('.card-remove');
+    removeBtn.addEventListener('click', function() {
+        removeBlock(card.id);
+    });
+    
+    return cardDiv;
+}
+
+// Render projects list in modal
+function renderProjectsList() {
+    const container = document.getElementById('projects-list');
+    if (!container) return;
+    
+    if (!projects || projects.length === 0) {
+        container.innerHTML = `<p>${texts[currentLanguage].no_projects_saved || 'No projects saved yet.'}</p>`;
+        return;
+    }
+    
+    container.innerHTML = '';
+    
+    projects.forEach(project => {
+        const projectElement = document.createElement('div');
+        projectElement.className = 'project-item';
+        
+        const date = new Date(project.date).toLocaleDateString();
+        
+        projectElement.innerHTML = `
+            <div class="project-item-info">
+                <div class="project-item-name">${project.name}</div>
+                <div class="project-item-date">${date}</div>
+            </div>
+            <div class="project-item-actions">
+                <button class="project-item-btn load-btn" data-project-id="${project.id}">${texts[currentLanguage].save || 'Load'}</button>
+                <button class="project-item-btn delete-btn" data-project-id="${project.id}">${texts[currentLanguage].delete || 'Delete'}</button>
+            </div>
+        `;
+        
+        container.appendChild(projectElement);
+    });
+    
+    // Add event listeners to project buttons
+    container.querySelectorAll('.load-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            loadProject(this.getAttribute('data-project-id'));
+        });
+    });
+    
+    container.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project-id');
+            
+            if (confirm(texts[currentLanguage].confirm_delete_project || 'Are you sure you want to delete this project?')) {
+                deleteProject(projectId).then(() => {
+                    showToast(texts[currentLanguage].delete_success || 'Project deleted successfully');
+                    renderProjectsList(); // Refresh the list
+                }).catch(error => {
+                    console.error('Error deleting project:', error);
+                    showToast('Error deleting project', 'error');
+                });
+            }
+        });
+    });
+}
+
+// ===== MODAL FUNCTIONS =====
+// Open a modal
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+    }
+}
+
+// Close a modal
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// ===== EXPORT FUNCTIONS =====
+// Export project as HTML (Test Hypothesis)
+function exportProjectAsHTML() {
+    if (!currentProject) {
+        showToast('No project to export', 'error');
+        return;
+    }
+    
+    // Create HTML content
+    const htmlContent = `
+<!DOCTYPE html>
+<html lang="${currentLanguage}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${currentProject.name}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #4a6cf7;
+        }
+        .card-content {
+            white-space: pre-wrap;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>${currentProject.name}</h1>
+        <p>${new Date(currentProject.date).toLocaleDateString()}</p>
+    </div>
+    
+    ${currentProject.cards.map(card => `
+        <div class="card">
+            <h2 class="card-title">${card.title}</h2>
+            <div class="card-content">${card.value || `<em>${card.placeholder}</em>`}</div>
+        </div>
+    `).join('')}
+    
+    <div class="footer">
+        <p>Generated by GearHub - ${new Date().toLocaleDateString()}</p>
+    </div>
+</body>
+</html>
+    `;
+    
+    // Create blob and download
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${currentProject.name.replace(/\s+/g, '_')}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showToast(texts[currentLanguage].export_success || 'Project exported successfully');
+}
+
+// Export project as JSON (Criticize)
+function exportProjectAsJSON() {
+    if (!currentProject) {
+        showToast('No project to export', 'error');
+        return;
+    }
+    
+    // Create JSON content
+    const jsonContent = {
+        meta: {
+            id: currentProject.id,
+            name: currentProject.name,
+            template: currentProject.template,
+            language: currentLanguage,
+            date: currentProject.date
+        },
+        content: {
+            cards: currentProject.cards.map(card => ({
+                id: card.id,
+                title: card.title,
+                value: card.value
+            }))
+        },
+        instruction_prompt: texts[currentLanguage].criticize_prompt || 'Please analyze this project...'
+    };
+    
+    // Create blob and download
+    const blob = new Blob([JSON.stringify(jsonContent, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${currentProject.name.replace(/\s+/g, '_')}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showToast(texts[currentLanguage].export_success || 'Project exported successfully');
+}
+
+// ===== UTILITY FUNCTIONS =====
+// Show toast notification
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+    
+    if (!toast || !toastMessage) return;
+    
+    toastMessage.textContent = message;
+    
+    // Set toast color based on type
+    toast.style.backgroundColor = type === 'error' ? 'var(--accent-color)' : 
+                                  type === 'info' ? 'var(--primary-color)' : 
+                                  'var(--card-color)';
+    toast.style.color = type === 'error' || type === 'info' ? 'white' : 'var(--text-color)';
+    
+    // Show toast
+    toast.classList.add('active');
+    
+    // Hide toast after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('active');
+    }, 3000);
+}
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    // Close sidebar on mobile when resizing to desktop
+    if (window.innerWidth > 767) {
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('sidebar').classList.remove('active');
+    }
+});
+
+// Handle beforeunload to warn about unsaved changes
+window.addEventListener('beforeunload', function(event) {
+    if (currentProject && document.getElementById('status-badge').textContent === (texts[currentLanguage].editing || 'Editing')) {
+        event.preventDefault();
+        event.returnValue = '';
+        return '';
+    }
 });

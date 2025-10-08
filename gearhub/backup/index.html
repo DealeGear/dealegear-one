@@ -75,6 +75,7 @@
                     <button class="sidebar-button" id="prototypesBtn" data-i18n="prototypes">Protótipos</button>
                     <button class="sidebar-button" id="criticizeBtn" data-i18n="criticize">Criticar</button>
                     <button class="sidebar-button" id="testHypothesisBtn" data-i18n="test-hypothesis">Testar Hipótese</button>
+                    <button class="sidebar-button" id="atomicBtn" data-i18n="criticize">Atomic</button>
                 </div>
             </div>
 
@@ -89,16 +90,26 @@
         </aside>
 
         <!-- Área Central (Área de Trabalho) -->
-        <main class="workspace" id="workspace">
-            <div class="cards-container" id="cardsContainer">
-                <!-- Cards will be dynamically added here -->
-            </div>
-            <button class="add-card-btn" id="addCardBtn" data-i18n="add-card">Adicionar Bloco</button>
-            <div class="image-area" id="imageArea">
-                <div class="image-placeholder" data-i18n="image-placeholder">Área para imagem</div>
-            </div>
-        </main>
+   <!-- Tela de boas-vindas -->
+<div id="welcome" class="screen active">
+    <div class="welcome-content">
+    <h1>Bem-vindo ao <span>DealeGear</span></h1>
+    <p>Transformando ideias em projetos reais desde 2022.</p>
+    <button id="btnNovo" class="welcome-btn">Novo Projeto</button>
+  </div>
+</div>
+
+<!-- Área de trabalho já existente -->
+<main class="workspace screen" id="workspace">
+    <div class="cards-container" id="cardsContainer">
+        <!-- Cards will be dynamically added here -->
     </div>
+    <button class="add-card-btn" id="addCardBtn" data-i18n="add-card">Adicionar Bloco</button>
+    <div class="image-area" id="imageArea">
+        <div class="image-placeholder" data-i18n="image-placeholder">Área para imagem</div>
+    </div>
+</main>
+
 
     <!-- Modal para Ajuda -->
     <div class="modal" id="helpModal">

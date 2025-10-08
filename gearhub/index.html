@@ -3,148 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearHub - Planejamento de Projetos</title>
+    <title>GearHub</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
 </head>
 <body>
-    <!-- Barra Superior -->
-    <header class="top-bar">
-        <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button id="hamburger" class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="app-title" data-i18n="app_title">GearHub</h1>
         </div>
-        <!--<div>
-            <h1>GearHub</h1>
-        </div>-->
-        <div class="project-name-container">
-                <h1>GearHub</h1>
-            <!--<input type="text" class="project-name" id="projectName" placeholder="Nome do Projeto">-->
+        <div class="header-center">
+            <a href="index.html" target="_blank" class="dealegear-link" data-i18n="dealegear">GearHub</a>
         </div>
-        <div class="top-bar-actions">
+        <div class="header-right">
             <div class="language-selector">
-                <select id="languageSelect">
+                <select id="language-select" aria-label="Language">
                     <option value="pt">PT</option>
                     <option value="en">EN</option>
+                    <option value="es">ES</option>
                 </select>
             </div>
-            <button class="dark-mode-toggle" id="darkModeToggle">
-                <span class="icon">🌙</span>
-                <span class="material-symbols-outlined"></span>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
             </button>
+            <button id="login-btn" class="login-btn" data-i18n="login">Login</button>
         </div>
     </header>
-
-    <!-- Container Principal -->
-    <div class="main-container">
-        <!-- Barra Lateral -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-section">
-                <h3 class="sidebar-title" data-i18n="project" projectName id="projectName">Projeto</h3>
-                <div class="sidebar-content">
-                    <!--<div class="status-selector">
-                        <label data-i18n="status">Status:</label>
-                        <select id="projectStatus">
-                            <option value="ready" data-i18n="status-ready">Pronto</option>
-                            <option value="editing" data-i18n="status-editing">Editando</option>
-                            <option value="saved" data-i18n="status-saved">Salvo</option>
-                            <option value="error" data-i18n="status-error">Erro</option>
-                        </select>
-                    </div>-->
-                    <button class="sidebar-button" id="newProjectBtn" data-i18n="new-project">Novo Projeto</button>
-                    <div class="framework-selector">
-                        <!--<label data-i18n="framework">Framework:</label>-->
-                        <select id="frameworkSelect">
-                            <!-- Options will be populated by JavaScript -->
-                        </select>
-                    </div>
-                    <button class="sidebar-button" id="myProjectsBtn" data-i18n="my-projects">Meus Projetos</button>
-                    <button class="sidebar-button" id="saveProjectBtn" data-i18n="save-project">Salvar Projeto</button>
-                    <button class="sidebar-button" id="editFieldsBtn" data-i18n="edit-fields">Reeditar Campos</button>
-                    <button class="sidebar-button" id="deleteProjectBtn" data-i18n="delete-project">Deletar Projeto</button>
-                    <button class="sidebar-button" id="exportPdfBtn" data-i18n="export-pdf">Exportar PDF</button>
-                    <button class="sidebar-button" id="helpBtn" data-i18n="help">Ajuda</button>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3 class="sidebar-title" data-i18n="tools">Ferramentas</h3>
-                <div class="sidebar-content">
-                    <button class="sidebar-button" id="templatesBtn" data-i18n="templates">Templates</button>
-                    <button class="sidebar-button" id="prototypesBtn" data-i18n="prototypes">Protótipos</button>
-                    <button class="sidebar-button" id="criticizeBtn" data-i18n="criticize">Criticar</button>
-                    <button class="sidebar-button" id="testHypothesisBtn" data-i18n="test-hypothesis">Testar Hipótese</button>
-                    <button class="sidebar-button" id="atomicBtn" data-i18n="criticize">Atomic</button>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3 class="sidebar-title" data-i18n="extras">Extras</h3>
-                <div class="sidebar-content">
-                    <a href="../gearlabs/docs/index.html" class="sidebar-link" data-i18n="documentation">Documentação</a>
-                    <a href="../index.html" class="sidebar-link" data-i18n="dealegear-one">DealeGear</a>
-                    <a href="../gearblog/index.html" class="sidebar-link" data-i18n="blog">Blog</a>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Área Central (Área de Trabalho) -->
-   <!-- Tela de boas-vindas -->
-<div id="welcome" class="screen active">
+    <div id="welcome-screen" class="welcome-screen">
     <div class="welcome-content">
-    <h1>Bem-vindo ao <span>DealeGear</span></h1>
-    <p>Transformando ideias em projetos reais desde 2022.</p>
-    <button id="btnNovo" class="welcome-btn">Novo Projeto</button>
-  </div>
+        <div class="welcome-logo">
+            <h1 class="app-title-welcome" data-i18n="app_title">GearHub</h1>
+            <p class="welcome-subtitle">Sua ferramenta para criar e validar ideias</p>
+        </div>
+        <div class="welcome-description">
+            <p data-i18n="welcome_description">Bem-vindo ao GearHub! Comece transformando suas ideias em projetos concretos. Escolha um template, preencha os campos e teste suas hipóteses.</p>
+        </div>
+        <div class="welcome-actions">
+            <button id="start-btn" class="btn-primary welcome-btn" data-i18n="start_now">Começar Agora</button>
+            <button id="learn-more-btn" class="btn-secondary welcome-btn" data-i18n="learn_more">Saiba Mais</button>
+        </div>
+    </div>
 </div>
 
-<!-- Área de trabalho já existente -->
-<main class="workspace screen" id="workspace">
-    <div class="cards-container" id="cardsContainer">
-        <!-- Cards will be dynamically added here -->
-    </div>
-    <button class="add-card-btn" id="addCardBtn" data-i18n="add-card">Adicionar Bloco</button>
-    <div class="image-area" id="imageArea">
-        <div class="image-placeholder" data-i18n="image-placeholder">Área para imagem</div>
-    </div>
-</main>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <!-- Project Section -->
+            <div class="sidebar-section">
+                <h3 class="section-title" data-i18n="project">Projeto</h3>
+                <div class="status-badge" id="status-badge" data-i18n="ready">Pronto</div>
+                <ul class="menu-list">
+                    <li><button id="new-project-btn" class="menu-btn" data-i18n="new_project">Novo Projeto</button></li>
+                    <li><button id="my-projects-btn" class="menu-btn" data-i18n="my_projects">Meus Projetos</button></li>
+                    <li><button id="save-btn" class="menu-btn" data-i18n="save">Salvar</button></li>
+                    <li><button id="rename-project-btn" class="menu-btn" data-i18n="rename_project">Renomear Projeto</button></li>
+                    <li><button id="reedit-fields-btn" class="menu-btn" data-i18n="reedit_fields">Reeditar Campos</button></li>
+                    <li><button id="delete-project-btn" class="menu-btn" data-i18n="delete_project">Deletar Projeto</button></li>
+                </ul>
+            </div>
 
+            <!-- Editing Section -->
+            <div class="sidebar-section">
+                <h3 class="section-title" data-i18n="editing_content">Edição / Conteúdo</h3>
+                <ul class="menu-list">
+                    <li><button id="new-block-btn" class="menu-btn" data-i18n="new_block">Novo Bloco</button></li>
+                    <li><button id="remove-block-btn" class="menu-btn" data-i18n="remove_block">Remover Bloco</button></li>
+                </ul>
+            </div>
 
-    <!-- Modal para Ajuda -->
-    <div class="modal" id="helpModal">
+            <!-- Tools Section -->
+            <div class="sidebar-section">
+                <h3 class="section-title" data-i18n="tools">Ferramentas</h3>
+                <ul class="menu-list">
+                    <li><button id="test-hypothesis-btn" class="menu-btn" data-i18n="test_hypothesis">Testar Hipótese</button></li>
+                    <li><button id="criticize-btn" class="menu-btn" data-i18n="criticize">Criticar</button></li>
+                    <li><button id="templates-btn" class="menu-btn" data-i18n="templates">Templates</button></li>
+                </ul>
+            </div>
+
+            <!-- Help Section -->
+            <div class="sidebar-section">
+                <h3 class="section-title" data-i18n="help">Ajuda</h3>
+                <ul class="menu-list">
+                    <li><button id="help-btn" class="menu-btn" data-i18n="help">Ajuda</button></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <div class="workspace" id="workspace">
+            <div class="workspace-header">
+                <h2 id="project-name-display" class="project-name-display" data-i18n="project_name">Nome do Projeto</h2>
+            </div>
+            <div id="cards-container" class="cards-container">
+                <!-- Cards will be dynamically added here -->
+            </div>
+            <button id="add-block-btn" class="add-block-btn" data-i18n="add_block">Adicionar Bloco</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2023 GearHub. All rights reserved.</p>
+    </footer>
+
+    <!-- Modals -->
+    <!-- New Project Modal -->
+    <div id="new-project-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" id="closeHelpModal">&times;</span>
-            <h2 data-i18n="help-title">Ajuda</h2>
-            <div class="help-content" id="helpContent">
-                <!-- Help content will be dynamically added here -->
+            <div class="modal-header">
+                <h3 data-i18n="new_project">Novo Projeto</h3>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="confirm_new_project">Deseja iniciar um novo projeto? Escolha um template.</p>
+                <div class="template-options">
+                    <button class="template-option" data-template="hobby" data-i18n="hobby">Hobby</button>
+                    <button class="template-option" data-template="renda_extra" data-i18n="renda_extra">Renda Extra</button>
+                    <button class="template-option" data-template="carreira" data-i18n="carreira">Carreira</button>
+                    <button class="template-option" data-template="startup" data-i18n="startup">Startup</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal para Meus Projetos -->
-    <div class="modal" id="projectsModal">
+    <!-- My Projects Modal -->
+    <div id="my-projects-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" id="closeProjectsModal">&times;</span>
-            <h2 data-i18n="my-projects">Meus Projetos</h2>
-            <div class="projects-list" id="projectsList">
-                <!-- Projects list will be dynamically added here -->
+            <div class="modal-header">
+                <h3 data-i18n="my_projects">Meus Projetos</h3>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="projects-list" class="projects-list">
+                    <p data-i18n="no_projects_saved">Nenhum projeto salvo ainda.</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal para Templates -->
-    <div class="modal" id="templatesModal">
+    <!-- Rename Project Modal -->
+    <div id="rename-project-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" id="closeTemplatesModal">&times;</span>
-            <h2 data-i18n="templates">Templates</h2>
-            <div class="templates-list" id="templatesList">
-                <!-- Templates list will be dynamically added here -->
+            <div class="modal-header">
+                <h3 data-i18n="rename_project">Renomear Projeto</h3>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="new-project-name" class="input-field" placeholder="Novo nome do projeto">
+                <div class="modal-actions">
+                    <button id="confirm-rename" class="btn-primary" data-i18n="confirm">Confirmar</button>
+                    <button class="close-modal btn-secondary" data-i18n="cancel">Cancelar</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Delete Project Modal -->
+    <div id="delete-project-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="delete_project">Deletar Projeto</h3>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="confirm_delete_project">Tem certeza que deseja deletar este projeto?</p>
+                <div class="modal-actions">
+                    <button id="confirm-delete" class="btn-danger" data-i18n="delete">Deletar</button>
+                    <button class="close-modal btn-secondary" data-i18n="cancel">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates Modal -->
+    <div id="templates-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="templates">Templates</h3>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="choose_template">Escolha um template para começar:</p>
+                <div class="template-options">
+                    <button class="template-option" data-template="hobby" data-i18n="hobby">Hobby</button>
+                    <button class="template-option" data-template="renda_extra" data-i18n="renda_extra">Renda Extra</button>
+                    <button class="template-option" data-template="carreira" data-i18n="carreira">Carreira</button>
+                    <button class="template-option" data-template="startup" data-i18n="startup">Startup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="help">Ajuda</h3>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n="help_text">GearHub é uma ferramenta para criar e testar ideias de projetos. Comece criando um novo projeto com um dos templates disponíveis, edite os campos conforme necessário e use as ferramentas para exportar seu projeto ou obter feedback.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="login">Login</h3>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Faça login para salvar seus projetos na nuvem e acessá-los de qualquer dispositivo.</p>
+                <button id="google-login-btn" class="google-login-btn">
+                    <span class="google-icon"></span>
+                    <span data-i18n="login_with_google">Entrar com Google</span>
+                </button>
+                <p class="login-note">Seu login será processado com segurança pelo Google.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toast-message"></span>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

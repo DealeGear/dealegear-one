@@ -301,6 +301,22 @@ function saveProject() {
     }
 }
 
+//Telas de boas vindas - Tela Inicial - Home Page
+const welcome = document.getElementById("welcome");
+const workspace = document.getElementById("workspace");
+
+// Botão "Novo Projeto" já existente no seu menu
+document.getElementById("newProjectBtn").addEventListener("click", () => {
+    welcome.classList.remove("active");
+    workspace.classList.add("active");
+});
+
+document.getElementById("btnNovo").addEventListener("click", () => {
+    welcome.classList.remove("active");
+    workspace.classList.add("active");
+});
+
+
 // Carregar projetos do IndexedDB
 function loadProjects() {
     if (!db) {
