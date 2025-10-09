@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GearHub</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -16,11 +19,14 @@
                 <span></span>
                 <span></span>
             </button>
-            <h1 class="app-title" data-i18n="app_title">GearHub</h1>
+            <!--<h1 class="app-title" data-i18n="app_title">GearHub</h1>-->
+            <a href="index.html" class="app-title-link">
+                <h1 class="app-title" data-i18n="app_title">GearHub</h1>
+            </a>
         </div>
-        <div class="header-center">
-            <a href="index.html" target="_blank" class="dealegear-link" data-i18n="dealegear">GearHub</a>
-        </div>
+        <!--<div class="header-center">
+            <a href="index.html" target="_blank" class="dealegear-link" data-i18n="gearhub">GearHub</a>
+        </div>-->
         <div class="header-right">
             <div class="language-selector">
                 <select id="language-select" aria-label="Language">
@@ -36,20 +42,21 @@
         </div>
     </header>
     <div id="welcome-screen" class="welcome-screen">
-    <div class="welcome-content">
-        <div class="welcome-logo">
-            <h1 class="app-title-welcome" data-i18n="app_title">GearHub</h1>
-            <p class="welcome-subtitle">Sua ferramenta para criar e validar ideias</p>
-        </div>
-        <div class="welcome-description">
-            <p data-i18n="welcome_description">Bem-vindo ao GearHub! Comece transformando suas ideias em projetos concretos. Escolha um template, preencha os campos e teste suas hipóteses.</p>
-        </div>
-        <div class="welcome-actions">
-            <button id="start-btn" class="btn-primary welcome-btn" data-i18n="start_now">Começar Agora</button>
-            <button id="learn-more-btn" class="btn-secondary welcome-btn" data-i18n="learn_more">Saiba Mais</button>
+        <div class="welcome-content">
+            <div class="welcome-logo">
+                <h1 class="app-title-welcome" data-i18n="app_title">GearHub</h1>
+                <p class="welcome-subtitle">Sua ferramenta para criar e validar ideias</p>
+            </div>
+            <div class="welcome-description">
+                <p data-i18n="welcome_description">Bem-vindo ao GearHub! Comece transformando suas ideias em projetos
+                    concretos. Escolha um template, preencha os campos e teste suas hipóteses.</p>
+            </div>
+            <div class="welcome-actions">
+                <button id="start-btn" class="btn-primary welcome-btn" data-i18n="start_now">Começar Agora</button>
+                <button id="learn-more-btn" class="btn-secondary welcome-btn" data-i18n="learn_more">Saiba Mais</button>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Sidebar -->
     <aside id="sidebar" class="sidebar">
@@ -60,11 +67,15 @@
                 <div class="status-badge" id="status-badge" data-i18n="ready">Pronto</div>
                 <ul class="menu-list">
                     <li><button id="new-project-btn" class="menu-btn" data-i18n="new_project">Novo Projeto</button></li>
-                    <li><button id="my-projects-btn" class="menu-btn" data-i18n="my_projects">Meus Projetos</button></li>
+                    <li><button id="my-projects-btn" class="menu-btn" data-i18n="my_projects">Meus Projetos</button>
+                    </li>
                     <li><button id="save-btn" class="menu-btn" data-i18n="save">Salvar</button></li>
-                    <li><button id="rename-project-btn" class="menu-btn" data-i18n="rename_project">Renomear Projeto</button></li>
-                    <li><button id="reedit-fields-btn" class="menu-btn" data-i18n="reedit_fields">Reeditar Campos</button></li>
-                    <li><button id="delete-project-btn" class="menu-btn" data-i18n="delete_project">Deletar Projeto</button></li>
+                    <li><button id="rename-project-btn" class="menu-btn" data-i18n="rename_project">Renomear
+                            Projeto</button></li>
+                    <li><button id="reedit-fields-btn" class="menu-btn" data-i18n="reedit_fields">Reeditar
+                            Campos</button></li>
+                    <li><button id="delete-project-btn" class="menu-btn" data-i18n="delete_project">Deletar
+                            Projeto</button></li>
                 </ul>
             </div>
 
@@ -73,7 +84,8 @@
                 <h3 class="section-title" data-i18n="editing_content">Edição / Conteúdo</h3>
                 <ul class="menu-list">
                     <li><button id="new-block-btn" class="menu-btn" data-i18n="new_block">Novo Bloco</button></li>
-                    <li><button id="remove-block-btn" class="menu-btn" data-i18n="remove_block">Remover Bloco</button></li>
+                    <li><button id="remove-block-btn" class="menu-btn" data-i18n="remove_block">Remover Bloco</button>
+                    </li>
                 </ul>
             </div>
 
@@ -81,7 +93,8 @@
             <div class="sidebar-section">
                 <h3 class="section-title" data-i18n="tools">Ferramentas</h3>
                 <ul class="menu-list">
-                    <li><button id="test-hypothesis-btn" class="menu-btn" data-i18n="test_hypothesis">Testar Hipótese</button></li>
+                    <li><button id="test-hypothesis-btn" class="menu-btn" data-i18n="test_hypothesis">Testar
+                            Hipótese</button></li>
                     <li><button id="criticize-btn" class="menu-btn" data-i18n="criticize">Criticar</button></li>
                     <li><button id="templates-btn" class="menu-btn" data-i18n="templates">Templates</button></li>
                 </ul>
@@ -92,6 +105,8 @@
                 <h3 class="section-title" data-i18n="help">Ajuda</h3>
                 <ul class="menu-list">
                     <li><button id="help-btn" class="menu-btn" data-i18n="help">Ajuda</button></li>
+                    <!--<li><a href="../index.html"><button class="menu-btn" data-i18n="dealegear">DealeGear</button></li></a>-->
+                    <li><a href="../index.html" class="menu-btn" data-i18n="dealegear">DealeGear</a></li>
                 </ul>
             </div>
         </div>
@@ -104,9 +119,9 @@
                 <h2 id="project-name-display" class="project-name-display" data-i18n="project_name">Nome do Projeto</h2>
             </div>
             <div id="cards-container" class="cards-container">
-                <!-- Cards will be dynamically added here -->
             </div>
             <button id="add-block-btn" class="add-block-btn" data-i18n="add_block">Adicionar Bloco</button>
+            <button id="save-btn-footer" class="save-btn-footer" data-i18n="save_btn">Salvar</button>
         </div>
     </main>
 
@@ -127,7 +142,8 @@
                 <p data-i18n="confirm_new_project">Deseja iniciar um novo projeto? Escolha um template.</p>
                 <div class="template-options">
                     <button class="template-option" data-template="hobby" data-i18n="hobby">Hobby</button>
-                    <button class="template-option" data-template="renda_extra" data-i18n="renda_extra">Renda Extra</button>
+                    <button class="template-option" data-template="renda_extra" data-i18n="renda_extra">Renda
+                        Extra</button>
                     <button class="template-option" data-template="carreira" data-i18n="carreira">Carreira</button>
                     <button class="template-option" data-template="startup" data-i18n="startup">Startup</button>
                 </div>
@@ -176,7 +192,7 @@
             </div>
             <div class="modal-body">
                 <p data-i18n="confirm_delete_project">Tem certeza que deseja deletar este projeto?</p>
-                <div class="modal-actions">
+                <div class="button-container">
                     <button id="confirm-delete" class="btn-danger" data-i18n="delete">Deletar</button>
                     <button class="close-modal btn-secondary" data-i18n="cancel">Cancelar</button>
                 </div>
@@ -195,7 +211,8 @@
                 <p data-i18n="choose_template">Escolha um template para começar:</p>
                 <div class="template-options">
                     <button class="template-option" data-template="hobby" data-i18n="hobby">Hobby</button>
-                    <button class="template-option" data-template="renda_extra" data-i18n="renda_extra">Renda Extra</button>
+                    <button class="template-option" data-template="renda_extra" data-i18n="renda_extra">Renda
+                        Extra</button>
                     <button class="template-option" data-template="carreira" data-i18n="carreira">Carreira</button>
                     <button class="template-option" data-template="startup" data-i18n="startup">Startup</button>
                 </div>
@@ -211,7 +228,9 @@
                 <button class="close-modal" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
-                <p data-i18n="help_text">GearHub é uma ferramenta para criar e testar ideias de projetos. Comece criando um novo projeto com um dos templates disponíveis, edite os campos conforme necessário e use as ferramentas para exportar seu projeto ou obter feedback.</p>
+                <p data-i18n="help_text">GearHub é uma ferramenta para criar e testar ideias de projetos. Comece criando
+                    um novo projeto com um dos templates disponíveis, edite os campos conforme necessário e use as
+                    ferramentas para exportar seu projeto ou obter feedback.</p>
             </div>
         </div>
     </div>
@@ -241,4 +260,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -470,10 +470,32 @@ function initUI() {
     document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
     
     // Hamburger menu
-    document.getElementById('hamburger').addEventListener('click', function() {
+    /*document.getElementById('hamburger').addEventListener('click', function() {
         this.classList.toggle('active');
         document.getElementById('sidebar').classList.toggle('active');
-    });
+    });*/
+
+    //Substitui o código acima por:
+// Hamburger menu
+const hamburgerBtn = document.getElementById('hamburger');
+const sidebarEl = document.getElementById('sidebar');
+
+hamburgerBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const isActive = this.classList.contains('active');
+    
+    if (isActive) {
+        this.classList.remove('active');
+        sidebarEl.classList.remove('active');
+    } else {
+        this.classList.add('active');
+        sidebarEl.classList.add('active');
+    }
+    
+    console.log('Toggle:', isActive ? 'fechando' : 'abrindo');
+});
     
     // Close sidebar when clicking outside on mobile
     document.addEventListener('click', function(event) {
@@ -502,6 +524,22 @@ function initUI() {
     
     // Save button
     document.getElementById('save-btn').addEventListener('click', function() {
+        if (!currentProject) {
+            showToast('No project to save', 'error');
+            return;
+        }
+        
+        saveProject(currentProject).then(() => {
+            updateStatus('saved');
+            showToast(texts[currentLanguage].save_success || 'Project saved successfully');
+        }).catch(error => {
+            console.error('Error saving project:', error);
+            showToast('Error saving project', 'error');
+        });
+    });
+
+     // Save button Footer
+    document.getElementById('save-btn-footer').addEventListener('click', function() {
         if (!currentProject) {
             showToast('No project to save', 'error');
             return;
@@ -680,7 +718,7 @@ function initUI() {
         openModal('new-project-modal');
     });
 
-    document.getElementById('learn-more-btn').addEventListener('click', function() {
+    /*document.getElementById('learn-more-btn').addEventListener('click', function() {
         // Hide welcome screen
         document.getElementById('welcome-screen').classList.add('hidden');
         // Open the help modal
@@ -695,13 +733,21 @@ function initUI() {
                 helpModal.removeEventListener('click', handler);
             }
         });
-    });
+    });*/
+
+    document.getElementById('learn-more-btn').addEventListener('click', function() {
+    // Open the help modal (without hiding welcome screen)
+    openModal('help-modal');
+});
 }
+
+
 
 // Update project name in UI
 function updateProjectName() {
     if (currentProject) {
         document.getElementById('project-name-display').textContent = currentProject.name;
+        
     }
 }
 
@@ -1029,3 +1075,4 @@ window.addEventListener('beforeunload', function(event) {
         return '';
     }
 });
+

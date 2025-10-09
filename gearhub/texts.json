@@ -73,7 +73,9 @@
     "delete_success": "Projeto deletado com sucesso!",
     "welcome_description": "Bem-vindo ao GearHub! Comece transformando suas ideias em projetos concretos. Escolha um template, preencha os campos e teste suas hipóteses.",
     "start_now": "Começar Agora",
-    "learn_more": "Saiba Mais"
+    "learn_more": "Saiba Mais",
+    "dealegear": "DealeGear",
+    "save_btn":"Salvar"
   },
   "en": {
     "app_title": "GearHub",
@@ -149,7 +151,9 @@
     "delete_success": "Project deleted successfully!",
      "welcome_description": "Welcome to GearHub! Start turning your ideas into concrete projects. Choose a template, fill in the fields, and test your hypotheses.",
     "start_now": "Start Now",
-    "learn_more": "Learn More"
+    "learn_more": "Learn More",
+    "dealegear": "DealeGear",
+    "save_btn":"Save"
   },
   "es": {
     "app_title": "GearHub",
@@ -224,6 +228,8 @@
     "save_success": "¡Proyecto guardado con éxito!",
     "delete_success": "¡Proyecto eliminado con éxito!","welcome_description": "¡Bienvenido a GearHub! Comienza a transformar tus ideas en proyectos concretos. Elige una plantilla, completa los campos y prueba tus hipótesis.",
     "start_now": "Comenzar Ahora",
-    "learn_more": "Aprende Más"
+    "learn_more": "Aprende Más",
+    "dealegear": "DealeGear",
+    "save_btn":"Guardar"
   }
 }
