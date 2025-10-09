@@ -304,11 +304,27 @@ hero-subtitle-h2{
     flex-wrap: wrap;
 }
 
-.hero-illustration {
+/*.hero-illustration {
     max-width: 500px;
     margin: 0 auto;
     
+}*/
+
+.hero-illustration {
+    display: block;
+    max-width: 90%;
+    width: 480px;
+    margin: 0 auto;
+    height: auto;
+    filter: brightness(1.1) contrast(1.05) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
+
+.hero-illustration:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) contrast(1.1) drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
+}
+
 
 /* Seções */
 .section {
