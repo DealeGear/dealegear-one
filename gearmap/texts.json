@@ -1,0 +1,425 @@
+{
+    "pt": {
+        "hero": {
+            "title": "Descubra Seu Caminho",
+            "subtitle": "Explore trilhas personalizadas para transformar ideias em realidade"
+        },
+        "menu": {
+            "home": "Início",
+            "maps": "Mapas",
+            "ecosystem": "Ecossistema",
+            "about": "Sobre",
+            "language": "Idioma"
+        },
+        "paths": {
+            "title": "Mapa de Trilhas",
+            "hobby": {
+                "title": "Hobby",
+                "description": "Crie por prazer, sem pressão"
+            },
+            "income": {
+                "title": "Renda Extra",
+                "description": "Transforme habilidades em valor"
+            },
+            "career": {
+                "title": "Carreira",
+                "description": "Construa seu futuro profissional"
+            },
+            "startup": {
+                "title": "Startup",
+                "description": "Inove e transforme o mercado"
+            }
+        },
+        "steps": {
+            "planning": "Planejamento",
+            "organization": "Organização",
+            "execution": "Execução",
+            "monitoring": "Monitoramento e Controle",
+            "communication": "Comunicação",
+            "risk": "Gestão de Riscos"
+        },
+        "stepDescriptions": {
+            "hobby": {
+                "planning": {
+                    "title": "Planejamento - Hobby",
+                    "description": "Defina o que quer criar, sem pressa nem pressão. Este é o momento para explorar suas paixões e definir metas que te motivem."
+                },
+                "execution": {
+                    "title": "Execução - Hobby",
+                    "description": "Comece a construir, testar e se divertir. O processo é tão importante quanto o resultado. Aprenda com cada etapa."
+                },
+                "communication": {
+                    "title": "Comunicação - Hobby",
+                    "description": "Compartilhe o que fez e troque ideias com outros criadores. A comunidade pode inspirar e ajudar a evoluir seu trabalho."
+                }
+            },
+            "income": {
+                "planning": {
+                    "title": "Planejamento - Renda Extra",
+                    "description": "Organize suas ideias com propósito. Defina objetivos claros e um plano para transformar suas habilidades em fonte de renda."
+                },
+                "organization": {
+                    "title": "Organização - Renda Extra",
+                    "description": "Defina papéis e recursos, mesmo que seja um projeto solo. Estruture seu tempo e ferramentas para máxima eficiência."
+                },
+                "execution": {
+                    "title": "Execução - Renda Extra",
+                    "description": "Transforme habilidade em resultado. Entregue valor consistente e construa uma reputação sólida no mercado."
+                },
+                "risk": {
+                    "title": "Gestão de Riscos - Renda Extra",
+                    "description": "Aprenda com os erros e melhore continuamente. Identifique potenciais problemas e tenha planos de contingência."
+                },
+                "communication": {
+                    "title": "Comunicação - Renda Extra",
+                    "description": "Mostre seu trabalho e aprenda com o retorno. Construa relacionamentos com clientes e parceiros."
+                }
+            },
+            "career": {
+                "planning": {
+                    "title": "Planejamento - Carreira",
+                    "description": "Estabeleça metas de crescimento e aprendizado. Mapeie suas competências e identifique áreas de desenvolvimento."
+                },
+                "execution": {
+                    "title": "Execução - Carreira",
+                    "description": "Desenvolva projetos que mostrem sua evolução. Crie um portfólio robusto que demonstre suas capacidades."
+                },
+                "monitoring": {
+                    "title": "Monitoramento e Controle - Carreira",
+                    "description": "Acompanhe resultados e ajuste sua rota. Meça seu progresso e celebre conquistas, mantendo o foco nos objetivos."
+                },
+                "communication": {
+                    "title": "Comunicação - Carreira",
+                    "description": "Construa conexões profissionais e compartilhe conhecimento. Networking é essencial para oportunidades de crescimento."
+                }
+            },
+            "startup": {
+                "planning": {
+                    "title": "Planejamento - Startup",
+                    "description": "Defina o propósito e o impacto do projeto. Valide sua ideia antes de investir recursos significativos."
+                },
+                "organization": {
+                    "title": "Organização - Startup",
+                    "description": "Monte sua equipe e alinhe responsabilidades. Crie uma cultura organizacional forte e processos eficientes."
+                },
+                "execution": {
+                    "title": "Execução - Startup",
+                    "description": "Valide ideias rapidamente e aprenda com o mercado. Adote uma abordagem ágil e iterativa."
+                },
+                "risk": {
+                    "title": "Gestão de Riscos - Startup",
+                    "description": "Identifique incertezas e prepare planos de ação. Antecipe desafios e mantenha a resiliência do negócio."
+                },
+                "monitoring": {
+                    "title": "Monitoramento e Controle - Startup",
+                    "description": "Mensure progresso, aprimore processos. Use métricas para tomar decisões baseadas em dados."
+                },
+                "communication": {
+                    "title": "Comunicação - Startup",
+                    "description": "Mantenha clareza e alinhamento em toda a equipe. A transparência é fundamental para o sucesso coletivo."
+                }
+            }
+        },
+        "ecosystem": {
+            "title": "Ecossistema DealeGear",
+            "hub": {
+                "title": "GearHub",
+                "description": "Centro de integração onde projetos se conectam. Colabore, compartilhe recursos e encontre parceiros para suas iniciativas."
+            },
+            "labs": {
+                "title": "GearLabs",
+                "description": "Ambiente experimental para protótipos e inovações. Teste ideias, falhe rápido e aprenda mais rápido ainda."
+            },
+            "vision": {
+                "title": "GearVision",
+                "description": "Espaço de planejamento estratégico e visão criativa. Defina o norte do seu projeto e alinhe todos em torno do mesmo propósito."
+            }
+        },
+        "buttons": {
+            "explore": "Explorar",
+            "learnMore": "Saiba Mais"
+        }
+    },
+    "en": {
+        "hero": {
+            "title": "Discover Your Path",
+            "subtitle": "Explore personalized trails to transform ideas into reality"
+        },
+        "menu": {
+            "home": "Home",
+            "maps": "Maps",
+            "ecosystem": "Ecosystem",
+            "about": "About",
+            "language": "Language"
+        },
+        "paths": {
+            "title": "Path Map",
+            "hobby": {
+                "title": "Hobby",
+                "description": "Create for pleasure, without pressure"
+            },
+            "income": {
+                "title": "Side Income",
+                "description": "Transform skills into value"
+            },
+            "career": {
+                "title": "Career",
+                "description": "Build your professional future"
+            },
+            "startup": {
+                "title": "Startup",
+                "description": "Innovate and transform the market"
+            }
+        },
+        "steps": {
+            "planning": "Planning",
+            "organization": "Organization",
+            "execution": "Execution",
+            "monitoring": "Monitoring & Control",
+            "communication": "Communication",
+            "risk": "Risk Management"
+        },
+        "stepDescriptions": {
+            "hobby": {
+                "planning": {
+                    "title": "Planning - Hobby",
+                    "description": "Define what you want to create, without rush or pressure. This is the time to explore your passions and set motivating goals."
+                },
+                "execution": {
+                    "title": "Execution - Hobby",
+                    "description": "Start building, testing, and having fun. The process is as important as the result. Learn from every step."
+                },
+                "communication": {
+                    "title": "Communication - Hobby",
+                    "description": "Share what you've made and exchange ideas with other creators. The community can inspire and help evolve your work."
+                }
+            },
+            "income": {
+                "planning": {
+                    "title": "Planning - Side Income",
+                    "description": "Organize your ideas with purpose. Set clear goals and a plan to transform your skills into an income source."
+                },
+                "organization": {
+                    "title": "Organization - Side Income",
+                    "description": "Define roles and resources, even if it's a solo project. Structure your time and tools for maximum efficiency."
+                },
+                "execution": {
+                    "title": "Execution - Side Income",
+                    "description": "Transform skill into results. Deliver consistent value and build a solid reputation in the market."
+                },
+                "risk": {
+                    "title": "Risk Management - Side Income",
+                    "description": "Learn from mistakes and continuously improve. Identify potential problems and have contingency plans."
+                },
+                "communication": {
+                    "title": "Communication - Side Income",
+                    "description": "Show your work and learn from feedback. Build relationships with clients and partners."
+                }
+            },
+            "career": {
+                "planning": {
+                    "title": "Planning - Career",
+                    "description": "Establish growth and learning goals. Map your skills and identify development areas."
+                },
+                "execution": {
+                    "title": "Execution - Career",
+                    "description": "Develop projects that show your evolution. Create a robust portfolio that demonstrates your capabilities."
+                },
+                "monitoring": {
+                    "title": "Monitoring & Control - Career",
+                    "description": "Track results and adjust your course. Measure your progress and celebrate achievements, keeping focus on goals."
+                },
+                "communication": {
+                    "title": "Communication - Career",
+                    "description": "Build professional connections and share knowledge. Networking is essential for growth opportunities."
+                }
+            },
+            "startup": {
+                "planning": {
+                    "title": "Planning - Startup",
+                    "description": "Define the purpose and impact of the project. Validate your idea before investing significant resources."
+                },
+                "organization": {
+                    "title": "Organization - Startup",
+                    "description": "Build your team and align responsibilities. Create a strong organizational culture and efficient processes."
+                },
+                "execution": {
+                    "title": "Execution - Startup",
+                    "description": "Validate ideas quickly and learn from the market. Adopt an agile and iterative approach."
+                },
+                "risk": {
+                    "title": "Risk Management - Startup",
+                    "description": "Identify uncertainties and prepare action plans. Anticipate challenges and maintain business resilience."
+                },
+                "monitoring": {
+                    "title": "Monitoring & Control - Startup",
+                    "description": "Measure progress, improve processes. Use metrics to make data-driven decisions."
+                },
+                "communication": {
+                    "title": "Communication - Startup",
+                    "description": "Maintain clarity and alignment across the team. Transparency is fundamental for collective success."
+                }
+            }
+        },
+        "ecosystem": {
+            "title": "DealeGear Ecosystem",
+            "hub": {
+                "title": "GearHub",
+                "description": "Integration center where projects connect. Collaborate, share resources, and find partners for your initiatives."
+            },
+            "labs": {
+                "title": "GearLabs",
+                "description": "Experimental environment for prototypes and innovations. Test ideas, fail fast, and learn even faster."
+            },
+            "vision": {
+                "title": "GearVision",
+                "description": "Strategic planning and creative vision space. Define your project's north and align everyone around the same purpose."
+            }
+        },
+        "buttons": {
+            "explore": "Explore",
+            "learnMore": "Learn More"
+        }
+    },
+    "es": {
+        "hero": {
+            "title": "Descubre Tu Camino",
+            "subtitle": "Explora rutas personalizadas para transformar ideas en realidad"
+        },
+        "menu": {
+            "home": "Inicio",
+            "maps": "Mapas",
+            "ecosystem": "Ecosistema",
+            "about": "Acerca de",
+            "language": "Idioma"
+        },
+        "paths": {
+            "title": "Mapa de Rutas",
+            "hobby": {
+                "title": "Hobby",
+                "description": "Crea por placer, sin presión"
+            },
+            "income": {
+                "title": "Ingreso Extra",
+                "description": "Transforma habilidades en valor"
+            },
+            "career": {
+                "title": "Carrera",
+                "description": "Construye tu futuro profesional"
+            },
+            "startup": {
+                "title": "Startup",
+                "description": "Innova y transforma el mercado"
+            }
+        },
+        "steps": {
+            "planning": "Planificación",
+            "organization": "Organización",
+            "execution": "Ejecución",
+            "monitoring": "Monitoreo y Control",
+            "communication": "Comunicación",
+            "risk": "Gestión de Riesgos"
+        },
+        "stepDescriptions": {
+            "hobby": {
+                "planning": {
+                    "title": "Planificación - Hobby",
+                    "description": "Define lo que quieres crear, sin prisa ni presión. Este es el momento para explorar tus pasiones y establecer metas que te motiven."
+                },
+                "execution": {
+                    "title": "Ejecución - Hobby",
+                    "description": "Comienza a construir, probar y divertirte. El proceso es tan importante como el resultado. Aprende de cada paso."
+                },
+                "communication": {
+                    "title": "Comunicación - Hobby",
+                    "description": "Comparte lo que hiciste e intercambia ideas con otros creadores. La comunidad puede inspirar y ayudar a evolucionar tu trabajo."
+                }
+            },
+            "income": {
+                "planning": {
+                    "title": "Planificación - Ingreso Extra",
+                    "description": "Organiza tus ideas con propósito. Establece objetivos claros y un plan para transformar tus habilidades en fuente de ingresos."
+                },
+                "organization": {
+                    "title": "Organización - Ingreso Extra",
+                    "description": "Define roles y recursos, incluso si es un proyecto individual. Estructura tu tiempo y herramientas para máxima eficiencia."
+                },
+                "execution": {
+                    "title": "Ejecución - Ingreso Extra",
+                    "description": "Transforma habilidad en resultado. Entrega valor consistente y construye una reputación sólida en el mercado."
+                },
+                "risk": {
+                    "title": "Gestión de Riesgos - Ingreso Extra",
+                    "description": "Aprende de los errores y mejora continuamente. Identifica problemas potenciales y ten planes de contingencia."
+                },
+                "communication": {
+                    "title": "Comunicación - Ingreso Extra",
+                    "description": "Muestra tu trabajo y aprende del反馈. Construye relaciones con clientes y socios."
+                }
+            },
+            "career": {
+                "planning": {
+                    "title": "Planificación - Carrera",
+                    "description": "Establece metas de crecimiento y aprendizaje. Mapea tus competencias e identifica áreas de desarrollo."
+                },
+                "execution": {
+                    "title": "Ejecución - Carrera",
+                    "description": "Desarrolla proyectos que muestren tu evolución. Crea un portafolio robusto que demuestre tus capacidades."
+                },
+                "monitoring": {
+                    "title": "Monitoreo y Control - Carrera",
+                    "description": "Acompaña resultados y ajusta tu ruta. Mide tu progreso y celebra logros, manteniendo el foco en los objetivos."
+                },
+                "communication": {
+                    "title": "Comunicación - Carrera",
+                    "description": "Construye conexiones profesionales y comparte conocimiento. El networking es esencial para oportunidades de crecimiento."
+                }
+            },
+            "startup": {
+                "planning": {
+                    "title": "Planificación - Startup",
+                    "description": "Define el propósito e impacto del proyecto. Valida tu idea antes de invertir recursos significativos."
+                },
+                "organization": {
+                    "title": "Organización - Startup",
+                    "description": "Forma tu equipo y alinea responsabilidades. Crea una cultura organizacional fuerte y procesos eficientes."
+                },
+                "execution": {
+                    "title": "Ejecución - Startup",
+                    "description": "Valida ideas rápidamente y aprende del mercado. Adopta un enfoque ágil e iterativo."
+                },
+                "risk": {
+                    "title": "Gestión de Riesgos - Startup",
+                    "description": "Identifica incertidumbres y prepara planes de acción. Anticipa desafíos y mantén la resiliencia del negocio."
+                },
+                "monitoring": {
+                    "title": "Monitoreo y Control - Startup",
+                    "description": "Mide el progreso, mejora procesos. Usa métricas para tomar decisiones basadas en datos."
+                },
+                "communication": {
+                    "title": "Comunicación - Startup",
+                    "description": "Mantén claridad y alineación en todo el equipo. La transparencia es fundamental para el éxito colectivo."
+                }
+            }
+        },
+        "ecosystem": {
+            "title": "Ecosistema DealeGear",
+            "hub": {
+                "title": "GearHub",
+                "description": "Centro de integración donde los proyectos se conectan. Colabora, comparte recursos y encuentra socios para tus iniciativas."
+            },
+            "labs": {
+                "title": "GearLabs",
+                "description": "Ambiente experimental para prototipos e innovaciones. Prueba ideas, falla rápido y aprende aún más rápido."
+            },
+            "vision": {
+                "title": "GearVision",
+                "description": "Espacio de planificación estratégica y visión creativa. Define el norte de tu proyecto y alinea a todos alrededor del mismo propósito."
+            }
+        },
+        "buttons": {
+            "explore": "Explorar",
+            "learnMore": "Saber Más"
+        }
+    }
+}
