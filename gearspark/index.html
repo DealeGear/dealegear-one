@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearMap - Banco de Ideias</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-text">GearSpark</span>
+                </div>
+                <h1 class="header-title" data-i18n="header.title">Banco de Ideias</h1>
+                <div class="header-actions">
+                    <!-- INÍCIO: Seção adicionada para controles desktop -->
+                    <div class="header-secondary-controls">
+                        <div class="language-selector">
+                            <button class="lang-btn active" data-lang="pt">PT</button>
+                            <button class="lang-btn" data-lang="en">EN</button>
+                            <button class="lang-btn" data-lang="es">ES</button>
+                        </div>
+                        <a href="../index.html" class="back-link" data-i18n="header.backToDealeGear">Voltar para DealeGear</a>
+                    </div>
+                    <!-- FIM: Seção adicionada -->
+                    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-desktop">
+        <div class="container">
+            <div class="nav-filters">
+                <button class="filter-btn active" data-filter="all" data-i18n="header.all">Todas</button>
+                <button class="filter-btn" data-filter="hobby" data-i18n="header.hobby">Hobby</button>
+                <button class="filter-btn" data-filter="income" data-i18n="header.income">Renda Extra</button>
+                <button class="filter-btn" data-filter="career" data-i18n="header.career">Carreira</button>
+                <button class="filter-btn" data-filter="startup" data-i18n="header.startup">Startup</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <span class="logo-text">GearMap</span>
+            </div>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Fechar menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-content">
+            <!-- INÍCIO: Classe 'desktop-hidden' adicionada para esconder no desktop -->
+            <div class="mobile-menu-section desktop-hidden">
+                <h3 data-i18n="header.language">Idioma</h3>
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="pt">PT</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                </div>
+            </div>
+            <!-- FIM: Classe adicionada -->
+            <div class="mobile-menu-section">
+                <h3 data-i18n="header.title">Banco de Ideias</h3>
+                <div class="mobile-nav-filters">
+                    <button class="mobile-filter-btn active" data-filter="all" data-i18n="header.all">Todas</button>
+                    <button class="mobile-filter-btn" data-filter="hobby" data-i18n="header.hobby">Hobby</button>
+                    <button class="mobile-filter-btn" data-filter="income" data-i18n="header.income">Renda Extra</button>
+                    <button class="mobile-filter-btn" data-filter="career" data-i18n="header.career">Carreira</button>
+                    <button class="mobile-filter-btn" data-filter="startup" data-i18n="header.startup">Startup</button>
+                </div>
+            </div>
+            <!-- INÍCIO: Classe 'desktop-hidden' adicionada para esconder no desktop -->
+            <div class="mobile-menu-section desktop-hidden">
+                <a href="#" class="back-link" data-i18n="header.backToDealeGear">Voltar para DealeGear</a>
+            </div>
+            <!-- FIM: Classe adicionada -->
+        </div>
+    </div>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h2 class="hero-title" data-i18n="hero.title">Banco de Ideias</h2>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Acesse nosso banco de ideias e descubra inspirações prontas para tirar seu próximo projeto do papel.</p>
+            </div>
+        </section>
+
+        <section class="ideas-section">
+            <div class="container">
+                <div class="ideas-grid" id="ideasGrid">
+                    <!-- Os cards de ideias serão inseridos aqui dinamicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p data-i18n="footer">© 2022–2025 DealeGear e DealeGear</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

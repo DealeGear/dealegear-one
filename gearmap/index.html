@@ -3,270 +3,370 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearMap - DealeGear</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>GearMap - Mapeando Seus Projetos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-theme="light">
+    <!-- Animação de Fundo -->
+    <div class="bg-animation"></div>
+    
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="logo">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
-                        <path d="M10 16L14 20L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="logo-text">GearMap</span>
-                </div>
-                <div class="header-actions">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
-                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <circle cx="10" cy="10" r="5" stroke="currentColor" stroke-width="2"/>
-                            <path d="M10 1V3M10 17V19M19 10H17M3 10H1M16.65 3.35L15.24 4.76M4.76 15.24L3.35 16.65M16.65 16.65L15.24 15.24M4.76 4.76L3.35 3.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-compass"></i>
+                <span>GearMap</span>
             </div>
-        </div>
-    </header>
-
-    <!-- Menu Lateral -->
-    <nav class="side-menu" id="sideMenu">
-        <div class="menu-content">
-            <button class="menu-close" id="menuClose" aria-label="Fechar menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </button>
-            <ul class="menu-list">
-                <li><a href="#home" data-i18n="menu.home">Início</a></li>
-                <li><a href="#maps" data-i18n="menu.maps">Mapas</a></li>
-                <li><a href="#ecosystem" data-i18n="menu.ecosystem">Ecossistema</a></li>
-                <li><a href="#about" data-i18n="menu.about">Sobre</a></li>
-                <li class="menu-divider"></li>
-                <li class="language-selector">
-                    <span data-i18n="menu.language">Idioma</span>
-                    <div class="lang-options">
+            
+            <nav>
+                <div class="nav-links">
+                    <a href="#hobby" class="nav-link active" data-section="hobby">Hobby</a>
+                    <a href="#income" class="nav-link" data-section="income">Renda Extra</a>
+                    <a href="#career" class="nav-link" data-section="career">Carreira</a>
+                    <a href="#startup" class="nav-link" data-section="startup">Startup</a>
+                </div>
+                
+                <div class="controls">
+                    <div class="language-selector">
                         <button class="lang-btn active" data-lang="pt">PT</button>
                         <button class="lang-btn" data-lang="en">EN</button>
                         <button class="lang-btn" data-lang="es">ES</button>
                     </div>
-                </li>
-            </ul>
+                    
+                    <div class="theme-toggle" id="themeToggle"></div>
+                </div>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main">
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title" data-i18n="hero.title">Descubra Seu Caminho</h1>
-                    <p class="hero-subtitle" data-i18n="hero.subtitle">Explore trilhas personalizadas para transformar ideias em realidade</p>
+    </header>
+    
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <i class="fas fa-compass"></i>
+                <span>GearMap</span>
+            </div>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-nav-links">
+            <a href="#hobby" class="mobile-nav-link active" data-section="hobby">Hobby</a>
+            <a href="#income" class="mobile-nav-link" data-section="income">Renda Extra</a>
+            <a href="#career" class="mobile-nav-link" data-section="career">Carreira</a>
+            <a href="#startup" class="mobile-nav-link" data-section="startup">Startup</a>
+        </div>
+        
+        <div class="mobile-controls">
+            <div class="mobile-language-selector">
+                <button class="mobile-lang-btn active" data-lang="pt">PT</button>
+                <button class="mobile-lang-btn" data-lang="en">EN</button>
+                <button class="mobile-lang-btn" data-lang="es">ES</button>
+            </div>
+            
+            <div class="mobile-theme-toggle">
+                <span class="mobile-theme-label">Tema Escuro</span>
+                <div class="theme-toggle" id="mobileThemeToggle"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Seção Hobby -->
+        <section id="hobby" class="section active">
+            <div class="hero hobby">
+                <div class="hero-bg"></div>
+                <h1 data-i18n="hobby.hero.title">O Que é um Projeto Hobby?</h1>
+                <p data-i18n="hobby.hero.subtitle">Criar por prazer, sem pressão de resultados ou prazos. Um espaço para explorar sua criatividade e paixão.</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card hobby">
+                    <h2><i class="fas fa-heart"></i> <span data-i18n="hobby.benefits.title">Por Que Criar?</span></h2>
+                    <ul class="card-list">
+                        <li data-i18n="hobby.benefits.item1">Aprender sem Pressão</li>
+                        <li data-i18n="hobby.benefits.item2">Alívio do Estresse</li>
+                        <li data-i18n="hobby.benefits.item3">Pura Diversão</li>
+                        <li data-i18n="hobby.benefits.item4">Construir Confiança</li>
+                    </ul>
+                </div>
+                
+                <div class="card hobby">
+                    <h2><i class="fas fa-star"></i> <span data-i18n="hobby.characteristics.title">Características Chave</span></h2>
+                    <ul class="card-list">
+                        <li data-i18n="hobby.characteristics.item1">Sem Prazos</li>
+                        <li data-i18n="hobby.characteristics.item2">Impulsionado pela Paixão</li>
+                        <li data-i18n="hobby.characteristics.item3">Liberdade para Errar</li>
+                        <li data-i18n="hobby.characteristics.item4">Foco no Processo</li>
+                    </ul>
+                </div>
+                
+                <div class="card hobby">
+                    <h2><i class="fas fa-lightbulb"></i> <span data-i18n="hobby.examples.title">Exemplos</span></h2>
+                    <div class="examples-grid">
+                        <div class="example-item" data-i18n="hobby.examples.item1">Blog sobre filmes</div>
+                        <div class="example-item" data-i18n="hobby.examples.item2">Jogo simples</div>
+                        <div class="example-item" data-i18n="hobby.examples.item3">Série fotográfica</div>
+                        <div class="example-item" data-i18n="hobby.examples.item4">Cozinhar semanalmente</div>
+                        <div class="example-item" data-i18n="hobby.examples.item5">Música difícil</div>
+                        <div class="example-item" data-i18n="hobby.examples.item6">App de tarefas</div>
+                    </div>
+                </div>
+                
+                <div class="card hobby">
+                    <h2><i class="fas fa-play"></i> <span data-i18n="hobby.steps.title">Primeiros Passos</span></h2>
+                    <ol class="steps-list">
+                        <li data-i18n="hobby.steps.step1">Escolha algo que genuinamente te interessa</li>
+                        <li data-i18n="hobby.steps.step2">Defina um escopo pequeno e alcançável</li>
+                        <li data-i18n="hobby.steps.step3">Reserve tempo regular, mas sem pressão</li>
+                        <li data-i18n="hobby.steps.step4">Celebre pequenas conquistas</li>
+                        <li data-i18n="hobby.steps.step5">Compartilhe apenas quando se sentir confortável</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
+                <div class="cta-buttons">
+                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
+                        <i class="fas fa-flask"></i>
+                        GearLabs
+                    </a>
+                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
+                        <i class="fas fa-bolt"></i>
+                        GearSpark
+                    </a>
                 </div>
             </div>
         </section>
-
-        <!-- Paths Map Section -->
-        <section class="paths-section" id="maps">
-            <div class="container">
-                <h2 class="section-title" data-i18n="paths.title">Mapa de Trilhas</h2>
-                <div class="paths-container">
-                    <!-- SVG Connections -->
-                    <svg class="connections-svg" viewBox="0 0 1200 800">
-                        <defs>
-                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:var(--primary-color);stop-opacity:0.3" />
-                                <stop offset="100%" style="stop-color:var(--accent-color);stop-opacity:0.3" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-
-                    <!-- Path Cards -->
-                    <div class="path-card" data-path="hobby">
-                        <div class="path-header">
-                            <div class="path-icon hobby">🎨</div>
-                            <h3 data-i18n="paths.hobby.title">Hobby</h3>
-                        </div>
-                        <p data-i18n="paths.hobby.description">Crie por prazer, sem pressão</p>
-                        <div class="path-steps">
-                            <div class="step" data-step="planning">
-                                <span class="step-number">1</span>
-                                <span class="step-name" data-i18n="steps.planning">Planejamento</span>
-                            </div>
-                            <div class="step" data-step="execution">
-                                <span class="step-number">2</span>
-                                <span class="step-name" data-i18n="steps.execution">Execução</span>
-                            </div>
-                            <div class="step" data-step="communication">
-                                <span class="step-number">3</span>
-                                <span class="step-name" data-i18n="steps.communication">Comunicação</span>
-                            </div>
-                        </div>
-                        <button class="explore-btn" data-i18n="buttons.explore">Explorar</button>
+        
+        <!-- Seção Renda Extra -->
+        <section id="income" class="section">
+            <div class="hero income">
+                <div class="hero-bg"></div>
+                <h1 data-i18n="income.hero.title">Transforme Habilidades em Valor</h1>
+                <p data-i18n="income.hero.subtitle">Monetize suas competências de forma flexível, complementando sua renda principal com projetos que valorizam seu conhecimento.</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card income">
+                    <h2><i class="fas fa-coins"></i> <span data-i18n="income.benefits.title">Benefícios</span></h2>
+                    <ul class="card-list">
+                        <li data-i18n="income.benefits.item1">Diversificação de Renda</li>
+                        <li data-i18n="income.benefits.item2">Desenvolvimento Profissional</li>
+                        <li data-i18n="income.benefits.item3">Segurança Financeira</li>
+                        <li data-i18n="income.benefits.item4">Validação de Habilidades</li>
+                    </ul>
+                </div>
+                
+                <div class="card income">
+                    <h2><i class="fas fa-chart-line"></i> <span data-i18n="income.characteristics.title">Características</span></h2>
+                    <ul class="card-list">
+                        <li data-i18n="income.characteristics.item1">Foco em Valor</li>
+                        <li data-i18n="income.characteristics.item2">Mensuração de Resultados</li>
+                        <li data-i18n="income.characteristics.item3">Escalabilidade Limitada</li>
+                        <li data-i18n="income.characteristics.item4">Equilíbrio com Trabalho Principal</li>
+                    </ul>
+                </div>
+                
+                <div class="card income">
+                    <h2><i class="fas fa-briefcase"></i> <span data-i18n="income.examples.title">Exemplos</span></h2>
+                    <div class="examples-grid">
+                        <div class="example-item" data-i18n="income.examples.item1">Freelancing</div>
+                        <div class="example-item" data-i18n="income.examples.item2">Produtos Digitais</div>
+                        <div class="example-item" data-i18n="income.examples.item3">Aulas Online</div>
+                        <div class="example-item" data-i18n="income.examples.item4">Projetos Específicos</div>
+                        <div class="example-item" data-i18n="income.examples.item5">Criação de Conteúdo</div>
+                        <div class="example-item" data-i18n="income.examples.item6">Marketplace</div>
                     </div>
-
-                    <div class="path-card" data-path="income">
-                        <div class="path-header">
-                            <div class="path-icon income">💰</div>
-                            <h3 data-i18n="paths.income.title">Renda Extra</h3>
-                        </div>
-                        <p data-i18n="paths.income.description">Transforme habilidades em valor</p>
-                        <div class="path-steps">
-                            <div class="step" data-step="planning">
-                                <span class="step-number">1</span>
-                                <span class="step-name" data-i18n="steps.planning">Planejamento</span>
-                            </div>
-                            <div class="step" data-step="organization">
-                                <span class="step-number">2</span>
-                                <span class="step-name" data-i18n="steps.organization">Organização</span>
-                            </div>
-                            <div class="step" data-step="execution">
-                                <span class="step-number">3</span>
-                                <span class="step-name" data-i18n="steps.execution">Execução</span>
-                            </div>
-                            <div class="step" data-step="risk">
-                                <span class="step-number">4</span>
-                                <span class="step-name" data-i18n="steps.risk">Gestão de Riscos</span>
-                            </div>
-                            <div class="step" data-step="communication">
-                                <span class="step-number">5</span>
-                                <span class="step-name" data-i18n="steps.communication">Comunicação</span>
-                            </div>
-                        </div>
-                        <button class="explore-btn" data-i18n="buttons.explore">Explorar</button>
-                    </div>
-
-                    <div class="path-card" data-path="career">
-                        <div class="path-header">
-                            <div class="path-icon career">🚀</div>
-                            <h3 data-i18n="paths.career.title">Carreira</h3>
-                        </div>
-                        <p data-i18n="paths.career.description">Construa seu futuro profissional</p>
-                        <div class="path-steps">
-                            <div class="step" data-step="planning">
-                                <span class="step-number">1</span>
-                                <span class="step-name" data-i18n="steps.planning">Planejamento</span>
-                            </div>
-                            <div class="step" data-step="execution">
-                                <span class="step-number">2</span>
-                                <span class="step-name" data-i18n="steps.execution">Execução</span>
-                            </div>
-                            <div class="step" data-step="monitoring">
-                                <span class="step-number">3</span>
-                                <span class="step-name" data-i18n="steps.monitoring">Monitoramento</span>
-                            </div>
-                            <div class="step" data-step="communication">
-                                <span class="step-number">4</span>
-                                <span class="step-name" data-i18n="steps.communication">Comunicação</span>
-                            </div>
-                        </div>
-                        <button class="explore-btn" data-i18n="buttons.explore">Explorar</button>
-                    </div>
-
-                    <div class="path-card" data-path="startup">
-                        <div class="path-header">
-                            <div class="path-icon startup">🏢</div>
-                            <h3 data-i18n="paths.startup.title">Startup</h3>
-                        </div>
-                        <p data-i18n="paths.startup.description">Inove e transforme o mercado</p>
-                        <div class="path-steps">
-                            <div class="step" data-step="planning">
-                                <span class="step-number">1</span>
-                                <span class="step-name" data-i18n="steps.planning">Planejamento</span>
-                            </div>
-                            <div class="step" data-step="organization">
-                                <span class="step-number">2</span>
-                                <span class="step-name" data-i18n="steps.organization">Organização</span>
-                            </div>
-                            <div class="step" data-step="execution">
-                                <span class="step-number">3</span>
-                                <span class="step-name" data-i18n="steps.execution">Execução</span>
-                            </div>
-                            <div class="step" data-step="risk">
-                                <span class="step-number">4</span>
-                                <span class="step-name" data-i18n="steps.risk">Gestão de Riscos</span>
-                            </div>
-                            <div class="step" data-step="monitoring">
-                                <span class="step-number">5</span>
-                                <span class="step-name" data-i18n="steps.monitoring">Monitoramento</span>
-                            </div>
-                            <div class="step" data-step="communication">
-                                <span class="step-number">6</span>
-                                <span class="step-name" data-i18n="steps.communication">Comunicação</span>
-                            </div>
-                        </div>
-                        <button class="explore-btn" data-i18n="buttons.explore">Explorar</button>
-                    </div>
+                </div>
+                
+                <div class="card income">
+                    <h2><i class="fas fa-rocket"></i> <span data-i18n="income.steps.title">Passos Iniciais</span></h2>
+                    <ol class="steps-list">
+                        <li data-i18n="income.steps.step1">Identifique suas habilidades monetizáveis</li>
+                        <li data-i18n="income.steps.step2">Pesquise o mercado e preços</li>
+                        <li data-i18n="income.steps.step3">Crie um portfólio ou amostras</li>
+                        <li data-i18n="income.steps.step4">Estabeleça metas de renda realistas</li>
+                        <li data-i18n="income.steps.step5">Comece com projetos pequenos</li>
+                        <li data-i18n="income.steps.step6">Colete feedback e depoimentos</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
+                <div class="cta-buttons">
+                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
+                        <i class="fas fa-flask"></i>
+                        GearLabs
+                    </a>
+                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
+                        <i class="fas fa-bolt"></i>
+                        GearSpark
+                    </a>
                 </div>
             </div>
         </section>
-
-        <!-- Ecosystem Section -->
-        <section class="ecosystem-section" id="ecosystem">
-            <div class="container">
-                <h2 class="section-title" data-i18n="ecosystem.title">Ecossistema DealeGear</h2>
-                <div class="ecosystem-grid">
-                    <div class="ecosystem-card" data-pillar="hub">
-                        <div class="pillar-icon">🔗</div>
-                        <h3 data-i18n="ecosystem.hub.title">GearHub</h3>
-                        <p data-i18n="ecosystem.hub.description">Centro de integração onde projetos se conectam</p>
-                        <button class="learn-more" data-i18n="buttons.learnMore">Saiba Mais</button>
+        
+        <!-- Seção Carreira -->
+        <section id="career" class="section">
+            <div class="hero career">
+                <div class="hero-bg"></div>
+                <h1 data-i18n="career.hero.title">Construa Seu Futuro Profissional</h1>
+                <p data-i18n="career.hero.subtitle">Desenvolva projetos que impulsionam sua carreira, demonstrando competências e criando oportunidades de crescimento.</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card career">
+                    <h2><i class="fas fa-trophy"></i> <span data-i18n="career.benefits.title">Benefícios</span></h2>
+                    <ul class="card-list">
+                        <li data-i18n="career.benefits.item1">Crescimento Profissional</li>
+                        <li data-i18n="career.benefits.item2">Satisfação Pessoal</li>
+                        <li data-i18n="career.benefits.item3">Impacto na Organização</li>
+                        <li data-i18n="career.benefits.item4">Networking Estratégico</li>
+                    </ul>
+                </div>
+                
+                <div class="card career">
+                    <h2><i class="fas fa-bullseye"></i> <span data-i18n="career.characteristics.title">Características</span></h2>
+                    <ul class="card-list">
+                        <li data-i18n="career.characteristics.item1">Alinhamento com Objetivos</li>
+                        <li data-i18n="career.characteristics.item2">Impacto Mensurável</li>
+                        <li data-i18n="career.characteristics.item3">Desenvolvimento de Competências</li>
+                        <li data-i18n="career.characteristics.item4">Visibilidade Organizacional</li>
+                    </ul>
+                </div>
+                
+                <div class="card career">
+                    <h2><i class="fas fa-briefcase"></i> <span data-i18n="career.examples.title">Exemplos</span></h2>
+                    <div class="examples-grid">
+                        <div class="example-item" data-i18n="career.examples.item1">Projeto de Inovação</div>
+                        <div class="example-item" data-i18n="career.examples.item2">Otimização de Processos</div>
+                        <div class="example-item" data-i18n="career.examples.item3">Programa de Mentoria</div>
+                        <div class="example-item" data-i18n="career.examples.item4">Artigos Técnicos</div>
+                        <div class="example-item" data-i18n="career.examples.item5">Responsabilidade Social</div>
+                        <div class="example-item" data-i18n="career.examples.item6">Liderança de Equipe</div>
                     </div>
-                    <div class="ecosystem-card" data-pillar="labs">
-                        <div class="pillar-icon">🧪</div>
-                        <h3 data-i18n="ecosystem.labs.title">GearLabs</h3>
-                        <p data-i18n="ecosystem.labs.description">Ambiente experimental para protótipos e inovações</p>
-                        <button class="learn-more" data-i18n="buttons.learnMore">Saiba Mais</button>
+                </div>
+                
+                <div class="card career">
+                    <h2><i class="fas fa-road"></i> <span data-i18n="career.steps.title">Passos Iniciais</span></h2>
+                    <ol class="steps-list">
+                        <li data-i18n="career.steps.step1">Mapeie gaps de competências</li>
+                        <li data-i18n="career.steps.step2">Identifique problemas da organização</li>
+                        <li data-i18n="career.steps.step3">Proposta de valor clara</li>
+                        <li data-i18n="career.steps.step4">Busque apoio de stakeholders</li>
+                        <li data-i18n="career.steps.step5">Documente resultados e aprendizados</li>
+                        <li data-i18n="career.steps.step6">Compartilhe conquistas internamente</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
+                <div class="cta-buttons">
+                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
+                        <i class="fas fa-flask"></i>
+                        GearLabs
+                    </a>
+                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
+                        <i class="fas fa-bolt"></i>
+                        GearSpark
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Startup -->
+        <section id="startup" class="section">
+            <div class="hero startup">
+                <div class="hero-bg"></div>
+                <h1 data-i18n="startup.hero.title">Inove e Transforme o Mercado</h1>
+                <p data-i18n="startup.hero.subtitle">Crie empreendimentos escaláveis que resolvem problemas reais, com potencial de crescimento exponencial e impacto duradouro.</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card startup">
+                    <h2><i class="fas fa-rocket"></i> <span data-i18n="startup.benefits.title">Benefícios</span></h2>
+                    <ul class="card-list">
+                        <li data-i18n="startup.benefits.item1">Solução de Problemas Reais</li>
+                        <li data-i18n="startup.benefits.item2">Potencial de Escala</li>
+                        <li data-i18n="startup.benefits.item3">Impacto Social</li>
+                        <li data-i18n="startup.benefits.item4">Liberdade e Autonomia</li>
+                    </ul>
+                </div>
+                
+                <div class="card startup">
+                    <h2><i class="fas fa-cogs"></i> <span data-i18n="startup.characteristics.title">Características</span></h2>
+                    <ul class="card-list">
+                        <li data-i18n="startup.characteristics.item1">Foco no Mercado</li>
+                        <li data-i18n="startup.characteristics.item2">Validação Rápida</li>
+                        <li data-i18n="startup.characteristics.item3">Busca por Investimento</li>
+                        <li data-i18n="startup.characteristics.item4">Cultura de Inovação</li>
+                    </ul>
+                </div>
+                
+                <div class="card startup">
+                    <h2><i class="fas fa-lightbulb"></i> <span data-i18n="startup.examples.title">Exemplos</span></h2>
+                    <div class="examples-grid">
+                        <div class="example-item" data-i18n="startup.examples.item1">App Móvel</div>
+                        <div class="example-item" data-i18n="startup.examples.item2">SaaS</div>
+                        <div class="example-item" data-i18n="startup.examples.item3">Marketplace</div>
+                        <div class="example-item" data-i18n="startup.examples.item4">Tecnologia Limpa</div>
+                        <div class="example-item" data-i18n="startup.examples.item5">Fintech</div>
+                        <div class="example-item" data-i18n="startup.examples.item6">Edtech</div>
                     </div>
-                    <div class="ecosystem-card" data-pillar="vision">
-                        <div class="pillar-icon">👁️</div>
-                        <h3 data-i18n="ecosystem.vision.title">GearVision</h3>
-                        <p data-i18n="ecosystem.vision.description">Espaço de planejamento estratégico e visão criativa</p>
-                        <button class="learn-more" data-i18n="buttons.learnMore">Saiba Mais</button>
-                    </div>
+                </div>
+                
+                <div class="card startup">
+                    <h2><i class="fas fa-flag"></i> <span data-i18n="startup.steps.title">Passos Iniciais</span></h2>
+                    <ol class="steps-list">
+                        <li data-i18n="startup.steps.step1">Identifique um problema real</li>
+                        <li data-i18n="startup.steps.step2">Valide com potenciais clientes</li>
+                        <li data-i18n="startup.steps.step3">Desenvolva um MVP</li>
+                        <li data-i18n="startup.steps.step4">Meça e aprenda rapidamente</li>
+                        <li data-i18n="startup.steps.step5">Busque tração antes de escala</li>
+                        <li data-i18n="startup.steps.step6">Considere modelos de financiamento</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
+                <div class="cta-buttons">
+                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
+                        <i class="fas fa-flask"></i>
+                        GearLabs
+                    </a>
+                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
+                        <i class="fas fa-bolt"></i>
+                        GearSpark
+                    </a>
                 </div>
             </div>
         </section>
     </main>
-
+    
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2022–2025 DealeGear e DealeGear</p>
-        </div>
+    <footer>
+        <p>&copy; 2024 GearMap - Mapeando Seus Projetos. Todos os direitos reservados.</p>
     </footer>
-
-    <!-- Step Modal -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <button class="modal-close" id="modalClose">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </button>
-            <div class="modal-content">
-                <h3 class="modal-title" id="modalTitle"></h3>
-                <p class="modal-description" id="modalDescription"></p>
-                <div class="modal-actions">
-                    <button class="modal-explore" id="modalExplore" data-i18n="buttons.explore">Explorar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
+    
     <script src="script.js"></script>
 </body>
 </html>

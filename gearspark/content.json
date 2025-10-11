@@ -1,0 +1,1082 @@
+{
+  "pt": {
+    "header": {
+      "logo": "GearSpark",
+      "title": "Banco de Ideias",
+      "all": "Todas",
+      "hobby": "Hobby",
+      "income": "Renda Extra",
+      "career": "Carreira",
+      "startup": "Startup",
+      "backToDealeGear": "Voltar para DealeGear",
+      "language": "Idioma"
+    },
+    "hero": {
+      "title": "Banco de Ideias",
+      "subtitle": "Acesse nosso banco de ideias e descubra inspirações prontas para tirar seu próximo projeto do papel."
+    },
+    "categories": {
+      "hobby": {
+        "title": "Hobby",
+        "ideas": [
+          {
+            "title": "Criar um Zine Digital",
+            "description": "Use ferramentas gratuitas para criar e publicar uma pequena revista digital sobre um tema que você ama."
+          },
+          {
+            "title": "Mapa de Árvores Notáveis",
+            "description": "Mapeie e documente as árvores mais interessantes ou antigas da sua cidade com fotos e histórias."
+          },
+          {
+            "title": "Clube do Livro Temático",
+            "description": "Inicie um clube do livro focado em um gênero específico, como ficção científica ou biografias."
+          },
+          {
+            "title": "Jardim Sensorial",
+            "description": "Desenvolva um pequeno jardim com plantas que estimulam diferentes sentidos: aroma, textura, cor."
+          },
+          {
+            "title": "Documentário de Bairro",
+            "description": "Crie um canal no YouTube documentando a história e as curiosidades do seu bairro."
+          },
+          {
+            "title": "Encadernação Artesanal",
+            "description": "Aprenda a técnica de encadernação para criar cadernos e diários personalizados."
+          },
+          {
+            "title": "Colecionar e Catalogar",
+            "description": "Inicie uma coleção temática (selos, pedras, postais) e crie um catálogo digital."
+          },
+          {
+            "title": "Cozinha Experimental",
+            "description": "Dedique-se a recriar pratos históricos ou experimentar com técnicas de culinária incomuns."
+          },
+          {
+            "title": "Orquestra de Objetos",
+            "description": "Monte um grupo musical usando objetos cotidianos como instrumentos."
+          },
+          {
+            "title": "Caça aos Grafites",
+            "description": "Mapeie e fotografe obras de arte urbana em sua cidade, criando um tour virtual."
+          },
+          {
+            "title": "Laboratório Caseiro",
+            "description": "Monte um pequeno laboratório para experimentos químicos seguros e educativos."
+          },
+          {
+            "title": "Criação de Terrários",
+            "description": "Construa ecossistemas em miniatura dentro de recipientes de vidro."
+          },
+          {
+            "title": "Roteiro de Caminhada Histórica",
+            "description": "Pesquise e crie um roteiro autoguiado pelos pontos históricos de sua cidade."
+          },
+          {
+            "title": "Oficina de Reciclagem Criativa",
+            "description": "Transforme materiais descartáveis em objetos úteis ou decorativos."
+          },
+          {
+            "title": "Diário Visual",
+            "description": "Crie um diário ilustrado registrando seus pensamentos e experiências diárias."
+          },
+          {
+            "title": "Clube de Cinema de Nicho",
+            "description": "Organize encontros para discutir filmes de um diretor específico ou gênero incomum."
+          },
+          {
+            "title": "Jardinagem Vertical",
+            "description": "Crie um jardim vertical em sua parede usando garrafas PET ou estruturas específicas."
+          },
+          {
+            "title": "Mapeamento Sonoro",
+            "description": "Registre os sons característicos de diferentes locais da sua cidade e crie um mapa sonoro."
+          },
+          {
+            "title": "Criação de Queijos Artesanais",
+            "description": "Aprenda a fazer diferentes tipos de queijos em casa com ingredientes simples."
+          },
+          {
+            "title": "Clube de Troca de Habilidades",
+            "description": "Organize um grupo onde os membros ensinam suas habilidades uns aos outros."
+          }
+        ]
+      },
+      "income": {
+        "title": "Renda Extra",
+        "ideas": [
+          {
+            "title": "Consultoria de Organização Digital",
+            "description": "Ajude pessoas a organizar seus arquivos, fotos e e-mails em sessões online de 1-2 horas."
+          },
+          {
+            "title": "Criação de Templates de Notion",
+            "description": "Desenvolva e venda templates para gestão de projetos, finanças pessoais ou planejamento de conteúdo."
+          },
+          {
+            "title": "Serviço de Edição de Podcasts",
+            "description": "Ofereça edição de áudio para podcasters que não têm tempo ou habilidade técnica."
+          },
+          {
+            "title": "Curadoria de Playlists Temáticas",
+            "description": "Crie e venda playlists personalizadas para restaurantes, lojas ou eventos especiais."
+          },
+          {
+            "title": "Assistente Virtual para Pequenos Negócios",
+            "description": "Ofereça serviços de organização de agenda, e-mails e tarefas para empreendedores ocupados."
+          },
+          {
+            "title": "Montagem de Kits de Presentes",
+            "description": "Crie e venda kits temáticos para presentes (café, spa, leitura, etc.)."
+          },
+          {
+            "title": "Tradução de Conteúdo Especializado",
+            "description": "Ofereça serviços de tradução para documentos técnicos ou artigos em sua área de expertise."
+          },
+          {
+            "title": "Revisão de Currículos e Portfólios",
+            "description": "Ajude profissionais a destacar suas qualificações com revisões detalhadas."
+          },
+          {
+            "title": "Criação de Planilhas Personalizadas",
+            "description": "Desenvolva planilhas para orçamento, controle de estoque ou outras necessidades específicas."
+          },
+          {
+            "title": "Aulas de Habilidade Específica Online",
+            "description": "Ensine uma habilidade que você domina (cozinha, fotografia, programação) em aulas online."
+          },
+          {
+            "title": "Serviço de Pesquisa",
+            "description": "Ofereça serviços de pesquisa para estudantes, escritores ou profissionais."
+          },
+          {
+            "title": "Organização de Espaços",
+            "description": "Ajude pessoas a organizar suas casas, escritórios ou armários usando métodos como KonMari."
+          },
+          {
+            "title": "Criação de Conteúdo para Redes Sociais",
+            "description": "Produza conteúdo (textos, imagens, vídeos) para pequenas empresas que não têm tempo."
+          },
+          {
+            "title": "Aluguel de Equipamentos Especializados",
+            "description": "Alugue equipamentos que você possui mas usa raramente (câmeras, ferramentas, etc.)."
+          },
+          {
+            "title": "Serviço de Entrega Local",
+            "description": "Ofereça serviço de entrega para pequenos comércios em sua região."
+          },
+          {
+            "title": "Montagem de Móveis",
+            "description": "Ofereça serviço de montagem de móveis para pessoas que compraram online."
+          },
+          {
+            "title": "Criação de Jardins em Apartamentos",
+            "description": "Ajude moradores de apartamentos a criar pequenos jardins ou hortas em varandas."
+          },
+          {
+            "title": "Aulas de Idiomas Conversacionais",
+            "description": "Ofereça aulas de conversação em um idioma que você fala fluentemente."
+          },
+          {
+            "title": "Criação de Resumos de Livros",
+            "description": "Produza resumos detalhados de livros de não ficção para profissionais ocupados."
+          },
+          {
+            "title": "Consultoria de Imagem Pessoal",
+            "description": "Ajude pessoas a definir seu estilo pessoal com base em seu corpo, personalidade e estilo de vida."
+          }
+        ]
+      },
+      "career": {
+        "title": "Carreira",
+        "ideas": [
+          {
+            "title": "Dashboard de KPIs do Time",
+            "description": "Crie um dashboard visual (usando Power BI, Looker Studio) para acompanhar as métricas mais importantes do seu time."
+          },
+          {
+            "title": "Série de 'Brown Bag Lunch'",
+            "description": "Organize apresentações informais durante o almoço para compartilhar conhecimento sobre uma ferramenta ou habilidade."
+          },
+          {
+            "title": "Guia de Boas-Vindas para Novos Funcionários",
+            "description": "Desenvolva um guia completo para ajudar novos colegas a se integrarem rapidamente à equipe e cultura."
+          },
+          {
+            "title": "Mentoria Formal para Colegas Juniores",
+            "description": "Crie um programa de mentoria estruturado para ajudar no desenvolvimento de profissionais mais novos."
+          },
+          {
+            "title": "Newsletter Interna de Conhecimento",
+            "description": "Inicie uma newsletter semanal compartilhando artigos, ferramentas e aprendizados relevantes para sua área."
+          },
+          {
+            "title": "Biblioteca de Recursos Compartilhada",
+            "description": "Crie um repositório centralizado com documentos, templates e recursos úteis para toda a equipe."
+          },
+          {
+            "title": "Grupos de Estudo de Habilidades",
+            "description": "Organize grupos de estudo para aprender novas tecnologias ou habilidades relevantes para sua carreira."
+          },
+          {
+            "title": "Mapeamento de Processos",
+            "description": "Documente e otimize os principais processos de trabalho do seu time para aumentar a eficiência."
+          },
+          {
+            "title": "Sistema de Feedback 360°",
+            "description": "Implemente um sistema estruturado para coletar e compartilhar feedback construtivo entre colegas."
+          },
+          {
+            "title": "Portfólio de Projetos",
+            "description": "Documente seus projetos e conquistas profissionais em um portfólio online para destacar suas habilidades."
+          },
+          {
+            "title": "Análise de Concorrentes",
+            "description": "Realize uma análise detalhada dos concorrentes e apresente insights estratégicos para sua equipe."
+          },
+          {
+            "title": "Plano de Desenvolvimento Individual",
+            "description": "Crie um plano detalhado para desenvolver habilidades específicas que impulsionarão sua carreira."
+          },
+          {
+            "title": "Apresentações em Eventos da Indústria",
+            "description": "Proponha apresentações sobre seus projetos ou aprendizados em conferências e meetups do setor."
+          },
+          {
+            "title": "Artigos Técnicos em Blog",
+            "description": "Escreva artigos detalhados sobre desafios técnicos que você superou para demonstrar sua expertise."
+          },
+          {
+            "title": "Projeto de Automação de Tarefas",
+            "description": "Identifique tarefas repetitivas em seu trabalho e desenvolva automações para otimizar o tempo."
+          },
+          {
+            "title": "Criação de Playbooks",
+            "description": "Desenvolva guias passo a passo (playbooks) para processos complexos ou recorrentes em sua área."
+          },
+          {
+            "title": "Análise de Dados para Tomada de Decisão",
+            "description": "Utilize dados para identificar padrões e insights que possam informar decisões estratégicas."
+          },
+          {
+            "title": "Programa de Inovação Interna",
+            "description": "Crie um programa que incentive e recompense ideias inovadoras dos membros da equipe."
+          },
+          {
+            "title": "Mapeamento de Competências da Equipe",
+            "description": "Catalogue as habilidades e competências de cada membro do time para otimizar alocação em projetos."
+          },
+          {
+            "title": "Sistema de Reconhecimento entre Pares",
+            "description": "Implemente uma plataforma onde colegas possam reconhecer e valorizar as contribuições uns dos outros."
+          }
+        ]
+      },
+      "startup": {
+        "title": "Startup",
+        "ideas": [
+          {
+            "title": "Plataforma de Troca de Sementes",
+            "description": "Crie um marketplace para que jardineiros e agricultores locais possam trocar ou vender sementes raras."
+          },
+          {
+            "title": "Assistente de IA para E-mails",
+            "description": "Desenvolva uma ferramenta que usa IA para ajudar profissionais a escrever e-mails mais rápidos e eficazes."
+          },
+          {
+            "title": "Conexão Restaurantes com Food Banks",
+            "description": "Plataforma que conecta restaurantes com excedentes de alimentos a bancos de alimentos locais."
+          },
+          {
+            "title": "Gerador de Paletas com IA",
+            "description": "Ferramenta que utiliza inteligência artificial para criar paletas de cores personalizadas para designers."
+          },
+          {
+            "title": "App de Gamificação para Aprendizado de Idiomas",
+            "description": "Aplique mecânicas de jogos para tornar o aprendizado de novos idiomas mais envolvente e eficaz."
+          },
+          {
+            "title": "Marketplace de Aluguel de Equipamentos",
+            "description": "Crie uma plataforma onde pessoas possam alugar equipamentos de hobbies específicos que usam raramente."
+          },
+          {
+            "title": "Serviço de Assinatura de Plantas Raras",
+            "description": "Ofereça uma assinatura mensal entregando plantas raras ou exóticas com guias de cuidado."
+          },
+          {
+            "title": "Plataforma de Co-trabalho Virtual",
+            "description": "Desenvolva um ambiente virtual onde trabalhadores remotos possam interagir como em um escritório físico."
+          },
+          {
+            "title": "Ferramenta de Planejamento de Refeições Inteligente",
+            "description": "App que sugere receitas baseadas nos ingredientes disponíveis e preferências alimentares do usuário."
+          },
+          {
+            "title": "Serviço de Curadoria de Experiências Locais",
+            "description": "Plataforma que oferece roteiros personalizados de experiências autênticas em cidades turísticas."
+          },
+          {
+            "title": "Sistema de Monitoramento de Plantas por IoT",
+            "description": "Dispositivos conectados que monitoram a saúde das plantas e enviam alertas para o smartphone."
+          },
+          {
+            "title": "Plataforma de Conexão de Mentores e Aprendizes",
+            "description": "Sistema que conecta profissionais experientes a pessoas que buscam desenvolvimento em áreas específicas."
+          },
+          {
+            "title": "Ferramenta de Análise de Sentimento para Empresas",
+            "description": "Software que analisa feedback de clientes em diferentes canais para fornecer insights acionáveis."
+          },
+          {
+            "title": "App de Desafios Sustentáveis",
+            "description": "Plataforma que propõe desafios ecológicos e recompensa usuários por hábitos sustentáveis."
+          },
+          {
+            "title": "Serviço de Organização de Eventos Híbridos",
+            "description": "Plataforma completa para organizar eventos que combinem participantes presenciais e remotos."
+          },
+          {
+            "title": "Ferramenta de Mapeamento de Habilidades Organizacionais",
+            "description": "Sistema que ajuda empresas a identificar e visualizar as competências existentes em sua equipe."
+          },
+          {
+            "title": "Marketplace de Produtos de Empreendedores Locais",
+            "description": "Plataforma que reúne e dá visibilidade a produtos de pequenos empreendedores da mesma região."
+          },
+          {
+            "title": "Serviço de Personalização de Presentes com IA",
+            "description": "Ferramenta que utiliza inteligência artificial para sugerir presentes personalizados baseados no perfil do destinatário."
+          },
+          {
+            "title": "Plataforma de Gerenciamento de Finanças para Freelancers",
+            "description": "Sistema completo para ajudar trabalhadores autônomos a gerenciar faturamento, impostos e planejamento financeiro."
+          },
+          {
+            "title": "App de Conexão de Pessoas com Interesses Similares",
+            "description": "Plataforma que facilita encontros presenciais entre pessoas com hobbies e interesses em comum."
+          }
+        ]
+      }
+    },
+    "footer": "© 2022–2025 DealeGear e DealeGear"
+  },
+  "en": {
+    "header": {
+      "logo": "GearSpark",
+      "title": "Ideas Bank",
+      "all": "All",
+      "hobby": "Hobby",
+      "income": "Side Income",
+      "career": "Career",
+      "startup": "Startup",
+      "backToDealeGear": "Back to DealeGear",
+      "language": "Language"
+    },
+    "hero": {
+      "title": "Ideas Bank",
+      "subtitle": "Access our ideas bank and discover inspirations ready to take your next project off the ground."
+    },
+    "categories": {
+      "hobby": {
+        "title": "Hobby",
+        "ideas": [
+          {
+            "title": "Create a Digital Zine",
+            "description": "Use free tools to create and publish a small digital magazine about a topic you love."
+          },
+          {
+            "title": "Notable Trees Map",
+            "description": "Map and document the most interesting or old trees in your city with photos and stories."
+          },
+          {
+            "title": "Thematic Book Club",
+            "description": "Start a book club focused on a specific genre, like science fiction or biographies."
+          },
+          {
+            "title": "Sensory Garden",
+            "description": "Develop a small garden with plants that stimulate different senses: aroma, texture, color."
+          },
+          {
+            "title": "Neighborhood Documentary",
+            "description": "Create a YouTube channel documenting the history and curiosities of your neighborhood."
+          },
+          {
+            "title": "Handmade Bookbinding",
+            "description": "Learn the bookbinding technique to create personalized notebooks and journals."
+          },
+          {
+            "title": "Collect and Catalog",
+            "description": "Start a themed collection (stamps, rocks, postcards) and create a digital catalog."
+          },
+          {
+            "title": "Experimental Kitchen",
+            "description": "Dedicate yourself to recreating historical dishes or experimenting with unusual cooking techniques."
+          },
+          {
+            "title": "Object Orchestra",
+            "description": "Put together a musical group using everyday objects as instruments."
+          },
+          {
+            "title": "Graffiti Hunt",
+            "description": "Map and photograph urban art in your city, creating a virtual tour."
+          },
+          {
+            "title": "Home Laboratory",
+            "description": "Set up a small laboratory for safe and educational chemical experiments."
+          },
+          {
+            "title": "Terrarium Creation",
+            "description": "Build miniature ecosystems inside glass containers."
+          },
+          {
+            "title": "Historical Walking Route",
+            "description": "Research and create a self-guided tour of the historical points of your city."
+          },
+          {
+            "title": "Creative Recycling Workshop",
+            "description": "Transform disposable materials into useful or decorative objects."
+          },
+          {
+            "title": "Visual Diary",
+            "description": "Create an illustrated diary recording your daily thoughts and experiences."
+          },
+          {
+            "title": "Niche Film Club",
+            "description": "Organize meetings to discuss films by a specific director or unusual genre."
+          },
+          {
+            "title": "Vertical Gardening",
+            "description": "Create a vertical garden on your wall using PET bottles or specific structures."
+          },
+          {
+            "title": "Sound Mapping",
+            "description": "Record the characteristic sounds of different places in your city and create a sound map."
+          },
+          {
+            "title": "Artisanal Cheese Making",
+            "description": "Learn to make different types of cheeses at home with simple ingredients."
+          },
+          {
+            "title": "Skill Exchange Club",
+            "description": "Organize a group where members teach their skills to each other."
+          }
+        ]
+      },
+      "income": {
+        "title": "Side Income",
+        "ideas": [
+          {
+            "title": "Digital Organization Consulting",
+            "description": "Help people organize their files, photos, and emails in 1-2 hour online sessions."
+          },
+          {
+            "title": "Notion Templates Creation",
+            "description": "Develop and sell templates for project management, personal finance, or content planning."
+          },
+          {
+            "title": "Podcast Editing Service",
+            "description": "Offer audio editing for podcasters who don't have time or technical skills."
+          },
+          {
+            "title": "Thematic Playlists Curation",
+            "description": "Create and sell personalized playlists for restaurants, stores, or special events."
+          },
+          {
+            "title": "Virtual Assistant for Small Businesses",
+            "description": "Offer organization services for schedules, emails, and tasks for busy entrepreneurs."
+          },
+          {
+            "title": "Gift Kit Assembly",
+            "description": "Create and sell themed gift kits (coffee, spa, reading, etc.)."
+          },
+          {
+            "title": "Specialized Content Translation",
+            "description": "Offer translation services for technical documents or articles in your area of expertise."
+          },
+          {
+            "title": "Resume and Portfolio Review",
+            "description": "Help professionals highlight their qualifications with detailed reviews."
+          },
+          {
+            "title": "Custom Spreadsheets Creation",
+            "description": "Develop spreadsheets for budgeting, inventory control, or other specific needs."
+          },
+          {
+            "title": "Online Specific Skill Classes",
+            "description": "Teach a skill you master (cooking, photography, programming) in online classes."
+          },
+          {
+            "title": "Research Service",
+            "description": "Offer research services for students, writers, or professionals."
+          },
+          {
+            "title": "Space Organization",
+            "description": "Help people organize their homes, offices, or closets using methods like KonMari."
+          },
+          {
+            "title": "Social Media Content Creation",
+            "description": "Produce content (texts, images, videos) for small businesses that don't have time."
+          },
+          {
+            "title": "Specialized Equipment Rental",
+            "description": "Rent equipment you own but rarely use (cameras, tools, etc.)."
+          },
+          {
+            "title": "Local Delivery Service",
+            "description": "Offer delivery service for small businesses in your area."
+          },
+          {
+            "title": "Furniture Assembly",
+            "description": "Offer furniture assembly service for people who bought online."
+          },
+          {
+            "title": "Apartment Garden Creation",
+            "description": "Help apartment residents create small gardens or vegetable patches on balconies."
+          },
+          {
+            "title": "Conversational Language Classes",
+            "description": "Offer conversation classes in a language you speak fluently."
+          },
+          {
+            "title": "Book Summaries Creation",
+            "description": "Produce detailed summaries of non-fiction books for busy professionals."
+          },
+          {
+            "title": "Personal Image Consulting",
+            "description": "Help people define their personal style based on their body, personality, and lifestyle."
+          }
+        ]
+      },
+      "career": {
+        "title": "Career",
+        "ideas": [
+          {
+            "title": "Team KPIs Dashboard",
+            "description": "Create a visual dashboard (using Power BI, Looker Studio) to track the most important metrics of your team."
+          },
+          {
+            "title": "'Brown Bag Lunch' Series",
+            "description": "Organize informal presentations during lunch to share knowledge about a tool or skill."
+          },
+          {
+            "title": "Welcome Guide for New Employees",
+            "description": "Develop a comprehensive guide to help new colleagues quickly integrate into the team and culture."
+          },
+          {
+            "title": "Formal Mentoring for Junior Colleagues",
+            "description": "Create a structured mentoring program to help develop newer professionals."
+          },
+          {
+            "title": "Internal Knowledge Newsletter",
+            "description": "Start a weekly newsletter sharing articles, tools, and relevant learnings for your area."
+          },
+          {
+            "title": "Shared Resource Library",
+            "description": "Create a centralized repository with documents, templates, and useful resources for the entire team."
+          },
+          {
+            "title": "Skills Study Groups",
+            "description": "Organize study groups to learn new technologies or skills relevant to your career."
+          },
+          {
+            "title": "Process Mapping",
+            "description": "Document and optimize your team's main work processes to increase efficiency."
+          },
+          {
+            "title": "360° Feedback System",
+            "description": "Implement a structured system to collect and share constructive feedback among colleagues."
+          },
+          {
+            "title": "Project Portfolio",
+            "description": "Document your professional projects and achievements in an online portfolio to highlight your skills."
+          },
+          {
+            "title": "Competitor Analysis",
+            "description": "Conduct a detailed analysis of competitors and present strategic insights to your team."
+          },
+          {
+            "title": "Individual Development Plan",
+            "description": "Create a detailed plan to develop specific skills that will boost your career."
+          },
+          {
+            "title": "Presentations at Industry Events",
+            "description": "Propose presentations about your projects or learnings at conferences and industry meetups."
+          },
+          {
+            "title": "Technical Articles on Blog",
+            "description": "Write detailed articles about technical challenges you've overcome to demonstrate your expertise."
+          },
+          {
+            "title": "Task Automation Project",
+            "description": "Identify repetitive tasks in your work and develop automations to optimize time."
+          },
+          {
+            "title": "Playbooks Creation",
+            "description": "Develop step-by-step guides (playbooks) for complex or recurring processes in your area."
+          },
+          {
+            "title": "Data Analysis for Decision Making",
+            "description": "Use data to identify patterns and insights that can inform strategic decisions."
+          },
+          {
+            "title": "Internal Innovation Program",
+            "description": "Create a program that encourages and rewards innovative ideas from team members."
+          },
+          {
+            "title": "Team Skills Mapping",
+            "description": "Catalog the skills and competencies of each team member to optimize allocation in projects."
+          },
+          {
+            "title": "Peer Recognition System",
+            "description": "Implement a platform where colleagues can recognize and value each other's contributions."
+          }
+        ]
+      },
+      "startup": {
+        "title": "Startup",
+        "ideas": [
+          {
+            "title": "Seed Exchange Platform",
+            "description": "Create a marketplace where gardeners and local farmers can exchange or sell rare seeds."
+          },
+          {
+            "title": "AI Email Assistant",
+            "description": "Develop a tool that uses AI to help professionals write faster and more effective emails."
+          },
+          {
+            "title": "Connecting Restaurants with Food Banks",
+            "description": "Platform that connects restaurants with food surpluses to local food banks."
+          },
+          {
+            "title": "AI Color Palette Generator",
+            "description": "Tool that uses artificial intelligence to create personalized color palettes for designers."
+          },
+          {
+            "title": "Language Learning Gamification App",
+            "description": "Apply game mechanics to make learning new languages more engaging and effective."
+          },
+          {
+            "title": "Equipment Rental Marketplace",
+            "description": "Create a platform where people can rent specific hobby equipment they rarely use."
+          },
+          {
+            "title": "Rare Plants Subscription Service",
+            "description": "Offer a monthly subscription delivering rare or exotic plants with care guides."
+          },
+          {
+            "title": "Virtual Co-working Platform",
+            "description": "Develop a virtual environment where remote workers can interact as in a physical office."
+          },
+          {
+            "title": "Intelligent Meal Planning Tool",
+            "description": "App that suggests recipes based on available ingredients and user's dietary preferences."
+          },
+          {
+            "title": "Local Experiences Curation Service",
+            "description": "Platform that offers personalized itineraries of authentic experiences in tourist cities."
+          },
+          {
+            "title": "IoT Plant Monitoring System",
+            "description": "Connected devices that monitor plant health and send alerts to the smartphone."
+          },
+          {
+            "title": "Mentor and Learner Connection Platform",
+            "description": "System that connects experienced professionals to people seeking development in specific areas."
+          },
+          {
+            "title": "Sentiment Analysis Tool for Companies",
+            "description": "Software that analyzes customer feedback across different channels to provide actionable insights."
+          },
+          {
+            "title": "Sustainable Challenges App",
+            "description": "Platform that proposes ecological challenges and rewards users for sustainable habits."
+          },
+          {
+            "title": "Hybrid Event Organization Service",
+            "description": "Complete platform to organize events that combine in-person and remote participants."
+          },
+          {
+            "title": "Organizational Skills Mapping Tool",
+            "description": "System that helps companies identify and visualize existing competencies in their team."
+          },
+          {
+            "title": "Local Entrepreneurs Products Marketplace",
+            "description": "Platform that brings together and gives visibility to products from small entrepreneurs in the same region."
+          },
+          {
+            "title": "AI-Powered Gift Personalization Service",
+            "description": "Tool that uses artificial intelligence to suggest personalized gifts based on the recipient's profile."
+          },
+          {
+            "title": "Freelancer Financial Management Platform",
+            "description": "Complete system to help self-employed workers manage billing, taxes, and financial planning."
+          },
+          {
+            "title": "App for Connecting People with Similar Interests",
+            "description": "Platform that facilitates in-person meetings between people with common hobbies and interests."
+          }
+        ]
+      }
+    },
+    "footer": "© 2022–2025 DealeGear and DealeGear"
+  },
+  "es": {
+    "header": {
+      "logo": "GearSpark",
+      "title": "Banco de Ideas",
+      "all": "Todas",
+      "hobby": "Hobby",
+      "income": "Ingresos Extra",
+      "career": "Carrera",
+      "startup": "Startup",
+      "backToDealeGear": "Volver a DealeGear",
+      "language": "Idioma"
+    },
+    "hero": {
+      "title": "Banco de Ideas",
+      "subtitle": "Accede a nuestro banco de ideas y descubre inspiraciones listas para sacar tu próximo proyecto del papel."
+    },
+    "categories": {
+      "hobby": {
+        "title": "Hobby",
+        "ideas": [
+          {
+            "title": "Crear un Zine Digital",
+            "description": "Usa herramientas gratuitas para crear y publicar una pequeña revista digital sobre un tema que te apasiona."
+          },
+          {
+            "title": "Mapa de Árboles Notables",
+            "description": "Mapea y documenta los árboles más interesantes o antiguos de tu ciudad con fotos e historias."
+          },
+          {
+            "title": "Club de Lectura Temático",
+            "description": "Inicia un club de lectura enfocado en un género específico, como ciencia ficción o biografías."
+          },
+          {
+            "title": "Jardín Sensorial",
+            "description": "Desarrolla un pequeño jardín con plantas que estimulen diferentes sentidos: aroma, textura, color."
+          },
+          {
+            "title": "Documental de Barrio",
+            "description": "Crea un canal en YouTube documentando la historia y curiosidades de tu barrio."
+          },
+          {
+            "title": "Encuadernación Artesanal",
+            "description": "Aprende la técnica de encuadernación para crear cuadernos y diarios personalizados."
+          },
+          {
+            "title": "Coleccionar y Catalogar",
+            "description": "Inicia una colección temática (sellos, rocas, postales) y crea un catálogo digital."
+          },
+          {
+            "title": "Cocina Experimental",
+            "description": "Dedícate a recrear platos históricos o experimentar con técnicas de cocina poco comunes."
+          },
+          {
+            "title": "Orquesta de Objetos",
+            "description": "Monta un grupo musical usando objetos cotidianos como instrumentos."
+          },
+          {
+            "title": "Búsqueda de Grafitis",
+            "description": "Mapea y fotografía obras de arte urbano en tu ciudad, creando un tour virtual."
+          },
+          {
+            "title": "Laboratorio Casero",
+            "description": "Monta un pequeño laboratorio para experimentos químicos seguros y educativos."
+          },
+          {
+            "title": "Creación de Terrarios",
+            "description": "Construye ecosistemas en miniatura dentro de recipientes de vidrio."
+          },
+          {
+            "title": "Ruta de Caminata Histórica",
+            "description": "Investiga y crea una ruta autoguiada por los puntos históricos de tu ciudad."
+          },
+          {
+            "title": "Taller de Reciclaje Creativo",
+            "description": "Transforma materiales desechables en objetos útiles o decorativos."
+          },
+          {
+            "title": "Diario Visual",
+            "description": "Crea un diario ilustrado registrando tus pensamientos y experiencias diarias."
+          },
+          {
+            "title": "Club de Cine de Nicho",
+            "description": "Organiza reuniones para discutir películas de un director específico o género poco común."
+          },
+          {
+            "title": "Jardinería Vertical",
+            "description": "Crea un jardín vertical en tu pared usando botellas PET o estructuras específicas."
+          },
+          {
+            "title": "Mapeo Sonoro",
+            "description": "Registra los sonidos característicos de diferentes lugares de tu ciudad y crea un mapa sonoro."
+          },
+          {
+            "title": "Creación de Quesos Artesanales",
+            "description": "Aprende a hacer diferentes tipos de quesos en casa con ingredientes simples."
+          },
+          {
+            "title": "Club de Intercambio de Habilidades",
+            "description": "Organiza un grupo donde los miembros enseñan sus habilidades unos a otros."
+          }
+        ]
+      },
+      "income": {
+        "title": "Ingresos Extra",
+        "ideas": [
+          {
+            "title": "Consultoría de Organización Digital",
+            "description": "Ayuda a personas a organizar sus archivos, fotos y correos en sesiones online de 1-2 horas."
+          },
+          {
+            "title": "Creación de Plantillas de Notion",
+            "description": "Desarrolla y vende plantillas para gestión de proyectos, finanzas personales o planificación de contenido."
+          },
+          {
+            "title": "Servicio de Edición de Podcasts",
+            "description": "Ofrece edición de audio para podcasters que no tienen tiempo o habilidad técnica."
+          },
+          {
+            "title": "Curaduría de Listas de Reproducción Temáticas",
+            "description": "Crea y vende listas de reproducción personalizadas para restaurantes, tiendas o eventos especiales."
+          },
+          {
+            "title": "Asistente Virtual para Pequeños Negocios",
+            "description": "Ofrece servicios de organización de agenda, correos y tareas para emprendedores ocupados."
+          },
+          {
+            "title": "Montaje de Kits de Regalos",
+            "description": "Crea y vende kits temáticos para regalos (café, spa, lectura, etc.)."
+          },
+          {
+            "title": "Traducción de Contenido Especializado",
+            "description": "Ofrece servicios de traducción para documentos técnicos o artículos en tu área de experiencia."
+          },
+          {
+            "title": "Revisión de Currículums y Portafolios",
+            "description": "Ayuda a profesionales a destacar sus cualificaciones con revisiones detalladas."
+          },
+          {
+            "title": "Creación de Hojas de Cálculo Personalizadas",
+            "description": "Desarrolla hojas de cálculo para presupuesto, control de inventario u otras necesidades específicas."
+          },
+          {
+            "title": "Clases de Habilidad Específica Online",
+            "description": "Enseña una habilidad que dominas (cocina, fotografía, programación) en clases online."
+          },
+          {
+            "title": "Servicio de Investigación",
+            "description": "Ofrece servicios de investigación para estudiantes, escritores o profesionales."
+          },
+          {
+            "title": "Organización de Espacios",
+            "description": "Ayuda a personas a organizar sus casas, oficinas o armarios usando métodos como KonMari."
+          },
+          {
+            "title": "Creación de Contenido para Redes Sociales",
+            "description": "Produce contenido (textos, imágenes, videos) para pequeñas empresas que no tienen tiempo."
+          },
+          {
+            "title": "Alquiler de Equipos Especializados",
+            "description": "Alquila equipos que posees pero usas raramente (cámaras, herramientas, etc.)."
+          },
+          {
+            "title": "Servicio de Entrega Local",
+            "description": "Ofrece servicio de entrega para pequeños comercios en tu región."
+          },
+          {
+            "title": "Montaje de Muebles",
+            "description": "Ofrece servicio de montaje de muebles para personas que compraron online."
+          },
+          {
+            "title": "Creación de Jardines en Apartamentos",
+            "description": "Ayuda a residentes de apartamentos a crear pequeños jardines o huertos en balcones."
+          },
+          {
+            "title": "Clases de Idiomas Conversacionales",
+            "description": "Ofrece clases de conversación en un idioma que hablas con fluidez."
+          },
+          {
+            "title": "Creación de Resúmenes de Libros",
+            "description": "Produce resúmenes detallados de libros de no ficción para profesionales ocupados."
+          },
+          {
+            "title": "Consultoría de Imagen Personal",
+            "description": "Ayuda a personas a definir su estilo personal basándose en su cuerpo, personalidad y estilo de vida."
+          }
+        ]
+      },
+      "career": {
+        "title": "Carrera",
+        "ideas": [
+          {
+            "title": "Dashboard de KPIs del Equipo",
+            "description": "Crea un dashboard visual (usando Power BI, Looker Studio) para seguir las métricas más importantes de tu equipo."
+          },
+          {
+            "title": "Serie de 'Brown Bag Lunch'",
+            "description": "Organiza presentaciones informales durante el almuerzo para compartir conocimiento sobre una herramienta o habilidad."
+          },
+          {
+            "title": "Guía de Bienvenida para Nuevos Empleados",
+            "description": "Desarrolla una guía completa para ayudar a nuevos colegas a integrarse rápidamente al equipo y la cultura."
+          },
+          {
+            "title": "Mentoría Formal para Colegas Júnior",
+            "description": "Crea un programa de mentoría estructurado para ayudar al desarrollo de profesionales más nuevos."
+          },
+          {
+            "title": "Boletín Interno de Conocimiento",
+            "description": "Inicia un boletín semanal compartiendo artículos, herramientas y aprendizajes relevantes para tu área."
+          },
+          {
+            "title": "Biblioteca de Recursos Compartida",
+            "description": "Crea un repositorio centralizado con documentos, plantillas y recursos útiles para todo el equipo."
+          },
+          {
+            "title": "Grupos de Estudio de Habilidades",
+            "description": "Organiza grupos de estudio para aprender nuevas tecnologías o habilidades relevantes para tu carrera."
+          },
+          {
+            "title": "Mapeo de Procesos",
+            "description": "Documenta y optimiza los principales procesos de trabajo de tu equipo para aumentar la eficiencia."
+          },
+          {
+            "title": "Sistema de Feedback 360°",
+            "description": "Implementa un sistema estructurado para recopilar y compartir feedback constructivo entre colegas."
+          },
+          {
+            "title": "Portafolio de Proyectos",
+            "description": "Documenta tus proyectos y logros profesionales en un portafolio online para destacar tus habilidades."
+          },
+          {
+            "title": "Análisis de Competidores",
+            "description": "Realiza un análisis detallado de los competidores y presenta insights estratégicos para tu equipo."
+          },
+          {
+            "title": "Plan de Desarrollo Individual",
+            "description": "Crea un plan detallado para desarrollar habilidades específicas que impulsarán tu carrera."
+          },
+          {
+            "title": "Presentaciones en Eventos de la Industria",
+            "description": "Propón presentaciones sobre tus proyectos o aprendizajes en conferencias y meetups del sector."
+          },
+          {
+            "title": "Artículos Técnicos en Blog",
+            "description": "Escribe artículos detallados sobre desafíos técnicos que superaste para demostrar tu experiencia."
+          },
+          {
+            "title": "Proyecto de Automatización de Tareas",
+            "description": "Identifica tareas repetitivas en tu trabajo y desarrolla automatizaciones para optimizar el tiempo."
+          },
+          {
+            "title": "Creación de Playbooks",
+            "description": "Desarrolla guías paso a paso (playbooks) para procesos complejos o recurrentes en tu área."
+          },
+          {
+            "title": "Análisis de Datos para Toma de Decisiones",
+            "description": "Utiliza datos para identificar patrones e insights que puedan informar decisiones estratégicas."
+          },
+          {
+            "title": "Programa de Innovación Interna",
+            "description": "Crea un programa que incentive y recompense ideas innovadoras de los miembros del equipo."
+          },
+          {
+            "title": "Mapeo de Competencias del Equipo",
+            "description": "Cataloga las habilidades y competencias de cada miembro del equipo para optimizar la asignación en proyectos."
+          },
+          {
+            "title": "Sistema de Reconocimiento entre Pares",
+            "description": "Implementa una plataforma donde los colegas puedan reconocer y valorar las contribuciones de los demás."
+          }
+        ]
+      },
+      "startup": {
+        "title": "Startup",
+        "ideas": [
+          {
+            "title": "Plataforma de Intercambio de Semillas",
+            "description": "Crea un marketplace donde jardineros y agricultores locales puedan intercambiar o vender semillas raras."
+          },
+          {
+            "title": "Asistente de IA para Correos",
+            "description": "Desarrolla una herramienta que usa IA para ayudar a profesionales a escribir correos más rápidos y efectivos."
+          },
+          {
+            "title": "Conexión de Restaurantes con Bancos de Alimentos",
+            "description": "Plataforma que conecta restaurantes con excedentes de alimentos a bancos de alimentos locales."
+          },
+          {
+            "title": "Generador de Paletas con IA",
+            "description": "Herramienta que utiliza inteligencia artificial para crear paletas de colores personalizadas para diseñadores."
+          },
+          {
+            "title": "App de Gamificación para Aprendizaje de Idiomas",
+            "description": "Aplica mecánicas de juegos para hacer el aprendizaje de nuevos idiomas más atractivo y efectivo."
+          },
+          {
+            "title": "Marketplace de Alquiler de Equipos",
+            "description": "Crea una plataforma donde las personas puedan alquilar equipos de hobbies específicos que usan raramente."
+          },
+          {
+            "title": "Servicio de Suscripción de Plantas Raras",
+            "description": "Ofrece una suscripción mensual entregando plantas raras o exóticas con guías de cuidado."
+          },
+          {
+            "title": "Plataforma de Co-trabajo Virtual",
+            "description": "Desarrolla un entorno virtual donde trabajadores remotos puedan interactuar como en una oficina física."
+          },
+          {
+            "title": "Herramienta de Planificación de Comidas Inteligente",
+            "description": "App que sugiere recetas basadas en los ingredientes disponibles y preferencias alimentarias del usuario."
+          },
+          {
+            "title": "Servicio de Curaduría de Experiencias Locales",
+            "description": "Plataforma que ofrece itinerarios personalizados de experiencias auténticas en ciudades turísticas."
+          },
+          {
+            "title": "Sistema de Monitoreo de Plantas por IoT",
+            "description": "Dispositivos conectados que monitorean la salud de las plantas y envían alertas al smartphone."
+          },
+          {
+            "title": "Plataforma de Conexión de Mentores y Aprendices",
+            "description": "Sistema que conecta profesionales experimentados con personas que buscan desarrollo en áreas específicas."
+          },
+          {
+            "title": "Herramienta de Análisis de Sentimiento para Empresas",
+            "description": "Software que analiza el feedback de clientes en diferentes canales para proporcionar insights accionables."
+          },
+          {
+            "title": "App de Desafíos Sostenibles",
+            "description": "Plataforma que propone desafíos ecológicos y recompensa a usuarios por hábitos sostenibles."
+          },
+          {
+            "title": "Servicio de Organización de Eventos Híbridos",
+            "description": "Plataforma completa para organizar eventos que combinen participantes presenciales y remotos."
+          },
+          {
+            "title": "Herramienta de Mapeo de Habilidades Organizacionales",
+            "description": "Sistema que ayuda a las empresas a identificar y visualizar las competencias existentes en su equipo."
+          },
+          {
+            "title": "Marketplace de Productos de Emprendedores Locales",
+            "description": "Plataforma que reúne y da visibilidad a productos de pequeños emprendedores de la misma región."
+          },
+          {
+            "title": "Servicio de Personalización de Regalos con IA",
+            "description": "Herramienta que utiliza inteligencia artificial para sugerir regalos personalizados basados en el perfil del destinatario."
+          },
+          {
+            "title": "Plataforma de Gestión de Finanzas para Freelancers",
+            "description": "Sistema completo para ayudar a trabajadores autónomos a gestionar facturación, impuestos y planificación financiera."
+          },
+          {
+            "title": "App de Conexión de Personas con Intereses Similares",
+            "description": "Plataforma que facilita encuentros presenciales entre personas con hobbies e intereses en común."
+          }
+        ]
+      }
+    },
+    "footer": "© 2022–2025 DealeGear y DealeGear"
+  }
+}

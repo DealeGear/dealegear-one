@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearMap - Descubra Seu Caminho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Fixo -->
+    <header class="header">
+        <div class="header-container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4L20 8L16 12L12 8L16 4Z" fill="url(#gradient1)"/>
+                    <path d="M8 12L12 16L8 20L4 16L8 12Z" fill="url(#gradient2)"/>
+                    <path d="M24 12L28 16L24 20L20 16L24 12Z" fill="url(#gradient3)"/>
+                    <path d="M16 20L20 24L16 28L12 24L16 20Z" fill="url(#gradient4)"/>
+                    <defs>
+                        <linearGradient id="gradient1" x1="12" y1="4" x2="20" y2="12">
+                            <stop stop-color="#8B5CF6"/>
+                            <stop offset="1" stop-color="#EC4899"/>
+                        </linearGradient>
+                        <linearGradient id="gradient2" x1="4" y1="12" x2="12" y2="20">
+                            <stop stop-color="#3B82F6"/>
+                            <stop offset="1" stop-color="#8B5CF6"/>
+                        </linearGradient>
+                        <linearGradient id="gradient3" x1="20" y1="12" x2="28" y2="20">
+                            <stop stop-color="#EC4899"/>
+                            <stop offset="1" stop-color="#F43F5E"/>
+                        </linearGradient>
+                        <linearGradient id="gradient4" x1="12" y1="20" x2="20" y2="28">
+                            <stop stop-color="#8B5CF6"/>
+                            <stop offset="1" stop-color="#3B82F6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">GearMap</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 17.5C14.7614 17.5 17 15.2614 17 12.5C17 9.73858 14.7614 7.5 12 7.5C9.23858 7.5 7 9.73858 7 12.5C7 15.2614 9.23858 17.5 12 17.5Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 2V4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 20.5V23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M19.5 7L21.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M2.5 20L4.5 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M19.5 18L21.5 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M2.5 5L4.5 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M23 12.5H20.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M3.5 12.5H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.5C21 17.7467 16.7467 22 11.5 22C10.2267 22 9.01333 21.7333 7.90667 21.2533C8.93333 20.2267 9.56 18.8133 9.56 17.2667C9.56 14.0933 6.98667 11.52 3.81333 11.52C2.26667 11.52 0.853333 12.1467 -0.173333 13.1733C-0.693333 12.0667 -0.96 10.8533 -0.96 9.58C-0.96 4.33333 3.29333 0.08 8.54 0.08C13.7867 0.08 18.04 4.33333 18.04 9.58C18.04 10.8533 17.7733 12.0667 17.2933 13.1733C18.32 12.1467 19.7333 11.52 21.28 11.52C21.5467 11.52 21.8133 11.5467 22.0667 11.5867C21.3867 11.8133 20.76 12.16 20.2133 12.6133C20.08 12.5733 19.9467 12.5333 19.8133 12.5067C20.6133 12.5067 21.3867 12.5067 22.16 12.5067C21.7333 12.5067 21.32 12.5067 20.9067 12.5067C20.9467 12.5067 20.9733 12.5067 21 12.5067" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu Lateral -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <h2 data-i18n="menu.language">Idioma</h2>
+            <button class="close-menu" id="closeMenu" aria-label="Fechar menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <ul class="menu-links">
+            <li><a href="#" data-i18n="menu.home">Início</a></li>
+            <li><a href="#" data-i18n="menu.maps">Mapas</a></li>
+            <li><a href="#" data-i18n="menu.about">Sobre</a></li>
+        </ul>
+        <div class="language-selector">
+            <button class="lang-btn active" data-lang="pt">PT</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Seção Hero -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title" data-i18n="hero.title">Descubra Seu Caminho</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Explore trilhas personalizadas para transformar ideias em realidade</p>
+            </div>
+        </section>
+
+        <!-- Seção de Mapa de Trilhas -->
+        <section class="paths-section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="paths.title">Mapa de Trilhas</h2>
+                
+                <!-- SVG Conector Animado -->
+                <svg class="paths-connector" viewBox="0 0 1200 800" preserveAspectRatio="none">
+                    <defs>
+                        <pattern id="dash" patternUnits="userSpaceOnUse" width="10" height="10">
+                            <line x1="0" y1="0" x2="10" y2="0" stroke="var(--connector-color)" stroke-width="2" stroke-dasharray="5,5" opacity="0.3"/>
+                        </pattern>
+                    </defs>
+                </svg>
+
+                <div class="paths-grid">
+                    <!-- Card Hobby -->
+                    <div class="path-card" data-path="hobby">
+                        <div class="path-icon">🎨</div>
+                        <h3 class="path-title" data-i18n="paths.hobby.title">Hobby</h3>
+                        <p class="path-description" data-i18n="paths.hobby.description">Crie por prazer, sem pressão</p>
+                        <div class="path-steps">
+                            <div class="step" data-step="planning">
+                                <span class="step-number">1</span>
+                                <span class="step-name" data-i18n="steps.planning">Planejamento</span>
+                            </div>
+                            <div class="step" data-step="execution">
+                                <span class="step-number">2</span>
+                                <span class="step-name" data-i18n="steps.execution">Execução</span>
+                            </div>
+                            <div class="step" data-step="communication">
+                                <span class="step-number">3</span>
+                                <span class="step-name" data-i18n="steps.communication">Comunicação</span>
+                            </div>
+                        </div>
+                        <a href="dic/hobby.html" class="explore-link" data-i18n="buttons.exploreMore">Explorar Mais</a>
+                    </div>
+
+                    <!-- Card Renda Extra -->
+                    <div class="path-card" data-path="income">
+                        <div class="path-icon">💰</div>
+                        <h3 class="path-title" data-i18n="paths.income.title">Renda Extra</h3>
+                        <p class="path-description" data-i18n="paths.income.description">Transforme habilidades em valor</p>
+                        <div class="path-steps">
+                            <div class="step" data-step="planning">
+                                <span class="step-number">1</span>
+                                <span class="step-name" data-i18n="steps.planning">Planejamento</span>
+                            </div>
+                            <div class="step" data-step="organization">
+                                <span class="step-number">2</span>
+                                <span class="step-name" data-i18n="steps.organization">Organização</span>
+                            </div>
+                            <div class="step" data-step="execution">
+                                <span class="step-number">3</span>
+                                <span class="step-name" data-i18n="steps.execution">Execução</span>
+                            </div>
+                            <div class="step" data-step="risk">
+                                <span class="step-number">4</span>
+                                <span class="step-name" data-i18n="steps.risk">Gestão de Riscos</span>
+                            </div>
+                            <div class="step" data-step="communication">
+                                <span class="step-number">5</span>
+                                <span class="step-name" data-i18n="steps.communication">Comunicação</span>
+                            </div>
+                        </div>
+                        <a href="#" class="explore-link" data-i18n="buttons.exploreMore">Explorar Mais</a>
+                    </div>
+
+                    <!-- Card Carreira -->
+                    <div class="path-card" data-path="career">
+                        <div class="path-icon">🚀</div>
+                        <h3 class="path-title" data-i18n="paths.career.title">Carreira</h3>
+                        <p class="path-description" data-i18n="paths.career.description">Construa seu futuro profissional</p>
+                        <div class="path-steps">
+                            <div class="step" data-step="planning">
+                                <span class="step-number">1</span>
+                                <span class="step-name" data-i18n="steps.planning">Planejamento</span>
+                            </div>
+                            <div class="step" data-step="execution">
+                                <span class="step-number">2</span>
+                                <span class="step-name" data-i18n="steps.execution">Execução</span>
+                            </div>
+                            <div class="step" data-step="monitoring">
+                                <span class="step-number">3</span>
+                                <span class="step-name" data-i18n="steps.monitoring">Monitoramento e Controle</span>
+                            </div>
+                            <div class="step" data-step="communication">
+                                <span class="step-number">4</span>
+                                <span class="step-name" data-i18n="steps.communication">Comunicação</span>
+                            </div>
+                        </div>
+                        <a href="#" class="explore-link" data-i18n="buttons.exploreMore">Explorar Mais</a>
+                    </div>
+
+                    <!-- Card Startup -->
+                    <div class="path-card" data-path="startup">
+                        <div class="path-icon">🏢</div>
+                        <h3 class="path-title" data-i18n="paths.startup.title">Startup</h3>
+                        <p class="path-description" data-i18n="paths.startup.description">Inove e transforme o mercado</p>
+                        <div class="path-steps">
+                            <div class="step" data-step="planning">
+                                <span class="step-number">1</span>
+                                <span class="step-name" data-i18n="steps.planning">Planejamento</span>
+                            </div>
+                            <div class="step" data-step="organization">
+                                <span class="step-number">2</span>
+                                <span class="step-name" data-i18n="steps.organization">Organização</span>
+                            </div>
+                            <div class="step" data-step="execution">
+                                <span class="step-number">3</span>
+                                <span class="step-name" data-i18n="steps.execution">Execução</span>
+                            </div>
+                            <div class="step" data-step="risk">
+                                <span class="step-number">4</span>
+                                <span class="step-name" data-i18n="steps.risk">Gestão de Riscos</span>
+                            </div>
+                            <div class="step" data-step="monitoring">
+                                <span class="step-number">5</span>
+                                <span class="step-name" data-i18n="steps.monitoring">Monitoramento e Controle</span>
+                            </div>
+                            <div class="step" data-step="communication">
+                                <span class="step-number">6</span>
+                                <span class="step-name" data-i18n="steps.communication">Comunicação</span>
+                            </div>
+                        </div>
+                        <a href="#" class="explore-link" data-i18n="buttons.exploreMore">Explorar Mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Detalhes da Etapa -->
+    <div class="modal" id="stepModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Fechar modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <p class="modal-description" id="modalDescription"></p>
+            <a href="#" class="modal-learn-more" data-i18n="buttons.learnMore">Saiba Mais</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2022–2025 DealeGear e DealeGear</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
