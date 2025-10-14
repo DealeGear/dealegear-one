@@ -24,21 +24,24 @@
             <span></span>
             <span></span>
           </button>
+
           <ul class="nav-menu" id="navMenu">
-            <li><a href="#como-funciona">How it works</a></li>
-            <li><a href="#tipos-projetos">Categories</a></li>
+            <li><a href="#how-it-works-intro">How it Works</a></li>
+            <li><a href="#project-types">Categories</a></li>
+            <li><a href="#ecosystem">Ecosystem</a></li>
             <li>
-              <a href="#treinamentos" class="btn-link" target="_blank">Learn</a>
+              <a href="#training" class="btn-link" target="_blank">Learn</a>
             </li>
-            <li><a href="#duvidas">FAQ</a></li>
-            <li><li><div class="language-selector">
-  <select id="languageDropdown" class="lang-select">
-    <option value="pt">PT</option>
-    <option value="en">EN</option>
-    <option value="es">ES</option>
-  </select>
-</div>
-</li></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li>
+              <div class="language-selector">
+                <select id="languageDropdown" class="lang-select">
+                  <option value="pt">PT</option>
+                  <option value="en" selected>EN</option>
+                  <option value="es">ES</option>
+                </select>
+              </div>
+            </li>
           </ul>
         </div>
       </nav>
@@ -49,10 +52,9 @@
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">Ideas don’t wait</h1>
-          <h2 class="hero-subtitle-h2">Build yours now</h2>
+          <h2 class="hero-subtitle-h2">Start building yours today</h2>
           <p class="hero-subtitle">
-            DealeGear is a platform that helps you start your own project,
-            whether it’s a hobby, side income, career change, or a startup.
+            DealeGear is a platform that helps you start your own project — whether it’s a hobby, an extra source of income, a career change, or your first startup.
           </p>
         </div>
         <div class="hero-illustration">
@@ -65,60 +67,96 @@
       </div>
     </section>
 
-    <section id="como-funciona" class="section section-alt">
+    <!-- How It Works -->
+    <section id="how-it-works-intro" class="section">
       <div class="container">
-        <h2 class="section-title">How it Works</h2>
-        <div id="ferramentas-container" class="tools-grid">
-          <!-- Dynamic content via JavaScript -->
+        <h2 class="section-title">How It Works</h2>
+        <div class="how-it-works-grid">
+          <div class="work-step">
+            <div class="work-step-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3>1. Choose</h3>
+            <p>
+              Choosing a direction can be challenging, but the key is to take the first step — every experience brings growth, learning, and new opportunities.
+            </p>
+          </div>
+
+          <div class="work-step">
+            <div class="work-step-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h3>2. Plan</h3>
+            <p>
+              Many underestimate the power of planning, but that’s where success begins — identifying your needs, anticipating challenges, and finding solutions to reach your goals with confidence.
+            </p>
+          </div>
+
+          <div class="work-step">
+            <div class="work-step-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>3. Execute</h3>
+            <p>
+              Execution is where ideas come to life — and where many give up. But this is the moment to experiment, adapt, learn, and uncover new opportunities that can take your project even further.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="tipos-projetos" class="section section-alt">
+    <!-- Project Types -->
+    <section id="project-types" class="section section-alt">
       <div class="container">
-        <h2 class="section-title">Possible Project Types</h2>
+        <h2 class="section-title">Types of Projects You Can Build</h2>
         <div class="projects-grid">
           <div class="project-card">
             <i class="fas fa-gamepad project-icon"></i>
             <h3>Hobby</h3>
             <p>
-              Learn while having fun and turn your hobby into a life project
+              Learn while having fun — turn your favorite pastime into a meaningful project.
             </p>
-            
           </div>
 
           <div class="project-card">
             <i class="fas fa-coins project-icon"></i>
             <h3>Extra Income</h3>
-            <p>Build the foundations of a project that could become a new source of income in the future</p>
-            
+            <p>
+              Build the foundation of a project that could become a new source of income in the future.
+            </p>
           </div>
 
           <div class="project-card">
             <i class="fas fa-briefcase project-icon"></i>
             <h3>Career</h3>
             <p>
-              Use your knowledge and ideas to generate new opportunities in the
-              market
+              Use your knowledge and creativity to generate new professional opportunities.
             </p>
-            
           </div>
 
           <div class="project-card">
             <i class="fas fa-lightbulb project-icon"></i>
             <h3>Startup</h3>
             <p>
-              Turn an idea into a business: start small, learn, and grow with
-              consistency
+              Turn an idea into a business — start small, learn fast, and grow with consistency.
             </p>
-            
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Learn More -->
-    <section id="treinamentos" class="resources-banner">
+    <!-- Ecosystem -->
+    <section id="ecosystem" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">DealeGear Ecosystem</h2>
+        <div id="ferramentas-container" class="tools-grid">
+          <!-- Dynamic content via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Resources -->
+    <section id="training" class="resources-banner">
       <div class="container">
         <h2 class="resources-banner-title">Want to learn more?</h2>
         <div class="steps-grid">
@@ -127,10 +165,9 @@
               <div class="step-number">1</div>
               <h3>Blog</h3>
               <p>
-                Follow posts about inspiring creations made by people like us
-                around the world
+                Explore inspiring creations from people around the world who are turning ideas into reality.
               </p>
-              <button class="tool-button-botoesSecundarios">Access</button>
+              <button class="tool-button-botoesSecundarios">Details</button>
             </div>
           </a>
 
@@ -143,26 +180,20 @@
               <div class="step-number">2</div>
               <h3>YouTube</h3>
               <p>
-                Check out our playlist with useful content to boost your own
-                creations
+                Watch our curated playlist with useful content to help you bring your ideas to life.
               </p>
-              <button class="tool-button-botoesSecundarios">Access</button>
+              <button class="tool-button-botoesSecundarios">Details</button>
             </div>
           </a>
 
-          <a
-            href="https://hotmart.com/pt-br/marketplace/produtos/treinamento-dealegear-um-novo-jeito-de-criar-projetos-para-iniciantes-e-avancados"
-            class="step-link"
-            target="_blank"
-          >
+          <a href="gearspark/index.html" class="step-link" target="_blank">
             <div class="step-card">
               <div class="step-number">3</div>
-              <h3>Training</h3>
+              <h3>Idea Bank</h3>
               <p>
-                We developed a training on Hotmart — click here and discover
-                everything we’ve prepared for you
+                Access our idea library and discover ready-made inspirations to help kickstart your next project.
               </p>
-              <button class="tool-button-botoesSecundarios">Access</button>
+              <button class="tool-button-botoesSecundarios">Details</button>
             </div>
           </a>
         </div>
@@ -170,7 +201,7 @@
     </section>
 
     <!-- Final CTA -->
-    <section id="duvidas" class="cta-final">
+    <section id="faq" class="cta-final">
       <div class="container">
         <h2 class="cta-title">Still have questions? Start here!</h2>
         <a href="gearmap/index.html" class="btn btn-primary btn-xlarge">GearMap</a>
@@ -183,7 +214,7 @@
         <div class="footer-content">
           <div class="footer-section">
             <h4>DealeGear</h4>
-            <p>The secret of success is to start</p>
+            <p>The secret to success is to start.</p>
           </div>
 
           <div class="footer-section">
@@ -198,22 +229,19 @@
           <div class="footer-section">
             <h4>Resources</h4>
             <ul>
-              <li><a href="en.faq.html">FAQ</a></li>
-              <li>
-                <a href="en.roadmap.html"
-                  >Roadmap</a
-                >
-              </li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="roadmap.html">Roadmap</a></li>
+              <li><a href="contact.html">Contact</a></li>
               <li>
                 <a
-                  href="en.contact.html"
-                  >Contact</a
+                  href="https://hotmart.com/en/marketplace/products/dealegear-training-a-new-way-to-create-projects-for-beginners-and-advanced"
+                  >Hotmart</a
                 >
               </li>
             </ul>
           </div>
 
-          <!-- Social icons -->
+          <!-- Social Icons -->
           <div class="social-icons">
             <a href="https://www.instagram.com/dealegear/" target="_blank"
               ><i class="fab fa-instagram"></i
@@ -221,17 +249,14 @@
             <a href="https://www.youtube.com/@dealegear" target="_blank"
               ><i class="fab fa-youtube"></i
             ></a>
-            <!--<a href="https://twitter.com/dealegear" target="_blank"
-              ><i class="fab fa-x"></i
-            ></a>-->
-             <a href="https://discord.gg/vKK7xVcZJ8" target="_blank"
-                ><i class="fab fa-discord"></i
-              ></a>
+            <a href="https://t.me/DealGear" target="_blank"
+              ><i class="fab fa-telegram"></i
+            ></a>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2022-2025 DealeGear - São Paulo - Brasil</p>
+          <p>&copy; 2022–2025 DealeGear - São Paulo, Brazil</p>
         </div>
       </div>
     </footer>
@@ -254,6 +279,6 @@
       </svg>
     </button>
 
-    <script src="en.script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
