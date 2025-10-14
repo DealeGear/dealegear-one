@@ -357,7 +357,7 @@
         ]
       }
     },
-    "footer": "© 2022–2025 DealeGear e DealeGear"
+    "footer": "© 2022–2025 DealeGear"
   },
   "en": {
     "header": {
@@ -717,7 +717,7 @@
         ]
       }
     },
-    "footer": "© 2022–2025 DealeGear and DealeGear"
+    "footer": "© 2022–2025 DealeGear"
   },
   "es": {
     "header": {
@@ -1077,6 +1077,6 @@
         ]
       }
     },
-    "footer": "© 2022–2025 DealeGear y DealeGear"
+    "footer": "© 2022–2025 DealeGear"
   }
 }

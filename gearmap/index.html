@@ -21,7 +21,8 @@
             
             <nav>
                 <div class="nav-links">
-                    <a href="#hobby" class="nav-link active" data-section="hobby">Hobby</a>
+                    <a href="#home" class="nav-link active" data-section="home">Início</a>
+                    <a href="#hobby" class="nav-link" data-section="hobby">Hobby</a>
                     <a href="#income" class="nav-link" data-section="income">Renda Extra</a>
                     <a href="#career" class="nav-link" data-section="career">Carreira</a>
                     <a href="#startup" class="nav-link" data-section="startup">Startup</a>
@@ -57,7 +58,8 @@
         </div>
         
         <div class="mobile-nav-links">
-            <a href="#hobby" class="mobile-nav-link active" data-section="hobby">Hobby</a>
+            <a href="#home" class="mobile-nav-link active" data-section="home">Início</a>
+            <a href="#hobby" class="mobile-nav-link" data-section="hobby">Hobby</a>
             <a href="#income" class="mobile-nav-link" data-section="income">Renda Extra</a>
             <a href="#career" class="mobile-nav-link" data-section="career">Carreira</a>
             <a href="#startup" class="mobile-nav-link" data-section="startup">Startup</a>
@@ -81,8 +83,78 @@
     
     <!-- Conteúdo Principal -->
     <main>
+        <!-- Página Inicial -->
+        <section id="home" class="section active">
+            <div class="hero home">
+                <div class="hero-bg"></div>
+                <h1 data-i18n="home.hero.title">GearMap</h1>
+                <p data-i18n="home.hero.subtitle">Mapeando seus projetos pessoais e profissionais</p>
+            </div>
+            
+            <div class="project-types-grid">
+                <div class="project-type-card" data-section="hobby">
+                    <div class="project-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 data-i18n="home.hobby.title">Hobby</h3>
+                    <p data-i18n="home.hobby.description">Crie por prazer e paixão</p>
+                    <div class="project-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                
+                <div class="project-type-card" data-section="income">
+                    <div class="project-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 data-i18n="home.income.title">Renda Extra</h3>
+                    <p data-i18n="home.income.description">Monetize suas habilidades</p>
+                    <div class="project-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                
+                <div class="project-type-card" data-section="career">
+                    <div class="project-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 data-i18n="home.career.title">Carreira</h3>
+                    <p data-i18n="home.career.description">Impulsione seu crescimento</p>
+                    <div class="project-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                
+                <div class="project-type-card" data-section="startup">
+                    <div class="project-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 data-i18n="home.startup.title">Startup</h3>
+                    <p data-i18n="home.startup.description">Inove e transforme o mercado</p>
+                    <div class="project-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
+                <div class="cta-buttons">
+                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
+                        <i class="fas fa-flask"></i>
+                        GearLabs
+                    </a>
+                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
+                        <i class="fas fa-bolt"></i>
+                        GearSpark
+                    </a>
+                </div>
+            </div>
+        </section>
+        
         <!-- Seção Hobby -->
-        <section id="hobby" class="section active">
+        <section id="hobby" class="section">
             <div class="hero hobby">
                 <div class="hero-bg"></div>
                 <h1 data-i18n="hobby.hero.title">O Que é um Projeto Hobby?</h1>
@@ -365,7 +437,6 @@
     <footer>
         <p>&copy; 2024 GearMap - Mapeando Seus Projetos. Todos os direitos reservados.</p>
     </footer>
-    
     
     <script src="script.js"></script>
 </body>

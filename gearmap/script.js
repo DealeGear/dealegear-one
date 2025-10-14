@@ -1,17 +1,40 @@
 // Estado da aplicação
 let currentLang = 'pt';
 let currentTheme = 'light';
-let currentSection = 'hobby';
+let currentSection = 'home';
 let content = {};
 
 // Conteúdo inline como fallback
 const defaultContent = {
     "pt": {
         "header": {
+            "home": "Início",
             "hobby": "Hobby",
             "income": "Renda Extra",
             "career": "Carreira",
             "startup": "Startup"
+        },
+        "home": {
+            "hero": {
+                "title": "GearMap",
+                "subtitle": "Mapeando seus projetos pessoais e profissionais"
+            },
+            "hobby": {
+                "title": "Hobby",
+                "description": "Crie por prazer e paixão"
+            },
+            "income": {
+                "title": "Renda Extra",
+                "description": "Monetize suas habilidades"
+            },
+            "career": {
+                "title": "Carreira",
+                "description": "Impulsione seu crescimento"
+            },
+            "startup": {
+                "title": "Startup",
+                "description": "Inove e transforme o mercado"
+            }
         },
         "hobby": {
             "hero": {
@@ -172,10 +195,33 @@ const defaultContent = {
     },
     "en": {
         "header": {
+            "home": "Home",
             "hobby": "Hobby",
             "income": "Side Income",
             "career": "Career",
             "startup": "Startup"
+        },
+        "home": {
+            "hero": {
+                "title": "GearMap",
+                "subtitle": "Mapping your personal and professional projects"
+            },
+            "hobby": {
+                "title": "Hobby",
+                "description": "Create for pleasure and passion"
+            },
+            "income": {
+                "title": "Side Income",
+                "description": "Monetize your skills"
+            },
+            "career": {
+                "title": "Career",
+                "description": "Boost your growth"
+            },
+            "startup": {
+                "title": "Startup",
+                "description": "Innovate and transform the market"
+            }
         },
         "hobby": {
             "hero": {
@@ -336,10 +382,33 @@ const defaultContent = {
     },
     "es": {
         "header": {
+            "home": "Inicio",
             "hobby": "Hobby",
             "income": "Ingreso Extra",
             "career": "Carrera",
             "startup": "Startup"
+        },
+        "home": {
+            "hero": {
+                "title": "GearMap",
+                "subtitle": "Mapeando tus proyectos personales y profesionales"
+            },
+            "hobby": {
+                "title": "Hobby",
+                "description": "Crea por placer y pasión"
+            },
+            "income": {
+                "title": "Ingreso Extra",
+                "description": "Monetiza tus habilidades"
+            },
+            "career": {
+                "title": "Carrera",
+                "description": "Impulsa tu crecimiento"
+            },
+            "startup": {
+                "title": "Startup",
+                "description": "Innova y transforma el mercado"
+            }
         },
         "hobby": {
             "hero": {
@@ -486,7 +555,7 @@ const defaultContent = {
                 "title": "Pasos Iniciales",
                 "step1": "Identifica un problema real",
                 "step2": "Valida con clientes potenciales",
-                "step3": "Desarrolla un MVP",
+                "item3": "Desarrolla un MVP",
                 "item4": "Mide y aprende rápidamente",
                 "item5": "Busca tracción antes de escala",
                 "item6": "Considera modelos de financiamiento"
@@ -510,8 +579,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeApp() {
     // Verificar hash na URL
     const hash = window.location.hash.substring(1);
-    if (hash && ['hobby', 'income', 'career', 'startup'].includes(hash)) {
+    if (hash && ['home', 'hobby', 'income', 'career', 'startup'].includes(hash)) {
         currentSection = hash;
+    } else {
+        // Se não houver hash, mostrar home
+        currentSection = 'home';
+        window.location.hash = 'home';
     }
     
     // Configurar eventos
@@ -549,6 +622,15 @@ function setupEventListeners() {
         });
     });
     
+    // Cliques nos cards da página inicial
+    document.querySelectorAll('.project-type-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const section = this.getAttribute('data-section');
+            showSection(section);
+            updateHash(section);
+        });
+    });
+    
     // Controle de idioma desktop
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -579,7 +661,7 @@ function setupEventListeners() {
     // Navegação por hash
     window.addEventListener('hashchange', function() {
         const hash = window.location.hash.substring(1);
-        if (hash && ['hobby', 'income', 'career', 'startup'].includes(hash)) {
+        if (hash && ['home', 'hobby', 'income', 'career', 'startup'].includes(hash)) {
             showSection(hash);
         }
     });
@@ -611,8 +693,12 @@ function showSection(sectionId) {
         // Atualizar navegação
         updateNavigation(sectionId);
         
-        // Adicionar animação aos cards
-        animateCards();
+        // Adicionar animação aos elementos
+        if (sectionId === 'home') {
+            animateHomeCards();
+        } else {
+            animateCards();
+        }
     }
 }
 
@@ -749,5 +835,32 @@ function animateCards() {
             ctaSection.style.opacity = '1';
             ctaSection.style.transform = 'translateY(0)';
         }, 600);
+    }
+}
+
+function animateHomeCards() {
+    const cards = document.querySelectorAll('.project-type-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 100 * index);
+    });
+    
+    // Animar CTA também
+    const ctaSection = document.querySelector('.section.active .cta-section');
+    if (ctaSection) {
+        ctaSection.style.opacity = '0';
+        ctaSection.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            ctaSection.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            ctaSection.style.opacity = '1';
+            ctaSection.style.transform = 'translateY(0)';
+        }, 800);
     }
 }

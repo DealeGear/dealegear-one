@@ -842,3 +842,224 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/* Página Inicial - Home */
+.hero.home {
+    margin-bottom: 3rem;
+}
+
+.hero.home h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.hero.home p {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid de Tipos de Projeto */
+.project-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding: 0 1rem;
+}
+
+.project-type-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    transition: var(--transition-slow);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.project-type-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient-1);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.project-type-card:hover::before {
+    opacity: 1;
+}
+
+.project-type-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-type-card[data-section="hobby"]:hover::before {
+    background: var(--gradient-2);
+}
+
+.project-type-card[data-section="income"]:hover::before {
+    background: var(--gradient-3);
+}
+
+.project-type-card[data-section="career"]:hover::before {
+    background: var(--gradient-1);
+}
+
+.project-type-card[data-section="startup"]:hover::before {
+    background: var(--gradient-6);
+}
+
+.project-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    transition: var(--transition);
+}
+
+.project-type-card[data-section="hobby"] .project-icon {
+    background: var(--gradient-2);
+}
+
+.project-type-card[data-section="income"] .project-icon {
+    background: var(--gradient-3);
+}
+
+.project-type-card[data-section="career"] .project-icon {
+    background: var(--gradient-1);
+}
+
+.project-type-card[data-section="startup"] .project-icon {
+    background: var(--gradient-6);
+}
+
+.project-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.project-type-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+}
+
+.project-type-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.project-arrow {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.project-type-card:hover .project-arrow {
+    background: var(--primary);
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.project-arrow i {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.project-type-card:hover .project-arrow i {
+    color: white;
+}
+
+/* Animação de entrada para os cards */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-type-card {
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.project-type-card:nth-child(1) { animation-delay: 0.1s; }
+.project-type-card:nth-child(2) { animation-delay: 0.2s; }
+.project-type-card:nth-child(3) { animation-delay: 0.3s; }
+.project-type-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsividade para a página inicial */
+@media (max-width: 768px) {
+    .project-types-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0;
+    }
+    
+    .project-type-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .project-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .project-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .hero.home h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero.home p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-type-card {
+        padding: 1.5rem;
+    }
+    
+    .hero.home h1 {
+        font-size: 2rem;
+    }
+}
