@@ -4,7 +4,8 @@
             "hobby": "Hobby",
             "income": "Renda Extra",
             "career": "Carreira",
-            "startup": "Startup"
+            "startup": "Startup",
+            "theme": "Tema Claro/Escuro"
         },
         "hobby": {
             "hero": {
@@ -168,7 +169,8 @@
             "hobby": "Hobby",
             "income": "Side Income",
             "career": "Career",
-            "startup": "Startup"
+            "startup": "Startup",
+            "theme": "Light/Dark Theme"
         },
         "hobby": {
             "hero": {
@@ -332,7 +334,8 @@
             "hobby": "Hobby",
             "income": "Ingreso Extra",
             "career": "Carrera",
-            "startup": "Startup"
+            "startup": "Startup",
+            "theme": "Tema Claro/Oscuro"
         },
         "hobby": {
             "hero": {

@@ -12,7 +12,8 @@ const defaultContent = {
             "hobby": "Hobby",
             "income": "Renda Extra",
             "career": "Carreira",
-            "startup": "Startup"
+            "startup": "Startup",
+            "theme": "Tema Claro/Escuro"
         },
         "home": {
             "hero": {
@@ -199,7 +200,8 @@ const defaultContent = {
             "hobby": "Hobby",
             "income": "Side Income",
             "career": "Career",
-            "startup": "Startup"
+            "startup": "Startup",
+            "theme": "Light/Dark Theme"
         },
         "home": {
             "hero": {
@@ -386,7 +388,8 @@ const defaultContent = {
             "hobby": "Hobby",
             "income": "Ingreso Extra",
             "career": "Carrera",
-            "startup": "Startup"
+            "startup": "Startup",
+            "theme": "Tema Claro/Oscuro"
         },
         "home": {
             "hero": {
@@ -584,7 +587,11 @@ function initializeApp() {
     } else {
         // Se não houver hash, mostrar home
         currentSection = 'home';
-        window.location.hash = 'home';
+        /*window.location.hash = 'home';*/
+        history.replaceState(null, null, '#home');
+
+        
+        
     }
     
     // Configurar eventos
@@ -605,10 +612,14 @@ function setupEventListeners() {
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            
             const section = this.getAttribute('data-section');
             showSection(section);
             updateHash(section);
+            
+            
         });
+        
     });
     
     // Navegação mobile
