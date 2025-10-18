@@ -3,446 +3,1992 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearMap - Mapeando Seus Projetos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>GearMap - Transformando ideias em realidade</title>
+    <style>
+        /* Variáveis CSS para cores e temas */
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            
+            /* Cores temáticas */
+            --hobby-color: #8b5cf6;
+            --hobby-gradient: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            --renda-color: #f59e0b;
+            --renda-gradient: linear-gradient(135deg, #f59e0b, #d97706);
+            --carreira-color: #06b6d4;
+            --carreira-gradient: linear-gradient(135deg, #06b6d4, #0891b2);
+            --startup-color: #10b981;
+            --startup-gradient: linear-gradient(135deg, #10b981, #059669);
+            
+            /* Transições */
+            --transition: all 0.3s ease;
+        }
+        
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--carreira-gradient);
+        }
+        
+        .nav-links a.external-link {
+            color: var(--startup-color);
+        }
+        
+        .nav-links a.external-link:hover {
+            color: var(--startup-color);
+            opacity: 0.8;
+        }
+        
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .lang-btn {
+            padding: 0.25rem 0.5rem;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .lang-btn:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
+        .lang-btn.active {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--carreira-color);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-primary);
+            transition: var(--transition);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Home Page */
+        .home-content {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .home-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .home-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border-top: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card.hobby {
+            --gradient: var(--hobby-gradient);
+        }
+        
+        .card.renda {
+            --gradient: var(--renda-gradient);
+        }
+        
+        .card.carreira {
+            --gradient: var(--carreira-gradient);
+        }
+        
+        .card.startup {
+            --gradient: var(--startup-gradient);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-description {
+            color: var(--text-secondary);
+        }
+        
+        /* Detail Pages */
+        .detail-header {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .detail-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .detail-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .hobby-theme .section-title {
+            color: var(--hobby-color);
+            border-color: var(--hobby-color);
+        }
+        
+        .renda-theme .section-title {
+            color: var(--renda-color);
+            border-color: var(--renda-color);
+        }
+        
+        .carreira-theme .section-title {
+            color: var(--carreira-color);
+            border-color: var(--carreira-color);
+        }
+        
+        .startup-theme .section-title {
+            color: var(--startup-color);
+            border-color: var(--startup-color);
+        }
+        
+        .accordion {
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-item {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .accordion-item.active {
+            border-color: var(--active-color);
+        }
+        
+        .hobby-theme .accordion-item.active {
+            border-color: var(--hobby-color);
+        }
+        
+        .renda-theme .accordion-item.active {
+            border-color: var(--renda-color);
+        }
+        
+        .carreira-theme .accordion-item.active {
+            border-color: var(--carreira-color);
+        }
+        
+        .startup-theme .accordion-item.active {
+            border-color: var(--startup-color);
+        }
+        
+        .accordion-header {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .accordion-item.active .accordion-header {
+            color: var(--active-color);
+        }
+        
+        .hobby-theme .accordion-item.active .accordion-header {
+            color: var(--hobby-color);
+        }
+        
+        .renda-theme .accordion-item.active .accordion-header {
+            color: var(--renda-color);
+        }
+        
+        .carreira-theme .accordion-item.active .accordion-header {
+            color: var(--carreira-color);
+        }
+        
+        .startup-theme .accordion-item.active .accordion-header {
+            color: var(--startup-color);
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        
+        .accordion-body {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+        }
+        
+        .step-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--active-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .hobby-theme .step-item::before {
+            background-color: var(--hobby-color);
+        }
+        
+        .renda-theme .step-item::before {
+            background-color: var(--renda-color);
+        }
+        
+        .carreira-theme .step-item::before {
+            background-color: var(--carreira-color);
+        }
+        
+        .startup-theme .step-item::before {
+            background-color: var(--startup-color);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-description {
+            color: var(--text-secondary);
+        }
+        
+        .cta-box {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--active-color);
+            margin-top: 3rem;
+        }
+        
+        .hobby-theme .cta-box {
+            border-color: var(--hobby-color);
+        }
+        
+        .renda-theme .cta-box {
+            border-color: var(--renda-color);
+        }
+        
+        .carreira-theme .cta-box {
+            border-color: var(--carreira-color);
+        }
+        
+        .startup-theme .cta-box {
+            border-color: var(--startup-color);
+        }
+        
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button.primary {
+            background: var(--active-gradient);
+            color: white;
+        }
+        
+        .hobby-theme .cta-button.primary {
+            background: var(--hobby-gradient);
+        }
+        
+        .renda-theme .cta-button.primary {
+            background: var(--renda-gradient);
+        }
+        
+        .carreira-theme .cta-button.primary {
+            background: var(--carreira-gradient);
+        }
+        
+        .startup-theme .cta-button.primary {
+            background: var(--startup-gradient);
+        }
+        
+        .cta-button.secondary {
+            background-color: transparent;
+            color: var(--active-color);
+            border: 1px solid var(--active-color);
+        }
+        
+        .hobby-theme .cta-button.secondary {
+            color: var(--hobby-color);
+            border-color: var(--hobby-color);
+        }
+        
+        .renda-theme .cta-button.secondary {
+            color: var(--renda-color);
+            border-color: var(--renda-color);
+        }
+        
+        .carreira-theme .cta-button.secondary {
+            color: var(--carreira-color);
+            border-color: var(--carreira-color);
+        }
+        
+        .startup-theme .cta-button.secondary {
+            color: var(--startup-color);
+            border-color: var(--startup-color);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .language-selector {
+                display: none;
+            }
+            
+            .home-title {
+                font-size: 2rem;
+            }
+            
+            .home-subtitle {
+                font-size: 1rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .detail-title {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
-<body data-theme="light">
-    <!-- Animação de Fundo -->
-<div class="bg-animation"></div>
-    
-    <!-- Header -->
+<body>
     <header>
         <div class="header-container">
-            <div class="logo">
-                <i class="fas fa-compass"></i>
-                <span>GearMap</span>
-            </div>
-            
+            <div class="logo">GearMap</div>
             <nav>
                 <div class="nav-links">
-                    <a href="#home" class="nav-link active" data-section="home">Início</a>
-                    <a href="#hobby" class="nav-link" data-section="hobby">Hobby</a>
-                    <a href="#income" class="nav-link" data-section="income">Renda Extra</a>
-                    <a href="#career" class="nav-link" data-section="career">Carreira</a>
-                    <a href="#startup" class="nav-link" data-section="startup">Startup</a>
+                    <a href="#home" class="nav-link active" data-page="home">Início</a>
+                    <a href="#hobby" class="nav-link" data-page="hobby">Hobby</a>
+                    <a href="#renda" class="nav-link" data-page="renda">Renda Extra</a>
+                    <a href="#carreira" class="nav-link" data-page="carreira">Carreira</a>
+                    <a href="#startup" class="nav-link" data-page="startup">Startup</a>
+                    <a href="../../index.html" class="nav-link external-link" target="_blank">DealeGear</a>
                 </div>
-                <!-- Verifique se está exatamente assim -->
-<a href="../index.html" class="dealegear-btn" id="dealegearBtn"><i class="fas fa-store"></i><span>DealeGear</span></a>
-                <div class="controls">
-                    <div class="language-selector">
-                        <button class="lang-btn active" data-lang="pt">PT</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="es">ES</button>
-                    </div>
-                    
-                    <div class="theme-toggle" id="themeToggle"></div>
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="pt">PT</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </nav>
-            
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </header>
-    
-    <!-- Menu Mobile -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="logo">
-                <i class="fas fa-compass"></i>
-                <span>GearMap</span>
-            </div>
-            <button class="mobile-menu-close" id="mobileMenuClose">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="mobile-nav-links">
-            <a href="#home" class="mobile-nav-link active" data-section="home" >Início</a>
-            <a href="#hobby" class="mobile-nav-link" data-section="hobby">Hobby</a>
-            <a href="#income" class="mobile-nav-link" data-section="income">Renda Extra</a>
-            <a href="#career" class="mobile-nav-link" data-section="career">Carreira</a>
-            <a href="#startup" class="mobile-nav-link" data-section="startup">Startup</a>
-        </div>
-        
-        <div class="mobile-controls">
-               <a href="../index.html" class="mobile-dealegear-btn" id="mobileDealegearBtn">
-        <i class="fas fa-store"></i>
-        <span>DealeGear</span>
-    </a>
-            <div class="mobile-language-selector">
-                <button class="mobile-lang-btn active" data-lang="pt">PT</button>
-                <button class="mobile-lang-btn" data-lang="en">EN</button>
-                <button class="mobile-lang-btn" data-lang="es">ES</button>
-            </div>
-            
-            <div class="mobile-theme-toggle">
-                <span class="mobile-theme-label" data-i18n="theme">Tema Claro/Escuro</span>
-                <div class="theme-toggle" id="mobileThemeToggle"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- Conteúdo Principal -->
+
     <main>
-        <!-- Página Inicial -->
-        <section id="home" class="section active">
-            <div class="hero home">
-                <div class="hero-bg"></div>
-                <h1 data-i18n="home.hero.title">GearMap</h1>
-                <p data-i18n="home.hero.subtitle">Mapeando seus projetos pessoais e profissionais</p>
-            </div>
-            
-            <div class="project-types-grid">
-                <div class="project-type-card" data-section="hobby">
-                    <div class="project-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 data-i18n="home.hobby.title">Hobby</h3>
-                    <p data-i18n="home.hobby.description">Crie por prazer e paixão</p>
-                    <div class="project-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
-                
-                <div class="project-type-card" data-section="income">
-                    <div class="project-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <h3 data-i18n="home.income.title">Renda Extra</h3>
-                    <p data-i18n="home.income.description">Monetize suas habilidades</p>
-                    <div class="project-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
-                
-                <div class="project-type-card" data-section="career">
-                    <div class="project-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3 data-i18n="home.career.title">Carreira</h3>
-                    <p data-i18n="home.career.description">Impulsione seu crescimento</p>
-                    <div class="project-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
-                
-                <div class="project-type-card" data-section="startup">
-                    <div class="project-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 data-i18n="home.startup.title">Startup</h3>
-                    <p data-i18n="home.startup.description">Inove e transforme o mercado</p>
-                    <div class="project-arrow">
-                        <i class="fas fa-arrow-right"></i>
+        <div class="container">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <div class="home-content">
+                    <h1 class="home-title">GearMap</h1>
+                    <p class="home-subtitle">Um guia inteligente para transformar suas ideias em projetos concretos, seja por paixão, lucro ou propósito</p>
+                    
+                    <div class="cards-grid">
+                        <div class="card hobby" data-page="hobby">
+                            <div class="card-icon">🎨</div>
+                            <h3 class="card-title">Hobby</h3>
+                            <p class="card-description">Projetos por paixão e criatividade</p>
+                        </div>
+                        
+                        <div class="card renda" data-page="renda">
+                            <div class="card-icon">💰</div>
+                            <h3 class="card-title">Renda Extra</h3>
+                            <p class="card-description">Monetize suas habilidades</p>
+                        </div>
+                        
+                        <div class="card carreira" data-page="carreira">
+                            <div class="card-icon">🚀</div>
+                            <h3 class="card-title">Carreira</h3>
+                            <p class="card-description">Desenvolva sua trajetória profissional</p>
+                        </div>
+                        
+                        <div class="card startup" data-page="startup">
+                            <div class="card-icon">⚡</div>
+                            <h3 class="card-title">Startup</h3>
+                            <p class="card-description">Construa um negócio escalável</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- CTA Section -->
-            <div class="cta-section">
-                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
-                <div class="cta-buttons">
-                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
-                        <i class="fas fa-flask"></i>
-                        GearLabs
-                    </a>
-                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
-                        <i class="fas fa-bolt"></i>
-                        GearSpark
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Seção Hobby -->
-        <section id="hobby" class="section">
-            <div class="hero hobby">
-                <div class="hero-bg"></div>
-                <h1 data-i18n="hobby.hero.title">O Que é um Projeto Hobby?</h1>
-                <p data-i18n="hobby.hero.subtitle">Criar por prazer, sem pressão de resultados ou prazos. Um espaço para explorar sua criatividade e paixão.</p>
-            </div>
-            
-            <div class="cards-container">
-                <div class="card hobby">
-                    <h2><i class="fas fa-heart"></i> <span data-i18n="hobby.benefits.title">Por Que Criar?</span></h2>
-                    <ul class="card-list">
-                        <li data-i18n="hobby.benefits.item1">Aprender sem Pressão</li>
-                        <li data-i18n="hobby.benefits.item2">Alívio do Estresse</li>
-                        <li data-i18n="hobby.benefits.item3">Pura Diversão</li>
-                        <li data-i18n="hobby.benefits.item4">Construir Confiança</li>
-                    </ul>
+
+            <!-- Hobby Page -->
+            <div id="hobby" class="page hobby-theme">
+                <div class="detail-header">
+                    <h1 class="detail-title">Hobby</h1>
+                    <p class="detail-subtitle">Transforme sua paixão em projetos criativos que alimentam sua alma</p>
                 </div>
                 
-                <div class="card hobby">
-                    <h2><i class="fas fa-star"></i> <span data-i18n="hobby.characteristics.title">Características Chave</span></h2>
-                    <ul class="card-list">
-                        <li data-i18n="hobby.characteristics.item1">Sem Prazos</li>
-                        <li data-i18n="hobby.characteristics.item2">Impulsionado pela Paixão</li>
-                        <li data-i18n="hobby.characteristics.item3">Liberdade para Errar</li>
-                        <li data-i18n="hobby.characteristics.item4">Foco no Processo</li>
-                    </ul>
-                </div>
-                
-                <div class="card hobby">
-                    <h2><i class="fas fa-lightbulb"></i> <span data-i18n="hobby.examples.title">Exemplos</span></h2>
-                    <div class="examples-grid">
-                        <div class="example-item" data-i18n="hobby.examples.item1">Blog sobre filmes</div>
-                        <div class="example-item" data-i18n="hobby.examples.item2">Jogo simples</div>
-                        <div class="example-item" data-i18n="hobby.examples.item3">Série fotográfica</div>
-                        <div class="example-item" data-i18n="hobby.examples.item4">Cozinhar semanalmente</div>
-                        <div class="example-item" data-i18n="hobby.examples.item5">Música difícil</div>
-                        <div class="example-item" data-i18n="hobby.examples.item6">App de tarefas</div>
+                <div class="section">
+                    <h2 class="section-title">Por Que Criar?</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Explorar interesses pessoais sem compromisso financeiro</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos de hobby oferecem a liberdade de explorar suas paixões sem a pressão de precisar gerar receita. Esta liberdade permite que você experimente, aprenda e cresça sem medo de falhar, criando um ambiente perfeito para o desenvolvimento de habilidades genuínas e satisfação pessoal.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Desenvolver criatividade e habilidades</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Quando você cria por prazer, sua mente está mais aberta à experimentação e inovação. Projetos de hobby são o terreno perfeito para testar novas técnicas, combinar diferentes disciplinas e descobrir talentos ocultos, tudo no seu próprio ritmo e sem expectativas externas.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Equilíbrio mental e bem-estar emocional</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Engajar-se em atividades criativas por prazer é uma forma poderosa de aliviar o estresse, aumentar a autoestima e encontrar propósito fora das obrigações profissionais. O processo criativo ativa áreas do cérebro associadas ao prazer e à recompensa, contribuindo para uma saúde mental mais robusta.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="card hobby">
-                    <h2><i class="fas fa-play"></i> <span data-i18n="hobby.steps.title">Primeiros Passos</span></h2>
-                    <ol class="steps-list">
-                        <li data-i18n="hobby.steps.step1">Escolha algo que genuinamente te interessa</li>
-                        <li data-i18n="hobby.steps.step2">Defina um escopo pequeno e alcançável</li>
-                        <li data-i18n="hobby.steps.step3">Reserve tempo regular, mas sem pressão</li>
-                        <li data-i18n="hobby.steps.step4">Celebre pequenas conquistas</li>
-                        <li data-i18n="hobby.steps.step5">Compartilhe apenas quando se sentir confortável</li>
-                    </ol>
-                </div>
-            </div>
-            
-            <!-- CTA Section -->
-            <div class="cta-section">
-                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
-                <div class="cta-buttons">
-                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
-                        <i class="fas fa-flask"></i>
-                        GearLabs
-                    </a>
-                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
-                        <i class="fas fa-bolt"></i>
-                        GearSpark
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Seção Renda Extra -->
-        <section id="income" class="section">
-            <div class="hero income">
-                <div class="hero-bg"></div>
-                <h1 data-i18n="income.hero.title">Transforme Habilidades em Valor</h1>
-                <p data-i18n="income.hero.subtitle">Monetize suas competências de forma flexível, complementando sua renda principal com projetos que valorizam seu conhecimento.</p>
-            </div>
-            
-            <div class="cards-container">
-                <div class="card income">
-                    <h2><i class="fas fa-coins"></i> <span data-i18n="income.benefits.title">Benefícios</span></h2>
-                    <ul class="card-list">
-                        <li data-i18n="income.benefits.item1">Diversificação de Renda</li>
-                        <li data-i18n="income.benefits.item2">Desenvolvimento Profissional</li>
-                        <li data-i18n="income.benefits.item3">Segurança Financeira</li>
-                        <li data-i18n="income.benefits.item4">Validação de Habilidades</li>
-                    </ul>
-                </div>
-                
-                <div class="card income">
-                    <h2><i class="fas fa-chart-line"></i> <span data-i18n="income.characteristics.title">Características</span></h2>
-                    <ul class="card-list">
-                        <li data-i18n="income.characteristics.item1">Foco em Valor</li>
-                        <li data-i18n="income.characteristics.item2">Mensuração de Resultados</li>
-                        <li data-i18n="income.characteristics.item3">Escalabilidade Limitada</li>
-                        <li data-i18n="income.characteristics.item4">Equilíbrio com Trabalho Principal</li>
-                    </ul>
-                </div>
-                
-                <div class="card income">
-                    <h2><i class="fas fa-briefcase"></i> <span data-i18n="income.examples.title">Exemplos</span></h2>
-                    <div class="examples-grid">
-                        <div class="example-item" data-i18n="income.examples.item1">Freelancing</div>
-                        <div class="example-item" data-i18n="income.examples.item2">Produtos Digitais</div>
-                        <div class="example-item" data-i18n="income.examples.item3">Aulas Online</div>
-                        <div class="example-item" data-i18n="income.examples.item4">Projetos Específicos</div>
-                        <div class="example-item" data-i18n="income.examples.item5">Criação de Conteúdo</div>
-                        <div class="example-item" data-i18n="income.examples.item6">Marketplace</div>
+                <div class="section">
+                    <h2 class="section-title">Características Chave</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Liberdade total de experimentação</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Sem clientes para agradecer ou prazos a cumprir, você tem liberdade total para explorar, falhar e reiniciar quantas vezes quiser. Esta liberdade é o catalisador para descobertas verdadeiramente originais e para desenvolver um estilo pessoal autêntico.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Sem métricas de sucesso ou fracasso</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Em projetos de hobby, o sucesso é medido pelo prazer do processo e pela satisfação pessoal, não por métricas externas. Esta abordagem remove a pressão do desempenho e permite que você se concentre no que realmente importa: a alegria de criar.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Foco no processo, não no resultado</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    A jornada se torna mais importante que o destino. Ao valorizar cada etapa do processo criativo, você desenvolve uma relação mais saudável com seu trabalho, aprendendo a apreciar os pequenos avanços e a encontrar alegria no ato de criar, independentemente do resultado final.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Comunidade de entusiastas</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos de hobby frequentemente conectam você a comunidades de pessoas com interesses semelhantes, criando redes de apoio, inspiração e amizade. Essas conexões podem enriquecer sua experiência criativa e abrir portas para colaborações inesperadas.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="card income">
-                    <h2><i class="fas fa-rocket"></i> <span data-i18n="income.steps.title">Passos Iniciais</span></h2>
-                    <ol class="steps-list">
-                        <li data-i18n="income.steps.step1">Identifique suas habilidades monetizáveis</li>
-                        <li data-i18n="income.steps.step2">Pesquise o mercado e preços</li>
-                        <li data-i18n="income.steps.step3">Crie um portfólio ou amostras</li>
-                        <li data-i18n="income.steps.step4">Estabeleça metas de renda realistas</li>
-                        <li data-i18n="income.steps.step5">Comece com projetos pequenos</li>
-                        <li data-i18n="income.steps.step6">Colete feedback e depoimentos</li>
-                    </ol>
-                </div>
-            </div>
-            
-            <!-- CTA Section -->
-            <div class="cta-section">
-                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
-                <div class="cta-buttons">
-                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
-                        <i class="fas fa-flask"></i>
-                        GearLabs
-                    </a>
-                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
-                        <i class="fas fa-bolt"></i>
-                        GearSpark
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Seção Carreira -->
-        <section id="career" class="section">
-            <div class="hero career">
-                <div class="hero-bg"></div>
-                <h1 data-i18n="career.hero.title">Construa Seu Futuro Profissional</h1>
-                <p data-i18n="career.hero.subtitle">Desenvolva projetos que impulsionam sua carreira, demonstrando competências e criando oportunidades de crescimento.</p>
-            </div>
-            
-            <div class="cards-container">
-                <div class="card career">
-                    <h2><i class="fas fa-trophy"></i> <span data-i18n="career.benefits.title">Benefícios</span></h2>
-                    <ul class="card-list">
-                        <li data-i18n="career.benefits.item1">Crescimento Profissional</li>
-                        <li data-i18n="career.benefits.item2">Satisfação Pessoal</li>
-                        <li data-i18n="career.benefits.item3">Impacto na Organização</li>
-                        <li data-i18n="career.benefits.item4">Networking Estratégico</li>
-                    </ul>
-                </div>
-                
-                <div class="card career">
-                    <h2><i class="fas fa-bullseye"></i> <span data-i18n="career.characteristics.title">Características</span></h2>
-                    <ul class="card-list">
-                        <li data-i18n="career.characteristics.item1">Alinhamento com Objetivos</li>
-                        <li data-i18n="career.characteristics.item2">Impacto Mensurável</li>
-                        <li data-i18n="career.characteristics.item3">Desenvolvimento de Competências</li>
-                        <li data-i18n="career.characteristics.item4">Visibilidade Organizacional</li>
-                    </ul>
-                </div>
-                
-                <div class="card career">
-                    <h2><i class="fas fa-briefcase"></i> <span data-i18n="career.examples.title">Exemplos</span></h2>
-                    <div class="examples-grid">
-                        <div class="example-item" data-i18n="career.examples.item1">Projeto de Inovação</div>
-                        <div class="example-item" data-i18n="career.examples.item2">Otimização de Processos</div>
-                        <div class="example-item" data-i18n="career.examples.item3">Programa de Mentoria</div>
-                        <div class="example-item" data-i18n="career.examples.item4">Artigos Técnicos</div>
-                        <div class="example-item" data-i18n="career.examples.item5">Responsabilidade Social</div>
-                        <div class="example-item" data-i18n="career.examples.item6">Liderança de Equipe</div>
+                <div class="section">
+                    <h2 class="section-title">Exemplos</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Blog pessoal sobre viagens</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Documente suas aventuras, compartilhe dicas de destinos menos conhecidos e crie um arquivo digital de suas memórias. Um blog de viagens pode ser uma forma terapêutica de processar suas experiências e uma maneira de inspirar outros a explorar o mundo.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Canal de culinária caseira</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Explore receitas familiares, experimente com ingredientes locais e compartilhe sua paixão pela comida. Um canal de culinária pode ser uma expressão criativa deliciosa que conecta tradição, cultura e inovação, tudo enquanto satisfaz seu paladar.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Ilustrações digitais no Instagram</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Desenvolva seu estilo visual único, crie personagens ou explore abstrações. As ilustrações digitais oferecem um meio infinitamente versátil para expressar sua visão de mundo, contar histórias visuais e construir um portfólio impressionante de seu desenvolvimento artístico.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Podcast sobre livros favoritos</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Aprofunde-se em obras que amam, discuta temas literários e compartilhe recomendações. Um podcast sobre livros combina análise crítica, conversa apaixonada e comunidade, criando um espaço para explorar as ideias que mais ressoam com você.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="card career">
-                    <h2><i class="fas fa-road"></i> <span data-i18n="career.steps.title">Passos Iniciais</span></h2>
-                    <ol class="steps-list">
-                        <li data-i18n="career.steps.step1">Mapeie gaps de competências</li>
-                        <li data-i18n="career.steps.step2">Identifique problemas da organização</li>
-                        <li data-i18n="career.steps.step3">Proposta de valor clara</li>
-                        <li data-i18n="career.steps.step4">Busque apoio de stakeholders</li>
-                        <li data-i18n="career.steps.step5">Documente resultados e aprendizados</li>
-                        <li data-i18n="career.steps.step6">Compartilhe conquistas internamente</li>
-                    </ol>
-                </div>
-            </div>
-            
-            <!-- CTA Section -->
-            <div class="cta-section">
-                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
-                <div class="cta-buttons">
-                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
-                        <i class="fas fa-flask"></i>
-                        GearLabs
-                    </a>
-                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
-                        <i class="fas fa-bolt"></i>
-                        GearSpark
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Seção Startup -->
-        <section id="startup" class="section">
-            <div class="hero startup">
-                <div class="hero-bg"></div>
-                <h1 data-i18n="startup.hero.title">Inove e Transforme o Mercado</h1>
-                <p data-i18n="startup.hero.subtitle">Crie empreendimentos escaláveis que resolvem problemas reais, com potencial de crescimento exponencial e impacto duradouro.</p>
-            </div>
-            
-            <div class="cards-container">
-                <div class="card startup">
-                    <h2><i class="fas fa-rocket"></i> <span data-i18n="startup.benefits.title">Benefícios</span></h2>
-                    <ul class="card-list">
-                        <li data-i18n="startup.benefits.item1">Solução de Problemas Reais</li>
-                        <li data-i18n="startup.benefits.item2">Potencial de Escala</li>
-                        <li data-i18n="startup.benefits.item3">Impacto Social</li>
-                        <li data-i18n="startup.benefits.item4">Liberdade e Autonomia</li>
-                    </ul>
-                </div>
-                
-                <div class="card startup">
-                    <h2><i class="fas fa-cogs"></i> <span data-i18n="startup.characteristics.title">Características</span></h2>
-                    <ul class="card-list">
-                        <li data-i18n="startup.characteristics.item1">Foco no Mercado</li>
-                        <li data-i18n="startup.characteristics.item2">Validação Rápida</li>
-                        <li data-i18n="startup.characteristics.item3">Busca por Investimento</li>
-                        <li data-i18n="startup.characteristics.item4">Cultura de Inovação</li>
-                    </ul>
-                </div>
-                
-                <div class="card startup">
-                    <h2><i class="fas fa-lightbulb"></i> <span data-i18n="startup.examples.title">Exemplos</span></h2>
-                    <div class="examples-grid">
-                        <div class="example-item" data-i18n="startup.examples.item1">App Móvel</div>
-                        <div class="example-item" data-i18n="startup.examples.item2">SaaS</div>
-                        <div class="example-item" data-i18n="startup.examples.item3">Marketplace</div>
-                        <div class="example-item" data-i18n="startup.examples.item4">Tecnologia Limpa</div>
-                        <div class="example-item" data-i18n="startup.examples.item5">Fintech</div>
-                        <div class="example-item" data-i18n="startup.examples.item6">Edtech</div>
+                <div class="section">
+                    <h2 class="section-title">Primeiros Passos</h2>
+                    <div class="steps-list">
+                        <div class="step-item">
+                            <div class="step-title">Escolha algo que genuinamente te interessa</div>
+                            <div class="step-description">
+                                Comece com uma paixão autêntica, não com o que parece popular ou lucrativo. Sua curiosidade genuína será o combustível que o manterá engajado quando o entusiasmo inicial diminuir.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Defina um escopo pequeno e alcançável</div>
+                            <div class="step-description">
+                                Evite a armadilha de planejar um projeto massivo. Comece pequeno: um post de blog por semana, uma ilustração por mês, ou um episódio de podcast a cada quinze dias.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Reserve tempo regular, mas sem pressão</div>
+                            <div class="step-description">
+                                Estabeleça um ritmo sustentável que se encaixe em sua vida. Seja 30 minutos três vezes por semana ou duas horas no domingo, a consistência é mais importante que a intensidade.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Celebre pequenas conquistas</div>
+                            <div class="step-description">
+                                Reconheça e valorize cada marco, por menor que seja. Completar um esboço, escrever um parágrafo ou gravar um minuto de áudio são vitórias que merecem celebração.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Compartilhe apenas quando se sentir confortável</div>
+                            <div class="step-description">
+                                Não há pressão para compartilhar publicamente seu trabalho. Crie para si mesmo primeiro, e considere compartilhar quando sentir que seu projeto está pronto para ver a luz do dia.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="card startup">
-                    <h2><i class="fas fa-flag"></i> <span data-i18n="startup.steps.title">Passos Iniciais</span></h2>
-                    <ol class="steps-list">
-                        <li data-i18n="startup.steps.step1">Identifique um problema real</li>
-                        <li data-i18n="startup.steps.step2">Valide com potenciais clientes</li>
-                        <li data-i18n="startup.steps.step3">Desenvolva um MVP</li>
-                        <li data-i18n="startup.steps.step4">Meça e aprenda rapidamente</li>
-                        <li data-i18n="startup.steps.step5">Busque tração antes de escala</li>
-                        <li data-i18n="startup.steps.step6">Considere modelos de financiamento</li>
-                    </ol>
+                <div class="cta-box">
+                    <h3 class="cta-title">Precisa de Inspiração?</h3>
+                    <p class="cta-subtitle">Explore nossas ferramentas para gerar ideias incríveis</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button primary">🔬 GearLabs</button>
+                        <button class="cta-button secondary">✨ GearSpark</button>
+                    </div>
                 </div>
             </div>
-            
-            <!-- CTA Section -->
-            <div class="cta-section">
-                <h3 data-i18n="cta.title">Precisa de Inspiração? Veja nossas ferramentas de Ideias</h3>
-                <div class="cta-buttons">
-                    <a href="#gearlabs" class="cta-btn primary" data-i18n="cta.gearlabs">
-                        <i class="fas fa-flask"></i>
-                        GearLabs
-                    </a>
-                    <a href="#gearspark" class="cta-btn secondary" data-i18n="cta.gearspark">
-                        <i class="fas fa-bolt"></i>
-                        GearSpark
-                    </a>
+
+            <!-- Renda Extra Page -->
+            <div id="renda" class="page renda-theme">
+                <div class="detail-header">
+                    <h1 class="detail-title">Renda Extra</h1>
+                    <p class="detail-subtitle">Transforme suas habilidades em fontes de renda complementar</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Por Que Criar?</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Diversificar fontes de renda</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Em um mundo econômico incerto, ter múltiplas fontes de renda oferece segurança e flexibilidade. Projetos de renda extra podem funcionar como uma rede de segurança financeira, permitindo que você navegue por mudanças no emprego principal ou despesas inesperadas com mais confiança.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Monetizar habilidades existentes</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Você provavelmente já possui competências valiosas que outras pessoas estão dispostas a pagar. Projetos de renda extra permitem que você capitalize esses talentos, transformando conhecimento que você já tem em um fluxo de receita adicional sem precisar investir em formação extensiva.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Construir independência financeira gradualmente</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Pequenos fluxos de renda podem se acumular ao tempo, criando uma base sólida para independência financeira. Essa abordagem gradual permite que você construa segurança econômica sem os riscos associados a mudanças drásticas de carreira ou investimentos de alto risco.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Características Chave</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Foco em demanda de mercado</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos de renda extra devem começar com uma análise do que as pessoas estão dispostas a pagar. Esta orientação para o mercado garante que seu esforço tenha potencial de retorno financeiro, diferentemente de projetos puramente passionais onde a validação vem da satisfação pessoal.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Escalabilidade e otimização de tempo</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    A renda extra ideal não consome tempo desproporcional ao retorno. Projetos bem-sucedidos são aqueles que podem ser escalados ou automatizados, permitindo que você aumente a receita sem aumentar linearmente o tempo investido.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Modelos de receita diversificados</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos de renda extra frequentemente incorporam múltiplas fontes de receita: vendas diretas, assinaturas, publicidade, afiliados, etc. Esta diversificação cria resiliência e maximiza o potencial de monetização de cada projeto.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Investimento inicial mínimo</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Os melhores projetos de renda extra começam com baixo investimento financeiro, aproveitando recursos que você já possui. Esta abordagem minimiza o risco e permite que você teste ideias sem comprometer significativamente suas finanças.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Exemplos</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Consultoria freelancer na sua área</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Ofereça sua expertise profissional para empresas que precisam de conhecimento especializado sem comprometer um funcionário em tempo integral. Consultoria permite que você monetize anos de experiência em sua área, cobrando taxas premium por soluções específicas e conselhos estratégicos.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Cursos online sobre habilidades específicas</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Transforme seu conhecimento em produtos educacionais escaláveis. Cursos online oferecem potencial de receita passiva após a criação inicial, permitindo que você ensine a milhares de pessoas simultaneamente sem limitações geográficas ou de tempo.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>E-commerce de produtos artesanais</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Monetize sua criatividade vendendo produtos únicos que você mesmo cria. De joias a itens de decoração, o e-commerce de produtos artesanais combina expressão pessoal com potencial de lucro, especialmente se você encontrar um nicho específico com demanda.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Serviços de edição e revisão</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Se você tem habilidades com palavras, ofereça serviços de edição para autores, acadêmicos ou empresas. A demanda por conteúdo de qualidade é constante, e bons editores são sempre valorizados, com taxas que refletem a importância do trabalho na comunicação eficaz.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Primeiros Passos</h2>
+                    <div class="steps-list">
+                        <div class="step-item">
+                            <div class="step-title">Identifique suas habilidades monetizáveis</div>
+                            <div class="step-description">
+                                Faça um inventário honesto do que você faz bem e que as pessoas pagariam para ter. Pense além das competências óbvias e considere habilidades secundárias que desenvolveu ao longo dos anos.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Pesquise o mercado e valide a demanda</div>
+                            <div class="step-description">
+                                Antes de investir tempo, verifique se existe demanda real para sua oferta. Analise concorrentes, converse com potenciais clientes e teste sua ideia em pequena escala antes de se comprometer totalmente.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Defina preços baseados em valor, não tempo</div>
+                            <div class="step-description">
+                                Calcule seus preços com base no valor que você entrega, não nas horas que investe. Clientes pagam por soluções e resultados, não pelo seu tempo, então posicione seus serviços de acordo com o impacto que geram.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Crie um portfólio mínimo viável</div>
+                            <div class="step-description">
+                                Desenvolva exemplos do seu trabalho que demonstrem sua capacidade, mesmo que sejam projetos pessoais ou simulados. Um portfólio focado em resultados é mais eficaz que um longo currículo.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Estabeleça sistemas para gerenciar clientes</div>
+                            <div class="step-description">
+                                Crie processos para prospectar, qualificar, entregar e faturar clientes. Sistemas eficientes permitem que você escale sua renda extra sem se sobrecarregar com tarefas administrativas.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-box">
+                    <h3 class="cta-title">Precisa de Inspiração?</h3>
+                    <p class="cta-subtitle">Explore nossas ferramentas para gerar ideias incríveis</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button primary">🔬 GearLabs</button>
+                        <button class="cta-button secondary">✨ GearSpark</button>
+                    </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Carreira Page -->
+            <div id="carreira" class="page carreira-theme">
+                <div class="detail-header">
+                    <h1 class="detail-title">Carreira</h1>
+                    <p class="detail-subtitle">Desenvolva projetos que impulsionam seu crescimento profissional</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Por Que Criar?</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Desenvolver habilidades relevantes para o mercado</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos de carreira permitem que você adquira e demonstre competências que são valorizadas no mercado de trabalho atual. Ao invés de apenas listar habilidades no seu currículo, você cria evidências concretas do seu capacidade de aplicar conhecimento em situações reais.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Construir um portfólio diferenciado</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Em um mercado competitivo, um portfólio robusto pode ser o diferencial que lhe garante a próxima oportunidade. Projetos bem executados demonstram iniciativa, capacidade de execução e pensamento estratégico, qualidades que empregadores valorizam imensamente.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Expandir sua rede profissional</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos de carreira naturalmente conectam você a outros profissionais, mentores e potenciais empregadores. Essas conexões podem abrir portas para oportunidades que não estariam disponíveis através de canais tradicionais de recrutamento.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Características Chave</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Alinhamento com objetivos profissionais</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos de carreira são estrategicamente escolhidos para avançar seus objetivos profissionais específicos. Cada projeto deve contribuir para sua narrativa de carreira, preenchendo lacunas de habilidades ou demonstrando competências relevantes para seus próximos passos profissionais.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Foco em resultados mensuráveis</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Diferentemente de projetos pessoais, iniciativas de carreira devem ter métricas claras de sucesso. Seja aumento de eficiência, crescimento de audiência ou impacto financeiro, resultados quantificáveis transformam esforço em valor profissional demonstrável.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Visibilidade e documentação do processo</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos de carreira devem ser documentados e compartilhados estrategicamente. Criar estudos de caso, artigos ou apresentações sobre seus projetos multiplica seu impacto, permitindo que recrutadores e colegas entendam seu valor mesmo sem interação direta.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Feedback e iteração contínua</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Projetos profissionais prosperam com feedback construtivo e ciclos de melhoria. Buscar ativamente opiniões de especialistas e iterar com base nessas sugestões demonstra maturidade profissional e capacidade de aprender e adaptar-se rapidamente.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Exemplos</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Projeto de automação de processos no trabalho</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Identifique ineficiências no seu ambiente de trabalho atual e desenvolva soluções que economizem tempo ou recursos. Projetos de automação demonstram iniciativa, pensamento analítico e capacidade de gerar impacto mensurável, qualidades altamente valorizadas em qualquer função.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Blog técnico sobre sua área de especialização</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Compartilhe conhecimento especializado através de artigos bem pesquisados. Um blog técnico estabelece você como autoridade no campo, melhora suas habilidades de comunicação e cria um registro público do seu pensamento e expertise que pode influenciar positivamente sua trajetória profissional.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Voluntariado em projetos comunitários relacionados à sua carreira</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Aplique suas habilidades em contextos diferentes através do voluntariado. Além de contribuir para causas importantes, você ganha experiência diversificada, expande sua rede e demonstra valores que muitas organizações procuram em seus líderes.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Desenvolvimento de uma ferramenta interna para sua equipe</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Crie soluções personalizadas que resolvam problemas específicos da sua equipe. Projetos internos demonstram liderança, empatia pelas necessidades dos colegas e capacidade de traduzir insights em soluções práticas, competências essenciais para progressão na carreira.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Primeiros Passos</h2>
+                    <div class="steps-list">
+                        <div class="step-item">
+                            <div class="step-title">Identifique lacunas de habilidades na sua carreira</div>
+                            <div class="step-description">
+                                Analise descrições de vagas que aspira ocupar e converse com mentores sobre competências que você precisa desenvolver. Use essas informações para guiar a escolha de projetos que preencham essas lacunas estrategicamente.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Defina metas SMART para seus projetos</div>
+                            <div class="step-description">
+                                Estabeleça objetivos Específicos, Mensuráveis, Atingíveis, Relevantes e com Prazo definido. Metas bem formuladas transformam intenções vagas em planos acionáveis com critérios claros de sucesso.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Busque mentores e conselheiros na área</div>
+                            <div class="step-description">
+                                Identifique profissionais que já trilharam caminhos similares e peça orientação. Mentores podem oferecer insights valiosos, evitar erros comuns e conectar você a oportunidades que acelerariam seu progresso.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Documente seu progresso e resultados</div>
+                            <div class="step-description">
+                                Mantenha um registro detalhado do seu processo, desafios superados e resultados alcançados. Esta documentação será inestimável durante entrevistas e avaliações de desempenho, fornecendo evidências concretas do seu valor.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Compartilhe seus aprendizados e conquistas</div>
+                            <div class="step-description">
+                                Crie conteúdo sobre seus projetos e aprendizados. Artigos, apresentações ou posts não apenas solidificam seu próprio conhecimento, mas também aumentam sua visibilidade e estabelecem você como alguém proativo e capaz.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-box">
+                    <h3 class="cta-title">Precisa de Inspiração?</h3>
+                    <p class="cta-subtitle">Explore nossas ferramentas para gerar ideias incríveis</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button primary">🔬 GearLabs</button>
+                        <button class="cta-button secondary">✨ GearSpark</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Startup Page -->
+            <div id="startup" class="page startup-theme">
+                <div class="detail-header">
+                    <h1 class="detail-title">Startup</h1>
+                    <p class="detail-subtitle">Construa negócios inovadores com potencial de crescimento exponencial</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Por Que Criar?</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Resolver problemas em escala</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Startups oferecem a oportunidade de abordar desafios significativos que afetam muitas pessoas. Ao contrário de projetos menores, uma startup bem-sucedida pode impactar milhões de vidas, criando soluções que redefinem como vivemos, trabalhamos ou interagimos.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Potencial de crescimento exponencial</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Modelos de negócio escaláveis permitem que startups cresçam de forma exponencial, não linear. Com a combinação certa de produto, mercado e estratégia, é possível construir empresas que multiplicam de valor dezenas ou centenas de vezes em poucos anos.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Criação de valor duradouro e autonomia</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Uma startup bem-sucedida cria um ativo duradouro que pode gerar valor por décadas. Além do potencial financeiro, empreender oferece um nível de autonomia e controle sobre seu destino profissional que raramente é encontrado em carreiras tradicionais.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Características Chave</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Foco em validação de hipóteses</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Startups bem-sucedidas tratam cada suposição como uma hipótese a ser testada. Em vez de construir com base em intuição, elas validam continuamente suas ideias com dados reais do mercado, ajustando rapidamente com base no que aprendem.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Modelo de negócio escalável</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    A essência de uma startup é um modelo de negócio que pode crescer exponencialmente sem aumento proporcional de custos. Seja através de software, plataformas ou redes, a escalabilidade é o que diferencia startups de pequenos negócios tradicionais.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Busca pelo product-market fit</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    O objetivo central de qualquer startup inicial é encontrar o product-market fit: o ponto onde seu produto atende uma necessidade real do mercado de forma que os clientes o valorizem o suficiente para pagar e recomendá-lo. Este é o momento crítico que precede o crescimento acelerado.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Cultura de experimentação e aprendizado rápido</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Startups prosperam em ambientes onde experimentar é incentivado e o fracasso é tratado como aprendizado. Esta cultura permite que equipes testem múltiplas abordagens simultaneamente, acelerando a descoberta do que realmente funciona com o mercado.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Exemplos</h2>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Plataforma SaaS para automação de tarefas empresariais</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Desenvolva uma solução baseada em assinatura que resolva dores específicas de empresas. Modelos SaaS oferecem receita recorrente previsível e alta escalabilidade, especialmente quando automatizam processos complexos que consomem tempo e recursos das organizações.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Marketplace conectando fornecedores especializados a consumidores</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Crie uma plataforma que facilite transações entre dois grupos que têm dificuldade em se conectar. Marketplaces bem executados geram valor ao reduzir fricção, aumentar eficiência e criar confiança em ecossistemas onde antes havia desorganização ou assimetria de informação.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Aplicativo mobile para saúde mental e bem-estar</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Aborde a crescente necessidade de suporte à saúde mental através de tecnologia. Aplicativos que oferecem ferramentas acessíveis para meditação, terapia cognitivo-comportamental ou rastreamento de humor podem impactar positivamente milhões de pessoas enquanto geram valor sustentável.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Ferramenta de IA para análise preditiva em nichos específicos</span>
+                                <span class="accordion-icon">▼</span>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    Aplique inteligência artificial para resolver problemas complexos em indústrias específicas. Ferramentas que oferecem insights preditivos podem transformar setores inteiros, desde agricultura de precisão até otimização de cadeias de suprimentos, criando valor através de dados e algoritmos.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Primeiros Passos</h2>
+                    <div class="steps-list">
+                        <div class="step-item">
+                            <div class="step-title">Identifique um problema significativo que você entende profundamente</div>
+                            <div class="step-description">
+                                As melhores startups nascem da experiência pessoal com um problema. Comece com dores que você mesmo enfrentou ou observou de perto, pois essa intimidade com o desafio lhe dará insights que outros não possuem.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Valide a existência de um mercado disposto a pagar</div>
+                            <div class="step-description">
+                                Antes de construir qualquer coisa, confirme que pessoas realmente têm este problema e estão dispostas a investir tempo ou dinheiro para resolvê-lo. Entrevistas com potenciais clientes e testes de pagamento antecipado são formas eficazes de validação.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Construa um MVP (Produto Mínimo Viável) focado</div>
+                            <div class="step-description">
+                                Desenvolva a versão mais simples possível do seu produto que ainda entrega valor real. Evite a tentação de adicionar recursos desnecessários; concentre-se em resolver o problema central de forma excepcional.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Estabeleça métricas claras de sucesso e aprendizado</div>
+                            <div class="step-description">
+                                Defina indicadores-chave que medirão o progresso da sua startup. Seja retenção de usuários, crescimento de receita ou engajamento, métricas claras transformam intuição em decisões baseadas em dados.
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-title">Busque feedback contínuo e itere rapidamente</div>
+                            <div class="step-description">
+                                Crie ciclos curtos de aprendizado onde você lança, mede, aprende e itera. A velocidade de aprendizado é frequentemente mais importante que a perfeição inicial, especialmente nos estágios iniciais de uma startup.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-box">
+                    <h3 class="cta-title">Precisa de Inspiração?</h3>
+                    <p class="cta-subtitle">Explore nossas ferramentas para gerar ideias incríveis</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button primary">🔬 GearLabs</button>
+                        <button class="cta-button secondary">✨ GearSpark</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
-    
-    <!-- Footer -->
+
     <footer>
-        <p>&copy; 2024 GearMap - Mapeando Seus Projetos. Todos os direitos reservados.</p>
+        <p>© 2025 DealeGear - Transformando ideias em realidade</p>
     </footer>
-    
-    <script src="script.js"></script>
+
+    <script>
+        // Traduções
+        const translations = {
+            pt: {
+                nav: {
+                    home: "Início",
+                    hobby: "Hobby",
+                    renda: "Renda Extra",
+                    carreira: "Carreira",
+                    startup: "Startup",
+                    dealegear: "DealeGear"
+                },
+                home: {
+                    title: "GearMap",
+                    subtitle: "Um guia inteligente para transformar suas ideias em projetos concretos, seja por paixão, lucro ou propósito",
+                    hobby: {
+                        title: "Hobby",
+                        description: "Projetos por paixão e criatividade"
+                    },
+                    renda: {
+                        title: "Renda Extra",
+                        description: "Monetize suas habilidades"
+                    },
+                    carreira: {
+                        title: "Carreira",
+                        description: "Desenvolva sua trajetória profissional"
+                    },
+                    startup: {
+                        title: "Startup",
+                        description: "Construa um negócio escalável"
+                    }
+                },
+                hobby: {
+                    title: "Hobby",
+                    subtitle: "Transforme sua paixão em projetos criativos que alimentam sua alma",
+                    whyCreate: "Por Que Criar?",
+                    keyFeatures: "Características Chave",
+                    examples: "Exemplos",
+                    firstSteps: "Primeiros Passos",
+                    cta: {
+                        title: "Precisa de Inspiração?",
+                        subtitle: "Explore nossas ferramentas para gerar ideias incríveis"
+                    }
+                },
+                renda: {
+                    title: "Renda Extra",
+                    subtitle: "Transforme suas habilidades em fontes de renda complementar",
+                    whyCreate: "Por Que Criar?",
+                    keyFeatures: "Características Chave",
+                    examples: "Exemplos",
+                    firstSteps: "Primeiros Passos",
+                    cta: {
+                        title: "Precisa de Inspiração?",
+                        subtitle: "Explore nossas ferramentas para gerar ideias incríveis"
+                    }
+                },
+                carreira: {
+                    title: "Carreira",
+                    subtitle: "Desenvolva projetos que impulsionam seu crescimento profissional",
+                    whyCreate: "Por Que Criar?",
+                    keyFeatures: "Características Chave",
+                    examples: "Exemplos",
+                    firstSteps: "Primeiros Passos",
+                    cta: {
+                        title: "Precisa de Inspiração?",
+                        subtitle: "Explore nossas ferramentas para gerar ideias incríveis"
+                    }
+                },
+                startup: {
+                    title: "Startup",
+                    subtitle: "Construa negócios inovadores com potencial de crescimento exponencial",
+                    whyCreate: "Por Que Criar?",
+                    keyFeatures: "Características Chave",
+                    examples: "Exemplos",
+                    firstSteps: "Primeiros Passos",
+                    cta: {
+                        title: "Precisa de Inspiração?",
+                        subtitle: "Explore nossas ferramentas para gerar ideias incríveis"
+                    }
+                },
+                footer: "© 2025 DealeGear - Transformando ideias em realidade"
+            },
+            en: {
+                nav: {
+                    home: "Home",
+                    hobby: "Hobby",
+                    renda: "Side Income",
+                    carreira: "Career",
+                    startup: "Startup",
+                    dealegear: "DealeGear"
+                },
+                home: {
+                    title: "GearMap",
+                    subtitle: "An intelligent guide to transform your ideas into concrete projects, whether for passion, profit or purpose",
+                    hobby: {
+                        title: "Hobby",
+                        description: "Projects for passion and creativity"
+                    },
+                    renda: {
+                        title: "Side Income",
+                        description: "Monetize your skills"
+                    },
+                    carreira: {
+                        title: "Career",
+                        description: "Develop your professional trajectory"
+                    },
+                    startup: {
+                        title: "Startup",
+                        description: "Build a scalable business"
+                    }
+                },
+                hobby: {
+                    title: "Hobby",
+                    subtitle: "Transform your passion into creative projects that feed your soul",
+                    whyCreate: "Why Create?",
+                    keyFeatures: "Key Features",
+                    examples: "Examples",
+                    firstSteps: "First Steps",
+                    cta: {
+                        title: "Need Inspiration?",
+                        subtitle: "Explore our tools to generate amazing ideas"
+                    }
+                },
+                renda: {
+                    title: "Side Income",
+                    subtitle: "Transform your skills into complementary income sources",
+                    whyCreate: "Why Create?",
+                    keyFeatures: "Key Features",
+                    examples: "Examples",
+                    firstSteps: "First Steps",
+                    cta: {
+                        title: "Need Inspiration?",
+                        subtitle: "Explore our tools to generate amazing ideas"
+                    }
+                },
+                carreira: {
+                    title: "Career",
+                    subtitle: "Develop projects that boost your professional growth",
+                    whyCreate: "Why Create?",
+                    keyFeatures: "Key Features",
+                    examples: "Examples",
+                    firstSteps: "First Steps",
+                    cta: {
+                        title: "Need Inspiration?",
+                        subtitle: "Explore our tools to generate amazing ideas"
+                    }
+                },
+                startup: {
+                    title: "Startup",
+                    subtitle: "Build innovative businesses with exponential growth potential",
+                    whyCreate: "Why Create?",
+                    keyFeatures: "Key Features",
+                    examples: "Examples",
+                    firstSteps: "First Steps",
+                    cta: {
+                        title: "Need Inspiration?",
+                        subtitle: "Explore our tools to generate amazing ideas"
+                    }
+                },
+                footer: "© 2025 DealeGear - Transforming ideas into reality"
+            },
+            es: {
+                nav: {
+                    home: "Inicio",
+                    hobby: "Hobby",
+                    renda: "Ingresos Extra",
+                    carreira: "Carrera",
+                    startup: "Startup",
+                    dealegear: "DealeGear"
+                },
+                home: {
+                    title: "GearMap",
+                    subtitle: "Una guía inteligente para transformar tus ideas en proyectos concretos, ya sea por pasión, lucro o propósito",
+                    hobby: {
+                        title: "Hobby",
+                        description: "Proyectos por pasión y creatividad"
+                    },
+                    renda: {
+                        title: "Ingresos Extra",
+                        description: "Monetiza tus habilidades"
+                    },
+                    carreira: {
+                        title: "Carrera",
+                        description: "Desarrolla tu trayectoria profesional"
+                    },
+                    startup: {
+                        title: "Startup",
+                        description: "Construye un negocio escalable"
+                    }
+                },
+                hobby: {
+                    title: "Hobby",
+                    subtitle: "Transforma tu pasión en proyectos creativos que alimentan tu alma",
+                    whyCreate: "¿Por Qué Crear?",
+                    keyFeatures: "Características Clave",
+                    examples: "Ejemplos",
+                    firstSteps: "Primeros Pasos",
+                    cta: {
+                        title: "¿Necesitas Inspiración?",
+                        subtitle: "Explora nuestras herramientas para generar ideas increíbles"
+                    }
+                },
+                renda: {
+                    title: "Ingresos Extra",
+                    subtitle: "Transforma tus habilidades en fuentes de ingresos complementarios",
+                    whyCreate: "¿Por Qué Crear?",
+                    keyFeatures: "Características Clave",
+                    examples: "Ejemplos",
+                    firstSteps: "Primeros Pasos",
+                    cta: {
+                        title: "¿Necesitas Inspiración?",
+                        subtitle: "Explora nuestras herramientas para generar ideas increíbles"
+                    }
+                },
+                carreira: {
+                    title: "Carrera",
+                    subtitle: "Desarrolla proyectos que impulsen tu crecimiento profesional",
+                    whyCreate: "¿Por Qué Crear?",
+                    keyFeatures: "Características Clave",
+                    examples: "Ejemplos",
+                    firstSteps: "Primeros Pasos",
+                    cta: {
+                        title: "¿Necesitas Inspiración?",
+                        subtitle: "Explora nuestras herramientas para generar ideas increíbles"
+                    }
+                },
+                startup: {
+                    title: "Startup",
+                    subtitle: "Construye negocios innovadores con potencial de crecimiento exponencial",
+                    whyCreate: "¿Por Qué Crear?",
+                    keyFeatures: "Características Clave",
+                    examples: "Ejemplos",
+                    firstSteps: "Primeros Pasos",
+                    cta: {
+                        title: "¿Necesitas Inspiración?",
+                        subtitle: "Explora nuestras herramientas para generar ideas increíbles"
+                    }
+                },
+                footer: "© 2025 DealeGear - Transformando ideas en realidad"
+            }
+        };
+
+        // Estado da aplicação
+        let currentLang = 'pt';
+        let currentPage = 'home';
+
+        // Elementos DOM
+        const navLinks = document.querySelectorAll('.nav-link:not(.external-link)');
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const pages = document.querySelectorAll('.page');
+        const cards = document.querySelectorAll('.card');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinksContainer = document.querySelector('.nav-links');
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        // Inicialização
+        function init() {
+            setupNavigation();
+            setupLanguageSelector();
+            setupCards();
+            setupHamburger();
+            setupAccordions();
+        }
+
+        // Configuração da navegação
+        function setupNavigation() {
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetPage = link.getAttribute('data-page');
+                    navigateToPage(targetPage);
+                });
+            });
+        }
+
+        // Navegação para uma página específica
+        function navigateToPage(pageId) {
+            // Atualiza o estado
+            currentPage = pageId;
+            
+            // Atualiza as classes ativas
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            document.getElementById(pageId).classList.add('active');
+            
+            // Fecha o menu mobile se estiver aberto
+            navLinksContainer.classList.remove('active');
+            
+            // Aplica o tema de cores correspondente
+            applyTheme(pageId);
+            
+            // Scroll suave para o topo
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Aplica o tema de cores da página
+        function applyTheme(pageId) {
+            document.body.className = '';
+            
+            if (pageId === 'hobby') {
+                document.body.style.setProperty('--active-color', 'var(--hobby-color)');
+                document.body.style.setProperty('--active-gradient', 'var(--hobby-gradient)');
+            } else if (pageId === 'renda') {
+                document.body.style.setProperty('--active-color', 'var(--renda-color)');
+                document.body.style.setProperty('--active-gradient', 'var(--renda-gradient)');
+            } else if (pageId === 'carreira') {
+                document.body.style.setProperty('--active-color', 'var(--carreira-color)');
+                document.body.style.setProperty('--active-gradient', 'var(--carreira-gradient)');
+            } else if (pageId === 'startup') {
+                document.body.style.setProperty('--active-color', 'var(--startup-color)');
+                document.body.style.setProperty('--active-gradient', 'var(--startup-gradient)');
+            } else {
+                document.body.style.setProperty('--active-color', 'var(--carreira-color)');
+                document.body.style.setProperty('--active-gradient', 'var(--carreira-gradient)');
+            }
+        }
+
+        // Configuração do seletor de idioma
+        function setupLanguageSelector() {
+            langButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const lang = button.getAttribute('data-lang');
+                    changeLanguage(lang);
+                });
+            });
+        }
+
+        // Mudança de idioma
+        function changeLanguage(lang) {
+            if (lang === currentLang) return;
+            
+            currentLang = lang;
+            
+            // Atualiza o botão ativo
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-lang') === lang) {
+                    button.classList.add('active');
+                }
+            });
+            
+            // Atualiza o atributo lang do HTML
+            document.documentElement.lang = lang;
+            
+            // Atualiza o conteúdo traduzido
+            updateTranslatedContent(lang);
+        }
+
+        // Atualiza o conteúdo traduzido
+        function updateTranslatedContent(lang) {
+            const t = translations[lang];
+            
+            // Atualiza navegação
+            document.querySelector('a[data-page="home"]').textContent = t.nav.home;
+            document.querySelector('a[data-page="hobby"]').textContent = t.nav.hobby;
+            document.querySelector('a[data-page="renda"]').textContent = t.nav.renda;
+            document.querySelector('a[data-page="carreira"]').textContent = t.nav.carreira;
+            document.querySelector('a[data-page="startup"]').textContent = t.nav.startup;
+            document.querySelector('a.external-link').textContent = t.nav.dealegear;
+            
+            // Atualiza página inicial
+            document.querySelector('#home .home-title').textContent = t.home.title;
+            document.querySelector('#home .home-subtitle').textContent = t.home.subtitle;
+            document.querySelector('#home .card.hobby .card-title').textContent = t.home.hobby.title;
+            document.querySelector('#home .card.hobby .card-description').textContent = t.home.hobby.description;
+            document.querySelector('#home .card.renda .card-title').textContent = t.home.renda.title;
+            document.querySelector('#home .card.renda .card-description').textContent = t.home.renda.description;
+            document.querySelector('#home .card.carreira .card-title').textContent = t.home.carreira.title;
+            document.querySelector('#home .card.carreira .card-description').textContent = t.home.carreira.description;
+            document.querySelector('#home .card.startup .card-title').textContent = t.home.startup.title;
+            document.querySelector('#home .card.startup .card-description').textContent = t.home.startup.description;
+            
+            // Atualiza páginas de detalhes
+            updateDetailPageTranslations('hobby', t.hobby);
+            updateDetailPageTranslations('renda', t.renda);
+            updateDetailPageTranslations('carreira', t.carreira);
+            updateDetailPageTranslations('startup', t.startup);
+            
+            // Atualiza footer
+            document.querySelector('footer p').textContent = t.footer;
+        }
+
+        // Atualiza traduções de uma página de detalhes
+        function updateDetailPageTranslations(pageId, translations) {
+            const page = document.getElementById(pageId);
+            if (!page) return;
+            
+            page.querySelector('.detail-title').textContent = translations.title;
+            page.querySelector('.detail-subtitle').textContent = translations.subtitle;
+            
+            const sections = page.querySelectorAll('.section-title');
+            if (sections[0]) sections[0].textContent = translations.whyCreate;
+            if (sections[1]) sections[1].textContent = translations.keyFeatures;
+            if (sections[2]) sections[2].textContent = translations.examples;
+            if (sections[3]) sections[3].textContent = translations.firstSteps;
+            
+            const ctaBox = page.querySelector('.cta-box');
+            if (ctaBox) {
+                ctaBox.querySelector('.cta-title').textContent = translations.cta.title;
+                ctaBox.querySelector('.cta-subtitle').textContent = translations.cta.subtitle;
+            }
+        }
+
+        // Configuração dos cards
+        function setupCards() {
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const targetPage = card.getAttribute('data-page');
+                    if (targetPage) {
+                        navigateToPage(targetPage);
+                    }
+                });
+            });
+        }
+
+        // Configuração do menu hamburger
+        function setupHamburger() {
+            hamburger.addEventListener('click', () => {
+                navLinksContainer.classList.toggle('active');
+            });
+        }
+
+        // Configuração dos accordions
+        function setupAccordions() {
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                
+                header.addEventListener('click', () => {
+                    // Fecha todos os itens do mesmo accordion
+                    const parentAccordion = item.parentElement;
+                    const siblingItems = parentAccordion.querySelectorAll('.accordion-item');
+                    
+                    siblingItems.forEach(sibling => {
+                        if (sibling !== item) {
+                            sibling.classList.remove('active');
+                        }
+                    });
+                    
+                    // Alterna o item atual
+                    item.classList.toggle('active');
+                });
+            });
+        }
+
+        // Inicializa a aplicação
+        init();
+    </script>
 </body>
 </html>

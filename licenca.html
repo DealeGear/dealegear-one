@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Licença de Uso - DealeGear</title>
-    <style>
-        /* Variáveis de cores e tipografia */
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Licença Apache 2.0 - DealeGear
+  </title>
+  <style>
+   /* Variáveis de cores e tipografia */
         :root {
             --primary-color: #2563eb;
             --primary-hover: #1d4ed8;
@@ -38,7 +40,7 @@
 
         /* Container principal */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -119,7 +121,7 @@
         .hero p {
             font-size: 1.125rem;
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             animation: fadeInUp 0.6s ease-out 0.2s both;
         }
@@ -130,18 +132,17 @@
         }
 
         .license-section {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             animation: fadeIn 0.8s ease-out;
         }
 
         .license-section h2 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--primary-color);
-            display: inline-block;
         }
 
         .license-section p {
@@ -150,25 +151,17 @@
             text-align: justify;
         }
 
-        .license-section ul {
-            list-style: none;
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .license-section li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .license-section li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
+        .license-text {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            color: var(--text-primary);
+            overflow-x: auto;
         }
 
         /* Footer */
@@ -223,12 +216,17 @@
             }
 
             .license-section h2 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
 
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .license-text {
+                padding: 1.5rem;
+                font-size: 0.85rem;
             }
         }
 
@@ -248,6 +246,11 @@
             .license-section {
                 margin-bottom: 2rem;
             }
+
+            .license-text {
+                padding: 1rem;
+                font-size: 0.8rem;
+            }
         }
 
         /* Melhorias de acessibilidade */
@@ -263,174 +266,172 @@
         html {
             scroll-behavior: smooth;
         }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">DealeGear</a>
-                <a href="#" class="back-button" onclick="goBack()">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
-                    Voltar
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Licença de Uso</h1>
-            <p>Esta licença define os termos e condições para o uso da plataforma DealeGear. Ao utilizar nossos serviços, você concorda com estas disposições.</p>
-        </div>
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
+  <header>
+   <div class="container">
+    <div class="header-content">
+     <a class="logo" href="#">
+      DealeGear
+     </a>
+     <a class="back-button" href="#" onclick="goBack()">
+      <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+       </path>
+      </svg>
+      Voltar
+     </a>
+    </div>
+   </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero">
+   <div class="container">
+    <h1>
+     Licença Apache 2.0
+    </h1>
+    <p>
+     Esta é a licença de código aberto Apache versão 2.0 aplicada ao projeto DealeGear em português. Ela permite uso, modificação e distribuição do software sob termos específicos.
+    </p>
+   </div>
+  </section>
+  <!-- Conteúdo Principal -->
+  <main>
+   <div class="container">
+    <section class="license-section">
+     <h2>
+      Aviso de Tradução e Aplicação da Licença
+     </h2>
+     <p>
+      Esta é uma tradução de conveniência da Licença Apache 2.0. Em caso de divergência, o texto original em inglês prevalece. Esta licença se aplica aos softwares, templates, APIs e componentes disponibilizados pela plataforma DealeGear, exceto quando explicitamente indicado em cada projeto. O uso implica aceitação integral dos termos abaixo.
+     </p>
+     <p>
+      O nome DealeGear e seus logotipos são marcas registradas e não podem ser utilizados sem autorização expressa, exceto nos termos desta licença. Consulte também nossa Política de Privacidade em conformidade com a LGPD.
+     </p>
     </section>
+    <!-- Texto da Licença Apache 2.0 -->
+    <section class="license-section">
+     <h2>
+      Licença Apache Versão 2.0
+     </h2>
+     <div class="license-text">
+      Licença Apache
+Versão 2.0, Janeiro de 2004
+http://www.apache.org/licenses/
 
-    <!-- Conteúdo Principal -->
-    <main>
-        <div class="container">
-            <!-- Introdução -->
-            <section class="license-section">
-                <h2>1. Introdução</h2>
-                <p>Bem-vindo à DealeGear! Esta Licença de Uso estabelece os termos sob os quais você pode acessar e utilizar nossa plataforma e serviços.</p>
-                <p>Ao criar uma conta e utilizar a DealeGear, você aceita os termos desta licença e se compromete a respeitar todas as condições aqui estabelecidas.</p>
-            </section>
+TERMOS E CONDIÇÕES PARA USO, REPRODUÇÃO E DISTRIBUIÇÃO
 
-            <!-- Concessão da Licença -->
-            <section class="license-section">
-                <h2>2. Concessão da Licença</h2>
-                <p>A DealeGear concede a você uma licença limitada, não exclusiva, intransferível e revogável para:</p>
-                <ul>
-                    <li>Acessar e utilizar a plataforma para seus fins pessoais ou comerciais</li>
-                    <li>Utilizar as funcionalidades e recursos disponíveis na plataforma</li>
-                    <li>Baixar e instalar aplicativos relacionados, quando aplicável</li>
-                    <li>Fazer uso legítimo dos serviços oferecidos pela DealeGear</li>
-                </ul>
-                <p>Esta licença é concedida enquanto você cumprir os termos estabelecidos e enquanto sua conta estiver ativa e em bom standing.</p>
-            </section>
+1. Definições.
 
-            <!-- Restrições de Uso -->
-            <section class="license-section">
-                <h2>3. Restrições de Uso</h2>
-                <p>Você não pode, sob nenhuma circunstância:</p>
-                <ul>
-                    <li>Copiar, modificar, distribuir ou vender qualquer parte da plataforma</li>
-                    <li>Realizar engenharia reversa, descompilar ou desmontar o software</li>
-                    <li>Utilizar a plataforma para fins ilegais ou não autorizados</li>
-                    <li>Interferir no funcionamento adequado da plataforma ou servidores</li>
-                    <li>Tentar obter acesso não autorizado a sistemas ou dados</li>
-                    <li>Remover ou alterar avisos de direitos autorais ou marcas registradas</li>
-                    <li>Utilizar robôs, spiders ou outros meios automatizados para acessar a plataforma</li>
-                </ul>
-            </section>
+   "Licença" significa os termos e condições para uso, reprodução e distribuição conforme definido pelas Seções 1 a 9 deste documento.
 
-            <!-- Direitos de Propriedade Intelectual -->
-            <section class="license-section">
-                <h2>4. Direitos de Propriedade Intelectual</h2>
-                <p>Todos os direitos de propriedade intelectual relacionados à DealeGear são de propriedade exclusiva da empresa ou de seus licenciadores. Isso inclui:</p>
-                <ul>
-                    <li>Software e código-fonte da plataforma</li>
-                    <li>Design, layout e elementos visuais</li>
-                    <li>Conteúdo textual, gráficos e multimídia</li>
-                    <li>Logotipos, marcas registradas e nomes comerciais</li>
-                    <li>Base de dados e informações compiladas</li>
-                </ul>
-                <p>Nenhuma parte desta licença concede a você direitos sobre a propriedade intelectual da DealeGear além do uso autorizado.</p>
-            </section>
+   "Licenciante" significa o proprietário dos direitos autorais ou entidade autorizada pelo proprietário dos direitos autorais que está concedendo a Licença.
 
-            <!-- Limitações de Responsabilidade -->
-            <section class="license-section">
-                <h2>5. Limitações de Responsabilidade</h2>
-                <p>A DealeGear não se responsabiliza por:</p>
-                <ul>
-                    <li>Quaisquer danos diretos, indiretos, incidentais ou consequentes</li>
-                    <li>Perdas de lucros, receitas, dados ou oportunidades de negócio</li>
-                    <li>Interrupções no serviço ou indisponibilidade da plataforma</li>
-                    <li>Erros, omissões ou imprecisões no conteúdo</li>
-                    <li>Ações de terceiros ou conteúdo gerado por usuários</li>
-                </ul>
-                <p>A plataforma é fornecida "como está", sem garantias de qualquer tipo, expressas ou implícitas.</p>
-            </section>
+   "Entidade Legal" significa a união da entidade atuante e todas as outras entidades que controlam, são controladas por, ou estão sob controle comum com essa entidade. Para os propósitos desta definição, "controle" significa (i) o poder, direto ou indireto, de causar a direção ou gestão de tal entidade, seja por contrato ou de outra forma, ou (ii) propriedade de cinquenta por cento (50%) ou mais das ações em circulação, ou (iii) propriedade beneficiária de tal entidade.
 
-            <!-- Termos de Pagamento -->
-            <section class="license-section">
-                <h2>6. Termos de Pagamento</h2>
-                <p>Para serviços premium ou pagos, aplicam-se as seguintes condições:</p>
-                <ul>
-                    <li>Os pagamentos devem ser realizados através dos métodos disponíveis na plataforma</li>
-                    <li>Todas as transações estão sujeitas às políticas de pagamento da DealeGear</li>
-                    <li>Reembolsos serão processados conforme nossa política de reembolso</li>
-                    <li>Preços e planos podem ser modificados com aviso prévio</li>
-                    <li>A falha no pagamento pode resultar na suspensão dos serviços</li>
-                </ul>
-                <p>Impostos aplicáveis serão de responsabilidade do usuário e adicionados ao valor total quando necessário.</p>
-            </section>
+   "Você" (ou "Seu") significa um indivíduo ou Entidade Legal exercendo permissões concedidas por esta Licença.
 
-            <!-- Suspensão e Rescisão -->
-            <section class="license-section">
-                <h2>7. Suspensão e Rescisão</h2>
-                <p>A DealeGear reserva-se o direito de suspender ou rescindir sua licença e acesso à plataforma nas seguintes situações:</p>
-                <ul>
-                    <li>Violação de qualquer termo desta licença ou dos Termos de Uso</li>
-                    <li>Atividades fraudulentas, ilegais ou prejudiciais à plataforma</li>
-                    <li>Inadimplência de pagamentos quando aplicável</li>
-                    <li>Suspeita de comprometimento de segurança da conta</li>
-                    <li>Por motivos operacionais, técnicos ou de negócios</li>
-                </ul>
-                <p>Em caso de rescisão, você perderá imediatamente o direito de acessar e utilizar a plataforma e seus serviços.</p>
-            </section>
+   Forma de "Código-fonte" significa a forma preferida para fazer modificações, incluindo mas não limitado a código-fonte de software, fonte de documentação e arquivos de configuração.
 
-            <!-- Disposições Gerais -->
-            <section class="license-section">
-                <h2>8. Disposições Gerais</h2>
-                <p>Esta licença é regida pelas leis do Brasil. Quaisquer disputas serão resolvidas no foro da sede da DealeGear.</p>
-                <p>Se qualquer disposição desta licença for considerada inválida ou inexequível, as demais disposições permanecerão em pleno vigor.</p>
-                <p>O não exercício de qualquer direito ou disposição desta licença não constituirá renúncia a tal direito ou disposição.</p>
-                <p>Esta licença constitui o acordo integral entre você e a DealeGear em relação ao uso da plataforma.</p>
-            </section>
+   Forma de "Objeto" significa qualquer forma resultante de transformação mecânica ou tradução de uma forma de Código-fonte, incluindo mas não limitado a código objeto compilado, documentação gerada e conversões para outros tipos de mídia.
 
-            <!-- Contato -->
-            <section class="license-section">
-                <h2>9. Contato</h2>
-                <p>Se você tiver dúvidas sobre esta Licença de Uso ou precisar de esclarecimentos adicionais, entre em contato conosco:</p>
-                <ul>
-                    <li>Email: licenca@dealegear.com</li>
-                    <li>Formulário de contato disponível na plataforma</li>
-                    <li>Horário de atendimento: Segunda a Sexta, 9h às 18h</li>
-                </ul>
-                <p>Estamos à disposição para fornecer todas as informações necessárias sobre os termos de licenciamento de nossos serviços.</p>
-            </section>
-        </div>
-    </main>
+   "Trabalho" significa o trabalho de autoria, seja na forma de Código-fonte ou Objeto, disponibilizado sob a Licença, conforme indicado por um aviso de direitos autorais que está incluído ou anexado ao trabalho.
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <strong>DealeGear</strong> – O segredo do sucesso é começar<br>
-                © 2022-2025 DealeGear. Todos os direitos reservados. | Licenças abertas quando aplicável.
-            </div>
-        </div>
-    </footer>
+   "Trabalhos Derivados" significa qualquer trabalho, seja na forma de Código-fonte ou Objeto, que é baseado em (ou derivado de) o Trabalho e para o qual as revisões editoriais, anotações, elaborações ou outras modificações representam, como um todo, um trabalho original de autoria.
 
-    <script>
-        // Função para voltar à página anterior
+   "Contribuição" significa qualquer trabalho de autoria, incluindo a versão original do Trabalho e quaisquer modificações ou adições a esse Trabalho ou Trabalhos Derivados dele, que é intencionalmente submetido ao Licenciante para inclusão no Trabalho pelo proprietário dos direitos autorais ou por um indivíduo ou Entidade Legal autorizada a submeter em nome do proprietário dos direitos autorais.
+
+   "Contribuidor" significa o Licenciante e qualquer indivíduo ou Entidade Legal em nome de quem uma Contribuição foi recebida pelo Licenciante e subsequentemente incorporada dentro do Trabalho.
+
+2. Concessão de Licença de Direitos Autorais.
+
+   Sujeito aos termos e condições desta Licença, cada Contribuidor concede a Você uma licença de direitos autorais perpétua, mundial, não exclusiva, gratuita, livre de royalties e irrevogável para reproduzir, preparar Trabalhos Derivados de, exibir publicamente, executar publicamente, sublicenciar e distribuir o Trabalho e tais Trabalhos Derivados na forma de Código-fonte ou Objeto.
+
+3. Concessão de Licença de Patente.
+
+   Sujeito aos termos e condições desta Licença, cada Contribuidor concede a Você uma licença de patente perpétua, mundial, não exclusiva, gratuita, livre de royalties e irrevogável (exceto conforme declarado nesta seção) para fazer, ter feito, usar, oferecer para venda, vender, importar e de outra forma transferir o Trabalho.
+
+4. Redistribuição.
+
+   Você pode reproduzir e distribuir cópias do Trabalho ou Trabalhos Derivados dele em qualquer mídia, com ou sem modificações, e na forma de Código-fonte ou Objeto, desde que Você cumpra as seguintes condições:
+
+   (a) Você deve dar a quaisquer outros destinatários do Trabalho ou Trabalhos Derivados uma cópia desta Licença; e
+
+   (b) Você deve fazer com que quaisquer arquivos modificados contenham avisos proeminentes declarando que Você alterou os arquivos; e
+
+   (c) Você deve reter, na forma de Código-fonte de quaisquer Trabalhos Derivados que Você distribui, todos os avisos de direitos autorais, patente, marca registrada e atribuição da forma de Código-fonte do Trabalho, excluindo aqueles avisos que não pertencem a nenhuma parte dos Trabalhos Derivados; e
+
+   (d) Se o Trabalho inclui um arquivo de texto "AVISO" como parte de sua distribuição, então quaisquer Trabalhos Derivados que Você distribui devem incluir uma cópia legível dos avisos de atribuição contidos dentro de tal arquivo de AVISO.
+
+5. Submissão de Contribuições.
+
+   A menos que Você declare explicitamente o contrário, qualquer Contribuição intencionalmente submetida para inclusão no Trabalho por Você ao Licenciante estará sob os termos e condições desta Licença, sem quaisquer termos ou condições adicionais.
+
+6. Marcas Registradas.
+
+   Esta Licença não concede permissão para usar os nomes comerciais, marcas registradas, marcas de serviço ou nomes de produtos do Licenciante, exceto conforme necessário para uso razoável e habitual na descrição da origem do Trabalho.
+
+7. Isenção de Garantia.
+
+   A menos que exigido pela lei aplicável ou acordado por escrito, o Licenciante fornece o Trabalho (e cada Contribuidor fornece suas Contribuições) "COMO ESTÁ", SEM GARANTIAS OU CONDIÇÕES DE QUALQUER TIPO, expressas ou implícitas, incluindo, sem limitação, quaisquer garantias ou condições de TÍTULO, NÃO VIOLAÇÃO, COMERCIALIZAÇÃO ou ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO.
+
+8. Limitação de Responsabilidade.
+
+   Em nenhum evento e sob nenhuma teoria legal, seja em delito (incluindo negligência), contrato ou de outra forma, a menos que exigido pela lei aplicável (como atos deliberados e gravemente negligentes) ou acordado por escrito, qualquer Contribuidor será responsável perante Você por danos, incluindo quaisquer danos diretos, indiretos, especiais, incidentais ou consequenciais de qualquer natureza decorrentes como resultado desta Licença ou do uso ou incapacidade de usar o Trabalho.
+
+9. Aceitação de Garantia ou Responsabilidade Adicional.
+
+   Ao redistribuir o Trabalho ou Trabalhos Derivados dele, Você pode optar por oferecer, e cobrar uma taxa por, aceitação de suporte, garantia, indenização ou outras obrigações de responsabilidade e/ou direitos consistentes com esta Licença.
+
+FIM DOS TERMOS E CONDIÇÕES
+
+Copyright 2022-2025 DealeGear
+
+Licenciado sob a Licença Apache, Versão 2.0 (a "Licença");
+você não pode usar este arquivo exceto em conformidade com a Licença.
+Você pode obter uma cópia da Licença em
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+A menos que exigido pela lei aplicável ou acordado por escrito, o software
+distribuído sob a Licença é distribuído "COMO ESTÁ",
+SEM GARANTIAS OU CONDIÇÕES DE QUALQUER TIPO, expressas ou implícitas.
+Consulte a Licença para o idioma específico que rege permissões e
+limitações sob a Licença.
+     </div>
+    </section>
+   </div>
+  </main>
+  <!-- Footer -->
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <strong>
+      DealeGear
+     </strong>
+     – O segredo do sucesso é começar
+     <br/>
+     <br/>
+     <a href="privacidade.html" style="color: var(--primary-color); text-decoration: none;">
+      Política de Privacidade (LGPD)
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script>
+   // Função para voltar à página anterior
         function goBack() {
-            // Se houver histórico, volta para a página anterior
             if (window.history.length > 1) {
                 window.history.back();
             } else {
-                // Se não houver histórico, redireciona para a homepage
                 window.location.href = '/';
             }
         }
 
         // Adiciona animação suave ao scroll
         document.addEventListener('DOMContentLoaded', function() {
-            // Observador de interseção para animar seções ao aparecer
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -445,7 +446,6 @@
                 });
             }, observerOptions);
 
-            // Observa todas as seções de licença
             document.querySelectorAll('.license-section').forEach(section => {
                 section.style.opacity = '0';
                 section.style.transform = 'translateY(20px)';
@@ -453,7 +453,6 @@
                 observer.observe(section);
             });
 
-            // Adiciona comportamento de scroll suave para links âncora
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -468,10 +467,9 @@
             });
         });
 
-        // Melhora a experiência de leitura em dispositivos móveis
         if ('ontouchstart' in window) {
             document.body.addEventListener('touchstart', function() {}, {passive: true});
         }
-    </script>
-</body>
+  </script>
+ </body>
 </html>

@@ -317,7 +317,7 @@ function createPrototypeCard(prototype) {
         <div class="prototype-content">
             <h3 class="prototype-name">${prototype.name}</h3>
             <p class="prototype-description">${prototype.description}</p>
-            <a href="${prototype.link}" class="prototype-link" target="_blank">
+            <a href="${prototype.link}" class="prototype-link" >
                 Ver protótipo <i class="fas fa-arrow-right"></i>
             </a>
         </div>

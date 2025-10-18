@@ -366,6 +366,7 @@ hero-subtitle-h2{
     box-shadow: var(--shadow-sm);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%
 }
 
 .step-card:hover {
