@@ -1,240 +1,279 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
-    const languageSelect = document.getElementById('language-select');
-    const themeToggle = document.getElementById('theme-toggle');
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-    const projectsList = document.getElementById('projects-list');
-    const projectContent = document.getElementById('project-content');
-    
-    // State
-    let currentLanguage = localStorage.getItem('language') || 'pt';
-    let currentTheme = localStorage.getItem('theme') || 'light';
-    let currentProject = null;
-    let projectsData = [];
-    
-    // Initialize
-    function init() {
-        // Set initial theme
-        if (currentTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-        
-        // Set initial language
-        languageSelect.value = currentLanguage;
-        
-        // Load projects data
-        fetchProjectsData();
-        
-        // Event listeners
-        languageSelect.addEventListener('change', handleLanguageChange);
-        themeToggle.addEventListener('click', toggleTheme);
-        menuToggle.addEventListener('click', toggleSidebar);
-        
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && 
-                !sidebar.contains(e.target) && 
-                !menuToggle.contains(e.target) && 
-                sidebar.classList.contains('active')) {
-                sidebar.classList.remove('active');
-            }
-        });
-    }
-    
-    // Fetch projects data from JSON
-    async function fetchProjectsData() {
-        try {
-            const response = await fetch('data.json');
-            const data = await response.json();
-            projectsData = data.projects;
-            renderProjectsList();
-            
-            // Load the first project by default
-            if (projectsData.length > 0) {
-                loadProject(projectsData[0].id);
-            }
-        } catch (error) {
-            console.error('Error loading projects data:', error);
-            projectContent.innerHTML = `
-                <div class="error-message">
-                    <h2>Erro ao carregar dados</h2>
-                    <p>Não foi possível carregar os dados dos projetos. Tente novamente mais tarde.</p>
-                </div>
-            `;
-        }
-    }
-    
-    // Render projects list in sidebar
-    function renderProjectsList() {
-        projectsList.innerHTML = '';
-        
-        projectsData.forEach(project => {
-            const li = document.createElement('li');
-            const isActive = currentProject === project.id;
-            
-            li.innerHTML = `
-                <a href="#" data-project-id="${project.id}" class="${isActive ? 'active' : ''}">
-                    <i class="fas ${project.icon}"></i>
-                    <span>${project.name[currentLanguage]}</span>
-                </a>
-            `;
-            
-            projectsList.appendChild(li);
-            console.log("Rendering project:", project.name);
+// DOM Elements
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+const projectsList = document.getElementById('projectsList');
+const mainContent = document.getElementById('mainContent');
+const langButtons = document.querySelectorAll('.lang-btn');
 
-        });
-        
-        // Add click event to project links
-        document.querySelectorAll('[data-project-id]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const projectId = e.currentTarget.getAttribute('data-project-id');
-                loadProject(projectId);
-                
-                // Close sidebar on mobile after selection
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.remove('active');
-                }
+// State
+let currentLang = localStorage.getItem('geardocs-lang') || 'pt';
+let currentProject = null;
+let contentData = null;
+
+// Projects list
+const projects = [
+    '3GTO', 'Aloy', 'Aventuras Peludas', 'Baristas', 'BaristaPro', 
+    'Bosque das Frutíferas', 'Conexa', 'Crush', 'Dyris', 'DogZen', 
+    'Dust Protocol', 'E-Motion', 'Evora', 'Fabr', 'GearCity', 
+    'Mecânico Fantasma', 'Mike & Tio Bob', 'My Heart', 'Oxygen', 
+    'Raiz Urbana', 'SIMCO', 'Stairs', 'Synapse', 'UnderSea', 
+    'Verso Espresso', 'Viver é uma Arte'
+];
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    loadContent();
+    renderProjectsList();
+    setupEventListeners();
+    setLanguage(currentLang);
+});
+
+// Load content from JSON
+async function loadContent() {
+    try {
+        const response = await fetch('content.json');
+        contentData = await response.json();
+    } catch (error) {
+        console.error('Error loading content:', error);
+        // Fallback content if JSON fails to load
+        contentData = generateFallbackContent();
+    }
+}
+
+// Generate fallback content if JSON fails to load
+function generateFallbackContent() {
+    const sections = {
+        pt: ["Introdução", "Conceito e Inspiração", "Estrutura e Funcionamento", "Como Usar", "Variações Possíveis", "Ferramentas e Recursos", "Links e Referências"],
+        en: ["Introduction", "Concept and Inspiration", "Structure and Functionality", "How to Use", "Possible Variations", "Tools and Resources", "Links and References"],
+        es: ["Introducción", "Concepto e Inspiración", "Estructura y Funcionamiento", "Cómo Usar", "Variaciones Posibles", "Herramientas y Recursos", "Enlaces y Referencias"]
+    };
+    
+    const translations = {
+        pt: {
+            welcome: "Bem-vindo ao GearDocs",
+            selectProject: "Selecione um projeto na barra lateral para visualizar sua documentação.",
+            projects: "Projetos",
+            language: "Idioma"
+        },
+        en: {
+            welcome: "Welcome to GearDocs",
+            selectProject: "Select a project from the sidebar to view its documentation.",
+            projects: "Projects",
+            language: "Language"
+        },
+        es: {
+            welcome: "Bienvenido a GearDocs",
+            selectProject: "Seleccione un proyecto de la barra lateral para ver su documentación.",
+            projects: "Proyectos",
+            language: "Idioma"
+        }
+    };
+    
+    const projectsData = {};
+    projects.forEach(project => {
+        projectsData[project] = {};
+        ['pt', 'en', 'es'].forEach(lang => {
+            projectsData[project][lang] = {};
+            sections[lang].forEach(section => {
+                projectsData[project][lang][section] = generateLoremIpsum();
             });
         });
-    }
+    });
     
-    // Load project content
-    function loadProject(projectId) {
-        currentProject = projectId;
-        const project = projectsData.find(p => p.id === projectId);
+    return {
+        sections,
+        translations,
+        projects: projectsData
+    };
+}
+
+// Generate Lorem Ipsum text
+function generateLoremIpsum() {
+    return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.";
+}
+
+// Render projects list
+function renderProjectsList() {
+    projectsList.innerHTML = '';
+    projects.sort().forEach(project => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#';
+        a.textContent = project;
+        a.dataset.project = project;
         
-        if (!project) return;
+        if (project === currentProject) {
+            a.classList.add('active');
+        }
         
-        // Update active state in sidebar
-        document.querySelectorAll('[data-project-id]').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-project-id') === projectId) {
-                link.classList.add('active');
+        li.appendChild(a);
+        projectsList.appendChild(li);
+    });
+}
+
+// Setup event listeners
+function setupEventListeners() {
+    // Menu toggle
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+    
+    // Project links
+    projectsList.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            e.preventDefault();
+            const project = e.target.dataset.project;
+            loadProject(project);
+            
+            // Close sidebar on mobile after selection
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('active');
             }
+        }
+    });
+    
+    // Language buttons
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            setLanguage(lang);
         });
-        
-        // Render project content
-        renderProjectContent(project);
+    });
+    
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            !sidebar.contains(e.target) && 
+            !menuToggle.contains(e.target) && 
+            sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+        }
+    });
+}
+
+// Set language
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('geardocs-lang', lang);
+    
+    // Update active language button
+    langButtons.forEach(btn => {
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Update UI text
+    updateUIText();
+    
+    // Reload current project if exists
+    if (currentProject) {
+        loadProject(currentProject);
+    }
+}
+
+// Update UI text based on current language
+function updateUIText() {
+    if (!contentData || !contentData.translations) return;
+    
+    const translations = contentData.translations[currentLang];
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[key]) {
+            element.textContent = translations[key];
+        }
+    });
+}
+
+// Load project content
+function loadProject(project) {
+    currentProject = project;
+    
+    // Update active project in sidebar
+    document.querySelectorAll('.projects-list a').forEach(a => {
+        if (a.dataset.project === project) {
+            a.classList.add('active');
+        } else {
+            a.classList.remove('active');
+        }
+    });
+    
+    // Get project content
+    let projectContent;
+    if (contentData && contentData.projects && contentData.projects[project]) {
+        projectContent = contentData.projects[project][currentLang];
+    } else {
+        // Fallback content
+        projectContent = {};
+        if (contentData && contentData.sections) {
+            contentData.sections[currentLang].forEach(section => {
+                projectContent[section] = generateLoremIpsum();
+            });
+        }
     }
     
     // Render project content
-    function renderProjectContent(project) {
-        const sections = [
-            { id: 'overview', icon: 'fa-eye', title: getSectionTitle('overview') },
-            { id: 'objective', icon: 'fa-bullseye', title: getSectionTitle('objective') },
-            { id: 'application', icon: 'fa-laptop-code', title: getSectionTitle('application') },
-            { id: 'architecture', icon: 'fa-sitemap', title: getSectionTitle('architecture') },
-            { id: 'userGuide', icon: 'fa-book', title: getSectionTitle('userGuide') },
-            { id: 'nextSteps', icon: 'fa-arrow-right', title: getSectionTitle('nextSteps') },
-            { id: 'background', icon: 'fa-history', title: getSectionTitle('background') },
-            { id: 'references', icon: 'fa-link', title: getSectionTitle('references') }
-        ];
+    renderProjectContent(project, projectContent);
+}
+
+// Render project content
+function renderProjectContent(project, content) {
+    const sections = contentData ? contentData.sections[currentLang] : 
+        ["Introdução", "Conceito e Inspiração", "Estrutura e Funcionamento", "Como Usar", "Variações Possíveis", "Ferramentas e Recursos", "Links e Referências"];
+    
+    let html = `
+        <div class="project-content">
+            <h1 class="project-title">${project}</h1>
+    `;
+    
+    sections.forEach(section => {
+        const sectionContent = content && content[section] ? content[section] : generateLoremIpsum();
+        const icon = getSectionIcon(section);
         
-        let contentHTML = `
-            <div class="project-header">
-                <h1><i class="fas ${project.icon}"></i> ${project.name[currentLanguage]}</h1>
+        html += `
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="${icon}"></i>
+                    ${section}
+                </h2>
+                <div class="section-content">
+                    <p>${sectionContent}</p>
+                </div>
             </div>
         `;
-        
-        sections.forEach(section => {
-            const sectionContent = project.sections[section.id][currentLanguage];
-            contentHTML += `
-                <div class="section-card">
-                    <h2><i class="fas ${section.icon}"></i> ${section.title}</h2>
-                    <div class="section-content">
-                        ${sectionContent}
-                    </div>
-                </div>
-            `;
-        });
-        
-        projectContent.innerHTML = contentHTML;
-    }
+    });
     
-    // Get section title based on current language
-    function getSectionTitle(sectionId) {
-        const titles = {
-            overview: {
-                pt: 'Visão Geral',
-                en: 'Overview',
-                es: 'Visión General'
-            },
-            objective: {
-                pt: 'Objetivo',
-                en: 'Objective',
-                es: 'Objetivo'
-            },
-            application: {
-                pt: 'Aplicação',
-                en: 'Application',
-                es: 'Aplicación'
-            },
-            architecture: {
-                pt: 'Arquitetura',
-                en: 'Architecture',
-                es: 'Arquitectura'
-            },
-            userGuide: {
-                pt: 'Guia do Usuário',
-                en: 'User Guide',
-                es: 'Guía del Usuario'
-            },
-            nextSteps: {
-                pt: 'Próximos Passos',
-                en: 'Next Steps',
-                es: 'Próximos Pasos'
-            },
-            background: {
-                pt: 'Contexto',
-                en: 'Background',
-                es: 'Contexto'
-            },
-            references: {
-                pt: 'Referências',
-                en: 'References',
-                es: 'Referencias'
-            }
-        };
-        
-        return titles[sectionId][currentLanguage];
-    }
+    html += '</div>';
+    mainContent.innerHTML = html;
+}
+
+// Get appropriate icon for each section
+function getSectionIcon(section) {
+    const icons = {
+        "Introdução": "fas fa-info-circle",
+        "Introduction": "fas fa-info-circle",
+        "Introducción": "fas fa-info-circle",
+        "Conceito e Inspiração": "fas fa-lightbulb",
+        "Concept and Inspiration": "fas fa-lightbulb",
+        "Concepto e Inspiración": "fas fa-lightbulb",
+        "Estrutura e Funcionamento": "fas fa-cogs",
+        "Structure and Functionality": "fas fa-cogs",
+        "Estructura y Funcionamiento": "fas fa-cogs",
+        "Como Usar": "fas fa-question-circle",
+        "How to Use": "fas fa-question-circle",
+        "Cómo Usar": "fas fa-question-circle",
+        "Variações Possíveis": "fas fa-random",
+        "Possible Variations": "fas fa-random",
+        "Variaciones Posibles": "fas fa-random",
+        "Ferramentas e Recursos": "fas fa-tools",
+        "Tools and Resources": "fas fa-tools",
+        "Herramientas y Recursos": "fas fa-tools",
+        "Links e Referências": "fas fa-link",
+        "Links and References": "fas fa-link",
+        "Enlaces y Referencias": "fas fa-link"
+    };
     
-    // Handle language change
-    function handleLanguageChange() {
-        currentLanguage = languageSelect.value;
-        localStorage.setItem('language', currentLanguage);
-        
-        // Update projects list
-        renderProjectsList();
-        
-        // Reload current project content if exists
-        if (currentProject) {
-            loadProject(currentProject);
-        }
-    }
-    
-    // Toggle theme
-    function toggleTheme() {
-        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-        localStorage.setItem('theme', currentTheme);
-        
-        if (currentTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-    }
-    
-    // Toggle sidebar on mobile
-    function toggleSidebar() {
-        sidebar.classList.toggle('active');
-    }
-    
-    // Initialize the app
-    init();
-});
+    return icons[section] || "fas fa-file-alt";
+}

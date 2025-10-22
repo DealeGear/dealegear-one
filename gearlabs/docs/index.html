@@ -3,74 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentação de Projetos</title>
+    <title>GearDocs</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-book-open"></i>
-                <span>GearDocs</span>
-            </div>
-            <div class="header-controls">
-                <div class="language-selector">
-                    <select id="language-select">
-                        <option value="pt">🇧🇷</option>
-                        <option value="en">🇺🇸</option>
-                        <option value="es">🇪🇸</option>
-                    </select>
-                </div>
-                <button id="theme-toggle" class="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button id="menu-toggle" class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </header>
-
-        <div class="main-container">
-            <!-- Sidebar -->
-            <aside id="sidebar" class="sidebar">
-                <div class="sidebar-header">
-                    <h2>Projetos</h2>
-                </div>
-                <nav class="projects-nav">
-                    <ul id="projects-list">
-                        <!-- Projects will be loaded dynamically -->
-                    </ul>
-                </nav>
-            </aside>
-
-            <!-- Main Content -->
-            <main class="content">
-                <div id="project-content" class="project-content">
-                    <div class="welcome-message">
-                        <h1>Bem-vindo à Documentação de Projetos</h1>
-                        <p>Selecione um projeto na barra lateral para visualizar sua documentação.</p>
-                    </div>
-                </div>
-            </main>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="logo">GearDocs</h1>
+            <a href="../index.html" class="gearlabs-btn">GearLabs</a>
         </div>
+    </header>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-links">
-                <a href="#">Comunidade</a>
-                <a href="../../gearlabs/index.html">GearLabs</a>
-                <a href="../../index.html">DealeGear</a>
-                <a href="../../gearblog/index.html">Blog</a>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <!-- Language Selector moved to top -->
+            <div class="language-selector">
+                <h3 data-i18n="language">Idioma</h3>
+                <div class="language-options">
+                    <button class="lang-btn active" data-lang="pt">PT</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                </div>
             </div>
-            <div class="footer-copyright">
-                <p>&copy; 2023 DocProjects. Todos os direitos reservados.</p>
+            
+            <div class="sidebar-header">
+                <h2 data-i18n="projects">Projetos</h2>
             </div>
-        </footer>
+            <ul class="projects-list" id="projectsList">
+                <!-- Projects will be loaded dynamically -->
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <div class="welcome-message">
+                <h2 data-i18n="welcome">Bem-vindo ao GearDocs</h2>
+                <p data-i18n="selectProject">Selecione um projeto na barra lateral para visualizar sua documentação.</p>
+            </div>
+        </main>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>By <a href="https://dealegear.com.br" >DealeGear</a></p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

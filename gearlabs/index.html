@@ -1,145 +1,258 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GearLabs - Hub de Protótipos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <div class="header-content">
-            <a href="" class="logo">GearLabs</a>
-            
-            <nav class="nav-desktop">
-                <a href="#prototypes" onclick="showSection('prototypes')">Protótipos</a>
-                <a href="#challenges" onclick="showSection('challenges')">Desafios</a>
-            </nav>
+      <div class="header-content">
+        <a href="" class="logo">GearLabs</a>
 
-            <div class="header-controls">
-                <div class="language-dropdown">
-                    <button class="control-btn" onclick="toggleLanguageMenu()">
-                        <i class="fas fa-globe"></i>
-                    </button>
-                    <div class="language-menu" id="languageMenu">
-                        <div class="language-option" onclick="changeLanguage('pt')">Português</div>
-                        <div class="language-option" onclick="changeLanguage('en')">English</div>
-                        <div class="language-option" onclick="changeLanguage('es')">Español</div>
-                    </div>
-                </div>
-                <button class="control-btn" onclick="toggleTheme()">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-                <button class="menu-toggle" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
+        <nav class="nav-desktop">
+          <a href="#prototypes" onclick="showSection('prototypes')"
+            >Protótipos</a
+          >
+          <a href="#challenges" onclick="showSection('challenges')">Desafios</a>
+        </nav>
+
+        <div class="header-controls">
+          <div class="language-dropdown">
+            <button class="control-btn" onclick="toggleLanguageMenu()">
+              <i class="fas fa-globe"></i>
+            </button>
+            <div class="language-menu" id="languageMenu">
+              <div class="language-option" onclick="changeLanguage('pt')">
+                Português
+              </div>
+              <div class="language-option" onclick="changeLanguage('en')">
+                English
+              </div>
+              <div class="language-option" onclick="changeLanguage('es')">
+                Español
+              </div>
             </div>
+          </div>
+          <button class="control-btn" onclick="toggleTheme()">
+            <i class="fas fa-moon" id="themeIcon"></i>
+          </button>
+          <button class="menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
+      </div>
     </header>
 
     <!-- Menu Mobile -->
     <nav class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <span class="logo">GearLabs</span>
-            <button class="control-btn" onclick="toggleMobileMenu()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="mobile-menu-content">
-            <a href="#prototypes" onclick="showSection('prototypes'); toggleMobileMenu();">Protótipos</a>
-            <a href="#challenges" onclick="showSection('challenges'); toggleMobileMenu();">Desafios</a>
-            <!--<a href="#" onclick="changeLanguage('pt'); toggleMobileMenu();">Português</a>
+      <div class="mobile-menu-header">
+        <span class="logo">GearLabs</span>
+        <button class="control-btn" onclick="toggleMobileMenu()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-menu-content">
+        <a
+          href="#heroTitle"
+          onclick="showSection('prototypes'); toggleMobileMenu();"
+          >Protótipos</a
+        >
+        <a
+          href="#challenges"
+          onclick="showSection('challenges'); toggleMobileMenu();"
+          >Desafios</a
+        >
+        <!--<a href="#" onclick="changeLanguage('pt'); toggleMobileMenu();">Português</a>
             <a href="#" onclick="changeLanguage('en'); toggleMobileMenu();">English</a>
             <a href="#" onclick="changeLanguage('es'); toggleMobileMenu();">Español</a>-->
-            <a href="docs/index.html" id="documentation">Documentação</a>
-            <a href="licence.html" id="licence">Licença</a>
-            <a href="../index.html" id="dealegear">DealGear</a>
-        </div>
+        <a href="docs/index.html" id="documentation">Documentação</a>
+        <a href="licence.html" id="licence">Licença</a>
+        <a href="../index.html" id="dealegear">DealGear</a>
+      </div>
     </nav>
 
     <div class="overlay" id="overlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1 id="heroTitle">O Poder dos Protótipos</h1>
-        <p id="heroDescription">
-            Cada protótipo é uma oportunidade de aprendizado, um passo em direção à inovação. 
-            Através da experimentação e do desenvolvimento contínuo, transformamos ideias simples 
-            em soluções que podem impactar positivamente a vida das pessoas. Acreditamos que todo 
-            grande projeto começa com um pequeno protótipo.
-        </p>
-        <a href="#prototypes" class="cta-button" id="ctaButton">Comece agora</a>
+      <h1 id="heroTitle">O Poder dos Protótipos</h1>
+      <p id="heroDescription">
+        Cada protótipo é uma oportunidade de aprendizado, um passo em direção à
+        inovação. Através da experimentação e do desenvolvimento contínuo,
+        transformamos ideias simples em soluções que podem impactar
+        positivamente a vida das pessoas. Acreditamos que todo grande projeto
+        começa com um pequeno protótipo.
+      </p>
+      <a href="#prototypes" class="cta-button" id="ctaButton">Comece agora</a>
     </section>
 
     <!-- Seção de Protótipos -->
     <section class="prototypes-section" id="prototypes">
-        <h2 class="section-title" id="prototypesTitle">Nossos Protótipos</h2>
-        <div class="prototypes-grid" id="prototypesGrid">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>Carregando protótipos...</p>
-            </div>
+      <h2 class="section-title" id="prototypesTitle">Nossos Protótipos</h2>
+      <div class="prototypes-grid" id="prototypesGrid">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Carregando protótipos...</p>
         </div>
+      </div>
     </section>
 
     <!-- Seção de Desafios -->
     <section class="challenges-section" id="challenges">
-        <h2 class="section-title" id="challengesTitle">Desafios de Inovação</h2>
-        <div class="challenges-grid" id="challengesGrid">
-            <div class="challenge-card">
-                <div class="challenge-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3 class="challenge-title" id="challenge1Title">Motor elétrico de alto desempenho</h3>
-                <p class="challenge-description" id="challenge1Desc">
-                    Desenvolver um motor elétrico que supere as limitações atuais em eficiência, 
-                    potência e durabilidade, tornando-se uma alternativa viável para aplicações 
-                    industriais e de transporte.
-                </p>
-            </div>
-            <div class="challenge-card">
-                <div class="challenge-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <h3 class="challenge-title" id="challenge2Title">Alternativa ao uso de hélio em dirigíveis</h3>
-                <p class="challenge-description" id="challenge2Desc">
-                    Criar uma solução inovadora que possa substituir o hélio na flutuação de 
-                    dirigíveis, considerando custos, segurança e impacto ambiental.
-                </p>
-            </div>
-            <div class="challenge-card">
-                <div class="challenge-icon">
-                    <i class="fas fa-recycle"></i>
-                </div>
-                <h3 class="challenge-title" id="challenge3Title">Energia limpa para comunidades isoladas</h3>
-                <p class="challenge-description" id="challenge3Desc">
-                    Projetar um sistema de geração de energia sustentável e de baixo custo 
-                    para comunidades rurais e isoladas, utilizando recursos locais disponíveis.
-                </p>
-            </div>
+      <h2 class="section-title" id="challengesTitle">Desafios de Inovação</h2>
+      <div class="challenges-grid" id="challengesGrid">
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge1Title">
+            Motor elétrico de alto desempenho
+          </h3>
+          <p class="challenge-description" id="challenge1Desc">
+            Desenvolver um motor elétrico que supere as limitações atuais em
+            eficiência, potência e durabilidade, tornando-se uma alternativa
+            viável para aplicações industriais e de transporte.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
         </div>
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge2Title">
+            Alternativa ao uso de hélio em dirigíveis
+          </h3>
+          <p class="challenge-description" id="challenge2Desc">
+            Criar uma solução inovadora que possa substituir o hélio na
+            flutuação de dirigíveis, considerando custos, segurança e impacto
+            ambiental.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge3Title">
+            Energia limpa para comunidades isoladas
+          </h3>
+          <p class="challenge-description" id="challenge3Desc">
+            Projetar um sistema de geração de energia sustentável e de baixo
+            custo para comunidades rurais e isoladas, utilizando recursos locais
+            disponíveis.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge3Title">
+            Energia limpa para comunidades isoladas
+          </h3>
+          <p class="challenge-description" id="challenge3Desc">
+            Projetar um sistema de geração de energia sustentável e de baixo
+            custo para comunidades rurais e isoladas, utilizando recursos locais
+            disponíveis.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge3Title">
+            Energia limpa para comunidades isoladas
+          </h3>
+          <p class="challenge-description" id="challenge3Desc">
+            Projetar um sistema de geração de energia sustentável e de baixo
+            custo para comunidades rurais e isoladas, utilizando recursos locais
+            disponíveis.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge3Title">
+            Energia limpa para comunidades isoladas
+          </h3>
+          <p class="challenge-description" id="challenge3Desc">
+            Projetar um sistema de geração de energia sustentável e de baixo
+            custo para comunidades rurais e isoladas, utilizando recursos locais
+            disponíveis.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge3Title">
+            Energia limpa para comunidades isoladas
+          </h3>
+          <p class="challenge-description" id="challenge3Desc">
+            Projetar um sistema de geração de energia sustentável e de baixo
+            custo para comunidades rurais e isoladas, utilizando recursos locais
+            disponíveis.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge3Title">
+            Energia limpa para comunidades isoladas
+          </h3>
+          <p class="challenge-description" id="challenge3Desc">
+            Projetar um sistema de geração de energia sustentável e de baixo
+            custo para comunidades rurais e isoladas, utilizando recursos locais
+            disponíveis.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-icon">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <h3 class="challenge-title" id="challenge3Title">
+            Energia limpa para comunidades isoladas
+          </h3>
+          <p class="challenge-description" id="challenge3Desc">
+            Projetar um sistema de geração de energia sustentável e de baixo
+            custo para comunidades rurais e isoladas, utilizando recursos locais
+            disponíveis.
+          </p>
+          <a href="detalhes.html" class="challenge-button">Mais Detalhes</a>
+        </div>
+      </div>
     </section>
-    <button id="scrollToTopBtn" title="Voltar ao Topo">
-    Topo
-</button>
+    <button id="scrollToTopBtn" title="Voltar ao Topo">Topo</button>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="../index.html" id="footerHome">DealeGear</a>
-                <a href="docs/index.html" id="footerDocs">Documentação</a>
-                <a href="licence.html" id="footerLicence">Licença</a>
-<!--                <a href="https://t.me/DealGear" id="footerCommunity" target="_blank">Telegram</a>-->
-            </div>
-            <p class="footer-copyright" id="footerCopyright">
-                © 2022-2025 DealeGear - São Paulo - Brasil
-            </p>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="../index.html" id="footerHome">DealeGear</a>
+          <a href="docs/index.html" id="footerDocs">Documentação</a>
+          <a href="licence.html" id="footerLicence">Licença</a>
+          <!--                <a href="https://t.me/DealGear" id="footerCommunity" target="_blank">Telegram</a>-->
         </div>
+        <p class="footer-copyright" id="footerCopyright">
+          © DealeGear - São Paulo - Brasil
+        </p>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

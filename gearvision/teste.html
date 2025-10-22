@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorldScope - Explore o planeta pelos números</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0a2342;
+            --primary-medium: #1e3a5f;
+            --primary-light: #2c5282;
+            --secondary-green: #48bb78;
+            --secondary-light: #9ae6b4;
+            --bg-light: #f7fafc;
+            --bg-dark: #1a202c;
+            --text-light: #2d3748;
+            --text-dark: #e2e8f0;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-light: #1a202c;
+            --bg-dark: #0a0e1a;
+            --text-light: #e2e8f0;
+            --text-dark: #2d3748;
+            --border-color: #2d3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--secondary-green);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-item:hover {
+            color: var(--secondary-light);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-medium);
+            min-width: 120px;
+            box-shadow: var(--shadow);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--primary-light);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--secondary-light);
+        }
+
+        /* Main Layout */
+        .app-container {
+            display: flex;
+            height: calc(100vh - 120px);
+            position: relative;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 1.5rem;
+            overflow-y: auto;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-light);
+            text-align: center;
+        }
+
+        .control-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.75rem;
+            background-color: var(--primary-medium);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .control-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        .control-btn.active {
+            background-color: var(--secondary-green);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .control-btn i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Map Container */
+        .map-container {
+            flex: 1;
+            position: relative;
+            background-color: var(--bg-light);
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(10, 35, 66, 0.9);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            z-index: 500;
+            box-shadow: var(--shadow);
+        }
+
+        /* Country Details Panel */
+        .details-panel {
+            width: 320px;
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-left: 1px solid var(--border-color);
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: var(--transition);
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            z-index: 100;
+            box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-panel.active {
+            transform: translateX(0);
+        }
+
+        .country-flag {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .country-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .country-rank {
+            display: inline-block;
+            background-color: var(--secondary-green);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .country-data {
+            margin-bottom: 1.5rem;
+        }
+
+        .data-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .data-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .country-description {
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        .close-panel {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .close-panel:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-light);
+        }
+
+        /* Tooltip */
+        .custom-tooltip {
+            background-color: rgba(10, 35, 66, 0.9);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .details-panel {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 1rem;
+            }
+            
+            .map-container {
+                height: 400px;
+            }
+            
+            .details-panel {
+                width: 100%;
+                height: auto;
+                position: relative;
+                transform: none;
+                border-left: none;
+                border-top: 1px solid var(--border-color);
+            }
+            
+            .details-panel.active {
+                transform: none;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            nav {
+                width: 100%;
+                justify-content: space-around;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--border-color);
+            border-top: 5px solid var(--secondary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-globe-americas"></i>
+            <span>WorldScope</span>
+        </div>
+        <nav>
+            <div class="nav-item dropdown">
+                <span data-translate="sections">Seções</span>
+                <div class="dropdown-content">
+                    <a href="#" data-translate="explore">Explorar</a>
+                    <a href="#" data-translate="about">Sobre</a>
+                    <a href="#" data-translate="contact">Contato</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <span data-translate="languages">Idiomas</span>
+                <div class="dropdown-content">
+                    <a href="#" onclick="changeLanguage('pt')">Português</a>
+                    <a href="#" onclick="changeLanguage('en')">English</a>
+                    <a href="#" onclick="changeLanguage('es')">Español</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <span>DealeGear</span>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="app-container">
+        <aside class="sidebar">
+            <h2 data-translate="categories">Categorias</h2>
+            <button class="control-btn" data-category="hottest" onclick="selectCategory('hottest')">
+                <i class="fas fa-temperature-high"></i>
+                <span data-translate="hottest">Locais mais quentes</span>
+            </button>
+            <button class="control-btn" data-category="coldest" onclick="selectCategory('coldest')">
+                <i class="fas fa-temperature-low"></i>
+                <span data-translate="coldest">Locais mais frios</span>
+            </button>
+            <button class="control-btn" data-category="freshwater" onclick="selectCategory('freshwater')">
+                <i class="fas fa-tint"></i>
+                <span data-translate="freshwater">Locais com mais água doce</span>
+            </button>
+            <button class="control-btn" data-category="forests" onclick="selectCategory('forests')">
+                <i class="fas fa-tree"></i>
+                <span data-translate="forests">Locais com mais florestas</span>
+            </button>
+            <button class="control-btn" data-category="wheat" onclick="selectCategory('wheat')">
+                <i class="fas fa-wheat-awn"></i>
+                <span data-translate="wheat">Maior produção de trigo</span>
+            </button>
+            <button class="control-btn" data-category="rice" onclick="selectCategory('rice')">
+                <i class="fas fa-seedling"></i>
+                <span data-translate="rice">Maior produção de arroz</span>
+            </button>
+            <button class="control-btn" data-category="meat" onclick="selectCategory('meat')">
+                <i class="fas fa-drumstick-bite"></i>
+                <span data-translate="meat">Maior produção de carne</span>
+            </button>
+            <button class="control-btn" data-category="fish" onclick="selectCategory('fish')">
+                <i class="fas fa-fish"></i>
+                <span data-translate="fish">Maior produção de pescados</span>
+            </button>
+            <button class="control-btn" data-category="industry" onclick="selectCategory('industry')">
+                <i class="fas fa-industry"></i>
+                <span data-translate="industry">Maior produção industrial</span>
+            </button>
+            <button class="control-btn" data-category="patents" onclick="selectCategory('patents')">
+                <i class="fas fa-lightbulb"></i>
+                <span data-translate="patents">Maior número de patentes tecnológicas</span>
+            </button>
+            <button class="control-btn" data-category="population" onclick="selectCategory('population')">
+                <i class="fas fa-users"></i>
+                <span data-translate="population">Maior população</span>
+            </button>
+            <button class="control-btn" data-category="gdp" onclick="selectCategory('gdp')">
+                <i class="fas fa-chart-line"></i>
+                <span data-translate="gdp">Maior PIB</span>
+            </button>
+            <button class="control-btn" data-category="billionaires" onclick="selectCategory('billionaires')">
+                <i class="fas fa-gem"></i>
+                <span data-translate="billionaires">Maior número de bilionários</span>
+            </button>
+        </aside>
+
+        <section class="map-container">
+            <div class="map-title" id="mapTitle" data-translate="selectCategory">Selecione uma categoria para explorar</div>
+            <div id="map"></div>
+        </section>
+
+        <aside class="details-panel" id="detailsPanel">
+            <button class="close-panel" onclick="closeDetailsPanel()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img class="country-flag" id="countryFlag" src="" alt="Country Flag">
+            <h2 class="country-name" id="countryName"></h2>
+            <span class="country-rank" id="countryRank"></span>
+            <div class="country-data">
+                <div class="data-label" id="dataLabel"></div>
+                <div class="data-value" id="dataValue"></div>
+            </div>
+            <p class="country-description" id="countryDescription"></p>
+        </aside>
+    </main>
+
+    <footer>
+        <div>
+            <span>Luiz Moreira © 2025</span>
+        </div>
+        <div class="social-links">
+            <a href="https://instagram.com/luiz.sousa.moreira" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Translation system
+        const translations = {
+            pt: {
+                sections: "Seções",
+                languages: "Idiomas",
+                explore: "Explorar",
+                about: "Sobre",
+                contact: "Contato",
+                categories: "Categorias",
+                hottest: "Locais mais quentes",
+                coldest: "Locais mais frios",
+                freshwater: "Locais com mais água doce",
+                forests: "Locais com mais florestas",
+                wheat: "Maior produção de trigo",
+                rice: "Maior produção de arroz",
+                meat: "Maior produção de carne",
+                fish: "Maior produção de pescados",
+                industry: "Maior produção industrial",
+                patents: "Maior número de patentes tecnológicas",
+                population: "Maior população",
+                gdp: "Maior PIB",
+                billionaires: "Maior número de bilionários",
+                selectCategory: "Selecione uma categoria para explorar",
+                rank: "º lugar"
+            },
+            en: {
+                sections: "Sections",
+                languages: "Languages",
+                explore: "Explore",
+                about: "About",
+                contact: "Contact",
+                categories: "Categories",
+                hottest: "Hottest places",
+                coldest: "Coldest places",
+                freshwater: "Places with most freshwater",
+                forests: "Places with most forests",
+                wheat: "Highest wheat production",
+                rice: "Highest rice production",
+                meat: "Highest meat production",
+                fish: "Highest fish production",
+                industry: "Highest industrial production",
+                patents: "Most tech patents",
+                population: "Largest population",
+                gdp: "Highest GDP",
+                billionaires: "Most billionaires",
+                selectCategory: "Select a category to explore",
+                rank: "th place"
+            },
+            es: {
+                sections: "Secciones",
+                languages: "Idiomas",
+                explore: "Explorar",
+                about: "Acerca de",
+                contact: "Contacto",
+                categories: "Categorías",
+                hottest: "Lugares más calientes",
+                coldest: "Lugares más fríos",
+                freshwater: "Lugares con más agua dulce",
+                forests: "Lugares con más bosques",
+                wheat: "Mayor producción de trigo",
+                rice: "Mayor producción de arroz",
+                meat: "Mayor producción de carne",
+                fish: "Mayor producción de pescado",
+                industry: "Mayor producción industrial",
+                patents: "Más patentes tecnológicas",
+                population: "Población más grande",
+                gdp: "PIB más alto",
+                billionaires: "Más billonarios",
+                selectCategory: "Seleccione una categoría para explorar",
+                rank: "º lugar"
+            }
+        };
+
+        let currentLanguage = 'pt';
+        let currentCategory = null;
+        let map = null;
+        let countryLayers = {};
+
+        // Mock data for categories
+        const categoryData = {
+            hottest: {
+                title: {
+                    pt: "🌡️ Locais mais quentes",
+                    en: "🌡️ Hottest places",
+                    es: "🌡️ Lugares más calientes"
+                },
+                countries: [
+                    { 
+                        name: "Mali", 
+                        rank: 1, 
+                        value: "28.8°C", 
+                        lat: 17.570692, 
+                        lng: -3.996166,
+                        description: {
+                            pt: "O Mali é um dos países mais quentes do mundo, com temperaturas médias anuais elevadas.",
+                            en: "Mali is one of the hottest countries in the world, with high average annual temperatures.",
+                            es: "Mali es uno de los países más calientes del mundo, con altas temperaturas medias anuales."
+                        }
+                    },
+                    { 
+                        name: "Burkina Faso", 
+                        rank: 2, 
+                        value: "28.7°C", 
+                        lat: 12.238333, 
+                        lng: -1.561593,
+                        description: {
+                            pt: "Burkina Faso possui um clima predominantemente quente e seco durante todo o ano.",
+                            en: "Burkina Faso has a predominantly hot and dry climate throughout the year.",
+                            es: "Burkina Faso tiene un clima predominantemente cálido y seco durante todo el año."
+                        }
+                    },
+                    { 
+                        name: "Senegal", 
+                        rank: 3, 
+                        value: "28.5°C", 
+                        lat: 14.497401, 
+                        lng: -14.452362,
+                        description: {
+                            pt: "O Senegal tem um clima tropical com temperaturas elevadas durante a maior parte do ano.",
+                            en: "Senegal has a tropical climate with high temperatures for most of the year.",
+                            es: "Senegal tiene un clima tropical con altas temperaturas durante la mayor parte del año."
+                        }
+                    }
+                ]
+            },
+            coldest: {
+                title: {
+                    pt: "❄️ Locais mais frios",
+                    en: "❄️ Coldest places",
+                    es: "❄️ Lugares más fríos"
+                },
+                countries: [
+                    { 
+                        name: "Rússia", 
+                        rank: 1, 
+                        value: "-5.1°C", 
+                        lat: 61.524010, 
+                        lng: 105.318756,
+                        description: {
+                            pt: "A Rússia é o país mais frio do mundo, com invernos extremamente rigorosos na Sibéria.",
+                            en: "Russia is the coldest country in the world, with extremely harsh winters in Siberia.",
+                            es: "Rusia es el país más frío del mundo, con inviernos extremadamente rigurosos en Siberia."
+                        }
+                    },
+                    { 
+                        name: "Canadá", 
+                        rank: 2, 
+                        value: "-5.4°C", 
+                        lat: 56.130366, 
+                        lng: -106.346771,
+                        description: {
+                            pt: "O Canadá experimenta temperaturas muito baixas, especialmente em suas regiões norte.",
+                            en: "Canada experiences very low temperatures, especially in its northern regions.",
+                            es: "Canadá experimenta temperaturas muy bajas, especialmente en sus regiones norte."
+                        }
+                    },
+                    { 
+                        name: "Mongólia", 
+                        rank: 3, 
+                        value: "-0.7°C", 
+                        lat: 46.862496, 
+                        lng: 103.846656,
+                        description: {
+                            pt: "A Mongólia tem um clima continental extremo com invernos muito frios.",
+                            en: "Mongolia has an extreme continental climate with very cold winters.",
+                            es: "Mongolia tiene un clima continental extremo con inviernos muy fríos."
+                        }
+                    }
+                ]
+            },
+            freshwater: {
+                title: {
+                    pt: "💧 Locais com mais água doce",
+                    en: "💧 Places with most freshwater",
+                    es: "💧 Lugares con más agua dulce"
+                },
+                countries: [
+                    { 
+                        name: "Brasil", 
+                        rank: 1, 
+                        value: "8.233 km³", 
+                        lat: -14.235004, 
+                        lng: -51.925282,
+                        description: {
+                            pt: "O Brasil possui a maior reserva de água doce do mundo, com a Bacia Amazônica.",
+                            en: "Brazil has the largest freshwater reserve in the world, with the Amazon Basin.",
+                            es: "Brasil posee la mayor reserva de agua dulce del mundo, con la Cuenca Amazónica."
+                        }
+                    },
+                    { 
+                        name: "Rússia", 
+                        rank: 2, 
+                        value: "4.508 km³", 
+                        lat: 61.524010, 
+                        lng: 105.318756,
+                        description: {
+                            pt: "A Rússia tem vastos recursos de água doce, incluindo o Lago Baikal, o mais profundo do mundo.",
+                            en: "Russia has vast freshwater resources, including Lake Baikal, the deepest in the world.",
+                            es: "Rusia tiene vastos recursos de agua dulce, incluyendo el Lago Baikal, el más profundo del mundo."
+                        }
+                    },
+                    { 
+                        name: "Canadá", 
+                        rank: 3, 
+                        value: "2.902 km³", 
+                        lat: 56.130366, 
+                        lng: -106.346771,
+                        description: {
+                            pt: "O Canadá possui inúmeros lagos e rios que contribuem para suas grandes reservas de água doce.",
+                            en: "Canada has numerous lakes and rivers that contribute to its large freshwater reserves.",
+                            es: "Canadá posee numerosos lagos y ríos que contribuyen a sus grandes reservas de agua dulce."
+                        }
+                    }
+                ]
+            },
+            forests: {
+                title: {
+                    pt: "🌳 Locais com mais florestas",
+                    en: "🌳 Places with most forests",
+                    es: "🌳 Lugares con más bosques"
+                },
+                countries: [
+                    { 
+                        name: "Rússia", 
+                        rank: 1, 
+                        value: "815 milhões ha", 
+                        lat: 61.524010, 
+                        lng: 105.318756,
+                        description: {
+                            pt: "A Rússia possui a maior área florestal do mundo, principalmente a taiga siberiana.",
+                            en: "Russia has the largest forest area in the world, mainly the Siberian taiga.",
+                            es: "Rusia posee la mayor área forestal del mundo, principalmente la taiga siberiana."
+                        }
+                    },
+                    { 
+                        name: "Brasil", 
+                        rank: 2, 
+                        value: "497 milhões ha", 
+                        lat: -14.235004, 
+                        lng: -51.925282,
+                        description: {
+                            pt: "O Brasil abriga a maior parte da Floresta Amazônica, o maior floresta tropical do mundo.",
+                            en: "Brazil is home to most of the Amazon Rainforest, the largest tropical forest in the world.",
+                            es: "Brasil alberga la mayor parte del Bosque Amazónico, el bosque tropical más grande del mundo."
+                        }
+                    },
+                    { 
+                        name: "Canadá", 
+                        rank: 3, 
+                        value: "347 milhões ha", 
+                        lat: 56.130366, 
+                        lng: -106.346771,
+                        description: {
+                            pt: "O Canadá possui vastas florestas boreais que cobrem grande parte do seu território.",
+                            en: "Canada has vast boreal forests that cover much of its territory.",
+                            es: "Canadá posee vastos bosques boreales que cubren gran parte de su territorio."
+                        }
+                    }
+                ]
+            },
+            wheat: {
+                title: {
+                    pt: "🌾 Maior produção de trigo",
+                    en: "🌾 Highest wheat production",
+                    es: "🌾 Mayor producción de trigo"
+                },
+                countries: [
+                    { 
+                        name: "China", 
+                        rank: 1, 
+                        value: "134 milhões ton", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China é o maior produtor de trigo do mundo, com cultivos em diversas regiões do país.",
+                            en: "China is the world's largest wheat producer, with crops in various regions of the country.",
+                            es: "China es el mayor productor de trigo del mundo, con cultivos en varias regiones del país."
+                        }
+                    },
+                    { 
+                        name: "Índia", 
+                        rank: 2, 
+                        value: "107 milhões ton", 
+                        lat: 20.593684, 
+                        lng: 78.962883,
+                        description: {
+                            pt: "A Índia é o segundo maior produtor de trigo, com a região do Punjab sendo o principal centro produtor.",
+                            en: "India is the second largest wheat producer, with the Punjab region being the main production center.",
+                            es: "India es el segundo mayor productor de trigo, con la región de Punjab siendo el principal centro de producción."
+                        }
+                    },
+                    { 
+                        name: "Rússia", 
+                        rank: 3, 
+                        value: "85 milhões ton", 
+                        lat: 61.524010, 
+                        lng: 105.318756,
+                        description: {
+                            pt: "A Rússia se tornou um dos principais produtores de trigo, exportando para diversos países.",
+                            en: "Russia has become one of the main wheat producers, exporting to various countries.",
+                            es: "Rusia se ha convertido en uno de los principales productores de trigo, exportando a varios países."
+                        }
+                    }
+                ]
+            },
+            rice: {
+                title: {
+                    pt: "🍚 Maior produção de arroz",
+                    en: "🍚 Highest rice production",
+                    es: "🍚 Mayor producción de arroz"
+                },
+                countries: [
+                    { 
+                        name: "China", 
+                        rank: 1, 
+                        value: "214 milhões ton", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China é o maior produtor de arroz do mundo, responsável por quase 30% da produção global.",
+                            en: "China is the world's largest rice producer, responsible for almost 30% of global production.",
+                            es: "China es el mayor productor de arroz del mundo, responsable de casi el 30% de la producción global."
+                        }
+                    },
+                    { 
+                        name: "Índia", 
+                        rank: 2, 
+                        value: "177 milhões ton", 
+                        lat: 20.593684, 
+                        lng: 78.962883,
+                        description: {
+                            pt: "A Índia é o segundo maior produtor de arroz, com cultivos principalmente nas regiões sul e leste.",
+                            en: "India is the second largest rice producer, with crops mainly in the southern and eastern regions.",
+                            es: "India es el segundo mayor productor de arroz, con cultivos principalmente en las regiones sur y este."
+                        }
+                    },
+                    { 
+                        name: "Bangladesh", 
+                        rank: 3, 
+                        value: "54 milhões ton", 
+                        lat: 23.684994, 
+                        lng: 90.356331,
+                        description: {
+                            pt: "Bangladesh é um dos maiores produtores de arroz, com o cereal sendo base da alimentação local.",
+                            en: "Bangladesh is one of the largest rice producers, with the cereal being the basis of local food.",
+                            es: "Bangladesh es uno de los mayores productores de arroz, siendo el cereal la base de la alimentación local."
+                        }
+                    }
+                ]
+            },
+            meat: {
+                title: {
+                    pt: "🥩 Maior produção de carne",
+                    en: "🥩 Highest meat production",
+                    es: "🥩 Mayor producción de carne"
+                },
+                countries: [
+                    { 
+                        name: "China", 
+                        rank: 1, 
+                        value: "86 milhões ton", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China é o maior produtor de carne do mundo, com destaque para a produção de suína.",
+                            en: "China is the world's largest meat producer, with emphasis on pork production.",
+                            es: "China es el mayor productor de carne del mundo, con énfasis en la producción de cerdo."
+                        }
+                    },
+                    { 
+                        name: "Estados Unidos", 
+                        rank: 2, 
+                        value: "46 milhões ton", 
+                        lat: 37.090240, 
+                        lng: -95.712891,
+                        description: {
+                            pt: "Os Estados Unidos são o segundo maior produtor de carne, com forte produção bovina.",
+                            en: "The United States is the second largest meat producer, with strong beef production.",
+                            es: "Estados Unidos es el segundo mayor productor de carne, con fuerte producción de carne de res."
+                        }
+                    },
+                    { 
+                        name: "Brasil", 
+                        rank: 3, 
+                        value: "42 milhões ton", 
+                        lat: -14.235004, 
+                        lng: -51.925282,
+                        description: {
+                            pt: "O Brasil é um dos maiores produtores de carne do mundo, especialmente de carne bovina e de frango.",
+                            en: "Brazil is one of the largest meat producers in the world, especially beef and chicken.",
+                            es: "Brasil es uno de los mayores productores de carne del mundo, especialmente de carne de res y de pollo."
+                        }
+                    }
+                ]
+            },
+            fish: {
+                title: {
+                    pt: "🐟 Maior produção de pescados",
+                    en: "🐟 Highest fish production",
+                    es: "🐟 Mayor producción de pescado"
+                },
+                countries: [
+                    { 
+                        name: "China", 
+                        rank: 1, 
+                        value: "58 milhões ton", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China é o maior produtor de pescados do mundo, combinando pesca e aquicultura.",
+                            en: "China is the world's largest fish producer, combining fishing and aquaculture.",
+                            es: "China es el mayor productor de pescado del mundo, combinando pesca y acuicultura."
+                        }
+                    },
+                    { 
+                        name: "Indonésia", 
+                        rank: 2, 
+                        value: "22 milhões ton", 
+                        lat: -0.789275, 
+                        lng: 113.921327,
+                        description: {
+                            pt: "A Indonésia é o segundo maior produtor de pescados, com vasta costa e rica biodiversidade marinha.",
+                            en: "Indonesia is the second largest fish producer, with vast coastline and rich marine biodiversity.",
+                            es: "Indonesia es el segundo mayor productor de pescado, con vasta costa y rica biodiversidad marina."
+                        }
+                    },
+                    { 
+                        name: "Índia", 
+                        rank: 3, 
+                        value: "14 milhões ton", 
+                        lat: 20.593684, 
+                        lng: 78.962883,
+                        description: {
+                            pt: "A Índia tem uma produção significativa de pescados, tanto da pesca marinha quanto da aquicultura.",
+                            en: "India has significant fish production, both from marine fishing and aquaculture.",
+                            es: "India tiene una producción significativa de pescado, tanto de la pesca marina como de la acuicultura."
+                        }
+                    }
+                ]
+            },
+            industry: {
+                title: {
+                    pt: "🏭 Maior produção industrial",
+                    en: "🏭 Highest industrial production",
+                    es: "🏭 Mayor producción industrial"
+                },
+                countries: [
+                    { 
+                        name: "China", 
+                        rank: 1, 
+                        value: "US$ 4,9 trilhões", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China é o maior produtor industrial do mundo, conhecida como 'a fábrica do mundo'.",
+                            en: "China is the world's largest industrial producer, known as 'the world's factory'.",
+                            es: "China es el mayor productor industrial del mundo, conocida como 'la fábrica del mundo'."
+                        }
+                    },
+                    { 
+                        name: "Estados Unidos", 
+                        rank: 2, 
+                        value: "US$ 2,3 trilhões", 
+                        lat: 37.090240, 
+                        lng: -95.712891,
+                        description: {
+                            pt: "Os Estados Unidos têm uma base industrial diversificada, com destaque para tecnologia e automação.",
+                            en: "The United States has a diversified industrial base, with emphasis on technology and automation.",
+                            es: "Estados Unidos tiene una base industrial diversificada, con énfasis en tecnología y automatización."
+                        }
+                    },
+                    { 
+                        name: "Japão", 
+                        rank: 3, 
+                        value: "US$ 1,0 trilhão", 
+                        lat: 36.204824, 
+                        lng: 138.252924,
+                        description: {
+                            pt: "O Japão é conhecido por sua indústria de alta tecnologia, especialmente automóveis e eletrônicos.",
+                            en: "Japan is known for its high-tech industry, especially automobiles and electronics.",
+                            es: "Japón es conocido por su industria de alta tecnología, especialmente automóviles y electrónica."
+                        }
+                    }
+                ]
+            },
+            patents: {
+                title: {
+                    pt: "💡 Maior número de patentes tecnológicas",
+                    en: "💡 Most tech patents",
+                    es: "💡 Más patentes tecnológicas"
+                },
+                countries: [
+                    { 
+                        name: "China", 
+                        rank: 1, 
+                        value: "1,59 milhão", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China lidera o mundo em número de patentes registradas anualmente, refletindo seu investimento em inovação.",
+                            en: "China leads the world in the number of patents registered annually, reflecting its investment in innovation.",
+                            es: "China lidera el mundo en el número de patentes registradas anualmente, reflejando su inversión en innovación."
+                        }
+                    },
+                    { 
+                        name: "Estados Unidos", 
+                        rank: 2, 
+                        value: "625 mil", 
+                        lat: 37.090240, 
+                        lng: -95.712891,
+                        description: {
+                            pt: "Os Estados Unidos continuam sendo um hub de inovação tecnológica, especialmente em software e biotecnologia.",
+                            en: "The United States continues to be a hub of technological innovation, especially in software and biotechnology.",
+                            es: "Estados Unidos sigue siendo un centro de innovación tecnológica, especialmente en software y biotecnología."
+                        }
+                    },
+                    { 
+                        name: "Japão", 
+                        rank: 3, 
+                        value: "307 mil", 
+                        lat: 36.204824, 
+                        lng: 138.252924,
+                        description: {
+                            pt: "O Japão tem uma forte cultura de patentes, especialmente em eletrônicos, automóveis e robótica.",
+                            en: "Japan has a strong patent culture, especially in electronics, automobiles and robotics.",
+                            es: "Japón tiene una fuerte cultura de patentes, especialmente en electrónica, automóviles y robótica."
+                        }
+                    }
+                ]
+            },
+            population: {
+                title: {
+                    pt: "👥 Maior população",
+                    en: "👥 Largest population",
+                    es: "👥 Población más grande"
+                },
+                countries: [
+                    { 
+                        name: "China", 
+                        rank: 1, 
+                        value: "1,41 bilhão", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China é o país mais populoso do mundo, embora seu crescimento tenha desacelerado recentemente.",
+                            en: "China is the most populous country in the world, although its growth has slowed recently.",
+                            es: "China es el país más poblado del mundo, aunque su crecimiento ha desacelerado recientemente."
+                        }
+                    },
+                    { 
+                        name: "Índia", 
+                        rank: 2, 
+                        value: "1,38 bilhão", 
+                        lat: 20.593684, 
+                        lng: 78.962883,
+                        description: {
+                            pt: "A Índia está prestes a ultrapassar a China como o país mais populoso do mundo.",
+                            en: "India is about to surpass China as the most populous country in the world.",
+                            es: "India está a punto de superar a China como el país más poblado del mundo."
+                        }
+                    },
+                    { 
+                        name: "Estados Unidos", 
+                        rank: 3, 
+                        value: "331 milhões", 
+                        lat: 37.090240, 
+                        lng: -95.712891,
+                        description: {
+                            pt: "Os Estados Unidos são o terceiro país mais populoso, com crescimento impulsionado pela imigração.",
+                            en: "The United States is the third most populous country, with growth driven by immigration.",
+                            es: "Estados Unidos es el tercer país más poblado, con crecimiento impulsado por la inmigración."
+                        }
+                    }
+                ]
+            },
+            gdp: {
+                title: {
+                    pt: "💰 Maior PIB",
+                    en: "💰 Highest GDP",
+                    es: "💰 PIB más alto"
+                },
+                countries: [
+                    { 
+                        name: "Estados Unidos", 
+                        rank: 1, 
+                        value: "US$ 25,3 trilhões", 
+                        lat: 37.090240, 
+                        lng: -95.712891,
+                        description: {
+                            pt: "Os Estados Unidos têm a maior economia do mundo, com forte presença em tecnologia e serviços financeiros.",
+                            en: "The United States has the largest economy in the world, with a strong presence in technology and financial services.",
+                            es: "Estados Unidos tiene la economía más grande del mundo, con una fuerte presencia en tecnología y servicios financieros."
+                        }
+                    },
+                    { 
+                        name: "China", 
+                        rank: 2, 
+                        value: "US$ 19,9 trilhões", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China tem a segunda maior economia do mundo, com crescimento rápido nas últimas décadas.",
+                            en: "China has the second largest economy in the world, with rapid growth in recent decades.",
+                            es: "China tiene la segunda economía más grande del mundo, con un crecimiento rápido en las últimas décadas."
+                        }
+                    },
+                    { 
+                        name: "Japão", 
+                        rank: 3, 
+                        value: "US$ 4,2 trilhões", 
+                        lat: 36.204824, 
+                        lng: 138.252924,
+                        description: {
+                            pt: "O Japão tem a terceira maior economia do mundo, com forte indústria tecnológica e automobilística.",
+                            en: "Japan has the third largest economy in the world, with a strong technology and automotive industry.",
+                            es: "Japón tiene la tercera economía más grande del mundo, con una fuerte industria tecnológica y automotriz."
+                        }
+                    }
+                ]
+            },
+            billionaires: {
+                title: {
+                    pt: "💎 Maior número de bilionários",
+                    en: "💎 Most billionaires",
+                    es: "💎 Más billonarios"
+                },
+                countries: [
+                    { 
+                        name: "Estados Unidos", 
+                        rank: 1, 
+                        value: "735", 
+                        lat: 37.090240, 
+                        lng: -95.712891,
+                        description: {
+                            pt: "Os Estados Unidos têm o maior número de bilionários do mundo, com destaque para o setor de tecnologia.",
+                            en: "The United States has the most billionaires in the world, with emphasis on the technology sector.",
+                            es: "Estados Unidos tiene el mayor número de billonarios del mundo, con énfasis en el sector tecnológico."
+                        }
+                    },
+                    { 
+                        name: "China", 
+                        rank: 2, 
+                        value: "539", 
+                        lat: 35.861660, 
+                        lng: 104.195397,
+                        description: {
+                            pt: "A China tem o segundo maior número de bilionários, refletindo seu rápido crescimento econômico.",
+                            en: "China has the second largest number of billionaires, reflecting its rapid economic growth.",
+                            es: "China tiene el segundo mayor número de billonarios, reflejando su rápido crecimiento económico."
+                        }
+                    },
+                    { 
+                        name: "Índia", 
+                        rank: 3, 
+                        value: "166", 
+                        lat: 20.593684, 
+                        lng: 78.962883,
+                        description: {
+                            pt: "A Índia tem visto um aumento significativo no número de bilionários nas últimas décadas.",
+                            en: "India has seen a significant increase in the number of billionaires in recent decades.",
+                            es: "India ha visto un aumento significativo en el número de billonarios en las últimas décadas."
+                        }
+                    }
+                ]
+            }
+        };
+
+        // Initialize map
+        function initMap() {
+            map = L.map('map').setView([20, 0], 2);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 18
+            }).addTo(map);
+        }
+
+        // Select category
+        function selectCategory(category) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.control-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to selected button
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            // Update current category
+            currentCategory = category;
+            
+            // Update map title
+            const mapTitle = document.getElementById('mapTitle');
+            mapTitle.textContent = categoryData[category].title[currentLanguage];
+            
+            // Clear previous country layers
+            Object.values(countryLayers).forEach(layer => {
+                map.removeLayer(layer);
+            });
+            countryLayers = {};
+            
+            // Add new country markers
+            const countries = categoryData[category].countries;
+            countries.forEach(country => {
+                const color = country.rank === 1 ? '#48bb78' : 
+                             country.rank === 2 ? '#68d391' : '#9ae6b4';
+                
+                const circle = L.circleMarker([country.lat, country.lng], {
+                    radius: 15,
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+                
+                // Add tooltip
+                circle.bindTooltip(`
+                    <div class="custom-tooltip">
+                        <strong>${country.name}</strong><br>
+                        ${country.rank}${translations[currentLanguage].rank}
+                    </div>
+                `, {
+                    permanent: false,
+                    direction: 'top'
+                });
+                
+                // Add click event
+                circle.on('click', () => {
+                    showCountryDetails(country, category);
+                });
+                
+                countryLayers[country.name] = circle;
+            });
+        }
+
+        // Show country details
+        function showCountryDetails(country, category) {
+            const panel = document.getElementById('detailsPanel');
+            const flag = document.getElementById('countryFlag');
+            const name = document.getElementById('countryName');
+            const rank = document.getElementById('countryRank');
+            const dataLabel = document.getElementById('dataLabel');
+            const dataValue = document.getElementById('dataValue');
+            const description = document.getElementById('countryDescription');
+            
+            // Set country flag (using a placeholder service)
+            flag.src = `https://flagcdn.com/w320/${getCountryCode(country.name)}.png`;
+            
+            // Set country info
+            name.textContent = country.name;
+            rank.textContent = `${country.rank}º ${translations[currentLanguage].rank}`;
+            
+            // Set data based on category
+            const categoryLabels = {
+                pt: {
+                    hottest: "Temperatura média",
+                    coldest: "Temperatura média",
+                    freshwater: "Reserva de água doce",
+                    forests: "Área florestal",
+                    wheat: "Produção anual",
+                    rice: "Produção anual",
+                    meat: "Produção anual",
+                    fish: "Produção anual",
+                    industry: "Produção industrial",
+                    patents: "Patentes registradas",
+                    population: "População",
+                    gdp: "PIB",
+                    billionaires: "Número de bilionários"
+                },
+                en: {
+                    hottest: "Average temperature",
+                    coldest: "Average temperature",
+                    freshwater: "Freshwater reserve",
+                    forests: "Forest area",
+                    wheat: "Annual production",
+                    rice: "Annual production",
+                    meat: "Annual production",
+                    fish: "Annual production",
+                    industry: "Industrial production",
+                    patents: "Registered patents",
+                    population: "Population",
+                    gdp: "GDP",
+                    billionaires: "Number of billionaires"
+                },
+                es: {
+                    hottest: "Temperatura promedio",
+                    coldest: "Temperatura promedio",
+                    freshwater: "Reserva de agua dulce",
+                    forests: "Área forestal",
+                    wheat: "Producción anual",
+                    rice: "Producción anual",
+                    meat: "Producción anual",
+                    fish: "Producción anual",
+                    industry: "Producción industrial",
+                    patents: "Patentes registradas",
+                    population: "Población",
+                    gdp: "PIB",
+                    billionaires: "Número de billonarios"
+                }
+            };
+            
+            dataLabel.textContent = categoryLabels[currentLanguage][category];
+            dataValue.textContent = country.value;
+            description.textContent = country.description[currentLanguage];
+            
+            // Show panel
+            panel.classList.add('active');
+        }
+
+        // Close details panel
+        function closeDetailsPanel() {
+            document.getElementById('detailsPanel').classList.remove('active');
+        }
+
+        // Get country code for flag
+        function getCountryCode(countryName) {
+            const countryCodes = {
+                "China": "cn",
+                "Índia": "in",
+                "Estados Unidos": "us",
+                "Rússia": "ru",
+                "Brasil": "br",
+                "Canadá": "ca",
+                "Japão": "jp",
+                "Mongólia": "mn",
+                "Mali": "ml",
+                "Burkina Faso": "bf",
+                "Senegal": "sn",
+                "Bangladesh": "bd",
+                "Indonésia": "id"
+            };
+            
+            return countryCodes[countryName] || "un";
+        }
+
+        // Change language
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update all elements with data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update map title if a category is selected
+            if (currentCategory) {
+                const mapTitle = document.getElementById('mapTitle');
+                mapTitle.textContent = categoryData[currentCategory].title[currentLanguage];
+            }
+            
+            // Update country details panel if it's open
+            const panel = document.getElementById('detailsPanel');
+            if (panel.classList.contains('active') && currentCategory) {
+                // Find the selected country and update its details
+                const countries = categoryData[currentCategory].countries;
+                const countryName = document.getElementById('countryName').textContent;
+                const country = countries.find(c => c.name === countryName);
+                
+                if (country) {
+                    showCountryDetails(country, currentCategory);
+                }
+            }
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-toggle i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+        });
+    </script>
+</body>
+</html>
