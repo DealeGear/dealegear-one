@@ -16,6 +16,17 @@ const translations = {
     challenge3Title: "Energia limpa para comunidades isoladas",
     challenge3Desc:
       "Projetar um sistema de geração de energia sustentável e de baixo custo para comunidades rurais e isoladas, utilizando recursos locais disponíveis.",
+      challenge4Title: "Litografia de 5 nm",
+      challenge4Desc:"Desenvolver uma etapa do processo litográfico de 5 nm, superando os desafios técnicos e de precisão envolvidos na fabricação de chips de última geração.",
+      challenge5Title: "Terras raras",
+      challenge5Desc:"Desenvolver novas formas de extração, separação ou reaproveitamento de terras raras, reduzindo custos e impactos ambientais, e fortalecendo a produção de materiais essenciais para tecnologias avançada",
+      challenge6Title: "Drone de resgate autônomo",
+      challenge6Desc:"Desenvolver um drone capaz de realizar missões de resgate em áreas de difícil acesso, utilizando navegação autônoma, sensores ambientais e sistemas de comunicação inteligentes para localizar e auxiliar vítimas com rapidez e segurança",
+      challenge7Title: "Refrigeração sem hélio ou hidrogênio",    
+      challenge7Desc:"Desenvolver um sistema de refrigeração avançado que não utilize hélio ou hidrogênio, alcançando eficiência térmica comparável e reduzindo custos e riscos associados ao uso desses gases", 
+      challenge8Title: "Curadoria inteligente para redes sociais",
+      challenge8Desc:"Desenvolver um sistema de curadoria capaz de selecionar conteúdos ideais para atingir objetivos específicos, como engajamento, educação ou conscientização, utilizando análise de dados e aprendizado de máquina",
+
     footerHome: "DealeGear",
     footerLicence: "Licença",
     footerDocs: "Documentação",
@@ -259,6 +270,17 @@ const translations = {
     challenge3Title: "Clean energy for isolated communities",
     challenge3Desc:
       "Design a sustainable and low-cost energy generation system for rural and isolated communities, using locally available resources.",
+      challenge4Title: "5 nm Lithography",
+      challenge4Desc:"Develop a stage of the 5 nm lithography process, overcoming the technical and precision challenges involved in next-generation chip manufacturing.",
+      challenge5Title:"Rare earth elements",
+      challenge5Desc:"Develop new methods for extracting, separating, or reusing rare earth elements, reducing costs and environmental impacts while strengthening the production of materials essential for advanced technologies.",
+      challenge6Title:"Autonomous rescue drone",
+      challenge6Desc:"Develop a drone capable of performing rescue missions in hard-to-reach areas, using autonomous navigation, environmental sensors, and smart communication systems to locate and assist victims quickly and safely.",
+      challenge7Title:"Helium- and hydrogen-free cooling",   
+      challenge7Desc:"Develop an advanced cooling system that does not use helium or hydrogen, achieving comparable thermal efficiency while reducing the costs and risks associated with these gases.",
+      challenge8Title:"Smart social media curation",  
+      challenge8Desc:"Develop a curation system capable of selecting ideal content to achieve specific goals such as engagement, education, or awareness, using data analysis and machine learning.",     
+
     footerHome: "DealeGear",
     footerLicence: "Licence",
     footerDocs: "Documentation",
@@ -502,6 +524,16 @@ const translations = {
     challenge3Title: "Energía limpia para comunidades aisladas",
     challenge3Desc:
       "Diseñar un sistema de generación de energía sostenible y de bajo costo para comunidades rurales y aisladas, utilizando recursos locales disponibles.",
+      challenge4Title: "Litografía de 5 nm",
+      challenge4Desc:"Desarrollar una etapa del proceso litográfico de 5 nm, superando los desafíos técnicos y de precisión en la fabricación de chips de última generación.", 
+      challenge5Title: "Tierras raras",
+      challenge5Desc:"Desarrollar nuevas formas de extracción, separación o reutilización de tierras raras, reduciendo costos e impactos ambientales y fortaleciendo la producción de materiales esenciales para las tecnologías avanzadas.",    
+      challenge6Title: "Dron de rescate autónomo",
+      challenge6Desc:"Desarrollar un dron capaz de realizar misiones de rescate en zonas de difícil acceso, utilizando navegación autónoma, sensores ambientales y sistemas de comunicación inteligentes para localizar y asistir a las víctimas con rapidez y seguridad.",    
+      challenge7Title: "Refrigeración sin helio ni hidrógeno",
+      challenge7Desc:"Desarrollar un sistema de refrigeración avanzado que no utilice helio ni hidrógeno, alcanzando una eficiencia térmica comparable y reduciendo los costos y riesgos asociados con el uso de estos gases.",    
+      challenge8Title: "Curaduría inteligente para redes sociales",
+      challenge8Desc:"Desarrollar un sistema de curaduría capaz de seleccionar contenidos ideales para alcanzar objetivos específicos, como compromiso, educación o concienciación, utilizando análisis de datos y aprendizaje automático", 
     footerHome: "DealeGear",
     footerLicence: "Licencia",
     footerDocs: "Documentación",
@@ -805,6 +837,18 @@ function updateTranslations() {
   document.getElementById("challenge2Desc").textContent = t.challenge2Desc;
   document.getElementById("challenge3Title").textContent = t.challenge3Title;
   document.getElementById("challenge3Desc").textContent = t.challenge3Desc;
+  document.getElementById("challenge4Title").textContent = t.challenge4Title;
+  document.getElementById("challenge4Desc").textContent = t.challenge4Desc;
+  document.getElementById("challenge5Title").textContent = t.challenge5Title;
+  document.getElementById("challenge5Desc").textContent = t.challenge5Desc;
+  document.getElementById("challenge6Title").textContent = t.challenge6Title;
+  document.getElementById("challenge6Desc").textContent = t.challenge6Desc;
+  document.getElementById("challenge7Title").textContent = t.challenge7Title;
+  document.getElementById("challenge7Desc").textContent = t.challenge7Desc;
+  document.getElementById("challenge8Title").textContent = t.challenge7Title;
+  document.getElementById("challenge8Desc").textContent = t.challenge7Desc;
+  document.getElementById("challenge9Title").textContent = t.challenge7Title;
+  document.getElementById("challenge9Desc").textContent = t.challenge7Desc;
   document.getElementById("footerHome").textContent = t.footerHome;
   document.getElementById("footerLicence").textContent = t.footerLicence;
   document.getElementById("footerDocs").textContent = t.footerDocs;
