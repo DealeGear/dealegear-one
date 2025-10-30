@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GearStep - Educação Técnica</title>
+    <title>GearStep - Desenvolvimento de Projetos Pessoais</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #1e3a8a;
             --secondary-color: #3b82f6;
             --accent-color: #f59e0b;
-            --success-color: #10b981;
-            --dark-bg: #111827;
-            --light-bg: #f3f4f6;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --border-color: #e5e7eb;
-            --sidebar-width: 280px;
+            --text-color: #333;
+            --light-text: #fff;
+            --bg-color: #f5f7fa;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --menu-width: 280px;
             --header-height: 70px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -29,343 +26,253 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--text-color);
             min-height: 100vh;
-            color: var(--text-primary);
-            overflow-x: hidden;
+            position: relative;
         }
 
         /* Header */
-        .header {
+        header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: var(--header-height);
-            background: rgba(30, 58, 138, 0.95);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 0 2rem;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .header-title {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
+        .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        .header-title i {
-            color: var(--accent-color);
-            animation: rotate 3s linear infinite;
+        .gear-icon {
+            animation: rotate 4s linear infinite;
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: white;
+            color: var(--light-text);
             font-size: 1.5rem;
             cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .menu-toggle:hover {
-            color: var(--accent-color);
-            transform: scale(1.1);
         }
 
         /* Sidebar */
         .sidebar {
             position: fixed;
-            left: 0;
             top: var(--header-height);
-            bottom: 0;
-            width: var(--sidebar-width);
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            left: 0;
+            width: var(--menu-width);
+            height: calc(100vh - var(--header-height));
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
-            transition: var(--transition);
+            padding: 1.5rem 0;
             z-index: 999;
+            transition: transform 0.3s ease;
         }
 
-        .sidebar-content {
-            padding: 2rem 1rem;
+        .sidebar-section {
+            margin-bottom: 1.5rem;
         }
 
-        .nav-section {
-            margin-bottom: 2rem;
-        }
-
-        .nav-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-secondary);
+        .sidebar-title {
+            padding: 0.5rem 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1rem;
-            padding: 0 0.5rem;
         }
 
-        .nav-links {
-            list-style: none;
-        }
-
-        .nav-link {
+        .sidebar-item {
             display: block;
-            padding: 0.75rem 1rem;
-            color: var(--text-primary);
+            padding: 0.7rem 1.5rem;
+            color: var(--text-color);
             text-decoration: none;
-            border-radius: 8px;
-            transition: var(--transition);
-            margin-bottom: 0.25rem;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
 
-        .nav-link::before {
+        .sidebar-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary-color);
+            padding-left: 2rem;
+        }
+
+        .sidebar-item.active {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .sidebar-item.active::before {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
-            width: 3px;
-            background: var(--accent-color);
-            transform: translateX(-100%);
-            transition: var(--transition);
+            width: 4px;
+            background: var(--secondary-color);
         }
 
-        .nav-link:hover {
-            background: var(--light-bg);
-            transform: translateX(5px);
-        }
-
-        .nav-link.active {
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-
-        .nav-link.active::before {
-            transform: translateX(0);
-        }
-
-        .nav-link i {
-            margin-right: 0.5rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        /* Language Selector */
         .language-selector {
-            margin: 1.5rem 0;
-        }
-
-        .language-buttons {
+            padding: 0.5rem 1.5rem;
             display: flex;
-            gap: 0.5rem;
-            padding: 0 0.5rem;
+            gap: 10px;
         }
 
         .lang-btn {
-            flex: 1;
-            padding: 0.5rem;
-            border: 2px solid var(--border-color);
-            background: white;
-            border-radius: 6px;
+            padding: 0.3rem 0.6rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .lang-btn:hover {
-            border-color: var(--secondary-color);
-            transform: translateY(-2px);
+            background: var(--secondary-color);
         }
 
         .lang-btn.active {
-            background: var(--secondary-color);
-            color: white;
-            border-color: var(--secondary-color);
+            background: var(--accent-color);
         }
 
-        /* DealeGear Button */
-        .dealegear-btn {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--accent-color), #dc2626);
+        .sidebar-buttons {
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar-btn {
+            padding: 0.7rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
-            transition: var(--transition);
-            margin-top: 1rem;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
-        .dealegear-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(245, 158, 11, 0.4);
-        }
-
-        .dealegear-btn i {
-            margin-right: 0.5rem;
+        .sidebar-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Main Content */
         .main-content {
-            margin-left: var(--sidebar-width);
-            margin-top: var(--header-height);
-            padding: 2rem;
-            min-height: calc(100vh - var(--header-height));
-        }
-
-        .content-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
+            margin-left: var(--menu-width);
+            padding: calc(var(--header-height) + 2rem) 2rem 2rem;
+            min-height: 100vh;
         }
 
         .section {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .section.active {
-            display: block;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .section-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--accent-color);
-        }
-
-        .section-number {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            to { opacity: 1; }
         }
 
         .section-title {
             font-size: 2rem;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .section-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
         }
 
-        .section-content {
-            line-height: 1.8;
-            color: var(--text-primary);
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
         }
 
-        .section-content h3 {
-            color: var(--primary-color);
-            margin: 1.5rem 0 1rem;
-            font-size: 1.3rem;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .section-content p {
+        .card h3 {
+            color: var(--secondary-color);
             margin-bottom: 1rem;
         }
 
-        .section-content ul {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
-
-        .section-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(245, 158, 11, 0.1));
-            border-left: 4px solid var(--accent-color);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--success-color), #059669);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 2rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
-        }
-
-        .cta-button i {
-            margin-left: 0.5rem;
+        .card p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
         }
 
         /* Footer */
-        .footer {
-            background: var(--dark-bg);
-            color: white;
+        footer {
+            background: var(--primary-color);
+            color: var(--light-text);
             text-align: center;
-            padding: 2rem;
-            margin-left: var(--sidebar-width);
+            padding: 1.5rem;
+            margin-left: var(--menu-width);
         }
 
-        .footer a {
+        footer a {
             color: var(--accent-color);
             text-decoration: none;
             font-weight: bold;
-            transition: var(--transition);
+            transition: color 0.3s ease;
         }
 
-        .footer a:hover {
-            color: white;
-            text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        footer a:hover {
+            color: var(--light-text);
+        }
+
+        /* Mobile Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
         }
 
         /* Responsive */
@@ -378,1052 +285,549 @@
                 transform: translateX(-100%);
             }
 
-            .sidebar.open {
+            .sidebar.active {
                 transform: translateX(0);
             }
 
-            .main-content,
-            .footer {
+            .main-content {
                 margin-left: 0;
             }
 
-            .section-card {
-                padding: 2rem 1.5rem;
+            footer {
+                margin-left: 0;
             }
 
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .header-title {
-                font-size: 1.3rem;
+            .overlay.active {
+                display: block;
             }
         }
 
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Overlay for mobile menu */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 998;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .overlay.active {
-            display: block;
-            opacity: 1;
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header>
+        <div class="logo">
+            <i class="fas fa-cog gear-icon"></i>
+            <span>GearStep</span>
+        </div>
         <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </button>
-        <div class="header-title">
-            <i class="fas fa-cogs"></i>
-            <span>GearStep</span>
-        </div>
     </header>
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-        <div class="sidebar-content">
-            <!-- Navigation -->
-            <nav class="nav-section">
-                <div class="nav-title" data-i18n="navigation">Navegação</div>
-                <ul class="nav-links">
-                    <li><a href="#" class="nav-link active" data-section="1" data-i18n="nav1">
-                        <i class="fas fa-lightbulb"></i> <span>Por que criar?</span>
-                    </a></li>
-                    <li><a href="#" class="nav-link" data-section="2" data-i18n="nav2">
-                        <i class="fas fa-balance-scale"></i> <span>Decisão</span>
-                    </a></li>
-                    <li><a href="#" class="nav-link" data-section="3" data-i18n="nav3">
-                        <i class="fas fa-play-circle"></i> <span>Primeiros passos</span>
-                    </a></li>
-                    <li><a href="#" class="nav-link" data-section="4" data-i18n="nav4">
-                        <i class="fas fa-heart-broken"></i> <span>Desmotivação</span>
-                    </a></li>
-                    <li><a href="#" class="nav-link" data-section="5" data-i18n="nav5">
-                        <i class="fas fa-puzzle-piece"></i> <span>Quebra-cabeça</span>
-                    </a></li>
-                    <li><a href="#" class="nav-link" data-section="6" data-i18n="nav6">
-                        <i class="fas fa-users"></i> <span>Sociedade</span>
-                    </a></li>
-                    <li><a href="#" class="nav-link" data-section="7" data-i18n="nav7">
-                        <i class="fas fa-flag-checkered"></i> <span>Terminando</span>
-                    </a></li>
-                    <li><a href="#" class="nav-link" data-section="8" data-i18n="nav8">
-                        <i class="fas fa-rocket"></i> <span>Próximos passos</span>
-                    </a></li>
-                </ul>
-            </nav>
-
-            <!-- Language Selector -->
+        <div class="sidebar-section">
+            <div class="sidebar-title" data-i18n="navigation">Navegação</div>
+            <a href="#motivacao" class="sidebar-item" data-i18n="motivation">Motivação</a>
+            <a href="#inicio" class="sidebar-item" data-i18n="beginning">O Início</a>
+            <a href="#hobby" class="sidebar-item" data-i18n="hobby">Hobby</a>
+            <a href="#renda-extra" class="sidebar-item" data-i18n="extra-income">Renda Extra</a>
+            <a href="#carreira" class="sidebar-item" data-i18n="career">Carreira</a>
+            <a href="#startup" class="sidebar-item" data-i18n="startup">Startup</a>
+            <a href="#inspiracao" class="sidebar-item" data-i18n="inspiration">Inspiração</a>
+            <a href="#planejando" class="sidebar-item" data-i18n="planning">Planejando</a>
+            <a href="#executando" class="sidebar-item" data-i18n="executing">Executando</a>
+            <a href="#validando" class="sidebar-item" data-i18n="validating">Validando</a>
+            <a href="#checando" class="sidebar-item" data-i18n="checking">Checando</a>
+            <a href="#aperfeicoando" class="sidebar-item" data-i18n="improving">Aperfeiçoando</a>
+            <a href="#expandindo" class="sidebar-item" data-i18n="expanding">Expandindo</a>
+        </div>
+        
+        <div class="sidebar-section">
+            <div class="sidebar-title" data-i18n="language">Idioma</div>
             <div class="language-selector">
-                <div class="nav-title" data-i18n="language">Idioma</div>
-                <div class="language-buttons">
-                    <button class="lang-btn active" data-lang="pt">PT</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="es">ES</button>
-                </div>
+                <button class="lang-btn active" data-lang="pt">PT</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
             </div>
-
-            <!-- DealeGear Button -->
-            <button class="dealegear-btn" id="dealegearBtn">
-                <i class="fas fa-star"></i>
-                <span data-i18n="dealegear">DealeGear</span>
-            </button>
+        </div>
+        
+        <div class="sidebar-section">
+            <div class="sidebar-buttons">
+                <a href="https://dealegear.com" target="_blank" class="sidebar-btn">DealeGear</a>
+                <a href="https://gearlabs.com" target="_blank" class="sidebar-btn">GearLabs</a>
+                <a href="https://docs.example.com" target="_blank" class="sidebar-btn" data-i18n="documentation">Documentação</a>
+            </div>
         </div>
     </aside>
 
-    <!-- Overlay -->
+    <!-- Mobile Overlay -->
     <div class="overlay" id="overlay"></div>
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="content-wrapper">
-            <!-- Section 1 -->
-            <section class="section active" id="section-1">
-                <div class="section-card">
-                    <div class="section-header">
-                        <span class="section-number">01</span>
-                        <h2 class="section-title" data-i18n="section1-title">Por que criar um projeto pessoal?</h2>
-                        <p class="section-subtitle" data-i18n="section1-subtitle">Descubra o poder de transformar ideias em realidade</p>
-                    </div>
-                    <div class="section-content">
-                        <p data-i18n="section1-p1">Criar um projeto pessoal é uma das experiências mais transformadoras que alguém pode ter. Não se trata apenas de codificar ou construir algo, mas de todo o processo de aprendizado, crescimento e superação.</p>
-                        
-                        <h3 data-i18n="section1-h3-1">Benefícios do Desenvolvimento Pessoal</h3>
-                        <ul>
-                            <li data-i18n="section1-li-1">Desenvolvimento de habilidades técnicas e profissionais</li>
-                            <li data-i18n="section1-li-2">Construção de um portfólio impressionante</li>
-                            <li data-i18n="section1-li-3">Aumento da confiança e autoestima</li>
-                            <li data-i18n="section1-li-4">Criação de oportunidades de carreira</li>
-                            <li data-i18n="section1-li-5">Desenvolvimento do pensamento crítico e resolução de problemas</li>
-                        </ul>
+        <!-- Seção 1: Motivação -->
+        <section id="motivacao" class="section">
+            <h2 class="section-title" data-i18n="motivation-title">Por Que Criar um Projeto Pessoal?</h2>
+            <div class="card">
+                <p data-i18n="motivation-content">Criar projetos pessoais é uma das formas mais eficazes de expandir seus conhecimentos e habilidades. Quando você desenvolve algo do zero, enfrenta desafios reais que o forçam a aprender e crescer. Além disso, ter um projeto seu proporciona uma sensação única de realização e pertencimento.</p>
+                <p data-i18n="motivation-content-2">Os projetos pessoais também ocupam a mente de forma produtiva, transformando tempo livre em oportunidades de desenvolvimento. Seja para aprender uma nova tecnologia, resolver um problema do dia a dia ou simplesmente por prazer, os projetos pessoais são investimentos em você mesmo.</p>
+            </div>
+        </section>
 
-                        <div class="highlight-box">
-                            <p data-i18n="section1-highlight">"Um projeto pessoal não é apenas sobre o produto final, mas sobre a jornada de transformação que você experimenta no processo."</p>
-                        </div>
+        <!-- Seção 2: O Início -->
+        <section id="inicio" class="section">
+            <h2 class="section-title" data-i18n="beginning-title">Como Tudo Começa</h2>
+            <div class="card">
+                <p data-i18n="beginning-content">Todo grande projeto começa com uma ideia simples. Geralmente, surge da observação de um problema, de uma necessidade pessoal ou da curiosidade sobre como algo funciona. O importante é capturar essa ideia inicial antes que ela se perca.</p>
+                <p data-i18n="beginning-content-2">A validação conceitual é o próximo passo crucial. Antes de investir tempo e recursos, pergunte-se: "Isso resolve um problema real? Existe alguém além de mim que se beneficiaria com isso?". Respostas honestas a essas perguntas podem economizar meses de trabalho.</p>
+                <p data-i18n="beginning-content-3">Os primeiros passos devem ser pequenos e mensuráveis. Defina um escopo mínimo viável e concentre-se em entregar valor rapidamente. Lembre-se que a perfeição é inimiga do progresso, especialmente no início.</p>
+            </div>
+        </section>
 
-                        <h3 data-i18n="section1-h3-2">Crescimento Profissional</h3>
-                        <p data-i18n="section1-p2">Projetos pessoais demonstram iniciativa, paixão e capacidade de execução - qualidades altamente valorizadas no mercado de trabalho. Eles mostram que você vai além do básico e tem a capacidade de transformar ideias em soluções concretas.</p>
-                    </div>
-                </div>
-            </section>
+        <!-- Seção 3: Hobby -->
+        <section id="hobby" class="section">
+            <h2 class="section-title" data-i18n="hobby-title">Projetos como Hobby</h2>
+            <div class="card">
+                <p data-i18n="hobby-content">Projetos de hobby são aqueles desenvolvidos principalmente por prazer e interesse pessoal, sem pressão comercial ou metas financeiras. Eles oferecem liberdade criativa total, permitindo experimentação sem as restrições do mercado.</p>
+                <p data-i18n="hobby-content-2">O maior benefício dos projetos de hobby é o aprendizado sem pressão. Você pode tentar novas tecnologias, cometer erros e iterar livremente. Essa liberdade muitas vezes resulta em soluções inovadoras que surgem justamente da ausência de limitações comerciais.</p>
+                <p data-i18n="hobby-content-3">Muitos projetos que começaram como hobby evoluíram para produtos comerciais de sucesso. A chave é manter o equilíbrio entre a diversão e a disciplina, dedicando tempo regularmente sem transformar o hobby em obrigação.</p>
+            </div>
+        </section>
 
-            <!-- Section 2 -->
-            <section class="section" id="section-2">
-                <div class="section-card">
-                    <div class="section-header">
-                        <span class="section-number">02</span>
-                        <h2 class="section-title" data-i18n="section2-title">A decisão entre hobby, renda extra, carreira e startup</h2>
-                        <p class="section-subtitle" data-i18n="section2-subtitle">Encontre o propósito certo para seu projeto</p>
-                    </div>
-                    <div class="section-content">
-                        <p data-i18n="section2-p1">Antes de começar, é fundamental definir o propósito do seu projeto. Cada caminho exige diferentes níveis de comprometimento, recursos e expectativas.</p>
+        <!-- Seção 4: Renda Extra -->
+        <section id="renda-extra" class="section">
+            <h2 class="section-title" data-i18n="extra-income-title">Projetos para Renda Extra</h2>
+            <div class="card">
+                <p data-i18n="extra-income-content">Projetos para renda extra ocupam um espaço intermediário entre hobby e carreira. Eles têm potencial monetário, mas não precisam sustentar completamente seu estilo de vida. Essa categoria oferece o melhor dos dois mundos: criatividade com retorno financeiro.</p>
+                <p data-i18n="extra-income-content-2">O equilíbrio entre trabalho principal e projeto secundário é fundamental. Estabeleça limites claros de tempo e energia para evitar o esgotamento. Muitas pessoas encontram sucesso dedicando algumas horas durante fins de semana ou noites aos seus projetos.</p>
+                <p data-i18n="extra-income-content-3">Estratégias eficazes incluem modelos de assinatura, venda de produtos digitais, consultoria baseada em seu projeto ou publicidade. Comece pequeno, valide o interesse do mercado e escale gradualmente conforme o demanda cresce.</p>
+            </div>
+        </section>
 
-                        <h3 data-i18n="section2-h3-1">Hobby</h3>
-                        <p data-i18n="section2-p2">Perfeito para aprender sem pressão. Você pode experimentar, errar e evoluir no seu próprio ritmo. O foco está no aprendizado e na satisfação pessoal.</p>
+        <!-- Seção 5: Carreira -->
+        <section id="carreira" class="section">
+            <h2 class="section-title" data-i18n="career-title">Projetos como Carreira</h2>
+            <div class="card">
+                <p data-i18n="career-content">Transformar um projeto em carreira é um passo significativo que requer dedicação integral e profissionalização. Isso significa tratar seu projeto como um negócio real, com planejamento estratégico, gestão financeira e foco em crescimento sustentável.</p>
+                <p data-i18n="career-content-2">A transição de projeto pessoal para carreira geralmente envolve a criação de uma estrutura empresarial, desenvolvimento de habilidades de negócio e, muitas vezes, a construção de uma equipe. O fundador precisa evoluir de criador para gestor, delegando tarefas e focando na visão estratégica.</p>
+                <p data-i18n="career-content-3">Projetos que se tornam carreiras bem-sucedidas geralmente resolvem problemas significativos para um público específico e têm modelos de negócio claros e escaláveis. A chave é encontrar o equilíbrio entre manter a paixão original e adaptar-se às demandas do mercado.</p>
+            </div>
+        </section>
 
-                        <h3 data-i18n="section2-h3-2">Renda Extra</h3>
-                        <p data-i18n="section2-p3">Requer mais estrutura e planejamento. Você precisa pensar em monetização, clientes e entrega de valor, mas ainda mantém a flexibilidade de não ser sua fonte principal de renda.</p>
+        <!-- Seção 6: Startup -->
+        <section id="startup" class="section">
+            <h2 class="section-title" data-i18n="startup-title">Projetos como Startup</h2>
+            <div class="card">
+                <p data-i18n="startup-content">Startups representam a forma mais ambiciosa de projeto pessoal, com foco em crescimento acelerado e escalabilidade massiva. Diferentemente de projetos de hobby ou renda extra, startups são projetadas desde o início para crescer rapidamente e capturar mercados significativos.</p>
+                <p data-i18n="startup-content-2">A jornada de startup geralmente envolve buscar investimento externo, construir uma equipe multidisciplinar e iterar rapidamente baseado em feedback do mercado. O foco está em validar hipóteses de negócio e encontrar um modelo repetível e escalável antes que os recursos se esgotem.</p>
+                <p data-i18n="startup-content-3">Embora potencialmente lucrativas, startups apresentam riscos elevados. A taxa de mortalidade é significativa, mas os projetos que sobrevivem e prosperam podem transformar indústrias inteiras. A mentalidade de startup combina visão ousada com execução disciplinada e capacidade de adaptação rápida.</p>
+            </div>
+        </section>
 
-                        <h3 data-i18n="section2-h3-3">Carreira</h3>
-                        <p data-i18n="section2-p4">Quando o projeto se torna sua principal atividade profissional. Exige dedicação integral, planejamento estratégico e desenvolvimento contínuo de habilidades.</p>
+        <!-- Seção 7: Inspiração -->
+        <section id="inspiracao" class="section">
+            <h2 class="section-title" data-i18n="inspiration-title">Encontrando Inspiração</h2>
+            <div class="card">
+                <p data-i18n="inspiration-content">A inspiração para projetos pode vir de diversas fontes: problemas do dia a dia, conversas com amigos, tendências de mercado ou simplesmente curiosidade. O segredo é manter uma mente aberta e observar o mundo com olhos de solucionador de problemas.</p>
+                <p data-i18n="inspiration-content-2">Muitas vezes, as melhores ideias surgem da intersecção entre seus interesses pessoais e necessidades não atendidas. Pergunte-se: "O que me frustra regularmente? Como poderia resolver isso? Quem mais enfrenta o mesmo problema?".</p>
+                <p data-i18n="inspiration-content-3">Nossa ferramenta GearLabs oferece uma série de protótipos conceituais e desafios para te ajudar a encontrar inspiração para suas criações. Explore diferentes áreas, experimente novas abordagens e não tenha medo de combinar ideias aparentemente desconexas.</p>
+            </div>
+        </section>
 
-                        <h3 data-i18n="section2-h3-4">Startup</h3>
-                        <p data-i18n="section2-p5">O nível mais ambicioso, buscando escalabilidade e crescimento rápido. Envolve investimento, equipe, mercado e potencial para se tornar um negócio de grande porte.</p>
+        <!-- Seção 8: Planejando -->
+        <section id="planejando" class="section">
+            <h2 class="section-title" data-i18n="planning-title">A Importância do Planejamento</h2>
+            <div class="card">
+                <p data-i18n="planning-content">O planejamento é a base de qualquer projeto bem-sucedido. Envolve definir claramente o escopo, identificar recursos necessários, estabelecer cronogramas realistas e antecipar possíveis obstáculos. Um bom plano não precisa ser rígido, mas deve fornecer direção clara.</p>
+                <p data-i18n="planning-content-2">Comece com objetivos SMART (Específicos, Mensuráveis, Atingíveis, Relevantes e Temporais). Depois, quebre o projeto em fases menores e estabeleça marcos intermediários. Isso torna o progresso visível e mantém a motivação ao longo do caminho.</p>
+                <p data-i18n="planning-content-3">Nossa ferramenta GearHub é ideal para essa etapa. Com recursos para gestão de projetos, colaboração e acompanhamento de progresso, ela ajuda a transformar ideias em planos executáveis com estrutura e clareza.</p>
+            </div>
+        </section>
 
-                        <div class="highlight-box">
-                            <p data-i18n="section2-highlight">Não há resposta certa ou errada - apenas o caminho que faz sentido para você neste momento da sua vida.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- Seção 9: Executando -->
+        <section id="executando" class="section">
+            <h2 class="section-title" data-i18n="executing-title">Desafios da Execução</h2>
+            <div class="card">
+                <p data-i18n="executing-content">A execução é onde as ideias encontram a realidade. É a fase mais desafiadora, onde você enfrentará obstáculos inesperados, custos não planejados e a necessidade de adaptações constantes. A resiliência e a capacidade de solucionar problemas são essenciais neste estágio.</p>
+                <p data-i18n="executing-content-2">Gerenciar expectativas é crucial - tanto as suas quanto as de potenciais usuários. Seja transparente sobre limitações e prazos. A comunicação regular sobre progressos e desafios ajuda a manter o engajamento e a confiança, mesmo quando os resultados demoram a aparecer.</p>
+                <p data-i18n="executing-content-3">Lembre-se que perfeição é inimiga do progresso. É melhor entregar uma versão funcional que resolve 80% do problema do que esperar indefinidamente por uma solução perfeita. O feedback dos usuários iniciais será inestimável para guiar as melhorias futuras.</p>
+            </div>
+        </section>
 
-            <!-- Section 3 -->
-            <section class="section" id="section-3">
-                <div class="section-card">
-                    <div class="section-header">
-                        <span class="section-number">03</span>
-                        <h2 class="section-title" data-i18n="section3-title">Primeiros passos</h2>
-                        <p class="section-subtitle" data-i18n="section3-subtitle">Como transformar ideia em ação</p>
-                    </div>
-                    <div class="section-content">
-                        <p data-i18n="section3-p1">Começar é muitas vezes a parte mais difícil. A chave é quebrar o processo em pequenas etapas gerenciáveis e celebrar cada conquista.</p>
+        <!-- Seção 10: Validando -->
+        <section id="validando" class="section">
+            <h2 class="section-title" data-i18n="validating-title">Validação Essencial</h2>
+            <div class="card">
+                <p data-i18n="validating-content">Validar seu projeto é garantir que você está construindo algo que as pessoas realmente querem ou precisam. Este passo é frequentemente negligenciado, mas é fundamental para evitar desperdício de tempo e recursos em soluções que não encontram adequação no mercado.</p>
+                <p data-i18n="validating-content-2">A abordagem de validação varia conforme a categoria do projeto. Para projetos de hobby, a validação pode ser simplesmente seu próprio prazer e satisfação. Para renda extra, envolve testar disposição para pagar. Para carreira e startup, requer validação de mercado mais rigorosa e análise de concorrência.</p>
+                <p data-i18n="validating-content-3">Técnicas eficazes incluem entrevistas com potenciais usuários, criação de protótipos de baixa fidelidade, testes A/B e lançamentos em mercados limitados. O objetivo é aprender rápido e barato, antes de investir pesadamente em desenvolvimento completo.</p>
+            </div>
+        </section>
 
-                        <h3 data-i18n="section3-h3-1">1. Defina sua Visão</h3>
-                        <p data-i18n="section3-p2">Seja claro sobre o que você quer criar. Uma visão bem definida serve como bússola durante todo o desenvolvimento.</p>
+        <!-- Seção 11: Checando -->
+        <section id="checando" class="section">
+            <h2 class="section-title" data-i18n="checking-title">Checkpoint do Projeto</h2>
+            <div class="card">
+                <p data-i18n="checking-content">Os checkpoints são momentos de pausa para avaliação crítica do progresso. Eles permitem comparar os resultados obtidos com os objetivos iniciais, analisar desvios e extrair lições aprendidas. Essa reflexão é essencial para manter o projeto no caminho certo.</p>
+                <p data-i18n="checking-content-2">Durante um checkpoint, pergunte-se: "O que funcionou bem? O que não funcionou? Por quê? O que mudaria se pudesse recomeçar?". Seja honesto e objetivo. Às vezes, os maiores aprendizados vêm dos fracassos e desvios inesperados.</p>
+                <p data-i18n="checking-content-3">Documente essas reflexões regularmente. Elas não apenas ajudam a ajustar o curso atual, mas também servem como valiosa referência para projetos futuros. A capacidade de aprender com a experiência é o que diferencia projetos bem-sucedidos de tentativas frustradas.</p>
+            </div>
+        </section>
 
-                        <h3 data-i18n="section3-h3-2">2. Pesquisa e Validação</h3>
-                        <p data-i18n="section3-p3">Investigue se existe demanda para sua ideia. Converse com potenciais usuários, analise concorrentes e valide suas suposições.</p>
+        <!-- Seção 12: Aperfeiçoando -->
+        <section id="aperfeicoando" class="section">
+            <h2 class="section-title" data-i18n="improving-title">Ciclo de Melhorias</h2>
+            <div class="card">
+                <p data-i18n="improving-content">Nenhum projeto está completo no primeiro lançamento. O aperfeiçoamento contínuo é o que transforma uma boa ideia em um produto excepcional. Este ciclo envolve coletar feedback, identificar áreas de melhoria e implementar mudanças de forma iterativa.</p>
+                <p data-i18n="improving-content-2">Melhorias podem ser pontuais - corrigir bugs, otimizar desempenho, refinar interface - ou estruturais - mudanças significativas na abordagem ou funcionalidades. A chave é equilibrar inovação com estabilidade, garantindo que as melhorias não quebrem o que já funciona.</p>
+                <p data-i18n="improving-content-3">Esteja aberto a feedback crítico e disposto a pivotar quando necessário. Muitos projetos de sucesso passaram por transformações significativas baseadas no aprendizado do mercado. Lembre-se que a versão final é aquela que melhor serve às necessidades dos usuários, não necessariamente a que você imaginou inicialmente.</p>
+            </div>
+        </section>
 
-                        <h3 data-i18n="section3-h3-3">3. Planejamento Simples</h3>
-                        <p data-i18n="section3-p4">Crie um plano básico com metas SMART (Específicas, Mensuráveis, Atingíveis, Relevantes, Temporais). Não precisa ser perfeito, apenas funcional.</p>
-
-                        <h3 data-i18n="section3-h3-4">4. MVP - Produto Mínimo Viável</h3>
-                        <p data-i18n="section3-p5">Concentre-se na versão mais simples que resolve o problema principal. É melhor lançar algo básico que funciona do que algo complexo que nunca termina.</p>
-
-                        <div class="highlight-box">
-                            <p data-i18n="section3-highlight">"O segredo para começar é quebrar tarefas complexas em pequenas ações gerenciáveis e executar a primeira delas imediatamente."</p>
-                        </div>
-
-                        <ul>
-                            <li data-i18n="section3-li-1">Estabeleça metas semanais realistas</li>
-                            <li data-i18n="section3-li-2">Crie um ambiente de trabalho propício</li>
-                            <li data-i18n="section3-li-3">Encontre uma comunidade de apoio</li>
-                            <li data-i18n="section3-li-4">Documente seu progresso</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 4 -->
-            <section class="section" id="section-4">
-                <div class="section-card">
-                    <div class="section-header">
-                        <span class="section-number">04</span>
-                        <h2 class="section-title" data-i18n="section4-title">Como lidar com a desmotivação?</h2>
-                        <p class="section-subtitle" data-i18n="section4-subtitle">Estratégias para manter o foco nos momentos difíceis</p>
-                    </div>
-                    <div class="section-content">
-                        <p data-i18n="section4-p1">Todo projeto enfrenta momentos de desmotivação. É normal e esperado. A diferença entre sucesso e fracasso muitas vezes está em como lidamos com esses momentos.</p>
-
-                        <h3 data-i18n="section4-h3-1">Reconheça os Sinais</h3>
-                        <p data-i18n="section4-p2">Procrastinação, autocrítica excessiva, falta de energia e dúvidas constantes são sinais de que você precisa pausar e recarregar.</p>
-
-                        <h3 data-i18n="section4-h3-2">Estratégias Práticas</h3>
-                        <ul>
-                            <li data-i18n="section4-li-1"><strong>Reconecte com seu propósito:</strong> Lembre-se por que começou</li>
-                            <li data-i18n="section4-li-2"><strong>Celebre pequenas vitórias:</strong> Reconheça cada progresso</li>
-                            <li data-i18n="section4-li-3"><strong>Mude de ambiente:</strong> Às vezes, um novo local traz nova perspectiva</li>
-                            <li data-i18n="section4-li-4"><strong>Busque inspiração:</strong> Leia histórias de outros desenvolvedores</li>
-                            <li data-i18n="section4-li-5"><strong>Trabalhe em outra parte:</strong> Mude para uma tarefa diferente do projeto</li>
-                            <li data-i18n="section4-li-6"><strong>Descanse:</strong> Às vezes, o que você precisa é de uma pausa genuína</li>
-                        </ul>
-
-                        <div class="highlight-box">
-                            <p data-i18n="section4-highlight">A desmotivação não é falha, é um sinal. Ouça o que ela está tentando lhe dizer sobre suas necessidades atuais.</p>
-                        </div>
-
-                        <h3 data-i18n="section4-h3-3">A Regra dos 2 Minutos</h3>
-                        <p data-i18n="section4-p3">Se uma tarefa levar menos de 2 minutos, faça imediatamente. Isso cria momentum e combate a inércia da procrastinação.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 5 -->
-            <section class="section" id="section-5">
-                <div class="section-card">
-                    <div class="section-header">
-                        <span class="section-number">05</span>
-                        <h2 class="section-title" data-i18n="section5-title">Um projeto é um grande quebra-cabeça</h2>
-                        <p class="section-subtitle" data-i18n="section5-subtitle">Monte as peças na ordem certa</p>
-                    </div>
-                    <div class="section-content">
-                        <p data-i18n="section5-p1">Pense em seu projeto como um quebra-cabeça complexo. Você não precisa ver a imagem completa para começar - basta encontrar as primeiras peças e conectá-las.</p>
-
-                        <h3 data-i18n="section5-h3-1">As Bordas Primeiro</h3>
-                        <p data-i18n="section5-p2">Comece definindo as estruturas básicas e fundamentais. São as bordas do seu quebra-cabeça - o framework que dará suporte ao resto.</p>
-
-                        <h3 data-i18n="section5-h3-2">Grupos por Cor</h3>
-                        <p data-i18n="section5-p3">Agrupe funcionalidades similares. Trate cada módulo ou feature como um grupo de peças da mesma cor - mais fácil de montar quando trabalhadas juntas.</p>
-
-                        <h3 data-i18n="section5-h3-3">Teste Conexões</h3>
-                        <p data-i18n="section5-p4">Não espere o final para testar. Verifique se as peças se encaixam conforme você avança. Isso evita surpresas desagradáveis no final.</p>
-
-                        <h3 data-i18n="section5-h3-4">A Imagem vai Aparecendo</h3>
-                        <p data-i18n="section5-p5">Conforme você monta as peças, o padrão começa a emergir. O que parecia caótico no início ganha forma e sentido.</p>
-
-                        <div class="highlight-box">
-                            <p data-i18n="section5-highlight">"Cada linha de código é uma peça do quebra-cabeça. Juntas, elas criam algo maior que a soma de suas partes."</p>
-                        </div>
-
-                        <ul>
-                            <li data-i18n="section5-li-1">Divida problemas complexos em subproblemas simples</li>
-                            <li data-i18n="section5-li-2">Foque em uma peça de cada vez</li>
-                            <li data-i18n="section5-li-3">Celebre quando encontrar conexões</li>
-                            <li data-i18n="section5-li-4">Não tenha medo de desmontar e remontar</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 6 -->
-            <section class="section" id="section-6">
-                <div class="section-card">
-                    <div class="section-header">
-                        <span class="section-number">06</span>
-                        <h2 class="section-title" data-i18n="section6-title">Admitir ou não alguém para uma sociedade</h2>
-                        <p class="section-subtitle" data-i18n="section6-subtitle">Os prós e contras de dividir seu projeto</p>
-                    </div>
-                    <div class="section-content">
-                        <p data-i18n="section6-p1">A decisão de trazer um sócio é uma das mais importantes que você tomará. Pode acelerar seu projeto ou se tornar uma fonte de conflitos.</p>
-
-                        <h3 data-i18n="section6-h3-1">Vantagens de Ter um Sócio</h3>
-                        <ul>
-                            <li data-i18n="section6-li-1">Compartilhamento de responsabilidades e workload</li>
-                            <li data-i18n="section6-li-2">Complementaridade de habilidades</li>
-                            <li data-i18n="section6-li-3">Mais recursos financeiros e networking</li>
-                            <li data-i18n="section6-li-4">Suporte emocional e motivacional</li>
-                            <li data-i18n="section6-li-5">Diferentes perspectivas para resolver problemas</li>
-                        </ul>
-
-                        <h3 data-i18n="section6-h3-2">Desvantagens e Riscos</h3>
-                        <ul>
-                            <li data-i18n="section6-li-6">Perda de controle total sobre decisões</li>
-                            <li data-i18n="section6-li-7">Divisão de lucros e equity</li>
-                            <li data-i18n="section6-li-8">Potencial conflitos de visão</li>
-                            <li data-i18n="section6-li-9">Dependência do comprometimento do outro</li>
-                            <li data-i18n="section6-li-10">Complexidade legal e burocrática</li>
-                        </ul>
-
-                        <div class="highlight-box">
-                            <p data-i18n="section6-highlight">Escolha um sócio não apenas pelas habilidades, mas pelos valores, ética e compatibilidade de trabalho.</p>
-                        </div>
-
-                        <h3 data-i18n="section6-h3-3">Quando Procurar um Sócio?</h3>
-                        <p data-i18n="section6-p2">Quando você identifica lacunas críticas em suas habilidades que impedem o progresso, ou quando o projeto exige mais recursos e tempo do que você pode oferecer sozinho.</p>
-
-                        <h3 data-i18n="section6-h3-4">Acordo de Sócios</h3>
-                        <p data-i18n="section6-p3">Sempre formalize a parceria com um contrato claro que defina papéis, responsabilidades, divisão de lucros, e o que acontece em caso de dissolução.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 7 -->
-            <section class="section" id="section-7">
-                <div class="section-card">
-                    <div class="section-header">
-                        <span class="section-number">07</span>
-                        <h2 class="section-title" data-i18n="section7-title">Terminando seu projeto</h2>
-                        <p class="section-subtitle" data-i18n="section7-subtitle">A arte de concluir e lançar</p>
-                    </div>
-                    <div class="section-content">
-                        <p data-i18n="section7-p1">Terminar um projeto é tão importante quanto começá-lo. Muitas boas ideias nunca veem a luz do dia por perfeccionismo ou medo do lançamento.</p>
-
-                        <h3 data-i18n="section7-h3-1">O Perigo do Perfeccionismo</h3>
-                        <p data-i18n="section7-p2">Perfeccionismo é muitas vezes uma forma de procrastinação disfarçada. "Não está pronto ainda" pode ser uma desculpa para não enfrentar o julgamento do mercado.</p>
-
-                        <h3 data-i18n="section7-h3-2">Defina "Pronto"</h3>
-                        <p data-i18n="section7-p3">Estabeleça critérios claros do que significa "terminado". Geralmente, pronto significa que resolve o problema principal de forma funcional, não que é perfeito.</p>
-
-                        <h3 data-i18n="section7-h3-3">Beta Testing</h3>
-                        <p data-i18n="section7-p4">Antes do lançamento oficial, compartilhe com um grupo seleto de usuários. Feedback real é mais valioso que opiniões hipotéticas.</p>
-
-                        <h3 data-i18n="section7-h3-4">Planeje o Lançamento</h3>
-                        <ul>
-                            <li data-i18n="section7-li-1">Escolha uma data e cumpra-a</li>
-                            <li data-i18n="section7-li-2">Prepare materiais de marketing</li>
-                            <li data-i18n="section7-li-3">Teste todos os cenários possíveis</li>
-                            <li data-i18n="section7-li-4">Tenha um plano de suporte pós-lançamento</li>
-                            <li data-i18n="section7-li-5">Celebre a conquista!</li>
-                        </ul>
-
-                        <div class="highlight-box">
-                            <p data-i18n="section7-highlight">"Lançar é o começo, não o fim. O feedback real dos usuários é que guiará as próximas evoluções."</p>
-                        </div>
-
-                        <h3 data-i18n="section7-h3-5">Versão 1.0</h3>
-                        <p data-i18n="section7-p5">Lembre-se: a versão 1.0 não precisa ser perfeita, precisa ser funcional. Melhorias virão nas versões seguintes baseadas no uso real.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 8 -->
-            <section class="section" id="section-8">
-                <div class="section-card">
-                    <div class="section-header">
-                        <span class="section-number">08</span>
-                        <h2 class="section-title" data-i18n="section8-title">Próximos passos</h2>
-                        <p class="section-subtitle" data-i18n="section8-subtitle">Continue sua jornada de aprendizado</p>
-                    </div>
-                    <div class="section-content">
-                        <p data-i18n="section8-p1">Parabéns por chegar até aqui! Este é apenas o começo da sua jornada como criador e desenvolvedor. O aprendizado contínuo é a chave para o sucesso a longo prazo.</p>
-
-                        <h3 data-i18n="section8-h3-1">Continue Aprendendo</h3>
-                        <p data-i18n="section8-p2">A tecnologia evolui constantemente. Mantenha-se atualizado com novas ferramentas, linguagens e metodologias. O conhecimento é seu maior ativo.</p>
-
-                        <h3 data-i18n="section8-h3-2">Construa uma Comunidade</h3>
-                        <p data-i18n="section8-p3">Conecte-se com outros desenvolvedores. Participe de fóruns, grupos e eventos. Networking abre portas e proporciona aprendizado mútuo.</p>
-
-                        <h3 data-i18n="section8-h3-3">Documente sua Jornada</h3>
-                        <p data-i18n="section8-p4">Compartilhe o que você aprendeu. Escrever sobre suas experiências solidifica o conhecimento e ajuda outros na mesma jornada.</p>
-
-                        <h3 data-i18n="section8-h3-4">Próximo Nível</h3>
-                        <p data-i18n="section8-p5">Se você gostou deste conteúdo e quer levar suas habilidades ao próximo nível, temos algo especial para você.</p>
-
-                        <div class="highlight-box">
-                            <p data-i18n="section8-highlight">Transforme ideias em projetos reais com nosso curso completo na Hotmart!</p>
-                        </div>
-
-                        <a href="https://hotmart.com" target="_blank" class="cta-button">
-                            <span data-i18n="cta-button">Acesse nosso curso completo na Hotmart</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-
-                        <h3 data-i18n="section8-h3-5">O que você encontrará no curso:</h3>
-                        <ul>
-                            <li data-i18n="section8-li-1">Módulos aprofundados sobre cada etapa do desenvolvimento</li>
-                            <li data-i18n="section8-li-2">Projetos práticos com acompanhamento</li>
-                            <li data-i18n="section8-li-3">Acesso exclusivo à comunidade de alunos</li>
-                            <li data-i18n="section8-li-4">Mentorias individuais</li>
-                            <li data-i18n="section8-li-5">Certificado de conclusão</li>
-                        </ul>
-
-                        <p data-i18n="section8-p6">Não pare por aqui. O mundo precisa das suas ideias e da sua capacidade de transformá-las em realidade!</p>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <!-- Seção 13: Expandindo -->
+        <section id="expandindo" class="section">
+            <h2 class="section-title" data-i18n="expanding-title">Crescimento e Expansão</h2>
+            <div class="card">
+                <p data-i18n="expanding-content">A expansão é uma etapa opcional para projetos que já encontraram seu lugar e estão prontos para crescer. Pode envolver agregar novas funcionalidades, atingir novos públicos, explorar mercados diferentes ou escalar operações. É um momento de transformação qualitativa.</p>
+                <p data-i18n="expanding-content-2">Antes de expandir, certifique-se de que a base está sólida. Expansão prematura pode levar a problemas de qualidade, sobrecarga da equipe e diluição da proposta de valor. Crescimento sustentável é melhor que crescimento rápido que compromete a essência do projeto.</p>
+                <p data-i18n="expanding-content-3">A expansão bem-sucedida geralmente requer novos recursos, habilidades ou parcerias. Avalie cuidadosamente o que é necessário para crescer sem perder o que tornou seu projeto especial. Lembre-se que nem todos os projetos precisam ou devem se tornar maiores - alguns são perfeitos exatamente como são.</p>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>
-            <span data-i18n="footer-text">Desenvolvido com ❤️ por</span> 
-            <a href="../index.html" >By DealeGear</a>
-        </p>
+    <footer>
+        <p>&copy; 2023 GearStep | <a href="https://dealegear.com" target="_blank">By DealeGear</a></p>
     </footer>
 
     <script>
-        // JSON content for internationalization
+        // Internacionalização
         const translations = {
             pt: {
                 "navigation": "Navegação",
-                "nav1": "Por que criar?",
-                "nav2": "Decisão",
-                "nav3": "Primeiros passos",
-                "nav4": "Desmotivação",
-                "nav5": "Quebra-cabeça",
-                "nav6": "Sociedade",
-                "nav7": "Terminando",
-                "nav8": "Próximos passos",
+                "motivation": "Motivação",
+                "beginning": "O Início",
+                "hobby": "Hobby",
+                "extra-income": "Renda Extra",
+                "career": "Carreira",
+                "startup": "Startup",
+                "inspiration": "Inspiração",
+                "planning": "Planejando",
+                "executing": "Executando",
+                "validating": "Validando",
+                "checking": "Checando",
+                "improving": "Aperfeiçoando",
+                "expanding": "Expandindo",
                 "language": "Idioma",
-                "dealegear": "DealeGear",
-                "footer-text": "Desenvolvido com ❤️ por",
-                
-                "section1-title": "Por que criar um projeto pessoal?",
-                "section1-subtitle": "Descubra o poder de transformar ideias em realidade",
-                "section1-p1": "Criar um projeto pessoal é uma das experiências mais transformadoras que alguém pode ter. Não se trata apenas de codificar ou construir algo, mas de todo o processo de aprendizado, crescimento e superação.",
-                "section1-h3-1": "Benefícios do Desenvolvimento Pessoal",
-                "section1-li-1": "Desenvolvimento de habilidades técnicas e profissionais",
-                "section1-li-2": "Construção de um portfólio impressionante",
-                "section1-li-3": "Aumento da confiança e autoestima",
-                "section1-li-4": "Criação de oportunidades de carreira",
-                "section1-li-5": "Desenvolvimento do pensamento crítico e resolução de problemas",
-                "section1-highlight": "\"Um projeto pessoal não é apenas sobre o produto final, mas sobre a jornada de transformação que você experimenta no processo.\"",
-                "section1-h3-2": "Crescimento Profissional",
-                "section1-p2": "Projetos pessoais demonstram iniciativa, paixão e capacidade de execução - qualidades altamente valorizadas no mercado de trabalho. Eles mostram que você vai além do básico e tem a capacidade de transformar ideias em soluções concretas.",
-                
-                "section2-title": "A decisão entre hobby, renda extra, carreira e startup",
-                "section2-subtitle": "Encontre o propósito certo para seu projeto",
-                "section2-p1": "Antes de começar, é fundamental definir o propósito do seu projeto. Cada caminho exige diferentes níveis de comprometimento, recursos e expectativas.",
-                "section2-h3-1": "Hobby",
-                "section2-p2": "Perfeito para aprender sem pressão. Você pode experimentar, errar e evoluir no seu próprio ritmo. O foco está no aprendizado e na satisfação pessoal.",
-                "section2-h3-2": "Renda Extra",
-                "section2-p3": "Requer mais estrutura e planejamento. Você precisa pensar em monetização, clientes e entrega de valor, mas ainda mantém a flexibilidade de não ser sua fonte principal de renda.",
-                "section2-h3-3": "Carreira",
-                "section2-p4": "Quando o projeto se torna sua principal atividade profissional. Exige dedicação integral, planejamento estratégico e desenvolvimento contínuo de habilidades.",
-                "section2-h3-4": "Startup",
-                "section2-p5": "O nível mais ambicioso, buscando escalabilidade e crescimento rápido. Envolve investimento, equipe, mercado e potencial para se tornar um negócio de grande porte.",
-                "section2-highlight": "Não há resposta certa ou errada - apenas o caminho que faz sentido para você neste momento da sua vida.",
-                
-                "section3-title": "Primeiros passos",
-                "section3-subtitle": "Como transformar ideia em ação",
-                "section3-p1": "Começar é muitas vezes a parte mais difícil. A chave é quebrar o processo em pequenas etapas gerenciáveis e celebrar cada conquista.",
-                "section3-h3-1": "1. Defina sua Visão",
-                "section3-p2": "Seja claro sobre o que você quer criar. Uma visão bem definida serve como bússola durante todo o desenvolvimento.",
-                "section3-h3-2": "2. Pesquisa e Validação",
-                "section3-p3": "Investigue se existe demanda para sua ideia. Converse com potenciais usuários, analise concorrentes e valide suas suposições.",
-                "section3-h3-3": "3. Planejamento Simples",
-                "section3-p4": "Crie um plano básico com metas SMART (Específicas, Mensuráveis, Atingíveis, Relevantes, Temporais). Não precisa ser perfeito, apenas funcional.",
-                "section3-h3-4": "4. MVP - Produto Mínimo Viável",
-                "section3-p5": "Concentre-se na versão mais simples que resolve o problema principal. É melhor lançar algo básico que funciona do que algo complexo que nunca termina.",
-                "section3-highlight": "\"O segredo para começar é quebrar tarefas complexas em pequenas ações gerenciáveis e executar a primeira delas imediatamente.\"",
-                "section3-li-1": "Estabeleça metas semanais realistas",
-                "section3-li-2": "Crie um ambiente de trabalho propício",
-                "section3-li-3": "Encontre uma comunidade de apoio",
-                "section3-li-4": "Documente seu progresso",
-                
-                "section4-title": "Como lidar com a desmotivação?",
-                "section4-subtitle": "Estratégias para manter o foco nos momentos difíceis",
-                "section4-p1": "Todo projeto enfrenta momentos de desmotivação. É normal e esperado. A diferença entre sucesso e fracasso muitas vezes está em como lidamos com esses momentos.",
-                "section4-h3-1": "Reconheça os Sinais",
-                "section4-p2": "Procrastinação, autocrítica excessiva, falta de energia e dúvidas constantes são sinais de que você precisa pausar e recarregar.",
-                "section4-h3-2": "Estratégias Práticas",
-                "section4-li-1": "<strong>Reconecte com seu propósito:</strong> Lembre-se por que começou",
-                "section4-li-2": "<strong>Celebre pequenas vitórias:</strong> Reconheça cada progresso",
-                "section4-li-3": "<strong>Mude de ambiente:</strong> Às vezes, um novo local traz nova perspectiva",
-                "section4-li-4": "<strong>Busque inspiração:</strong> Leia histórias de outros desenvolvedores",
-                "section4-li-5": "<strong>Trabalhe em outra parte:</strong> Mude para uma tarefa diferente do projeto",
-                "section4-li-6": "<strong>Descanse:</strong> Às vezes, o que você precisa é de uma pausa genuína",
-                "section4-highlight": "A desmotivação não é falha, é um sinal. Ouça o que ela está tentando lhe dizer sobre suas necessidades atuais.",
-                "section4-h3-3": "A Regra dos 2 Minutos",
-                "section4-p3": "Se uma tarefa levar menos de 2 minutos, faça imediatamente. Isso cria momentum e combate a inércia da procrastinação.",
-                
-                "section5-title": "Um projeto é um grande quebra-cabeça",
-                "section5-subtitle": "Monte as peças na ordem certa",
-                "section5-p1": "Pense em seu projeto como um quebra-cabeça complexo. Você não precisa ver a imagem completa para começar - basta encontrar as primeiras peças e conectá-las.",
-                "section5-h3-1": "As Bordas Primeiro",
-                "section5-p2": "Comece definindo as estruturas básicas e fundamentais. São as bordas do seu quebra-cabeça - o framework que dará suporte ao resto.",
-                "section5-h3-2": "Grupos por Cor",
-                "section5-p3": "Agrupe funcionalidades similares. Trate cada módulo ou feature como um grupo de peças da mesma cor - mais fácil de montar quando trabalhadas juntas.",
-                "section5-h3-3": "Teste Conexões",
-                "section5-p4": "Não espere o final para testar. Verifique se as peças se encaixam conforme você avança. Isso evita surpresas desagradáveis no final.",
-                "section5-h3-4": "A Imagem vai Aparecendo",
-                "section5-p5": "Conforme você monta as peças, o padrão começa a emergir. O que parecia caótico no início ganha forma e sentido.",
-                "section5-highlight": "\"Cada linha de código é uma peça do quebra-cabeça. Juntas, elas criam algo maior que a soma de suas partes.\"",
-                "section5-li-1": "Divida problemas complexos em subproblemas simples",
-                "section5-li-2": "Foque em uma peça de cada vez",
-                "section5-li-3": "Celebre quando encontrar conexões",
-                "section5-li-4": "Não tenha medo de desmontar e remontar",
-                
-                "section6-title": "Admitir ou não alguém para uma sociedade",
-                "section6-subtitle": "Os prós e contras de dividir seu projeto",
-                "section6-p1": "A decisão de trazer um sócio é uma das mais importantes que você tomará. Pode acelerar seu projeto ou se tornar uma fonte de conflitos.",
-                "section6-h3-1": "Vantagens de Ter um Sócio",
-                "section6-li-1": "Compartilhamento de responsabilidades e workload",
-                "section6-li-2": "Complementaridade de habilidades",
-                "section6-li-3": "Mais recursos financeiros e networking",
-                "section6-li-4": "Suporte emocional e motivacional",
-                "section6-li-5": "Diferentes perspectivas para resolver problemas",
-                "section6-h3-2": "Desvantagens e Riscos",
-                "section6-li-6": "Perda de controle total sobre decisões",
-                "section6-li-7": "Divisão de lucros e equity",
-                "section6-li-8": "Potencial conflitos de visão",
-                "section6-li-9": "Dependência do comprometimento do outro",
-                "section6-li-10": "Complexidade legal e burocrática",
-                "section6-highlight": "Escolha um sócio não apenas pelas habilidades, mas pelos valores, ética e compatibilidade de trabalho.",
-                "section6-h3-3": "Quando Procurar um Sócio?",
-                "section6-p2": "Quando você identifica lacunas críticas em suas habilidades que impedem o progresso, ou quando o projeto exige mais recursos e tempo do que você pode oferecer sozinho.",
-                "section6-h3-4": "Acordo de Sócios",
-                "section6-p3": "Sempre formalize a parceria com um contrato claro que defina papéis, responsabilidades, divisão de lucros, e o que acontece em caso de dissolução.",
-                
-                "section7-title": "Terminando seu projeto",
-                "section7-subtitle": "A arte de concluir e lançar",
-                "section7-p1": "Terminar um projeto é tão importante quanto começá-lo. Muitas boas ideias nunca veem a luz do dia por perfeccionismo ou medo do lançamento.",
-                "section7-h3-1": "O Perigo do Perfeccionismo",
-                "section7-p2": "Perfeccionismo é muitas vezes uma forma de procrastinação disfarçada. \"Não está pronto ainda\" pode ser uma desculpa para não enfrentar o julgamento do mercado.",
-                "section7-h3-2": "Defina \"Pronto\"",
-                "section7-p3": "Estabeleça critérios claros do que significa \"terminado\". Geralmente, pronto significa que resolve o problema principal de forma funcional, não que é perfeito.",
-                "section7-h3-3": "Beta Testing",
-                "section7-p4": "Antes do lançamento oficial, compartilhe com um grupo seleto de usuários. Feedback real é mais valioso que opiniões hipotéticas.",
-                "section7-h3-4": "Planeje o Lançamento",
-                "section7-li-1": "Escolha uma data e cumpra-a",
-                "section7-li-2": "Prepare materiais de marketing",
-                "section7-li-3": "Teste todos os cenários possíveis",
-                "section7-li-4": "Tenha um plano de suporte pós-lançamento",
-                "section7-li-5": "Celebre a conquista!",
-                "section7-highlight": "\"Lançar é o começo, não o fim. O feedback real dos usuários é que guiará as próximas evoluções.\"",
-                "section7-h3-5": "Versão 1.0",
-                "section7-p5": "Lembre-se: a versão 1.0 não precisa ser perfeita, precisa ser funcional. Melhorias virão nas versões seguintes baseadas no uso real.",
-                
-                "section8-title": "Próximos passos",
-                "section8-subtitle": "Continue sua jornada de aprendizado",
-                "section8-p1": "Parabéns por chegar até aqui! Este é apenas o começo da sua jornada como criador e desenvolvedor. O aprendizado contínuo é a chave para o sucesso a longo prazo.",
-                "section8-h3-1": "Continue Aprendendo",
-                "section8-p2": "A tecnologia evolui constantemente. Mantenha-se atualizado com novas ferramentas, linguagens e metodologias. O conhecimento é seu maior ativo.",
-                "section8-h3-2": "Construa uma Comunidade",
-                "section8-p3": "Conecte-se com outros desenvolvedores. Participe de fóruns, grupos e eventos. Networking abre portas e proporciona aprendizado mútuo.",
-                "section8-h3-3": "Documente sua Jornada",
-                "section8-p4": "Compartilhe o que você aprendeu. Escrever sobre suas experiências solidifica o conhecimento e ajuda outros na mesma jornada.",
-                "section8-h3-4": "Próximo Nível",
-                "section8-p5": "Se você gostou deste conteúdo e quer levar suas habilidades ao próximo nível, temos algo especial para você.",
-                "section8-highlight": "Transforme ideias em projetos reais com nosso curso completo na Hotmart!",
-                "cta-button": "Acesse nosso curso completo na Hotmart",
-                "section8-h3-5": "O que você encontrará no curso:",
-                "section8-li-1": "Módulos aprofundados sobre cada etapa do desenvolvimento",
-                "section8-li-2": "Projetos práticos com acompanhamento",
-                "section8-li-3": "Acesso exclusivo à comunidade de alunos",
-                "section8-li-4": "Mentorias individuais",
-                "section8-li-5": "Certificado de conclusão",
-                "section8-p6": "Não pare por aqui. O mundo precisa das suas ideias e da sua capacidade de transformá-las em realidade!"
+                "documentation": "Documentação",
+                "motivation-title": "Por Que Criar um Projeto Pessoal?",
+                "motivation-content": "Criar projetos pessoais é uma das formas mais eficazes de expandir seus conhecimentos e habilidades. Quando você desenvolve algo do zero, enfrenta desafios reais que o forçam a aprender e crescer. Além disso, ter um projeto seu proporciona uma sensação única de realização e pertencimento.",
+                "motivation-content-2": "Os projetos pessoais também ocupam a mente de forma produtiva, transformando tempo livre em oportunidades de desenvolvimento. Seja para aprender uma nova tecnologia, resolver um problema do dia a dia ou simplesmente por prazer, os projetos pessoais são investimentos em você mesmo.",
+                "beginning-title": "Como Tudo Começa",
+                "beginning-content": "Todo grande projeto começa com uma ideia simples. Geralmente, surge da observação de um problema, de uma necessidade pessoal ou da curiosidade sobre como algo funciona. O importante é capturar essa ideia inicial antes que ela se perca.",
+                "beginning-content-2": "A validação conceitual é o próximo passo crucial. Antes de investir tempo e recursos, pergunte-se: \"Isso resolve um problema real? Existe alguém além de mim que se beneficiaria com isso?\". Respostas honestas a essas perguntas podem economizar meses de trabalho.",
+                "beginning-content-3": "Os primeiros passos devem ser pequenos e mensuráveis. Defina um escopo mínimo viável e concentre-se em entregar valor rapidamente. Lembre-se que a perfeição é inimiga do progresso, especialmente no início.",
+                "hobby-title": "Projetos como Hobby",
+                "hobby-content": "Projetos de hobby são aqueles desenvolvidos principalmente por prazer e interesse pessoal, sem pressão comercial ou metas financeiras. Eles oferecem liberdade criativa total, permitindo experimentação sem as restrições do mercado.",
+                "hobby-content-2": "O maior benefício dos projetos de hobby é o aprendizado sem pressão. Você pode tentar novas tecnologias, cometer erros e iterar livremente. Essa liberdade muitas vezes resulta em soluções inovadoras que surgem justamente da ausência de limitações comerciais.",
+                "hobby-content-3": "Muitos projetos que começaram como hobby evoluíram para produtos comerciais de sucesso. A chave é manter o equilíbrio entre a diversão e a disciplina, dedicando tempo regularmente sem transformar o hobby em obrigação.",
+                "extra-income-title": "Projetos para Renda Extra",
+                "extra-income-content": "Projetos para renda extra ocupam um espaço intermediário entre hobby e carreira. Eles têm potencial monetário, mas não precisam sustentar completamente seu estilo de vida. Essa categoria oferece o melhor dos dois mundos: criatividade com retorno financeiro.",
+                "extra-income-content-2": "O equilíbrio entre trabalho principal e projeto secundário é fundamental. Estabeleça limites claros de tempo e energia para evitar o esgotamento. Muitas pessoas encontram sucesso dedicando algumas horas durante fins de semana ou noites aos seus projetos.",
+                "extra-income-content-3": "Estratégias eficazes incluem modelos de assinatura, venda de produtos digitais, consultoria baseada em seu projeto ou publicidade. Comece pequeno, valide o interesse do mercado e escale gradualmente conforme o demanda cresce.",
+                "career-title": "Projetos como Carreira",
+                "career-content": "Transformar um projeto em carreira é um passo significativo que requer dedicação integral e profissionalização. Isso significa tratar seu projeto como um negócio real, com planejamento estratégico, gestão financeira e foco em crescimento sustentável.",
+                "career-content-2": "A transição de projeto pessoal para carreira geralmente envolve a criação de uma estrutura empresarial, desenvolvimento de habilidades de negócio e, muitas vezes, a construção de uma equipe. O fundador precisa evoluir de criador para gestor, delegando tarefas e focando na visão estratégica.",
+                "career-content-3": "Projetos que se tornam carreiras bem-sucedidas geralmente resolvem problemas significativos para um público específico e têm modelos de negócio claros e escaláveis. A chave é encontrar o equilíbrio entre manter a paixão original e adaptar-se às demandas do mercado.",
+                "startup-title": "Projetos como Startup",
+                "startup-content": "Startups representam a forma mais ambiciosa de projeto pessoal, com foco em crescimento acelerado e escalabilidade massiva. Diferentemente de projetos de hobby ou renda extra, startups são projetadas desde o início para crescer rapidamente e capturar mercados significativos.",
+                "startup-content-2": "A jornada de startup geralmente envolve buscar investimento externo, construir uma equipe multidisciplinar e iterar rapidamente baseado em feedback do mercado. O foco está em validar hipóteses de negócio e encontrar um modelo repetível e escalável antes que os recursos se esgotem.",
+                "startup-content-3": "Embora potencialmente lucrativas, startups apresentam riscos elevados. A taxa de mortalidade é significativa, mas os projetos que sobrevivem e prosperam podem transformar indústrias inteiras. A mentalidade de startup combina visão ousada com execução disciplinada e capacidade de adaptação rápida.",
+                "inspiration-title": "Encontrando Inspiração",
+                "inspiration-content": "A inspiração para projetos pode vir de diversas fontes: problemas do dia a dia, conversas com amigos, tendências de mercado ou simplesmente curiosidade. O segredo é manter uma mente aberta e observar o mundo com olhos de solucionador de problemas.",
+                "inspiration-content-2": "Muitas vezes, as melhores ideias surgem da intersecção entre seus interesses pessoais e necessidades não atendidas. Pergunte-se: \"O que me frustra regularmente? Como poderia resolver isso? Quem mais enfrenta o mesmo problema?\".",
+                "inspiration-content-3": "Nossa ferramenta GearLabs oferece uma série de protótipos conceituais e desafios para te ajudar a encontrar inspiração para suas criações. Explore diferentes áreas, experimente novas abordagens e não tenha medo de combinar ideias aparentemente desconexas.",
+                "planning-title": "A Importância do Planejamento",
+                "planning-content": "O planejamento é a base de qualquer projeto bem-sucedido. Envolve definir claramente o escopo, identificar recursos necessários, estabelecer cronogramas realistas e antecipar possíveis obstáculos. Um bom plano não precisa ser rígido, mas deve fornecer direção clara.",
+                "planning-content-2": "Comece com objetivos SMART (Específicos, Mensuráveis, Atingíveis, Relevantes e Temporais). Depois, quebre o projeto em fases menores e estabeleça marcos intermediários. Isso torna o progresso visível e mantém a motivação ao longo do caminho.",
+                "planning-content-3": "Nossa ferramenta GearHub é ideal para essa etapa. Com recursos para gestão de projetos, colaboração e acompanhamento de progresso, ela ajuda a transformar ideias em planos executáveis com estrutura e clareza.",
+                "executing-title": "Desafios da Execução",
+                "executing-content": "A execução é onde as ideias encontram a realidade. É a fase mais desafiadora, onde você enfrentará obstáculos inesperados, custos não planejados e a necessidade de adaptações constantes. A resiliência e a capacidade de solucionar problemas são essenciais neste estágio.",
+                "executing-content-2": "Gerenciar expectativas é crucial - tanto as suas quanto as de potenciais usuários. Seja transparente sobre limitações e prazos. A comunicação regular sobre progressos e desafios ajuda a manter o engajamento e a confiança, mesmo quando os resultados demoram a aparecer.",
+                "executing-content-3": "Lembre-se que perfeição é inimiga do progresso. É melhor entregar uma versão funcional que resolve 80% do problema do que esperar indefinidamente por uma solução perfeita. O feedback dos usuários iniciais será inestimável para guiar as melhorias futuras.",
+                "validating-title": "Validação Essencial",
+                "validating-content": "Validar seu projeto é garantir que você está construindo algo que as pessoas realmente querem ou precisam. Este passo é frequentemente negligenciado, mas é fundamental para evitar desperdício de tempo e recursos em soluções que não encontram adequação no mercado.",
+                "validating-content-2": "A abordagem de validação varia conforme a categoria do projeto. Para projetos de hobby, a validação pode ser simplesmente seu próprio prazer e satisfação. Para renda extra, envolve testar disposição para pagar. Para carreira e startup, requer validação de mercado mais rigorosa e análise de concorrência.",
+                "validating-content-3": "Técnicas eficazes incluem entrevistas com potenciais usuários, criação de protótipos de baixa fidelidade, testes A/B e lançamentos em mercados limitados. O objetivo é aprender rápido e barato, antes de investir pesadamente em desenvolvimento completo.",
+                "checking-title": "Checkpoint do Projeto",
+                "checking-content": "Os checkpoints são momentos de pausa para avaliação crítica do progresso. Eles permitem comparar os resultados obtidos com os objetivos iniciais, analisar desvios e extrair lições aprendidas. Essa reflexão é essencial para manter o projeto no caminho certo.",
+                "checking-content-2": "Durante um checkpoint, pergunte-se: \"O que funcionou bem? O que não funcionou? Por quê? O que mudaria se pudesse recomeçar?\". Seja honesto e objetivo. Às vezes, os maiores aprendizados vêm dos fracassos e desvios inesperados.",
+                "checking-content-3": "Documente essas reflexões regularmente. Elas não apenas ajudam a ajustar o curso atual, mas também servem como valiosa referência para projetos futuros. A capacidade de aprender com a experiência é o que diferencia projetos bem-sucedidos de tentativas frustradas.",
+                "improving-title": "Ciclo de Melhorias",
+                "improving-content": "Nenhum projeto está completo no primeiro lançamento. O aperfeiçoamento contínuo é o que transforma uma boa ideia em um produto excepcional. Este ciclo envolve coletar feedback, identificar áreas de melhoria e implementar mudanças de forma iterativa.",
+                "improving-content-2": "Melhorias podem ser pontuais - corrigir bugs, otimizar desempenho, refinar interface - ou estruturais - mudanças significativas na abordagem ou funcionalidades. A chave é equilibrar inovação com estabilidade, garantindo que as melhorias não quebrem o que já funciona.",
+                "improving-content-3": "Esteja aberto a feedback crítico e disposto a pivotar quando necessário. Muitos projetos de sucesso passaram por transformações significativas baseadas no aprendizado do mercado. Lembre-se que a versão final é aquela que melhor serve às necessidades dos usuários, não necessariamente a que você imaginou inicialmente.",
+                "expanding-title": "Crescimento e Expansão",
+                "expanding-content": "A expansão é uma etapa opcional para projetos que já encontraram seu lugar e estão prontos para crescer. Pode envolver agregar novas funcionalidades, atingir novos públicos, explorar mercados diferentes ou escalar operações. É um momento de transformação qualitativa.",
+                "expanding-content-2": "Antes de expandir, certifique-se de que a base está sólida. Expansão prematura pode levar a problemas de qualidade, sobrecarga da equipe e diluição da proposta de valor. Crescimento sustentável é melhor que crescimento rápido que compromete a essência do projeto.",
+                "expanding-content-3": "A expansão bem-sucedida geralmente requer novos recursos, habilidades ou parcerias. Avalie cuidadosamente o que é necessário para crescer sem perder o que tornou seu projeto especial. Lembre-se que nem todos os projetos precisam ou devem se tornar maiores - alguns são perfeitos exatamente como são."
             },
             en: {
                 "navigation": "Navigation",
-                "nav1": "Why create?",
-                "nav2": "Decision",
-                "nav3": "First steps",
-                "nav4": "Demotivation",
-                "nav5": "Puzzle",
-                "nav6": "Partnership",
-                "nav7": "Finishing",
-                "nav8": "Next steps",
+                "motivation": "Motivation",
+                "beginning": "The Beginning",
+                "hobby": "Hobby",
+                "extra-income": "Extra Income",
+                "career": "Career",
+                "startup": "Startup",
+                "inspiration": "Inspiration",
+                "planning": "Planning",
+                "executing": "Executing",
+                "validating": "Validating",
+                "checking": "Checking",
+                "improving": "Improving",
+                "expanding": "Expanding",
                 "language": "Language",
-                "dealegear": "DealeGear",
-                "footer-text": "Developed with ❤️ by",
-                
-                "section1-title": "Why create a personal project?",
-                "section1-subtitle": "Discover the power of turning ideas into reality",
-                "section1-p1": "Creating a personal project is one of the most transformative experiences someone can have. It's not just about coding or building something, but about the entire process of learning, growth, and overcoming challenges.",
-                "section1-h3-1": "Benefits of Personal Development",
-                "section1-li-1": "Development of technical and professional skills",
-                "section1-li-2": "Building an impressive portfolio",
-                "section1-li-3": "Increased confidence and self-esteem",
-                "section1-li-4": "Creation of career opportunities",
-                "section1-li-5": "Development of critical thinking and problem-solving",
-                "section1-highlight": "\"A personal project is not just about the final product, but about the transformation journey you experience in the process.\"",
-                "section1-h3-2": "Professional Growth",
-                "section1-p2": "Personal projects demonstrate initiative, passion, and execution ability - qualities highly valued in the job market. They show that you go beyond the basics and have the ability to transform ideas into concrete solutions.",
-                
-                "section2-title": "The decision between hobby, extra income, career, and startup",
-                "section2-subtitle": "Find the right purpose for your project",
-                "section2-p1": "Before starting, it's essential to define the purpose of your project. Each path requires different levels of commitment, resources, and expectations.",
-                "section2-h3-1": "Hobby",
-                "section2-p2": "Perfect for learning without pressure. You can experiment, make mistakes, and evolve at your own pace. The focus is on learning and personal satisfaction.",
-                "section2-h3-2": "Extra Income",
-                "section2-p3": "Requires more structure and planning. You need to think about monetization, customers, and value delivery, but still maintain the flexibility of not being your main source of income.",
-                "section2-h3-3": "Career",
-                "section2-p4": "When the project becomes your main professional activity. It requires full dedication, strategic planning, and continuous skill development.",
-                "section2-h3-4": "Startup",
-                "section2-p5": "The most ambitious level, seeking scalability and rapid growth. It involves investment, team, market, and potential to become a large-scale business.",
-                "section2-highlight": "There's no right or wrong answer - only the path that makes sense for you at this moment in your life.",
-                
-                "section3-title": "First steps",
-                "section3-subtitle": "How to turn idea into action",
-                "section3-p1": "Starting is often the hardest part. The key is to break the process into small, manageable steps and celebrate each achievement.",
-                "section3-h3-1": "1. Define Your Vision",
-                "section3-p2": "Be clear about what you want to create. A well-defined vision serves as a compass throughout development.",
-                "section3-h3-2": "2. Research and Validation",
-                "section3-p3": "Investigate if there's demand for your idea. Talk to potential users, analyze competitors, and validate your assumptions.",
-                "section3-h3-3": "3. Simple Planning",
-                "section3-p4": "Create a basic plan with SMART goals (Specific, Measurable, Achievable, Relevant, Time-bound). It doesn't need to be perfect, just functional.",
-                "section3-h3-4": "4. MVP - Minimum Viable Product",
-                "section3-p5": "Focus on the simplest version that solves the main problem. It's better to launch something basic that works than something complex that never finishes.",
-                "section3-highlight": "\"The secret to starting is breaking complex tasks into small, manageable actions and executing the first one immediately.\"",
-                "section3-li-1": "Set realistic weekly goals",
-                "section3-li-2": "Create a conducive work environment",
-                "section3-li-3": "Find a support community",
-                "section3-li-4": "Document your progress",
-                
-                "section4-title": "How to deal with demotivation?",
-                "section4-subtitle": "Strategies to maintain focus in difficult moments",
-                "section4-p1": "Every project faces moments of demotivation. It's normal and expected. The difference between success and failure often lies in how we handle these moments.",
-                "section4-h3-1": "Recognize the Signs",
-                "section4-p2": "Procrastination, excessive self-criticism, lack of energy, and constant doubts are signs that you need to pause and recharge.",
-                "section4-h3-2": "Practical Strategies",
-                "section4-li-1": "<strong>Reconnect with your purpose:</strong> Remember why you started",
-                "section4-li-2": "<strong>Celebrate small victories:</strong> Recognize every progress",
-                "section4-li-3": "<strong>Change environment:</strong> Sometimes a new location brings new perspective",
-                "section4-li-4": "<strong>Seek inspiration:</strong> Read stories from other developers",
-                "section4-li-5": "<strong>Work on another part:</strong> Switch to a different task of the project",
-                "section4-li-6": "<strong>Rest:</strong> Sometimes what you need is a genuine break",
-                "section4-highlight": "Demotivation is not a failure, it's a signal. Listen to what it's trying to tell you about your current needs.",
-                "section4-h3-3": "The 2-Minute Rule",
-                "section4-p3": "If a task takes less than 2 minutes, do it immediately. This creates momentum and combats the inertia of procrastination.",
-                
-                "section5-title": "A project is a big puzzle",
-                "section5-subtitle": "Put the pieces together in the right order",
-                "section5-p1": "Think of your project as a complex puzzle. You don't need to see the complete picture to start - just find the first pieces and connect them.",
-                "section5-h3-1": "The Edges First",
-                "section5-p2": "Start by defining the basic and fundamental structures. These are the edges of your puzzle - the framework that will support the rest.",
-                "section5-h3-2": "Groups by Color",
-                "section5-p3": "Group similar functionalities. Treat each module or feature as a group of same-colored pieces - easier to assemble when worked on together.",
-                "section5-h3-3": "Test Connections",
-                "section5-p4": "Don't wait until the end to test. Check if the pieces fit as you progress. This avoids unpleasant surprises at the end.",
-                "section5-h3-4": "The Picture Starts to Appear",
-                "section5-p5": "As you assemble the pieces, the pattern begins to emerge. What seemed chaotic at the beginning gains shape and meaning.",
-                "section5-highlight": "\"Each line of code is a piece of the puzzle. Together, they create something greater than the sum of their parts.\"",
-                "section5-li-1": "Divide complex problems into simple subproblems",
-                "section5-li-2": "Focus on one piece at a time",
-                "section5-li-3": "Celebrate when you find connections",
-                "section5-li-4": "Don't be afraid to disassemble and reassemble",
-                
-                "section6-title": "To admit or not someone to a partnership",
-                "section6-subtitle": "The pros and cons of sharing your project",
-                "section6-p1": "The decision to bring a partner is one of the most important you'll make. It can accelerate your project or become a source of conflicts.",
-                "section6-h3-1": "Advantages of Having a Partner",
-                "section6-li-1": "Sharing of responsibilities and workload",
-                "section6-li-2": "Complementarity of skills",
-                "section6-li-3": "More financial resources and networking",
-                "section6-li-4": "Emotional and motivational support",
-                "section6-li-5": "Different perspectives to solve problems",
-                "section6-h3-2": "Disadvantages and Risks",
-                "section6-li-6": "Loss of total control over decisions",
-                "section6-li-7": "Division of profits and equity",
-                "section6-li-8": "Potential vision conflicts",
-                "section6-li-9": "Dependence on the other's commitment",
-                "section6-li-10": "Legal and bureaucratic complexity",
-                "section6-highlight": "Choose a partner not just for skills, but for values, ethics, and work compatibility.",
-                "section6-h3-3": "When to Look for a Partner?",
-                "section6-p2": "When you identify critical gaps in your skills that hinder progress, or when the project requires more resources and time than you can offer alone.",
-                "section6-h3-4": "Partnership Agreement",
-                "section6-p3": "Always formalize the partnership with a clear contract that defines roles, responsibilities, profit division, and what happens in case of dissolution.",
-                
-                "section7-title": "Finishing your project",
-                "section7-subtitle": "The art of completing and launching",
-                "section7-p1": "Finishing a project is as important as starting it. Many good ideas never see the light of day due to perfectionism or fear of launching.",
-                "section7-h3-1": "The Danger of Perfectionism",
-                "section7-p2": "Perfectionism is often a disguised form of procrastination. \"It's not ready yet\" can be an excuse not to face market judgment.",
-                "section7-h3-2": "Define \"Ready\"",
-                "section7-p3": "Establish clear criteria for what \"finished\" means. Usually, ready means it solves the main problem functionally, not that it's perfect.",
-                "section7-h3-3": "Beta Testing",
-                "section7-p4": "Before the official launch, share with a select group of users. Real feedback is more valuable than hypothetical opinions.",
-                "section7-h3-4": "Plan the Launch",
-                "section7-li-1": "Choose a date and stick to it",
-                "section7-li-2": "Prepare marketing materials",
-                "section7-li-3": "Test all possible scenarios",
-                "section7-li-4": "Have a post-launch support plan",
-                "section7-li-5": "Celebrate the achievement!",
-                "section7-highlight": "\"Launching is the beginning, not the end. Real user feedback will guide the next evolutions.\"",
-                "section7-h3-5": "Version 1.0",
-                "section7-p5": "Remember: version 1.0 doesn't need to be perfect, it needs to be functional. Improvements will come in subsequent versions based on real usage.",
-                
-                "section8-title": "Next steps",
-                "section8-subtitle": "Continue your learning journey",
-                "section8-p1": "Congratulations on reaching this point! This is just the beginning of your journey as a creator and developer. Continuous learning is the key to long-term success.",
-                "section8-h3-1": "Keep Learning",
-                "section8-p2": "Technology constantly evolves. Stay updated with new tools, languages, and methodologies. Knowledge is your greatest asset.",
-                "section8-h3-2": "Build a Community",
-                "section8-p3": "Connect with other developers. Participate in forums, groups, and events. Networking opens doors and provides mutual learning.",
-                "section8-h3-3": "Document Your Journey",
-                "section8-p4": "Share what you've learned. Writing about your experiences solidifies knowledge and helps others on the same journey.",
-                "section8-h3-4": "Next Level",
-                "section8-p5": "If you liked this content and want to take your skills to the next level, we have something special for you.",
-                "section8-highlight": "Transform ideas into real projects with our complete course on Hotmart!",
-                "cta-button": "Access our complete course on Hotmart",
-                "section8-h3-5": "What you'll find in the course:",
-                "section8-li-1": "In-depth modules on each development stage",
-                "section8-li-2": "Practical projects with guidance",
-                "section8-li-3": "Exclusive access to student community",
-                "section8-li-4": "Individual mentorships",
-                "section8-li-5": "Completion certificate",
-                "section8-p6": "Don't stop here. The world needs your ideas and your ability to turn them into reality!"
+                "documentation": "Documentation",
+                "motivation-title": "Why Create a Personal Project?",
+                "motivation-content": "Creating personal projects is one of the most effective ways to expand your knowledge and skills. When you develop something from scratch, you face real challenges that force you to learn and grow. Additionally, having your own project provides a unique sense of accomplishment and belonging.",
+                "motivation-content-2": "Personal projects also occupy the mind productively, transforming free time into development opportunities. Whether to learn a new technology, solve a daily problem, or simply for pleasure, personal projects are investments in yourself.",
+                "beginning-title": "How It All Begins",
+                "beginning-content": "Every great project starts with a simple idea. Usually, it arises from observing a problem, a personal need, or curiosity about how something works. The important thing is to capture this initial idea before it's lost.",
+                "beginning-content-2": "Conceptual validation is the next crucial step. Before investing time and resources, ask yourself: \"Does this solve a real problem? Is there someone besides me who would benefit from this?\". Honest answers to these questions can save months of work.",
+                "beginning-content-3": "The first steps should be small and measurable. Define a minimum viable scope and focus on delivering value quickly. Remember that perfection is the enemy of progress, especially at the beginning.",
+                "hobby-title": "Projects as a Hobby",
+                "hobby-content": "Hobby projects are those developed mainly for pleasure and personal interest, without commercial pressure or financial goals. They offer total creative freedom, allowing experimentation without market restrictions.",
+                "hobby-content-2": "The biggest benefit of hobby projects is learning without pressure. You can try new technologies, make mistakes, and iterate freely. This freedom often results in innovative solutions that arise precisely from the absence of commercial limitations.",
+                "hobby-content-3": "Many projects that started as hobbies have evolved into successful commercial products. The key is to maintain the balance between fun and discipline, dedicating time regularly without turning the hobby into an obligation.",
+                "extra-income-title": "Projects for Extra Income",
+                "extra-income-content": "Extra income projects occupy an intermediate space between hobby and career. They have monetary potential but don't need to fully support your lifestyle. This category offers the best of both worlds: creativity with financial return.",
+                "extra-income-content-2": "The balance between main work and side project is fundamental. Establish clear limits of time and energy to avoid burnout. Many people find success dedicating a few hours during weekends or nights to their projects.",
+                "extra-income-content-3": "Effective strategies include subscription models, selling digital products, consulting based on your project, or advertising. Start small, validate market interest, and scale gradually as demand grows.",
+                "career-title": "Projects as a Career",
+                "career-content": "Turning a project into a career is a significant step that requires full dedication and professionalization. This means treating your project as a real business, with strategic planning, financial management, and focus on sustainable growth.",
+                "career-content-2": "The transition from personal project to career usually involves creating a business structure, developing business skills, and often building a team. The founder needs to evolve from creator to manager, delegating tasks and focusing on strategic vision.",
+                "career-content-3": "Projects that become successful careers generally solve significant problems for a specific audience and have clear, scalable business models. The key is to find the balance between maintaining the original passion and adapting to market demands.",
+                "startup-title": "Projects as a Startup",
+                "startup-content": "Startups represent the most ambitious form of personal project, with a focus on accelerated growth and massive scalability. Unlike hobby or extra income projects, startups are designed from the beginning to grow quickly and capture significant markets.",
+                "startup-content-2": "The startup journey usually involves seeking external investment, building a multidisciplinary team, and iterating quickly based on market feedback. The focus is on validating business hypotheses and finding a repeatable and scalable model before resources run out.",
+                "startup-content-3": "Although potentially profitable, startups present high risks. The mortality rate is significant, but projects that survive and thrive can transform entire industries. The startup mindset combines bold vision with disciplined execution and rapid adaptation capability.",
+                "inspiration-title": "Finding Inspiration",
+                "inspiration-content": "Inspiration for projects can come from various sources: daily problems, conversations with friends, market trends, or simply curiosity. The secret is to keep an open mind and observe the world with the eyes of a problem solver.",
+                "inspiration-content-2": "Often, the best ideas arise from the intersection between your personal interests and unmet needs. Ask yourself: \"What frustrates me regularly? How could I solve this? Who else faces the same problem?\".",
+                "inspiration-content-3": "Our GearLabs tool offers a series of conceptual prototypes and challenges to help you find inspiration for your creations. Explore different areas, try new approaches, and don't be afraid to combine seemingly disconnected ideas.",
+                "planning-title": "The Importance of Planning",
+                "planning-content": "Planning is the foundation of any successful project. It involves clearly defining the scope, identifying necessary resources, establishing realistic timelines, and anticipating possible obstacles. A good plan doesn't need to be rigid, but it should provide clear direction.",
+                "planning-content-2": "Start with SMART goals (Specific, Measurable, Achievable, Relevant, and Time-bound). Then, break the project into smaller phases and establish intermediate milestones. This makes progress visible and maintains motivation along the way.",
+                "planning-content-3": "Our GearHub tool is ideal for this stage. With features for project management, collaboration, and progress tracking, it helps transform ideas into actionable plans with structure and clarity.",
+                "executing-title": "Execution Challenges",
+                "executing-content": "Execution is where ideas meet reality. It's the most challenging phase, where you'll face unexpected obstacles, unplanned costs, and the need for constant adaptations. Resilience and problem-solving ability are essential at this stage.",
+                "executing-content-2": "Managing expectations is crucial - both yours and those of potential users. Be transparent about limitations and deadlines. Regular communication about progress and challenges helps maintain engagement and trust, even when results take time to appear.",
+                "executing-content-3": "Remember that perfection is the enemy of progress. It's better to deliver a functional version that solves 80% of the problem than to wait indefinitely for a perfect solution. Feedback from initial users will be invaluable to guide future improvements.",
+                "validating-title": "Essential Validation",
+                "validating-content": "Validating your project is ensuring you're building something people really want or need. This step is often neglected, but it's fundamental to avoid wasting time and resources on solutions that don't find market fit.",
+                "validating-content-2": "The validation approach varies according to the project category. For hobby projects, validation can simply be your own pleasure and satisfaction. For extra income, it involves testing willingness to pay. For career and startup, it requires more rigorous market validation and competitor analysis.",
+                "validating-content-3": "Effective techniques include interviews with potential users, creating low-fidelity prototypes, A/B testing, and launches in limited markets. The goal is to learn quickly and cheaply before investing heavily in full development.",
+                "checking-title": "Project Checkpoint",
+                "checking-content": "Checkpoints are moments of pause for critical progress evaluation. They allow comparing results obtained with initial objectives, analyzing deviations, and extracting lessons learned. This reflection is essential to keep the project on the right track.",
+                "checking-content-2": "During a checkpoint, ask yourself: \"What worked well? What didn't work? Why? What would you change if you could start over?\". Be honest and objective. Sometimes, the biggest learnings come from failures and unexpected deviations.",
+                "checking-content-3": "Document these reflections regularly. They not only help adjust the current course but also serve as valuable reference for future projects. The ability to learn from experience is what distinguishes successful projects from frustrated attempts.",
+                "improving-title": "Improvement Cycle",
+                "improving-content": "No project is complete at first launch. Continuous improvement is what transforms a good idea into an exceptional product. This cycle involves collecting feedback, identifying areas for improvement, and implementing changes iteratively.",
+                "improving-content-2": "Improvements can be punctual - fixing bugs, optimizing performance, refining interface - or structural - significant changes in approach or functionalities. The key is to balance innovation with stability, ensuring that improvements don't break what already works.",
+                "improving-content-3": "Be open to critical feedback and willing to pivot when necessary. Many successful projects have undergone significant transformations based on market learning. Remember that the final version is the one that best serves users' needs, not necessarily the one you initially imagined.",
+                "expanding-title": "Growth and Expansion",
+                "expanding-content": "Expansion is an optional step for projects that have already found their place and are ready to grow. It can involve adding new functionalities, reaching new audiences, exploring different markets, or scaling operations. It's a moment of qualitative transformation.",
+                "expanding-content-2": "Before expanding, make sure the foundation is solid. Premature expansion can lead to quality problems, team overload, and dilution of value proposition. Sustainable growth is better than rapid growth that compromises the essence of the project.",
+                "expanding-content-3": "Successful expansion usually requires new resources, skills, or partnerships. Carefully evaluate what's needed to grow without losing what made your project special. Remember that not all projects need or should become bigger - some are perfect exactly as they are."
             },
             es: {
                 "navigation": "Navegación",
-                "nav1": "¿Por qué crear?",
-                "nav2": "Decisión",
-                "nav3": "Primeros pasos",
-                "nav4": "Desmotivación",
-                "nav5": "Rompecabezas",
-                "nav6": "Sociedad",
-                "nav7": "Terminando",
-                "nav8": "Próximos pasos",
+                "motivation": "Motivación",
+                "beginning": "El Comienzo",
+                "hobby": "Hobby",
+                "extra-income": "Ingresos Extra",
+                "career": "Carrera",
+                "startup": "Startup",
+                "inspiration": "Inspiración",
+                "planning": "Planificando",
+                "executing": "Ejecutando",
+                "validating": "Validando",
+                "checking": "Verificando",
+                "improving": "Mejorando",
+                "expanding": "Expandiendo",
                 "language": "Idioma",
-                "dealegear": "DealeGear",
-                "footer-text": "Desarrollado con ❤️ por",
-                
-                "section1-title": "¿Por qué crear un proyecto personal?",
-                "section1-subtitle": "Descubre el poder de transformar ideas en realidad",
-                "section1-p1": "Crear un proyecto personal es una de las experiencias más transformadoras que alguien puede tener. No se trata solo de codificar o construir algo, sino de todo el proceso de aprendizaje, crecimiento y superación.",
-                "section1-h3-1": "Beneficios del Desarrollo Personal",
-                "section1-li-1": "Desarrollo de habilidades técnicas y profesionales",
-                "section1-li-2": "Construcción de un portafolio impresionante",
-                "section1-li-3": "Aumento de la confianza y autoestima",
-                "section1-li-4": "Creación de oportunidades de carrera",
-                "section1-li-5": "Desarrollo del pensamiento crítico y resolución de problemas",
-                "section1-highlight": "\"Un proyecto personal no es solo sobre el producto final, sino sobre el viaje de transformación que experimentas en el proceso.\"",
-                "section1-h3-2": "Crecimiento Profesional",
-                "section1-p2": "Los proyectos personales demuestran iniciativa, pasión y capacidad de ejecución - cualidades altamente valoradas en el mercado laboral. Muestran que vas más allá de lo básico y tienes la capacidad de transformar ideas en soluciones concretas.",
-                
-                "section2-title": "La decisión entre hobby, ingresos extra, carrera y startup",
-                "section2-subtitle": "Encuentra el propósito correcto para tu proyecto",
-                "section2-p1": "Antes de comenzar, es fundamental definir el propósito de tu proyecto. Cada camino requiere diferentes niveles de compromiso, recursos y expectativas.",
-                "section2-h3-1": "Hobby",
-                "section2-p2": "Perfecto para aprender sin presión. Puedes experimentar, cometer errores y evolucionar a tu propio ritmo. El enfoque está en el aprendizaje y la satisfacción personal.",
-                "section2-h3-2": "Ingresos Extra",
-                "section2-p3": "Requiere más estructura y planificación. Necesitas pensar en monetización, clientes y entrega de valor, pero aún mantienes la flexibilidad de no ser tu fuente principal de ingresos.",
-                "section2-h3-3": "Carrera",
-                "section2-p4": "Cuando el proyecto se convierte en tu actividad profesional principal. Exige dedicación integral, planificación estratégica y desarrollo continuo de habilidades.",
-                "section2-h3-4": "Startup",
-                "section2-p5": "El nivel más ambicioso, buscando escalabilidad y crecimiento rápido. Involucra inversión, equipo, mercado y potencial para convertirse en un negocio a gran escala.",
-                "section2-highlight": "No hay respuesta correcta o incorrecta - solo el camino que tiene sentido para ti en este momento de tu vida.",
-                
-                "section3-title": "Primeros pasos",
-                "section3-subtitle": "Cómo transformar idea en acción",
-                "section3-p1": "Comenzar es a menudo la parte más difícil. La clave es dividir el proceso en pequeños pasos manejables y celebrar cada logro.",
-                "section3-h3-1": "1. Define tu Visión",
-                "section3-p2": "Sé claro sobre lo que quieres crear. Una visión bien definida sirve como brújula durante todo el desarrollo.",
-                "section3-h3-2": "2. Investigación y Validación",
-                "section3-p3": "Investiga si existe demanda para tu idea. Habla con usuarios potenciales, analiza competidores y valida tus suposiciones.",
-                "section3-h3-3": "3. Planificación Simple",
-                "section3-p4": "Crea un plan básico con metas SMART (Específicas, Medibles, Alcanzables, Relevantes, Temporales). No necesita ser perfecto, solo funcional.",
-                "section3-h3-4": "4. MVP - Producto Mínimo Viable",
-                "section3-p5": "Concéntrate en la versión más simple que resuelve el problema principal. Es mejor lanzar algo básico que funciona que algo complejo que nunca termina.",
-                "section3-highlight": "\"El secreto para comenzar es dividir tareas complejas en pequeñas acciones manejables y ejecutar la primera de ellas inmediatamente.\"",
-                "section3-li-1": "Establece metas semanales realistas",
-                "section3-li-2": "Crea un ambiente de trabajo propicio",
-                "section3-li-3": "Encuentra una comunidad de apoyo",
-                "section3-li-4": "Documenta tu progreso",
-                
-                "section4-title": "Cómo lidiar con la desmotivación?",
-                "section4-subtitle": "Estrategias para mantener el enfoque en momentos difíciles",
-                "section4-p1": "Todo proyecto enfrenta momentos de desmotivación. Es normal y esperado. La diferencia entre éxito y fracaso a menudo está en cómo manejamos estos momentos.",
-                "section4-h3-1": "Reconoce las Señales",
-                "section4-p2": "Procrastinación, autocrítica excesiva, falta de energía y dudas constantes son señales de que necesitas pausar y recargar.",
-                "section4-h3-2": "Estrategias Prácticas",
-                "section4-li-1": "<strong>Reconéctate con tu propósito:</strong> Recuerda por qué comenzaste",
-                "section4-li-2": "<strong>Celebra pequeñas victorias:</strong> Reconoce cada progreso",
-                "section4-li-3": "<strong>Cambia de ambiente:</strong> A veces un nuevo lugar trae nueva perspectiva",
-                "section4-li-4": "<strong>Busca inspiración:</strong> Lee historias de otros desarrolladores",
-                "section4-li-5": "<strong>Trabaja en otra parte:</strong> Cambia a una tarea diferente del proyecto",
-                "section4-li-6": "<strong>Descansa:</strong> A veces lo que necesitas es un descanso genuino",
-                "section4-highlight": "La desmotivación no es un fracaso, es una señal. Escucha lo que está tratando de decirte sobre tus necesidades actuales.",
-                "section4-h3-3": "La Regla de los 2 Minutos",
-                "section4-p3": "Si una tarea lleva menos de 2 minutos, hazla inmediatamente. Esto crea momentum y combate la inercia de la procrastinación.",
-                
-                "section5-title": "Un proyecto es un gran rompecabezas",
-                "section5-subtitle": "Une las piezas en el orden correcto",
-                "section5-p1": "Piensa en tu proyecto como un rompecabezas complejo. No necesitas ver la imagen completa para comenzar - solo encuentra las primeras piezas y conéctalas.",
-                "section5-h3-1": "Los Bordes Primero",
-                "section5-p2": "Comienza definiendo las estructuras básicas y fundamentales. Son los bordes de tu rompecabezas - el framework que dará soporte al resto.",
-                "section5-h3-2": "Grupos por Color",
-                "section5-p3": "Agrupa funcionalidades similares. Trata cada módulo o feature como un grupo de piezas del mismo color - más fácil de montar cuando se trabajan juntas.",
-                "section5-h3-3": "Prueba Conexiones",
-                "section5-p4": "No esperes hasta el final para probar. Verifica si las piezas encajan a medida que avanzas. Esto evita sorpresas desagradables al final.",
-                "section5-h3-4": "La Imagen va Apareciendo",
-                "section5-p5": "A medida que ensamblas las piezas, el patrón comienza a emerger. Lo que parecía caótico al principio gana forma y sentido.",
-                "section5-highlight": "\"Cada línea de código es una pieza del rompecabezas. Juntas, crean algo mayor que la suma de sus partes.\"",
-                "section5-li-1": "Divide problemas complejos en subproblemas simples",
-                "section5-li-2": "Enfócate en una pieza a la vez",
-                "section5-li-3": "Celebra cuando encuentres conexiones",
-                "section5-li-4": "No tengas miedo de desmontar y remontar",
-                
-                "section6-title": "Admitir o no a alguien en una sociedad",
-                "section6-subtitle": "Los pros y contras de compartir tu proyecto",
-                "section6-p1": "La decisión de traer un socio es una de las más importantes que tomarás. Puede acelerar tu proyecto o convertirse en una fuente de conflictos.",
-                "section6-h3-1": "Ventajas de Tener un Socio",
-                "section6-li-1": "Compartición de responsabilidades y workload",
-                "section6-li-2": "Complementariedad de habilidades",
-                "section6-li-3": "Más recursos financieros y networking",
-                "section6-li-4": "Apoyo emocional y motivacional",
-                "section6-li-5": "Diferentes perspectivas para resolver problemas",
-                "section6-h3-2": "Desventajas y Riesgos",
-                "section6-li-6": "Pérdida de control total sobre decisiones",
-                "section6-li-7": "División de ganancias y equity",
-                "section6-li-8": "Potenciales conflictos de visión",
-                "section6-li-9": "Dependencia del compromiso del otro",
-                "section6-li-10": "Complejidad legal y burocrática",
-                "section6-highlight": "Elige un socio no solo por habilidades, sino por valores, ética y compatibilidad de trabajo.",
-                "section6-h3-3": "¿Cuándo Buscar un Socio?",
-                "section6-p2": "Cuando identificas brechas críticas en tus habilidades que impiden el progreso, o cuando el proyecto requiere más recursos y tiempo de lo que puedes ofrecer solo.",
-                "section6-h3-4": "Acuerdo de Socios",
-                "section6-p3": "Siempre formaliza la asociación con un contrato claro que defina roles, responsabilidades, división de ganancias, y qué pasa en caso de disolución.",
-                
-                "section7-title": "Terminando tu proyecto",
-                "section7-subtitle": "El arte de concluir y lanzar",
-                "section7-p1": "Terminar un proyecto es tan importante como comenzarlo. Muchas buenas ideas nunca ven la luz del día por perfeccionismo o miedo al lanzamiento.",
-                "section7-h3-1": "El Peligro del Perfeccionismo",
-                "section7-p2": "El perfeccionismo es a menudo una forma disfrazada de procrastinación. \"No está listo aún\" puede ser una excusa para no enfrentar el juicio del mercado.",
-                "section7-h3-2": "Define \"Listo\"",
-                "section7-p3": "Establece criterios claros de lo que significa \"terminado\". Generalmente, listo significa que resuelve el problema principal de forma funcional, no que es perfecto.",
-                "section7-h3-3": "Beta Testing",
-                "section7-p4": "Antes del lanzamiento oficial, comparte con un grupo selecto de usuarios. El feedback real es más valioso que opiniones hipotéticas.",
-                "section7-h3-4": "Planifica el Lanzamiento",
-                "section7-li-1": "Elige una fecha y cúmplela",
-                "section7-li-2": "Prepara materiales de marketing",
-                "section7-li-3": "Prueba todos los escenarios posibles",
-                "section7-li-4": "Ten un plan de soporte post-lanzamiento",
-                "section7-li-5": "¡Celebra el logro!",
-                "section7-highlight": "\"Lanzar es el comienzo, no el fin. El feedback real de los usuarios guiará las próximas evoluciones.\"",
-                "section7-h3-5": "Versión 1.0",
-                "section7-p5": "Recuerda: la versión 1.0 no necesita ser perfecta, necesita ser funcional. Las mejoras vendrán en versiones posteriores basadas en el uso real.",
-                
-                "section8-title": "Próximos pasos",
-                "section8-subtitle": "Continúa tu viaje de aprendizaje",
-                "section8-p1": "¡Felicidades por llegar hasta aquí! Este es solo el comienzo de tu viaje como creador y desarrollador. El aprendizaje continuo es la clave para el éxito a largo plazo.",
-                "section8-h3-1": "Continúa Aprendiendo",
-                "section8-p2": "La tecnología evoluciona constantemente. Mantente actualizado con nuevas herramientas, lenguajes y metodologías. El conocimiento es tu mayor activo.",
-                "section8-h3-2": "Construye una Comunidad",
-                "section8-p3": "Conéctate con otros desarrolladores. Participa en foros, grupos y eventos. El networking abre puertas y proporciona aprendizaje mutuo.",
-                "section8-h3-3": "Documenta tu Viaje",
-                "section8-p4": "Comparte lo que has aprendido. Escribir sobre tus experiencias solidifica el conocimiento y ayuda a otros en el mismo viaje.",
-                "section8-h3-4": "Siguiente Nivel",
-                "section8-p5": "Si te gustó este contenido y quieres llevar tus habilidades al siguiente nivel, tenemos algo especial para ti.",
-                "section8-highlight": "¡Transforma ideas en proyectos reales con nuestro curso completo en Hotmart!",
-                "cta-button": "Accede a nuestro curso completo en Hotmart",
-                "section8-h3-5": "Qué encontrarás en el curso:",
-                "section8-li-1": "Módulos profundos sobre cada etapa del desarrollo",
-                "section8-li-2": "Proyectos prácticos con acompañamiento",
-                "section8-li-3": "Acceso exclusivo a la comunidad de alumnos",
-                "section8-li-4": "Mentorías individuales",
-                "section8-li-5": "Certificado de finalización",
-                "section8-p6": "No pares aquí. El mundo necesita tus ideas y tu capacidad de transformarlas en realidad!"
+                "documentation": "Documentación",
+                "motivation-title": "¿Por Qué Crear un Proyecto Personal?",
+                "motivation-content": "Crear proyectos personales es una de las formas más efectivas de expandir tus conocimientos y habilidades. Cuando desarrollas algo desde cero, enfrentas desafíos reales que te obligan a aprender y crecer. Además, tener un proyecto propio proporciona una sensación única de logro y pertenencia.",
+                "motivation-content-2": "Los proyectos personales también ocupan la mente de manera productiva, transformando el tiempo libre en oportunidades de desarrollo. Ya sea para aprender una nueva tecnología, resolver un problema diario o simplemente por placer, los proyectos personales son inversiones en ti mismo.",
+                "beginning-title": "Cómo Todo Comienza",
+                "beginning-content": "Todo gran proyecto comienza con una idea simple. Generalmente, surge de la observación de un problema, una necesidad personal o la curiosidad sobre cómo funciona algo. Lo importante es capturar esta idea inicial antes de que se pierda.",
+                "beginning-content-2": "La validación conceptual es el siguiente paso crucial. Antes de invertir tiempo y recursos, pregúntate: \"¿Esto resuelve un problema real? ¿Hay alguien además de mí que se beneficiaría con esto?\". Las respuestas honestas a estas preguntas pueden ahorrar meses de trabajo.",
+                "beginning-content-3": "Los primeros pasos deben ser pequeños y medibles. Define un alcance mínimo viable y concéntrate en entregar valor rápidamente. Recuerda que la perfección es enemiga del progreso, especialmente al principio.",
+                "hobby-title": "Proyectos como Hobby",
+                "hobby-content": "Los proyectos de hobby son aquellos desarrollados principalmente por placer e interés personal, sin presión comercial o metas financieras. Ofrecen libertad creativa total, permitiendo experimentación sin las restricciones del mercado.",
+                "hobby-content-2": "El mayor beneficio de los proyectos de hobby es el aprendizaje sin presión. Puedes probar nuevas tecnologías, cometer errores e iterar libremente. Esta libertad a menudo resulta en soluciones innovadoras que surgen precisamente de la ausencia de limitaciones comerciales.",
+                "hobby-content-3": "Muchos proyectos que comenzaron como hobby han evolucionado a productos comerciales exitosos. La clave es mantener el equilibrio entre la diversión y la disciplina, dedicando tiempo regularmente sin convertir el hobby en una obligación.",
+                "extra-income-title": "Proyectos para Ingresos Extra",
+                "extra-income-content": "Los proyectos para ingresos extra ocupan un espacio intermedio entre hobby y carrera. Tienen potencial monetario pero no necesitan sostener completamente tu estilo de vida. Esta categoría ofrece lo mejor de ambos mundos: creatividad con retorno financiero.",
+                "extra-income-content-2": "El equilibrio entre trabajo principal y proyecto secundario es fundamental. Establece límites claros de tiempo y energía para evitar el agotamiento. Muchas personas encuentran éxito dedicando algunas horas durante fines de semana o noches a sus proyectos.",
+                "extra-income-content-3": "Las estrategias efectivas incluyen modelos de suscripción, venta de productos digitales, consultoría basada en tu proyecto o publicidad. Comienza pequeño, valida el interés del mercado y escala gradualmente a medida que crece la demanda.",
+                "career-title": "Proyectos como Carrera",
+                "career-content": "Convertir un proyecto en carrera es un paso significativo que requiere dedicación completa y profesionalización. Esto significa tratar tu proyecto como un negocio real, con planificación estratégica, gestión financiera y enfoque en crecimiento sostenible.",
+                "career-content-2": "La transición de proyecto personal a carrera generalmente implica crear una estructura empresarial, desarrollar habilidades de negocio y, a menudo, construir un equipo. El fundador necesita evolucionar de creador a gestor, delegando tareas y enfocándose en la visión estratégica.",
+                "career-content-3": "Los proyectos que se convierten en carreras exitosas generalmente resuelven problemas significativos para un público específico y tienen modelos de negocio claros y escalables. La clave es encontrar el equilibrio entre mantener la pasión original y adaptarse a las demandas del mercado.",
+                "startup-title": "Proyectos como Startup",
+                "startup-content": "Las startups representan la forma más ambiciosa de proyecto personal, con enfoque en crecimiento acelerado y escalabilidad masiva. A diferencia de los proyectos de hobby o ingresos extra, las startups están diseñadas desde el principio para crecer rápidamente y capturar mercados significativos.",
+                "startup-content-2": "El viaje de startup generalmente implica buscar inversión externa, construir un equipo multidisciplinario e iterar rápidamente basado en feedback del mercado. El enfoque está en validar hipótesis de negocio y encontrar un modelo repetible y escalable antes de que se agoten los recursos.",
+                "startup-content-3": "Aunque potencialmente rentables, las startups presentan riesgos elevados. La tasa de mortalidad es significativa, pero los proyectos que sobreviven y prosperan pueden transformar industrias enteras. La mentalidad de startup combina visión audaz con ejecución disciplinada y capacidad de adaptación rápida.",
+                "inspiration-title": "Encontrando Inspiración",
+                "inspiration-content": "La inspiración para proyectos puede venir de diversas fuentes: problemas diarios, conversaciones con amigos, tendencias del mercado o simplemente curiosidad. El secreto es mantener una mente abierta y observar el mundo con ojos de solucionador de problemas.",
+                "inspiration-content-2": "A menudo, las mejores ideas surgen de la intersección entre tus intereses personales y necesidades no atendidas. Pregúntate: \"¿Qué me frustra regularmente? ¿Cómo podría resolver esto? ¿Quién más enfrenta el mismo problema?\".",
+                "inspiration-content-3": "Nuestra herramienta GearLabs ofrece una serie de prototipos conceptuales y desafíos para ayudarte a encontrar inspiración para tus creaciones. Explora diferentes áreas, prueba nuevos enfoques y no tengas miedo de combinar ideas aparentemente desconectadas.",
+                "planning-title": "La Importancia de la Planificación",
+                "planning-content": "La planificación es la base de cualquier proyecto exitoso. Implica definir claramente el alcance, identificar recursos necesarios, establecer cronogramas realistas y anticipar posibles obstáculos. Un buen plan no necesita ser rígido, pero debe proporcionar dirección clara.",
+                "planning-content-2": "Comienza con objetivos SMART (Específicos, Medibles, Alcanzables, Relevantes y Temporales). Luego, divide el proyecto en fases más pequeñas y establece hitos intermedios. Esto hace visible el progreso y mantiene la motivación a lo largo del camino.",
+                "planning-content-3": "Nuestra herramienta GearHub es ideal para esta etapa. Con características para gestión de proyectos, colaboración y seguimiento del progreso, ayuda a transformar ideas en planes ejecutables con estructura y claridad.",
+                "executing-title": "Desafíos de la Ejecución",
+                "executing-content": "La ejecución es donde las ideas encuentran la realidad. Es la fase más desafiadora, donde enfrentarás obstáculos inesperados, costos no planificados y la necesidad de adaptaciones constantes. La resiliencia y la capacidad de resolver problemas son esenciales en esta etapa.",
+                "executing-content-2": "Gestionar expectativas es crucial - tanto las tuyas como las de usuarios potenciales. Sé transparente sobre limitaciones y plazos. La comunicación regular sobre progresos y desafíos ayuda a mantener el compromiso y la confianza, incluso cuando los resultados tardan en aparecer.",
+                "executing-content-3": "Recuerda que la perfección es enemiga del progreso. Es mejor entregar una versión funcional que resuelve el 80% del problema que esperar indefinidamente por una solución perfecta. El feedback de los usuarios iniciales será invaluable para guiar mejoras futuras.",
+                "validating-title": "Validación Esencial",
+                "validating-content": "Validar tu proyecto es asegurar que estás construyendo algo que la gente realmente quiere o necesita. Este paso a menudo es negligenciado, pero es fundamental para evitar desperdiciar tiempo y recursos en soluciones que no encuentran adecuación en el mercado.",
+                "validating-content-2": "El enfoque de validación varía según la categoría del proyecto. Para proyectos de hobby, la validación puede ser simplemente tu propio placer y satisfacción. Para ingresos extra, implica probar disposición a pagar. Para carrera y startup, requiere validación de mercado más rigurosa y análisis de competencia.",
+                "validating-content-3": "Técnicas efectivas incluyen entrevistas con usuarios potenciales, creación de prototipos de baja fidelidad, pruebas A/B y lanzamientos en mercados limitados. El objetivo es aprender rápido y barato antes de invertir pesadamente en desarrollo completo.",
+                "checking-title": "Checkpoint del Proyecto",
+                "checking-content": "Los checkpoints son momentos de pausa para evaluación crítica del progreso. Permiten comparar resultados obtenidos con objetivos iniciales, analizar desviaciones y extraer lecciones aprendidas. Esta reflexión es esencial para mantener el proyecto en el camino correcto.",
+                "checking-content-2": "Durante un checkpoint, pregúntate: \"¿Qué funcionó bien? ¿Qué no funcionó? ¿Por qué? ¿Qué cambiarías si pudieras empezar de nuevo?\". Sé honesto y objetivo. A veces, los mayores aprendizajes vienen de fracasos y desviaciones inesperadas.",
+                "checking-content-3": "Documenta estas reflexiones regularmente. No solo ayudan a ajustar el curso actual, sino que también sirven como valiosa referencia para proyectos futuros. La capacidad de aprender de la experiencia es lo que distingue proyectos exitosos de intentos frustrados.",
+                "improving-title": "Ciclo de Mejoras",
+                "improving-content": "Ningún proyecto está completo en el primer lanzamiento. La mejora continua es lo que transforma una buena idea en un producto excepcional. Este ciclo implica recopilar feedback, identificar áreas de mejora e implementar cambios de forma iterativa.",
+                "improving-content-2": "Las mejoras pueden ser puntuales - corregir bugs, optimizar rendimiento, refinar interfaz - o estructurales - cambios significativos en el enfoque o funcionalidades. La clave es equilibrar innovación con estabilidad, asegurando que las mejoras no rompan lo que ya funciona.",
+                "improving-content-3": "Está abierto a feedback crítico y dispuesto a pivotar cuando sea necesario. Muchos proyectos exitosos han pasado por transformaciones significativas basadas en el aprendizaje del mercado. Recuerda que la versión final es la que mejor sirve las necesidades de los usuarios, no necesariamente la que imaginaste inicialmente.",
+                "expanding-title": "Crecimiento y Expansión",
+                "expanding-content": "La expansión es un paso opcional para proyectos que ya han encontrado su lugar y están listos para crecer. Puede implicar agregar nuevas funcionalidades, alcanzar nuevos públicos, explorar mercados diferentes o escalar operaciones. Es un momento de transformación cualitativa.",
+                "expanding-content-2": "Antes de expandir, asegúrate de que la base sea sólida. La expansión prematura puede llevar a problemas de calidad, sobrecarga del equipo y dilución de la propuesta de valor. El crecimiento sostenible es mejor que el crecimiento rápido que compromete la esencia del proyecto.",
+                "expanding-content-3": "La expansión exitosa generalmente requiere nuevos recursos, habilidades o asociaciones. Evalúa cuidadosamente lo que es necesario para crecer sin perder lo que hizo especial a tu proyecto. Recuerda que no todos los proyectos necesitan o deben hacerse más grandes - algunos son perfectos tal como están."
             }
         };
 
-        // Current language
-        let currentLang = 'pt';
+        // Estado da aplicação
+        let currentLang = localStorage.getItem('gearstep-lang') || 'pt';
 
-        // DOM Elements
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('.section');
-        const langButtons = document.querySelectorAll('.lang-btn');
-        const dealegearBtn = document.getElementById('dealegearBtn');
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            setupEventListeners();
-            loadLanguage('pt');
-        });
-
-        // Setup Event Listeners
-        function setupEventListeners() {
-            // Mobile menu toggle
-            menuToggle.addEventListener('click', toggleMobileMenu);
-            overlay.addEventListener('click', closeMobileMenu);
-
-            // Navigation
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const sectionId = link.dataset.section;
-                    showSection(sectionId);
-                    
-                    // Update active state
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                    
-                    // Close mobile menu
-                    if (window.innerWidth <= 768) {
-                        closeMobileMenu();
-                    }
-                });
-            });
-
-            // Language selector
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const lang = btn.dataset.lang;
-                    loadLanguage(lang);
-                    
-                    // Update active state
-                    langButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                });
-            });
-
-            // DealeGear button
-            dealegearBtn.addEventListener('click', () => {
-                window.open('../index.html', '_self');
-            });
-
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768) {
-                    closeMobileMenu();
-                }
-            });
-        }
-
-        // Toggle mobile menu
-        function toggleMobileMenu() {
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
-        }
-
-        // Close mobile menu
-        function closeMobileMenu() {
-            sidebar.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Show section
-        function showSection(sectionId) {
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            const targetSection = document.getElementById(`section-${sectionId}`);
-            if (targetSection) {
-                targetSection.classList.add('active');
-                // Smooth scroll to top
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Load language
-        function loadLanguage(lang) {
+        // Funções de internacionalização
+        function setLanguage(lang) {
             currentLang = lang;
-            document.documentElement.lang = lang;
+            localStorage.setItem('gearstep-lang', lang);
             
-            // Update all elements with data-i18n attribute
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
-                const key = element.dataset.i18n;
-                if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.innerHTML = translations[lang][key];
-                    }
+            // Atualizar botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Atualizar textos
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
                 }
             });
-
-            // Update HTML lang attribute
-            document.documentElement.setAttribute('lang', lang);
-            
-            // Save preference to localStorage
-            localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Load saved language preference
-        const savedLang = localStorage.getItem('preferredLanguage');
-        if (savedLang && ['pt', 'en', 'es'].includes(savedLang)) {
-            loadLanguage(savedLang);
-            langButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === savedLang);
+        // Menu mobile
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Navegação suave e indicador de seção ativa
+        function setupNavigation() {
+            const sections = document.querySelectorAll('.section');
+            const navItems = document.querySelectorAll('.sidebar-item');
+            
+            // Atualizar indicador de seção ativa ao rolar
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
+            // Clique nos itens de navegação
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const targetId = item.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Fechar menu mobile se estiver aberto
+                        if (window.innerWidth <= 768) {
+                            toggleMobileMenu();
+                        }
+                    }
+                });
             });
         }
 
-        // Add keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-                closeMobileMenu();
-            }
-        });
-
-        // Performance optimization: Lazy load images if any
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configurar idioma inicial
+            setLanguage(currentLang);
+            
+            // Configurar navegação
+            setupNavigation();
+            
+            // Event listeners
+            document.getElementById('menuToggle').addEventListener('click', toggleMobileMenu);
+            document.getElementById('overlay').addEventListener('click', toggleMobileMenu);
+            
+            // Botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setLanguage(btn.dataset.lang);
+                });
+            });
+            
+            // Animação de entrada para seções
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
+                        entry.target.style.animationDelay = '0.2s';
+                        entry.target.style.animationPlayState = 'running';
                     }
                 });
+            }, observerOptions);
+            
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.animationPlayState = 'paused';
+                observer.observe(section);
             });
-
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
+        });
     </script>
 </body>
 </html>

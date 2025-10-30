@@ -1,0 +1,2720 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearStep Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset de estilos e configurações globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 16px;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header fixo */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2563eb;
+        }
+
+        /* Menu lateral */
+        .sidebar {
+            width: 280px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            z-index: 50;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .timer {
+            background-color: #2563eb;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .timer.warning {
+            background-color: #ea580c;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .back-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #f1f5f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Conteúdo principal */
+        .main-content {
+            margin-left: 280px;
+            padding: 90px 20px 20px;
+            flex: 1;
+            transition: margin-left 0.3s ease;
+        }
+
+        .screen {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        /* Tela inicial */
+        .welcome-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+
+        .instructions {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .instructions h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        .start-btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 20px;
+        }
+
+        .start-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Tela de prova */
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .question-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            font-size: 1.2rem;
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .option.selected {
+            background-color: #eff6ff;
+            border-color: #2563eb;
+        }
+
+        .option-letter {
+            width: 30px;
+            height: 30px;
+            background-color: #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-letter {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #e2e8f0;
+            background-color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: #f8f9fa;
+        }
+
+        .nav-btn.current {
+            background-color: #ea580c;
+            color: white;
+            border-color: #ea580c;
+        }
+
+        .nav-btn.answered {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .finish-btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 20px;
+        }
+
+        .finish-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .finish-btn:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        /* Tela de resultados */
+        .result-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .result-percentage {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .result-status {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .result-status.passed {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+
+        .result-status.failed {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .result-message {
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .retry-btn {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .retry-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .home-btn {
+            background-color: #f1f5f9;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .home-btn:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .navigation {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-file-alt"></i>
+            <span>GearStep Test</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Menu Lateral -->
+    <aside class="sidebar" id="sidebar">
+        <div class="timer" id="timer">60:00</div>
+        
+        <div class="sidebar-section">
+            <div class="sidebar-title" data-i18n="language">Idioma</div>
+            <div class="language-buttons">
+                <button class="lang-btn active" data-lang="pt">PT</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+        </div>
+        
+        <div class="sidebar-section">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-left"></i>
+                <span data-i18n="backToGearStep">Voltar para GearStep</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Tela Inicial -->
+        <div class="screen active" id="welcomeScreen">
+            <div class="welcome-card">
+                <h1 class="welcome-title" data-i18n="welcomeTitle">GearStep Test</h1>
+                <p data-i18n="welcomeDescription">Teste seus conhecimentos sobre desenvolvimento de projetos pessoais</p>
+                
+                <div class="instructions">
+                    <h3 data-i18n="instructionsTitle">Instruções</h3>
+                    <ul>
+                        <li data-i18n="instruction1">50 questões de múltipla escolha</li>
+                        <li data-i18n="instruction2">Tempo limite: 60 minutos</li>
+                        <li data-i18n="instruction3">Aprovação: 80% de acertos (40/50)</li>
+                        <li data-i18n="instruction4">Não há exibição do gabarito</li>
+                    </ul>
+                </div>
+                
+                <button class="start-btn" id="startBtn" data-i18n="startTest">Iniciar Prova</button>
+            </div>
+        </div>
+
+        <!-- Tela de Prova -->
+        <div class="screen" id="testScreen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="question-container">
+                <div class="question-number" id="questionNumber">Questão 1</div>
+                <div class="question-text" id="questionText">Carregando questão...</div>
+                <div class="options" id="optionsContainer">
+                    <!-- Opções serão inseridas dinamicamente -->
+                </div>
+            </div>
+            
+            <div class="navigation" id="navigation">
+                <!-- Botões de navegação serão inseridos dinamicamente -->
+            </div>
+            
+            <button class="finish-btn" id="finishBtn" data-i18n="finishTest" disabled>Finalizar Prova</button>
+        </div>
+
+        <!-- Tela de Resultados -->
+        <div class="screen" id="resultScreen">
+            <div class="result-card">
+                <h1 class="result-title" data-i18n="resultTitle">Resultado</h1>
+                <div class="result-percentage" id="resultPercentage">0%</div>
+                <div class="result-status" id="resultStatus">APROVADO</div>
+                <div class="result-message" id="resultMessage">
+                    Parabéns! Você demonstrou excelente conhecimento sobre desenvolvimento de projetos pessoais.
+                </div>
+                <div class="result-actions">
+                    <button class="action-btn retry-btn" id="retryBtn" data-i18n="tryAgain">Tentar Novamente</button>
+                    <button class="action-btn home-btn" id="homeBtn" data-i18n="backToStart">Voltar ao Início</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2023 GearStep Test | <a href='https://dealegear.com' target='_blank'>By DealeGear</a></p>
+    </footer>
+
+    <!-- 
+    PT: Se você resolver inspecionar o código para obter as respostas corretas sugerimos que não o faça. A prova é uma forma de praticar e testar seus conhecimentos para que seja capaz de criar seu próprio projeto com excelência.
+    EN: If you're thinking about inspecting the code to get the correct answers, we suggest you don't. The test is a way to practice and test your knowledge so you can create your own project with excellence.
+    ES: Si estás pensando en inspeccionar el código para obtener las respuestas correctas, te sugerimos que no lo hagas. La prueba es una forma de practicar y probar tus conocimientos para que puedas crear tu propio proyecto con excelencia.
+    -->
+
+    <script>
+        // Sistema de internacionalização
+        const translations = {
+            pt: {
+                welcomeTitle: "GearStep Test",
+                welcomeDescription: "Teste seus conhecimentos sobre desenvolvimento de projetos pessoais",
+                instructionsTitle: "Instruções",
+                instruction1: "50 questões de múltipla escolha",
+                instruction2: "Tempo limite: 60 minutos",
+                instruction3: "Aprovação: 80% de acertos (40/50)",
+                instruction4: "Não há exibição do gabarito",
+                startTest: "Iniciar Prova",
+                language: "Idioma",
+                backToGearStep: "Voltar para GearStep",
+                question: "Questão",
+                finishTest: "Finalizar Prova",
+                resultTitle: "Resultado",
+                passed: "APROVADO",
+                failed: "REPROVADO",
+                tryAgain: "Tentar Novamente",
+                backToStart: "Voltar ao Início",
+                timeUp: "Tempo Esgotado",
+                confirmFinish: "Tem certeza de que deseja finalizar a prova? Verifique se respondeu todas as questões.",
+                allQuestionsAnswered: "Por favor, responda todas as questões antes de finalizar.",
+                timeWarning: "Atenção: Restam apenas 5 minutos!"
+            },
+            en: {
+                welcomeTitle: "GearStep Test",
+                welcomeDescription: "Test your knowledge about personal project development",
+                instructionsTitle: "Instructions",
+                instruction1: "50 multiple choice questions",
+                instruction2: "Time limit: 60 minutes",
+                instruction3: "Passing grade: 80% correct (40/50)",
+                instruction4: "Answer key is not displayed",
+                startTest: "Start Test",
+                language: "Language",
+                backToGearStep: "Back to GearStep",
+                question: "Question",
+                finishTest: "Finish Test",
+                resultTitle: "Result",
+                passed: "PASSED",
+                failed: "FAILED",
+                tryAgain: "Try Again",
+                backToStart: "Back to Start",
+                timeUp: "Time's Up",
+                confirmFinish: "Are you sure you want to finish the test? Make sure you have answered all questions.",
+                allQuestionsAnswered: "Please answer all questions before finishing.",
+                timeWarning: "Attention: Only 5 minutes left!"
+            },
+            es: {
+                welcomeTitle: "GearStep Test",
+                welcomeDescription: "Prueba tus conocimientos sobre el desarrollo de proyectos personales",
+                instructionsTitle: "Instrucciones",
+                instruction1: "50 preguntas de opción múltiple",
+                instruction2: "Límite de tiempo: 60 minutos",
+                instruction3: "Aprobación: 80% de respuestas correctas (40/50)",
+                instruction4: "No se muestra la clave de respuestas",
+                startTest: "Iniciar Prueba",
+                language: "Idioma",
+                backToGearStep: "Volver a GearStep",
+                question: "Pregunta",
+                finishTest: "Finalizar Prueba",
+                resultTitle: "Resultado",
+                passed: "APROBADO",
+                failed: "REPROBADO",
+                tryAgain: "Intentar de Nuevo",
+                backToStart: "Volver al Inicio",
+                timeUp: "Tiempo Agotado",
+                confirmFinish: "¿Estás seguro de que deseas finalizar la prueba? Asegúrate de haber respondido todas las preguntas.",
+                allQuestionsAnswered: "Por favor, responde todas las preguntas antes de finalizar.",
+                timeWarning: "¡Atención: Solo quedan 5 minutos!"
+            }
+        };
+
+        let currentLang = 'pt';
+
+        // Banco de questões em três idiomas
+        const questionsData = {
+            pt: {
+                motivation: [
+                    {
+                        question: "Qual é a principal vantagem de começar um projeto pessoal com um escopo mínimo viável?",
+                        options: [
+                            "Garantir sucesso imediato",
+                            "Testar a ideia com menos recursos e tempo",
+                            "Atrair investidores rapidamente",
+                            "Eliminar completamente a concorrência"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual dos seguintes fatores é mais importante para manter a motivação em projetos pessoais a longo prazo?",
+                        options: [
+                            "Reconhecimento público",
+                            "Ganhos financeiros imediatos",
+                            "Conexão pessoal com o propósito do projeto",
+                            "Pressão de prazos curtos"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Como o fracasso em projetos anteriores pode beneficiar o desenvolvimento de novos projetos?",
+                        options: [
+                            "Aumenta a probabilidade de repetir os mesmos erros",
+                            "Fornece lições valiosas e insights para melhorias",
+                            "Diminui a confiança do desenvolvedor",
+                            "Torna mais difícil obter financiamento"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de documentar o progresso de um projeto pessoal?",
+                        options: [
+                            "Impede que outras pessoas copiem suas ideias",
+                            "Cria um registro do aprendizado e evolução",
+                            "Garante que o projeto será concluído no prazo",
+                            "Elimina a necessidade de planejamento futuro"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para superar a procrastinação em projetos pessoais?",
+                        options: [
+                            "Esperar pela motivação perfeita antes de começar",
+                            "Estabelecer metas pequenas e alcançáveis",
+                            "Focar apenas nos resultados finais",
+                            "Trabalhar apenas quando houver prazos próximos"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a comunidade pode impactar positivamente o desenvolvimento de projetos pessoais?",
+                        options: [
+                            "Oferecendo feedback construtivo e apoio emocional",
+                            "Definindo todos os requisitos do projeto",
+                            "Garantindo o sucesso financeiro do projeto",
+                            "Eliminando a necessidade de testes"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Qual é o principal benefício de estabelecer um ritual de trabalho consistente para projetos pessoais?",
+                        options: [
+                            "Limita a criatividade e flexibilidade",
+                            "Reduz a necessidade de planejamento",
+                            "Cria hábitos que facilitam o progresso constante",
+                            "Garante que todas as ideias serão bem-sucedidas"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Por que é importante celebrar pequenas conquistas durante o desenvolvimento de um projeto pessoal?",
+                        options: [
+                            "Diminui a qualidade do trabalho final",
+                            "Mantém a motivação e reconhece o progresso",
+                            "Aumenta a pressão por resultados perfeitos",
+                            "Retarda a conclusão do projeto"
+                        ],
+                        correct: 1
+                    }
+                ],
+                validation: [
+                    {
+                        question: "Qual método é mais eficaz para validar uma ideia de projeto pessoal antes de investir tempo significativo?",
+                        options: [
+                            "Construir o produto completo antes de testar",
+                            "Criar um protótipo simples e obter feedback inicial",
+                            "Pesquisar apenas projetos concorrentes bem-sucedidos",
+                            "Esperar por inspiração antes de agir"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "O que é um 'Produto Mínimo Viável' (MVP) no contexto de projetos pessoais?",
+                        options: [
+                            "Uma versão simplificada que resolve o problema principal com mínimo de recursos",
+                            "O produto final com todas as funcionalidades planejadas",
+                            "Uma apresentação detalhada do projeto sem implementação",
+                            "Um conceito abstrato sem implementação prática"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Qual é a principal vantagem de realizar entrevistas com usuários em potencial durante a fase de validação?",
+                        options: [
+                            "Garante que todos os entrevistados se tornarão clientes",
+                            "Fornece insights diretos sobre necessidades reais e dores",
+                            "Elimina a necessidade de testar o produto posteriormente",
+                            "Reduz o tempo total de desenvolvimento em 80%"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a análise de concorrentes pode beneficiar a validação de um projeto pessoal?",
+                        options: [
+                            "Permite copiar exatamente o que os concorrentes fazem",
+                            "Ajuda a identificar oportunidades e lacunas no mercado",
+                            "Garante que seu projeto será superior a todos os outros",
+                            "Elimina a necessidade de inovação"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal objetivo de criar landing pages para validar ideias de projetos?",
+                        options: [
+                            "Demonstrar habilidades avançadas de design",
+                            "Coletar emails e medir interesse antes do desenvolvimento",
+                            "Garantir rankings altos em motores de busca",
+                            "Substituir completamente o desenvolvimento do produto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Por que é importante definir hipóteses claras durante a validação de um projeto pessoal?",
+                        options: [
+                            "Torna o processo mais burocrático e formal",
+                            "Permite testar suposições de forma estruturada e mensurável",
+                            "Garante que todas as hipóteses estarão corretas",
+                            "Elimina a necessidade de feedback de usuários"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para validar a demanda por um projeto pessoal com recursos limitados?",
+                        options: [
+                            "Construir imediatamente a versão completa do produto",
+                            "Criar testes A/B com diferentes conceitos usando ferramentas de baixo custo",
+                            "Contratar uma agência de pesquisa de mercado",
+                            "Aguardar que os concorrentes validem a ideia primeiro"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "O que significa 'pivotar' no contexto de desenvolvimento de projetos pessoais?",
+                        options: [
+                            "Abandonar completamente o projeto original",
+                            "Fazer ajustes estratégicos significativos com base no aprendizado",
+                            "Adicionar mais funcionalidades ao produto existente",
+                            "Manter o plano original independentemente dos resultados"
+                        ],
+                        correct: 1
+                    }
+                ],
+                planning: [
+                    {
+                        question: "Qual é a principal vantagem de dividir um projeto pessoal em marcos (milestones) menores?",
+                        options: [
+                            "Aumenta a complexidade do planejamento",
+                            "Facilita o acompanhamento do progresso e mantém a motivação",
+                            "Elimina a necessidade de revisões regulares",
+                            "Garante que o projeto será concluído mais rapidamente"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual metodologia é mais adequada para projetos pessoais com requisitos que podem mudar durante o desenvolvimento?",
+                        options: [
+                            "Cascata (Waterfall)",
+                            "Ágil (Agile)",
+                            "Modelo em V",
+                            "Modelo Espiral"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a definição de 'critérios de sucesso' para um projeto pessoal impacta seu desenvolvimento?",
+                        options: [
+                            "Limita a criatividade e inovação",
+                            "Fornece clareza sobre o que constitui um resultado bem-sucedido",
+                            "Torna o processo mais burocrático e lento",
+                            "Garante que o projeto será financeiramente lucrativo"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de criar um roadmap visual para um projeto pessoal?",
+                        options: [
+                            "Impede que o plano mude durante a execução",
+                            "Facilita a comunicação do plano e o alinhamento de expectativas",
+                            "Elimina a necessidade de revisões periódicas",
+                            "Garante que todas as funcionalidades serão desenvolvidas"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para estimar o tempo necessário para tarefas em projetos pessoais?",
+                        options: [
+                            "Estimar otimisticamente para motivar a conclusão rápida",
+                            "Adicionar uma margem de segurança (buffer) às estimativas realistas",
+                            "Usar as mesmas estimativas para todas as tarefas independentemente da complexidade",
+                            "Deixar as estimativas para o final do projeto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Por que é importante identificar e priorizar funcionalidades em projetos pessoais?",
+                        options: [
+                            "Garante que todas as funcionalidades serão desenvolvidas simultaneamente",
+                            "Permite focar nos recursos de maior valor primeiro",
+                            "Elimina a necessidade de testes durante o desenvolvimento",
+                            "Torna o projeto mais complexo e impressionante"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de estabelecer um sistema de versionamento para projetos pessoais?",
+                        options: [
+                            "Torna o código mais difícil de entender",
+                            "Permite rastrear mudanças e reverter para versões anteriores se necessário",
+                            "Elimina a necessidade de documentação",
+                            "Garante que não haverá bugs no código"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a técnica de 'timeboxing' pode beneficiar o desenvolvimento de projetos pessoais?",
+                        options: [
+                            "Aumenta a procrastinação",
+                            "Cria um senso de urgência e evita o perfeccionismo excessivo",
+                            "Elimina a necessidade de planejamento",
+                            "Garante que todas as tarefas serão concluídas no tempo estimado"
+                        ],
+                        correct: 1
+                    }
+                ],
+                monetization: [
+                    {
+                        question: "Qual modelo de monetização é mais adequado para projetos pessoais em estágio inicial com audiência limitada?",
+                        options: [
+                            "Assinaturas premium com preço elevado",
+                            "Publicidade direcionada e afiliados",
+                            "Venda direta para grandes empresas",
+                            "Licenciamento de tecnologia para concorrentes"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é a principal vantagem do modelo freemium para projetos pessoais?",
+                        options: [
+                            "Garante receita imediata de todos os usuários",
+                            "Permite testar o produto com usuários reais antes de cobrar",
+                            "Elimina a necessidade de desenvolver funcionalidades premium",
+                            "Reduz os custos de desenvolvimento em 90%"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual estratégia é mais eficaz para determinar o preço de um produto ou serviço de um projeto pessoal?",
+                        options: [
+                            "Basear-se apenas nos custos de desenvolvimento",
+                            "Pesquisar o mercado e o valor percebido pelo cliente",
+                            "Usar sempre o preço mais baixo possível",
+                            "Copiar exatamente o preço dos concorrentes"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de diversificar as fontes de receita em projetos pessoais?",
+                        options: [
+                            "Complica a gestão financeira do projeto",
+                            "Reduz a dependência de uma única fonte e aumenta a resiliência",
+                            "Garante lucro imediato em todas as fontes",
+                            "Elimina a necessidade de marketing"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a criação de conteúdo relacionado ao projeto pessoal pode impactar a monetização?",
+                        options: [
+                            "Desvia recursos do desenvolvimento do produto principal",
+                            "Aumenta a autoridade no nicho e atrai potenciais clientes",
+                            "Garante que o conteúdo se tornará viral",
+                            "Elimina a necessidade de estratégias de vendas diretas"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de construir uma comunidade em torno de um projeto pessoal antes da monetização?",
+                        options: [
+                            "Aumenta os custos de marketing",
+                            "Cria uma base de usuários engajados dispostos a pagar por valor",
+                            "Garante que todos os membros se tornarão clientes pagantes",
+                            "Elimina a necessidade de desenvolver um produto de qualidade"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para validar a disposição dos usuários em pagar por um projeto pessoal?",
+                        options: [
+                            "Oferecer o produto gratuitamente por tempo indeterminado",
+                            "Criar uma página de vendas com botão de compra fictício e medir cliques",
+                            "Assumir que os usuários pagarão se o produto for bom",
+                            "Esperar que os usuários peçam para pagar pelo produto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de oferecer períodos de teste gratuitos para produtos de projetos pessoais?",
+                        options: [
+                            "Garante que todos os usuários se tornarão clientes pagantes",
+                            "Permite que os usuários experimentem o valor antes de se comprometerem financeiramente",
+                            "Elimina a necessidade de demonstrar o valor do produto",
+                            "Reduz a qualidade percebida do produto"
+                        ],
+                        correct: 1
+                    }
+                ],
+                growth: [
+                    {
+                        question: "Qual estratégia é mais eficaz para projetos pessoais com recursos limitados buscarem crescimento inicial?",
+                        options: [
+                            "Investir pesadamente em publicidade tradicional",
+                            "Focar em crescimento orgânico através de boca a boca e conteúdo de valor",
+                            "Contratar uma grande equipe de marketing",
+                            "Expandir para todos os mercados simultaneamente"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de analisar métricas de uso em projetos pessoais?",
+                        options: [
+                            "Aumenta a complexidade do produto",
+                            "Fornece insights para melhorias e identifica o que os usuários mais valorizam",
+                            "Garante que todos os usuários permanecerão ativos",
+                            "Elimina a necessidade de feedback qualitativo"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a técnica de 'growth hacking' pode beneficiar projetos pessoais em estágio inicial?",
+                        options: [
+                            "Substitui completamente a necessidade de um bom produto",
+                            "Oferece abordagens criativas e de baixo custo para adquirir usuários",
+                            "Garante crescimento exponencial em qualquer circunstância",
+                            "Elimina a necessidade de estratégias de longo prazo"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de estabelecer parcerias estratégicas para o crescimento de projetos pessoais?",
+                        options: [
+                            "Elimina a necessidade de desenvolver o próprio produto",
+                            "Permite acesso a novas audiências e recursos compartilhados",
+                            "Garante que todas as parcerias serão bem-sucedidas",
+                            "Reduz a necessidade de inovação contínua"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para reter usuários em projetos pessoais a longo prazo?",
+                        options: [
+                            "Focar apenas na aquisição de novos usuários",
+                            "Oferecer valor contínuo e melhorias baseadas no feedback",
+                            "Aumentar os preços regularmente",
+                            "Limitar o acesso a funcionalidades importantes"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a internacionalização pode impactar o crescimento de projetos pessoais?",
+                        options: [
+                            "Complica desnecessariamente o desenvolvimento",
+                            "Expande o mercado potencial e diversifica as fontes de receita",
+                            "Garante sucesso imediato em todos os países",
+                            "Elimina a necessidade de marketing local"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de implementar sistemas de referência em projetos pessoais?",
+                        options: [
+                            "Aumenta os custos de aquisição de clientes",
+                            "Transforma usuários satisfeitos em promotores do produto",
+                            "Garante que todos os usuários indicarão o produto",
+                            "Elimina a necessidade de marketing direto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para escalar projetos pessoais com recursos limitados?",
+                        options: [
+                            "Contratar rapidamente uma grande equipe",
+                            "Automatizar processos e focar em alavancas de crescimento de alto impacto",
+                            "Expandir para todos os mercados simultaneamente",
+                            "Manter todos os processos manuais para garantir qualidade"
+                        ],
+                        correct: 1
+                    }
+                ],
+                bestPractices: [
+                    {
+                        question: "Qual é a principal vantagem de adotar uma mentalidade de 'aprendizado contínuo' em projetos pessoais?",
+                        options: [
+                            "Aumenta a pressão por perfeição",
+                            "Permite adaptar-se a mudanças e melhorar constantemente",
+                            "Garante que todas as decisões estarão corretas",
+                            "Elimina a necessidade de planejamento"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a prática de 'reflexão regular' pode beneficiar o desenvolvimento de projetos pessoais?",
+                        options: [
+                            "Aumenta a procrastinação",
+                            "Permite identificar padrões, aprender com experiências e ajustar estratégias",
+                            "Garante que todos os projetos serão bem-sucedidos",
+                            "Elimina a necessidade de definir metas"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de buscar feedback construtivo regularmente durante o desenvolvimento de projetos pessoais?",
+                        options: [
+                            "Aumenta a confiança em todas as decisões pessoais",
+                            "Fornece perspectivas externas que podem revelar pontos cegos",
+                            "Garante que todas as sugestões serão implementadas",
+                            "Elimina a necessidade de testar o produto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para gerenciar o esgotamento (burnout) em projetos pessoais de longo prazo?",
+                        options: [
+                            "Trabalhar intensamente até a conclusão do projeto",
+                            "Estabelecer limites saudáveis, pausas regulares e alternar foco",
+                            "Ignorar os sinais de esgotamento para manter o ritmo",
+                            "Abandonar o projeto ao primeiro sinal de cansaço"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a documentação de processos e decisões pode beneficiar projetos pessoais?",
+                        options: [
+                            "Torna o desenvolvimento mais lento e burocrático",
+                            "Cria um registro do aprendizado e facilita a continuidade do projeto",
+                            "Elimina a necessidade de comunicação com usuários",
+                            "Garante que todas as decisões estarão corretas"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de participar de comunidades e redes relacionadas ao seu nicho de projeto?",
+                        options: [
+                            "Aumenta a competição e pressão",
+                            "Oferece oportunidades de aprendizado, colaboração e exposição",
+                            "Garante que todas as ideias serão bem-sucedidas",
+                            "Elimina a necessidade de desenvolver habilidades próprias"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para lidar com o fracasso em projetos pessoais?",
+                        options: [
+                            "Evitar novos projetos para prevenir futuros fracassos",
+                            "Analisar as causas, extrair lições e aplicar o aprendizado em projetos futuros",
+                            "Culpar fatores externos pelo fracasso",
+                            "Abandonar completamente a área de projetos pessoais"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Como a prática de 'desconexão digital' periódica pode beneficiar criadores de projetos pessoais?",
+                        options: [
+                            "Reduz a produtividade e o progresso dos projetos",
+                            "Permite descanso mental, renovação de perspectivas e prevenção de esgotamento",
+                            "Garante que todas as ideias serão esquecidas",
+                            "Elimina a necessidade de planejamento"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual é o principal benefício de estabelecer um sistema de revisão periódica para projetos pessoais?",
+                        options: [
+                            "Aumenta a burocracia e reduz a flexibilidade",
+                            "Permite avaliar o progresso, ajustar direções e celebrar conquistas",
+                            "Garante que todos os projetos serão concluídos no prazo",
+                            "Elimina a necessidade de definir metas iniciais"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Qual abordagem é mais eficaz para equilibrar múltiplos projetos pessoais simultaneamente?",
+                        options: [
+                            "Trabalhar em todos os projetos ao mesmo tempo sem priorização",
+                            "Estabelecer prioridades claras, dedicar blocos de tempo específicos e evitar sobrecarga",
+                            "Abandonar todos os projetos exceto um",
+                            "Deixar que a urgência determine qual projeto receberá atenção"
+                        ],
+                        correct: 1
+                    }
+                ]
+            },
+            en: {
+                motivation: [
+                    {
+                        question: "What is the main advantage of starting a personal project with a minimum viable scope?",
+                        options: [
+                            "Guarantee immediate success",
+                            "Test the idea with fewer resources and time",
+                            "Attract investors quickly",
+                            "Completely eliminate competition"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of the following factors is most important for maintaining motivation in long-term personal projects?",
+                        options: [
+                            "Public recognition",
+                            "Immediate financial gains",
+                            "Personal connection to the project's purpose",
+                            "Pressure from short deadlines"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "How can failure in previous projects benefit the development of new projects?",
+                        options: [
+                            "Increases the likelihood of repeating the same mistakes",
+                            "Provides valuable lessons and insights for improvements",
+                            "Decreases the developer's confidence",
+                            "Makes it harder to obtain funding"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of documenting the progress of a personal project?",
+                        options: [
+                            "Prevents others from copying your ideas",
+                            "Creates a record of learning and evolution",
+                            "Guarantees the project will be completed on time",
+                            "Eliminates the need for future planning"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for overcoming procrastination in personal projects?",
+                        options: [
+                            "Wait for perfect motivation before starting",
+                            "Set small and achievable goals",
+                            "Focus only on final results",
+                            "Work only when deadlines are approaching"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can community positively impact the development of personal projects?",
+                        options: [
+                            "By providing constructive feedback and emotional support",
+                            "By defining all project requirements",
+                            "By guaranteeing the financial success of the project",
+                            "By eliminating the need for testing"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the main benefit of establishing a consistent work routine for personal projects?",
+                        options: [
+                            "Limits creativity and flexibility",
+                            "Reduces the need for planning",
+                            "Creates habits that facilitate constant progress",
+                            "Guarantees that all ideas will be successful"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Why is it important to celebrate small achievements during the development of a personal project?",
+                        options: [
+                            "Decreases the quality of the final work",
+                            "Maintains motivation and recognizes progress",
+                            "Increases pressure for perfect results",
+                            "Delays project completion"
+                        ],
+                        correct: 1
+                    }
+                ],
+                validation: [
+                    {
+                        question: "Which method is most effective for validating a personal project idea before investing significant time?",
+                        options: [
+                            "Build the complete product before testing",
+                            "Create a simple prototype and get initial feedback",
+                            "Research only successful competing projects",
+                            "Wait for inspiration before taking action"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is a 'Minimum Viable Product' (MVP) in the context of personal projects?",
+                        options: [
+                            "A simplified version that solves the main problem with minimum resources",
+                            "The final product with all planned features",
+                            "A detailed presentation of the project without implementation",
+                            "An abstract concept without practical implementation"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the main advantage of conducting interviews with potential users during the validation phase?",
+                        options: [
+                            "Guarantees that all interviewees will become customers",
+                            "Provides direct insights into real needs and pain points",
+                            "Eliminates the need to test the product later",
+                            "Reduces total development time by 80%"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can competitor analysis benefit the validation of a personal project?",
+                        options: [
+                            "Allows you to copy exactly what competitors do",
+                            "Helps identify opportunities and gaps in the market",
+                            "Guarantees that your project will be superior to all others",
+                            "Eliminates the need for innovation"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main objective of creating landing pages to validate personal project ideas?",
+                        options: [
+                            "Demonstrate advanced design skills",
+                            "Collect emails and measure interest before development",
+                            "Guarantee high rankings in search engines",
+                            "Completely replace product development"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Why is it important to define clear hypotheses during the validation of a personal project?",
+                        options: [
+                            "Makes the process more bureaucratic and formal",
+                            "Allows assumptions to be tested in a structured and measurable way",
+                            "Guarantees that all hypotheses will be correct",
+                            "Eliminates the need for user feedback"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for validating demand for a personal project with limited resources?",
+                        options: [
+                            "Immediately build the complete version of the product",
+                            "Create A/B tests with different concepts using low-cost tools",
+                            "Hire a market research agency",
+                            "Wait for competitors to validate the idea first"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What does 'pivoting' mean in the context of personal project development?",
+                        options: [
+                            "Completely abandon the original project",
+                            "Make significant strategic adjustments based on learning",
+                            "Add more features to the existing product",
+                            "Maintain the original plan regardless of results"
+                        ],
+                        correct: 1
+                    }
+                ],
+                planning: [
+                    {
+                        question: "What is the main advantage of dividing a personal project into smaller milestones?",
+                        options: [
+                            "Increases planning complexity",
+                            "Facilitates progress tracking and maintains motivation",
+                            "Eliminates the need for regular reviews",
+                            "Guarantees the project will be completed faster"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which methodology is most suitable for personal projects with requirements that may change during development?",
+                        options: [
+                            "Waterfall",
+                            "Agile",
+                            "V-Model",
+                            "Spiral Model"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How does defining 'success criteria' for a personal project impact its development?",
+                        options: [
+                            "Limits creativity and innovation",
+                            "Provides clarity on what constitutes a successful outcome",
+                            "Makes the process more bureaucratic and slow",
+                            "Guarantees the project will be financially profitable"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of creating a visual roadmap for a personal project?",
+                        options: [
+                            "Prevents the plan from changing during execution",
+                            "Facilitates communication of the plan and alignment of expectations",
+                            "Eliminates the need for periodic reviews",
+                            "Guarantees that all features will be developed"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for estimating the time needed for tasks in personal projects?",
+                        options: [
+                            "Estimate optimistically to motivate quick completion",
+                            "Add a safety margin (buffer) to realistic estimates",
+                            "Use the same estimates for all tasks regardless of complexity",
+                            "Leave estimates for the end of the project"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Why is it important to identify and prioritize features in personal projects?",
+                        options: [
+                            "Guarantees that all features will be developed simultaneously",
+                            "Allows focusing on the highest value features first",
+                            "Eliminates the need for testing during development",
+                            "Makes the project more complex and impressive"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of establishing a versioning system for personal projects?",
+                        options: [
+                            "Makes the code harder to understand",
+                            "Allows tracking changes and reverting to previous versions if necessary",
+                            "Eliminates the need for documentation",
+                            "Guarantees there will be no bugs in the code"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can the 'timeboxing' technique benefit the development of personal projects?",
+                        options: [
+                            "Increases procrastination",
+                            "Creates a sense of urgency and avoids excessive perfectionism",
+                            "Eliminates the need for planning",
+                            "Guarantees that all tasks will be completed in the estimated time"
+                        ],
+                        correct: 1
+                    }
+                ],
+                monetization: [
+                    {
+                        question: "Which monetization model is most suitable for early-stage personal projects with limited audience?",
+                        options: [
+                            "Premium subscriptions with high price",
+                            "Targeted advertising and affiliates",
+                            "Direct sales to large companies",
+                            "Technology licensing to competitors"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main advantage of the freemium model for personal projects?",
+                        options: [
+                            "Guarantees immediate revenue from all users",
+                            "Allows testing the product with real users before charging",
+                            "Eliminates the need to develop premium features",
+                            "Reduces development costs by 90%"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which strategy is most effective for determining the price of a product or service from a personal project?",
+                        options: [
+                            "Base only on development costs",
+                            "Research the market and customer-perceived value",
+                            "Always use the lowest possible price",
+                            "Copy exactly the competitors' prices"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of diversifying revenue streams in personal projects?",
+                        options: [
+                            "Complicates the project's financial management",
+                            "Reduces dependence on a single source and increases resilience",
+                            "Guarantees immediate profit in all sources",
+                            "Eliminates the need for marketing"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can creating content related to a personal project impact monetization?",
+                        options: [
+                            "Diverts resources from developing the main product",
+                            "Increases authority in the niche and attracts potential customers",
+                            "Guarantees the content will go viral",
+                            "Eliminates the need for direct sales strategies"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of building a community around a personal project before monetization?",
+                        options: [
+                            "Increases marketing costs",
+                            "Creates an engaged user base willing to pay for value",
+                            "Guarantees all members will become paying customers",
+                            "Eliminates the need to develop a quality product"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for validating users' willingness to pay for a personal project?",
+                        options: [
+                            "Offer the product for free indefinitely",
+                            "Create a sales page with a fake purchase button and measure clicks",
+                            "Assume users will pay if the product is good",
+                            "Wait for users to ask to pay for the product"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of offering free trial periods for personal project products?",
+                        options: [
+                            "Guarantees all users will become paying customers",
+                            "Allows users to experience value before committing financially",
+                            "Eliminates the need to demonstrate product value",
+                            "Reduces the perceived quality of the product"
+                        ],
+                        correct: 1
+                    }
+                ],
+                growth: [
+                    {
+                        question: "Which strategy is most effective for personal projects with limited resources seeking initial growth?",
+                        options: [
+                            "Invest heavily in traditional advertising",
+                            "Focus on organic growth through word-of-mouth and valuable content",
+                            "Hire a large marketing team",
+                            "Expand to all markets simultaneously"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of analyzing usage metrics in personal projects?",
+                        options: [
+                            "Increases product complexity",
+                            "Provides insights for improvements and identifies what users value most",
+                            "Guarantees all users will remain active",
+                            "Eliminates the need for qualitative feedback"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can 'growth hacking' techniques benefit early-stage personal projects?",
+                        options: [
+                            "Completely replaces the need for a good product",
+                            "Offers creative and low-cost approaches to acquire users",
+                            "Guarantees exponential growth in any circumstance",
+                            "Eliminates the need for long-term strategies"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of establishing strategic partnerships for the growth of personal projects?",
+                        options: [
+                            "Eliminates the need to develop your own product",
+                            "Allows access to new audiences and shared resources",
+                            "Guarantees all partnerships will be successful",
+                            "Reduces the need for continuous innovation"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for retaining users in personal projects long-term?",
+                        options: [
+                            "Focus only on acquiring new users",
+                            "Offer continuous value and improvements based on feedback",
+                            "Increase prices regularly",
+                            "Limit access to important features"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can internationalization impact the growth of personal projects?",
+                        options: [
+                            "Unnecessarily complicates development",
+                            "Expands the potential market and diversifies revenue sources",
+                            "Guarantees immediate success in all countries",
+                            "Eliminates the need for local marketing"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of implementing referral systems in personal projects?",
+                        options: [
+                            "Increases customer acquisition costs",
+                            "Turns satisfied users into product promoters",
+                            "Guarantees all users will refer the product",
+                            "Eliminates the need for direct marketing"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for scaling personal projects with limited resources?",
+                        options: [
+                            "Quickly hire a large team",
+                            "Automate processes and focus on high-impact growth levers",
+                            "Expand to all markets simultaneously",
+                            "Keep all processes manual to ensure quality"
+                        ],
+                        correct: 1
+                    }
+                ],
+                bestPractices: [
+                    {
+                        question: "What is the main advantage of adopting a 'continuous learning' mindset in personal projects?",
+                        options: [
+                            "Increases pressure for perfection",
+                            "Allows adapting to changes and constantly improving",
+                            "Guarantees all decisions will be correct",
+                            "Eliminates the need for planning"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can the practice of 'regular reflection' benefit the development of personal projects?",
+                        options: [
+                            "Increases procrastination",
+                            "Allows identifying patterns, learning from experiences, and adjusting strategies",
+                            "Guarantees all projects will be successful",
+                            "Eliminates the need to set goals"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of seeking regular constructive feedback during the development of personal projects?",
+                        options: [
+                            "Increases confidence in all personal decisions",
+                            "Provides external perspectives that can reveal blind spots",
+                            "Guarantees all suggestions will be implemented",
+                            "Eliminates the need to test the product"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for managing burnout in long-term personal projects?",
+                        options: [
+                            "Work intensively until project completion",
+                            "Establish healthy boundaries, regular breaks, and alternate focus",
+                            "Ignore burnout signs to maintain pace",
+                            "Abandon the project at the first sign of fatigue"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can documenting processes and decisions benefit personal projects?",
+                        options: [
+                            "Makes development slower and more bureaucratic",
+                            "Creates a record of learning and facilitates project continuity",
+                            "Eliminates the need for communication with users",
+                            "Guarantees all decisions will be correct"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of participating in communities and networks related to your project niche?",
+                        options: [
+                            "Increases competition and pressure",
+                            "Offers learning opportunities, collaboration, and exposure",
+                            "Guarantees all ideas will be successful",
+                            "Eliminates the need to develop personal skills"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for dealing with failure in personal projects?",
+                        options: [
+                            "Avoid new projects to prevent future failures",
+                            "Analyze causes, extract lessons, and apply learning to future projects",
+                            "Blame external factors for failure",
+                            "Completely abandon the area of personal projects"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can periodic 'digital disconnection' practice benefit creators of personal projects?",
+                        options: [
+                            "Reduces productivity and project progress",
+                            "Allows mental rest, perspective renewal, and burnout prevention",
+                            "Guarantees all ideas will be forgotten",
+                            "Eliminates the need for planning"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the main benefit of establishing a periodic review system for personal projects?",
+                        options: [
+                            "Increases bureaucracy and reduces flexibility",
+                            "Allows evaluating progress, adjusting directions, and celebrating achievements",
+                            "Guarantees all projects will be completed on time",
+                            "Eliminates the need to set initial goals"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which approach is most effective for balancing multiple personal projects simultaneously?",
+                        options: [
+                            "Work on all projects at the same time without prioritization",
+                            "Establish clear priorities, dedicate specific time blocks, and avoid overload",
+                            "Abandon all projects except one",
+                            "Let urgency determine which project will receive attention"
+                        ],
+                        correct: 1
+                    }
+                ]
+            },
+            es: {
+                motivation: [
+                    {
+                        question: "¿Cuál es la principal ventaja de comenzar un proyecto personal con un alcance mínimo viable?",
+                        options: [
+                            "Garantizar el éxito inmediato",
+                            "Probar la idea con menos recursos y tiempo",
+                            "Atraer inversores rápidamente",
+                            "Eliminar completamente la competencia"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál de los siguientes factores es más importante para mantener la motivación en proyectos personales a largo plazo?",
+                        options: [
+                            "Reconocimiento público",
+                            "Ganancias financieras inmediatas",
+                            "Conexión personal con el propósito del proyecto",
+                            "Presión de plazos cortos"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "¿Cómo puede el fracaso en proyectos anteriores beneficiar el desarrollo de nuevos proyectos?",
+                        options: [
+                            "Aumenta la probabilidad de repetir los mismos errores",
+                            "Proporciona lecciones valiosas e ideas para mejoras",
+                            "Disminuye la confianza del desarrollador",
+                            "Hace más difícil obtener financiamiento"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de documentar el progreso de un proyecto personal?",
+                        options: [
+                            "Impide que otras personas copien tus ideas",
+                            "Crea un registro del aprendizaje y evolución",
+                            "Garantiza que el proyecto se completará a tiempo",
+                            "Elimina la necesidad de planificación futura"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para superar la procrastinación en proyectos personales?",
+                        options: [
+                            "Esperar la motivación perfecta antes de comenzar",
+                            "Establecer metas pequeñas y alcanzables",
+                            "Centrarse solo en los resultados finales",
+                            "Trabajar solo cuando haya plazos cercanos"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede la comunidad impactar positivamente el desarrollo de proyectos personales?",
+                        options: [
+                            "Ofreciendo retroalimentación constructiva y apoyo emocional",
+                            "Definiendo todos los requisitos del proyecto",
+                            "Garantizando el éxito financiero del proyecto",
+                            "Eliminando la necesidad de pruebas"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de establecer un ritual de trabajo consistente para proyectos personales?",
+                        options: [
+                            "Limita la creatividad y flexibilidad",
+                            "Reduce la necesidad de planificación",
+                            "Crea hábitos que facilitan el progreso constante",
+                            "Garantiza que todas las ideas tendrán éxito"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "¿Por qué es importante celebrar pequeños logros durante el desarrollo de un proyecto personal?",
+                        options: [
+                            "Disminuye la calidad del trabajo final",
+                            "Mantiene la motivación y reconoce el progreso",
+                            "Aumenta la presión por resultados perfectos",
+                            "Retrasa la conclusión del proyecto"
+                        ],
+                        correct: 1
+                    }
+                ],
+                validation: [
+                    {
+                        question: "¿Qué método es más efectivo para validar una idea de proyecto personal antes de invertir tiempo significativo?",
+                        options: [
+                            "Construir el producto completo antes de probar",
+                            "Crear un prototipo simple y obtener retroalimentación inicial",
+                            "Investigar solo proyectos competidores exitosos",
+                            "Esperar por inspiración antes de actuar"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué es un 'Producto Mínimo Viable' (MVP) en el contexto de proyectos personales?",
+                        options: [
+                            "Una versión simplificada que resuelve el problema principal con mínimos recursos",
+                            "El producto final con todas las funcionalidades planificadas",
+                            "Una presentación detallada del proyecto sin implementación",
+                            "Un concepto abstracto sin implementación práctica"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "¿Cuál es la principal ventaja de realizar entrevistas con usuarios potenciales durante la fase de validación?",
+                        options: [
+                            "Garantiza que todos los entrevistados se convertirán en clientes",
+                            "Proporciona ideas directas sobre necesidades reales y dolores",
+                            "Elimina la necesidad de probar el producto posteriormente",
+                            "Reduce el tiempo total de desarrollo en 80%"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede el análisis de competidores beneficiar la validación de un proyecto personal?",
+                        options: [
+                            "Permite copiar exactamente lo que hacen los competidores",
+                            "Ayuda a identificar oportunidades y lagunas en el mercado",
+                            "Garantiza que tu proyecto será superior a todos los demás",
+                            "Elimina la necesidad de innovación"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el objetivo principal de crear páginas de aterrizaje para validar ideas de proyectos personales?",
+                        options: [
+                            "Demostrar habilidades avanzadas de diseño",
+                            "Recopilar correos electrónicos y medir el interés antes del desarrollo",
+                            "Garantizar rankings altos en motores de búsqueda",
+                            "Reemplazar completamente el desarrollo del producto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Por qué es importante definir hipótesis claras durante la validación de un proyecto personal?",
+                        options: [
+                            "Hace el proceso más burocrático y formal",
+                            "Permite probar suposiciones de forma estructurada y medible",
+                            "Garantiza que todas las hipótesis serán correctas",
+                            "Elimina la necesidad de retroalimentación de usuarios"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para validar la demanda de un proyecto personal con recursos limitados?",
+                        options: [
+                            "Construir inmediatamente la versión completa del producto",
+                            "Crear pruebas A/B con diferentes conceptos usando herramientas de bajo costo",
+                            "Contratar una agencia de investigación de mercado",
+                            "Esperar que los competidores validen la idea primero"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué significa 'pivotar' en el contexto del desarrollo de proyectos personales?",
+                        options: [
+                            "Abandonar completamente el proyecto original",
+                            "Hacer ajustes estratégicos significativos basados en el aprendizaje",
+                            "Agregar más funcionalidades al producto existente",
+                            "Mantener el plan original independientemente de los resultados"
+                        ],
+                        correct: 1
+                    }
+                ],
+                planning: [
+                    {
+                        question: "¿Cuál es la principal ventaja de dividir un proyecto personal en hitos más pequeños?",
+                        options: [
+                            "Aumenta la complejidad de la planificación",
+                            "Facilita el seguimiento del progreso y mantiene la motivación",
+                            "Elimina la necesidad de revisiones regulares",
+                            "Garantiza que el proyecto se completará más rápidamente"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué metodología es más adecuada para proyectos personales con requisitos que pueden cambiar durante el desarrollo?",
+                        options: [
+                            "Cascada (Waterfall)",
+                            "Ágil (Agile)",
+                            "Modelo en V",
+                            "Modelo Espiral"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo impacta el desarrollo de un proyecto personal la definición de 'criterios de éxito'?",
+                        options: [
+                            "Limita la creatividad e innovación",
+                            "Proporciona claridad sobre lo que constituye un resultado exitoso",
+                            "Hace el proceso más burocrático y lento",
+                            "Garantiza que el proyecto será financieramente rentable"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de crear una hoja de ruta visual para un proyecto personal?",
+                        options: [
+                            "Impide que el plan cambie durante la ejecución",
+                            "Facilita la comunicación del plan y la alineación de expectativas",
+                            "Elimina la necesidad de revisiones periódicas",
+                            "Garantiza que todas las funcionalidades serán desarrolladas"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para estimar el tiempo necesario para tareas en proyectos personales?",
+                        options: [
+                            "Estimar de manera optimista para motivar la conclusión rápida",
+                            "Agregar un margen de seguridad (buffer) a las estimaciones realistas",
+                            "Usar las mismas estimaciones para todas las tareas independientemente de la complejidad",
+                            "Dejar las estimaciones para el final del proyecto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Por qué es importante identificar y priorizar funcionalidades en proyectos personales?",
+                        options: [
+                            "Garantiza que todas las funcionalidades serán desarrolladas simultáneamente",
+                            "Permite centrarse en los recursos de mayor valor primero",
+                            "Elimina la necesidad de pruebas durante el desarrollo",
+                            "Hace el proyecto más complejo e impresionante"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de establecer un sistema de control de versiones para proyectos personales?",
+                        options: [
+                            "Hace el código más difícil de entender",
+                            "Permite rastrear cambios y revertir a versiones anteriores si es necesario",
+                            "Elimina la necesidad de documentación",
+                            "Garantiza que no habrá errores en el código"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede beneficiar el desarrollo de proyectos personales la técnica de 'timeboxing'?",
+                        options: [
+                            "Aumenta la procrastinación",
+                            "Crea un sentido de urgencia y evita el perfeccionismo excesivo",
+                            "Elimina la necesidad de planificación",
+                            "Garantiza que todas las tareas se completarán en el tiempo estimado"
+                        ],
+                        correct: 1
+                    }
+                ],
+                monetization: [
+                    {
+                        question: "¿Qué modelo de monetización es más adecuado para proyectos personales en etapa inicial con audiencia limitada?",
+                        options: [
+                            "Suscripciones premium con precio elevado",
+                            "Publicidad dirigida y afiliados",
+                            "Venta directa a grandes empresas",
+                            "Licenciamiento de tecnología a competidores"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es la principal ventaja del modelo freemium para proyectos personales?",
+                        options: [
+                            "Garantiza ingresos inmediatos de todos los usuarios",
+                            "Permite probar el producto con usuarios reales antes de cobrar",
+                            "Elimina la necesidad de desarrollar funcionalidades premium",
+                            "Reduce los costos de desarrollo en 90%"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué estrategia es más efectiva para determinar el precio de un producto o servicio de un proyecto personal?",
+                        options: [
+                            "Basarse solo en los costos de desarrollo",
+                            "Investigar el mercado y el valor percibido por el cliente",
+                            "Usar siempre el precio más bajo posible",
+                            "Copiar exactamente el precio de los competidores"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de diversificar las fuentes de ingresos en proyectos personales?",
+                        options: [
+                            "Complica la gestión financiera del proyecto",
+                            "Reduce la dependencia de una única fuente y aumenta la resiliencia",
+                            "Garantiza ganancias inmediatas en todas las fuentes",
+                            "Elimina la necesidad de marketing"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede impactar la monetización la creación de contenido relacionado con el proyecto personal?",
+                        options: [
+                            "Desvía recursos del desarrollo del producto principal",
+                            "Aumenta la autoridad en el nicho y atrae clientes potenciales",
+                            "Garantiza que el contenido se volverá viral",
+                            "Elimina la necesidad de estrategias de ventas directas"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de construir una comunidad en torno a un proyecto personal antes de la monetización?",
+                        options: [
+                            "Aumenta los costos de marketing",
+                            "Crea una base de usuarios comprometidos dispuestos a pagar por valor",
+                            "Garantiza que todos los miembros se convertirán en clientes pagantes",
+                            "Elimina la necesidad de desarrollar un producto de calidad"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para validar la disposición de los usuarios a pagar por un proyecto personal?",
+                        options: [
+                            "Ofrecer el producto gratuitamente por tiempo indefinido",
+                            "Crear una página de ventas con botón de compra ficticio y medir clics",
+                            "Asumir que los usuarios pagarán si el producto es bueno",
+                            "Esperar que los usuarios pidan pagar por el producto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de ofrecer períodos de prueba gratuitos para productos de proyectos personales?",
+                        options: [
+                            "Garantiza que todos los usuarios se convertirán en clientes pagantes",
+                            "Permite que los usuarios experimenten el valor antes de comprometerse financieramente",
+                            "Elimina la necesidad de demostrar el valor del producto",
+                            "Reduce la calidad percibida del producto"
+                        ],
+                        correct: 1
+                    }
+                ],
+                growth: [
+                    {
+                        question: "¿Qué estrategia es más efectiva para proyectos personales con recursos limitados que buscan crecimiento inicial?",
+                        options: [
+                            "Invertir pesadamente en publicidad tradicional",
+                            "Centrarse en el crecimiento orgánico a través del boca a boca y contenido de valor",
+                            "Contratar un gran equipo de marketing",
+                            "Expandirse a todos los mercados simultáneamente"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de analizar métricas de uso en proyectos personales?",
+                        options: [
+                            "Aumenta la complejidad del producto",
+                            "Proporciona ideas para mejoras e identifica lo que los usuarios más valoran",
+                            "Garantiza que todos los usuarios permanecerán activos",
+                            "Elimina la necesidad de retroalimentación cualitativa"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede beneficiar proyectos personales en etapa inicial la técnica de 'growth hacking'?",
+                        options: [
+                            "Reemplaza completamente la necesidad de un buen producto",
+                            "Ofrece enfoques creativos y de bajo costo para adquirir usuarios",
+                            "Garantiza un crecimiento exponencial en cualquier circunstancia",
+                            "Elimina la necesidad de estrategias a largo plazo"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de establecer asociaciones estratégicas para el crecimiento de proyectos personales?",
+                        options: [
+                            "Elimina la necesidad de desarrollar el propio producto",
+                            "Permite acceso a nuevas audiencias y recursos compartidos",
+                            "Garantiza que todas las asociaciones serán exitosas",
+                            "Reduce la necesidad de innovación continua"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para retener usuarios en proyectos personales a largo plazo?",
+                        options: [
+                            "Centrarse solo en la adquisición de nuevos usuarios",
+                            "Ofrecer valor continuo y mejoras basadas en retroalimentación",
+                            "Aumentar los precios regularmente",
+                            "Limitar el acceso a funcionalidades importantes"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede impactar el crecimiento de proyectos personales la internacionalización?",
+                        options: [
+                            "Complica innecesariamente el desarrollo",
+                            "Expande el mercado potencial y diversifica las fuentes de ingresos",
+                            "Garantiza el éxito inmediato en todos los países",
+                            "Elimina la necesidad de marketing local"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de implementar sistemas de referencia en proyectos personales?",
+                        options: [
+                            "Aumenta los costos de adquisición de clientes",
+                            "Transforma a usuarios satisfechos en promotores del producto",
+                            "Garantiza que todos los usuarios recomendarán el producto",
+                            "Elimina la necesidad de marketing directo"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para escalar proyectos personales con recursos limitados?",
+                        options: [
+                            "Contratar rápidamente un gran equipo",
+                            "Automatizar procesos y centrarse en palancas de crecimiento de alto impacto",
+                            "Expandirse a todos los mercados simultáneamente",
+                            "Mantener todos los procesos manuales para garantizar calidad"
+                        ],
+                        correct: 1
+                    }
+                ],
+                bestPractices: [
+                    {
+                        question: "¿Cuál es la principal ventaja de adoptar una mentalidad de 'aprendizaje continuo' en proyectos personales?",
+                        options: [
+                            "Aumenta la presión por perfección",
+                            "Permite adaptarse a cambios y mejorar constantemente",
+                            "Garantiza que todas las decisiones serán correctas",
+                            "Elimina la necesidad de planificación"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede beneficiar el desarrollo de proyectos personales la práctica de 'reflexión regular'?",
+                        options: [
+                            "Aumenta la procrastinación",
+                            "Permite identificar patrones, aprender de experiencias y ajustar estrategias",
+                            "Garantiza que todos los proyectos serán exitosos",
+                            "Elimina la necesidad de establecer metas"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de buscar retroalimentación constructiva regularmente durante el desarrollo de proyectos personales?",
+                        options: [
+                            "Aumenta la confianza en todas las decisiones personales",
+                            "Proporciona perspectivas externas que pueden revelar puntos ciegos",
+                            "Garantiza que todas las sugerencias serán implementadas",
+                            "Elimina la necesidad de probar el producto"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para manejar el agotamiento (burnout) en proyectos personales a largo plazo?",
+                        options: [
+                            "Trabajar intensamente hasta la conclusión del proyecto",
+                            "Establecer límites saludables, pausas regulares y alternar el enfoque",
+                            "Ignorar las señales de agotamiento para mantener el ritmo",
+                            "Abandonar el proyecto ante la primera señal de cansancio"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede beneficiar proyectos personales la documentación de procesos y decisiones?",
+                        options: [
+                            "Hace el desarrollo más lento y burocrático",
+                            "Crea un registro del aprendizaje y facilita la continuidad del proyecto",
+                            "Elimina la necesidad de comunicación con usuarios",
+                            "Garantiza que todas las decisiones serán correctas"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de participar en comunidades y redes relacionadas con tu nicho de proyecto?",
+                        options: [
+                            "Aumenta la competencia y la presión",
+                            "Ofrece oportunidades de aprendizaje, colaboración y exposición",
+                            "Garantiza que todas las ideas serán exitosas",
+                            "Elimina la necesidad de desarrollar habilidades propias"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para lidiar con el fracaso en proyectos personales?",
+                        options: [
+                            "Evitar nuevos proyectos para prevenir futuros fracasos",
+                            "Analizar las causas, extraer lecciones y aplicar el aprendizaje en proyectos futuros",
+                            "Culpar a factores externos por el fracaso",
+                            "Abandonar completamente el área de proyectos personales"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cómo puede beneficiar a los creadores de proyectos personales la práctica de 'desconexión digital' periódica?",
+                        options: [
+                            "Reduce la productividad y el progreso de los proyectos",
+                            "Permite el descanso mental, la renovación de perspectivas y la prevención del agotamiento",
+                            "Garantiza que todas las ideas serán olvidadas",
+                            "Elimina la necesidad de planificación"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Cuál es el principal beneficio de establecer un sistema de revisión periódica para proyectos personales?",
+                        options: [
+                            "Aumenta la burocracia y reduce la flexibilidad",
+                            "Permite evaluar el progreso, ajustar direcciones y celebrar logros",
+                            "Garantiza que todos los proyectos se completarán a tiempo",
+                            "Elimina la necesidad de establecer metas iniciales"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "¿Qué enfoque es más efectivo para equilibrar múltiples proyectos personales simultáneamente?",
+                        options: [
+                            "Trabajar en todos los proyectos al mismo tiempo sin priorización",
+                            "Establecer prioridades claras, dedicar bloques de tiempo específicos y evitar la sobrecarga",
+                            "Abandonar todos los proyectos excepto uno",
+                            "Dejar que la urgencia determine qué proyecto recibirá atención"
+                        ],
+                        correct: 1
+                    }
+                ]
+            }
+        };
+
+        // Estado da aplicação
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let questions = [];
+        let timerInterval;
+        let timeRemaining = 3600; // 60 minutos em segundos
+        let testStarted = false;
+
+        // Elementos do DOM
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const testScreen = document.getElementById('testScreen');
+        const resultScreen = document.getElementById('resultScreen');
+        const startBtn = document.getElementById('startBtn');
+        const finishBtn = document.getElementById('finishBtn');
+        const retryBtn = document.getElementById('retryBtn');
+        const homeBtn = document.getElementById('homeBtn');
+        const backBtn = document.getElementById('backBtn');
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const timerElement = document.getElementById('timer');
+        const questionNumber = document.getElementById('questionNumber');
+        const questionText = document.getElementById('questionText');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const navigation = document.getElementById('navigation');
+        const progressFill = document.getElementById('progressFill');
+        const resultPercentage = document.getElementById('resultPercentage');
+        const resultStatus = document.getElementById('resultStatus');
+        const resultMessage = document.getElementById('resultMessage');
+
+        // Inicialização
+        function init() {
+            // Configurar eventos
+            startBtn.addEventListener('click', startTest);
+            finishBtn.addEventListener('click', finishTest);
+            retryBtn.addEventListener('click', resetTest);
+            homeBtn.addEventListener('click', resetTest);
+            backBtn.addEventListener('click', () => {
+                window.location.href = 'https://dealegear.com';
+            });
+            menuToggle.addEventListener('click', toggleSidebar);
+
+            // Configurar botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    changeLanguage(btn.dataset.lang);
+                });
+            });
+
+            // Verificar se há progresso salvo
+            loadProgress();
+        }
+
+        // Função para alternar o menu lateral em dispositivos móveis
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+        }
+
+        // Função para mudar o idioma
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // Atualizar botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Atualizar textos na interface
+            updateUITexts();
+            
+            // Se o teste já começou, atualizar as questões
+            if (testStarted && questions.length > 0) {
+                loadQuestions();
+                displayQuestion(currentQuestion);
+            }
+        }
+
+        // Função para atualizar textos da interface
+        function updateUITexts() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+            
+            // Atualizar atributos title ou placeholder se necessário
+            document.querySelectorAll('[data-i18n-title]').forEach(element => {
+                const key = element.getAttribute('data-i18n-title');
+                if (translations[currentLang][key]) {
+                    element.title = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Função para carregar as questões
+        function loadQuestions() {
+            questions = [];
+            
+            // Obter todas as categorias de questões para o idioma atual
+            const categories = [
+                ...questionsData[currentLang].motivation,
+                ...questionsData[currentLang].validation,
+                ...questionsData[currentLang].planning,
+                ...questionsData[currentLang].monetization,
+                ...questionsData[currentLang].growth,
+                ...questionsData[currentLang].bestPractices
+            ];
+            
+            // Embaralhar as questões
+            questions = shuffleArray([...categories]);
+            
+            // Limitar a 50 questões
+            questions = questions.slice(0, 50);
+        }
+
+        // Função para embaralhar array
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        // Função para iniciar o teste
+        function startTest() {
+            testStarted = true;
+            currentQuestion = 0;
+            userAnswers = new Array(50).fill(-1);
+            
+            // Carregar questões
+            loadQuestions();
+            
+            // Iniciar timer
+            startTimer();
+            
+            // Exibir tela de teste
+            showScreen('test');
+            
+            // Criar navegação
+            createNavigation();
+            
+            // Exibir primeira questão
+            displayQuestion(0);
+            
+            // Salvar progresso
+            saveProgress();
+        }
+
+        // Função para criar navegação entre questões
+        function createNavigation() {
+            navigation.innerHTML = '';
+            
+            for (let i = 0; i < questions.length; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'nav-btn';
+                btn.textContent = i + 1;
+                
+                if (i === currentQuestion) {
+                    btn.classList.add('current');
+                } else if (userAnswers[i] !== -1) {
+                    btn.classList.add('answered');
+                }
+                
+                btn.addEventListener('click', () => {
+                    saveCurrentAnswer();
+                    currentQuestion = i;
+                    displayQuestion(i);
+                    updateNavigation();
+                });
+                
+                navigation.appendChild(btn);
+            }
+        }
+
+        // Função para atualizar navegação
+        function updateNavigation() {
+            const navButtons = navigation.querySelectorAll('.nav-btn');
+            
+            navButtons.forEach((btn, index) => {
+                btn.classList.remove('current', 'answered');
+                
+                if (index === currentQuestion) {
+                    btn.classList.add('current');
+                } else if (userAnswers[index] !== -1) {
+                    btn.classList.add('answered');
+                }
+            });
+        }
+
+        // Função para exibir uma questão
+        function displayQuestion(index) {
+            if (index < 0 || index >= questions.length) return;
+            
+            const question = questions[index];
+            
+            // Atualizar número da questão
+            questionNumber.textContent = `${translations[currentLang].question} ${index + 1}`;
+            
+            // Atualizar texto da questão
+            questionText.textContent = question.question;
+            
+            // Limpar opções
+            optionsContainer.innerHTML = '';
+            
+            // Adicionar opções
+            question.options.forEach((option, i) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                
+                if (userAnswers[index] === i) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.innerHTML = `
+                    <div class="option-letter">${String.fromCharCode(65 + i)}</div>
+                    <div>${option}</div>
+                `;
+                
+                optionElement.addEventListener('click', () => {
+                    selectOption(i);
+                });
+                
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Atualizar barra de progresso
+            updateProgressBar();
+            
+            // Verificar se todas as questões foram respondidas
+            checkAllAnswered();
+        }
+
+        // Função para selecionar uma opção
+        function selectOption(optionIndex) {
+            userAnswers[currentQuestion] = optionIndex;
+            
+            // Atualizar visualização
+            const options = optionsContainer.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                option.classList.toggle('selected', index === optionIndex);
+            });
+            
+            // Atualizar navegação
+            updateNavigation();
+            
+            // Salvar progresso
+            saveProgress();
+            
+            // Verificar se todas as questões foram respondidas
+            checkAllAnswered();
+        }
+
+        // Função para salvar a resposta atual
+        function saveCurrentAnswer() {
+            const selectedOption = optionsContainer.querySelector('.option.selected');
+            if (selectedOption) {
+                const optionIndex = Array.from(optionsContainer.children).indexOf(selectedOption);
+                userAnswers[currentQuestion] = optionIndex;
+            }
+        }
+
+        // Função para verificar se todas as questões foram respondidas
+        function checkAllAnswered() {
+            const allAnswered = userAnswers.every(answer => answer !== -1);
+            finishBtn.disabled = !allAnswered;
+        }
+
+        // Função para atualizar a barra de progresso
+        function updateProgressBar() {
+            const answeredCount = userAnswers.filter(answer => answer !== -1).length;
+            const progress = (answeredCount / questions.length) * 100;
+            progressFill.style.width = `${progress}%`;
+        }
+
+        // Função para iniciar o timer
+        function startTimer() {
+            timeRemaining = 3600; // 60 minutos
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                
+                // Alerta nos últimos 5 minutos
+                if (timeRemaining === 300) {
+                    timerElement.classList.add('warning');
+                    alert(translations[currentLang].timeWarning);
+                }
+                
+                // Encerrar teste quando o tempo acabar
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    finishTest();
+                }
+            }, 1000);
+        }
+
+        // Função para atualizar a exibição do timer
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Função para finalizar o teste
+        function finishTest() {
+            // Salvar resposta atual
+            saveCurrentAnswer();
+            
+            // Parar timer
+            clearInterval(timerInterval);
+            
+            // Calcular resultado
+            const result = calculateResult();
+            
+            // Exibir resultado
+            showResult(result);
+            
+            // Limpar progresso salvo
+            clearProgress();
+        }
+
+        // Função para calcular o resultado
+        function calculateResult() {
+            let correctCount = 0;
+            
+            for (let i = 0; i < questions.length; i++) {
+                if (userAnswers[i] === questions[i].correct) {
+                    correctCount++;
+                }
+            }
+            
+            const percentage = Math.round((correctCount / questions.length) * 100);
+            const passed = percentage >= 80;
+            
+            return {
+                correctCount,
+                totalQuestions: questions.length,
+                percentage,
+                passed
+            };
+        }
+
+        // Função para exibir o resultado
+        function showResult(result) {
+            // Exibir tela de resultado
+            showScreen('result');
+            
+            // Atualizar elementos de resultado
+            resultPercentage.textContent = `${result.percentage}%`;
+            
+            if (result.passed) {
+                resultStatus.textContent = translations[currentLang].passed;
+                resultStatus.className = 'result-status passed';
+                
+                // Mensagem de aprovação
+                const messages = {
+                    pt: [
+                        "Parabéns! Você demonstrou excelente conhecimento sobre desenvolvimento de projetos pessoais.",
+                        "Ótimo trabalho! Seu conhecimento sobre projetos pessoais é notável.",
+                        "Excelente! Você está pronto para desenvolver projetos pessoais com sucesso."
+                    ],
+                    en: [
+                        "Congratulations! You have demonstrated excellent knowledge about personal project development.",
+                        "Great job! Your knowledge about personal projects is remarkable.",
+                        "Excellent! You are ready to successfully develop personal projects."
+                    ],
+                    es: [
+                        "¡Felicidades! Has demostrado un excelente conocimiento sobre el desarrollo de proyectos personales.",
+                        "¡Gran trabajo! Tu conocimiento sobre proyectos personales es notable.",
+                        "¡Excelente! Estás listo para desarrollar proyectos personales con éxito."
+                    ]
+                };
+                
+                const randomMessage = messages[currentLang][Math.floor(Math.random() * messages[currentLang].length)];
+                resultMessage.textContent = randomMessage;
+            } else {
+                resultStatus.textContent = translations[currentLang].failed;
+                resultStatus.className = 'result-status failed';
+                
+                // Mensagem de reprovação
+                const messages = {
+                    pt: [
+                        "Continue estudando! Com mais prática, você certamente alcançará a aprovação.",
+                        "Não desista! O desenvolvimento de projetos pessoais é uma jornada de aprendizado contínuo.",
+                        "Use este resultado como um guia para identificar áreas de melhoria."
+                    ],
+                    en: [
+                        "Keep studying! With more practice, you will certainly achieve approval.",
+                        "Don't give up! Personal project development is a continuous learning journey.",
+                        "Use this result as a guide to identify areas for improvement."
+                    ],
+                    es: [
+                        "¡Sigue estudiando! Con más práctica, ciertamente alcanzarás la aprobación.",
+                        "¡No te rindas! El desarrollo de proyectos personales es un viaje de aprendizaje continuo.",
+                        "Usa este resultado como una guía para identificar áreas de mejora."
+                    ]
+                };
+                
+                const randomMessage = messages[currentLang][Math.floor(Math.random() * messages[currentLang].length)];
+                resultMessage.textContent = randomMessage;
+            }
+        }
+
+        // Função para resetar o teste
+        function resetTest() {
+            // Parar timer
+            clearInterval(timerInterval);
+            
+            // Resetar estado
+            currentQuestion = 0;
+            userAnswers = [];
+            questions = [];
+            testStarted = false;
+            timeRemaining = 3600;
+            
+            // Resetar timer
+            timerElement.classList.remove('warning');
+            timerElement.textContent = '60:00';
+            
+            // Exibir tela inicial
+            showScreen('welcome');
+            
+            // Limpar progresso salvo
+            clearProgress();
+        }
+
+        // Função para exibir uma tela específica
+        function showScreen(screenName) {
+            // Esconder todas as telas
+            welcomeScreen.classList.remove('active');
+            testScreen.classList.remove('active');
+            resultScreen.classList.remove('active');
+            
+            // Exibir a tela selecionada
+            switch (screenName) {
+                case 'welcome':
+                    welcomeScreen.classList.add('active');
+                    break;
+                case 'test':
+                    testScreen.classList.add('active');
+                    break;
+                case 'result':
+                    resultScreen.classList.add('active');
+                    break;
+            }
+        }
+
+        // Funções para salvar e carregar progresso
+        function saveProgress() {
+            const progress = {
+                currentQuestion,
+                userAnswers,
+                timeRemaining,
+                testStarted,
+                currentLang
+            };
+            
+            localStorage.setItem('gearstep_test_progress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem('gearstep_test_progress');
+            
+            if (savedProgress) {
+                try {
+                    const progress = JSON.parse(savedProgress);
+                    
+                    // Verificar se o progresso é válido (não expirou)
+                    if (progress.testStarted && progress.timeRemaining > 0) {
+                        // Restaurar idioma
+                        changeLanguage(progress.currentLang);
+                        
+                        // Restaurar estado
+                        currentQuestion = progress.currentQuestion;
+                        userAnswers = progress.userAnswers || [];
+                        timeRemaining = progress.timeRemaining;
+                        testStarted = progress.testStarted;
+                        
+                        // Carregar questões
+                        loadQuestions();
+                        
+                        // Exibir tela de teste
+                        showScreen('test');
+                        
+                        // Criar navegação
+                        createNavigation();
+                        
+                        // Exibir questão atual
+                        displayQuestion(currentQuestion);
+                        
+                        // Continuar timer
+                        startTimer();
+                        
+                        return true;
+                    }
+                } catch (e) {
+                    console.error('Erro ao carregar progresso:', e);
+                }
+            }
+            
+            return false;
+        }
+
+        function clearProgress() {
+            localStorage.removeItem('gearstep_test_progress');
+        }
+
+        // Inicializar aplicação
+        init();
+    </script>
+</body>
+</html>

@@ -257,35 +257,60 @@
         "Enlaces y Referencias": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl."
       }
     },
-    "Dyris": {
-      "pt": {
-        "Introdução": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Conceito e Inspiração": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Estrutura e Funcionamento": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Como Usar": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Variações Possíveis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Ferramentas e Recursos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Links e Referências": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl."
-      },
-      "en": {
-        "Introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Concept and Inspiration": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Structure and Functionality": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "How to Use": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Possible Variations": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Tools and Resources": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Links and References": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl."
-      },
-      "es": {
-        "Introducción": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Concepto e Inspiración": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Estructura y Funcionamiento": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Cómo Usar": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Variaciones Posibles": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Herramientas y Recursos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",
-        "Enlaces y Referencias": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl."
-      }
-    },
+    
+  
+  "Dyris": {
+  "pt": {
+    "Introdução": "O Dyris é um sistema open source de monitoramento contínuo de saúde e hábitos. Ele coleta dados do cotidiano — como sono, alimentação, atividade física e estado emocional — e cria uma base de conhecimento pessoal que evolui ao longo da vida, permitindo prevenção de riscos e cuidados personalizados.",
+    
+    "Conceito e Inspiração": "Inspirado na ideia de um diário inteligente de saúde, o Dyris busca unir tecnologia, análise de dados e autocuidado. O projeto nasceu da necessidade de ferramentas que acompanhem a jornada de bem-estar de forma ética, acessível e colaborativa.",
+    
+    "Estrutura e Funcionamento": "O Dyris utiliza uma arquitetura modular. Os dados são coletados de forma segura através de sensores, aplicativos conectados e inserções manuais. O sistema organiza essas informações em um histórico de longo prazo, permitindo análises de tendência, alertas e recomendações inteligentes baseadas em padrões individuais.",
+    
+    "Como Usar": "O usuário cria uma conta gratuita e começa a registrar ou sincronizar seus hábitos diários. Com o tempo, o Dyris aprende o perfil de bem-estar de cada pessoa e gera insights sobre sono, nutrição, humor e desempenho físico. Profissionais de saúde também podem acessar versões integradas para acompanhamento clínico.",
+    
+    "Variações Possíveis": "• Uso pessoal: acompanhamento de rotina e bem-estar. <br>• Uso clínico: integração com clínicas e consultórios. <br>• Pesquisa científica: base de dados anônima para estudos de saúde populacional. <br>• Extensões IoT: conexão com dispositivos inteligentes e sensores biométricos.",
+    
+    "Ferramentas e Recursos": "<ul><li>Monitoramento de hábitos e rotinas.</li><li>Análise preditiva com IA.</li><li>Relatórios personalizados e históricos de longo prazo.</li><li>Integração com wearables e apps de saúde.</li><li>API aberta para desenvolvedores e pesquisadores.</li><li>Dashboard visual com métricas de bem-estar.</li></ul>",
+    
+    "Links e Referências": "<ul><li><a href='https://dealegear.github.io/dyris' target='_blank'>Site Oficial</a></li><li><a href='https://docs.dealegear.org/dyris' target='_blank'>Documentação</a></li><li><a href='https://github.com/dealegear/dyris' target='_blank'>Repositório no GitHub</a></li><li><a href='https://choosealicense.com/licenses/mit/' target='_blank'>Licença Open Source (MIT)</a></li><li><a href='https://dealegear.org' target='_blank'>Projeto DealeGear</a></li></ul>"
+  },
+  
+  "en": {
+    "Introduction": "Dyris is an open-source system for long-term health and habit monitoring. It collects daily data — such as sleep, nutrition, physical activity, and emotional state — to build a lifelong knowledge base that enables risk prevention and personalized care.",
+    
+    "Concept and Inspiration": "Inspired by the idea of an intelligent health journal, Dyris combines data analysis, technology, and self-care. It was created to provide an ethical and accessible way to track well-being throughout life.",
+    
+    "Structure and Functionality": "Dyris operates through a modular architecture. Data is securely collected via sensors, connected apps, or manual input. The system organizes this information into long-term histories, generating trends, alerts, and intelligent recommendations.",
+    
+    "How to Use": "Users can create a free account and start syncing or recording their daily habits. Over time, Dyris learns personal wellness patterns and generates insights about sleep, nutrition, mood, and performance. Healthcare professionals can also use integrated versions for clinical tracking.",
+    
+    "Possible Variations": "• Personal use: daily habit tracking. <br>• Clinical use: integration with healthcare providers. <br>• Research: anonymous data for health studies. <br>• IoT extensions: integration with smart devices and biometric sensors.",
+    
+    "Tools and Resources": "<ul><li>Habit and routine tracking.</li><li>Predictive analytics powered by AI.</li><li>Personalized reports and lifetime history.</li><li>Integration with wearables and health apps.</li><li>Open API for developers and researchers.</li><li>Visual dashboard with wellness metrics.</li></ul>",
+    
+    "Links and References": "<ul><li><a href='https://dealegear.github.io/dyris' target='_blank'>Official Website</a></li><li><a href='https://docs.dealegear.org/dyris' target='_blank'>Documentation</a></li><li><a href='https://github.com/dealegear/dyris' target='_blank'>GitHub Repository</a></li><li><a href='https://choosealicense.com/licenses/mit/' target='_blank'>Open Source License (MIT)</a></li><li><a href='https://dealegear.org' target='_blank'>DealeGear Project</a></li></ul>"
+  },
+  
+  "es": {
+    "Introducción": "Dyris es un sistema open source para el monitoreo continuo de salud y hábitos. Reúne datos diarios —como sueño, alimentación, actividad física y estado emocional— para crear una base de conocimiento que evoluciona a lo largo de la vida, permitiendo prevención y cuidados personalizados.",
+    
+    "Concepto e Inspiración": "Inspirado en la idea de un diario inteligente de salud, Dyris combina análisis de datos, tecnología y autocuidado. Nació para ofrecer una herramienta ética y accesible para acompañar el bienestar a lo largo del tiempo.",
+    
+    "Estructura y Funcionamiento": "Dyris utiliza una arquitectura modular. Los datos se recopilan de forma segura mediante sensores, aplicaciones conectadas o registros manuales. El sistema organiza esta información en un historial de largo plazo, generando tendencias, alertas y recomendaciones inteligentes.",
+    
+    "Cómo Usar": "El usuario crea una cuenta gratuita y comienza a registrar o sincronizar sus hábitos diarios. Con el tiempo, Dyris aprende los patrones de bienestar de cada persona y genera conocimientos sobre sueño, nutrición, humor y rendimiento físico. Los profesionales de la salud pueden usar versiones integradas para seguimiento clínico.",
+    
+    "Variaciones Posibles": "• Uso personal: seguimiento de rutinas. <br>• Uso clínico: integración con clínicas y consultorios. <br>• Investigación: base de datos anónima para estudios. <br>• Extensiones IoT: conexión con dispositivos inteligentes y sensores biométricos.",
+    
+    "Herramientas y Recursos": "<ul><li>Seguimiento de hábitos y rutinas.</li><li>Análisis predictivo con IA.</li><li>Informes personalizados e históricos de largo plazo.</li><li>Integración con wearables y apps de salud.</li><li>API abierta para desarrolladores e investigadores.</li><li>Panel visual con métricas de bienestar.</li></ul>",
+    
+    "Enlaces y Referencias": "<ul><li><a href='https://dealegear.github.io/dyris' target='_blank'>Sitio Oficial</a></li><li><a href='https://docs.dealegear.org/dyris' target='_blank'>Documentación</a></li><li><a href='https://github.com/dealegear/dyris' target='_blank'>Repositorio en GitHub</a></li><li><a href='https://choosealicense.com/licenses/mit/' target='_blank'>Licencia Open Source (MIT)</a></li><li><a href='https://dealegear.org' target='_blank'>Proyecto DealeGear</a></li></ul>"
+  }
+},
+
+
+
     "DogZen": {
       "pt": {
         "Introdução": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl, eget ultricies nisl nisl eget nisl.",

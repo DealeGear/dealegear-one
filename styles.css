@@ -92,6 +92,23 @@ body {
     transition: background-color 0.3s ease;
 }
 
+.logo {
+  font-size: 2rem; /* ou o tamanho que preferir */
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+}
+
+.sub-logo {
+  font-size: 0.6em;
+  display: block;
+  text-align: center;
+  line-height: 1;
+  margin-top: -4px; /* ajusta a distância vertical */
+  color: #666; /* cor opcional */
+}
+
+
 .nav {
     padding: var(--spacing-sm) 0;
 }

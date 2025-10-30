@@ -39,7 +39,7 @@ const translations = {
     prototypes: [
       {
         id: 1,
-        name: "3GTO",
+        name: "3GTO ❌",
         description:
           "3GTO é um jogo imersivo que combina VR e veículos em três mundos (água, cidade, floresta), criado como entretenimento para negócios.",
         image: "img/3gto-capa.webp",
@@ -47,7 +47,7 @@ const translations = {
       },
       {
         id: 2,
-        name: "Aloi",
+        name: "Aloi ❌",
         description:
           "Protótipo open source que simula a extração e análise de substâncias bioativas obtidas de plantas nativas brasileiras",
         image: "img/aloi-capa.webp",
@@ -55,7 +55,7 @@ const translations = {
       },
       {
         id: 3,
-        name: "Aventuras Peludas",
+        name: "Aventuras Peludas ❌",
         description:
           "As aventuras de uma poodle chamada Amélia, sonhadora incansável ou imortal highlander — ninguém sabe ao certo",
         image: "img/aventuras_peludas_capa.webp",
@@ -63,7 +63,7 @@ const translations = {
       },
       {
         id: 4,
-        name: "Baristas",
+        name: "Baristas ❌",
         description:
           "Um clube exclusivo onde o café é experiência, o encontro é conexão e cada xícara conta uma história",
         image: "img/baristas-capa.webp",
@@ -71,7 +71,7 @@ const translations = {
       },
       {
         id: 5,
-        name: "BaristaPro",
+        name: "BaristaPro ❌",
         description:
           "Sistema de Gestão de Cafeterias: Completo, impulsionado por inteligência artificial e desenhado para gerar insights podersos para facilitar a gestão do negócio",
         image: "img/baristapro-capa.webp",
@@ -79,7 +79,7 @@ const translations = {
       },
       {
         id: 6,
-        name: "Bosque das Frutíferas",
+        name: "Bosque das Frutíferas ❌",
         description:
           "Incentivando a conexão com a natureza nas grandes cidades, promovendo educação e elevando o bem-estar das pessoas.",
         image: "img/bosquedasfrutiferas-capa.webp",
@@ -87,7 +87,7 @@ const translations = {
       },
       {
         id: 7,
-        name: "Conexa",
+        name: "Conexa ❌",
         description:
           "Pós-venda digital open source: atendimento via WhatsApp, gestão de redes, relatórios e automação para micro negócios",
         image: "img/conexa-capa.webp",
@@ -95,7 +95,7 @@ const translations = {
       },
       {
         id: 8,
-        name: "Crush",
+        name: "Crush ❌",
         description:
           "App open source para geeks se conectarem, participarem de missões e viverem relacionamentos divertidos",
         image: "img/crush-capa.webp",
@@ -103,7 +103,7 @@ const translations = {
       },
       {
         id: 9,
-        name: "Dyris",
+        name: "Dyris ✅",
         description:
           "Sistema open source que acompanha hábitos e saúde ao longo da vida, prevenindo riscos e personalizando cuidados",
         image: "img/dyris-capa.webp",
@@ -111,7 +111,7 @@ const translations = {
       },
       {
         id: 10,
-        name: "DogZen",
+        name: "DogZen ❌",
         description:
           "Casinha anti-ruído para cães, projetada para bem-estar, conforto e fácil replicação por makers e pesquisadores",
         image: "img/dogzen-capa.webp",
@@ -119,7 +119,7 @@ const translations = {
       },
       {
         id: 11,
-        name: "Dust Protocol",
+        name: "Dust Protocol ❌",
         description:
           "Jogo cyberpunk distópico: humanos, sob o julgo da AGI, tentam destruir Plastic Eden e recuperar sua liberdade.",
         image: "img/dustprotocol-capa.webp",
@@ -127,7 +127,7 @@ const translations = {
       },
       {
         id: 12,
-        name: "E-Motion",
+        name: "E-Motion ❌",
         description:
           "Motores multi-uso mais eficientes e sustentáveis, unindo combustão modernizada e tecnologia elétrica de ponta",
         image: "img/emotion-capa.webp",
@@ -135,7 +135,7 @@ const translations = {
       },
       {
         id: 13,
-        name: "Evora",
+        name: "Evora ❌",
         description:
           "Um protótipo híbrido que une cidade virtual e modelos físicos para ensinar sobre ecossistemas urbanos e inspirar soluções para desafios reais",
         image: "img/evora-capa.webp",
@@ -143,7 +143,7 @@ const translations = {
       },
       {
         id: 14,
-        name: "Fabr",
+        name: "Fabr ❌",
         description:
           "Uma plataforma de fabricação colaborativa, onde pessoas combinam habilidades para criar algo novo",
         image: "img/fabr-capa.webp",
@@ -151,7 +151,7 @@ const translations = {
       },
       {
         id: 15,
-        name: "GearCity",
+        name: "GearCity ❌",
         description:
           "Protótipo de simulação social, onde diferentes papéis se conectam como engrenagens, movimentando a cidade de forma colaborativa e imprevisível.",
         image: "img/gearcity-capa.webp",
@@ -159,7 +159,7 @@ const translations = {
       },
       {
         id: 16,
-        name: "Ignis",
+        name: "Ignis ❌",
         description:
           "Concentrador óptico solar que leva luz do sol a edifícios, gerando calor para energia, aquecimento e processos industriais",
         image: "img/ignis-capa.webp",
@@ -167,7 +167,7 @@ const translations = {
       },
       {
         id: 17,
-        name: "Mecanico Fantasma",
+        name: "Mecanico Fantasma ❌",
         description:
           "Monitoramento e analise de sons mecânicos de veículos, identificando divergências e prevenindo falhas",
         image: "img/mecanicofantasma-capa.webp",
@@ -175,7 +175,7 @@ const translations = {
       },
       {
         id: 18,
-        name: "Mike e Tio Bob",
+        name: "Mike e Tio Bob ❌",
         description:
           "Dois dinossauros atrapalhados, Myke e Tio Bob, embarcam numa máquina do tempo e vivem uma aventura jurássica",
         image: "img/mike-bob-capa.webp",
@@ -183,7 +183,7 @@ const translations = {
       },
       {
         id: 19,
-        name: "MyHeart",
+        name: "MyHeart ❌",
         description:
           "Simulador cardiácico com visualizações gráficas e ajustes para simular comportamentos anormais",
         image: "img/myheart-capa.webp",
@@ -191,7 +191,7 @@ const translations = {
       },
       {
         id: 20,
-        name: "Oxygen",
+        name: "Oxygen ❌",
         description:
           "Soluções energéticas híbridas e sustentáveis, unindo renováveis e baixo impacto para gerar energia limpa e eficiente",
         image: "img/oxygen-capa.webp",
@@ -199,7 +199,7 @@ const translations = {
       },
       {
         id: 21,
-        name: "Raiz Urbana",
+        name: "Raiz Urbana ❌",
         description:
           "Ensinando agricultura em ambientes urbanos, de forma simples e acessível para todos.",
         image: "img/raiz_urbana_capa.webp",
@@ -207,7 +207,7 @@ const translations = {
       },
       {
         id: 22,
-        name: "SIMCO",
+        name: "SIMCO ❌",
         description:
           "Simulador da função colorretal, voltado para estudos aprofundados e suporte à prevenção de doenças",
         image: "img/simco-capa.webp",
@@ -215,7 +215,7 @@ const translations = {
       },
       {
         id: 23,
-        name: "Stairs",
+        name: "Stairs ❌",
         description:
           "Suba os degraus do conhecimento e transforme suas ideias em projetos de sucesso",
         image: "img/stairs-capa.webp",
@@ -223,7 +223,7 @@ const translations = {
       },
       {
         id: 24,
-        name: "Synapse",
+        name: "Synapse ❌",
         description:
           "Conexão interativa de ideias para colaboração criativa e descoberta coletiva",
         image: "img/synapse-capa.webp",
@@ -231,7 +231,7 @@ const translations = {
       },
       {
         id: 25,
-        name: "UnderSea",
+        name: "UnderSea ❌",
         description:
           "Drones subaquáticos para explorar, monitorar e estudar os oceanos de forma autônoma",
         image: "img/undersea-capa.webp",
@@ -239,14 +239,14 @@ const translations = {
       },
       {
         id: 26,
-        name: "VersoEspresso",
+        name: "VersoEspresso ❌",
         description: "Café quente, páginas vivas e ideias infinitas",
         image: "img/versoespresso-capa.webp",
         link: "prototipos/versoespresso/index.html",
       },
       {
         id: 27,
-        name: "Viver é uma Arte",
+        name: "Viver é uma Arte ❌",
         description:
           "Criação e exposição de arte a áreas carentes, proporcionando bem-estar e renda",
         image: "img/viverarte-capa.webp",
@@ -293,7 +293,7 @@ const translations = {
     prototypes: [
       {
         id: 1,
-        name: "3GTO",
+        name: "3GTO ❌",
         description:
           "3GTO is an immersive game mixing VR and vehicles across three worlds—water, city, forest—designed as entertainment for businesses",
         image: "img/3gto-capa.webp",
@@ -301,7 +301,7 @@ const translations = {
       },
       {
         id: 2,
-        name: "Aloi",
+        name: "Aloi ❌",
         description:
           "Open-source prototype simulating extraction and analysis of bioactive compounds obtained from Brazilian native plants",
         image: "img/aloi-capa.webp",
@@ -309,7 +309,7 @@ const translations = {
       },
       {
         id: 3,
-        name: "Furry Adventures",
+        name: "Furry Adventures ❌",
         description:
           "The adventures of a poodle named Amélia, tireless dreamer or immortal highlander — no one really knows",
         image: "img/aventuras_peludas_capa.webp",
@@ -317,7 +317,7 @@ const translations = {
       },
       {
         id: 4,
-        name: "Baristas",
+        name: "Baristas ❌",
         description:
           "An exclusive club where coffee is experience, meetings are connection, and every cup tells a story",
         image: "img/baristas-capa.webp",
@@ -325,7 +325,7 @@ const translations = {
       },
       {
         id: 5,
-        name: "BaristaPro",
+        name: "BaristaPro ❌",
         description:
           "Coffee Shop Management System: Complete, AI-powered, and designed to generate powerful insights to streamline business management",
         image: "img/baristapro-capa.webp",
@@ -333,7 +333,7 @@ const translations = {
       },
       {
         id: 6,
-        name: "Fruit Grove",
+        name: "Fruit Grove❌",
         description:
           "Encouraging connection with nature in big cities, promoting education, and enhancing people's well-being",
         image: "img/bosquedasfrutiferas-capa.webp",
@@ -341,7 +341,7 @@ const translations = {
       },
       {
         id: 7,
-        name: "Conexa",
+        name: "Conexa ❌",
         description:
           "Open source digital after-sales: WhatsApp support, social media management, reports, and automation for micro businesses",
         image: "img/conexa-capa.webp",
@@ -349,7 +349,7 @@ const translations = {
       },
       {
         id: 8,
-        name: "Crush",
+        name: "Crush ❌",
         description:
           "Open-source app for geeks to connect, join quests, and enjoy fun relationshi",
         image: "img/crush-capa.webp",
@@ -357,7 +357,7 @@ const translations = {
       },
       {
         id: 9,
-        name: "Dyris",
+        name: "Dyris ❌",
         description:
           "Open-source system that tracks habits and health throughout life, preventing risks and personalizing care.",
         image: "img/dyris-capa.webp",
@@ -365,7 +365,7 @@ const translations = {
       },
       {
         id: 10,
-        name: "DogZen",
+        name: "DogZen ❌",
         description:
           "Noise-reducing dog house designed for well-being, comfort, and easy replication by makers and researchers",
         image: "img/dogzen-capa.webp",
@@ -373,7 +373,7 @@ const translations = {
       },
       {
         id: 11,
-        name: "Dust Protocol",
+        name: "Dust Protocol ❌",
         description:
           "Cyberpunk dystopian game: humans under the rule of the AGI try to destroy Plastic Eden to regain their freedom",
         image: "img/dustprotocol-capa.webp",
@@ -381,7 +381,7 @@ const translations = {
       },
       {
         id: 12,
-        name: "E-Motion",
+        name: "E-Motion ❌",
         description:
           "More efficient and sustainable multi-use engines, combining modernized combustion and cutting-edge electric technology",
         image: "img/emotion-capa.webp",
@@ -389,7 +389,7 @@ const translations = {
       },
       {
         id: 13,
-        name: "Evora",
+        name: "Evora ❌",
         description:
           "A hybrid prototype that combines virtual city and physical models to teach about urban ecosystems and inspire solutions to real challenges",
         image: "img/evora-capa.webp",
@@ -397,7 +397,7 @@ const translations = {
       },
       {
         id: 14,
-        name: "Fabr",
+        name: "Fabr ❌",
         description:
           "A collaborative manufacturing platform where people combine skills to create something new",
         image: "img/fabr-capa.webp",
@@ -405,7 +405,7 @@ const translations = {
       },
       {
         id: 15,
-        name: "GearCity",
+        name: "GearCity ❌",
         description:
           "A social simulation prototype where different roles connect like gears, moving the city collaboratively and unpredictably.",
         image: "img/gearcity-capa.webp",
@@ -413,7 +413,7 @@ const translations = {
       },
       {
         id: 16,
-        name: "Ignis",
+        name: "Ignis ❌",
         description:
           "Solar optical concentrator that directs sunlight into buildings, generating heat for energy, heating, and industrial processes",
         image: "img/ignis-capa.webp",
@@ -421,7 +421,7 @@ const translations = {
       },
       {
         id: 17,
-        name: "Ghost Mechanic",
+        name: "Ghost Mechanic ❌",
         description:
           "Monitoring and analysis of vehicle mechanical sounds, identifying divergences and preventing failures",
         image: "img/mecanicofantasma-capa.webp",
@@ -429,7 +429,7 @@ const translations = {
       },
       {
         id: 18,
-        name: "Mike and Uncle Bob",
+        name: "Mike and Uncle Bob ❌",
         description:
           "Two clumsy dinosaurs, Myke and Tio Bob, board a time machine and live a Jurassic adventure",
         image: "img/mike-bob-capa.webp",
@@ -437,7 +437,7 @@ const translations = {
       },
       {
         id: 19,
-        name: "MyHeart",
+        name: "MyHeart ❌",
         description:
           "Cardiac simulator with graphic visualizations and adjustments to simulate abnormal behaviors",
         image: "img/myheart-capa.webp",
@@ -445,7 +445,7 @@ const translations = {
       },
       {
         id: 20,
-        name: "Oxygen",
+        name: "Oxygen ❌",
         description:
           "Hybrid and sustainable energy solutions, combining renewables and low impact to generate clean and efficient power",
         image: "img/oxygen-capa.webp",
@@ -453,7 +453,7 @@ const translations = {
       },
       {
         id: 21,
-        name: "Urban Root",
+        name: "Urban Root ❌",
         description:
           "Teaching agriculture in urban environments, in a simple and accessible way for everyone",
         image: "img/raiz_urbana_capa.webp",
@@ -461,7 +461,7 @@ const translations = {
       },
       {
         id: 22,
-        name: "SIMCO",
+        name: "SIMCO ❌",
         description:
           "Colorectal function simulator, aimed at advanced studies and supporting disease prevention",
         image: "img/simco-capa.webp",
@@ -469,7 +469,7 @@ const translations = {
       },
       {
         id: 23,
-        name: "Stairs",
+        name: "Stairs ❌",
         description:
           "Climb the steps of knowledge and turn your ideas into successful projects",
         image: "img/stairs-capa.webp",
@@ -477,7 +477,7 @@ const translations = {
       },
       {
         id: 24,
-        name: "Synapse",
+        name: "Synapse ❌",
         description:
           "Interactive connection of ideas for creative collaboration and collective discovery",
         image: "img/synapse-capa.webp",
@@ -485,7 +485,7 @@ const translations = {
       },
       {
         id: 25,
-        name: "UnderSea",
+        name: "UnderSea ❌",
         description:
           "Underwater drones to explore, monitor, and study oceans autonomously",
         image: "img/undersea-capa.webp",
@@ -493,14 +493,14 @@ const translations = {
       },
       {
         id: 26,
-        name: "VersoEspresso",
+        name: "VersoEspresso ❌",
         description: "Hot coffee, living pages, and infinite ideas",
         image: "img/versoespresso-capa.webp",
         link: "prototipos/versoespresso/index.html",
       },
       {
         id: 27,
-        name: "Living is an Art",
+        name: "Living is an Art ❌",
         description:
           "Creation and exhibition of art in needy areas, providing well-being and income",
         image: "img/viverarte-capa.webp",
@@ -546,7 +546,7 @@ const translations = {
     prototypes: [
       {
         id: 1,
-        name: "3GTO",
+        name: "3GTO ❌",
         description:
           "3GTO es un juego inmersivo que une RV y vehículos en tres mundos (agua, ciudad, bosque), creado como entretenimiento para negocios",
         image: "img/3gto-capa.webp",
@@ -554,7 +554,7 @@ const translations = {
       },
       {
         id: 2,
-        name: "Aloi",
+        name: "Aloi ❌",
         description:
           "Prototipo open source que simula la extracción y análisis de compuestos bioactivos obtenidos de plantas nativas brasileñas",
         image: "img/aloi-capa.webp",
@@ -562,7 +562,7 @@ const translations = {
       },
       {
         id: 3,
-        name: "Aventuras Peludas",
+        name: "Aventuras Peludas ❌",
         description:
           "Las aventuras de una caniche llamada Amélia, soñadora incansable o highlander inmortal — nadie lo sabe con certeza",
         image: "img/aventuras_peludas_capa.webp",
@@ -570,7 +570,7 @@ const translations = {
       },
       {
         id: 4,
-        name: "Baristas",
+        name: "Baristas ❌",
         description:
           "Un club exclusivo donde el café es experiencia, el encuentro es conexión y cada taza cuenta una historia",
         image: "img/baristas-capa.webp",
@@ -578,7 +578,7 @@ const translations = {
       },
       {
         id: 5,
-        name: "BaristaPro",
+        name: "BaristaPro ❌",
         description:
           "Sistema de Gestión para Cafeterías: Completo, impulsado por inteligencia artificial y diseñado para generar poderosas perspectivas que faciliten la gestión del negocio",
         image: "img/baristapro-capa.webp",
@@ -586,7 +586,7 @@ const translations = {
       },
       {
         id: 6,
-        name: "Bosque de Frutales",
+        name: "Bosque de Frutales ❌",
         description:
           "Fomentando la conexión con la naturaleza en las grandes ciudades, promoviendo la educación y elevando el bienestar de las personas",
         image: "img/bosquedasfrutiferas-capa.webp",
@@ -594,7 +594,7 @@ const translations = {
       },
       {
         id: 7,
-        name: "Conexa",
+        name: "Conexa ❌",
         description:
           "Postventa digital open source: atención vía WhatsApp, gestión de redes, informes y automatización para microempresas",
         image: "img/conexa-capa.webp",
@@ -602,7 +602,7 @@ const translations = {
       },
       {
         id: 8,
-        name: "Crush",
+        name: "Crush ❌",
         description:
           "App open source para geeks conectarse, participar en misiones y disfrutar relaciones divertidas.",
         image: "img/crush-capa.webp",
@@ -610,7 +610,7 @@ const translations = {
       },
       {
         id: 9,
-        name: "Dyris",
+        name: "Dyris ❌",
         description:
           "Sistema open source que registra hábitos y salud a lo largo de la vida, previniendo riesgos y personalizando cuidados.",
         image: "img/dyris-capa.webp",
@@ -618,7 +618,7 @@ const translations = {
       },
       {
         id: 10,
-        name: "DogZen",
+        name: "DogZen ❌",
         description:
           "Caseta anti-ruido para perros, diseñada para bienestar, comodidad y fácil replicación por creadores e investigadores",
         image: "img/dogzen-capa.webp",
@@ -626,7 +626,7 @@ const translations = {
       },
       {
         id: 11,
-        name: "Dust Protocol",
+        name: "Dust Protocol ❌",
         description:
           "Juego cyberpunk distópico: humanos bajo el yugo de la AGI intentan destruir Plastic Eden para recuperar su libertad",
         image: "img/dustprotocol-capa.webp",
@@ -634,7 +634,7 @@ const translations = {
       },
       {
         id: 12,
-        name: "E-Motion",
+        name: "E-Motion ❌",
         description:
           "Motores multiuso más eficientes y sostenibles, combinando combustión modernizada y tecnología eléctrica de vanguardia",
         image: "img/emotion-capa.webp",
@@ -642,7 +642,7 @@ const translations = {
       },
       {
         id: 13,
-        name: "Evora",
+        name: "Evora ❌",
         description:
           "Un prototipo híbrido que une ciudad virtual y modelos físicos para enseñar sobre ecosistemas urbanos e inspirar soluciones a desafíos reales",
         image: "img/evora-capa.webp",
@@ -650,7 +650,7 @@ const translations = {
       },
       {
         id: 14,
-        name: "Fabr",
+        name: "Fabr ❌",
         description:
           "Una plataforma de fabricación colaborativa donde las personas combinan habilidades para crear algo nuevo",
         image: "img/fabr-capa.webp",
@@ -658,7 +658,7 @@ const translations = {
       },
       {
         id: 15,
-        name: "GearCity",
+        name: "GearCity ❌",
         description:
           "Un prototipo de simulación social donde diferentes roles se conectan como engranajes, moviendo la ciudad de forma colaborativa e impredecible.",
         image: "img/gearcity-capa.webp",
@@ -666,7 +666,7 @@ const translations = {
       },
       {
         id: 16,
-        name: "Ignis",
+        name: "Ignis ❌",
         description:
           "Concentrador óptico solar que dirige la luz del sol hacia edificios, generando calor para energía, calefacción y procesos industriales",
         image: "img/ignis-capa.webp",
@@ -674,7 +674,7 @@ const translations = {
       },
       {
         id: 17,
-        name: "Mecánico Fantasma",
+        name: "Mecánico Fantasma ❌",
         description:
           "Monitoreo y análisis de sonidos mecánicos de vehículos, identificando divergencias y previniendo fallas",
         image: "img/mecanicofantasma-capa.webp",
@@ -682,7 +682,7 @@ const translations = {
       },
       {
         id: 18,
-        name: "Mike y Tío Bob",
+        name: "Mike y Tío Bob ❌",
         description:
           "Dos dinosaurios torpes, Myke y Tío Bob, suben a una máquina del tiempo y viven una aventura jurásica",
         image: "img/mike-bob-capa.webp",
@@ -690,7 +690,7 @@ const translations = {
       },
       {
         id: 19,
-        name: "MyHeart",
+        name: "MyHeart ❌",
         description:
           "Simulador cardíaco con visualizaciones gráficas y ajustes para simular comportamientos anormales",
         image: "img/myheart-capa.webp",
@@ -698,7 +698,7 @@ const translations = {
       },
       {
         id: 20,
-        name: "Oxygen",
+        name: "Oxygen ❌",
         description:
           "Soluciones energéticas híbridas y sostenibles, uniendo renovables y bajo impacto para generar energía limpia y eficient",
         image: "img/oxygen-capa.webp",
@@ -706,7 +706,7 @@ const translations = {
       },
       {
         id: 21,
-        name: "Raíz Urbana",
+        name: "Raíz Urbana ❌",
         description:
           "Enseñando agricultura en entornos urbanos, de forma sencilla y accesible para todos",
         image: "img/raiz_urbana_capa.webp",
@@ -714,7 +714,7 @@ const translations = {
       },
       {
         id: 22,
-        name: "SIMCO",
+        name: "SIMCO ❌",
         description:
           "Simulador de la función colorrectal, orientado a estudios avanzados y apoyo a la prevención de enfermedades",
         image: "img/simco-capa.webp",
@@ -722,7 +722,7 @@ const translations = {
       },
       {
         id: 23,
-        name: "Stairs",
+        name: "Stairs ❌",
         description:
           "Sube los escalones del conocimiento y convierte tus ideas en proyectos exitosos",
         image: "img/stairs-capa.webp",
@@ -730,7 +730,7 @@ const translations = {
       },
       {
         id: 24,
-        name: "Synapse",
+        name: "Synapse ❌",
         description:
           "Conexión interactiva de ideas para colaboración creativa y descubrimiento colectivo",
         image: "img/synapse-capa.webp",
@@ -738,7 +738,7 @@ const translations = {
       },
       {
         id: 25,
-        name: "UnderSea",
+        name: "UnderSea ❌",
         description:
           "Drones subacuáticos para explorar, monitorear y estudiar los océanos de forma autónoma",
         image: "img/undersea-capa.webp",
@@ -746,14 +746,14 @@ const translations = {
       },
       {
         id: 26,
-        name: "VersoEspresso",
+        name: "VersoEspresso ❌",
         description: "Café caliente, páginas vivas e ideas infinitas",
         image: "img/versoespresso-capa.webp",
         link: "prototipos/versoespresso/index.html",
       },
       {
         id: 27,
-        name: "Vivir es un Arte",
+        name: "Vivir es un Arte ❌",
         description:
           "Creación y exhibición de arte en áreas necesitadas, proporcionando bienestar e ingresos",
         image: "img/viverarte-capa.webp",
