@@ -505,7 +505,7 @@
         <div class="sidebar-section">
             <button class="back-btn" id="backBtn">
                 <i class="fas fa-arrow-left"></i>
-                <span data-i18n="backToGearStep">Voltar para GearStep</span>
+                <span data-i18n="backToGearStep">GearStep</span>
             </button>
         </div>
     </aside>
@@ -575,11 +575,7 @@
         <p>© 2023 GearStep Test | <a href='https://dealegear.com' target='_blank'>By DealeGear</a></p>
     </footer>
 
-    <!-- 
-    PT: Se você resolver inspecionar o código para obter as respostas corretas sugerimos que não o faça. A prova é uma forma de praticar e testar seus conhecimentos para que seja capaz de criar seu próprio projeto com excelência.
-    EN: If you're thinking about inspecting the code to get the correct answers, we suggest you don't. The test is a way to practice and test your knowledge so you can create your own project with excellence.
-    ES: Si estás pensando en inspeccionar el código para obtener las respuestas correctas, te sugerimos que no lo hagas. La prueba es una forma de practicar y probar tus conocimientos para que puedas crear tu propio proyecto con excelencia.
-    -->
+    
 
     <script>
         // Sistema de internacionalização
@@ -594,7 +590,7 @@
                 instruction4: "Não há exibição do gabarito",
                 startTest: "Iniciar Prova",
                 language: "Idioma",
-                backToGearStep: "Voltar para GearStep",
+                backToGearStep: "GearStep",
                 question: "Questão",
                 finishTest: "Finalizar Prova",
                 resultTitle: "Resultado",
@@ -617,7 +613,7 @@
                 instruction4: "Answer key is not displayed",
                 startTest: "Start Test",
                 language: "Language",
-                backToGearStep: "Back to GearStep",
+                backToGearStep: "GearStep",
                 question: "Question",
                 finishTest: "Finish Test",
                 resultTitle: "Result",
@@ -640,7 +636,7 @@
                 instruction4: "No se muestra la clave de respuestas",
                 startTest: "Iniciar Prueba",
                 language: "Idioma",
-                backToGearStep: "Volver a GearStep",
+                backToGearStep: "GearStep",
                 question: "Pregunta",
                 finishTest: "Finalizar Prueba",
                 resultTitle: "Resultado",
@@ -658,6 +654,18 @@
         let currentLang = 'pt';
 
         // Banco de questões em três idiomas
+
+        /* 
+    Se você resolver inspecionar o código para obter as respostas corretas sugerimos que não o faça.
+    A prova é uma forma de praticar e testar seus conhecimentos para que seja capaz de criar seu próprio 
+    projeto com excelência.
+    If you're thinking about inspecting the code to get the correct answers, we suggest you don't.
+    The test is a way to practice and test your knowledge so you can create your own project with excellence.
+    Si estás pensando en inspeccionar el código para obtener las respuestas correctas, te sugerimos que no lo hagas.
+    La prueba es una forma de practicar y probar tus conocimientos para que puedas crear tu propio proyecto 
+    con excelencia.
+    */
+
         const questionsData = {
             pt: {
                 motivation: [
@@ -2240,7 +2248,7 @@
             retryBtn.addEventListener('click', resetTest);
             homeBtn.addEventListener('click', resetTest);
             backBtn.addEventListener('click', () => {
-                window.location.href = 'https://dealegear.com';
+                window.location.href = 'index.html';
             });
             menuToggle.addEventListener('click', toggleSidebar);
 
