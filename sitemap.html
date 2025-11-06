@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DealeGear - Mapa da Plataforma</title>
+    
+    <!-- Estilos CSS -->
+    <style>
+        /* Variáveis CSS para facilitar customização */
+        :root {
+            --bg-primary: #0f1724;
+            --bg-secondary: #1a2332;
+            --bg-tertiary: #233142;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #1fb6ff;
+            --accent-hover: #3db8ff;
+            --glass-bg: rgba(15, 23, 36, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset de estilos básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header fixo com efeito glass */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--accent-hover);
+        }
+
+        .header-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        
+
+        /* Container principal */
+        .container {
+            flex: 1;
+            margin-top: 68px;
+            margin-bottom: 60px;
+            padding: 2rem;
+        }
+
+        /* Árvore de navegação no conteúdo principal */
+        .tree-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tree {
+            list-style: none;
+        }
+
+        .tree ul {
+            list-style: none;
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        .tree > li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .tree li {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        /* Linhas conectando os nós da árvore */
+        .tree li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--glass-border);
+        }
+
+        .tree li:last-child::before {
+            height: 1.2rem;
+        }
+
+        .tree li::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            width: 1rem;
+            height: 1px;
+            background: var(--glass-border);
+        }
+
+        /* Nós da árvore */
+        .tree-node {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .tree-node:hover {
+            background: rgba(31, 182, 255, 0.1);
+        }
+
+        .node-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .node-content {
+            flex: 1;
+        }
+
+        .node-title {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .node-description {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Cores diferentes para categorias */
+        .category-ecosystem { background-color: #3b82f6; }
+        .category-knowledge { background-color: #10b981; }
+        .category-start { background-color: #f59e0b; }
+        .category-resources { background-color: #8b5cf6; }
+        .category-terms { background-color: #ef4444; }
+        .category-social { background-color: #ec4899; }
+
+        /* Footer */
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 998;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-title {
+                display: none;
+            }
+
+            .legend-container {
+                gap: 1rem;
+            }
+
+            .legend-item {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                margin-top: 68px;
+                padding: 1rem;
+            }
+
+            .tree-container {
+                padding: 1rem;
+            }
+
+            .tree ul {
+                margin-left: 1rem;
+            }
+
+            .tree li {
+                padding-left: 1rem;
+            }
+
+            .node-description {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .legend-section {
+                padding: 0.8rem 1rem;
+            }
+
+            .legend-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .container {
+                margin-top: 68px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header com logo, título e botões de idioma -->
+    <header>
+        <a href="../index.html" class="logo">DealeGear</a>
+        <h1 class="header-title" data-key="header-title">Mapa da Plataforma</h1>
+        <div class="language-buttons">
+            <button class="lang-btn active" data-lang="pt">PT</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+    </header>
+
+    
+
+    <!-- Container principal com a árvore -->
+    <div class="container">
+        <div class="tree-container fade-in">
+            <ul class="tree">
+                <!-- Nó principal: DealeGear -->
+                <li>
+                    <div class="tree-node">
+                        <div class="node-icon" style="background-color: var(--accent);">D</div>
+                        <div class="node-content">
+                            <div class="node-title" data-key="node-dealgear-title">DealeGear</div>
+                            <div class="node-description" data-key="node-dealgear-desc">Plataforma completa de projetos</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <!-- Seção: Landpage -->
+                        <li>
+                        <a href="../index.html" class="tree-node">
+    <div class="node-icon" style="background-color: #64748b;">L</div>
+    <div class="node-content">
+        <div class="node-title" data-key="node-landpage-title">Landpage</div>
+        <div class="node-description" data-key="node-landpage-desc">Página principal da plataforma</div>
+    </div>
+</a>
+
+                            <ul>
+                                <!-- Subseção: Ecosistema -->
+                                <li>
+                                    <div class="tree-node">
+                                        <div class="node-icon category-ecosystem">E</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-ecosystem-title">Ecosistema</div>
+                                            <div class="node-description" data-key="node-ecosystem-desc">Ferramentas da plataforma</div>
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="../gearhub/index.html" class="tree-node">
+                                                <div class="node-icon category-ecosystem">G</div>
+                                                <div class="node-content">
+                                                    <div class="node-title" data-key="node-gearhub-title">GearHub</div>
+                                                    <div class="node-description" data-key="node-gearhub-desc">Ferramenta para planejamento</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../gearlabs/index.html" class="tree-node">
+                                                <div class="node-icon category-ecosystem">G</div>
+                                                <div class="node-content">
+                                                    <div class="node-title" data-key="node-gearlabs-title">GearLabs</div>
+                                                    <div class="node-description" data-key="node-gearlabs-desc">Protótipos Conceituais para Inspiração</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../gearvision/index.html" class="tree-node">
+                                                <div class="node-icon category-ecosystem">G</div>
+                                                <div class="node-content">
+                                                    <div class="node-title" data-key="node-gearvision-title">GearVision</div>
+                                                    <div class="node-description" data-key="node-gearvision-desc">Inteligência e Análise Estratégica</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Subseção: Base de Conhecimento -->
+                                <li>
+                                    <div class="tree-node">
+                                        <div class="node-icon category-knowledge">B</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-knowledge-title">Base de Conhecimento</div>
+                                            <div class="node-description" data-key="node-knowledge-desc">Recursos de aprendizado</div>
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="../technotes/index.html" class="tree-node">
+                                                <div class="node-icon category-knowledge">T</div>
+                                                <div class="node-content">
+                                                    <div class="node-title" data-key="node-technotes-title">TechNotes</div>
+                                                    <div class="node-description" data-key="node-technotes-desc">Notas Técnicas sobre o Projeto</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../gearstep/index.html" class="tree-node">
+                                                <div class="node-icon category-knowledge">G</div>
+                                                <div class="node-content">
+                                                    <div class="node-title" data-key="node-gearstep-title">GearStep</div>
+                                                    <div class="node-description" data-key="node-gearstep-desc">Treinamento completo em Projetos</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../gearspark/index.html" class="tree-node">
+                                                <div class="node-icon category-knowledge">G</div>
+                                                <div class="node-content">
+                                                    <div class="node-title" data-key="node-gearspark-title">GearSpark</div>
+                                                    <div class="node-description" data-key="node-gearspark-desc">Banco de Ideias organizado por hobby, renda extra, carreira ou startup</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Subseção: Começar Fácil -->
+                                <li>
+                                    <div class="tree-node">
+                                        <div class="node-icon category-start">C</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-start-title">Começar Fácil</div>
+                                            <div class="node-description" data-key="node-start-desc">Guias para iniciantes</div>
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="../gearmap/index.html" class="tree-node">
+                                                <div class="node-icon category-start">G</div>
+                                                <div class="node-content">
+                                                    <div class="node-title" data-key="node-gearmap-title">GearMap</div>
+                                                    <div class="node-description" data-key="node-gearmap-desc">Guia para decidir por onde começar</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Seção: Recursos -->
+                        <li>
+                            <div class="tree-node">
+                                <div class="node-icon category-resources">R</div>
+                                <div class="node-content">
+                                    <div class="node-title" data-key="node-resources-title">Recursos</div>
+                                    <div class="node-description" data-key="node-resources-desc">Ferramentas de suporte</div>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="../gearhelp/index.html" class="tree-node">
+                                        <div class="node-icon category-resources">G</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-gearhelp-title">GearHelp</div>
+                                            <div class="node-description" data-key="node-gearhelp-desc">Ajuda para usar as ferramentas da Plataforma</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://dealegear.substack.com/" target="_blank" class="tree-node">
+                                        <div class="node-icon category-resources">B</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-blog-title">Blog (Substack)</div>
+                                            <div class="node-description" data-key="node-blog-desc">Artigos de conhecimento sobre projetos</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://wa.me/5511937326212" target="_blank" class="tree-node">
+                                        <div class="node-icon category-resources">C</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-contact-title">Contato (WhatsApp)</div>
+                                            <div class="node-description" data-key="node-contact-desc">Dúvidas, sugestões e comentários</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Seção: Termos -->
+                        <li>
+                            <div class="tree-node">
+                                <div class="node-icon category-terms">T</div>
+                                <div class="node-content">
+                                    <div class="node-title" data-key="node-terms-title">Termos</div>
+                                    <div class="node-description" data-key="node-terms-desc">Documentação legal</div>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="../termos.html" class="tree-node">
+                                        <div class="node-icon category-terms">T</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-terms-link-title">Termos</div>
+                                            <div class="node-description" data-key="node-terms-link-desc">Termos de uso da plataforma</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../privacidade.html" class="tree-node">
+                                        <div class="node-icon category-terms">P</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-privacy-title">Privacidade</div>
+                                            <div class="node-description" data-key="node-privacy-desc">Política de privacidade</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../licenca.html" class="tree-node">
+                                        <div class="node-icon category-terms">L</div>
+                                        <div class="node-content">
+                                            <div class="node-title" data-key="node-license-title">Licença</div>
+                                            <div class="node-description" data-key="node-license-desc">Licença de uso</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Seção: Redes Sociais -->
+                        <li>
+                            <div class="tree-node">
+                                <div class="node-icon category-social">R</div>
+                                <div class="node-content">
+                                    <div class="node-title" data-key="node-social-title">Redes Sociais</div>
+                                    <div class="node-description" data-key="node-social-desc">Conecte-se conosco</div>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="https://www.linkedin.com/company/dealegear" target="_blank" class="tree-node">
+                                        <div class="node-icon category-social">L</div>
+                                        <div class="node-content">
+                                            <div class="node-title">LinkedIn</div>
+                                            <div class="node-description" data-key="node-linkedin-desc">Perfil profissional</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://x.com/dealegear" target="_blank" class="tree-node">
+                                        <div class="node-icon category-social">X</div>
+                                        <div class="node-content">
+                                            <div class="node-title">X (Twitter)</div>
+                                            <div class="node-description" data-key="node-twitter-desc">Atualizações rápidas</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/@dealegear" target="_blank" class="tree-node">
+                                        <div class="node-icon category-social">Y</div>
+                                        <div class="node-content">
+                                            <div class="node-title">YouTube</div>
+                                            <div class="node-description" data-key="node-youtube-desc">Vídeos tutoriais</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.tiktok.com/@dealegear" target="_blank" class="tree-node">
+                                        <div class="node-icon category-social">T</div>
+                                        <div class="node-content">
+                                            <div class="node-title">TikTok</div>
+                                            <div class="node-description" data-key="node-tiktok-desc">Conteúdo criativo</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://discord.gg/vKK7xVcZJ8" target="_blank" class="tree-node">
+                                        <div class="node-icon category-social">D</div>
+                                        <div class="node-content">
+                                            <div class="node-title">Discord</div>
+                                            <div class="node-description" data-key="node-discord-desc">Comunidade</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+<!---        <p data-key="footer-text">Desenvolvido com ❤️ por</p>-->
+        <a href="../index.html">By DealeGear</a>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Objeto com traduções para os três idiomas suportados
+        const i18n = {
+            pt: {
+                'header-title': 'Mapa da Plataforma',
+                'node-dealgear-title': 'DealeGear',
+                'node-dealgear-desc': 'Plataforma completa de projetos',
+                'node-landpage-title': 'Landpage',
+                'node-landpage-desc': 'Página principal da plataforma',
+                'node-ecosystem-title': 'Ecosistema',
+                'node-ecosystem-desc': 'Ferramentas da plataforma',
+                'node-gearhub-title': 'GearHub',
+                'node-gearhub-desc': 'Ferramenta para planejamento',
+                'node-gearlabs-title': 'GearLabs',
+                'node-gearlabs-desc': 'Protótipos Conceituais para Inspiração',
+                'node-gearvision-title': 'GearVision',
+                'node-gearvision-desc': 'Inteligência e Análise Estratégica',
+                'node-knowledge-title': 'Base de Conhecimento',
+                'node-knowledge-desc': 'Recursos de aprendizado',
+                'node-technotes-title': 'TechNotes',
+                'node-technotes-desc': 'Notas Técnicas sobre o Projeto',
+                'node-gearstep-title': 'GearStep',
+                'node-gearstep-desc': 'Treinamento completo em Projetos',
+                'node-gearspark-title': 'GearSpark',
+                'node-gearspark-desc': 'Banco de Ideias organizado por hobby, renda extra, carreira ou startup',
+                'node-start-title': 'Começar Fácil',
+                'node-start-desc': 'Guias para iniciantes',
+                'node-gearmap-title': 'GearMap',
+                'node-gearmap-desc': 'Guia para decidir por onde começar',
+                'node-resources-title': 'Recursos',
+                'node-resources-desc': 'Ferramentas de suporte',
+                'node-gearhelp-title': 'GearHelp',
+                'node-gearhelp-desc': 'Ajuda para usar as ferramentas da Plataforma',
+                'node-blog-title': 'Blog (Substack)',
+                'node-blog-desc': 'Artigos de conhecimento sobre projetos',
+                'node-contact-title': 'Contato (WhatsApp)',
+                'node-contact-desc': 'Dúvidas, sugestões e comentários',
+                'node-terms-title': 'Termos',
+                'node-terms-desc': 'Documentação legal',
+                'node-terms-link-title': 'Termos',
+                'node-terms-link-desc': 'Termos de uso da plataforma',
+                'node-privacy-title': 'Privacidade',
+                'node-privacy-desc': 'Política de privacidade',
+                'node-license-title': 'Licença',
+                'node-license-desc': 'Licença de uso',
+                'node-social-title': 'Redes Sociais',
+                'node-social-desc': 'Conecte-se conosco',
+                'node-linkedin-desc': 'Perfil profissional',
+                'node-twitter-desc': 'Atualizações rápidas',
+                'node-youtube-desc': 'Vídeos tutoriais',
+                'node-tiktok-desc': 'Conteúdo criativo',
+                'node-discord-desc': 'Comunidade',
+                'legend-ecosystem': 'Ecosistema: Ferramentas principais da plataforma',
+                'legend-knowledge': 'Base de Conhecimento: Recursos de aprendizado',
+                'legend-start': 'Começar Fácil: Guias para iniciantes',
+                'legend-resources': 'Recursos: Ferramentas de suporte e ajuda',
+                'legend-terms': 'Termos: Documentação legal',
+                'legend-social': 'Redes Sociais: Conecte-se conosco',
+                'footer-text': 'Desenvolvido com ❤️ por'
+            },
+            en: {
+                'header-title': 'Platform Map',
+                'node-dealgear-title': 'DealeGear',
+                'node-dealgear-desc': 'Complete project platform',
+                'node-landpage-title': 'Landpage',
+                'node-landpage-desc': 'Platform main page',
+                'node-ecosystem-title': 'Ecosystem',
+                'node-ecosystem-desc': 'Platform tools',
+                'node-gearhub-title': 'GearHub',
+                'node-gearhub-desc': 'Planning tool',
+                'node-gearlabs-title': 'GearLabs',
+                'node-gearlabs-desc': 'Conceptual Prototypes for Inspiration',
+                'node-gearvision-title': 'GearVision',
+                'node-gearvision-desc': 'Intelligence and Strategic Analysis',
+                'node-knowledge-title': 'Knowledge Base',
+                'node-knowledge-desc': 'Learning resources',
+                'node-technotes-title': 'TechNotes',
+                'node-technotes-desc': 'Technical Notes about the Project',
+                'node-gearstep-title': 'GearStep',
+                'node-gearstep-desc': 'Complete Project Training',
+                'node-gearspark-title': 'GearSpark',
+                'node-gearspark-desc': 'Ideas Bank organized by hobby, extra income, career or startup',
+                'node-start-title': 'Start Easy',
+                'node-start-desc': 'Beginner guides',
+                'node-gearmap-title': 'GearMap',
+                'node-gearmap-desc': 'Guide to decide where to start',
+                'node-resources-title': 'Resources',
+                'node-resources-desc': 'Support tools',
+                'node-gearhelp-title': 'GearHelp',
+                'node-gearhelp-desc': 'Help to use the Platform tools',
+                'node-blog-title': 'Blog (Substack)',
+                'node-blog-desc': 'Knowledge articles about projects',
+                'node-contact-title': 'Contact (WhatsApp)',
+                'node-contact-desc': 'Questions, suggestions and comments',
+                'node-terms-title': 'Terms',
+                'node-terms-desc': 'Legal documentation',
+                'node-terms-link-title': 'Terms',
+                'node-terms-link-desc': 'Platform terms of use',
+                'node-privacy-title': 'Privacy',
+                'node-privacy-desc': 'Privacy policy',
+                'node-license-title': 'License',
+                'node-license-desc': 'License of use',
+                'node-social-title': 'Social Networks',
+                'node-social-desc': 'Connect with us',
+                'node-linkedin-desc': 'Professional profile',
+                'node-twitter-desc': 'Quick updates',
+                'node-youtube-desc': 'Tutorial videos',
+                'node-tiktok-desc': 'Creative content',
+                'node-discord-desc': 'Community',
+                'legend-ecosystem': 'Ecosystem: Main platform tools',
+                'legend-knowledge': 'Knowledge Base: Learning resources',
+                'legend-start': 'Start Easy: Beginner guides',
+                'legend-resources': 'Resources: Support and help tools',
+                'legend-terms': 'Terms: Legal documentation',
+                'legend-social': 'Social Networks: Connect with us',
+                'footer-text': 'Developed with ❤️ by'
+            },
+            es: {
+                'header-title': 'Mapa de la Plataforma',
+                'node-dealgear-title': 'DealeGear',
+                'node-dealgear-desc': 'Plataforma completa de proyectos',
+                'node-landpage-title': 'Landpage',
+                'node-landpage-desc': 'Página principal de la plataforma',
+                'node-ecosystem-title': 'Ecosistema',
+                'node-ecosystem-desc': 'Herramientas de la plataforma',
+                'node-gearhub-title': 'GearHub',
+                'node-gearhub-desc': 'Herramienta para planificación',
+                'node-gearlabs-title': 'GearLabs',
+                'node-gearlabs-desc': 'Prototipos Conceptuales para Inspiración',
+                'node-gearvision-title': 'GearVision',
+                'node-gearvision-desc': 'Inteligencia y Análisis Estratégico',
+                'node-knowledge-title': 'Base de Conocimiento',
+                'node-knowledge-desc': 'Recursos de aprendizaje',
+                'node-technotes-title': 'TechNotes',
+                'node-technotes-desc': 'Notas Técnicas sobre el Proyecto',
+                'node-gearstep-title': 'GearStep',
+                'node-gearstep-desc': 'Entrenamiento completo en Proyectos',
+                'node-gearspark-title': 'GearSpark',
+                'node-gearspark-desc': 'Banco de Ideas organizado por hobby, ingresos extra, carrera o startup',
+                'node-start-title': 'Comenzar Fácil',
+                'node-start-desc': 'Guías para principiantes',
+                'node-gearmap-title': 'GearMap',
+                'node-gearmap-desc': 'Guía para decidir por dónde empezar',
+                'node-resources-title': 'Recursos',
+                'node-resources-desc': 'Herramientas de soporte',
+                'node-gearhelp-title': 'GearHelp',
+                'node-gearhelp-desc': 'Ayuda para usar las herramientas de la Plataforma',
+                'node-blog-title': 'Blog (Substack)',
+                'node-blog-desc': 'Artículos de conocimiento sobre proyectos',
+                'node-contact-title': 'Contacto (WhatsApp)',
+                'node-contact-desc': 'Dudas, sugerencias y comentarios',
+                'node-terms-title': 'Términos',
+                'node-terms-desc': 'Documentación legal',
+                'node-terms-link-title': 'Términos',
+                'node-terms-link-desc': 'Términos de uso de la plataforma',
+                'node-privacy-title': 'Privacidad',
+                'node-privacy-desc': 'Política de privacidad',
+                'node-license-title': 'Licencia',
+                'node-license-desc': 'Licencia de uso',
+                'node-social-title': 'Redes Sociales',
+                'node-social-desc': 'Conéctate con nosotros',
+                'node-linkedin-desc': 'Perfil profesional',
+                'node-twitter-desc': 'Actualizaciones rápidas',
+                'node-youtube-desc': 'Videos tutoriales',
+                'node-tiktok-desc': 'Contenido creativo',
+                'node-discord-desc': 'Comunidad',
+                'legend-ecosystem': 'Ecosistema: Herramientas principales de la plataforma',
+                'legend-knowledge': 'Base de Conocimiento: Recursos de aprendizaje',
+                'legend-start': 'Comenzar Fácil: Guías para principiantes',
+                'legend-resources': 'Recursos: Herramientas de soporte y ayuda',
+                'legend-terms': 'Términos: Documentación legal',
+                'legend-social': 'Redes Sociales: Conéctate con nosotros',
+                'footer-text': 'Desarrollado con ❤️ por'
+            }
+        };
+
+        // Função para atualizar o idioma da página
+        function updateLanguage(lang) {
+            // Atualiza o atributo lang do HTML
+            document.documentElement.lang = lang;
+            
+            // Atualiza todos os elementos com data-key
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (i18n[lang] && i18n[lang][key]) {
+                    element.textContent = i18n[lang][key];
+                }
+            });
+            
+            // Atualiza o estado dos botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Inicialização quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuração inicial do idioma (português)
+            updateLanguage('pt');
+            
+            // Event listeners para botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    updateLanguage(lang);
+                });
+            });
+            
+            // Adiciona animação de fade-in ao container da árvore
+            const treeContainer = document.querySelector('.tree-container');
+            if (treeContainer) {
+                setTimeout(() => {
+                    treeContainer.classList.add('fade-in');
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -131,6 +131,8 @@ body {
     background-clip: text;
 }
 
+/*estilo temporário para a versão alpha*/
+
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -434,6 +436,7 @@ h3 a {
     border-radius: var(--radius);
     box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
 
 .project-card:hover {
@@ -447,6 +450,7 @@ h3 a {
     font-size: 1rem;
     color: var(--accent-orange);
     margin-bottom: var(--spacing-sm);
+    
 }
 
 /* Ferramentas */
