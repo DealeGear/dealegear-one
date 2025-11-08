@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="siteTitle">Conexa — pós-venda para pequenos negócios</title>
+    <meta name="description" content="Serviço de pós-venda digital para pequenos negócios com atendimento via WhatsApp, gestão de redes sociais e relatórios automáticos.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conexa.app/">
+    <meta property="og:title" data-i18n="siteTitle" content="Conexa — pós-venda para pequenos negócios">
+    <meta property="og:description" content="Serviço de pós-venda digital para pequenos negócios com atendimento via WhatsApp, gestão de redes sociais e relatórios automáticos.">
+    <meta property="og:image" content="https://conexa.app/screenshot-hero.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://conexa.app/">
+    <meta property="twitter:title" data-i18n="siteTitle" content="Conexa — pós-venda para pequenos negócios">
+    <meta property="twitter:description" content="Serviço de pós-venda digital para pequenos negócios com atendimento via WhatsApp, gestão de redes sociais e relatórios automáticos.">
+    <meta property="twitter:image" content="https://conexa.app/screenshot-hero.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="logo.svg">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0D1117">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">◆</span>
+                    <span class="logo-text">Conexa</span>
+                </a>
+                
+                <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#home" data-i18n="menuHome">Início</a></li>
+                        <li><a href="#services" data-i18n="menuServices">Serviços</a></li>
+                        <li><a href="#how-it-works" data-i18n="menuHowItWorks">Como Funciona</a></li>
+                        <li><a href="#plans" data-i18n="menuPlans">Planos</a></li>
+                        <li><a href="#reports" data-i18n="menuReports">Relatórios</a></li>
+                        <li><a href="#documentation" data-i18n="menuDocumentation">Documentação</a></li>
+                        <li><a href="app/app.html" data-i18n="menuLogin">Entrar</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <div class="language-selector">
+                        <button class="language-btn active" data-lang="pt-BR">PT</button>
+                        <button class="language-btn" data-lang="en-US">EN</button>
+                        <button class="language-btn" data-lang="es-ES">ES</button>
+                    </div>
+                    
+                    <!--<a href="#" class="btn btn-primary" data-i18n="ctaStart">Começar agora</a>-->
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-i18n="heroTitle">Pós-venda que conecta: atendimento via WhatsApp e relatórios automáticos</h1>
+                <p data-i18n="heroSubtitle">Automação inteligente + especialistas humanos para garantir atendimento de alta qualidade.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary btn-large" data-i18n="ctaStart">Começar agora</a>
+                    <a href="#documentation" class="btn btn-secondary btn-large" data-i18n="ctaDocs">Ver documentação</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x500" alt="Conexa App Demo" loading="lazy">
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section id="how-it-works" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="howItWorksTitle">Como Funciona</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">◆</div>
+                    <h3 data-i18n="howItWorks.0.title">1. Integre</h3>
+                    <p data-i18n="howItWorks.0.desc">Conecte seu número e canais em minutos.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">◆</div>
+                    <h3 data-i18n="howItWorks.1.title">2. Automatize</h3>
+                    <p data-i18n="howItWorks.1.desc">Respostas automáticas e coleta de dados.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">◆</div>
+                    <h3 data-i18n="howItWorks.2.title">3. Especialistas</h3>
+                    <p data-i18n="howItWorks.2.desc">Equipe revisa e entrega relatórios de ação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services -->
+    <section id="services" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title" data-i18n="servicesTitle">Nossos Serviços</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3 data-i18n="services.0.title">Atendimento via WhatsApp</h3>
+                    <p data-i18n="services.0.desc">Respostas rápidas, roteiro e SLA.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 data-i18n="services.1.title">Gestão de redes sociais</h3>
+                    <p data-i18n="services.1.desc">Publicações, monitoramento e engajamento.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 data-i18n="services.2.title">Coleta de dados & BI</h3>
+                    <p data-i18n="services.2.desc">Métricas acionáveis e exportação CSV.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3 data-i18n="services.3.title">Relatórios periódicos</h3>
+                    <p data-i18n="services.3.desc">Resumo semanal/mensal + alertas.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3 data-i18n="services.4.title">Automação + Especialistas</h3>
+                    <p data-i18n="services.4.desc">Modelo híbrido para garantir qualidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Demo Section -->
+    <section id="reports" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="demoTitle">Painel de Controle</h2>
+            <p class="section-subtitle" data-i18n="demoSubtitle">Acompanhe métricas em tempo real</p>
+            
+            <div class="demo-container">
+                <div class="demo-mockup">
+                    <img src="https://via.placeholder.com/800x450" alt="Dashboard Demo" loading="lazy">
+                </div>
+                
+                <div class="demo-actions">
+                    <a href="#" class="btn btn-primary" data-i18n="demoCta">Solicitar demonstração</a>
+                    <button id="download-csv" class="btn btn-secondary" data-i18n="downloadSample">Baixar amostra de relatório (CSV)</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Plans -->
+    <section id="plans" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title" data-i18n="plansTitle">Planos para seu Negócio</h2>
+            
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <h3 data-i18n="plans.0.name">Básico</h3>
+                    <div class="plan-price" data-i18n="plans.0.price">R$99/mês</div>
+                    <ul>
+                        <li data-i18n="plans.0.features.0">Atendimento WhatsApp</li>
+                        <li data-i18n="plans.0.features.1">Relatórios semanais</li>
+                        <li data-i18n="plans.0.features.2">Suporte por email</li>
+                    </ul>
+                    <button class="btn btn-primary plan-cta" data-plan="Básico" data-i18n="plans.0.cta">Contratar Básico</button>
+                </div>
+                
+                <div class="plan-card featured">
+                    <div class="plan-badge">Mais Popular</div>
+                    <h3 data-i18n="plans.1.name">Pro</h3>
+                    <div class="plan-price" data-i18n="plans.1.price">R$249/mês</div>
+                    <ul>
+                        <li data-i18n="plans.1.features.0">Tudo do Básico</li>
+                        <li data-i18n="plans.1.features.1">Gestão de redes</li>
+                        <li data-i18n="plans.1.features.2">Relatórios detalhados</li>
+                        <li data-i18n="plans.1.features.3">Suporte prioritário</li>
+                    </ul>
+                    <button class="btn btn-primary plan-cta" data-plan="Pro" data-i18n="plans.1.cta">Contratar Pro</button>
+                </div>
+                
+                <div class="plan-card">
+                    <h3 data-i18n="plans.2.name">Premium</h3>
+                    <div class="plan-price" data-i18n="plans.2.price">Sob consulta</div>
+                    <ul>
+                        <li data-i18n="plans.2.features.0">Tudo do Pro</li>
+                        <li data-i18n="plans.2.features.1">SLA priorizado</li>
+                        <li data-i18n="plans.2.features.2">Consultoria dedicada</li>
+                        <li data-i18n="plans.2.features.3">Relatórios personalizados</li>
+                    </ul>
+                    <button class="btn btn-primary plan-cta" data-plan="Premium" data-i18n="plans.2.cta">Fale com consultor</button>
+                </div>
+            </div>
+            
+            <p class="plans-custom" data-i18n="plansCustom">Precisa de algo personalizado? Fale conosco.</p>
+        </div>
+    </section>
+    
+    <!-- Open Source -->
+    <section id="documentation" class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="openSourceTitle">Transparência & Open Source</h2>
+            
+            <div class="opensource-content">
+                <div class="opensource-text">
+                    <p data-i18n="openSourceBlurb">Conexa é um projeto open source — contribua no GitHub!</p>
+                    <a href="https://github.com/conexa/conexa" target="_blank" class="btn btn-primary" data-i18n="openSourceCta">Ver repositório</a>
+                </div>
+                
+                <div class="opensource-badge">
+                    <span>Open Source</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title" data-i18n="faqTitle">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 data-i18n="faq.0.q">Preciso trocar de número?</h3>
+                    <p data-i18n="faq.0.a">Não, integramos no seu número de WhatsApp existente.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="faq.1.q">Funciona para múltiplas lojas?</h3>
+                    <p data-i18n="faq.1.a">Sim, temos planos que atendem múltiplos estabelecimentos.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="faq.2.q">Há atendimento humano?</h3>
+                    <p data-i18n="faq.2.a">Sim — combinamos automação com especialistas humanos para garantir qualidade.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="faq.3.q">Como é a privacidade dos dados?</h3>
+                    <p data-i18n="faq.3.a">Seguimos rigorosos padrões de segurança e privacidade. Seus dados estão seguros.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="faq.4.q">Como acesso os relatórios?</h3>
+                    <p data-i18n="faq.4.a">Você recebe relatórios periódicos por email e pode acessar o painel online 24h.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Privacy -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="privacyTitle">Segurança e Privacidade</h2>
+            
+            <div class="privacy-content">
+                <p data-i18n="privacyText">Coletamos dados apenas para gerar relatórios úteis para seu negócio. Armazenamos informações de forma segura e seguimos as melhores práticas de proteção. Você pode solicitar a exportação ou exclusão de seus dados a qualquer momento.</p>
+                
+                <a href="#" class="btn btn-secondary" data-i18n="privacyLink">Ver política de privacidade</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="#" class="logo">
+                        <span class="logo-icon">◆</span>
+                        <span class="logo-text">Conexa</span>
+                    </a>
+                    <p data-i18n="footerCopyright">© 2023 Conexa. Todos os direitos reservados.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#documentation" data-i18n="footerDocumentation">Documentação</a></li>
+                        <li><a href="https://github.com/conexa/conexa" target="_blank" data-i18n="footerGithub">GitHub</a></li>
+                        <li><a href="#" data-i18n="footerTerms">Termos de Uso</a></li>
+                        <li><a href="#" data-i18n="footerPrivacy">Privacidade</a></li>
+                        <li><a href="#" data-i18n="footerBlog">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p data-i18n="footerContact">contato@conexa.app</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="GitHub">GH</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modal for plan selection -->
+    <div class="modal" id="planModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 data-i18n="formPlan">Plano escolhido</h2>
+            <form id="planForm">
+                <input type="hidden" id="selectedPlan" name="plan">
+                
+                <div class="form-group">
+                    <label for="name" data-i18n="formName">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="business" data-i18n="formBusiness">Negócio</label>
+                    <input type="text" id="business" name="business" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="whatsapp" data-i18n="formWhatsapp">WhatsApp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="city" data-i18n="formCity">Município</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                
+                <!-- Honeypot field for spam prevention -->
+                <div class="form-group hidden">
+                    <label for="website">Website</label>
+                    <input type="text" id="website" name="website">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" data-i18n="formSubmit">Enviar</button>
+            </form>
+            
+            <div id="formSuccess" class="hidden">
+                <p data-i18n="formSuccess">Recebemos sua solicitação! Entraremos em contato em breve.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

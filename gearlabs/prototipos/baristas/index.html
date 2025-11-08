@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria Baristas - Onde Você é o Barista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-brown: #3E2723;
+            --secondary-brown: #5D4037;
+            --light-brown: #8D6E63;
+            --cream: #FFF3E0;
+            --accent-orange: #FF6F00;
+            --text-dark: #212121;
+            --text-light: #757575;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-brown);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent-orange);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-orange);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--cream);
+            padding: 0.25rem;
+            border-radius: 20px;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-dark);
+            cursor: pointer;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-orange);
+            color: var(--white);
+        }
+
+        .back-btn {
+            padding: 0.5rem 1.5rem;
+            background: var(--light-brown);
+            color: var(--white);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary-brown);
+            transform: translateX(-5px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-brown);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-brown);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-orange);
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-brown), var(--secondary-brown));
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,111,0,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+        }
+
+        /* Hall of Fame */
+        .hall-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hall-item {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hall-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hall-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hall-info {
+            padding: 1rem;
+        }
+
+        .hall-info h4 {
+            color: var(--primary-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .hall-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-orange), var(--light-brown));
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            padding: 1rem 3rem;
+            background: var(--white);
+            color: var(--accent-orange);
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        footer i {
+            color: var(--accent-orange);
+            margin: 0 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .back-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Loading Animation */
+        .coffee-bean {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-orange);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--light-brown);
+            transform: translateY(-5px);
+        }
+        .linkFooter {
+            color: var(--white);
+            text-decoration: none;
+        }
+        .linkFooter:visited {
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-coffee"></i>
+                <span data-lang="logo">Baristas</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#sobre" data-lang="nav-sobre">Sobre</a></li>
+                    <li><a href="#maquinas" data-lang="nav-maquinas">Máquinas</a></li>
+                    <li><a href="#competicao" data-lang="nav-competicao">Competição</a></li>
+                    <li><a href="#eventos" data-lang="nav-eventos">Eventos</a></li>
+                    <li><a href="#hall" data-lang="nav-hall">Hall da Fama</a></li>
+                </ul>
+                
+                <div class="header-controls">
+                    <div class="language-selector">
+                        <button class="lang-btn active" data-lang-btn="pt">PT</button>
+                        <button class="lang-btn" data-lang-btn="en">EN</button>
+                        <button class="lang-btn" data-lang-btn="es">ES</button>
+                    </div>
+                    
+                    <button class="back-btn" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i>
+                        <span data-lang="voltar">Voltar</span>
+                    </button>
+                </div>
+            </nav>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1><span class="coffee-bean">☕</span> <span data-lang="hero-title">Cafeteria Baristas</span></h1>
+            <p data-lang="hero-subtitle">Onde Você é o Barista Principal da Sua Experiência</p>
+        </section>
+
+        <section id="sobre">
+            <h2 class="section-title" data-lang="sobre-title">Sobre Nossa Cafeteria</h2>
+            <div class="section-content">
+                <p data-lang="sobre-text">
+                    Bem-vindo à Cafeteria Baristas, onde revolucionamos a experiência do café! 
+                    Não somos uma cafeteria tradicional - aqui, você é o artista por trás de cada xícara. 
+                    Em nosso espaço único, você tem liberdade total para criar sua bebida perfeita, 
+                    desde a seleção dos grãos até a arte final na espuma. Nossos especialistas estão sempre 
+                    prontos para guiar e inspirar, mas a magia acontece em suas mãos.
+                </p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-magic"></i></div>
+                    <h3 data-lang="card1-title">Crie Suas Combinações</h3>
+                    <p data-lang="card1-text">Experimente diferentes blends, proporções e técnicas para descobrir seu café perfeito.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-temperature-high"></i></div>
+                    <h3 data-lang="card2-title">Vaporize como Profissional</h3>
+                    <p data-lang="card2-text">Domine a arte de vaporizar leite para criar texturas perfeitas para latte art.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-palette"></i></div>
+                    <h3 data-lang="card3-title">Decorações Incríveis</h3>
+                    <p data-lang="card3-text">Aprenda e pratique latte art, desde corações simples até designs complexos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="maquinas">
+            <h2 class="section-title" data-lang="maquinas-title">Nossas Máquinas Especiais</h2>
+            <div class="section-content">
+                <p data-lang="maquinas-text">
+                    Desenvolvemos máquinas exclusivas pensadas para você! Nossos equipamentos foram 
+                    projetados especificamente para este modelo de negócio inovador, tornando a 
+                    arte de fazer café acessível a todos, independentemente da experiência. 
+                    Com interfaces intuitivas e guias passo a passo, até iniciantes podem criar 
+                    bebidas de qualidade profissional. Para os mais experientes, oferecemos 
+                    máquinas de última geração onde você pode explorar todo seu potencial e 
+                    praticar técnicas avançadas.
+                </p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3 data-lang="maquinas-card1-title">Para Iniciantes</h3>
+                    <p data-lang="maquinas-card1-text">Máquinas com assistência inteligente e tutoriais integrados para facilitar seu aprendizado.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-award"></i></div>
+                    <h3 data-lang="maquinas-card2-title">Para Experts</h3>
+                    <p data-lang="maquinas-card2-text">Equipamentos profissionais com controle total de temperatura, pressão e tempo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="competicao">
+            <h2 class="section-title" data-lang="competicao-title">Competição Mensal</h2>
+            <div class="section-content">
+                <p data-lang="competicao-text">
+                    Todo mês, transformamos nossa cafeteria em um palco de criatividade! 
+                    Nosso dia exclusivo de competição reúne apaixonados por café para 
+                    mostrar suas criações únicas. Os participantes preparam suas bebidas 
+                    masterpieces, enquanto outros inscritos atuam como jurados, provando 
+                    e atribuindo notas baseadas em sabor, apresentação e criatividade. 
+                    O grande vencedor leva um kit exclusivo de cafés premium de todo o mundo 
+                    e ganha seu lugar eterno em nosso Hall da Fama!
+                </p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                    <h3 data-lang="competicao-card1-title">Prêmio Especial</h3>
+                    <p data-lang="competicao-card1-text">Kit premium com cafés raros e acessórios exclusivos selecionados por nossos especialistas.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-star"></i></div>
+                    <h3 data-lang="competicao-card2-title">Hall da Fama</h3>
+                    <p data-lang="competicao-card2-text">Sua foto e criação imortalizadas em nossa galeria de campeões.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="eventos">
+            <h2 class="section-title" data-lang="eventos-title">Eventos e Transmissões</h2>
+            <div class="section-content">
+                <p data-lang="eventos-text">
+                    Nossas competições mensais são transmitidas ao vivo para o mundo inteiro! 
+                    Através de nossa plataforma online, milhares de espectadores acompanham 
+                    cada momento criativo, aprendendo técnicas e se inspirando. Oferecemos 
+                    oportunidades exclusivas de parceria para marcas de cafés, fabricantes 
+                    de máquinas e produtores de acessórios que desejam apresentar seus produtos 
+                    durante nossas transmissões. Alcance um público engajado e apaixonado 
+                    pelo universo do café!
+                </p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <h3 data-lang="eventos-card1-title">Transmissão Ao Vivo</h3>
+                    <p data-lang="eventos-card1-text">Acompanhe todas as competições em tempo real através de nossas plataformas digitais.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 data-lang="eventos-card2-title">Seja um Patrocinador</h3>
+                    <p data-lang="eventos-card2-text">Apresente sua marca para milhares de amantes de café durante nossos eventos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hall">
+            <h2 class="section-title" data-lang="hall-title">Hall da Fama</h2>
+            <div class="section-content">
+                <p data-lang="hall-text">
+                    Conheça os mestres que já conquistaram o topo! Nosso Hall da Fama celebra 
+                    a criatividade e dedicação de nossos clientes campeões. Cada mês, novas 
+                    lendas nascem aqui, deixando seu legado na história da Cafeteria Baristas.
+                </p>
+            </div>
+            <div class="hall-grid">
+                <div class="hall-item">
+                    <img src="img/1.jpg" alt="Vencedor">
+                    <div class="hall-info">
+                        <h4>Maria Silva</h4>
+                        <p>Campeã Agosto 2024 - "Aurora Dourada"</p>
+                    </div>
+                </div>
+                <div class="hall-item">
+                    <img src="img/3.jpg" alt="Vencedor">
+                    <div class="hall-info">
+                        <h4>Pedro Tanaka</h4>
+                        <p>Campeão Setembro 2024 - "Noite Estrelada"</p>
+                    </div>
+                </div>
+                <div class="hall-item">
+                    <img src="img/2.jpg" alt="Vencedor">
+                    <div class="hall-info">
+                        <h4>Ana Costa</h4>
+                        <p>Campeã Outubro 2024 - "Tropical Dream"</p>
+                    </div>
+                </div>
+                <div class="hall-item">
+                    <img src="img/4.jpg" alt="Vencedor">
+                    <div class="hall-info">
+                        <h4>Ana Rosa</h4>
+                        <p>Campeão Novembro 2024 - "Chocolate Intenso"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 data-lang="cta-title">Venha nos Conhecer</h2>
+            <p data-lang="cta-address">Rua dos Cafés, 123 - Centro - São Paulo, Brasil</p>
+            <a href="#contato" class="cta-button" data-lang="cta-button">Reserve Sua Experiência</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            <i class="fas fa-code"></i> 
+            <span data-lang="footer">By <a href="../../../index.html" class="linkFooter">DealeGear</a></span> 
+            <i class="fas fa-heart"></i>
+        </p>
+    </footer>
+
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Translations
+        const translations = {
+            pt: {
+                logo: "Baristas",
+                "nav-sobre": "Sobre",
+                "nav-maquinas": "Máquinas",
+                "nav-competicao": "Competição",
+                "nav-eventos": "Eventos",
+                "nav-hall": "Hall da Fama",
+                voltar: "Voltar",
+                "hero-title": "Cafeteria Baristas",
+                "hero-subtitle": "Onde Você é o Barista Principal da Sua Experiência",
+                "sobre-title": "Sobre Nossa Cafeteria",
+                "sobre-text": "Bem-vindo à Cafeteria Baristas, onde revolucionamos a experiência do café! Não somos uma cafeteria tradicional - aqui, você é o artista por trás de cada xícara. Em nosso espaço único, você tem liberdade total para criar sua bebida perfeita, desde a seleção dos grãos até a arte final na espuma. Nossos especialistas estão sempre prontos para guiar e inspirar, mas a magia acontece em suas mãos.",
+                "card1-title": "Crie Suas Combinações",
+                "card1-text": "Experimente diferentes blends, proporções e técnicas para descobrir seu café perfeito.",
+                "card2-title": "Vaporize como Profissional",
+                "card2-text": "Domine a arte de vaporizar leite para criar texturas perfeitas para latte art.",
+                "card3-title": "Decorações Incríveis",
+                "card3-text": "Aprenda e pratique latte art, desde corações simples até designs complexos.",
+                "maquinas-title": "Nossas Máquinas Especiais",
+                "maquinas-text": "Desenvolvemos máquinas exclusivas pensadas para você! Nossos equipamentos foram projetados especificamente para este modelo de negócio inovador, tornando a arte de fazer café acessível a todos, independentemente da experiência. Com interfaces intuitivas e guias passo a passo, até iniciantes podem criar bebidas de qualidade profissional. Para os mais experientes, oferecemos máquinas de última geração onde você pode explorar todo seu potencial e praticar técnicas avançadas.",
+                "maquinas-card1-title": "Para Iniciantes",
+                "maquinas-card1-text": "Máquinas com assistência inteligente e tutoriais integrados para facilitar seu aprendizado.",
+                "maquinas-card2-title": "Para Experts",
+                "maquinas-card2-text": "Equipamentos profissionais com controle total de temperatura, pressão e tempo.",
+                "competicao-title": "Competição Mensal",
+                "competicao-text": "Todo mês, transformamos nossa cafeteria em um palco de criatividade! Nosso dia exclusivo de competição reúne apaixonados por café para mostrar suas criações únicas. Os participantes preparam suas bebidas masterpieces, enquanto outros inscritos atuam como jurados, provando e atribuindo notas baseadas em sabor, apresentação e criatividade. O grande vencedor leva um kit exclusivo de cafés premium de todo o mundo e ganha seu lugar eterno em nosso Hall da Fama!",
+                "competicao-card1-title": "Prêmio Especial",
+                "competicao-card1-text": "Kit premium com cafés raros e acessórios exclusivos selecionados por nossos especialistas.",
+                "competicao-card2-title": "Hall da Fama",
+                "competicao-card2-text": "Sua foto e criação imortalizadas em nossa galeria de campeões.",
+                "eventos-title": "Eventos e Transmissões",
+                "eventos-text": "Nossas competições mensais são transmitidas ao vivo para o mundo inteiro! Através de nossa plataforma online, milhares de espectadores acompanham cada momento criativo, aprendendo técnicas e se inspirando. Oferecemos oportunidades exclusivas de parceria para marcas de cafés, fabricantes de máquinas e produtores de acessórios que desejam apresentar seus produtos durante nossas transmissões. Alcance um público engajado e apaixonado pelo universo do café!",
+                "eventos-card1-title": "Transmissão Ao Vivo",
+                "eventos-card1-text": "Acompanhe todas as competições em tempo real através de nossas plataformas digitais.",
+                "eventos-card2-title": "Seja um Patrocinador",
+                "eventos-card2-text": "Apresente sua marca para milhares de amantes de café durante nossos eventos.",
+                "hall-title": "Hall da Fama",
+                "hall-text": "Conheça os mestres que já conquistaram o topo! Nosso Hall da Fama celebra a criatividade e dedicação de nossos clientes campeões. Cada mês, novas lendas nascem aqui, deixando seu legado na história da Cafeteria Baristas.",
+                "cta-title": "Venha nos Conhecer",
+                "cta-address": "Rua dos Cafés, 123 - Centro - São Paulo, Brasil",
+                "cta-button": "Reserve Sua Experiência",
+                footer: "By DealeGear"
+            },
+            en: {
+                logo: "Baristas",
+                "nav-sobre": "About",
+                "nav-maquinas": "Machines",
+                "nav-competicao": "Competition",
+                "nav-eventos": "Events",
+                "nav-hall": "Hall of Fame",
+                voltar: "Back",
+                "hero-title": "Baristas Coffee Shop",
+                "hero-subtitle": "Where You Are the Main Barista of Your Experience",
+                "sobre-title": "About Our Coffee Shop",
+                "sobre-text": "Welcome to Baristas Coffee Shop, where we revolutionize the coffee experience! We are not a traditional coffee shop - here, you are the artist behind every cup. In our unique space, you have complete freedom to create your perfect drink, from bean selection to the final art on the foam. Our experts are always ready to guide and inspire, but the magic happens in your hands.",
+                "card1-title": "Create Your Combinations",
+                "card1-text": "Experiment with different blends, proportions, and techniques to discover your perfect coffee.",
+                "card2-title": "Steam Like a Professional",
+                "card2-text": "Master the art of steaming milk to create perfect textures for latte art.",
+                "card3-title": "Amazing Decorations",
+                "card3-text": "Learn and practice latte art, from simple hearts to complex designs.",
+                "maquinas-title": "Our Special Machines",
+                "maquinas-text": "We've developed exclusive machines designed for you! Our equipment was specifically created for this innovative business model, making the art of coffee making accessible to everyone, regardless of experience. With intuitive interfaces and step-by-step guides, even beginners can create professional-quality drinks. For the more experienced, we offer state-of-the-art machines where you can explore your full potential and practice advanced techniques.",
+                "maquinas-card1-title": "For Beginners",
+                "maquinas-card1-text": "Machines with smart assistance and integrated tutorials to facilitate your learning.",
+                "maquinas-card2-title": "For Experts",
+                "maquinas-card2-text": "Professional equipment with full control of temperature, pressure, and time.",
+                "competicao-title": "Monthly Competition",
+                "competicao-text": "Every month, we transform our coffee shop into a stage of creativity! Our exclusive competition day brings together coffee lovers to showcase their unique creations. Participants prepare their masterpiece drinks, while other registered members act as judges, tasting and assigning scores based on flavor, presentation, and creativity. The grand winner takes home an exclusive kit of premium coffees from around the world and earns their eternal place in our Hall of Fame!",
+                "competicao-card1-title": "Special Prize",
+                "competicao-card1-text": "Premium kit with rare coffees and exclusive accessories selected by our specialists.",
+                "competicao-card2-title": "Hall of Fame",
+                "competicao-card2-text": "Your photo and creation immortalized in our champions gallery.",
+                "eventos-title": "Events and Broadcasts",
+                "eventos-text": "Our monthly competitions are broadcast live to the whole world! Through our online platform, thousands of viewers follow every creative moment, learning techniques and getting inspired. We offer exclusive partnership opportunities for coffee brands, machine manufacturers, and accessory producers who want to present their products during our broadcasts. Reach an engaged and passionate audience about the coffee universe!",
+                "eventos-card1-title": "Live Broadcast",
+                "eventos-card1-text": "Follow all competitions in real-time through our digital platforms.",
+                "eventos-card2-title": "Become a Sponsor",
+                "eventos-card2-text": "Present your brand to thousands of coffee lovers during our events.",
+                "hall-title": "Hall of Fame",
+                "hall-text": "Meet the masters who have already reached the top! Our Hall of Fame celebrates the creativity and dedication of our champion customers. Every month, new legends are born here, leaving their legacy in the history of Baristas Coffee Shop.",
+                "cta-title": "Come Visit Us",
+                "cta-address": "Rua dos Cafés, 123 - Downtown - São Paulo, Brazil",
+                "cta-button": "Book Your Experience",
+                footer: "By DealeGear"
+            },
+            es: {
+                logo: "Baristas",
+                "nav-sobre": "Acerca",
+                "nav-maquinas": "Máquinas",
+                "nav-competicao": "Competición",
+                "nav-eventos": "Eventos",
+                "nav-hall": "Salón de la Fama",
+                voltar: "Volver",
+                "hero-title": "Cafetería Baristas",
+                "hero-subtitle": "Donde Tú Eres el Barista Principal de Tu Experiencia",
+                "sobre-title": "Acerca de Nuestra Cafetería",
+                "sobre-text": "¡Bienvenido a Cafetería Baristas, donde revolucionamos la experiencia del café! No somos una cafetería tradicional - aquí, tú eres el artista detrás de cada taza. En nuestro espacio único, tienes libertad total para crear tu bebida perfecta, desde la selección de los granos hasta el arte final en la espuma. Nuestros expertos siempre están listos para guiar e inspirar, pero la magia ocurre en tus manos.",
+                "card1-title": "Crea Tus Combinaciones",
+                "card1-text": "Experimenta con diferentes mezclas, proporciones y técnicas para descubrir tu café perfecto.",
+                "card2-title": "Vaporiza como Profesional",
+                "card2-text": "Domina el arte de vaporizar leche para crear texturas perfectas para latte art.",
+                "card3-title": "Decoraciones Increíbles",
+                "card3-text": "Aprende y practica latte art, desde corazones simples hasta diseños complejos.",
+                "maquinas-title": "Nuestras Máquinas Especiales",
+                "maquinas-text": "¡Hemos desarrollado máquinas exclusivas diseñadas para ti! Nuestro equipo fue creado específicamente para este modelo de negocio innovador, haciendo que el arte de hacer café sea accesible para todos, independientemente de la experiencia. Con interfaces intuitivas y guías paso a paso, incluso los principiantes pueden crear bebidas de calidad profesional. Para los más experimentados, ofrecemos máquinas de última generación donde puedes explorar todo tu potencial y practicar técnicas avanzadas.",
+                "maquinas-card1-title": "Para Principiantes",
+                "maquinas-card1-text": "Máquinas con asistencia inteligente y tutoriales integrados para facilitar tu aprendizaje.",
+                "maquinas-card2-title": "Para Expertos",
+                "maquinas-card2-text": "Equipo profesional con control total de temperatura, presión y tiempo.",
+                "competicao-title": "Competición Mensual",
+                "competicao-text": "¡Cada mes transformamos nuestra cafetería en un escenario de creatividad! Nuestro día exclusivo de competición reúne a amantes del café para mostrar sus creaciones únicas. Los participantes preparan sus bebidas maestras, mientras otros miembros inscritos actúan como jueces, probando y asignando puntuaciones basadas en sabor, presentación y creatividad. El gran ganador se lleva un kit exclusivo de cafés premium de todo el mundo y gana su lugar eterno en nuestro Salón de la Fama!",
+                "competicao-card1-title": "Premio Especial",
+                "competicao-card1-text": "Kit premium con cafés raros y accesorios exclusivos seleccionados por nuestros especialistas.",
+                "competicao-card2-title": "Salón de la Fama",
+                "competicao-card2-text": "Tu foto y creación inmortalizadas en nuestra galería de campeones.",
+                "eventos-title": "Eventos y Transmisiones",
+                "eventos-text": "¡Nuestras competiciones mensuales se transmiten en vivo para todo el mundo! A través de nuestra plataforma online, miles de espectadores siguen cada momento creativo, aprendiendo técnicas e inspirándose. Ofrecemos oportunidades exclusivas de asociación para marcas de café, fabricantes de máquinas y productores de accesorios que deseen presentar sus productos durante nuestras transmisiones. ¡Alcanza a una audiencia comprometida y apasionada por el universo del café!",
+                "eventos-card1-title": "Transmisión en Vivo",
+                "eventos-card1-text": "Sigue todas las competiciones en tiempo real a través de nuestras plataformas digitales.",
+                "eventos-card2-title": "Sé un Patrocinador",
+                "eventos-card2-text": "Presenta tu marca a miles de amantes del café durante nuestros eventos.",
+                "hall-title": "Salón de la Fama",
+                "hall-text": "¡Conoce a los maestros que ya han alcanzado la cima! Nuestro Salón de la Fama celebra la creatividad y dedicación de nuestros clientes campeones. Cada mes, nuevas leyendas nacen aquí, dejando su legado en la historia de Cafetería Baristas.",
+                "cta-title": "Ven a Conocernos",
+                "cta-address": "Rua dos Cafés, 123 - Centro - São Paulo, Brasil",
+                "cta-button": "Reserva Tu Experiencia",
+                footer: "By DealeGear"
+            }
+        };
+
+        // Language switcher
+        let currentLang = 'pt';
+        const langButtons = document.querySelectorAll('[data-lang-btn]');
+        const elementsToTranslate = document.querySelectorAll('[data-lang]');
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.langBtn;
+                if (lang !== currentLang) {
+                    currentLang = lang;
+                    updateLanguage();
+                    
+                    // Update active button
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Update HTML lang attribute
+                    document.documentElement.lang = lang;
+                }
+            });
+        });
+
+        function updateLanguage() {
+            elementsToTranslate.forEach(element => {
+                const key = element.dataset.lang;
+                if (translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.querySelector('.scroll-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.animationPlayState = 'paused';
+            observer.observe(section);
+        });
+
+        // Add hover effect to cards
+        document.querySelectorAll('.card, .hall-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+[
+  {
+    "id": "u_101",
+    "name": "Aiko",
+    "age": 27,
+    "city": "São Paulo/SP",
+    "goals": ["namoro", "amizade"],
+    "interests": ["sci-fi", "rpg", "retro-games", "animes"],
+    "bio": "Entusiasta de mechas e roguelikes. Procuro party pra co-op.",
+    "badges": ["RPG Party", "Sci-fi Master"],
+    "verified": true,
+    "photos": ["/assets/avatars/aiko1.svg"],
+    "response_rate": 0.92,
+    "xp": 1250,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "star-wars",
+        "q2": "estrategista",
+        "q3": "telepatia"
+    }
+  },
+  {
+    "id": "u_102",
+    "name": "Carlos",
+    "age": 29,
+    "city": "Rio de Janeiro/RJ",
+    "goals": ["amizade", "squad"],
+    "interests": ["boardgames", "rpg", "fantasy", "hqs"],
+    "bio": "Mestre de RPG nas horas vagas. Sempre procurando novos jogadores para minha campanha.",
+    "badges": ["RPG Party", "Board Game Fan"],
+    "verified": false,
+    "photos": ["/assets/avatars/carlos1.svg"],
+    "response_rate": 0.85,
+    "xp": 890,
+    "level": 2,
+    "quizAnswers": {
+        "q1": "lotr",
+        "q2": "lider",
+        "q3": "invisibilidade"
+    }
+  },
+  {
+    "id": "u_103",
+    "name": "Daniela",
+    "age": 25,
+    "city": "Belo Horizonte/MG",
+    "goals": ["namoro", "projetos"],
+    "interests": ["animes", "games", "tech", "art"],
+    "bio": "Desenvolvedora e artista digital. Apaixonada por jogos indie e animes de ficção.",
+    "badges": ["Verified", "Tech Enthusiast"],
+    "verified": true,
+    "photos": ["/assets/avatars/daniela1.svg"],
+    "response_rate": 0.78,
+    "xp": 2100,
+    "level": 4,
+    "quizAnswers": {
+        "q1": "marvel",
+        "q2": "medico",
+        "q3": "teletransporte"
+    }
+  },
+  {
+    "id": "u_104",
+    "name": "Eduardo",
+    "age": 31,
+    "city": "Porto Alegre/RS",
+    "goals": ["amizade", "squad"],
+    "interests": ["retro-games", "boardgames", "sci-fi", "movies"],
+    "bio": "Colecionador de consoles retro e board games. Procurando grupo para sessões semanais.",
+    "badges": ["Retro Gamer", "Board Game Fan"],
+    "verified": false,
+    "photos": ["/assets/avatars/eduardo1.svg"],
+    "response_rate": 0.65,
+    "xp": 450,
+    "level": 2,
+    "quizAnswers": {
+        "q1": "star-trek",
+        "q2": "estrategista",
+        "q3": "superforca"
+    }
+  },
+  {
+    "id": "u_105",
+    "name": "Fernanda",
+    "age": 26,
+    "city": "Curitiba/PR",
+    "goals": ["namoro", "amizade"],
+    "interests": ["animes", "hqs", "fantasy", "cosplay"],
+    "bio": "Cosplayer e fã de universos fantásticos. Busco alguém para compartilhar aventuras.",
+    "badges": ["Verified", "Cosplay Enthusiast"],
+    "verified": true,
+    "photos": ["/assets/avatars/fernanda1.svg"],
+    "response_rate": 0.88,
+    "xp": 1680,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "lotr",
+        "q2": "solitario",
+        "q3": "telepatia"
+    }
+  },
+  {
+    "id": "u_106",
+    "name": "Gabriel",
+    "age": 24,
+    "city": "Brasília/DF",
+    "goals": ["squad", "projetos"],
+    "interests": ["games", "tech", "esports", "music"],
+    "bio": "Streamer nas horas vagas. Procurando squad para ranked e projetos de conteúdo.",
+    "badges": ["Esports Fan", "Tech Enthusiast"],
+    "verified": false,
+    "photos": ["/assets/avatars/gabriel1.svg"],
+    "response_rate": 0.72,
+    "xp": 920,
+    "level": 2,
+    "quizAnswers": {
+        "q1": "marvel",
+        "q2": "lider",
+        "q3": "teletransporte"
+    }
+  },
+  {
+    "id": "u_107",
+    "name": "Helena",
+    "age": 28,
+    "city": "Salvador/BA",
+    "goals": ["namoro", "amizade"],
+    "interests": ["books", "fantasy", "hqs", "art"],
+    "bio": "Escritora e ilustradora. Apaixonada por mundos fantásticos e histórias épicas.",
+    "badges": ["Book Lover", "Art Enthusiast"],
+    "verified": true,
+    "photos": ["/assets/avatars/helena1.svg"],
+    "response_rate": 0.90,
+    "xp": 1750,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "lotr",
+        "q2": "estrategista",
+        "q3": "invisibilidade"
+    }
+  },
+  {
+    "id": "u_108",
+    "name": "Igor",
+    "age": 30,
+    "city": "Fortaleza/CE",
+    "goals": ["amizade", "squad"],
+    "interests": ["rpg", "boardgames", "fantasy", "sci-fi"],
+    "bio": "Mestre de RPG há 10 anos. Sempre criando novas aventuras e mundos.",
+    "badges": ["RPG Party", "Game Master"],
+    "verified": false,
+    "photos": ["/assets/avatars/igor1.svg"],
+    "response_rate": 0.80,
+    "xp": 2100,
+    "level": 4,
+    "quizAnswers": {
+        "q1": "star-wars",
+        "q2": "lider",
+        "q3": "superforca"
+    }
+  },
+  {
+    "id": "u_109",
+    "name": "Juliana",
+    "age": 23,
+    "city": "Recife/PE",
+    "goals": ["namoro", "projetos"],
+    "interests": ["animes", "games", "music", "art"],
+    "bio": "Artista digital e fã de jogos indie. Procurando parcerias criativas.",
+    "badges": ["Art Enthusiast", "Verified"],
+    "verified": true,
+    "photos": ["/assets/avatars/juliana1.svg"],
+    "response_rate": 0.75,
+    "xp": 1350,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "animes",
+        "q2": "medico",
+        "q3": "telepatia"
+    }
+  },
+  {
+    "id": "u_110",
+    "name": "Lucas",
+    "age": 32,
+    "city": "Florianópolis/SC",
+    "goals": ["amizade", "squad"],
+    "interests": ["boardgames", "retro-games", "tech", "music"],
+    "bio": "Engenheiro de software e músico nas horas vagas. Procurando grupo para board games.",
+    "badges": ["Board Game Fan", "Tech Enthusiast"],
+    "verified": false,
+    "photos": ["/assets/avatars/lucas1.svg"],
+    "response_rate": 0.82,
+    "xp": 1100,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "star-trek",
+        "q2": "estrategista",
+        "q3": "teletransporte"
+    }
+  },
+  {
+    "id": "u_111",
+    "name": "Mariana",
+    "age": 26,
+    "city": "Goiânia/GO",
+    "goals": ["namoro", "amizade"],
+    "interests": ["animes", "hqs", "fantasy", "cosplay"],
+    "bio": "Cosplayer e designer gráfica. Apaixonada por cultura pop e universos fantásticos.",
+    "badges": ["Cosplay Enthusiast", "Verified"],
+    "verified": true,
+    "photos": ["/assets/avatars/mariana1.svg"],
+    "response_rate": 0.87,
+    "xp": 1450,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "marvel",
+        "q2": "solitario",
+        "q3": "invisibilidade"
+    }
+  },
+  {
+    "id": "u_112",
+    "name": "Nicolas",
+    "age": 27,
+    "city": "Manaus/AM",
+    "goals": ["amizade", "squad"],
+    "interests": ["games", "rpg", "fantasy", "sci-fi"],
+    "bio": "Desenvolvedor de games e mestre de RPG. Procurando grupo para campanhas épicas.",
+    "badges": ["RPG Party", "Game Developer"],
+    "verified": false,
+    "photos": ["/assets/avatars/nicolas1.svg"],
+    "response_rate": 0.76,
+    "xp": 1850,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "lotr",
+        "q2": "lider",
+        "q3": "superforca"
+    }
+  },
+  {
+    "id": "u_113",
+    "name": "Olivia",
+    "age": 25,
+    "city": "Belém/PA",
+    "goals": ["namoro", "projetos"],
+    "interests": ["books", "sci-fi", "art", "music"],
+    "bio": "Escritora de ficção científica e compositora. Busco parcerias criativas.",
+    "badges": ["Book Lover", "Verified"],
+    "verified": true,
+    "photos": ["/assets/avatars/olivia1.svg"],
+    "response_rate": 0.83,
+    "xp": 1200,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "star-trek",
+        "q2": "medico",
+        "q3": "telepatia"
+    }
+  },
+  {
+    "id": "u_114",
+    "name": "Pedro",
+    "age": 29,
+    "city": "Vitória/ES",
+    "goals": ["amizade", "squad"],
+    "interests": ["boardgames", "rpg", "fantasy", "hqs"],
+    "bio": "Designer de board games e entusiasta de RPG. Procurando grupo para testar novos jogos.",
+    "badges": ["Board Game Fan", "Game Designer"],
+    "verified": false,
+    "photos": ["/assets/avatars/pedro1.svg"],
+    "response_rate": 0.79,
+    "xp": 1600,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "lotr",
+        "q2": "estrategista",
+        "q3": "invisibilidade"
+    }
+  },
+  {
+    "id": "u_115",
+    "name": "Quenia",
+    "age": 24,
+    "city": "Natal/RN",
+    "goals": ["namoro", "amizade"],
+    "interests": ["animes", "games", "cosplay", "art"],
+    "bio": "Artista digital e cosplayer. Apaixonada por cultura japonesa e games.",
+    "badges": ["Cosplay Enthusiast", "Verified"],
+    "verified": true,
+    "photos": ["/assets/avatars/quenia1.svg"],
+    "response_rate": 0.91,
+    "xp": 1300,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "animes",
+        "q2": "solitario",
+        "q3": "telepatia"
+    }
+  },
+  {
+    "id": "u_116",
+    "name": "Rafael",
+    "age": 31,
+    "city": "João Pessoa/PB",
+    "goals": ["amizade", "squad"],
+    "interests": ["retro-games", "boardgames", "tech", "music"],
+    "bio": "Engenheiro e músico. Colecionador de consoles retro e board games clássicos.",
+    "badges": ["Retro Gamer", "Music Enthusiast"],
+    "verified": false,
+    "photos": ["/assets/avatars/rafael1.svg"],
+    "response_rate": 0.73,
+    "xp": 950,
+    "level": 2,
+    "quizAnswers": {
+        "q1": "retro-games",
+        "q2": "estrategista",
+        "q3": "teletransporte"
+    }
+  },
+  {
+    "id": "u_117",
+    "name": "Sofia",
+    "age": 26,
+    "city": "Maceió/AL",
+    "goals": ["namoro", "projetos"],
+    "interests": ["books", "fantasy", "art", "music"],
+    "bio": "Escritora e pintora. Apaixonada por mundos fantásticos e histórias épicas.",
+    "badges": ["Book Lover", "Art Enthusiast"],
+    "verified": true,
+    "photos": ["/assets/avatars/sofia1.svg"],
+    "response_rate": 0.86,
+    "xp": 1500,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "lotr",
+        "q2": "medico",
+        "q3": "invisibilidade"
+    }
+  },
+  {
+    "id": "u_118",
+    "name": "Thiago",
+    "age": 28,
+    "city": "Teresina/PI",
+    "goals": ["amizade", "squad"],
+    "interests": ["rpg", "boardgames", "fantasy", "sci-fi"],
+    "bio": "Mestre de RPG e designer de sistemas. Procurando grupo para testar novas mecânicas.",
+    "badges": ["RPG Party", "Game Designer"],
+    "verified": false,
+    "photos": ["/assets/avatars/thiago1.svg"],
+    "response_rate": 0.81,
+    "xp": 1700,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "star-wars",
+        "q2": "lider",
+        "q3": "superforca"
+    }
+  },
+  {
+    "id": "u_119",
+    "name": "Vanessa",
+    "age": 25,
+    "city": "Aracaju/SE",
+    "goals": ["namoro", "amizade"],
+    "interests": ["animes", "hqs", "cosplay", "art"],
+    "bio": "Designer gráfica e cosplayer. Fã de cultura pop e universos de super-heróis.",
+    "badges": ["Cosplay Enthusiast", "Verified"],
+    "verified": true,
+    "photos": ["/assets/avatars/vanessa1.svg"],
+    "response_rate": 0.89,
+    "xp": 1400,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "marvel",
+        "q2": "solitario",
+        "q3": "telepatia"
+    }
+  },
+  {
+    "id": "u_120",
+    "name": "Vinicius",
+    "age": 30,
+    "city": "Campo Grande/MS",
+    "goals": ["amizade", "squad"],
+    "interests": ["boardgames", "retro-games", "tech", "music"],
+    "bio": "Desenvolvedor e músico. Procurando grupo para sessões de board games.",
+    "badges": ["Board Game Fan", "Tech Enthusiast"],
+    "verified": false,
+    "photos": ["/assets/avatars/vinicius1.svg"],
+    "response_rate": 0.77,
+    "xp": 1050,
+    "level": 3,
+    "quizAnswers": {
+        "q1": "retro-games",
+        "q2": "estrategista",
+        "q3": "teletransporte"
+    }
+  }
+]

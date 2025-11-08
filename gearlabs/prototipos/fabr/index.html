@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabr - Plataforma Colaborativa de Fabricação</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header fixo -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Fabr</div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="#como-funciona">Como Funciona</a></li>
+                        <li><a href="#projetos">Projetos Colaborativos</a></li>
+                        <li><a href="#habilidades">Habilidades Requeridas</a></li>
+                        <li><a href="#fluxo">Fluxo</a></li>
+                        <li><a href="#perguntas">Perguntas</a></li>
+                        
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                        <span class="theme-icon">☀️</span>
+                    </button>
+                    <a href="app.html" class="btn btn-primary">App</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Menu mobile">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Fabr: Criação colaborativa, fabricação real.</h1>
+                    <p>A plataforma para fabricar projetos modulares com colaboração aberta.</p>
+                    <a href="#quero-participar" class="btn btn-large btn-primary">Quero Participar</a>
+                </div>
+                <div class="hero-image">
+                    <!-- SVG ilustrativo industrial -->
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Base -->
+                        <rect x="50" y="300" width="400" height="20" fill="#555" />
+                        
+                        <!-- Peças mecânicas -->
+                        <circle cx="150" cy="250" r="50" fill="#666" stroke="#ff7b25" stroke-width="3" />
+                        <circle cx="150" cy="250" r="30" fill="#444" />
+                        <circle cx="150" cy="250" r="15" fill="#222" />
+                        
+                        <!-- Engrenagem -->
+                        <g transform="translate(350, 250)">
+                            <circle r="50" fill="#666" stroke="#00bcd4" stroke-width="3" />
+                            <circle r="35" fill="#444" />
+                            <circle r="15" fill="#222" />
+                            <g>
+                                <rect x="-10" y="-50" width="20" height="100" fill="#666" />
+                                <rect x="-50" y="-10" width="100" height="20" fill="#666" />
+                                <rect x="-35" y="-35" width="70" height="70" fill="#666" transform="rotate(45)" />
+                            </g>
+                        </g>
+                        
+                        <!-- Placa eletrônica -->
+                        <rect x="200" y="180" width="100" height="80" rx="5" fill="#2a5d42" stroke="#00bcd4" stroke-width="2" />
+                        <rect x="210" y="190" width="15" height="15" fill="#333" />
+                        <rect x="235" y="190" width="15" height="15" fill="#333" />
+                        <rect x="260" y="190" width="15" height="15" fill="#333" />
+                        <rect x="210" y="215" width="15" height="15" fill="#333" />
+                        <rect x="235" y="215" width="15" height="15" fill="#333" />
+                        <rect x="260" y="215" width="15" height="15" fill="#333" />
+                        <rect x="210" y="240" width="15" height="15" fill="#333" />
+                        <rect x="235" y="240" width="15" height="15" fill="#333" />
+                        <rect x="260" y="240" width="15" height="15" fill="#333" />
+                        
+                        <!-- Conexões -->
+                        <line x1="200" y1="220" x2="150" y2="220" stroke="#ff7b25" stroke-width="3" />
+                        <line x1="300" y1="220" x2="350" y2="220" stroke="#00bcd4" stroke-width="3" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Como Funciona -->
+    <section id="como-funciona" class="section">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#00bcd4"/>
+                        </svg>
+                    </div>
+                    <h3>Cadastre suas habilidades</h3>
+                    <p>Crie seu perfil e destaque suas competências técnicas para a comunidade Fabr.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="#00bcd4"/>
+                        </svg>
+                    </div>
+                    <h3>Escolha um módulo de projeto</h3>
+                    <p>Explore projetos em andamento e encontre aqueles que se alinham com suas habilidades.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#00bcd4"/>
+                        </svg>
+                    </div>
+                    <h3>Construa junto e entregue protótipos</h3>
+                    <p>Colabore com a equipe, desenvolva seu módulo e integre ao projeto final.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Projetos Colaborativos -->
+    <section id="projetos" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Projetos Colaborativos em Destaque</h2>
+            <div id="projetos-container" class="projects-grid">
+                <!-- Projetos serão inseridos dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Habilidades Requeridas -->
+    <section id="habilidades" class="section">
+        <div class="container">
+            <h2 class="section-title">Habilidades Requeridas</h2>
+            <div id="habilidades-container" class="skills-tags">
+                <!-- Habilidades serão inseridas dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Fluxo -->
+    <section id="fluxo" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Fluxo de Projeto</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Ideação</h3>
+                        <p>Definição do conceito e objetivos do projeto</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Prototipagem</h3>
+                        <p>Desenvolvimento inicial dos módulos individuais</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Testes</h3>
+                        <p>Validação de cada componente separadamente</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Integração</h3>
+                        <p>Conexão dos módulos em um sistema funcional</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Validação</h3>
+                        <p>Testes completos do sistema integrado</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Produção Piloto</h3>
+                        <p>Fabricação dos primeiros exemplares funcionais</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Seção Perguntas Frequentes -->
+    <section id="perguntas" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">Quanto custa para participar dos projetos?</button>
+                    <div class="faq-answer">
+                        <p>A participação na plataforma Fabr é gratuita. Cada projeto tem seu próprio modelo de financiamento, que pode incluir crowdfunding, patrocínios ou recursos compartilhados entre os participantes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como funciona a propriedade intelectual dos projetos?</button>
+                    <div class="faq-answer">
+                        <p>A propriedade intelectual é gerenciada através de licenças colaborativas. Geralmente, os resultados são compartilhados sob licenças abertas que permitem uso, modificação e distribuição, com créditos aos colaboradores.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quais são os requisitos para participar?</button>
+                    <div class="faq-answer">
+                        <p>Os requisitos variam conforme o projeto, mas geralmente incluem conhecimentos técnicos específicos, disponibilidade para colaborar e comprometimento com os prazos estabelecidos pela equipe.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Qual é o prazo médio de um projeto?</button>
+                    <div class="faq-answer">
+                        <p>O prazo varia conforme a complexidade do projeto, desde algumas semanas para protótipos simples até vários meses para sistemas mais complexos. Cada projeto define seu cronograma na fase de planejamento.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quais tipos de projetos são aceitos na plataforma?</button>
+                    <div class="faq-answer">
+                        <p>Aceitamos projetos de fabricação digital, eletrônicos, mecânicos, robótica, energia renovável, reciclagem e outras áreas relacionadas à fabricação colaborativa. Todos os projetos devem ter potencial modular e colaborativo.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como são formadas as equipes dos projetos?</button>
+                    <div class="faq-answer">
+                        <p>As equipes são formadas por interessados que se inscrevem para contribuir com habilidades específicas. O coordenador do projeto avalia os perfis e define a composição da equipe com base nas necessidades do projeto.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">O que acontece se um projeto não for concluído?</button>
+                    <div class="faq-answer">
+                        <p>Projetos interrompidos têm seu desenvolvimento documentado e disponibilizado para a comunidade, permitindo que outros possam retomar o trabalho a partir do ponto onde foi parado. O aprendizado adquirido é sempre compartilhado.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Há suporte técnico para os participantes?</button>
+                    <div class="faq-answer">
+                        <p>Sim, oferecemos suporte através dos nossos GearLabs, onde os participantes têm acesso a ferramentas, equipamentos e orientação técnica. Também mantemos fóruns de discussão e sessões de mentoria online.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Quero Participar -->
+    <section id="quero-participar" class="section cta">
+        <div class="container">
+            <h2 class="section-title">Pronto para construir junto?</h2>
+            <p class="section-description">Junte-se à comunidade Fabr e comece a colaborar em projetos incríveis hoje mesmo.</p>
+            <a href="app.html" class="btn btn-large btn-primary">Acessar App</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Fabr</div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="https://discord.gg/vKK7xVcZJ8" target="_blank">Comunidade</a></li>
+                        <li><a href="../../docs/index.html">Documentação</a></li>
+                        <li><a href="./index.html">Landpage</a></li>
+                        <li><a href="../../index.html">GearLabs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 DealeGear. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

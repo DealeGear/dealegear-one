@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3GTO — Documentação Técnica</title>
+    <style>
+        /* ===== Variáveis CSS ===== */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #10b981;
+            --bg-color: #fafafa;
+            --text-color: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --sidebar-width: 280px;
+            --header-height: 60px;
+        }
+
+        /* ===== Reset e Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== Header ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: white;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: -0.5px;
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: white;
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 90;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .gearlabs-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 0.2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 0.5rem;
+        }
+
+        .gearlabs-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        
+
+        .language-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lang-btn {
+            flex: 1;
+            padding: 0.5rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--border-color);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover {
+            background: var(--bg-color);
+            padding-left: 1.25rem;
+        }
+
+        .nav-menu a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* ===== Menu Hambúrguer ===== */
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: calc(var(--header-height) + 1rem);
+            left: 1rem;
+            z-index: 95;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-color);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* ===== Conteúdo Principal ===== */
+        main {
+            margin-left: var(--sidebar-width);
+            padding: calc(var(--header-height) + 2rem) 2rem 4rem;
+            max-width: 900px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .section h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-color);
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        .section ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::after {
+            content: '🎮';
+            font-size: 4rem;
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        /* ===== Rodapé ===== */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-left: var(--sidebar-width);
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* ===== Responsividade ===== */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            main {
+                margin-left: 0;
+                padding: calc(var(--header-height) + 4rem) 1rem 2rem;
+            }
+
+            footer {
+                margin-left: 0;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ===== Animações ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* ===== Overlay para mobile ===== */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 85;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1 data-i18n="header.title">3GTO — Documentação Técnica</h1>
+    </header>
+
+    <!-- Menu Hambúrguer (Mobile) -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Overlay para mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Botão GearLabs -->
+        <div class="sidebar-section">
+            <a href="index.html" class="gearlabs-btn" data-i18n="sidebar.landpage">Landpage</a>
+            <a href="../../index.html" class="gearlabs-btn">GearLabs</a>
+            <a href="https://github.com/gearlabs-dealegear/3gto" class="gearlabs-btn" data-i18n="sidebar.github">GitHub</a>
+        </div>
+
+        <!-- Seletor de Idiomas -->
+        <div class="sidebar-section">
+            <h3 data-i18n="sidebar.language">Idioma</h3>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="pt">PT</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+        </div>
+
+        <!-- Menu de Navegação -->
+        <div class="sidebar-section">
+            <h3 data-i18n="sidebar.navigation">Navegação</h3>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#overview" class="nav-link active" data-i18n="nav.overview">Visão Geral</a></li>
+                    <li><a href="#target" class="nav-link" data-i18n="nav.target">Público-alvo</a></li>
+                    <li><a href="#benefits" class="nav-link" data-i18n="nav.benefits">Benefícios</a></li>
+                    <li><a href="#architecture" class="nav-link" data-i18n="nav.architecture">Arquitetura</a></li>
+                    <li><a href="#prerequisites" class="nav-link" data-i18n="nav.prerequisites">Pré-requisitos</a></li>
+                    <li><a href="#monetization" class="nav-link" data-i18n="nav.monetization">Monetização</a></li>
+                    <li><a href="#security" class="nav-link" data-i18n="nav.security">Segurança</a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Visão Geral -->
+        <section id="overview" class="section">
+            <h2 data-i18n="overview.title">Visão Geral</h2>
+            <div class="image-placeholder" data-i18n="overview.imagePlaceholder">
+                Espaço para imagem do projeto 3GTO
+            </div>
+            <p data-i18n="overview.description1">
+                3GTO é um jogo imersivo que utiliza como interfaces um óculos com tela LCD, um controle físico virtual e três modelos em miniatura: um carro adaptado para a cidade, um adaptado para pista de terra e obstáculos (como pedras e água), e outro adaptado para submergir em água.
+            </p>
+            <p data-i18n="overview.description2">
+                O objetivo é simular os ambientes de cidade, trilha e subaquático, onde o usuário é imerso no jogo por meio de óculos com tela (possivelmente VR), enquanto os veículos são dotados de duas ou mais câmeras. Os jogadores escolhem um ambiente, selecionam um veículo e iniciam sua jornada com o objetivo de cumprir os trajetos nos três ambientes, vencendo obstáculos e chegando ao final no menor tempo possível.
+            </p>
+        </section>
+
+        <!-- Público-alvo -->
+        <section id="target" class="section">
+            <h2 data-i18n="target.title">Público-alvo</h2>
+            <p data-i18n="target.description1">
+                O público-alvo principal são shoppings e outros pontos de entretenimento voltados principalmente para jovens e famílias. Os shoppings enfrentaram problemas nos últimos anos com queda no público que busca fazer compras, restando garantir o faturamento por meio da oferta de opções de alimentação, prestação de serviços e entretenimento.
+            </p>
+            <p data-i18n="target.description2">
+                O público-alvo final inicial são jovens, mas é possível adaptar o projeto para atender um público mais amplo. Controlar os veículos pode requerer alguma habilidade ainda não desenvolvida em crianças muito jovens, assim como adultos podem não se sentir atraídos se os trajetos propostos forem muito curtos ou simples demais. A solução pode ser oferecer diferentes opções de trajeto e dotar os veículos de um modo semi-automático, o que poderia atrair um público mais amplo.
+            </p>
+        </section>
+
+        <!-- Benefícios -->
+        <section id="benefits" class="section">
+            <h2 data-i18n="benefits.title">Benefícios</h2>
+            <ul>
+                <li data-i18n="benefits.item1">Atração de público jovem para uma atividade presencial com potencial de gerar renda diretamente pelo aluguel de tempo no jogo.</li>
+                <li data-i18n="benefits.item2">Geração indireta de receita por meio do consumo de outros produtos disponíveis no local.</li>
+                <li data-i18n="benefits.item3">Plataforma que pode ser facilmente montada e desmontada para mudança de local ou ponto de venda.</li>
+                <li data-i18n="benefits.item4">Estrutura durável, expansível e modificável.</li>
+                <li data-i18n="benefits.item5">Investimento inicial pode ser alto, mas o custo de manutenção provavelmente é baixo, apesar de precisar ser especializado.</li>
+            </ul>
+        </section>
+
+        <!-- Arquitetura -->
+        <section id="architecture" class="section">
+            <h2 data-i18n="architecture.title">Arquitetura</h2>
+            
+            <h3 data-i18n="architecture.scope.title">Alcance</h3>
+            <p data-i18n="architecture.scope.description">
+                Este projeto não é exponencial, o que pode parecer um ponto negativo diante da busca de exponencialidade nos projetos comerciais modernos, mas na verdade não é uma fraqueza, visto que o objetivo é atrair pessoas diretamente ao local, visando fomentar o fluxo de clientes em ambientes agregados que comercializam outros tipos de produtos ou serviços. Em tese, é possível habilitar o projeto para que funcione de forma remota mediante pagamento de taxa de uso e o cliente aguardando em uma fila de espera virtual, dependendo da estratégia do empresário e de sua visão de negócios.
+            </p>
+
+            <h3 data-i18n="architecture.structure.title">Estrutura</h3>
+            <p data-i18n="architecture.structure.description1">
+                A estrutura básica pode ser construída com peças usinadas em metal, partes plásticas impressas e chapas de materiais como acrílico, especialmente para o tanque de água. Outros materiais podem ser usados para aumentar o realismo, embora seja recomendado usar apenas materiais sintéticos que simulem os ambientes, garantindo maior facilidade para montar e desmontar a estrutura.
+            </p>
+            <ul>
+                <li data-i18n="architecture.structure.item1">Árvores em plástico, musgo artificial, pedras sintéticas</li>
+                <li data-i18n="architecture.structure.item2">Edifícios feitos com plástico ou madeira balsa</li>
+                <li data-i18n="architecture.structure.item3">Extensa parte eletrônica para controlar elementos do cenário, incluindo placas de controle, LEDs, sensores, motores, bombas e atuadores de diversos tipos</li>
+            </ul>
+            <p data-i18n="architecture.structure.description2">
+                O maior desafio tecnológico são os veículos. Eles precisam ter recursos de locomoção e direção, sistema de radiofrequência para receber e enviar informações, microcâmeras (pelo menos uma na frente e outra atrás), sistema de iluminação própria, energia e backup de energia, e ainda um modo padrão via firmware que permita retornar à base em caso de defeito.
+            </p>
+
+            <h3 data-i18n="architecture.flow.title">Fluxo de Operação</h3>
+            <p data-i18n="architecture.flow.description1">
+                O usuário interage com os modelos por meio de óculos com tela e um controle. Os óculos permitem visualizar as imagens das câmeras de forma simultânea ou selecionando uma delas como principal. O controle permite controlar os veículos, com opções de direção (frente, esquerda, direita, trás, cima e baixo no caso do veículo submersível), aceleração, freio e controle de iluminação.
+            </p>
+            <p data-i18n="architecture.flow.description2">
+                Como o cenário é aberto, outras pessoas podem observar a movimentação dos veículos. Os ambientes simulados (cidade, off-road e aquático) não são estáticos, apresentando algum nível de automação como luzes que podem acender e apagar, pontos de elevação que podem subir, túneis que podem ser abertos ou fechados, correntes de água no ambiente submarino, semáforos na cidade e rios que sobem repentinamente no off-road.
+            </p>
+            <p data-i18n="architecture.flow.description3">
+                A operação de resgate para veículos que fiquem travados em algum ponto da maquete pode ser feita por uma pessoa responsável por controlar a operação ou de forma automatizada e remota com veículos criados especialmente para essa finalidade.
+            </p>
+        </section>
+
+        <!-- Pré-requisitos -->
+        <section id="prerequisites" class="section">
+            <h2 data-i18n="prerequisites.title">Pré-requisitos</h2>
+            <p data-i18n="prerequisites.description1">
+                Por ser um projeto multidisciplinar, o requisito principal é investimento financeiro amplo ou então uma equipe de pessoas especializadas em cada área demandada pelo projeto.
+            </p>
+            <p data-i18n="prerequisites.description2">
+                Trata-se de um projeto com muitas partes de hardware, bastante software e elementos de arte representados pelas partes impressas em plástico que simulam elementos do mundo real. O ideal é criar protótipos conceituais para apresentação a investidores, com opção por protótipo inteiramente virtual ou maquete física com dimensões e funcionalidades reduzidas.
+            </p>
+            <p data-i18n="prerequisites.description3">
+                Fazer uma apresentação virtual em vídeo usando IA pode ser uma boa opção. Eventuais patentes podem ser aplicadas à ideia como um todo ou em partes específicas. Outra opção é atuar em apenas uma das partes do projeto e oferecer a investidores essa parte específica, sendo eles responsáveis por buscar empresas ou indivíduos que desenvolvam o restante.
+            </p>
+        </section>
+
+        <!-- Monetização -->
+        <section id="monetization" class="section">
+            <h2 data-i18n="monetization.title">Monetização</h2>
+            
+            <h3 data-i18n="monetization.direct.title">Direta</h3>
+            <ul>
+                <li data-i18n="monetization.direct.item1">Venda de tempo de uso da plataforma - pessoas podem usar o 3GTO por um determinado tempo e eventualmente receber uma bonificação também em tempo caso vençam uma prova.</li>
+                <li data-i18n="monetization.direct.item2">Venda de veículos para interessados.</li>
+                <li data-i18n="monetization.direct.item3">Venda de cópias da plataforma inteira.</li>
+            </ul>
+
+            <h3 data-i18n="monetization.indirect.title">Indireta</h3>
+            <ul>
+                <li data-i18n="monetization.indirect.item1">Publicidade veiculada nas maquetes.</li>
+                <li data-i18n="monetization.indirect.item2">Publicação de vídeos no YouTube com alguém pilotando os veículos pela maquete.</li>
+            </ul>
+
+            <h3 data-i18n="monetization.customization.title">Personalização</h3>
+            <p data-i18n="monetization.customization.description">
+                Dar nome para algo como "3GTO Edição Especial" e oferecer uma maquete com apenas um dos ambientes (cidade, por exemplo), porém bem mais amplo que originalmente imaginado. Em vez de usar veículos capazes de se mover livremente, oferecer opções de circular por trilhos (mesmo que aquáticos), permitindo um público mais jovem e tornando o desenvolvimento do hardware mais simples.
+            </p>
+
+            <h3 data-i18n="monetization.reinterpretation.title">Reinterpretação</h3>
+            <p data-i18n="monetization.reinterpretation.description">
+                Podem ser criadas versões inteiramente virtuais, garantindo exponencialidade, ganho de escala e uso em plataformas variadas, até mesmo redes sociais e apps para smartphone. Outra opção é criar maquetes ainda mais complexas, com múltiplos níveis de altura e divididos em camadas, permitindo que mais pessoas joguem simultaneamente.
+            </p>
+        </section>
+
+        <!-- Segurança -->
+        <section id="security" class="section">
+            <h2 data-i18n="security.title">Segurança e Compliance</h2>
+            <h3 data-i18n="security.safety.title">Segurança Física</h3>
+            <ul>
+                <li data-i18n="security.safety.item1">Maquete com estrutura bem construída e estável.</li>
+                <li data-i18n="security.safety.item2">Uso de baixa tensão em todo o projeto com proteção contra choques.</li>
+                <li data-i18n="security.safety.item3">Veículos com sensores e firmware para evitar choques propositais.</li>
+                <li data-i18n="security.safety.item4">Opção de tela externa para pessoas sensíveis ao uso de óculos.</li>
+            </ul>
+
+            <h3 data-i18n="security.legal.title">Aspectos Legais</h3>
+            <ul>
+                <li data-i18n="security.legal.item1">Pesquisa da legislação local sobre aspectos relevantes.</li>
+                <li data-i18n="security.legal.item2">Conformidade com normas de segurança para equipamentos de entretenimento.</li>
+                <li data-i18n="security.legal.item3">Políticas de privacidade para coleta de dados (se aplicável).</li>
+            </ul>
+
+            <h3 data-i18n="security.ethics.title">Ética</h3>
+            <p data-i18n="security.ethics.description">
+                O projeto deve ser desenvolvido considerando aspectos éticos em relação ao público-alvo, garantindo uma experiência segura e inclusiva para todos os usuários, independentemente da idade ou habilidade.
+            </p>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p><a href="#" data-i18n="footer.author">By DealeGear</a></p>
+    </footer>
+
+    <script>
+        // ===== Objeto de Traduções =====
+        const translations = {
+            pt: {
+                'header.title': '3GTO — Documentação Técnica',
+                'sidebar.github': 'GitHub',
+                'sidebar.language': 'Idioma',
+                'sidebar.navigation': 'Navegação',
+                'sidebar.landpage':' Landpage',
+                'nav.overview': 'Visão Geral',
+                'nav.target': 'Público-alvo',
+                'nav.benefits': 'Benefícios',
+                'nav.architecture': 'Arquitetura',
+                'nav.prerequisites': 'Pré-requisitos',
+                'nav.monetization': 'Monetização',
+                'nav.security': 'Segurança',
+                'overview.title': 'Visão Geral',
+                'overview.imagePlaceholder': 'Espaço para imagem do projeto 3GTO',
+                'overview.description1': '3GTO é um jogo imersivo que utiliza como interfaces um óculos com tela LCD, um controle físico virtual e três modelos em miniatura: um carro adaptado para a cidade, um adaptado para pista de terra e obstáculos (como pedras e água), e outro adaptado para submergir em água.',
+                'overview.description2': 'O objetivo é simular os ambientes de cidade, trilha e subaquático, onde o usuário é imerso no jogo por meio de óculos com tela (possivelmente VR), enquanto os veículos são dotados de duas ou mais câmeras. Os jogadores escolhem um ambiente, selecionam um veículo e iniciam sua jornada com o objetivo de cumprir os trajetos nos três ambientes, vencendo obstáculos e chegando ao final no menor tempo possível.',
+                'target.title': 'Público-alvo',
+                'target.description1': 'O público-alvo principal são shoppings e outros pontos de entretenimento voltados principalmente para jovens e famílias. Os shoppings enfrentaram problemas nos últimos anos com queda no público que busca fazer compras, restando garantir o faturamento por meio da oferta de opções de alimentação, prestação de serviços e entretenimento.',
+                'target.description2': 'O público-alvo final inicial são jovens, mas é possível adaptar o projeto para atender um público mais amplo. Controlar os veículos pode requerer alguma habilidade ainda não desenvolvida em crianças muito jovens, assim como adultos podem não se sentir atraídos se os trajetos propostos forem muito curtos ou simples demais. A solução pode ser oferecer diferentes opções de trajeto e dotar os veículos de um modo semi-automático, o que poderia atrair um público mais amplo.',
+                'benefits.title': 'Benefícios',
+                'benefits.item1': 'Atração de público jovem para uma atividade presencial com potencial de gerar renda diretamente pelo aluguel de tempo no jogo.',
+                'benefits.item2': 'Geração indireta de receita por meio do consumo de outros produtos disponíveis no local.',
+                'benefits.item3': 'Plataforma que pode ser facilmente montada e desmontada para mudança de local ou ponto de venda.',
+                'benefits.item4': 'Estrutura durável, expansível e modificável.',
+                'benefits.item5': 'Investimento inicial pode ser alto, mas o custo de manutenção provavelmente é baixo, apesar de precisar ser especializado.',
+                'architecture.title': 'Arquitetura',
+                'architecture.scope.title': 'Alcance',
+                'architecture.scope.description': 'Este projeto não é exponencial, o que pode parecer um ponto negativo diante da busca de exponencialidade nos projetos comerciais modernos, mas na verdade não é uma fraqueza, visto que o objetivo é atrair pessoas diretamente ao local, visando fomentar o fluxo de clientes em ambientes agregados que comercializam outros tipos de produtos ou serviços. Em tese, é possível habilitar o projeto para que funcione de forma remota mediante pagamento de taxa de uso e o cliente aguardando em uma fila de espera virtual, dependendo da estratégia do empresário e de sua visão de negócios.',
+                'architecture.structure.title': 'Estrutura',
+                'architecture.structure.description1': 'A estrutura básica pode ser construída com peças usinadas em metal, partes plásticas impressas e chapas de materiais como acrílico, especialmente para o tanque de água. Outros materiais podem ser usados para aumentar o realismo, embora seja recomendado usar apenas materiais sintéticos que simulem os ambientes, garantindo maior facilidade para montar e desmontar a estrutura.',
+                'architecture.structure.item1': 'Árvores em plástico, musgo artificial, pedras sintéticas',
+                'architecture.structure.item2': 'Edifícios feitos com plástico ou madeira balsa',
+                'architecture.structure.item3': 'Extensa parte eletrônica para controlar elementos do cenário, incluindo placas de controle, LEDs, sensores, motores, bombas e atuadores de diversos tipos',
+                'architecture.structure.description2': 'O maior desafio tecnológico são os veículos. Eles precisam ter recursos de locomoção e direção, sistema de radiofrequência para receber e enviar informações, microcâmeras (pelo menos uma na frente e outra atrás), sistema de iluminação própria, energia e backup de energia, e ainda um modo padrão via firmware que permita retornar à base em caso de defeito.',
+                'architecture.flow.title': 'Fluxo de Operação',
+                'architecture.flow.description1': 'O usuário interage com os modelos por meio de óculos com tela e um controle. Os óculos permitem visualizar as imagens das câmeras de forma simultânea ou selecionando uma delas como principal. O controle permite controlar os veículos, com opções de direção (frente, esquerda, direita, trás, cima e baixo no caso do veículo submersível), aceleração, freio e controle de iluminação.',
+                'architecture.flow.description2': 'Como o cenário é aberto, outras pessoas podem observar a movimentação dos veículos. Os ambientes simulados (cidade, off-road e aquático) não são estáticos, apresentando algum nível de automação como luzes que podem acender e apagar, pontos de elevação que podem subir, túneis que podem ser abertos ou fechados, correntes de água no ambiente submarino, semáforos na cidade e rios que sobem repentinamente no off-road.',
+                'architecture.flow.description3': 'A operação de resgate para veículos que fiquem travados em algum ponto da maquete pode ser feita por uma pessoa responsável por controlar a operação ou de forma automatizada e remota com veículos criados especialmente para essa finalidade.',
+                'prerequisites.title': 'Pré-requisitos',
+                'prerequisites.description1': 'Por ser um projeto multidisciplinar, o requisito principal é investimento financeiro amplo ou então uma equipe de pessoas especializadas em cada área demandada pelo projeto.',
+                'prerequisites.description2': 'Trata-se de um projeto com muitas partes de hardware, bastante software e elementos de arte representados pelas partes impressas em plástico que simulam elementos do mundo real. O ideal é criar protótipos conceituais para apresentação a investidores, com opção por protótipo inteiramente virtual ou maquete física com dimensões e funcionalidades reduzidas.',
+                'prerequisites.description3': 'Fazer uma apresentação virtual em vídeo usando IA pode ser uma boa opção. Eventuais patentes podem ser aplicadas à ideia como um todo ou em partes específicas. Outra opção é atuar em apenas uma das partes do projeto e oferecer a investidores essa parte específica, sendo eles responsáveis por buscar empresas ou indivíduos que desenvolvam o restante.',
+                'monetization.title': 'Monetização',
+                'monetization.direct.title': 'Direta',
+                'monetization.direct.item1': 'Venda de tempo de uso da plataforma - pessoas podem usar o 3GTO por um determinado tempo e eventualmente receber uma bonificação também em tempo caso vençam uma prova.',
+                'monetization.direct.item2': 'Venda de veículos para interessados.',
+                'monetization.direct.item3': 'Venda de cópias da plataforma inteira.',
+                'monetization.indirect.title': 'Indireta',
+                'monetization.indirect.item1': 'Publicidade veiculada nas maquetes.',
+                'monetization.indirect.item2': 'Publicação de vídeos no YouTube com alguém pilotando os veículos pela maquete.',
+                'monetization.customization.title': 'Personalização',
+                'monetization.customization.description': 'Dar nome para algo como "3GTO Edição Especial" e oferecer uma maquete com apenas um dos ambientes (cidade, por exemplo), porém bem mais amplo que originalmente imaginado. Em vez de usar veículos capazes de se mover livremente, oferecer opções de circular por trilhos (mesmo que aquáticos), permitindo um público mais jovem e tornando o desenvolvimento do hardware mais simples.',
+                'monetization.reinterpretation.title': 'Reinterpretação',
+                'monetization.reinterpretation.description': 'Podem ser criadas versões inteiramente virtuais, garantindo exponencialidade, ganho de escala e uso em plataformas variadas, até mesmo redes sociais e apps para smartphone. Outra opção é criar maquetes ainda mais complexas, com múltiplos níveis de altura e divididos em camadas, permitindo que mais pessoas joguem simultaneamente.',
+                'security.title': 'Segurança e Compliance',
+                'security.safety.title': 'Segurança Física',
+                'security.safety.item1': 'Maquete com estrutura bem construída e estável.',
+                'security.safety.item2': 'Uso de baixa tensão em todo o projeto com proteção contra choques.',
+                'security.safety.item3': 'Veículos com sensores e firmware para evitar choques propositais.',
+                'security.safety.item4': 'Opção de tela externa para pessoas sensíveis ao uso de óculos.',
+                'security.legal.title': 'Aspectos Legais',
+                'security.legal.item1': 'Pesquisa da legislação local sobre aspectos relevantes.',
+                'security.legal.item2': 'Conformidade com normas de segurança para equipamentos de entretenimento.',
+                'security.legal.item3': 'Políticas de privacidade para coleta de dados (se aplicável).',
+                'security.ethics.title': 'Ética',
+                'security.ethics.description': 'O projeto deve ser desenvolvido considerando aspectos éticos em relação ao público-alvo, garantindo uma experiência segura e inclusiva para todos os usuários, independentemente da idade ou habilidade.',
+                'footer.author': 'By DealeGear'
+            },
+            en: {
+                'header.title': '3GTO — Technical Documentation',
+                'sidebar.github': 'GitHub',
+                'sidebar.language': 'Language',
+                'sidebar.navigation': 'Navigation',
+                'sidebar.landpage':' Landpage',
+                'nav.overview': 'Overview',
+                'nav.target': 'Target Audience',
+                'nav.benefits': 'Benefits',
+                'nav.architecture': 'Architecture',
+                'nav.prerequisites': 'Prerequisites',
+                'nav.monetization': 'Monetization',
+                'nav.security': 'Security',
+                'overview.title': 'Overview',
+                'overview.imagePlaceholder': 'Space for 3GTO project image',
+                'overview.description1': '3GTO is an immersive game that uses interfaces including LCD screen glasses, a physical virtual controller, and three miniature models: a car adapted for the city, one adapted for dirt tracks and obstacles (like rocks and water), and another adapted to submerge in water.',
+                'overview.description2': 'The objective is to simulate city, trail, and underwater environments, where the user is immersed in the game through screen glasses (possibly VR), while the vehicles are equipped with two or more cameras. Players choose an environment, select a vehicle, and start their journey with the goal of completing the routes in all three environments, overcoming obstacles and reaching the end in the shortest possible time.',
+                'target.title': 'Target Audience',
+                'target.description1': 'The main target audience are shopping malls and other entertainment venues mainly aimed at young people and families. Shopping malls have faced problems in recent years with a decline in the public seeking to make purchases, leaving them to guarantee revenue through offering food options, service provision, and entertainment.',
+                'target.description2': 'The initial final target audience are young people, but it is possible to adapt the project to serve a broader audience. Controlling the vehicles may require some skill not yet developed in very young children, just as adults may not feel attracted if the proposed routes are too short or simple. The solution could be to offer different route options and equip vehicles with a semi-automatic mode, which could attract a broader audience.',
+                'benefits.title': 'Benefits',
+                'benefits.item1': 'Attraction of young audience for a face-to-face activity with potential to generate income directly through game time rental.',
+                'benefits.item2': 'Indirect revenue generation through consumption of other products available at the location.',
+                'benefits.item3': 'Platform that can be easily assembled and disassembled for location change or point of sale.',
+                'benefits.item4': 'Durable, expandable, and modifiable structure.',
+                'benefits.item5': 'Initial investment may be high, but maintenance cost is probably low, despite needing to be specialized.',
+                'architecture.title': 'Architecture',
+                'architecture.scope.title': 'Scope',
+                'architecture.scope.description': 'This project is not exponential, which may seem like a negative point given the search for exponentiality in modern commercial projects, but it is not actually a weakness, since the objective is to attract people directly to the location, aiming to foster customer flow in aggregated environments that commercialize other types of products or services. In theory, it is possible to enable the project to work remotely through payment of a usage fee and the customer waiting in a virtual waiting queue, depending on the entrepreneur\'s strategy and business vision.',
+                'architecture.structure.title': 'Structure',
+                'architecture.structure.description1': 'The basic structure can be built with machined metal parts, printed plastic parts, and sheets of materials like acrylic, especially for the water tank. Other materials can be used to increase realism, although it is recommended to use only synthetic materials that simulate the environments, ensuring greater ease for assembling and disassembling the structure.',
+                'architecture.structure.item1': 'Plastic trees, artificial moss, synthetic rocks',
+                'architecture.structure.item2': 'Buildings made of plastic or balsa wood',
+                'architecture.structure.item3': 'Extensive electronic part to control scenery elements, including control boards, LEDs, sensors, motors, pumps, and various types of actuators',
+                'architecture.structure.description2': 'The biggest technological challenge is the vehicles. They need to have locomotion and steering resources, radio frequency system to receive and send information, micro cameras (at least one in front and one behind), their own lighting system, power and energy backup, and also a standard mode via firmware that allows returning to base in case of failure.',
+                'architecture.flow.title': 'Operation Flow',
+                'architecture.flow.description1': 'The user interacts with the models through screen glasses and a controller. The glasses allow viewing camera images simultaneously or selecting one as main. The controller allows controlling the vehicles, with steering options (forward, left, right, back, up and down in the case of the submersible vehicle), acceleration, brake, and lighting control.',
+                'architecture.flow.description2': 'As the scenery is open, other people can observe the movement of the vehicles. The simulated environments (city, off-road, and aquatic) are not static, presenting some level of automation such as lights that can turn on and off, lifting points that can rise, tunnels that can be opened or closed, water currents in the underwater environment, traffic lights in the city, and rivers that suddenly rise in off-road.',
+                'architecture.flow.description3': 'The rescue operation for vehicles that get stuck at some point in the model can be done by a person responsible for controlling the operation or in an automated and remote way with vehicles created specifically for this purpose.',
+                'prerequisites.title': 'Prerequisites',
+                'prerequisites.description1': 'Being a multidisciplinary project, the main requirement is broad financial investment or a team of people specialized in each area demanded by the project.',
+                'prerequisites.description2': 'This is a project with many hardware parts, quite a bit of software, and art elements represented by plastic printed parts that simulate real-world elements. The ideal is to create conceptual prototypes for presentation to investors, with the option of an entirely virtual prototype or a physical model with reduced dimensions and functionalities.',
+                'prerequisites.description3': 'Making a virtual video presentation using AI can be a good option. Possible patents can be applied to the idea as a whole or in specific parts. Another option is to act in only one part of the project and offer investors that specific part, with them being responsible for seeking companies or individuals who develop the rest.',
+                'monetization.title': 'Monetization',
+                'monetization.direct.title': 'Direct',
+                'monetization.direct.item1': 'Sale of platform usage time - people can use 3GTO for a certain time and eventually receive a bonus also in time if they win a test.',
+                'monetization.direct.item2': 'Sale of vehicles to interested parties.',
+                'monetization.direct.item3': 'Sale of copies of the entire platform.',
+                'monetization.indirect.title': 'Indirect',
+                'monetization.indirect.item1': 'Advertising displayed on the models.',
+                'monetization.indirect.item2': 'Publication of videos on YouTube with someone piloting the vehicles through the model.',
+                'monetization.customization.title': 'Customization',
+                'monetization.customization.description': 'Naming something like "3GTO Special Edition" and offering a model with only one of the environments (city, for example), but much broader than originally imagined. Instead of using freely moving vehicles, offer options to circulate on rails (even if aquatic), allowing a younger audience and making hardware development simpler.',
+                'monetization.reinterpretation.title': 'Reinterpretation',
+                'monetization.reinterpretation.description': 'Entirely virtual versions can be created, guaranteeing exponentiality, scale gain, and use on varied platforms, even social networks and smartphone apps. Another option is to create even more complex models, with multiple height levels and divided into layers, allowing more people to play simultaneously.',
+                'security.title': 'Security and Compliance',
+                'security.safety.title': 'Physical Security',
+                'security.safety.item1': 'Model with well-built and stable structure.',
+                'security.safety.item2': 'Use of low voltage throughout the project with shock protection.',
+                'security.safety.item3': 'Vehicles with sensors and firmware to avoid intentional collisions.',
+                'security.safety.item4': 'External screen option for people sensitive to wearing glasses.',
+                'security.legal.title': 'Legal Aspects',
+                'security.legal.item1': 'Research of local legislation on relevant aspects.',
+                'security.legal.item2': 'Compliance with safety standards for entertainment equipment.',
+                'security.legal.item3': 'Privacy policies for data collection (if applicable).',
+                'security.ethics.title': 'Ethics',
+                'security.ethics.description': 'The project must be developed considering ethical aspects in relation to the target audience, ensuring a safe and inclusive experience for all users, regardless of age or ability.',
+                'footer.author': 'By DealeGear'
+            },
+            es: {
+                'header.title': '3GTO — Documentación Técnica',
+                'sidebar.github': 'GitHub',
+                'sidebar.language': 'Idioma',
+                'sidebar.navigation': 'Navegación',
+                'sidebar.landpage':' Landpage',
+                'nav.overview': 'Visión General',
+                'nav.target': 'Público Objetivo',
+                'nav.benefits': 'Beneficios',
+                'nav.architecture': 'Arquitectura',
+                'nav.prerequisites': 'Prerrequisitos',
+                'nav.monetization': 'Monetización',
+                'nav.security': 'Seguridad',
+                'overview.title': 'Visión General',
+                'overview.imagePlaceholder': 'Espacio para imagen del proyecto 3GTO',
+                'overview.description1': '3GTO es un juego inmersivo que utiliza como interfaces unas gafas con pantalla LCD, un control físico virtual y tres modelos en miniatura: un coche adaptado para la ciudad, uno adaptado para pistas de tierra y obstáculos (como rocas y agua), y otro adaptado para sumergirse en agua.',
+                'overview.description2': 'El objetivo es simular los ambientes de ciudad, sendero y subacuático, donde el usuario se sumerge en el juego a través de gafas con pantalla (posiblemente VR), mientras que los vehículos están equipados con dos o más cámaras. Los jugadores eligen un ambiente, seleccionan un vehículo e inician su viaje con el objetivo de completar las rutas en los tres ambientes, superando obstáculos y llegando al final en el menor tiempo posible.',
+                'target.title': 'Público Objetivo',
+                'target.description1': 'El público objetivo principal son centros comerciales y otros lugares de entretenimiento dirigidos principalmente a jóvenes y familias. Los centros comerciales han enfrentado problemas en los últimos años con la disminución del público que busca hacer compras, quedando garantizar los ingresos a través de la oferta de opciones de alimentación, prestación de servicios y entretenimiento.',
+                'target.description2': 'El público objetivo final inicial son los jóvenes, pero es posible adaptar el proyecto para servir a un público más amplio. Controlar los vehículos puede requerir alguna habilidad aún no desarrollada en niños muy pequeños, así como los adultos pueden no sentirse atraídos si las rutas propuestas son demasiado cortas o simples. La solución podría ser ofrecer diferentes opciones de ruta y equipar los vehículos con un modo semiautomático, lo que podría atraer a un público más amplio.',
+                'benefits.title': 'Beneficios',
+                'benefits.item1': 'Atracción de público joven para una actividad presencial con potencial de generar ingresos directamente mediante el alquiler de tiempo en el juego.',
+                'benefits.item2': 'Generación indirecta de ingresos a través del consumo de otros productos disponibles en el lugar.',
+                'benefits.item3': 'Plataforma que puede ser fácilmente ensamblada y desensamblada para cambiar de ubicación o punto de venta.',
+                'benefits.item4': 'Estructura duradera, expandible y modificable.',
+                'benefits.item5': 'La inversión inicial puede ser alta, pero el costo de mantenimiento probablemente es bajo, a pesar de necesitar ser especializado.',
+                'architecture.title': 'Arquitectura',
+                'architecture.scope.title': 'Alcance',
+                'architecture.scope.description': 'Este proyecto no es exponencial, lo que puede parecer un punto negativo dada la búsqueda de exponencialidad en los proyectos comerciales modernos, pero en realidad no es una debilidad, ya que el objetivo es atraer personas directamente al lugar, buscando fomentar el flujo de clientes en ambientes agregados que comercializan otros tipos de productos o servicios. En teoría, es posible habilitar el proyecto para que funcione de forma remota mediante el pago de una tarifa de uso y el cliente esperando en una cola de espera virtual, dependiendo de la estrategia del empresario y su visión de negocio.',
+                'architecture.structure.title': 'Estructura',
+                'architecture.structure.description1': 'La estructura básica puede construirse con piezas mecanizadas en metal, partes de plástico impresas y láminas de materiales como acrílico, especialmente para el tanque de agua. Se pueden usar otros materiales para aumentar el realismo, aunque se recomienda usar solo materiales sintéticos que simulen los ambientes, garantizando mayor facilidad para montar y desmontar la estructura.',
+                'architecture.structure.item1': 'Árboles de plástico, musgo artificial, rocas sintéticas',
+                'architecture.structure.item2': 'Edificios hechos de plástico o madera de balsa',
+                'architecture.structure.item3': 'Extensa parte electrónica para controlar elementos del escenario, incluyendo placas de control, LEDs, sensores, motores, bombas y varios tipos de actuadores',
+                'architecture.structure.description2': 'El mayor desafío tecnológico son los vehículos. Necesitan tener recursos de locomoción y dirección, sistema de radiofrecuencia para recibir y enviar información, microcámaras (al menos una al frente y otra atrás), sistema de iluminación propio, energía y respaldo de energía, y también un modo estándar vía firmware que permita regresar a la base en caso de falla.',
+                'architecture.flow.title': 'Flujo de Operación',
+                'architecture.flow.description1': 'El usuario interactúa con los modelos a través de gafas con pantalla y un control. Las gafas permiten ver las imágenes de las cámaras simultáneamente o seleccionando una como principal. El control permite controlar los vehículos, con opciones de dirección (adelante, izquierda, derecha, atrás, arriba y abajo en el caso del vehículo sumergible), aceleración, freno y control de iluminación.',
+                'architecture.flow.description2': 'Como el escenario es abierto, otras personas pueden observar el movimiento de los vehículos. Los ambientes simulados (ciudad, todoterreno y acuático) no son estáticos, presentando algún nivel de automatización como luces que pueden encenderse y apagarse, puntos de elevación que pueden subir, túneles que pueden abrirse o cerrarse, corrientes de agua en el ambiente submarino, semáforos en la ciudad y ríos que suben repentinamente en el todoterreno.',
+                'architecture.flow.description3': 'La operación de rescate para vehículos que queden atrapados en algún punto de la maqueta puede ser realizada por una persona responsable de controlar la operación o de forma automatizada y remota con vehículos creados específicamente para este propósito.',
+                'prerequisites.title': 'Prerrequisitos',
+                'prerequisites.description1': 'Siendo un proyecto multidisciplinario, el requisito principal es una amplia inversión financiera o un equipo de personas especializadas en cada área demandada por el proyecto.',
+                'prerequisites.description2': 'Se trata de un proyecto con muchas partes de hardware, bastante software y elementos de arte representados por partes impresas en plástico que simulan elementos del mundo real. Lo ideal es crear prototipos conceptuales para presentación a inversores, con opción de prototipo enteramente virtual o maqueta física con dimensiones y funcionalidades reducidas.',
+                'prerequisites.description3': 'Hacer una presentación virtual en video usando IA puede ser una buena opción. Eventuales patentes pueden aplicarse a la idea como un todo o en partes específicas. Otra opción es actuar en solo una parte del proyecto y ofrecer a inversores esa parte específica, siendo ellos responsables de buscar empresas o individuos que desarrollen el resto.',
+                'monetization.title': 'Monetización',
+                'monetization.direct.title': 'Directa',
+                'monetization.direct.item1': 'Venta de tiempo de uso de la plataforma - las personas pueden usar 3GTO por un tiempo determinado y eventualmente recibir una bonificación también en tiempo si ganan una prueba.',
+                'monetization.direct.item2': 'Venta de vehículos a interesados.',
+                'monetization.direct.item3': 'Venta de copias de la plataforma completa.',
+                'monetization.indirect.title': 'Indirecta',
+                'monetization.indirect.item1': 'Publicidad exhibida en las maquetas.',
+                'monetization.indirect.item2': 'Publicación de videos en YouTube con alguien pilotando los vehículos a través de la maqueta.',
+                'monetization.customization.title': 'Personalización',
+                'monetization.customization.description': 'Nombrar algo como "3GTO Edición Especial" y ofrecer una maqueta con solo uno de los ambientes (ciudad, por ejemplo), pero mucho más amplio que originalmente imaginado. En lugar de usar vehículos capaces de moverse libremente, ofrecer opciones de circular por rieles (incluso si son acuáticos), permitiendo un público más joven y haciendo el desarrollo del hardware más simple.',
+                'monetization.reinterpretation.title': 'Reinterpretación',
+                'monetization.reinterpretation.description': 'Pueden crearse versiones enteramente virtuales, garantizando exponencialidad, ganancia de escala y uso en plataformas variadas, incluso redes sociales y aplicaciones para smartphone. Otra opción es crear maquetas aún más complejas, con múltiples niveles de altura y divididas en capas, permitiendo que más personas jueguen simultáneamente.',
+                'security.title': 'Seguridad y Cumplimiento',
+                'security.safety.title': 'Seguridad Física',
+                'security.safety.item1': 'Maqueta con estructura bien construida y estable.',
+                'security.safety.item2': 'Uso de baja tensión en todo el proyecto con protección contra choques.',
+                'security.safety.item3': 'Vehículos con sensores y firmware para evitar colisiones intencionales.',
+                'security.safety.item4': 'Opción de pantalla externa para personas sensibles al uso de gafas.',
+                'security.legal.title': 'Aspectos Legales',
+                'security.legal.item1': 'Investigación de la legislación local sobre aspectos relevantes.',
+                'security.legal.item2': 'Cumplimiento con normas de seguridad para equipos de entretenimiento.',
+                'security.legal.item3': 'Políticas de privacidad para recopilación de datos (si aplica).',
+                'security.ethics.title': 'Ética',
+                'security.ethics.description': 'El proyecto debe ser desarrollado considerando aspectos éticos en relación con el público objetivo, garantizando una experiencia segura e inclusiva para todos los usuarios, independientemente de la edad o habilidad.',
+                'footer.author': 'By DealeGear'
+            }
+        };
+
+        // ===== Variáveis Globais =====
+        let currentLang = 'pt';
+        let isMenuOpen = false;
+
+        // ===== Detecção de Idioma do Navegador =====
+        function detectBrowserLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const langCode = browserLang.split('-')[0];
+            
+            // Verifica se o idioma do navegador está disponível
+            if (translations[langCode]) {
+                return langCode;
+            }
+            return 'pt'; // Idioma padrão
+        }
+
+        // ===== Função de Troca de Idioma =====
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // Atualiza todos os elementos com atributo data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Atualiza o atributo lang do HTML
+            document.documentElement.lang = lang;
+            
+            // Atualiza o botão ativo
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Salva preferência no localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // ===== Controle do Menu Hambúrguer =====
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            const sidebar = document.getElementById('sidebar');
+            const hamburger = document.getElementById('hamburger');
+            const overlay = document.getElementById('overlay');
+            
+            if (isMenuOpen) {
+                sidebar.classList.add('active');
+                hamburger.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                sidebar.classList.remove('active');
+                hamburger.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ===== Navegação Suave =====
+        function smoothScroll(targetId) {
+            const target = document.querySelector(targetId);
+            if (target) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Atualiza o link ativo no menu
+                updateActiveNavLink(targetId);
+                
+                // Fecha o menu em mobile após clicar
+                if (window.innerWidth <= 768 && isMenuOpen) {
+                    toggleMenu();
+                }
+            }
+        }
+
+        // ===== Atualizar Link Ativo da Navegação =====
+        function updateActiveNavLink(targetId) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === targetId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // ===== Observador de Scroll para Atualizar Navegação =====
+        function setupScrollObserver() {
+            const sections = document.querySelectorAll('.section');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: `-${headerHeight + 50}px 0px -50% 0px`,
+                threshold: 0
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetId = `#${entry.target.id}`;
+                        updateActiveNavLink(targetId);
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // ===== Inicialização =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Detecta e define o idioma inicial
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const browserLang = detectBrowserLanguage();
+            const initialLang = savedLang || browserLang;
+            changeLanguage(initialLang);
+            
+            // Configura os botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                });
+            });
+            
+            // Configura o menu hambúrguer
+            const hamburger = document.getElementById('hamburger');
+            const overlay = document.getElementById('overlay');
+            
+            hamburger.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+            
+            // Configura a navegação
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    smoothScroll(targetId);
+                });
+            });
+            
+            // Configura o observador de scroll
+            setupScrollObserver();
+            
+            // Ajusta o menu ao redimensionar a janela
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isMenuOpen) {
+                    toggleMenu();
+                }
+            });
+            
+            // Previne scroll no body quando menu está aberto em mobile
+            document.addEventListener('touchmove', function(e) {
+                if (isMenuOpen && window.innerWidth <= 768) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stairs - Suba os degraus do conhecimento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <!-- Tela de Abertura (Splash Screen) -->
+    <div id="splash-screen" class="screen active">
+        <div class="splash-container">
+            <div class="logo">
+                <i class="fa fa-stairs"></i>
+            </div>
+            <h1>Stairs</h1>
+            <p>Suba os degraus do conhecimento</p>
+        </div>
+    </div>
+
+    <!-- Tela de Login / Cadastro -->
+    <div id="login-screen" class="screen">
+        <div class="login-container">
+            <div class="logo">
+                <i class="fa fa-stairs"></i>
+                <h1>Stairs</h1>
+            </div>
+            <h2>Bem-vindo de volta!</h2>
+            
+            <div class="login-options">
+                <button class="btn btn-google">
+                    <i class="fab fa-google"></i> Entrar com Google
+                </button>
+                <button class="btn btn-facebook">
+                    <i class="fab fa-facebook-f"></i> Entrar com Facebook
+                </button>
+            </div>
+            
+            <div class="divider">
+                <span>ou</span>
+            </div>
+            
+            <button class="btn btn-email" onclick="showScreen('email-login-screen')">
+                <i class="far fa-envelope"></i> Entrar com e-mail
+            </button>
+            
+            <button class="btn btn-guest" onclick="showScreen('home-screen')">
+                Entrar como convidado
+            </button>
+            
+            <p class="signup-link">Não tem uma conta? <a href="#">Cadastre-se</a></p>
+        </div>
+    </div>
+
+    <!-- Tela de Login com E-mail -->
+    <div id="email-login-screen" class="screen">
+        <div class="login-container">
+            <div class="back-btn" onclick="showScreen('login-screen')">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            
+            <div class="logo">
+                <i class="fa fa-stairs"></i>
+                <h1>Stairs</h1>
+            </div>
+            
+            <h2>Entrar com e-mail</h2>
+            
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="••••••••">
+                </div>
+                
+                <button type="button" class="btn btn-primary" onclick="showScreen('home-screen')">
+                    Entrar
+                </button>
+                
+                <p class="forgot-password"><a href="#">Esqueceu sua senha?</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tela Inicial (Home) -->
+    <div id="home-screen" class="screen">
+        <div class="home-container">
+            <header class="app-header">
+                <div class="logo">
+                    <i class="fa fa-stairs"></i>
+                    <span>Stairs</span>
+                </div>
+                <div class="profile-icon" onclick="showScreen('profile-screen')">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="progress-container">
+                <div class="progress-text">Degrau <span id="current-step">2</span> de <span id="total-steps">6</span></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 33%"></div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <h3>Continue sua jornada</h3>
+                <div class="lesson-info">
+                    <div class="lesson-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="lesson-details">
+                        <h4>Estruturação de Projetos</h4>
+                        <p>5 exercícios restantes</p>
+                    </div>
+                    <button class="btn-play" onclick="showScreen('lesson-screen')">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <h3 class="modules-title">Seus degraus</h3>
+            
+            <div class="modules-container">
+                <div class="module completed">
+                    <div class="module-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="module-info">
+                        <h4>Degrau 1</h4>
+                        <p>Fundamentos Cognitivos</p>
+                    </div>
+                    <div class="module-status">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                
+                <div class="module current">
+                    <div class="module-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="module-info">
+                        <h4>Degrau 2</h4>
+                        <p>Estruturação de Projetos</p>
+                    </div>
+                    <div class="module-status">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                </div>
+                
+                <div class="module locked">
+                    <div class="module-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="module-info">
+                        <h4>Degrau 3</h4>
+                        <p>Comunicação</p>
+                    </div>
+                    <div class="module-status">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                
+                <div class="module locked">
+                    <div class="module-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="module-info">
+                        <h4>Degrau 4</h4>
+                        <p>Ferramentas Digitais</p>
+                    </div>
+                    <div class="module-status">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                
+                <div class="module locked">
+                    <div class="module-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="module-info">
+                        <h4>Degrau 5</h4>
+                        <p>Interdisciplinares</p>
+                    </div>
+                    <div class="module-status">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                
+                <div class="module locked">
+                    <div class="module-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="module-info">
+                        <h4>Degrau 6</h4>
+                        <p>Trilhas Avançadas</p>
+                    </div>
+                    <div class="module-status">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu Hambúrguer (Mobile) -->
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <div class="side-menu" id="side-menu">
+            <div class="menu-header">
+                <div class="logo">
+                    <i class="fa fa-stairs"></i>
+                    <span>Stairs</span>
+                </div>
+                <div class="close-menu" onclick="toggleMenu()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <ul class="menu-items">
+                <li><a href="#" onclick="showScreen('home-screen'); toggleMenu();"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#" onclick="showScreen('modules-screen'); toggleMenu();"><i class="fas fa-th-large"></i> Módulos</a></li>
+                <li><a href="#" onclick="showScreen('profile-screen'); toggleMenu();"><i class="fas fa-user"></i> Perfil</a></li>
+                <li><a href="#" onclick="showScreen('settings-screen'); toggleMenu();"><i class="fas fa-cog"></i> Configurações</a></li>
+                <li><a href="#" onclick="showScreen('help-screen'); toggleMenu();"><i class="fas fa-question-circle"></i> Ajuda</a></li>
+            </ul>
+        </div>
+        
+        <!-- Footer Navegação -->
+        <div class="bottom-nav">
+            <a href="#" class="nav-item active" onclick="showScreen('home-screen')">
+                <i class="fas fa-home"></i>
+                <span>Início</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('modules-screen')">
+                <i class="fas fa-th-large"></i>
+                <span>Degraus</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('ranking-screen')">
+                <i class="fas fa-trophy"></i>
+                <span>Ranking</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+            <a href="../../stairs/index.html" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../../../index.html" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-gear"></i>
+                <span>GearLabs</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Tela de Lição -->
+    <div id="lesson-screen" class="screen">
+        <div class="lesson-container">
+            <div class="lesson-header">
+                <div class="back-btn" onclick="showScreen('home-screen')">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="lesson-progress">
+                    <div class="progress-text">Exercício <span id="current-exercise">1</span> de <span id="total-exercises">5</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-content">
+                <div class="lesson-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                
+                <h2>Estruturação de Projetos</h2>
+                
+                <div class="question-container">
+                    <h3>Qual é o primeiro passo na estruturação de um projeto?</h3>
+                    
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(this, false)">
+                            <span>A</span>
+                            <p>Definir o orçamento</p>
+                        </div>
+                        <div class="option" onclick="selectOption(this, true)">
+                            <span>B</span>
+                            <p>Identificar os objetivos</p>
+                        </div>
+                        <div class="option" onclick="selectOption(this, false)">
+                            <span>C</span>
+                            <p>Montar a equipe</p>
+                        </div>
+                        <div class="option" onclick="selectOption(this, false)">
+                            <span>D</span>
+                            <p>Definir prazos</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="submit-answer" disabled onclick="checkAnswer()">
+                        Verificar resposta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela de Conclusão de Lição -->
+    <div id="lesson-complete-screen" class="screen">
+        <div class="complete-container">
+            <div class="complete-animation">
+                <div class="star-animation">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stair-icon">
+                    <i class="fa fa-stairs"></i>
+                </div>
+            </div>
+            
+            <h2>Parabéns!</h2>
+            <p>Você subiu mais um degrau!</p>
+            
+            <div class="score-container">
+                <div class="score-item">
+                    <i class="fas fa-star"></i>
+                    <span>3/5 estrelas</span>
+                </div>
+                <div class="score-item">
+                    <i class="fas fa-coins"></i>
+                    <span>+50 XP</span>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="showScreen('home-screen')">
+                Continuar
+            </button>
+            
+            <button class="btn btn-secondary" onclick="showScreen('home-screen')">
+                Ver próximo degrau
+            </button>
+        </div>
+    </div>
+
+    <!-- Tela de Módulos -->
+    <div id="modules-screen" class="screen">
+        <div class="modules-view-container">
+            <header class="app-header">
+                <div class="back-btn" onclick="showScreen('home-screen')">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <h1>Degraus</h1>
+                <div class="profile-icon" onclick="showScreen('profile-screen')">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="progress-container">
+                <div class="progress-text">Degrau <span id="current-step-modules">2</span> de <span id="total-steps-modules">6</span></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 33%"></div>
+                </div>
+            </div>
+            
+            <div class="modules-grid">
+                <div class="module-card completed">
+                    <div class="module-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Degrau 1</h3>
+                    <p>Fundamentos Cognitivos</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <span>100% completo</span>
+                    </div>
+                </div>
+                
+                <div class="module-card current">
+                    <div class="module-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Degrau 2</h3>
+                    <p>Estruturação de Projetos</p>
+                    <div class="module-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                        <span>40% completo</span>
+                    </div>
+                </div>
+                
+                <div class="module-card locked">
+                    <div class="module-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Degrau 3</h3>
+                    <p>Comunicação</p>
+                    <div class="module-lock">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                
+                <div class="module-card locked">
+                    <div class="module-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Degrau 4</h3>
+                    <p>Ferramentas Digitais</p>
+                    <div class="module-lock">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                
+                <div class="module-card locked">
+                    <div class="module-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Degrau 5</h3>
+                    <p>Interdisciplinares</p>
+                    <div class="module-lock">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                
+                <div class="module-card locked">
+                    <div class="module-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Degrau 6</h3>
+                    <p>Trilhas Avançadas</p>
+                    <div class="module-lock">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Navegação -->
+        <div class="bottom-nav">
+            <a href="#" class="nav-item" onclick="showScreen('home-screen')">
+                <i class="fas fa-home"></i>
+                <span>Início</span>
+            </a>
+            <a href="#" class="nav-item active" onclick="showScreen('modules-screen')">
+                <i class="fas fa-th-large"></i>
+                <span>Degraus</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('ranking-screen')">
+                <i class="fas fa-trophy"></i>
+                <span>Ranking</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+            <a href="../../stairs/index.html" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../../../index.html" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-gear"></i>
+                <span>GearLabs</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Tela de Ranking -->
+    <div id="ranking-screen" class="screen">
+        <div class="ranking-container">
+            <header class="app-header">
+                <div class="back-btn" onclick="showScreen('home-screen')">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <h1>Ranking</h1>
+                <div class="profile-icon" onclick="showScreen('profile-screen')">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="ranking-tabs">
+                <button class="tab active">Amigos</button>
+                <button class="tab">Global</button>
+                <button class="tab">Semanal</button>
+            </div>
+            
+            <div class="ranking-list">
+                <div class="ranking-item first">
+                    <div class="ranking-position">1</div>
+                    <div class="ranking-avatar">
+                        <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="Avatar">
+                    </div>
+                    <div class="ranking-info">
+                        <h4>Carlos Silva</h4>
+                        <div class="ranking-stats">
+                            <span><i class="fas fa-fire"></i> 15 dias</span>
+                            <span><i class="fas fa-coins"></i> 1250 XP</span>
+                        </div>
+                    </div>
+                    <div class="ranking-trophy">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+                
+                <div class="ranking-item second">
+                    <div class="ranking-position">2</div>
+                    <div class="ranking-avatar">
+                        <img src="https://picsum.photos/seed/user2/40/40.jpg" alt="Avatar">
+                    </div>
+                    <div class="ranking-info">
+                        <h4>Ana Costa</h4>
+                        <div class="ranking-stats">
+                            <span><i class="fas fa-fire"></i> 12 dias</span>
+                            <span><i class="fas fa-coins"></i> 980 XP</span>
+                        </div>
+                    </div>
+                    <div class="ranking-trophy">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                </div>
+                
+                <div class="ranking-item third">
+                    <div class="ranking-position">3</div>
+                    <div class="ranking-avatar">
+                        <img src="https://picsum.photos/seed/user3/40/40.jpg" alt="Avatar">
+                    </div>
+                    <div class="ranking-info">
+                        <h4>Roberto Santos</h4>
+                        <div class="ranking-stats">
+                            <span><i class="fas fa-fire"></i> 10 dias</span>
+                            <span><i class="fas fa-coins"></i> 850 XP</span>
+                        </div>
+                    </div>
+                    <div class="ranking-trophy">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                
+                <div class="ranking-item">
+                    <div class="ranking-position">4</div>
+                    <div class="ranking-avatar">
+                        <img src="https://picsum.photos/seed/user4/40/40.jpg" alt="Avatar">
+                    </div>
+                    <div class="ranking-info">
+                        <h4>Mariana Oliveira</h4>
+                        <div class="ranking-stats">
+                            <span><i class="fas fa-fire"></i> 8 dias</span>
+                            <span><i class="fas fa-coins"></i> 720 XP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ranking-item current-user">
+                    <div class="ranking-position">7</div>
+                    <div class="ranking-avatar">
+                        <img src="https://picsum.photos/seed/currentuser/40/40.jpg" alt="Avatar">
+                    </div>
+                    <div class="ranking-info">
+                        <h4>Você</h4>
+                        <div class="ranking-stats">
+                            <span><i class="fas fa-fire"></i> 5 dias</span>
+                            <span><i class="fas fa-coins"></i> 450 XP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Navegação -->
+        <div class="bottom-nav">
+            <a href="#" class="nav-item" onclick="showScreen('home-screen')">
+                <i class="fas fa-home"></i>
+                <span>Início</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('modules-screen')">
+                <i class="fas fa-th-large"></i>
+                <span>Degraus</span>
+            </a>
+            <a href="#" class="nav-item active" onclick="showScreen('ranking-screen')">
+                <i class="fas fa-trophy"></i>
+                <span>Ranking</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+            <a href="../../stairs/index.html" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../../../index.html" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-gear"></i>
+                <span>GearLabs</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Tela de Perfil -->
+    <div id="profile-screen" class="screen">
+        <div class="profile-container">
+            <header class="app-header">
+                <div class="back-btn" onclick="showScreen('home-screen')">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <h1>Perfil</h1>
+                <div class="settings-icon" onclick="showScreen('settings-screen')">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </header>
+            
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="https://picsum.photos/seed/currentuser/100/100.jpg" alt="Avatar">
+                </div>
+                <h2>João da Silva</h2>
+                <p>joao.silva@email.com</p>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-fire"></i>
+                        <span>5 dias</span>
+                        <p>Sequência</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-coins"></i>
+                        <span>450 XP</span>
+                        <p>Total</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>12</span>
+                        <p>Estrelas</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>Conquistas</h3>
+                <div class="achievements-grid">
+                    <div class="achievement unlocked">
+                        <i class="fas fa-star"></i>
+                        <p>Primeiros Passos</p>
+                    </div>
+                    <div class="achievement unlocked">
+                        <i class="fas fa-fire"></i>
+                        <p>3 dias seguidos</p>
+                    </div>
+                    <div class="achievement locked">
+                        <i class="fas fa-lock"></i>
+                        <p>5 dias seguidos</p>
+                    </div>
+                    <div class="achievement locked">
+                        <i class="fas fa-lock"></i>
+                        <p>10 estrelas</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>Degraus Concluídos</h3>
+                <div class="completed-modules">
+                    <div class="completed-module">
+                        <div class="module-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="module-info">
+                            <h4>Fundamentos Cognitivos</h4>
+                            <p>Concluído em 15/05/2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Navegação -->
+        <div class="bottom-nav">
+            <a href="#" class="nav-item" onclick="showScreen('home-screen')">
+                <i class="fas fa-home"></i>
+                <span>Início</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('modules-screen')">
+                <i class="fas fa-th-large"></i>
+                <span>Degraus</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('ranking-screen')">
+                <i class="fas fa-trophy"></i>
+                <span>Ranking</span>
+            </a>
+            <a href="#" class="nav-item active" onclick="showScreen('profile-screen')">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+            <a href="../../stairs/index.html" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../../../index.html" class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-gear"></i>
+                <span>GearLabs</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Tela de Configurações -->
+    <div id="settings-screen" class="screen">
+        <div class="settings-container">
+            <header class="app-header">
+                <div class="back-btn" onclick="showScreen('profile-screen')">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <h1>Configurações</h1>
+            </header>
+            
+            <div class="settings-section">
+                <h3>Conta</h3>
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <i class="fas fa-user"></i>
+                        <span>Editar perfil</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <i class="fas fa-lock"></i>
+                        <span>Alterar senha</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <i class="fas fa-bell"></i>
+                        <span>Notificações</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>Preferências</h3>
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <i class="fas fa-moon"></i>
+                        <span>Modo escuro</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <i class="fas fa-language"></i>
+                        <span>Idioma</span>
+                    </div>
+                    <span>Português (BR)</span>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>Suporte</h3>
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Ajuda</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Política de privacidade</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+            <button class="btn btn-logout">
+                Sair
+            </button>
+        </div>
+    </div>
+
+    <!-- Tela de Ajuda -->
+    <div id="help-screen" class="screen">
+        <div class="help-container">
+            <header class="app-header">
+                <div class="back-btn" onclick="showScreen('home-screen')">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <h1>Ajuda</h1>
+            </header>
+            
+            <div class="help-search">
+                <input type="text" placeholder="Como podemos ajudar?">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <div class="help-categories">
+                <div class="help-category">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Como usar o Stairs</h3>
+                    <p>Aprenda a navegar pelo aplicativo</p>
+                </div>
+                
+                <div class="help-category">
+                    <div class="category-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Sistema de recompensas</h3>
+                    <p>Entenda como ganhar XP e estrelas</p>
+                </div>
+                
+                <div class="help-category">
+                    <div class="category-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Comunidade</h3>
+                    <p>Conecte-se com outros usuários</p>
+                </div>
+                
+                <div class="help-category">
+                    <div class="category-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Reportar problemas</h3>
+                    <p>Encontrou um erro? Nos avise!</p>
+                </div>
+            </div>
+            
+            <div class="help-faq">
+                <h3>Perguntas frequentes</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Como resetar meu progresso?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para resetar seu progresso, acesse as configurações de conta e selecione "Resetar progresso". Atenção: esta ação não pode ser desfeita.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Posso usar o Stairs offline?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, você pode baixar as lições para uso offline. Basta acessar o módulo desejado e tocar no ícone de download.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-contact">
+                <h3>Ainda precisa de ajuda?</h3>
+                <p>Entre em contato com nossa equipe de suporte</p>
+                <button class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Enviar mensagem
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

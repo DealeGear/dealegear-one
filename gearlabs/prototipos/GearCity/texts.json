@@ -1,0 +1,254 @@
+{
+    "pt": {
+        "nav": {
+            "sobre": "Sobre",
+            "como_jogar": "Como Jogar",
+            "galeria": "Galeria",
+            "contato": "Contato"
+        },
+        "hero": {
+            "title": "GearCity",
+            "subtitle": "Um protótipo de simulação social e econômica",
+            "cta": "Explorar o Protótipo"
+        },
+        "about": {
+            "title": "Sobre o Projeto",
+            "text": "GearCity é um protótipo de jogo onde cada jogador assume um papel (empregado, empresário, prefeito, etc.) e ajuda a movimentar as engrenagens da cidade. Cada decisão importa e cada ação gera consequências que afetam toda a comunidade."
+        },
+        "roles": {
+            "title": "Papéis Jogáveis",
+            "worker": {
+                "title": "Trabalhador",
+                "desc": "Busque empregos, desenvolva habilidades e construa sua carreira na cidade."
+            },
+            "business": {
+                "title": "Empresário",
+                "desc": "Crie e gerencie empresas, contrate funcionários e expanda seus negócios."
+            },
+            "mayor": {
+                "title": "Prefeito",
+                "desc": "Administre a cidade, crie políticas e equilibre o orçamento municipal."
+            },
+            "educator": {
+                "title": "Educador",
+                "desc": "Ensine novas habilidades, crie cursos e forme os cidadãos do futuro."
+            }
+        },
+        "mechanics": {
+            "title": "Mecânicas Principais",
+            "decisions": {
+                "title": "Decisões Consequentes",
+                "desc": "Cada escolha afeta a economia, sociedade e o ambiente da cidade."
+            },
+            "resources": {
+                "title": "Gestão de Recursos",
+                "desc": "Equilibre dinheiro, tempo, energia e relações sociais."
+            },
+            "events": {
+                "title": "Eventos Inesperados",
+                "desc": "Crises econômicas, desastres naturais e oportunidades únicas."
+            },
+            "progress": {
+                "title": "Progresso por XP",
+                "desc": "Desbloqueie novas habilidades e oportunidades conforme evolui."
+            }
+        },
+        "demo": {
+            "title": "Demonstração Interativa",
+            "simulator": {
+                "title": "Simulador de Escolhas",
+                "desc": "Experimente uma tomada de decisão típica do jogo:",
+                "scenario": "Cenário: A cidade enfrenta uma crise hídrica",
+                "choice1": "Racionar água",
+                "choice2": "Investir em infraestrutura",
+                "choice3": "Aumentar impostos"
+            }
+        },
+        "try": {
+            "title": "Como Experimentar",
+            "text": "GearCity é um protótipo aberto! Você pode testar a versão atual, adaptá-la às suas ideias ou até criar sua própria versão do zero. O código está disponível para estudo e modificação.",
+            "play": "Jogar Agora",
+            "fork": "Forkar Projeto"
+        },
+        "gallery": {
+            "title": "Galeria e Inspirações",
+            "item1": "Visão Urbana",
+            "item1_desc": "Cidades dinâmicas que evoluem com as decisões dos jogadores",
+            "item2": "Sistema Econômico",
+            "item2_desc": "Mercados complexos e interconectados",
+            "item3": "Vida Comunitária",
+            "item3_desc": "Interações sociais e desenvolvimento comunitário"
+        },
+        "footer": {
+            "copyright": "© 2024 GearCity - Protótipo Open Source"
+        }
+    },
+    "en": {
+        "nav": {
+            "sobre": "About",
+            "como_jogar": "How to Play",
+            "galeria": "Gallery",
+            "contato": "Contact"
+        },
+        "hero": {
+            "title": "GearCity",
+            "subtitle": "A social and economic simulation prototype",
+            "cta": "Explore the Prototype"
+        },
+        "about": {
+            "title": "About the Project",
+            "text": "GearCity is a game prototype where each player takes on a role (employee, entrepreneur, mayor, etc.) and helps move the gears of the city. Every decision matters and every action generates consequences that affect the entire community."
+        },
+        "roles": {
+            "title": "Playable Roles",
+            "worker": {
+                "title": "Worker",
+                "desc": "Search for jobs, develop skills, and build your career in the city."
+            },
+            "business": {
+                "title": "Entrepreneur",
+                "desc": "Create and manage companies, hire employees, and expand your business."
+            },
+            "mayor": {
+                "title": "Mayor",
+                "desc": "Administer the city, create policies, and balance the municipal budget."
+            },
+            "educator": {
+                "title": "Educator",
+                "desc": "Teach new skills, create courses, and shape the citizens of the future."
+            }
+        },
+        "mechanics": {
+            "title": "Main Mechanics",
+            "decisions": {
+                "title": "Consequential Decisions",
+                "desc": "Every choice affects the city's economy, society, and environment."
+            },
+            "resources": {
+                "title": "Resource Management",
+                "desc": "Balance money, time, energy, and social relationships."
+            },
+            "events": {
+                "title": "Unexpected Events",
+                "desc": "Economic crises, natural disasters, and unique opportunities."
+            },
+            "progress": {
+                "title": "XP Progression",
+                "desc": "Unlock new skills and opportunities as you evolve."
+            }
+        },
+        "demo": {
+            "title": "Interactive Demo",
+            "simulator": {
+                "title": "Choice Simulator",
+                "desc": "Experience a typical game decision:",
+                "scenario": "Scenario: The city faces a water crisis",
+                "choice1": "Ration water",
+                "choice2": "Invest in infrastructure",
+                "choice3": "Increase taxes"
+            }
+        },
+        "try": {
+            "title": "How to Try",
+            "text": "GearCity is an open prototype! You can test the current version, adapt it to your ideas, or even create your own version from scratch. The code is available for study and modification.",
+            "play": "Play Now",
+            "fork": "Fork Project"
+        },
+        "gallery": {
+            "title": "Gallery and Inspirations",
+            "item1": "Urban Vision",
+            "item1_desc": "Dynamic cities that evolve with player decisions",
+            "item2": "Economic System",
+            "item2_desc": "Complex and interconnected markets",
+            "item3": "Community Life",
+            "item3_desc": "Social interactions and community development"
+        },
+        "footer": {
+            "copyright": "© 2024 GearCity - Open Source Prototype"
+        }
+    },
+    "es": {
+        "nav": {
+            "sobre": "Acerca de",
+            "como_jogar": "Cómo Jugar",
+            "galeria": "Galería",
+            "contato": "Contacto"
+        },
+        "hero": {
+            "title": "GearCity",
+            "subtitle": "Un prototipo de simulación social y económica",
+            "cta": "Explorar el Prototipo"
+        },
+        "about": {
+            "title": "Acerca del Proyecto",
+            "text": "GearCity es un prototipo de juego donde cada jugador asume un rol (empleado, empresario, alcalde, etc.) y ayuda a mover los engranajes de la ciudad. Cada decisión importa y cada acción genera consecuencias que afectan a toda la comunidad."
+        },
+        "roles": {
+            "title": "Roles Jugables",
+            "worker": {
+                "title": "Trabajador",
+                "desc": "Busca empleos, desarrolla habilidades y construye tu carrera en la ciudad."
+            },
+            "business": {
+                "title": "Empresario",
+                "desc": "Crea y gestiona empresas, contrata empleados y expande tus negocios."
+            },
+            "mayor": {
+                "title": "Alcalde",
+                "desc": "Administra la ciudad, crea políticas y equilibra el presupuesto municipal."
+            },
+            "educator": {
+                "title": "Educador",
+                "desc": "Enseña nuevas habilidades, crea cursos y forma a los ciudadanos del futuro."
+            }
+        },
+        "mechanics": {
+            "title": "Mecánicas Principales",
+            "decisions": {
+                "title": "Decisiones Consecuentes",
+                "desc": "Cada elección afecta la economía, sociedad y ambiente de la ciudad."
+            },
+            "resources": {
+                "title": "Gestión de Recursos",
+                "desc": "Equilibra dinero, tiempo, energía y relaciones sociales."
+            },
+            "events": {
+                "title": "Eventos Inesperados",
+                "desc": "Crisis económicas, desastres naturales y oportunidades únicas."
+            },
+            "progress": {
+                "title": "Progreso por XP",
+                "desc": "Desbloquea nuevas habilidades y oportunidades conforme evolucionas."
+            }
+        },
+        "demo": {
+            "title": "Demo Interactiva",
+            "simulator": {
+                "title": "Simulador de Elecciones",
+                "desc": "Experimenta una toma de decisión típica del juego:",
+                "scenario": "Escenario: La ciudad enfrenta una crisis hídrica",
+                "choice1": "Racionar agua",
+                "choice2": "Invertir en infraestructura",
+                "choice3": "Aumentar impuestos"
+            }
+        },
+        "try": {
+            "title": "Cómo Experimentar",
+            "text": "¡GearCity es un prototipo abierto! Puedes probar la versión actual, adaptarla a tus ideas o incluso crear tu propia versión desde cero. El código está disponible para estudio y modificación.",
+            "play": "Jugar Ahora",
+            "fork": "Fork del Proyecto"
+        },
+        "gallery": {
+            "title": "Galería e Inspiraciones",
+            "item1": "Visión Urbana",
+            "item1_desc": "Ciudades dinámicas que evolucionan con las decisiones de los jugadores",
+            "item2": "Sistema Económico",
+            "item2_desc": "Mercados complejos e interconectados",
+            "item3": "Vida Comunitaria",
+            "item3_desc": "Interacciones sociales y desarrollo comunitario"
+        },
+        "footer": {
+            "copyright": "© 2024 GearCity - Prototipo Open Source"
+        }
+    }
+}

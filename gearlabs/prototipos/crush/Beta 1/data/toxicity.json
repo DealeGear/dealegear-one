@@ -1,0 +1,91 @@
+{
+  "toxicWords": [
+    "idiota", "imbecil", "burro", "estupido", "retardado",
+    "noob", "newbie", "fraco", "perdedor", "loser",
+    "feio", "gordo", "magro", "alto", "baixo",
+    "vai se fuder", "foda-se", "caralho", "porra", "merda",
+    "puta", "piranha", "vadia", "galinha", "safada",
+    "viado", "bicha", "gay", "homossexual", "traveco",
+    "preto", "negro", "macaco", "monkey", "escravo",
+    "judeu", "judio", "nazista", "racista", "xenofobo",
+    "mata", "morrer", "morte", "suicidio", "kill",
+    "estupra", "estupro", "abuso", "violencia", "violentar"
+  ],
+  "toxicPatterns": [
+    {
+      "pattern": "([A-Z\\s]{10,})",
+      "weight": 0.3,
+      "description": "Too much use of uppercase letters"
+    },
+    {
+      "pattern": "(.{20,})\\1{2,}",
+      "weight": 0.5,
+      "description": "Text repeated many times"
+    },
+    {
+      "pattern": "([!?]){5,}",
+      "weight": 0.2,
+      "description": "Too many exclamation marks"
+    },
+    {
+      "pattern": "\\b(vai|morre|morre|se|mata|foda|caralho|porra|merda)\\b",
+      "weight": 0.4,
+      "description": "Aggressive language"
+    },
+    {
+      "pattern": "\\b(idiota|imbecil|burro|estupido|retardado|noob|newbie|fraco|perdedor|loser)\\b",
+      "weight": 0.4,
+      "description": "Insulting language"
+    },
+    {
+      "pattern": "\\b(feio|gordo|magro|alto|baixo)\\b",
+      "weight": 0.3,
+      "description": "Body shaming"
+    },
+    {
+      "pattern": "\\b(vai se fuder|foda-se|caralho|porra|merda)\\b",
+      "weight": 0.5,
+      "description": "Profanity"
+    },
+    {
+      "pattern": "\\b(puta|piranha|vadia|galinha|safada)\\b",
+      "weight": 0.5,
+      "description": "Sexist language"
+    },
+    {
+      "pattern": "\\b(viado|bicha|gay|homossexual|traveco)\\b",
+      "weight": 0.5,
+      "description": "Homophobic language"
+    },
+    {
+      "pattern": "\\b(preto|negro|macaco|monkey|escravo)\\b",
+      "weight": 0.6,
+      "description": "Racist language"
+    },
+    {
+      "pattern": "\\b(judeu|judio|nazista|racista|xenofobo)\\b",
+      "weight": 0.6,
+      "description": "Discriminatory language"
+    },
+    {
+      "pattern": "\\b(mata|morrer|morte|suicidio|kill)\\b",
+      "weight": 0.7,
+      "description": "Violent language"
+    },
+    {
+      "pattern": "\\b(estupra|estupro|abuso|violencia|violentar)\\b",
+      "weight": 0.8,
+      "description": "Sexual violence language"
+    }
+  ],
+  "suggestions": [
+    "Try to be more respectful",
+    "Avoid using offensive language",
+    "Be constructive in your communication",
+    "Respectful messages have a higher chance of response",
+    "Focus on common interests rather than differences",
+    "Keep the conversation positive and friendly",
+    "Remember that there's a real person on the other side",
+    "Good conversations start with respect"
+  ]
+}
