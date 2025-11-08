@@ -43,7 +43,7 @@ const translations = {
         description:
           "3GTO é um jogo imersivo que combina VR e veículos em três mundos (água, cidade, floresta), criado como entretenimento para negócios.",
         image: "img/3gto-capa.webp",
-        link: "prototipos/3gto/index.html",
+        link: "https://gearlabs-dealegear.github.io/3gto/",
       },
       {
         id: 2,
