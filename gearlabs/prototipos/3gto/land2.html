@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3GTO - Gateway Tridimensional Operacional</title>
+    
+    <style>
+        /* ======== VARIÁVEIS CSS E ESTILOS GLOBAIS ======== */
+        :root {
+            /* Cores principais - tema neon tecnológico */
+            --primary-blue: #00d4ff;
+            --primary-green: #00ff88;
+            --dark-bg: #0a0a0f;
+            --dark-secondary: #1a1a2e;
+            --dark-tertiary: #16213e;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0c0;
+            --accent-purple: #7c3aed;
+            --gradient-neon: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+        }
+
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animação de fundo com partículas sutis */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, var(--dark-secondary) 0%, var(--dark-bg) 100%);
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh) translateX(0);
+            }
+            to {
+                transform: translateY(-100px) translateX(100px);
+            }
+        }
+
+        /* ======== CABEÇALHO ======== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.2); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-neon);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Botão de documentação */
+        .doc-btn {
+            background: var(--gradient-neon);
+            color: var(--dark-bg);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .doc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Seletor de idioma */
+        .lang-selector {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-blue);
+            color: var(--dark-bg);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* Menu hambúrguer */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-blue);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* ======== SEÇÃO HERO ======== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1.5rem;
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--gradient-neon);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        /* ======== SEÇÕES DE CONTEÚDO ======== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards de ambientes */
+        .environments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .env-card {
+            background: linear-gradient(135deg, var(--dark-secondary), var(--dark-tertiary));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .env-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .env-card:hover::before {
+            opacity: 1;
+        }
+
+        .env-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .env-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .env-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .env-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Seção de tecnologia */
+        .tech-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .tech-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .tech-visual {
+            background: linear-gradient(135deg, var(--dark-secondary), var(--dark-tertiary));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-visual::after {
+            content: '⚡';
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+        }
+
+        /* Seção de aplicações */
+        .applications {
+            background: linear-gradient(135deg, var(--dark-secondary), var(--dark-tertiary));
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .app-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .app-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .app-icon {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .app-text h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .app-text p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Formulário de contato */
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            background: linear-gradient(135deg, var(--dark-secondary), var(--dark-tertiary));
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-neon);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* ======== RODAPÉ ======== */
+        footer {
+            background: var(--dark-secondary);
+            padding: 3rem 2rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+            padding: 0.3rem 0;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .footer-bottom a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ======== RESPONSIVIDADE ======== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 10, 15, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .tech-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Classes de animação para scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animação de fundo -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <nav>
+            <div class="logo">3GTO</div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#intro" data-translate="nav_intro">Introdução</a></li>
+                <li><a href="#environments" data-translate="nav_environments">Ambientes</a></li>
+                <li><a href="#technology" data-translate="nav_technology">Tecnologia</a></li>
+                <li><a href="#applications" data-translate="nav_applications">Aplicações</a></li>
+                <li><a href="#contact" data-translate="nav_contact">Contato</a></li>
+                <li><a href="doc.html" class="doc-btn" data-translate="nav_docs">Documentação</a></li>
+                <li>
+                    <div class="lang-selector">
+                        <button class="lang-btn active" data-lang="pt">PT</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="es">ES</button>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-translate="hero_title">Gateway Tridimensional Operacional</h1>
+            <p data-translate="hero_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <a href="#intro" class="cta-button" data-translate="hero_cta">Explorar Projeto</a>
+        </div>
+    </section>
+
+    <!-- Seção Introdução -->
+    <section id="intro" class="fade-in">
+        <h2 class="section-title" data-translate="intro_title">Introdução</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.8;" data-translate="intro_text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </p>
+    </section>
+
+    <!-- Seção Ambientes -->
+    <section id="environments" class="fade-in">
+        <h2 class="section-title" data-translate="env_title">Ambientes Virtuais</h2>
+        <div class="environments">
+            <div class="env-card">
+                <div class="env-icon">🏙️</div>
+                <h3 data-translate="env_city">Cidade</h3>
+                <p data-translate="env_city_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Simulação urbana avançada com tráfego em tempo real.</p>
+            </div>
+            <div class="env-card">
+                <div class="env-icon">🌲</div>
+                <h3 data-translate="env_forest">Floresta</h3>
+                <p data-translate="env_forest_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Terrenos naturais com física realista.</p>
+            </div>
+            <div class="env-card">
+                <div class="env-icon">🌊</div>
+                <h3 data-translate="env_water">Subaquático</h3>
+                <p data-translate="env_water_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Exploração marinha com dinâmica de fluidos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Tecnologia -->
+    <section id="technology" class="fade-in">
+        <h2 class="section-title" data-translate="tech_title">Tecnologia</h2>
+        <div class="tech-content">
+            <div class="tech-text">
+                <p data-translate="tech_text1">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                </p>
+                <p style="margin-top: 1rem;" data-translate="tech_text2">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                </p>
+            </div>
+            <div class="tech-visual">
+                <div style="text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🚀</div>
+                    <p style="color: var(--primary-green); font-weight: bold;" data-translate="tech_core">Motor Gráfico Avançado</p>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;" data-translate="tech_version">Versão 3.0</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Aplicações -->
+    <section id="applications" class="fade-in">
+        <h2 class="section-title" data-translate="app_title">Aplicações Práticas</h2>
+        <div class="applications">
+            <div class="app-list">
+                <div class="app-item">
+                    <div class="app-icon">🎮</div>
+                    <div class="app-text">
+                        <h4 data-translate="app_gaming">Gaming</h4>
+                        <p data-translate="app_gaming_text">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">🎓</div>
+                    <div class="app-text">
+                        <h4 data-translate="app_training">Treinamento</h4>
+                        <p data-translate="app_training_text">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">🔬</div>
+                    <div class="app-text">
+                        <h4 data-translate="app_research">Pesquisa</h4>
+                        <p data-translate="app_research_text">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">🏭</div>
+                    <div class="app-text">
+                        <h4 data-translate="app_industry">Indústria</h4>
+                        <p data-translate="app_industry_text">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact" class="fade-in">
+        <h2 class="section-title" data-translate="contact_title">Entre em Contato</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name" data-translate="form_name">Nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email" data-translate="form_email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message" data-translate="form_message">Mensagem</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn" data-translate="form_submit">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-translate="footer_links">Links Rápidos</h4>
+                <ul>
+                    <li><a href="#" data-translate="footer_community">Comunidade</a></li>
+                    <li><a href="doc.html" data-translate="footer_docs">Documentação</a></li>
+                    <li><a href="#" data-translate="footer_gearlabs">GearLabs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="footer_resources">Recursos</h4>
+                <ul>
+                    <li><a href="#" data-translate="footer_tutorials">Tutoriais</a></li>
+                    <li><a href="#" data-translate="footer_api">API</a></li>
+                    <li><a href="#" data-translate="footer_downloads">Downloads</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-translate="footer_support">Suporte</h4>
+                <ul>
+                    <li><a href="#" data-translate="footer_help">Central de Ajuda</a></li>
+                    <li><a href="#" data-translate="footer_forum">Fórum</a></li>
+                    <li><a href="#" data-translate="footer_status">Status do Sistema</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 3GTO | <a href="https://dealegear.com" target="_blank">By DealeGear</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // ======== SISTEMA DE TRADUÇÃO ========
+        const translations = {
+            pt: {
+                nav_intro: "Introdução",
+                nav_environments: "Ambientes",
+                nav_technology: "Tecnologia",
+                nav_applications: "Aplicações",
+                nav_contact: "Contato",
+                nav_docs: "Documentação",
+                hero_title: "Gateway Tridimensional Operacional",
+                hero_subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                hero_cta: "Explorar Projeto",
+                intro_title: "Introdução",
+                intro_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                env_title: "Ambientes Virtuais",
+                env_city: "Cidade",
+                env_city_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Simulação urbana avançada com tráfego em tempo real.",
+                env_forest: "Floresta",
+                env_forest_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Terrenos naturais com física realista.",
+                env_water: "Subaquático",
+                env_water_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Exploração marinha com dinâmica de fluidos.",
+                tech_title: "Tecnologia",
+                tech_text1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+                tech_text2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+                tech_core: "Motor Gráfico Avançado",
+                tech_version: "Versão 3.0",
+                app_title: "Aplicações Práticas",
+                app_gaming: "Gaming",
+                app_gaming_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_training: "Treinamento",
+                app_training_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_research: "Pesquisa",
+                app_research_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_industry: "Indústria",
+                app_industry_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                contact_title: "Entre em Contato",
+                form_name: "Nome",
+                form_email: "E-mail",
+                form_message: "Mensagem",
+                form_submit: "Enviar Mensagem",
+                footer_links: "Links Rápidos",
+                footer_community: "Comunidade",
+                footer_docs: "Documentação",
+                footer_gearlabs: "GearLabs",
+                footer_resources: "Recursos",
+                footer_tutorials: "Tutoriais",
+                footer_api: "API",
+                footer_downloads: "Downloads",
+                footer_support: "Suporte",
+                footer_help: "Central de Ajuda",
+                footer_forum: "Fórum",
+                footer_status: "Status do Sistema"
+            },
+            en: {
+                nav_intro: "Introduction",
+                nav_environments: "Environments",
+                nav_technology: "Technology",
+                nav_applications: "Applications",
+                nav_contact: "Contact",
+                nav_docs: "Documentation",
+                hero_title: "Three-Dimensional Operational Gateway",
+                hero_subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                hero_cta: "Explore Project",
+                intro_title: "Introduction",
+                intro_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                env_title: "Virtual Environments",
+                env_city: "City",
+                env_city_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Advanced urban simulation with real-time traffic.",
+                env_forest: "Forest",
+                env_forest_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Natural terrains with realistic physics.",
+                env_water: "Underwater",
+                env_water_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Marine exploration with fluid dynamics.",
+                tech_title: "Technology",
+                tech_text1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+                tech_text2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+                tech_core: "Advanced Graphics Engine",
+                tech_version: "Version 3.0",
+                app_title: "Practical Applications",
+                app_gaming: "Gaming",
+                app_gaming_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_training: "Training",
+                app_training_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_research: "Research",
+                app_research_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_industry: "Industry",
+                app_industry_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                contact_title: "Get in Touch",
+                form_name: "Name",
+                form_email: "Email",
+                form_message: "Message",
+                form_submit: "Send Message",
+                footer_links: "Quick Links",
+                footer_community: "Community",
+                footer_docs: "Documentation",
+                footer_gearlabs: "GearLabs",
+                footer_resources: "Resources",
+                footer_tutorials: "Tutorials",
+                footer_api: "API",
+                footer_downloads: "Downloads",
+                footer_support: "Support",
+                footer_help: "Help Center",
+                footer_forum: "Forum",
+                footer_status: "System Status"
+            },
+            es: {
+                nav_intro: "Introducción",
+                nav_environments: "Ambientes",
+                nav_technology: "Tecnología",
+                nav_applications: "Aplicaciones",
+                nav_contact: "Contacto",
+                nav_docs: "Documentación",
+                hero_title: "Puerta de Enlace Operacional Tridimensional",
+                hero_subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                hero_cta: "Explorar Proyecto",
+                intro_title: "Introducción",
+                intro_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                env_title: "Ambientes Virtuales",
+                env_city: "Ciudad",
+                env_city_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Simulación urbana avanzada con tráfico en tiempo real.",
+                env_forest: "Bosque",
+                env_forest_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Terrenos naturales con física realista.",
+                env_water: "Subacuático",
+                env_water_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Exploración marina con dinámica de fluidos.",
+                tech_title: "Tecnología",
+                tech_text1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+                tech_text2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+                tech_core: "Motor Gráfico Avanzado",
+                tech_version: "Versión 3.0",
+                app_title: "Aplicaciones Prácticas",
+                app_gaming: "Gaming",
+                app_gaming_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_training: "Entrenamiento",
+                app_training_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_research: "Investigación",
+                app_research_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                app_industry: "Industria",
+                app_industry_text: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+                contact_title: "Contacto",
+                form_name: "Nombre",
+                form_email: "Correo",
+                form_message: "Mensaje",
+                form_submit: "Enviar Mensaje",
+                footer_links: "Enlaces Rápidos",
+                footer_community: "Comunidad",
+                footer_docs: "Documentación",
+                footer_gearlabs: "GearLabs",
+                footer_resources: "Recursos",
+                footer_tutorials: "Tutoriales",
+                footer_api: "API",
+                footer_downloads: "Descargas",
+                footer_support: "Soporte",
+                footer_help: "Centro de Ayuda",
+                footer_forum: "Foro",
+                footer_status: "Estado del Sistema"
+            }
+        };
+
+        // Função para alterar idioma
+        function changeLanguage(lang) {
+            // Atualiza botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Atualiza textos
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.dataset.translate;
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Salva idioma no localStorage
+            localStorage.setItem('selectedLang', lang);
+        }
+
+        // Carrega idioma salvo
+        const savedLang = localStorage.getItem('selectedLang') || 'pt';
+        changeLanguage(savedLang);
+
+        // Event listeners para botões de idioma
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                changeLanguage(btn.dataset.lang);
+            });
+        });
+
+        // ======== MENU HAMBÚRGUER ========
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Fecha menu ao clicar em link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ======== ANIMAÇÕES DE SCROLL ========
+        // Criar partículas de fundo
+        function createParticles() {
+            const bgAnimation = document.getElementById('bgAnimation');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                bgAnimation.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Animação fade-in no scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ======== FORMULÁRIO DE CONTATO ========
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulação de envio
+            const submitBtn = e.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Mensagem Enviada!';
+                submitBtn.style.background = 'linear-gradient(135deg, #00ff88, #00d4ff)';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                    e.target.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // ======== HEADER SCROLL EFFECT ========
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('header');
+            
+            if (currentScroll > 100) {
+                header.style.background = 'rgba(10, 10, 15, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.5)';
+            } else {
+                header.style.background = 'rgba(10, 10, 15, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // ======== SMOOTH SCROLL ========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

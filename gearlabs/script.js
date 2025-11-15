@@ -940,7 +940,7 @@ function createPrototypeCard(prototype) {
             <h3 class="prototype-name">${prototype.name}</h3>
             <p class="prototype-description">${prototype.description}</p>
             <a href="${prototype.link}" class="prototype-link" >
-                Ver protótipo <i class="fas fa-arrow-right"></i>
+                Documentação <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     `;

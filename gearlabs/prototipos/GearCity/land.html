@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearCity - Protótipo de Simulação Social e Econômica</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <!-- Header com menu hambúrguer -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="gear-icon">⚙️</span>
+                <span data-translate="hero.title">GearCity</span>
+            </div>
+            
+            <!-- Menu desktop -->
+            <nav class="nav-desktop">
+                <a href="#sobre" data-translate="nav.sobre">Sobre</a>
+                <a href="#como-jogar" data-translate="nav.como_jogar">Como Jogar</a>
+                <a href="#galeria" data-translate="nav.galeria">Galeria</a>
+                <a href="#contato" data-translate="nav.contato">Contato</a>
+            </nav>
+            
+            <!-- Controles -->
+            <div class="controls">
+                <button class="lang-btn" id="langBtn">🌐 PT</button>
+                <button class="theme-btn" id="themeBtn">🌙</button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menu mobile -->
+        <nav class="nav-mobile" id="navMobile">
+            <a href="#sobre" data-translate="nav.sobre">Sobre</a>
+            <a href="#como-jogar" data-translate="nav.como_jogar">Como Jogar</a>
+            <a href="#galeria" data-translate="nav.galeria">Galeria</a>
+            <a href="#contato" data-translate="nav.contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-translate="hero.title">GearCity</h1>
+            <p class="subtitle" data-translate="hero.subtitle">Um protótipo de simulação social e econômica</p>
+            <button class="cta-button" data-translate="hero.cta">Explorar o Protótipo</button>
+        </div>
+        <div class="hero-gears">
+            <div class="gear gear-1">⚙️</div>
+            <div class="gear gear-2">⚙️</div>
+            <div class="gear gear-3">⚙️</div>
+        </div>
+    </section>
+
+    <!-- Sobre o Projeto -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <h2 data-translate="about.title">Sobre o Projeto</h2>
+            <p class="section-text" data-translate="about.text">
+                GearCity é um protótipo de jogo onde cada jogador assume um papel (empregado, empresário, prefeito, etc.) 
+                e ajuda a movimentar as engrenagens da cidade. Cada decisão importa e cada ação gera consequências 
+                que afetam toda a comunidade.
+            </p>
+        </div>
+    </section>
+
+    <!-- Papéis Jogáveis -->
+    <section class="section roles-section">
+        <div class="container">
+            <h2 data-translate="roles.title">Papéis Jogáveis</h2>
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-icon">👷</div>
+                    <h3 data-translate="roles.worker.title">Trabalhador</h3>
+                    <p data-translate="roles.worker.desc">Busque empregos, desenvolva habilidades e construa sua carreira na cidade.</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">💼</div>
+                    <h3 data-translate="roles.business.title">Empresário</h3>
+                    <p data-translate="roles.business.desc">Crie e gerencie empresas, contrate funcionários e expanda seus negócios.</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">🏛️</div>
+                    <h3 data-translate="roles.mayor.title">Prefeito</h3>
+                    <p data-translate="roles.mayor.desc">Administre a cidade, crie políticas e equilibre o orçamento municipal.</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">🎓</div>
+                    <h3 data-translate="roles.educator.title">Educador</h3>
+                    <p data-translate="roles.educator.desc">Ensine novas habilidades, crie cursos e forme os cidadãos do futuro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mecânicas Principais -->
+    <section class="section mechanics-section">
+        <div class="container">
+            <h2 data-translate="mechanics.title">Mecânicas Principais</h2>
+            <div class="mechanics-list">
+                <div class="mechanic-item">
+                    <div class="mechanic-icon">🎯</div>
+                    <div>
+                        <h3 data-translate="mechanics.decisions.title">Decisões Consequentes</h3>
+                        <p data-translate="mechanics.decisions.desc">Cada escolha afeta a economia, sociedade e o ambiente da cidade.</p>
+                    </div>
+                </div>
+                <div class="mechanic-item">
+                    <div class="mechanic-icon">💰</div>
+                    <div>
+                        <h3 data-translate="mechanics.resources.title">Gestão de Recursos</h3>
+                        <p data-translate="mechanics.resources.desc">Equilibre dinheiro, tempo, energia e relações sociais.</p>
+                    </div>
+                </div>
+                <div class="mechanic-item">
+                    <div class="mechanic-icon">⚡</div>
+                    <div>
+                        <h3 data-translate="mechanics.events.title">Eventos Inesperados</h3>
+                        <p data-translate="mechanics.events.desc">Crises econômicas, desastres naturais e oportunidades únicas.</p>
+                    </div>
+                </div>
+                <div class="mechanic-item">
+                    <div class="mechanic-icon">📈</div>
+                    <div>
+                        <h3 data-translate="mechanics.progress.title">Progresso por XP</h3>
+                        <p data-translate="mechanics.progress.desc">Desbloqueie novas habilidades e oportunidades conforme evolui.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demonstração / Preview -->
+    <section class="section demo-section">
+        <div class="container">
+            <h2 data-translate="demo.title">Demonstração Interativa</h2>
+            <div class="demo-container">
+                <div class="choice-simulator">
+                    <h3 data-translate="demo.simulator.title">Simulador de Escolhas</h3>
+                    <p data-translate="demo.simulator.desc">Experimente uma tomada de decisão típica do jogo:</p>
+                    
+                    <div class="choice-card">
+                        <h4 data-translate="demo.simulator.scenario">Cenário: A cidade enfrenta uma crise hídrica</h4>
+                        <div class="choices">
+                            <button class="choice-btn" data-choice="ration">
+                                <span class="choice-icon">💧</span>
+                                <span data-translate="demo.simulator.choice1">Racionar água</span>
+                            </button>
+                            <button class="choice-btn" data-choice="invest">
+                                <span class="choice-icon">🏗️</span>
+                                <span data-translate="demo.simulator.choice2">Investir em infraestrutura</span>
+                            </button>
+                            <button class="choice-btn" data-choice="tax">
+                                <span class="choice-icon">💸</span>
+                                <span data-translate="demo.simulator.choice3">Aumentar impostos</span>
+                            </button>
+                        </div>
+                        <div class="choice-result" id="choiceResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Experimentar -->
+    <section class="section try-section">
+        <div class="container">
+            <h2 data-translate="try.title">Como Experimentar</h2>
+            <p class="section-text" data-translate="try.text">
+                GearCity é um protótipo aberto! Você pode testar a versão atual, adaptá-la às suas ideias ou 
+                até criar sua própria versão do zero. O código está disponível para estudo e modificação.
+            </p>
+            <div class="try-buttons">
+                <button class="cta-button" data-translate="try.play">Jogar Agora</button>
+                <button class="secondary-button" data-translate="try.fork">Forkar Projeto</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria / Inspirações -->
+    <section class="section gallery-section" id="galeria">
+        <div class="container">
+            <h2 data-translate="gallery.title">Galeria e Inspirações</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/city1/400/300.jpg" alt="Cidade">
+                    <div class="gallery-overlay">
+                        <h3 data-translate="gallery.item1">Visão Urbana</h3>
+                        <p data-translate="gallery.item1_desc">Cidades dinâmicas que evoluem com as decisões dos jogadores</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/economy1/400/300.jpg" alt="Economia">
+                    <div class="gallery-overlay">
+                        <h3 data-translate="gallery.item2">Sistema Econômico</h3>
+                        <p data-translate="gallery.item2_desc">Mercados complexos e interconectados</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/community1/400/300.jpg" alt="Comunidade">
+                    <div class="gallery-overlay">
+                        <h3 data-translate="gallery.item3">Vida Comunitária</h3>
+                        <p data-translate="gallery.item3_desc">Interações sociais e desenvolvimento comunitário</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="gear-icon">⚙️</span>
+                    <span data-translate="hero.title">GearCity</span>
+                </div>
+                <nav class="footer-nav">
+                    <a href="#sobre" data-translate="nav.sobre">Sobre</a>
+                    <a href="#como-jogar" data-translate="nav.como_jogar">Como Jogar</a>
+                    <a href="#galeria" data-translate="nav.galeria">Galeria</a>
+                    <a href="#contato" data-translate="nav.contato">Contato</a>
+                </nav>
+                <div class="social-links">
+                    <a href="#" title="GitHub">📱</a>
+                    <a href="#" title="Discord">💬</a>
+                    <a href="#" title="Twitter">🐦</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-translate="footer.copyright">© 2024 GearCity - Protótipo Open Source</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

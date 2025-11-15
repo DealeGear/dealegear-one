@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viver é uma Arte - DealGear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../../../favicon/dealegear-fav.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <i class="fas fa-palette"></i>
+                    <span>Viver é uma Arte</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="#venda">Obras</a></li>
+                    <li><a href="#localizacao">Localização</a></li>
+                    <li><a href="#contato" class="btn btn-primary">Contribuir</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Viver é uma Arte</h1>
+            <p>Transformando comunidades através da criatividade e expressão artística</p>
+            <div class="hero-buttons">
+                <a href="#galeria" class="btn btn-primary">Ver Galeria</a>
+                <a href="#eventos" class="btn btn-secondary">Participar</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://picsum.photos/seed/art1/600/400" alt="Pessoas criando arte">
+        </div>
+    </section>
+
+    <!-- Sobre o Projeto -->
+    <section id="sobre" class="section sobre">
+        <div class="container">
+            <h2 class="section-title">Sobre o Projeto</h2>
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <p>O "Viver é uma Arte" é uma iniciativa da plataforma DealGear que cria espaços culturais em áreas carentes de grandes cidades. Nosso objetivo é oferecer um ambiente onde pessoas de todas as idades possam explorar sua criatividade através da pintura e escultura.</p>
+                    <p>Acreditamos que a arte tem o poder de transformar vidas, gerar bem-estar e criar oportunidades de renda. Cada obra criada em nossos espaços conta uma história única de superação e esperança.</p>
+                    <div class="impact-cards">
+                        <div class="impact-card">
+                            <i class="fas fa-heart"></i>
+                            <h3>Bem-Estar</h3>
+                            <p>A arte como terapia e expressão emocional</p>
+                        </div>
+                        <div class="impact-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Comunidade</h3>
+                            <p>Fortalecendo laços sociais e culturais</p>
+                        </div>
+                        <div class="impact-card">
+                            <i class="fas fa-coins"></i>
+                            <h3>Renda</h3>
+                            <p>Oportunidade real de sustento através da arte</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-image">
+                    <img src="https://picsum.photos/seed/art2/500/600" alt="Artistas em ação">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de Obras -->
+    <section id="galeria" class="section galeria">
+        <div class="container">
+            <h2 class="section-title">Galeria de Obras</h2>
+            <div class="galeria-filters">
+                <button class="filter-btn active" data-filter="todas">Todas</button>
+                <button class="filter-btn" data-filter="pinturas">Pinturas</button>
+                <button class="filter-btn" data-filter="esculturas">Esculturas</button>
+            </div>
+            <div class="galeria-grid">
+                <div class="galeria-item" data-category="pinturas">
+                    <img src="https://picsum.photos/seed/paint1/300/300" alt="Pintura abstrata">
+                    <div class="galeria-overlay">
+                        <h4>Alvorada Colorida</h4>
+                        <p>Maria Silva</p>
+                    </div>
+                </div>
+                <div class="galeria-item" data-category="esculturas">
+                    <img src="https://picsum.photos/seed/sculpt1/300/300" alt="Escultura em cerâmica">
+                    <div class="galeria-overlay">
+                        <h4>Formas da Vida</h4>
+                        <p>João Santos</p>
+                    </div>
+                </div>
+                <div class="galeria-item" data-category="pinturas">
+                    <img src="https://picsum.photos/seed/paint2/300/300" alt="Paisagem urbana">
+                    <div class="galeria-overlay">
+                        <h4>Cores da Cidade</h4>
+                        <p>Ana Costa</p>
+                    </div>
+                </div>
+                <div class="galeria-item" data-category="esculturas">
+                    <img src="https://picsum.photos/seed/sculpt2/300/300" alt="Escultura em madeira">
+                    <div class="galeria-overlay">
+                        <h4>Raízes</h4>
+                        <p>Carlos Oliveira</p>
+                    </div>
+                </div>
+                <div class="galeria-item" data-category="pinturas">
+                    <img src="https://picsum.photos/seed/paint3/300/300" alt="Retrato">
+                    <div class="galeria-overlay">
+                        <h4>Sorrisos da Vida</h4>
+                        <p>Fernanda Lima</p>
+                    </div>
+                </div>
+                <div class="galeria-item" data-category="esculturas">
+                    <img src="https://picsum.photos/seed/sculpt3/300/300" alt="Escultura em metal">
+                    <div class="galeria-overlay">
+                        <h4>Elos</h4>
+                        <p>Pedro Rocha</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos Especiais -->
+    <section id="eventos" class="section eventos">
+        <div class="container">
+            <h2 class="section-title">Eventos Especiais</h2>
+            <p class="section-subtitle">Participe de nossos eventos e ajude a sustentar o projeto</p>
+            <div class="eventos-grid">
+                <div class="evento-card">
+                    <div class="evento-image">
+                        <img src="https://picsum.photos/seed/event1/400/250" alt="Workshop de pintura">
+                        <span class="evento-date">15 Dez</span>
+                    </div>
+                    <div class="evento-content">
+                        <h3>Workshop de Pintura Expressiva</h3>
+                        <p>Aprenda técnicas de pintura com artistas locais. Todos os materiais inclusos.</p>
+                        <div class="evento-info">
+                            <span><i class="fas fa-clock"></i> 14:00 - 18:00</span>
+                            <span><i class="fas fa-ticket-alt"></i> R$ 50</span>
+                        </div>
+                        <button class="btn btn-primary">Inscrever-se</button>
+                    </div>
+                </div>
+                <div class="evento-card">
+                    <div class="evento-image">
+                        <img src="https://picsum.photos/seed/event2/400/250" alt="Exposição coletiva">
+                        <span class="evento-date">22 Dez</span>
+                    </div>
+                    <div class="evento-content">
+                        <h3>Exposição Coletiva de Natal</h3>
+                        <p>Uma mostra especial com obras temáticas criadas pela comunidade.</p>
+                        <div class="evento-info">
+                            <span><i class="fas fa-clock"></i> 19:00 - 22:00</span>
+                            <span><i class="fas fa-ticket-alt"></i> R$ 30</span>
+                        </div>
+                        <button class="btn btn-primary">Inscrever-se</button>
+                    </div>
+                </div>
+                <div class="evento-card">
+                    <div class="evento-image">
+                        <img src="https://picsum.photos/seed/event3/400/250" alt="Feira de arte">
+                        <span class="evento-date">30 Dez</span>
+                    </div>
+                    <div class="evento-content">
+                        <h3>Feira de Arte e Artesanato</h3>
+                        <p>Compre diretamente dos artistas e apoie o desenvolvimento local.</p>
+                        <div class="evento-info">
+                            <span><i class="fas fa-clock"></i> 10:00 - 18:00</span>
+                            <span><i class="fas fa-ticket-alt"></i> Entrada Franca</span>
+                        </div>
+                        <button class="btn btn-primary">Inscrever-se</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venda de Obras -->
+    <section id="venda" class="section venda">
+        <div class="container">
+            <h2 class="section-title">Venda de Obras</h2>
+            <p class="section-subtitle">Adquira arte exclusiva e apoie diretamente os artistas</p>
+            <div class="venda-content">
+                <div class="venda-info">
+                    <div class="venda-highlight">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>100% para o Artista</h3>
+                        <p>Todo o valor da venda é revertido integralmente para o criador da obra</p>
+                    </div>
+                    <div class="venda-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <h4>Escolha sua obra</h4>
+                            <p>Navegue pela nossa galeria e encontre a peça que mais toca seu coração</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <h4>Entre em contato</h4>
+                            <p>Fale diretamente com o artista ou nossa equipe para finalizar a compra</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <h4>Apoie a arte</h4>
+                            <p>Receba sua obra e saiba que está contribuindo para um sonho</p>
+                        </div>
+                    </div>
+                    <a href="#contato" class="btn btn-primary">Comprar uma Obra</a>
+                </div>
+                <div class="venda-featured">
+                    <div class="featured-work">
+                        <img src="https://picsum.photos/seed/featured/400/500" alt="Obra em destaque">
+                        <div class="featured-info">
+                            <h4>Obra em Destaque</h4>
+                            <p>"Esperança Renascente"</p>
+                            <p class="artist">Por: Roberta Mendes</p>
+                            <p class="price">R$ 800</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Localização -->
+    <section id="localizacao" class="section localizacao">
+        <div class="container">
+            <h2 class="section-title">Onde a Arte Acontece</h2>
+            <p class="section-subtitle">Levando cultura e esperança para comunidades carentes</p>
+            <div class="localizacao-content">
+                <div class="map-container">
+                    <img src="https://picsum.photos/seed/map/800/400" alt="Mapa das localizações">
+                </div>
+                <div class="locations-list">
+                    <div class="location-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Comunidade da Luz</h4>
+                            <p>Rua das Flores, 123 - São Paulo/SP</p>
+                            <p>Funcionamento: Ter a Sex, 14h às 18h</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Centro Cultural da Esperança</h4>
+                            <p>Avenida Principal, 456 - Rio de Janeiro/RJ</p>
+                            <p>Funcionamento: Seg a Sáb, 10h às 17h</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Espaço Arte Viva</h4>
+                            <p>Rua da Cultura, 789 - Belo Horizonte/MG</p>
+                            <p>Funcionamento: Qua a Dom, 13h às 19h</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="section depoimentos">
+        <div class="container">
+            <h2 class="section-title">Depoimentos</h2>
+            <div class="depoimentos-slider">
+                <div class="depoimento active">
+                    <img src="https://picsum.photos/seed/person1/100/100" alt="Depoente">
+                    <p>"O projeto mudou minha vida. Descobri que tenho talento para pintar e hoje consigo ajudar minha família com a venda das minhas obras."</p>
+                    <h4>Maria Silva - Artista</h4>
+                </div>
+                <div class="depoimento">
+                    <img src="https://picsum.photos/seed/person2/100/100" alt="Depoente">
+                    <p>"Visitar a galeria foi uma experiência incrível. Ver a arte nascendo na comunidade me emocionou profundamente."</p>
+                    <h4>Carlos Mendes - Visitante</h4>
+                </div>
+                <div class="depoimento">
+                    <img src="https://picsum.photos/seed/person3/100/100" alt="Depoente">
+                    <p>"Meus filhos encontraram aqui um espaço seguro para expressar sua criatividade. Sou grata por este projeto existir."</p>
+                    <h4>Ana Costa - Mãe e Participante</h4>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Final -->
+    <section id="contato" class="section cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Junte-se a Nós</h2>
+                <p>Sua participação faz toda a diferença. Seja como visitante, comprador ou voluntário, você ajuda a transformar vidas através da arte.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Visitar a Galeria</a>
+                    <a href="#" class="btn btn-secondary">Tornar-se Voluntário</a>
+                    <a href="#" class="btn btn-secondary">Fazer uma Doação</a>
+                </div>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> contato@vivereumaarte.com.br</p>
+                    <p><i class="fas fa-phone"></i> (11) 9999-8888</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Viver é uma Arte</h3>
+                    <p>Uma iniciativa DealGear transformando comunidades através da arte.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre o Projeto</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                        <li><a href="#eventos">Eventos</a></li>
+                        <li><a href="#venda">Comprar Obras</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Receba novidades sobre eventos e obras</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Viver é uma Arte - DealGear. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

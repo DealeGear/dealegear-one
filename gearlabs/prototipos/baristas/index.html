@@ -3,181 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafeteria Baristas - Onde Você é o Barista</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>3GTO</title>
     <style>
-        :root {
-            --primary-brown: #3E2723;
-            --secondary-brown: #5D4037;
-            --light-brown: #8D6E63;
-            --cream: #FFF3E0;
-            --accent-orange: #FF6F00;
-            --text-dark: #212121;
-            --text-light: #757575;
-            --white: #FFFFFF;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --azul-primario: #2563eb;
+            --verde-primario: #16a34a;
+            --fundo-claro: #ffffff;
+            --fundo-secundario: #f8fafc;
+            --fundo-terciario: #f1f5f9;
+            --texto-principal: #1e293b;
+            --texto-secundario: #64748b;
+            --cor-borda: #e2e8f0;
+            --roxo-acento: #7c3aed;
+            --gradiente: linear-gradient(135deg, #2563eb, #16a34a);
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--fundo-secundario);
+            color: var(--texto-principal);
             line-height: 1.6;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Header Styles */
-        header {
-            background: var(--white);
-            box-shadow: var(--shadow);
+        /* Sidebar */
+        .sidebar {
             position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-brown);
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo i {
-            font-size: 2rem;
-            color: var(--accent-orange);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-orange);
-            transition: width 0.3s ease;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--fundo-claro);
+            border-right: 1px solid var(--cor-borda);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
         }
 
-        .nav-menu a:hover::after {
-            width: 100%;
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--cor-borda);
         }
 
-        .nav-menu a:hover {
-            color: var(--accent-orange);
-        }
-
-        .header-controls {
+        .logo-container {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: var(--fundo-terciario);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .language-selector {
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .language-buttons {
             display: flex;
             gap: 0.5rem;
-            background: var(--cream);
-            padding: 0.25rem;
-            border-radius: 20px;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
 
         .lang-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            background: transparent;
-            color: var(--text-dark);
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--cor-borda);
+            background: var(--fundo-claro);
+            border-radius: 20px;
             cursor: pointer;
-            border-radius: 15px;
             transition: all 0.3s ease;
-            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--azul-primario);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .lang-btn.active {
-            background: var(--accent-orange);
-            color: var(--white);
+            background: var(--gradiente);
+            color: white;
         }
 
-        .back-btn {
-            padding: 0.5rem 1.5rem;
-            background: var(--light-brown);
-            color: var(--white);
+        .top-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .top-btn {
+            padding: 0.4rem 0.8rem;
+            background: var(--fundo-terciario);
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             cursor: pointer;
-            font-weight: 500;
+            font-size: 0.875rem;
             transition: all 0.3s ease;
+        }
+
+        .top-btn:hover {
+            background: var(--azul-primario);
+            color: white;
+        }
+
+        /* Menu Principal */
+        .sidebar-menu {
+            flex: 1;
+            padding: 1.5rem 0;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 0.875rem 1.5rem;
+            color: var(--texto-principal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: var(--fundo-secundario);
+            border-left-color: var(--azul-primario);
+            padding-left: 2rem;
+        }
+
+        .menu-item.active {
+            background: var(--fundo-secundario);
+            border-left-color: var(--azul-primario);
+            color: var(--azul-primario);
+            font-weight: 600;
+        }
+
+        /* Rodapé Sidebar */
+        .sidebar-footer {
+            padding: 1rem 0;
+            border-top: 1px solid var(--cor-borda);
+        }
+
+        .footer-item {
+            display: block;
+            padding: 0.625rem 1.5rem;
+            color: var(--texto-secundario);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-item:hover {
+            color: var(--azul-primario);
+            background: var(--fundo-secundario);
+        }
+
+        /* Conteúdo Principal */
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .main-header {
+            background: var(--fundo-claro);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradiente);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--texto-secundario);
+        }
+
+        .breadcrumb span {
+            color: var(--azul-primario);
+        }
+
+        /* Seções */
+        .section {
+            background: var(--fundo-claro);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--cor-borda);
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--gradiente);
+        }
+
+        .section p {
+            color: var(--texto-secundario);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Botão Voltar ao Topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradiente);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        .back-btn:hover {
-            background: var(--secondary-brown);
-            transform: translateX(-5px);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
+            justify-content: center;
+            color: white;
             cursor: pointer;
-            gap: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Menu Hamburguer */
+        .hamburger {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 40px;
+            height: 40px;
+            background: var(--gradiente);
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-brown);
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: white;
+            margin: 3px 0;
             transition: all 0.3s ease;
         }
 
@@ -193,718 +316,529 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
 
-        /* Main Content */
-        main {
-            margin-top: 80px;
-        }
-
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-brown);
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent-orange);
-        }
-
-        .section-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-brown), var(--secondary-brown));
-            color: var(--white);
-            padding: 6rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,111,0,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            to { transform: rotate(360deg); }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Cards */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            color: var(--accent-orange);
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            color: var(--primary-brown);
-            margin-bottom: 1rem;
-        }
-
-        /* Hall of Fame */
-        .hall-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .hall-item {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .hall-item:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .hall-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .hall-info {
-            padding: 1rem;
-        }
-
-        .hall-info h4 {
-            color: var(--primary-brown);
-            margin-bottom: 0.5rem;
-        }
-
-        .hall-info p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--accent-orange), var(--light-brown));
-            color: var(--white);
-            text-align: center;
-            padding: 4rem 2rem;
-            border-radius: 20px;
-            margin: 2rem auto;
-            max-width: 1000px;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            padding: 1rem 3rem;
-            background: var(--white);
-            color: var(--accent-orange);
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-brown);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            font-size: 1rem;
-        }
-
-        footer i {
-            color: var(--accent-orange);
-            margin: 0 0.5rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: var(--white);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: var(--shadow);
-                padding: 2rem 0;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .header-controls {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .back-btn {
-                padding: 0.4rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Loading Animation */
-        .coffee-bean {
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Scroll to top button */
-        .scroll-top {
+        /* Overlay */
+        .overlay {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--accent-orange);
-            color: var(--white);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 999;
         }
 
-        .scroll-top.active {
+        .overlay.active {
             opacity: 1;
             visibility: visible;
         }
 
-        .scroll-top:hover {
-            background: var(--light-brown);
-            transform: translateY(-5px);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+                padding-top: 4rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
         }
-        .linkFooter {
-            color: var(--white);
-            text-decoration: none;
+
+        /* Alert */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            background: rgba(255,255,255,0.9);
         }
-        .linkFooter:visited {
-            color: var(--white);
+
+        .alert-info {
+            border-left-color: var(--azul-primario);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .alert-success {
+            border-left-color: var(--verde-primario);
+            background: rgba(22, 163, 74, 0.1);
+        }
+
+        /* Tabela */
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--fundo-claro);
+        }
+
+        th, td {
+            padding: 0.875rem;
+            text-align: left;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        th {
+            background: var(--fundo-secundario);
+            font-weight: 600;
+            color: var(--texto-principal);
+        }
+
+        tr:hover {
+            background: var(--fundo-secundario);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-coffee"></i>
-                <span data-lang="logo">Baristas</span>
-            </a>
-            
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#sobre" data-lang="nav-sobre">Sobre</a></li>
-                    <li><a href="#maquinas" data-lang="nav-maquinas">Máquinas</a></li>
-                    <li><a href="#competicao" data-lang="nav-competicao">Competição</a></li>
-                    <li><a href="#eventos" data-lang="nav-eventos">Eventos</a></li>
-                    <li><a href="#hall" data-lang="nav-hall">Hall da Fama</a></li>
-                </ul>
-                
-                <div class="header-controls">
-                    <div class="language-selector">
-                        <button class="lang-btn active" data-lang-btn="pt">PT</button>
-                        <button class="lang-btn" data-lang-btn="en">EN</button>
-                        <button class="lang-btn" data-lang-btn="es">ES</button>
-                    </div>
-                    
-                    <button class="back-btn" onclick="history.back()">
-                        <i class="fas fa-arrow-left"></i>
-                        <span data-lang="voltar">Voltar</span>
-                    </button>
-                </div>
-            </nav>
-            
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="img/logo.webp" alt="Logo">
+            </div>
+            <div class="language-buttons">
+                <button class="lang-btn active" data-lang="pt">PT</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+            <div class="top-buttons">
+                <a href="../../index.html"><button class="top-btn">GearLabs</button></a>
+                <a href="land.html"><button class="top-btn">Landpage</button></a>
+                <a href="app.html"><button class="top-btn">App</button></a>
             </div>
         </div>
-    </header>
+        
+        <nav class="sidebar-menu">
+            <a href="#apresentacao" class="menu-item" data-translate="menu-apresentacao">Apresentação</a>
+            <a href="#sintese" class="menu-item" data-translate="menu-sintese">Síntese</a>
+            <a href="#problema" class="menu-item" data-translate="menu-problema">Problema vs Solução</a>
+            <a href="#fundamentacao" class="menu-item" data-translate="menu-fundamentacao">Fundamentação Técnica</a>
+            <a href="#recursos" class="menu-item" data-translate="menu-recursos">Recursos e Funcionalidades</a>
+            <a href="#analise" class="menu-item" data-translate="menu-analise">Análise de dados</a>
+            <a href="#oportunidades" class="menu-item" data-translate="menu-oportunidades">Oportunidades</a>
+            <a href="#glossario" class="menu-item" data-translate="menu-glossario">Glossário</a>
+            <a href="#base" class="menu-item" data-translate="menu-base">Base de conhecimento</a>
+            <a href="#referencias" class="menu-item" data-translate="menu-referencias">Referências</a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../../../index.html" class="footer-item">DealeGear</a>
+            <a href="../../../gearhub/index.html" class="footer-item">GearHub</a>
+            <a href="../../../gearvision/index.html" class="footer-item">GearVision</a>
+            <a href="../../../technotes/index.html" class="footer-item">TechNotes</a>
+            <a href="https://dealegear.substack.com/" class="footer-item">Blog</a>
+        </div>
+    </aside>
 
-    <main>
-        <section class="hero">
-            <h1><span class="coffee-bean">☕</span> <span data-lang="hero-title">Cafeteria Baristas</span></h1>
-            <p data-lang="hero-subtitle">Onde Você é o Barista Principal da Sua Experiência</p>
-        </section>
+    <!-- Menu Hamburguer -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-        <section id="sobre">
-            <h2 class="section-title" data-lang="sobre-title">Sobre Nossa Cafeteria</h2>
-            <div class="section-content">
-                <p data-lang="sobre-text">
-                    Bem-vindo à Cafeteria Baristas, onde revolucionamos a experiência do café! 
-                    Não somos uma cafeteria tradicional - aqui, você é o artista por trás de cada xícara. 
-                    Em nosso espaço único, você tem liberdade total para criar sua bebida perfeita, 
-                    desde a seleção dos grãos até a arte final na espuma. Nossos especialistas estão sempre 
-                    prontos para guiar e inspirar, mas a magia acontece em suas mãos.
-                </p>
-            </div>
-            <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-magic"></i></div>
-                    <h3 data-lang="card1-title">Crie Suas Combinações</h3>
-                    <p data-lang="card1-text">Experimente diferentes blends, proporções e técnicas para descobrir seu café perfeito.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-temperature-high"></i></div>
-                    <h3 data-lang="card2-title">Vaporize como Profissional</h3>
-                    <p data-lang="card2-text">Domine a arte de vaporizar leite para criar texturas perfeitas para latte art.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-palette"></i></div>
-                    <h3 data-lang="card3-title">Decorações Incríveis</h3>
-                    <p data-lang="card3-text">Aprenda e pratique latte art, desde corações simples até designs complexos.</p>
-                </div>
-            </div>
-        </section>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
 
-        <section id="maquinas">
-            <h2 class="section-title" data-lang="maquinas-title">Nossas Máquinas Especiais</h2>
-            <div class="section-content">
-                <p data-lang="maquinas-text">
-                    Desenvolvemos máquinas exclusivas pensadas para você! Nossos equipamentos foram 
-                    projetados especificamente para este modelo de negócio inovador, tornando a 
-                    arte de fazer café acessível a todos, independentemente da experiência. 
-                    Com interfaces intuitivas e guias passo a passo, até iniciantes podem criar 
-                    bebidas de qualidade profissional. Para os mais experientes, oferecemos 
-                    máquinas de última geração onde você pode explorar todo seu potencial e 
-                    praticar técnicas avançadas.
-                </p>
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <header class="main-header">
+            <h1 class="main-title" data-translate="main-title">3GTO - 3 Gateways to Obstination</h1>
+            <div class="breadcrumb">
+                <span>Home</span> / <span data-translate="breadcrumb-current">Plataforma</span> / <span data-translate="breadcrumb-page">Documentação</span>
             </div>
-            <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
-                    <h3 data-lang="maquinas-card1-title">Para Iniciantes</h3>
-                    <p data-lang="maquinas-card1-text">Máquinas com assistência inteligente e tutoriais integrados para facilitar seu aprendizado.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-award"></i></div>
-                    <h3 data-lang="maquinas-card2-title">Para Experts</h3>
-                    <p data-lang="maquinas-card2-text">Equipamentos profissionais com controle total de temperatura, pressão e tempo.</p>
-                </div>
+        </header>
+
+        <section id="apresentacao" class="section">
+            <h2 data-translate="title-apresentacao">Apresentação</h2>
+            <p data-translate="text-apresentacao-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p data-translate="text-apresentacao-2">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="alert alert-info" data-translate="alert-apresentacao">
+                Esta seção apresenta uma visão geral completa da plataforma GearLabs e seus principais componentes.
             </div>
         </section>
 
-        <section id="competicao">
-            <h2 class="section-title" data-lang="competicao-title">Competição Mensal</h2>
-            <div class="section-content">
-                <p data-lang="competicao-text">
-                    Todo mês, transformamos nossa cafeteria em um palco de criatividade! 
-                    Nosso dia exclusivo de competição reúne apaixonados por café para 
-                    mostrar suas criações únicas. Os participantes preparam suas bebidas 
-                    masterpieces, enquanto outros inscritos atuam como jurados, provando 
-                    e atribuindo notas baseadas em sabor, apresentação e criatividade. 
-                    O grande vencedor leva um kit exclusivo de cafés premium de todo o mundo 
-                    e ganha seu lugar eterno em nosso Hall da Fama!
-                </p>
-            </div>
-            <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-trophy"></i></div>
-                    <h3 data-lang="competicao-card1-title">Prêmio Especial</h3>
-                    <p data-lang="competicao-card1-text">Kit premium com cafés raros e acessórios exclusivos selecionados por nossos especialistas.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-star"></i></div>
-                    <h3 data-lang="competicao-card2-title">Hall da Fama</h3>
-                    <p data-lang="competicao-card2-text">Sua foto e criação imortalizadas em nossa galeria de campeões.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="eventos">
-            <h2 class="section-title" data-lang="eventos-title">Eventos e Transmissões</h2>
-            <div class="section-content">
-                <p data-lang="eventos-text">
-                    Nossas competições mensais são transmitidas ao vivo para o mundo inteiro! 
-                    Através de nossa plataforma online, milhares de espectadores acompanham 
-                    cada momento criativo, aprendendo técnicas e se inspirando. Oferecemos 
-                    oportunidades exclusivas de parceria para marcas de cafés, fabricantes 
-                    de máquinas e produtores de acessórios que desejam apresentar seus produtos 
-                    durante nossas transmissões. Alcance um público engajado e apaixonado 
-                    pelo universo do café!
-                </p>
-            </div>
-            <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-broadcast-tower"></i></div>
-                    <h3 data-lang="eventos-card1-title">Transmissão Ao Vivo</h3>
-                    <p data-lang="eventos-card1-text">Acompanhe todas as competições em tempo real através de nossas plataformas digitais.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
-                    <h3 data-lang="eventos-card2-title">Seja um Patrocinador</h3>
-                    <p data-lang="eventos-card2-text">Apresente sua marca para milhares de amantes de café durante nossos eventos.</p>
-                </div>
+        <section id="sintese" class="section">
+            <h2 data-translate="title-sintese">Síntese</h2>
+            <p data-translate="text-sintese-1">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+            <p data-translate="text-sintese-2">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-translate="table-feature">Característica</th>
+                            <th data-translate="table-status">Status</th>
+                            <th data-translate="table-priority">Prioridade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-translate="table-item1">Integração API</td>
+                            <td data-translate="table-active">Ativo</td>
+                            <td data-translate="table-high">Alta</td>
+                        </tr>
+                        <tr>
+                            <td data-translate="table-item2">Dashboard Analytics</td>
+                            <td data-translate="table-development">Em Desenvolvimento</td>
+                            <td data-translate="table-medium">Média</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
-        <section id="hall">
-            <h2 class="section-title" data-lang="hall-title">Hall da Fama</h2>
-            <div class="section-content">
-                <p data-lang="hall-text">
-                    Conheça os mestres que já conquistaram o topo! Nosso Hall da Fama celebra 
-                    a criatividade e dedicação de nossos clientes campeões. Cada mês, novas 
-                    lendas nascem aqui, deixando seu legado na história da Cafeteria Baristas.
-                </p>
-            </div>
-            <div class="hall-grid">
-                <div class="hall-item">
-                    <img src="img/1.jpg" alt="Vencedor">
-                    <div class="hall-info">
-                        <h4>Maria Silva</h4>
-                        <p>Campeã Agosto 2024 - "Aurora Dourada"</p>
-                    </div>
-                </div>
-                <div class="hall-item">
-                    <img src="img/3.jpg" alt="Vencedor">
-                    <div class="hall-info">
-                        <h4>Pedro Tanaka</h4>
-                        <p>Campeão Setembro 2024 - "Noite Estrelada"</p>
-                    </div>
-                </div>
-                <div class="hall-item">
-                    <img src="img/2.jpg" alt="Vencedor">
-                    <div class="hall-info">
-                        <h4>Ana Costa</h4>
-                        <p>Campeã Outubro 2024 - "Tropical Dream"</p>
-                    </div>
-                </div>
-                <div class="hall-item">
-                    <img src="img/4.jpg" alt="Vencedor">
-                    <div class="hall-info">
-                        <h4>Ana Rosa</h4>
-                        <p>Campeão Novembro 2024 - "Chocolate Intenso"</p>
-                    </div>
-                </div>
+        <section id="problema" class="section">
+            <h2 data-translate="title-problema">Problema vs Solução</h2>
+            <p data-translate="text-problema-1">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+            </p>
+            <p data-translate="text-problema-2">
+                Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+            </p>
+            <div class="alert alert-success" data-translate="alert-problema">
+                Solução integrada que resolve 95% dos problemas identificados no processo atual.
             </div>
         </section>
 
-        <section class="cta-section">
-            <h2 data-lang="cta-title">Venha nos Conhecer</h2>
-            <p data-lang="cta-address">Rua dos Cafés, 123 - Centro - São Paulo, Brasil</p>
-            <a href="#contato" class="cta-button" data-lang="cta-button">Reserve Sua Experiência</a>
+        <section id="fundamentacao" class="section">
+            <h2 data-translate="title-fundamentacao">Fundamentação Técnica</h2>
+            <p data-translate="text-fundamentacao-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p data-translate="text-fundamentacao-2">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </section>
+
+        <section id="recursos" class="section">
+            <h2 data-translate="title-recursos">Recursos e Funcionalidades</h2>
+            <p data-translate="text-recursos-1">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+            <p data-translate="text-recursos-2">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+            </p>
+        </section>
+
+        <section id="analise" class="section">
+            <h2 data-translate="title-analise">Análise de Dados</h2>
+            <p data-translate="text-analise-1">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+            </p>
+            <p data-translate="text-analise-2">
+                Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+            </p>
+        </section>
+
+        <section id="oportunidades" class="section">
+            <h2 data-translate="title-oportunidades">Oportunidades</h2>
+            <p data-translate="text-oportunidades-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p data-translate="text-oportunidades-2">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </section>
+
+        <section id="glossario" class="section">
+            <h2 data-translate="title-glossario">Glossário</h2>
+            <p data-translate="text-glossario-1">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+            <p data-translate="text-glossario-2">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+            </p>
+        </section>
+
+        <section id="base" class="section">
+            <h2 data-translate="title-base">Base de Conhecimento</h2>
+            <p data-translate="text-base-1">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+            </p>
+            <p data-translate="text-base-2">
+                Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+            </p>
+        </section>
+
+        <section id="referencias" class="section">
+            <h2 data-translate="title-referencias">Referências</h2>
+            <p data-translate="text-referencias-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p data-translate="text-referencias-2">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
         </section>
     </main>
 
-    <footer>
-        <p>
-            <i class="fas fa-code"></i> 
-            <span data-lang="footer">By <a href="../../../index.html" class="linkFooter">DealeGear</a></span> 
-            <i class="fas fa-heart"></i>
-        </p>
-    </footer>
-
-    <div class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
+    <!-- Botão Voltar ao Topo -->
+    <div class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
     </div>
 
     <script>
-        // Translations
+        // Sistema de Tradução
         const translations = {
             pt: {
-                logo: "Baristas",
-                "nav-sobre": "Sobre",
-                "nav-maquinas": "Máquinas",
-                "nav-competicao": "Competição",
-                "nav-eventos": "Eventos",
-                "nav-hall": "Hall da Fama",
-                voltar: "Voltar",
-                "hero-title": "Cafeteria Baristas",
-                "hero-subtitle": "Onde Você é o Barista Principal da Sua Experiência",
-                "sobre-title": "Sobre Nossa Cafeteria",
-                "sobre-text": "Bem-vindo à Cafeteria Baristas, onde revolucionamos a experiência do café! Não somos uma cafeteria tradicional - aqui, você é o artista por trás de cada xícara. Em nosso espaço único, você tem liberdade total para criar sua bebida perfeita, desde a seleção dos grãos até a arte final na espuma. Nossos especialistas estão sempre prontos para guiar e inspirar, mas a magia acontece em suas mãos.",
-                "card1-title": "Crie Suas Combinações",
-                "card1-text": "Experimente diferentes blends, proporções e técnicas para descobrir seu café perfeito.",
-                "card2-title": "Vaporize como Profissional",
-                "card2-text": "Domine a arte de vaporizar leite para criar texturas perfeitas para latte art.",
-                "card3-title": "Decorações Incríveis",
-                "card3-text": "Aprenda e pratique latte art, desde corações simples até designs complexos.",
-                "maquinas-title": "Nossas Máquinas Especiais",
-                "maquinas-text": "Desenvolvemos máquinas exclusivas pensadas para você! Nossos equipamentos foram projetados especificamente para este modelo de negócio inovador, tornando a arte de fazer café acessível a todos, independentemente da experiência. Com interfaces intuitivas e guias passo a passo, até iniciantes podem criar bebidas de qualidade profissional. Para os mais experientes, oferecemos máquinas de última geração onde você pode explorar todo seu potencial e praticar técnicas avançadas.",
-                "maquinas-card1-title": "Para Iniciantes",
-                "maquinas-card1-text": "Máquinas com assistência inteligente e tutoriais integrados para facilitar seu aprendizado.",
-                "maquinas-card2-title": "Para Experts",
-                "maquinas-card2-text": "Equipamentos profissionais com controle total de temperatura, pressão e tempo.",
-                "competicao-title": "Competição Mensal",
-                "competicao-text": "Todo mês, transformamos nossa cafeteria em um palco de criatividade! Nosso dia exclusivo de competição reúne apaixonados por café para mostrar suas criações únicas. Os participantes preparam suas bebidas masterpieces, enquanto outros inscritos atuam como jurados, provando e atribuindo notas baseadas em sabor, apresentação e criatividade. O grande vencedor leva um kit exclusivo de cafés premium de todo o mundo e ganha seu lugar eterno em nosso Hall da Fama!",
-                "competicao-card1-title": "Prêmio Especial",
-                "competicao-card1-text": "Kit premium com cafés raros e acessórios exclusivos selecionados por nossos especialistas.",
-                "competicao-card2-title": "Hall da Fama",
-                "competicao-card2-text": "Sua foto e criação imortalizadas em nossa galeria de campeões.",
-                "eventos-title": "Eventos e Transmissões",
-                "eventos-text": "Nossas competições mensais são transmitidas ao vivo para o mundo inteiro! Através de nossa plataforma online, milhares de espectadores acompanham cada momento criativo, aprendendo técnicas e se inspirando. Oferecemos oportunidades exclusivas de parceria para marcas de cafés, fabricantes de máquinas e produtores de acessórios que desejam apresentar seus produtos durante nossas transmissões. Alcance um público engajado e apaixonado pelo universo do café!",
-                "eventos-card1-title": "Transmissão Ao Vivo",
-                "eventos-card1-text": "Acompanhe todas as competições em tempo real através de nossas plataformas digitais.",
-                "eventos-card2-title": "Seja um Patrocinador",
-                "eventos-card2-text": "Apresente sua marca para milhares de amantes de café durante nossos eventos.",
-                "hall-title": "Hall da Fama",
-                "hall-text": "Conheça os mestres que já conquistaram o topo! Nosso Hall da Fama celebra a criatividade e dedicação de nossos clientes campeões. Cada mês, novas lendas nascem aqui, deixando seu legado na história da Cafeteria Baristas.",
-                "cta-title": "Venha nos Conhecer",
-                "cta-address": "Rua dos Cafés, 123 - Centro - São Paulo, Brasil",
-                "cta-button": "Reserve Sua Experiência",
-                footer: "By DealeGear"
+                'main-title': '3GTO - Three Gateways to Obstination',
+                'breadcrumb-current': 'Plataforma',
+                'breadcrumb-page': 'Documentação',
+                'menu-apresentacao': 'Apresentação',
+                'menu-sintese': 'Síntese',
+                'menu-problema': 'Problema vs Solução',
+                'menu-fundamentacao': 'Fundamentação Técnica',
+                'menu-recursos': 'Recursos e Funcionalidades',
+                'menu-analise': 'Análise de dados',
+                'menu-oportunidades': 'Oportunidades',
+                'menu-glossario': 'Glossário',
+                'menu-base': 'Base de conhecimento',
+                'menu-referencias': 'Referências',
+                'title-apresentacao': 'Apresentação',
+                'text-apresentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-apresentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'alert-apresentacao': 'Esta seção apresenta uma visão geral completa da plataforma GearLabs e seus principais componentes.',
+                'title-sintese': 'Síntese',
+                'text-sintese-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-sintese-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'table-feature': 'Característica',
+                'table-status': 'Status',
+                'table-priority': 'Prioridade',
+                'table-item1': 'Integração API',
+                'table-item2': 'Dashboard Analytics',
+                'table-active': 'Ativo',
+                'table-development': 'Em Desenvolvimento',
+                'table-high': 'Alta',
+                'table-medium': 'Média',
+                'title-problema': 'Problema vs Solução',
+                'text-problema-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-problema-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'alert-problema': 'Solução integrada que resolve 95% dos problemas identificados no processo atual.',
+                'title-fundamentacao': 'Fundamentação Técnica',
+                'text-fundamentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-fundamentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-recursos': 'Recursos e Funcionalidades',
+                'text-recursos-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-recursos-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-analise': 'Análise de Dados',
+                'text-analise-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-analise-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-oportunidades': 'Oportunidades',
+                'text-oportunidades-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-oportunidades-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-glossario': 'Glossário',
+                'text-glossario-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-glossario-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-base': 'Base de Conhecimento',
+                'text-base-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-base-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-referencias': 'Referências',
+                'text-referencias-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-referencias-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
             },
             en: {
-                logo: "Baristas",
-                "nav-sobre": "About",
-                "nav-maquinas": "Machines",
-                "nav-competicao": "Competition",
-                "nav-eventos": "Events",
-                "nav-hall": "Hall of Fame",
-                voltar: "Back",
-                "hero-title": "Baristas Coffee Shop",
-                "hero-subtitle": "Where You Are the Main Barista of Your Experience",
-                "sobre-title": "About Our Coffee Shop",
-                "sobre-text": "Welcome to Baristas Coffee Shop, where we revolutionize the coffee experience! We are not a traditional coffee shop - here, you are the artist behind every cup. In our unique space, you have complete freedom to create your perfect drink, from bean selection to the final art on the foam. Our experts are always ready to guide and inspire, but the magic happens in your hands.",
-                "card1-title": "Create Your Combinations",
-                "card1-text": "Experiment with different blends, proportions, and techniques to discover your perfect coffee.",
-                "card2-title": "Steam Like a Professional",
-                "card2-text": "Master the art of steaming milk to create perfect textures for latte art.",
-                "card3-title": "Amazing Decorations",
-                "card3-text": "Learn and practice latte art, from simple hearts to complex designs.",
-                "maquinas-title": "Our Special Machines",
-                "maquinas-text": "We've developed exclusive machines designed for you! Our equipment was specifically created for this innovative business model, making the art of coffee making accessible to everyone, regardless of experience. With intuitive interfaces and step-by-step guides, even beginners can create professional-quality drinks. For the more experienced, we offer state-of-the-art machines where you can explore your full potential and practice advanced techniques.",
-                "maquinas-card1-title": "For Beginners",
-                "maquinas-card1-text": "Machines with smart assistance and integrated tutorials to facilitate your learning.",
-                "maquinas-card2-title": "For Experts",
-                "maquinas-card2-text": "Professional equipment with full control of temperature, pressure, and time.",
-                "competicao-title": "Monthly Competition",
-                "competicao-text": "Every month, we transform our coffee shop into a stage of creativity! Our exclusive competition day brings together coffee lovers to showcase their unique creations. Participants prepare their masterpiece drinks, while other registered members act as judges, tasting and assigning scores based on flavor, presentation, and creativity. The grand winner takes home an exclusive kit of premium coffees from around the world and earns their eternal place in our Hall of Fame!",
-                "competicao-card1-title": "Special Prize",
-                "competicao-card1-text": "Premium kit with rare coffees and exclusive accessories selected by our specialists.",
-                "competicao-card2-title": "Hall of Fame",
-                "competicao-card2-text": "Your photo and creation immortalized in our champions gallery.",
-                "eventos-title": "Events and Broadcasts",
-                "eventos-text": "Our monthly competitions are broadcast live to the whole world! Through our online platform, thousands of viewers follow every creative moment, learning techniques and getting inspired. We offer exclusive partnership opportunities for coffee brands, machine manufacturers, and accessory producers who want to present their products during our broadcasts. Reach an engaged and passionate audience about the coffee universe!",
-                "eventos-card1-title": "Live Broadcast",
-                "eventos-card1-text": "Follow all competitions in real-time through our digital platforms.",
-                "eventos-card2-title": "Become a Sponsor",
-                "eventos-card2-text": "Present your brand to thousands of coffee lovers during our events.",
-                "hall-title": "Hall of Fame",
-                "hall-text": "Meet the masters who have already reached the top! Our Hall of Fame celebrates the creativity and dedication of our champion customers. Every month, new legends are born here, leaving their legacy in the history of Baristas Coffee Shop.",
-                "cta-title": "Come Visit Us",
-                "cta-address": "Rua dos Cafés, 123 - Downtown - São Paulo, Brazil",
-                "cta-button": "Book Your Experience",
-                footer: "By DealeGear"
+                'main-title': '3GTO - Three Gateways to Obstination',
+                'breadcrumb-current': 'Platform',
+                'breadcrumb-page': 'Documentation',
+                'menu-apresentacao': 'Presentation',
+                'menu-sintese': 'Synthesis',
+                'menu-problema': 'Problem vs Solution',
+                'menu-fundamentacao': 'Technical Foundation',
+                'menu-recursos': 'Resources and Features',
+                'menu-analise': 'Data Analysis',
+                'menu-oportunidades': 'Opportunities',
+                'menu-glossario': 'Glossary',
+                'menu-base': 'Knowledge Base',
+                'menu-referencias': 'References',
+                'title-apresentacao': 'Presentation',
+                'text-apresentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-apresentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'alert-apresentacao': 'This section provides a complete overview of the GearLabs platform and its main components.',
+                'title-sintese': 'Synthesis',
+                'text-sintese-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-sintese-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'table-feature': 'Feature',
+                'table-status': 'Status',
+                'table-priority': 'Priority',
+                'table-item1': 'API Integration',
+                'table-item2': 'Analytics Dashboard',
+                'table-active': 'Active',
+                'table-development': 'In Development',
+                'table-high': 'High',
+                'table-medium': 'Medium',
+                'title-problema': 'Problem vs Solution',
+                'text-problema-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-problema-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'alert-problema': 'Integrated solution that solves 95% of the problems identified in the current process.',
+                'title-fundamentacao': 'Technical Foundation',
+                'text-fundamentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-fundamentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-recursos': 'Resources and Features',
+                'text-recursos-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-recursos-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-analise': 'Data Analysis',
+                'text-analise-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-analise-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-oportunidades': 'Opportunities',
+                'text-oportunidades-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-oportunidades-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-glossario': 'Glossary',
+                'text-glossario-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-glossario-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-base': 'Knowledge Base',
+                'text-base-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-base-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-referencias': 'References',
+                'text-referencias-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-referencias-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
             },
             es: {
-                logo: "Baristas",
-                "nav-sobre": "Acerca",
-                "nav-maquinas": "Máquinas",
-                "nav-competicao": "Competición",
-                "nav-eventos": "Eventos",
-                "nav-hall": "Salón de la Fama",
-                voltar: "Volver",
-                "hero-title": "Cafetería Baristas",
-                "hero-subtitle": "Donde Tú Eres el Barista Principal de Tu Experiencia",
-                "sobre-title": "Acerca de Nuestra Cafetería",
-                "sobre-text": "¡Bienvenido a Cafetería Baristas, donde revolucionamos la experiencia del café! No somos una cafetería tradicional - aquí, tú eres el artista detrás de cada taza. En nuestro espacio único, tienes libertad total para crear tu bebida perfecta, desde la selección de los granos hasta el arte final en la espuma. Nuestros expertos siempre están listos para guiar e inspirar, pero la magia ocurre en tus manos.",
-                "card1-title": "Crea Tus Combinaciones",
-                "card1-text": "Experimenta con diferentes mezclas, proporciones y técnicas para descubrir tu café perfecto.",
-                "card2-title": "Vaporiza como Profesional",
-                "card2-text": "Domina el arte de vaporizar leche para crear texturas perfectas para latte art.",
-                "card3-title": "Decoraciones Increíbles",
-                "card3-text": "Aprende y practica latte art, desde corazones simples hasta diseños complejos.",
-                "maquinas-title": "Nuestras Máquinas Especiales",
-                "maquinas-text": "¡Hemos desarrollado máquinas exclusivas diseñadas para ti! Nuestro equipo fue creado específicamente para este modelo de negocio innovador, haciendo que el arte de hacer café sea accesible para todos, independientemente de la experiencia. Con interfaces intuitivas y guías paso a paso, incluso los principiantes pueden crear bebidas de calidad profesional. Para los más experimentados, ofrecemos máquinas de última generación donde puedes explorar todo tu potencial y practicar técnicas avanzadas.",
-                "maquinas-card1-title": "Para Principiantes",
-                "maquinas-card1-text": "Máquinas con asistencia inteligente y tutoriales integrados para facilitar tu aprendizaje.",
-                "maquinas-card2-title": "Para Expertos",
-                "maquinas-card2-text": "Equipo profesional con control total de temperatura, presión y tiempo.",
-                "competicao-title": "Competición Mensual",
-                "competicao-text": "¡Cada mes transformamos nuestra cafetería en un escenario de creatividad! Nuestro día exclusivo de competición reúne a amantes del café para mostrar sus creaciones únicas. Los participantes preparan sus bebidas maestras, mientras otros miembros inscritos actúan como jueces, probando y asignando puntuaciones basadas en sabor, presentación y creatividad. El gran ganador se lleva un kit exclusivo de cafés premium de todo el mundo y gana su lugar eterno en nuestro Salón de la Fama!",
-                "competicao-card1-title": "Premio Especial",
-                "competicao-card1-text": "Kit premium con cafés raros y accesorios exclusivos seleccionados por nuestros especialistas.",
-                "competicao-card2-title": "Salón de la Fama",
-                "competicao-card2-text": "Tu foto y creación inmortalizadas en nuestra galería de campeones.",
-                "eventos-title": "Eventos y Transmisiones",
-                "eventos-text": "¡Nuestras competiciones mensuales se transmiten en vivo para todo el mundo! A través de nuestra plataforma online, miles de espectadores siguen cada momento creativo, aprendiendo técnicas e inspirándose. Ofrecemos oportunidades exclusivas de asociación para marcas de café, fabricantes de máquinas y productores de accesorios que deseen presentar sus productos durante nuestras transmisiones. ¡Alcanza a una audiencia comprometida y apasionada por el universo del café!",
-                "eventos-card1-title": "Transmisión en Vivo",
-                "eventos-card1-text": "Sigue todas las competiciones en tiempo real a través de nuestras plataformas digitales.",
-                "eventos-card2-title": "Sé un Patrocinador",
-                "eventos-card2-text": "Presenta tu marca a miles de amantes del café durante nuestros eventos.",
-                "hall-title": "Salón de la Fama",
-                "hall-text": "¡Conoce a los maestros que ya han alcanzado la cima! Nuestro Salón de la Fama celebra la creatividad y dedicación de nuestros clientes campeones. Cada mes, nuevas leyendas nacen aquí, dejando su legado en la historia de Cafetería Baristas.",
-                "cta-title": "Ven a Conocernos",
-                "cta-address": "Rua dos Cafés, 123 - Centro - São Paulo, Brasil",
-                "cta-button": "Reserva Tu Experiencia",
-                footer: "By DealeGear"
+                'main-title': '3GTO - Three Gateways to Obstination',
+                'breadcrumb-current': 'Plataforma',
+                'breadcrumb-page': 'Documentación',
+                'menu-apresentacao': 'Presentación',
+                'menu-sintese': 'Síntesis',
+                'menu-problema': 'Problema vs Solución',
+                'menu-fundamentacao': 'Fundamentación Técnica',
+                'menu-recursos': 'Recursos y Funcionalidades',
+                'menu-analise': 'Análisis de datos',
+                'menu-oportunidades': 'Oportunidades',
+                'menu-glossario': 'Glosario',
+                'menu-base': 'Base de conocimiento',
+                'menu-referencias': 'Referencias',
+                'title-apresentacao': 'Presentación',
+                'text-apresentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-apresentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'alert-apresentacao': 'Esta sección presenta una visión general completa de la plataforma GearLabs y sus principales componentes.',
+                'title-sintese': 'Síntesis',
+                'text-sintese-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-sintese-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'table-feature': 'Característica',
+                'table-status': 'Estado',
+                'table-priority': 'Prioridad',
+                'table-item1': 'Integración API',
+                'table-item2': 'Dashboard Analytics',
+                'table-active': 'Activo',
+                'table-development': 'En Desarrollo',
+                'table-high': 'Alta',
+                'table-medium': 'Media',
+                'title-problema': 'Problema vs Solución',
+                'text-problema-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-problema-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'alert-problema': 'Solución integrada que resuelve el 95% de los problemas identificados en el proceso actual.',
+                'title-fundamentacao': 'Fundamentación Técnica',
+                'text-fundamentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-fundamentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-recursos': 'Recursos y Funcionalidades',
+                'text-recursos-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-recursos-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-analise': 'Análisis de Datos',
+                'text-analise-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-analise-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-oportunidades': 'Oportunidades',
+                'text-oportunidades-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-oportunidades-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-glossario': 'Glosario',
+                'text-glossario-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-glossario-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-base': 'Base de Conocimiento',
+                'text-base-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-base-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-referencias': 'Referencias',
+                'text-referencias-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-referencias-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
             }
         };
 
-        // Language switcher
-        let currentLang = 'pt';
-        const langButtons = document.querySelectorAll('[data-lang-btn]');
-        const elementsToTranslate = document.querySelectorAll('[data-lang]');
-
-        langButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const lang = btn.dataset.langBtn;
-                if (lang !== currentLang) {
-                    currentLang = lang;
-                    updateLanguage();
-                    
-                    // Update active button
-                    langButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    // Update HTML lang attribute
-                    document.documentElement.lang = lang;
+        // Função para mudar idioma
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
                 }
             });
-        });
-
-        function updateLanguage() {
-            elementsToTranslate.forEach(element => {
-                const key = element.dataset.lang;
-                if (translations[currentLang][key]) {
-                    element.textContent = translations[currentLang][key];
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Atualizar botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
                 }
             });
         }
 
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
+        // Carregar idioma salvo
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
+        changeLanguage(savedLanguage);
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+        // Event listeners para botões de idioma
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                changeLanguage(lang);
             });
         });
 
-        // Smooth scrolling for navigation links
+        // Menu Hamburguer
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Fechar sidebar ao clicar em links (mobile)
+        document.querySelectorAll('.menu-item').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    hamburger.classList.remove('active');
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll Suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -918,43 +852,31 @@
             });
         });
 
-        // Scroll to top button
-        const scrollTopBtn = document.querySelector('.scroll-top');
+        // ScrollSpy
+        const sections = document.querySelectorAll('.section');
+        const menuItems = document.querySelectorAll('.menu-item');
 
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.add('active');
-            } else {
-                scrollTopBtn.classList.remove('active');
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        function updateActiveSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
             });
-        });
 
-        // Header scroll effect
-        let lastScroll = 0;
-        const header = document.querySelector('header');
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        }
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'var(--white)';
-                header.style.backdropFilter = 'none';
-            }
-            
-            lastScroll = currentScroll;
-        });
+        window.addEventListener('scroll', updateActiveSection);
 
-        // Intersection Observer for fade-in animations
+        // Animação Fade-in
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -963,37 +885,37 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = '0.2s';
-                    entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => {
-            section.style.animationPlayState = 'paused';
+        sections.forEach(section => {
             observer.observe(section);
         });
 
-        // Add hover effect to cards
-        document.querySelectorAll('.card, .hall-item').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+        // Botão Voltar ao Topo
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add loading animation
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
+        // Inicializar primeira seção como visível
+        if (sections.length > 0) {
+            sections[0].classList.add('visible');
+        }
     </script>
 </body>
 </html>

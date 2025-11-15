@@ -1,0 +1,163 @@
+Prompt de Geração de Projeto Web (Réplica Exata)
+INSTRUÇÃO PRINCIPAL:
+Crie um projeto web completo (HTML + CSS + JavaScript) que seja uma réplica exata das especificações a seguir. O projeto deve ser entregue como um único arquivo HTML autônomo, com todo o CSS e JavaScript embutidos. Siga cada detalhe com precisão absoluta, sem desvios ou criatividade adicional.
+
+🎨 1. Estilo Visual Geral (Reproduzir Fielmente):
+
+Layout: Sidebar fixa à esquerda e conteúdo principal à direita.
+Cores do Tema (use exatamente estes valores):
+Azul primário: #2563eb
+Verde primário: #16a34a
+Fundo claro: #ffffff
+Fundo secundário: #f8fafc
+Fundo terciário: #f1f5f9
+Texto principal: #1e293b
+Texto secundário: #64748b
+Cor de borda: #e2e8f0
+Roxo acento: #7c3aed
+Gradiente (use exatamente esta definição):
+linear-gradient(135deg, #2563eb, #16a34a)
+Tipografia (use exatamente esta fonte):
+'Segoe UI', system-ui, sans-serif
+Estilo de Cards:
+Bordas arredondadas (border-radius: 12px).
+Sombra leve (box-shadow: 0 2px 8px rgba(0,0,0,0.05)).
+Animações suaves de fade-in ao entrar na tela.
+Estilo de Tabelas:
+Aparência profissional.
+Efeito hover que muda o fundo da linha para --fundo-secundario.
+Estilo de Alerts:
+Fundo colorido translúcido (ex: rgba(37, 99, 235, 0.1)).
+Borda lateral colorida (border-left: 4px solid).
+Botão "Voltar ao Topo":
+Circular.
+Fundo com o gradiente azul-verde.
+Ícone SVG de seta para cima.
+Comportamento Mobile:
+Menu hamburguer que abre a sidebar sobre a tela.
+Overlay escuro semitransparente (rgba(0,0,0,0.5)) que bloqueia o fundo.
+🟦 2. Sidebar - Itens, Topo e Rodapé (Especificação Completa):
+
+Dimensões: Largura fixa de 280px, altura 100vh, fundo --fundo-claro.
+Parte Superior (dentro de uma div com classe sidebar-header):
+Logo Circular:
+Container div com 90px de largura e altura, border-radius: 50%.
+Imagem de placeholder: src="https://picsum.photos/seed/gearlabs/90/90.jpg".
+Botões de Idioma:
+Três botões com o texto: PT, EN, ES.
+Estilo "pill" (bordas arredondadas, pequenos, horizontais).
+Atributos data-lang="pt", data-lang="en", data-lang="es".
+O botão PT deve ter a classe active por padrão.
+Botões Superiores:
+Três botões com o texto: GearLabs, Landpage, App.
+Estilo "pill" semelhante aos botões de idioma.
+Menu Lateral Principal (dentro de uma nav com classe sidebar-menu):
+Itens do Menu (nesta ordem exata):
+Apresentação (href="#apresentacao")
+Síntese (href="#sintese")
+Problema vs Solução (href="#problema")
+Fundamentação Técnica (href="#fundamentacao")
+Recursos e Funcionalidades (href="#recursos")
+Análise de dados (href="#analise")
+Oportunidades (href="#oportunidades")
+Glossário (href="#glossario")
+Base de conhecimento (href="#base")
+Referências (href="#referencias")
+Comportamento:
+hover: fundo muda para --fundo-secundario e borda esquerda azul aparece.
+active: fundo --fundo-secundario, borda esquerda azul, texto azul e negrito.
+ScrollSpy: O item ativo é atualizado automaticamente conforme a rolagem.
+Parte Inferior (dentro de uma div com classe sidebar-footer):
+Links (nesta ordem exata):
+DealeGear
+GearHub
+GearVision
+TechNotes
+Blog
+Estilo: Separados do menu por uma border-top. Cor do texto --texto-secundario.
+🟩 3. Conteúdo Principal:
+
+Layout: margin-left: 280px para não ficar sob a sidebar.
+Header (com classe main-header):
+Título principal (<h1>) grande com texto em gradiente.
+Breadcrumb minimalista: Home / Plataforma / Documentação.
+Seções (uma para cada item do menu):
+Cada seção deve ter um id correspondente ao href do menu (ex: <section id="apresentacao">).
+Conteúdo de cada seção:
+Um título <h2> com borda inferior.
+Dois parágrafos <p> com texto "Lorem ipsum".
+A seção "Apresentação" deve conter um div com classe alert alert-info.
+A seção "Síntese" deve conter uma table com thead e tbody.
+A seção "Problema vs Solução" deve conter um div com classe alert alert-success.
+Animação: Todas as seções devem ter opacity: 0 e uma classe visible que as torna visíveis com opacity: 1 e uma transição suave.
+🟥 4. Sistema de Idiomas:
+
+Objeto translations: Crie um objeto JavaScript const translations = { pt: {...}, en: {...}, es: {...} };.
+Atributos data-translate: Todos os textos que devem ser traduzidos (títulos, parágrafos, botões, etc.) devem ter um atributo data-translate="chave-única".
+Funcionalidade JavaScript:
+Uma função changeLanguage(lang) que:
+Itera sobre todos os elementos com [data-translate].
+Substitui o textContent pelo valor correspondente no objeto translations[lang].
+Salva o idioma selecionado no localStorage com a chave selectedLanguage.
+Atualiza a classe active nos botões de idioma.
+No carregamento da página, verifique o localStorage e aplique o idioma salvo (padrão: 'pt').
+🟥 5. Comportamento Mobile:
+
+Botão Hamburger:
+Elemento div com 3 span internos.
+Fixo no topo esquerdo.
+Oculto (display: none) por padrão. Visível apenas em telas menores que 768px.
+Ao clicar, deve adicionar a classe active a si mesmo, à sidebar e ao overlay.
+Sidebar e Overlay:
+Em mobile, a sidebar deve ter transform: translateX(-100%).
+A classe active na sidebar muda o transform para translateX(0).
+O overlay deve cobrir toda a tela. Ao clicar nele, remove a classe active do hamburger, da sidebar e do próprio overlay.
+Clicar em qualquer link do menu também deve fechar a sidebar no mobile.
+🟪 6. Animações e Interações Obrigatórias:
+
+Fade-in: Use IntersectionObserver para adicionar a classe visible às seções quando elas entrarem no viewport.
+Scroll Suave: Ao clicar nos links do menu, a página deve rolar suavemente até a seção correspondente.
+ScrollSpy: Durante a rolagem, o item do menu correspondente à seção visível deve receber a classe active.
+Botão "Voltar ao Topo": O botão deve aparecer (opacity: 1) após o usuário rolar 300px para baixo e desaparecer ao voltar ao topo. Ao clicar, rola suavemente para o topo da página.
+🟫 7. Estrutura Final do Arquivo HTML:
+
+O arquivo gerado deve seguir exatamente esta estrutura:
+
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearLabs - Plataforma Completa</title>
+    <style>
+        /* TODO: Todo o CSS aqui dentro */
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <!-- TODO: Todo o conteúdo da sidebar aqui -->
+    </aside>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <main class="main-content">
+        <!-- TODO: Todo o conteúdo principal aqui -->
+    </main>
+
+    <div class="back-to-top" id="backToTop">
+        <!-- TODO: Ícone SVG aqui -->
+    </div>
+
+    <script>
+        // TODO: Todo o JavaScript aqui dentro
+    </script>
+</body>
+</html>
+
+🏁 INSTRUÇÃO FINAL:
+Gere o projeto agora. O resultado deve ser um único arquivo HTML, totalmente funcional e responsivo, uma cópia exata do que foi especificado acima.

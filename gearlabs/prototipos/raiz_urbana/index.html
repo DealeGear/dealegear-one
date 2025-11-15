@@ -1,249 +1,921 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raiz Urbana - Cultivando vida em cada canto da cidade</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="../../../favicon/dealegear-fav.png">
+    <title>3GTO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-primario: #2563eb;
+            --verde-primario: #16a34a;
+            --fundo-claro: #ffffff;
+            --fundo-secundario: #f8fafc;
+            --fundo-terciario: #f1f5f9;
+            --texto-principal: #1e293b;
+            --texto-secundario: #64748b;
+            --cor-borda: #e2e8f0;
+            --roxo-acento: #7c3aed;
+            --gradiente: linear-gradient(135deg, #2563eb, #16a34a);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--fundo-secundario);
+            color: var(--texto-principal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--fundo-claro);
+            border-right: 1px solid var(--cor-borda);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        .logo-container {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: var(--fundo-terciario);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .lang-btn {
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--cor-borda);
+            background: var(--fundo-claro);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--azul-primario);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: var(--gradiente);
+            color: white;
+        }
+
+        .top-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .top-btn {
+            padding: 0.4rem 0.8rem;
+            background: var(--fundo-terciario);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .top-btn:hover {
+            background: var(--azul-primario);
+            color: white;
+        }
+
+        /* Menu Principal */
+        .sidebar-menu {
+            flex: 1;
+            padding: 1.5rem 0;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 0.875rem 1.5rem;
+            color: var(--texto-principal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: var(--fundo-secundario);
+            border-left-color: var(--azul-primario);
+            padding-left: 2rem;
+        }
+
+        .menu-item.active {
+            background: var(--fundo-secundario);
+            border-left-color: var(--azul-primario);
+            color: var(--azul-primario);
+            font-weight: 600;
+        }
+
+        /* Rodapé Sidebar */
+        .sidebar-footer {
+            padding: 1rem 0;
+            border-top: 1px solid var(--cor-borda);
+        }
+
+        .footer-item {
+            display: block;
+            padding: 0.625rem 1.5rem;
+            color: var(--texto-secundario);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-item:hover {
+            color: var(--azul-primario);
+            background: var(--fundo-secundario);
+        }
+
+        /* Conteúdo Principal */
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .main-header {
+            background: var(--fundo-claro);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradiente);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--texto-secundario);
+        }
+
+        .breadcrumb span {
+            color: var(--azul-primario);
+        }
+
+        /* Seções */
+        .section {
+            background: var(--fundo-claro);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--cor-borda);
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--gradiente);
+        }
+
+        .section p {
+            color: var(--texto-secundario);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Botão Voltar ao Topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradiente);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Menu Hamburguer */
+        .hamburger {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 40px;
+            height: 40px;
+            background: var(--gradiente);
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+                padding-top: 4rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Alert */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .alert-info {
+            border-left-color: var(--azul-primario);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .alert-success {
+            border-left-color: var(--verde-primario);
+            background: rgba(22, 163, 74, 0.1);
+        }
+
+        /* Tabela */
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--fundo-claro);
+        }
+
+        th, td {
+            padding: 0.875rem;
+            text-align: left;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        th {
+            background: var(--fundo-secundario);
+            font-weight: 600;
+            color: var(--texto-principal);
+        }
+
+        tr:hover {
+            background: var(--fundo-secundario);
+        }
+    </style>
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Raiz Urbana</h1>
-                <p class="slogan">Cultivando vida em cada canto da cidade</p>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="img/logo.webp" alt="Logo">
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#cronograma">Como Funciona</a></li>
-                    <li><a href="https://www.landpage.dealegear.com.br">Landpage</a></li>
-                    <li><a href="https://www.dealegear.com.br">Portal</a></li>
-                    <li><a href="#documentacao">Documentação</a></li> <!-- Novo item adicionado -->
-                </ul>
-            </nav>
+            <div class="language-buttons">
+                <button class="lang-btn active" data-lang="pt">PT</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+            <div class="top-buttons">
+                <a href="../../index.html"><button class="top-btn">GearLabs</button></a>
+                <a href="land.html"><button class="top-btn">Landpage</button></a>
+                <a href="app.html"><button class="top-btn">App</button></a>
+            </div>
         </div>
-    </header>
+        
+        <nav class="sidebar-menu">
+            <a href="#apresentacao" class="menu-item" data-translate="menu-apresentacao">Apresentação</a>
+            <a href="#sintese" class="menu-item" data-translate="menu-sintese">Síntese</a>
+            <a href="#problema" class="menu-item" data-translate="menu-problema">Problema vs Solução</a>
+            <a href="#fundamentacao" class="menu-item" data-translate="menu-fundamentacao">Fundamentação Técnica</a>
+            <a href="#recursos" class="menu-item" data-translate="menu-recursos">Recursos e Funcionalidades</a>
+            <a href="#analise" class="menu-item" data-translate="menu-analise">Análise de dados</a>
+            <a href="#oportunidades" class="menu-item" data-translate="menu-oportunidades">Oportunidades</a>
+            <a href="#glossario" class="menu-item" data-translate="menu-glossario">Glossário</a>
+            <a href="#base" class="menu-item" data-translate="menu-base">Base de conhecimento</a>
+            <a href="#referencias" class="menu-item" data-translate="menu-referencias">Referências</a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="../../../index.html" class="footer-item">DealeGear</a>
+            <a href="../../../gearhub/index.html" class="footer-item">GearHub</a>
+            <a href="../../../gearvision/index.html" class="footer-item">GearVision</a>
+            <a href="../../../technotes/index.html" class="footer-item">TechNotes</a>
+            <a href="https://dealegear.substack.com/" class="footer-item">Blog</a>
+        </div>
+    </aside>
 
-    <!-- Seção Principal -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Transforme espaços urbanos em oásis verdes</h2>
-                <p>O projeto Raiz Urbana ensina agricultura orgânica e cultivo de plantas medicinais em pequenos espaços urbanos. Um curso de 24 meses dedicado a jovens, crianças e idosos que desejam cultivar vida em suas casas.</p>
-                <div class="hero-icons">
-                    <div class="icon-box">
-                        <i class="fas fa-seedling"></i>
-                        <span>Agricultura Urbana</span>
-                    </div>
-                    <div class="icon-box">
-                        <i class="fas fa-leaf"></i>
-                        <span>Sustentabilidade</span>
-                    </div>
-                    <div class="icon-box">
-                        <i class="fas fa-users"></i>
-                        <span>Educação</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://picsum.photos/seed/urbanagriculture/600/400.jpg" alt="Agricultura urbana em pequenos espaços">
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre o Curso -->
-    <section id="sobre" class="sobre-curso">
-        <div class="container">
-            <h2>Sobre o Curso</h2>
-            <div class="curso-topicos">
-                <div class="topico-card">
-                    <div class="topico-icon">
-                        <i class="fas fa-carrot"></i>
-                    </div>
-                    <h3>Agricultura orgânica urbana</h3>
-                    <p>Aprenda técnicas de cultivo orgânico adaptadas para quintais, lajes e varandas, sem uso de agrotóxicos.</p>
-                </div>
-                <div class="topico-card">
-                    <div class="topico-icon">
-                        <i class="fas fa-mortar-pestle"></i>
-                    </div>
-                    <h3>Plantas medicinais aprovadas pela Anvisa</h3>
-                    <p>Conheça e cultive plantas medicinais com reconhecimento científico e aprovação da Anvisa.</p>
-                </div>
-                <div class="topico-card">
-                    <div class="topico-icon">
-                        <i class="fas fa-bug"></i>
-                    </div>
-                    <h3>Manejo natural de pragas e doenças</h3>
-                    <p>Técnicas naturais e ecológicas para controlar pragas e doenças sem prejudicar o meio ambiente.</p>
-                </div>
-                <div class="topico-card">
-                    <div class="topico-icon">
-                        <i class="fas fa-recycle"></i>
-                    </div>
-                    <h3>Sustentabilidade e economia doméstica</h3>
-                    <p>Como reduzir custos com alimentos e medicamentos através do cultivo próprio.</p>
-                </div>
-                <div class="topico-card">
-                    <div class="topico-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h3>Integração intergeracional</h3>
-                    <p>Atividades que unem jovens, crianças e idosos, fortalecendo laços comunitários.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cronograma -->
-    <section id="cronograma" class="cronograma">
-        <div class="container">
-            <h2>Cronograma do Curso</h2>
-            <p class="cronograma-desc">Um percurso de 24 meses dividido em fases para seu desenvolvimento completo na agricultura urbana</p>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Fase 1 (0-6 meses)</h3>
-                        <p>Introdução à agricultura urbana, preparação de solos e primeiros cultivos.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Fase 2 (7-12 meses)</h3>
-                        <p>Cultivo de hortaliças, manejo de pragas e introdução às plantas medicinais.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Fase 3 (13-18 meses)</h3>
-                        <p>Aprofundamento em plantas medicinais e técnicas de processamento.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Fase 4 (19-24 meses)</h3>
-                        <p>Autonomia na produção, comercialização e multiplicação de conhecimentos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Inscrição -->
-    <section id="inscricao" class="inscricao">
-        <div class="container">
-            <h2>Garanta sua vaga no Raiz Urbana</h2>
-            <p>Transforme seu espaço urbano em um local de produção de alimentos saudáveis e plantas medicinais.</p>
-            <a href="#contato" class="btn-inscricao">Inscreva-se agora</a>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="contato">
-        <div class="container">
-            <h2>Entre em Contato</h2>
-            <div class="contato-form">
-                <form id="form-contato">
-                    <div class="form-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" id="nome" name="nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensagem">Mensagem</label>
-                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-enviar">Enviar</button>
-                </form>
-                <div class="contato-info">
-                    <h3>Informações de Contato</h3>
-                    <p><i class="fas fa-envelope"></i> contato@raizurbana.org.br</p>
-                    <p><i class="fas fa-phone"></i> (11) 1234-5678</p>
-                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Seção de Documentação -->
-<section id="documentacao" class="documentacao">
-    <div class="container">
-        <h2>Documentação do Projeto</h2>
-        <div class="doc-content">
-            <div class="doc-text">
-                <p>Acesse toda a documentação oficial do projeto Raiz Urbana, incluindo materiais didáticos, pesquisas científicas e manuais de cultivo.</p>
-                <p>Nossa documentação está disponível em diferentes formatos para facilitar o acesso e compartilhamento de conhecimento.</p>
-                
-                <div class="doc-list">
-                    <div class="doc-item">
-                        <i class="fas fa-file-pdf"></i>
-                        <div class="doc-info">
-                            <h4>Manual de Cultivo Orgânico</h4>
-                            <p>Guia completo para iniciantes na agricultura urbana</p>
-                            <a href="#" class="doc-link">Baixar PDF</a>
-                        </div>
-                    </div>
-                    
-                    <div class="doc-item">
-                        <i class="fas fa-book"></i>
-                        <div class="doc-info">
-                            <h4>Catálogo de Plantas Medicinais</h4>
-                            <p>Informações detalhadas sobre 50 espécies medicinais</p>
-                            <a href="#" class="doc-link">Acessar</a>
-                        </div>
-                    </div>
-                    
-                    <div class="doc-item">
-                        <i class="fas fa-video"></i>
-                        <div class="doc-info">
-                            <h4>Vídeos Instrutivos</h4>
-                            <p>Tutoriais passo a passo de todas as técnicas</p>
-                            <a href="#" class="doc-link">Assistir</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="doc-image">
-                <img src="https://picsum.photos/seed/documentation/500/400.jpg" alt="Documentação do projeto Raiz Urbana">
-            </div>
-        </div>
+    <!-- Menu Hamburguer -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-</section>
 
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Raiz Urbana</h2>
-                    <p>Cultivando vida em cada canto da cidade</p>
-                </div>
-                <div class="footer-redes">
-                    <h3>Siga-nos</h3>
-                    <div class="redes-sociais">
-                        <a href="#" class="rede-social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="rede-social"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="rede-social"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="rede-social"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <p>&copy; 2023 Raiz Urbana. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
 
-    <script src="script.js"></script>
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <header class="main-header">
+            <h1 class="main-title" data-translate="main-title">3GTO - 3 Gateways to Obstination</h1>
+            <div class="breadcrumb">
+                <span>Home</span> / <span data-translate="breadcrumb-current">Plataforma</span> / <span data-translate="breadcrumb-page">Documentação</span>
+            </div>
+        </header>
+
+        <section id="apresentacao" class="section">
+            <h2 data-translate="title-apresentacao">Apresentação</h2>
+            <p data-translate="text-apresentacao-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p data-translate="text-apresentacao-2">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="alert alert-info" data-translate="alert-apresentacao">
+                Esta seção apresenta uma visão geral completa da plataforma GearLabs e seus principais componentes.
+            </div>
+        </section>
+
+        <section id="sintese" class="section">
+            <h2 data-translate="title-sintese">Síntese</h2>
+            <p data-translate="text-sintese-1">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+            <p data-translate="text-sintese-2">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-translate="table-feature">Característica</th>
+                            <th data-translate="table-status">Status</th>
+                            <th data-translate="table-priority">Prioridade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-translate="table-item1">Integração API</td>
+                            <td data-translate="table-active">Ativo</td>
+                            <td data-translate="table-high">Alta</td>
+                        </tr>
+                        <tr>
+                            <td data-translate="table-item2">Dashboard Analytics</td>
+                            <td data-translate="table-development">Em Desenvolvimento</td>
+                            <td data-translate="table-medium">Média</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="problema" class="section">
+            <h2 data-translate="title-problema">Problema vs Solução</h2>
+            <p data-translate="text-problema-1">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+            </p>
+            <p data-translate="text-problema-2">
+                Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+            </p>
+            <div class="alert alert-success" data-translate="alert-problema">
+                Solução integrada que resolve 95% dos problemas identificados no processo atual.
+            </div>
+        </section>
+
+        <section id="fundamentacao" class="section">
+            <h2 data-translate="title-fundamentacao">Fundamentação Técnica</h2>
+            <p data-translate="text-fundamentacao-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p data-translate="text-fundamentacao-2">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </section>
+
+        <section id="recursos" class="section">
+            <h2 data-translate="title-recursos">Recursos e Funcionalidades</h2>
+            <p data-translate="text-recursos-1">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+            <p data-translate="text-recursos-2">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+            </p>
+        </section>
+
+        <section id="analise" class="section">
+            <h2 data-translate="title-analise">Análise de Dados</h2>
+            <p data-translate="text-analise-1">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+            </p>
+            <p data-translate="text-analise-2">
+                Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+            </p>
+        </section>
+
+        <section id="oportunidades" class="section">
+            <h2 data-translate="title-oportunidades">Oportunidades</h2>
+            <p data-translate="text-oportunidades-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p data-translate="text-oportunidades-2">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </section>
+
+        <section id="glossario" class="section">
+            <h2 data-translate="title-glossario">Glossário</h2>
+            <p data-translate="text-glossario-1">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+            <p data-translate="text-glossario-2">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+            </p>
+        </section>
+
+        <section id="base" class="section">
+            <h2 data-translate="title-base">Base de Conhecimento</h2>
+            <p data-translate="text-base-1">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+            </p>
+            <p data-translate="text-base-2">
+                Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+            </p>
+        </section>
+
+        <section id="referencias" class="section">
+            <h2 data-translate="title-referencias">Referências</h2>
+            <p data-translate="text-referencias-1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p data-translate="text-referencias-2">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </section>
+    </main>
+
+    <!-- Botão Voltar ao Topo -->
+    <div class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </div>
+
+    <script>
+        // Sistema de Tradução
+        const translations = {
+            pt: {
+                'main-title': '3GTO - Three Gateways to Obstination',
+                'breadcrumb-current': 'Plataforma',
+                'breadcrumb-page': 'Documentação',
+                'menu-apresentacao': 'Apresentação',
+                'menu-sintese': 'Síntese',
+                'menu-problema': 'Problema vs Solução',
+                'menu-fundamentacao': 'Fundamentação Técnica',
+                'menu-recursos': 'Recursos e Funcionalidades',
+                'menu-analise': 'Análise de dados',
+                'menu-oportunidades': 'Oportunidades',
+                'menu-glossario': 'Glossário',
+                'menu-base': 'Base de conhecimento',
+                'menu-referencias': 'Referências',
+                'title-apresentacao': 'Apresentação',
+                'text-apresentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-apresentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'alert-apresentacao': 'Esta seção apresenta uma visão geral completa da plataforma GearLabs e seus principais componentes.',
+                'title-sintese': 'Síntese',
+                'text-sintese-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-sintese-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'table-feature': 'Característica',
+                'table-status': 'Status',
+                'table-priority': 'Prioridade',
+                'table-item1': 'Integração API',
+                'table-item2': 'Dashboard Analytics',
+                'table-active': 'Ativo',
+                'table-development': 'Em Desenvolvimento',
+                'table-high': 'Alta',
+                'table-medium': 'Média',
+                'title-problema': 'Problema vs Solução',
+                'text-problema-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-problema-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'alert-problema': 'Solução integrada que resolve 95% dos problemas identificados no processo atual.',
+                'title-fundamentacao': 'Fundamentação Técnica',
+                'text-fundamentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-fundamentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-recursos': 'Recursos e Funcionalidades',
+                'text-recursos-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-recursos-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-analise': 'Análise de Dados',
+                'text-analise-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-analise-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-oportunidades': 'Oportunidades',
+                'text-oportunidades-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-oportunidades-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-glossario': 'Glossário',
+                'text-glossario-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-glossario-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-base': 'Base de Conhecimento',
+                'text-base-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-base-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-referencias': 'Referências',
+                'text-referencias-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-referencias-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+            en: {
+                'main-title': '3GTO - Three Gateways to Obstination',
+                'breadcrumb-current': 'Platform',
+                'breadcrumb-page': 'Documentation',
+                'menu-apresentacao': 'Presentation',
+                'menu-sintese': 'Synthesis',
+                'menu-problema': 'Problem vs Solution',
+                'menu-fundamentacao': 'Technical Foundation',
+                'menu-recursos': 'Resources and Features',
+                'menu-analise': 'Data Analysis',
+                'menu-oportunidades': 'Opportunities',
+                'menu-glossario': 'Glossary',
+                'menu-base': 'Knowledge Base',
+                'menu-referencias': 'References',
+                'title-apresentacao': 'Presentation',
+                'text-apresentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-apresentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'alert-apresentacao': 'This section provides a complete overview of the GearLabs platform and its main components.',
+                'title-sintese': 'Synthesis',
+                'text-sintese-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-sintese-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'table-feature': 'Feature',
+                'table-status': 'Status',
+                'table-priority': 'Priority',
+                'table-item1': 'API Integration',
+                'table-item2': 'Analytics Dashboard',
+                'table-active': 'Active',
+                'table-development': 'In Development',
+                'table-high': 'High',
+                'table-medium': 'Medium',
+                'title-problema': 'Problem vs Solution',
+                'text-problema-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-problema-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'alert-problema': 'Integrated solution that solves 95% of the problems identified in the current process.',
+                'title-fundamentacao': 'Technical Foundation',
+                'text-fundamentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-fundamentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-recursos': 'Resources and Features',
+                'text-recursos-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-recursos-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-analise': 'Data Analysis',
+                'text-analise-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-analise-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-oportunidades': 'Opportunities',
+                'text-oportunidades-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-oportunidades-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-glossario': 'Glossary',
+                'text-glossario-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-glossario-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-base': 'Knowledge Base',
+                'text-base-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-base-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-referencias': 'References',
+                'text-referencias-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-referencias-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            },
+            es: {
+                'main-title': '3GTO - Three Gateways to Obstination',
+                'breadcrumb-current': 'Plataforma',
+                'breadcrumb-page': 'Documentación',
+                'menu-apresentacao': 'Presentación',
+                'menu-sintese': 'Síntesis',
+                'menu-problema': 'Problema vs Solución',
+                'menu-fundamentacao': 'Fundamentación Técnica',
+                'menu-recursos': 'Recursos y Funcionalidades',
+                'menu-analise': 'Análisis de datos',
+                'menu-oportunidades': 'Oportunidades',
+                'menu-glossario': 'Glosario',
+                'menu-base': 'Base de conocimiento',
+                'menu-referencias': 'Referencias',
+                'title-apresentacao': 'Presentación',
+                'text-apresentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-apresentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'alert-apresentacao': 'Esta sección presenta una visión general completa de la plataforma GearLabs y sus principales componentes.',
+                'title-sintese': 'Síntesis',
+                'text-sintese-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-sintese-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'table-feature': 'Característica',
+                'table-status': 'Estado',
+                'table-priority': 'Prioridad',
+                'table-item1': 'Integración API',
+                'table-item2': 'Dashboard Analytics',
+                'table-active': 'Activo',
+                'table-development': 'En Desarrollo',
+                'table-high': 'Alta',
+                'table-medium': 'Media',
+                'title-problema': 'Problema vs Solución',
+                'text-problema-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-problema-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'alert-problema': 'Solución integrada que resuelve el 95% de los problemas identificados en el proceso actual.',
+                'title-fundamentacao': 'Fundamentación Técnica',
+                'text-fundamentacao-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-fundamentacao-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-recursos': 'Recursos y Funcionalidades',
+                'text-recursos-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-recursos-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-analise': 'Análisis de Datos',
+                'text-analise-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-analise-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-oportunidades': 'Oportunidades',
+                'text-oportunidades-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-oportunidades-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'title-glossario': 'Glosario',
+                'text-glossario-1': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+                'text-glossario-2': 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
+                'title-base': 'Base de Conocimiento',
+                'text-base-1': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+                'text-base-2': 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+                'title-referencias': 'Referencias',
+                'text-referencias-1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'text-referencias-2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            }
+        };
+
+        // Função para mudar idioma
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Atualizar botões de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Carregar idioma salvo
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
+        changeLanguage(savedLanguage);
+
+        // Event listeners para botões de idioma
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        // Menu Hamburguer
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Fechar sidebar ao clicar em links (mobile)
+        document.querySelectorAll('.menu-item').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    hamburger.classList.remove('active');
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll Suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ScrollSpy
+        const sections = document.querySelectorAll('.section');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        function updateActiveSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveSection);
+
+        // Animação Fade-in
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Botão Voltar ao Topo
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Inicializar primeira seção como visível
+        if (sections.length > 0) {
+            sections[0].classList.add('visible');
+        }
+    </script>
 </body>
 </html>

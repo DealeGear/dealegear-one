@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evora - Explorando Ecossistemas Urbanos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Cabeçalho com Menu -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">Evora</div>
+                    
+                    <!-- Menu Hamburguer para Mobile -->
+                    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <!-- Navegação -->
+                    <nav class="nav" id="navMenu">
+                        <ul class="nav-list">
+                            <li><a href="#hero" class="nav-link" data-translate="home">Início</a></li>
+                            <li><a href="#virtual-mode" class="nav-link" data-translate="virtualMode">Modo Virtual</a></li>
+                            <li><a href="#real-mode" class="nav-link" data-translate="realMode">Modo Real</a></li>
+                            <li><a href="#app-access" class="nav-link" data-translate="appAccess">Acesso ao App</a></li>
+                            <li class="language-selector">
+                                <button class="lang-btn" id="langBtn">
+                                    <i class="fas fa-globe"></i> <span id="currentLang">PT</span>
+                                </button>
+                                <div class="lang-dropdown" id="langDropdown">
+                                    <a href="#" data-lang="pt">Português</a>
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                </div>
+                            </li>
+                            <li class="theme-toggle-container">
+                                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title" data-translate="heroTitle">Evora</h1>
+                        <p class="hero-subtitle" data-translate="heroSubtitle">Um protótipo híbrido para explorar ecossistemas urbanos e criar soluções para os desafios do futuro</p>
+                        <a href="#app-access" class="btn btn-primary" data-translate="accessApp">Acessar o App</a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1744&q=80" alt="Cidade futurista interligada à natureza">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modo Virtual Section -->
+        <section id="virtual-mode" class="section virtual-mode">
+            <div class="container">
+                <h2 class="section-title" data-translate="virtualModeTitle">Modo Virtual</h2>
+                <div class="section-content">
+                    <div class="text-column">
+                        <p data-translate="virtualModeDesc">Uma cidade construída com elementos virtuais, usando bibliotecas como ThreeJS para simular as interações humanas, com casas, escritórios, empresas, comércio, indústria, escolas, hospitais, dia e noite, mudanças de clima, evolução das pessoas (idade, renda, saúde, etc). É uma réplica do mundo real para estudo sobre as relações sociais. Serve tanto para uso em escolas e universidades como também para negócios.</p>
+                    </div>
+                    <div class="image-column">
+                        <div class="virtual-demo" id="virtualDemo">
+                            <!-- Aqui será inserido o canvas do Three.js -->
+                            <div class="demo-placeholder">
+                                <i class="fas fa-city"></i>
+                                <span data-translate="virtualDemoText">Simulação Virtual da Cidade</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modo Real Section -->
+        <section id="real-mode" class="section real-mode">
+            <div class="container">
+                <h2 class="section-title" data-translate="realModeTitle">Modo Real</h2>
+                <div class="section-content">
+                    <div class="image-column">
+                        <div class="real-demo">
+                            <div class="demo-placeholder">
+                                <i class="fas fa-microchip"></i>
+                                <span data-translate="realDemoText">Maquetes Funcionais com Microrrobótica</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-column">
+                        <p data-translate="realModeDesc">Maquetes funcionais de elementos das cidades, sendo que a primeira maquete é uma usina hidrelética, e máquete seguinte será uma cidade, usando elementos de microrobótica para construir as partes móveis, e usando Raspberry Py para o controle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Acesso ao App Section -->
+        <section id="app-access" class="section app-access">
+            <div class="container">
+                <h2 class="section-title" data-translate="appAccessTitle">Acesso ao App</h2>
+                <div class="app-content">
+                    <p class="app-description" data-translate="appDescription">Experimente o futuro em suas mãos</p>
+                    <a href="app/index.html" class="btn btn-primary btn-large" data-translate="accessApp">Acessar o App</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">Evora</div>
+                    <div class="footer-links">
+                        <a href="#" data-translate="dealeGear">DealeGear</a>
+                        <a href="#" data-translate="gearLabs">GearLabs</a>
+                        <a href="#" data-translate="documentation">Documentação</a>
+                        <a href="#" data-translate="community">Comunidade</a>
+                    </div>
+                    <div class="footer-copyright">
+                        <p>&copy; 2023 Evora. <span data-translate="allRightsReserved">Todos os direitos reservados.</span></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
